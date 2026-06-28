@@ -39,16 +39,13 @@ async function recordClick(linkId: string) {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ rest: string[] }>
 }): Promise<Metadata> {
-  const { slug } = await params
+  const { rest } = await params
+  const slug = rest[0] === "b" && rest.length > 1 ? rest[1] : rest[0]
   const link = await prisma.shortLink.findUnique({ where: { slug } })
 
-  if (
-    !link ||
-    !link.isActive ||
-    (link.expiresAt && link.expiresAt < new Date())
-  ) {
+  if (!link || !link.isActive || (link.expiresAt && link.expiresAt < new Date())) {
     return {
       title: "Link Not Found - RELURL",
       robots: { index: false, follow: false },
@@ -61,20 +58,17 @@ export async function generateMetadata({
   }
 }
 
-export default async function SlugPage({
+export default async function CatchAllPage({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ rest: string[] }>
 }) {
-  const { slug } = await params
+  const { rest } = await params
+  const slug = rest[0] === "b" && rest.length > 1 ? rest[1] : rest[0]
 
   const link = await prisma.shortLink.findUnique({ where: { slug } })
 
-  if (
-    !link ||
-    !link.isActive ||
-    (link.expiresAt && link.expiresAt < new Date())
-  ) {
+  if (!link || !link.isActive || (link.expiresAt && link.expiresAt < new Date())) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-dark-700 p-4">
         <div className="text-center">
@@ -85,8 +79,7 @@ export default async function SlugPage({
             Link not found
           </h1>
           <p className="mb-8 text-dark-100">
-            The link you&apos;re looking for doesn&apos;t exist or has been
-            removed.
+            The link you&apos;re looking for doesn&apos;t exist or has been removed.
           </p>
           <Link
             href="/"

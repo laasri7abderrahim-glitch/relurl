@@ -6,6 +6,7 @@ import { Menu, X, Sun, Moon, Monitor } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { useTheme } from "@/components/theme-provider"
+import { LocaleSwitcher } from "@/components/layout/locale-switcher"
 
 const navLinks = [
   { label: "Features", href: "/features" },
@@ -100,6 +101,9 @@ function Header() {
 
         <div className="hidden items-center gap-2 md:flex">
           <ThemeToggle />
+          <div className="w-px h-6 bg-dark-100/30 mx-1" />
+          <LocaleSwitcher />
+          <div className="w-px h-6 bg-dark-100/30 mx-1" />
           <Link href="/login">
             <Button variant="ghost" size="sm">Login</Button>
           </Link>

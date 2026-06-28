@@ -1,55 +1,43 @@
 import { prisma } from "@/lib/prisma"
 import type { MetadataRoute } from "next"
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://relurl.com"
+const baseUrl = "https://relurl.com"
+const locales = ["en", "fr"] as const
 
-  let shortLinkEntries: MetadataRoute.Sitemap = []
-  try {
-    const links = await prisma.shortLink.findMany({
-      where: { isActive: true },
-      select: { slug: true, updatedAt: true },
-      orderBy: { updatedAt: "desc" },
-    })
-    shortLinkEntries = links.map((link) => ({
-      url: `${baseUrl}/${link.slug}`,
-      lastModified: link.updatedAt,
-      changeFrequency: "daily" as const,
-      priority: 0.7,
-    }))
-  } catch {}
-
-  const qrPages = [
-    "/qr-code-generator",
-    "/dynamic-qr-code-generator",
-    "/free-qr-code-generator",
-    "/qr-code-for-pdf",
-    "/qr-code-for-wifi",
-    "/qr-code-for-business-card",
-    "/qr-code-for-restaurant-menu",
-    "/qr-code-for-google-reviews",
-    "/qr-code-for-instagram",
-    "/qr-code-for-whatsapp",
-    "/qr-code-for-youtube",
-    "/qr-code-for-facebook",
-    "/qr-code-for-linkedin",
-    "/qr-code-for-email",
-    "/qr-code-for-phone",
-    "/qr-code-for-sms",
-    "/qr-code-for-event",
-    "/qr-code-for-vcard",
-    "/qr-code-for-google-maps",
-    "/qr-code-for-app-download",
-  ]
-
-  const qrEntries: MetadataRoute.Sitemap = qrPages.map((path) => ({
-    url: `${baseUrl}${path}`,
+function localizedUrls(path: string, priority = 0.8): MetadataRoute.Sitemap {
+  return locales.map((locale) => ({
+    url: `${baseUrl}/${locale}${path}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
-    priority: 0.8,
+    priority: path === "" ? 1 : priority,
   }))
+}
 
-  const urlShortenerPages = [
+function staticPages(priority = 0.8): MetadataRoute.Sitemap {
+  const pages = [
+    "",
+    "/features",
+    "/pricing",
+    "/integrations",
+    "/api",
+    "/changelog",
+    "/login",
+    "/register",
+    "/blog",
+    "/contact",
+    "/privacy",
+    "/terms",
+    "/cookies",
+    "/gdpr",
+    "/dmca",
+    "/dashboard",
+    "/wordpress",
+  ]
+  return pages.flatMap((p) => localizedUrls(p, p === "" ? 1 : priority))
+}
+
+function landingPages(priority = 0.85): MetadataRoute.Sitemap {
+  const paths = [
     "/custom-url-shortener",
     "/branded-link-shortener",
     "/bulk-url-shortener",
@@ -60,16 +48,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/campaign-link-generator",
     "/short-url-analytics",
     "/custom-alias-generator",
+    "/ecommerce-url-shortener",
+    "/real-estate-link-shortener",
+    "/saas-link-shortener",
+    "/podcast-link-shortener",
+    "/event-link-shortener",
+    "/news-link-shortener",
+    "/education-link-shortener",
+    "/healthcare-link-shortener",
+    "/nonprofit-link-shortener",
+    "/travel-link-shortener",
+    "/restaurant-link-shortener",
+    "/music-link-shortener",
+    "/photography-link-shortener",
+    "/gaming-link-shortener",
+    "/crypto-link-shortener",
+    "/agency-link-shortener",
+    "/startup-link-shortener",
+    "/ebook-link-shortener",
+    "/course-link-shortener",
+    "/webinar-link-shortener",
   ]
+  return paths.flatMap((p) => localizedUrls(p, priority))
+}
 
-  const urlEntries: MetadataRoute.Sitemap = urlShortenerPages.map((path) => ({
-    url: `${baseUrl}${path}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }))
-
-  const socialPages = [
+function socialPages(priority = 0.8): MetadataRoute.Sitemap {
+  const paths = [
     "/instagram-link-generator",
     "/whatsapp-link-generator",
     "/telegram-link-generator",
@@ -77,35 +81,79 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/youtube-link-generator",
     "/facebook-url-generator",
     "/linkedin-url-generator",
+    "/pinterest-link-generator",
+    "/snapchat-link-generator",
+    "/reddit-link-generator",
+    "/discord-link-generator",
+    "/twitch-link-generator",
+    "/twitter-link-generator",
+    "/threads-link-generator",
+    "/mastodon-link-generator",
   ]
+  return paths.flatMap((p) => localizedUrls(p, priority))
+}
 
-  const socialEntries: MetadataRoute.Sitemap = socialPages.map((path) => ({
-    url: `${baseUrl}${path}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }))
+function qrPages(priority = 0.85): MetadataRoute.Sitemap {
+  const paths = [
+    "/qr-code-generator",
+    "/dynamic-qr-code-generator",
+    "/free-qr-code-generator",
+    "/qr-code-for-wifi",
+    "/qr-code-for-vcard",
+    "/qr-code-for-business-card",
+    "/qr-code-for-restaurant-menu",
+    "/qr-code-for-app-download",
+    "/qr-code-for-google-maps",
+    "/qr-code-for-google-reviews",
+    "/qr-code-for-facebook",
+    "/qr-code-for-instagram",
+    "/qr-code-for-linkedin",
+    "/qr-code-for-youtube",
+    "/qr-code-for-whatsapp",
+    "/qr-code-for-email",
+    "/qr-code-for-sms",
+    "/qr-code-for-phone",
+    "/qr-code-for-event",
+    "/qr-code-for-pdf",
+    "/qr-code-for-restaurant",
+    "/qr-code-for-hotel",
+    "/qr-code-for-gym",
+    "/qr-code-for-salon",
+    "/qr-code-for-store",
+    "/qr-code-for-resume",
+    "/qr-code-for-portfolio",
+    "/qr-code-for-wedding",
+    "/qr-code-for-birthday",
+    "/qr-code-for-concert",
+    "/qr-code-for-class",
+    "/qr-code-for-fundraiser",
+  ]
+  return paths.flatMap((p) => localizedUrls(p, priority))
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  let shortLinkEntries: MetadataRoute.Sitemap = []
+  try {
+    const links = await prisma.shortLink.findMany({
+      where: { isActive: true },
+      select: { slug: true, updatedAt: true },
+      orderBy: { updatedAt: "desc" },
+    })
+    shortLinkEntries = links.flatMap((link) =>
+      locales.map((locale) => ({
+        url: `${baseUrl}/${locale}/${link.slug}`,
+        lastModified: link.updatedAt,
+        changeFrequency: "daily" as const,
+        priority: 0.7,
+      }))
+    )
+  } catch {}
 
   return [
-    { url: baseUrl, lastModified: new Date(), changeFrequency: "daily", priority: 1 },
-    { url: `${baseUrl}/features`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${baseUrl}/pricing`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${baseUrl}/integrations`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/api`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/changelog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.6 },
-    { url: `${baseUrl}/login`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
-    { url: `${baseUrl}/register`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
-    { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
-    { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
-    { url: `${baseUrl}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
-    { url: `${baseUrl}/terms`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
-    { url: `${baseUrl}/cookies`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
-    { url: `${baseUrl}/gdpr`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
-    { url: `${baseUrl}/dmca`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
-    { url: `${baseUrl}/dashboard`, lastModified: new Date(), changeFrequency: "daily", priority: 0.8 },
-    ...qrEntries,
-    ...urlEntries,
-    ...socialEntries,
+    ...staticPages(0.9),
+    ...landingPages(),
+    ...socialPages(0.8),
+    ...qrPages(),
     ...shortLinkEntries,
   ]
 }
