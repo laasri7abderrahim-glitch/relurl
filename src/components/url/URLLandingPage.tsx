@@ -9,6 +9,11 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { Copy, Check, Link2, ArrowRight, Zap, BarChart3, Globe, Shield, ChevronRight, QrCode } from "lucide-react"
 
+interface FAQItem {
+  q: string
+  a: string
+}
+
 interface URLLandingPageProps {
   title: string
   subtitle: string
@@ -21,7 +26,13 @@ interface URLLandingPageProps {
   useCases: string[]
   relatedPages: { title: string; href: string }[]
   allPages: { title: string; href: string }[]
+  faqs?: FAQItem[]
   children?: React.ReactNode
+}
+
+function articleFor(text: string): string {
+  const startsWithVowel = /^[aeiou]/i.test(text.trim())
+  return startsWithVowel ? "an" : "a"
 }
 
 export default function URLLandingPage({
@@ -36,6 +47,7 @@ export default function URLLandingPage({
   useCases,
   relatedPages,
   allPages,
+  faqs,
   children,
 }: URLLandingPageProps) {
   const [url, setUrl] = useState("")
@@ -75,6 +87,27 @@ export default function URLLandingPage({
     setTimeout(() => setCopied(false), 2000)
   }
 
+  const defaultFaqs: FAQItem[] = faqs ?? [
+    {
+      q: `What is ${articleFor(title)} ${title}?`,
+      a: `${title} is a free tool that transforms long, complex URLs into short, shareable links. Track clicks, customize slugs, and manage all your short links from one dashboard.`,
+    },
+    {
+      q: `Is ${articleFor(title)} ${title} free?`,
+      a: "Yes, our basic URL shortening service is completely free. Sign up for a free account to access custom aliases, click analytics, branded domains, and more advanced features.",
+    },
+    {
+      q: `How do I create ${articleFor(title)} ${title.toLowerCase()} link?`,
+      a: `Simply paste your long URL into the input field above and click the "${generateLabel}" button. Your short link will be generated instantly. For custom slugs and tracking, create a free account.`,
+    },
+  ]
+
+  const faqSchema = defaultFaqs.map((f) => ({
+    "@type": "Question" as const,
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer" as const, text: f.a },
+  }))
+
   return (
     <div className="min-h-screen flex flex-col">
       <script
@@ -85,9 +118,17 @@ export default function URLLandingPage({
           name: title,
           applicationCategory: "WebApplication",
           operatingSystem: "Web",
-          url: "https://relurl.com" + title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+          url: "https://relurl.com" + "/" + title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
           description,
           offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+        })}}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqSchema,
         })}}
       />
       <Header />
@@ -235,24 +276,14 @@ export default function URLLandingPage({
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-8 text-gradient">Frequently Asked Questions</h2>
             <div className="space-y-4">
-              <Card className="border-border/50">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold mb-2">What is a {title}?</h3>
-                  <p className="text-sm text-muted-foreground">A {title.toLowerCase()} is a tool that converts long URLs into shorter, more manageable links. These short links redirect to the original destination while providing additional features like analytics, branding, and tracking.</p>
-                </CardContent>
-              </Card>
-              <Card className="border-border/50">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold mb-2">Is this service free?</h3>
-                  <p className="text-sm text-muted-foreground">Yes! Our basic URL shortening is completely free. Sign up for a free account to access advanced features like custom aliases, analytics, and branded domains.</p>
-                </CardContent>
-              </Card>
-              <Card className="border-border/50">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold mb-2">Are shortened links permanent?</h3>
-                  <p className="text-sm text-muted-foreground">Links created on our platform are permanent unless you delete them. Free plan links never expire. Pro plans offer additional options like link expiration and scheduling.</p>
-                </CardContent>
-              </Card>
+              {defaultFaqs.map((faq, i) => (
+                <Card key={i} className="border-border/50">
+                  <CardContent className="p-6">
+                    <h3 className="font-semibold mb-2">{faq.q}</h3>
+                    <p className="text-sm text-muted-foreground">{faq.a}</p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>

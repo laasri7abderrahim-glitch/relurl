@@ -43,6 +43,11 @@ export default function Page() {
         { title: "QR Code for Google Reviews", href: "/qr-code-for-google-reviews" },
       ]}
       allQRCodes={allQRCodes}
+      faqs={[
+        { q: "What types of QR codes can I create?", a: "You can create QR codes for URLs, plain text, WiFi network credentials, vCard contacts, email addresses, phone numbers, SMS messages, and event calendar entries." },
+        { q: "What file formats are available for download?", a: "Generated QR codes can be downloaded as high-resolution PNG images (up to 1024×1024px). Perfect for print materials, digital use, and embedding." },
+        { q: "Do I need an account to generate QR codes?", a: "No account is needed for basic QR code generation. However, a free account unlocks additional features like design customization, scan analytics, and dynamic QR code management." },
+      ]}
     />
   )
 }

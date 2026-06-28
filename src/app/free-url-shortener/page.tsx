@@ -42,6 +42,11 @@ export default function FreeURLShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+      faqs={[
+        { q: "How is this different from other URL shorteners?", a: "Unlike most free URL shorteners, we never expire your links, provide basic click analytics even on the free plan, and let you create custom aliases without upgrading. No hidden limits or time bombs." },
+        { q: "Can I shorten URLs without signing up?", a: "Yes! You can generate short links instantly without any account. However, creating a free account lets you track clicks, manage your links, and use custom slugs." },
+        { q: "What happens if my link goes viral?", a: "Shortened links on our platform handle high traffic automatically. Free plan links never expire or break, even if your content goes viral. Our infrastructure scales to meet demand." },
+      ]}
     />
   )
 }

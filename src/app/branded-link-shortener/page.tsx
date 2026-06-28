@@ -43,6 +43,11 @@ export default function BrandedLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+      faqs={[
+        { q: "What is a branded short domain?", a: "A branded short domain is a custom domain (like go.yourcompany.com) that you use for your shortened links instead of a generic domain. It keeps your brand front and center in every link you share." },
+        { q: "How do I connect my own domain?", a: "From your dashboard, go to Domains and add your custom domain. You'll need to configure a CNAME record with your DNS provider. Once verified, all links can use your branded domain." },
+        { q: "Does branded link shortening improve trust?", a: "Yes. Links on branded domains get 30-40% higher click-through rates because users trust recognizable domains. Branded links also look professional in marketing materials and social media." },
+      ]}
     />
   )
 }

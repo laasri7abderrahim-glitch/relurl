@@ -43,6 +43,11 @@ export default function CustomURLShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+      faqs={[
+        { q: "What characters can I use in a custom slug?", a: "You can use letters (a-z, A-Z), numbers (0-9), hyphens (-), and underscores (_). Slugs are case-sensitive, so MyLink and mylink can be different links." },
+        { q: "Can I change a slug after creating it?", a: "Yes, you can edit the slug of any link you own from your dashboard. The old URL will redirect to the new one, so you won't lose any traffic." },
+        { q: "Do custom slugs affect SEO?", a: "Custom slugs with relevant keywords can improve click-through rates and are more trustworthy to users. The shortened URL's redirect passes link equity to your target page." },
+      ]}
     />
   )
 }

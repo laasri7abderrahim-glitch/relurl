@@ -20,15 +20,14 @@ export function generateSEOMetadata({
   type = "website",
 }: SEOProps): Metadata {
   const url = `${baseUrl}${path}`
-  const fullTitle = title.endsWith(`| ${siteName}`) ? title : `${title} | ${siteName}`
 
   return {
-    title: fullTitle,
+    title,
     description,
     keywords: ["url shortener", "short links", "link analytics", "QR codes", ...keywords].join(", "),
     alternates: { canonical: url },
     openGraph: {
-      title: fullTitle,
+      title,
       description,
       url,
       siteName,
@@ -44,7 +43,7 @@ export function generateSEOMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: fullTitle,
+      title,
       description,
       images: [defaultImage],
     },

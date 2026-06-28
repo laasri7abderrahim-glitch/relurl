@@ -42,6 +42,11 @@ export default function AffiliateLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+      faqs={[
+        { q: "Can I cloak my affiliate links?", a: "Yes, our link masking hides your affiliate IDs from visitors while keeping the tracking intact. This protects your commissions from hijacking and creates cleaner URLs to share." },
+        { q: "Do you support affiliate network tracking?", a: "We work with all major affiliate networks including Amazon Associates, ShareASale, Commission Junction, ClickBank, and Rakuten. The shortened link preserves all tracking parameters." },
+        { q: "Will shortened affiliate links hurt my commissions?", a: "Not at all. Shortened links pass all UTM and tracking parameters through to your destination. Some affiliates report higher conversions because clean links build trust with their audience." },
+      ]}
     />
   )
 }

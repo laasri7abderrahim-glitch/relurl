@@ -43,6 +43,11 @@ export default function Page() {
         { title: "Free QR Code Generator", href: "/free-qr-code-generator" },
       ]}
       allQRCodes={allQRCodes}
+      faqs={[
+        { q: "What is the difference between static and dynamic QR codes?", a: "Static QR codes encode the destination directly into the code and cannot be changed. Dynamic QR codes contain a short URL that redirects to your destination, so you can update the destination anytime without changing the QR image." },
+        { q: "Can I see how many times my QR code was scanned?", a: "Yes, dynamic QR codes include scan analytics. Your dashboard shows total scans, scans over time, device types, operating systems, and geographic locations of scanners." },
+        { q: "Is there a limit to how many times I can edit a dynamic QR code?", a: "No, you can edit dynamic QR codes as many times as you like. The link updates immediately, and the existing QR codes printed on your materials will still work — they'll now redirect to the new destination." },
+      ]}
     />
   )
 }

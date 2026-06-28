@@ -10,6 +10,11 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { Copy, Check, Download, ArrowRight, QrCode, ChevronRight, Zap, Shield, Smartphone, Globe } from "lucide-react"
 
+interface FAQItem {
+  q: string
+  a: string
+}
+
 interface QRPageProps {
   title: string
   subtitle: string
@@ -24,6 +29,7 @@ interface QRPageProps {
   useCases: string[]
   relatedPages: { title: string; href: string }[]
   allQRCodes: { title: string; href: string }[]
+  faqs?: FAQItem[]
   children?: React.ReactNode
 }
 
@@ -38,10 +44,40 @@ export default function QRCodeLandingPage({
   features,
   howItWorks,
   useCases,
+  faqs,
   relatedPages,
   allQRCodes,
   children,
 }: QRPageProps) {
+  function qrArticleFor(text: string): string {
+    const startsWithVowel = /^[aeiou]/i.test(text.trim())
+    return startsWithVowel ? "an" : "a"
+  }
+
+  const defaultFaqs: FAQItem[] = faqs ?? [
+    {
+      q: `What is ${qrArticleFor(title)} ${title}?`,
+      a: `${title} is a free online tool that creates scannable QR codes you can use for marketing, events, business cards, and more. No signup required to generate basic QR codes.`,
+    },
+    {
+      q: `Is the ${title} free?`,
+      a: `Yes, our ${title.toLowerCase()} is completely free to use. Generate unlimited QR codes without any cost. Sign up for a free account to access scan analytics, custom colors, and logo integration.`,
+    },
+    {
+      q: `How do I create ${qrArticleFor(title)} ${title.toLowerCase()}?`,
+      a: `Enter your URL or content in the input field above and click "${generateLabel}". Your QR code will be generated instantly. Download it as PNG and use it anywhere.`,
+    },
+    {
+      q: "How long do QR codes last?",
+      a: "QR codes generated on our platform never expire. Static QR codes work indefinitely. Dynamic QR codes can be edited anytime without reprinting — perfect for updating offers or links.",
+    },
+  ]
+
+  const faqSchema = defaultFaqs.map((f) => ({
+    "@type": "Question" as const,
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer" as const, text: f.a },
+  }))
   const [inputValue, setInputValue] = useState(defaultValue)
   const [qrValue, setQrValue] = useState("")
   const [copied, setCopied] = useState(false)
@@ -77,9 +113,17 @@ export default function QRCodeLandingPage({
           name: title,
           applicationCategory: "WebApplication",
           operatingSystem: "Web",
-          url: "https://relurl.com" + title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+          url: "https://relurl.com" + "/" + title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
           description,
           offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+        })}}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqSchema,
         })}}
       />
       <Header />
@@ -243,38 +287,14 @@ export default function QRCodeLandingPage({
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-8 text-gradient">Frequently Asked Questions</h2>
             <div className="space-y-4">
-              <Card className="border-border/50">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold mb-2">What is a {title}?</h3>
-                  <p className="text-sm text-muted-foreground">
-                    A {title.toLowerCase()} allows you to create a scannable QR code for {title.toLowerCase().replace("qr code generator", "").replace("qr code for", "").trim()} purposes. Users can scan the code with their smartphone camera to instantly access your content.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="border-border/50">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold mb-2">Is this QR code generator free?</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Yes! Our {title.toLowerCase()} is completely free to use. You can generate unlimited QR codes without any cost. Sign up for a free account to access advanced features like analytics and custom styling.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="border-border/50">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold mb-2">Can I customize my QR code?</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Absolutely. After generating your QR code, you can download it as a high-resolution PNG file. For advanced customization like colors, logos, and frames, sign up for a free account.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="border-border/50">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold mb-2">Are the QR codes scannable?</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Yes, all QR codes generated with our tool are fully scannable with any standard QR code reader or smartphone camera. We use the latest QR code generation technology to ensure maximum compatibility.
-                  </p>
-                </CardContent>
-              </Card>
+              {defaultFaqs.map((faq, i) => (
+                <Card key={i} className="border-border/50">
+                  <CardContent className="p-6">
+                    <h3 className="font-semibold mb-2">{faq.q}</h3>
+                    <p className="text-sm text-muted-foreground">{faq.a}</p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>

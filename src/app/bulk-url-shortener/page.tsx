@@ -42,6 +42,11 @@ export default function BulkURLShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+      faqs={[
+        { q: "How many URLs can I shorten at once?", a: "Our bulk URL shortener supports up to 100 URLs per batch. For larger volumes, contact our sales team for custom enterprise solutions." },
+        { q: "What format should my URLs be in?", a: "Enter one URL per line in the text area, or upload a CSV file with a URL column. We accept plain URLs with or without http:// prefixes." },
+        { q: "Do bulk-shortened links include analytics?", a: "Yes, every link generated through bulk shortening includes individual click analytics. You can track performance per link from your dashboard after processing." },
+      ]}
     />
   )
 }

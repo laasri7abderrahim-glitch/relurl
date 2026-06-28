@@ -69,12 +69,12 @@ export default function HomePage() {
           </svg>
         </div>
         <div className="relative z-10 max-w-4xl mx-auto">
-          <Badge variant="outline" className="mb-6 px-4 py-2 text-sm">Trusted since 2002</Badge>
+          <Badge variant="outline" className="mb-6 px-4 py-2 text-sm">Free URL Shortener</Badge>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gradient leading-tight">
             URL Shortener, Branded Short Links & Analytics
           </h1>
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Welcome to the original link shortener — simplifying the Internet through the power of the URL since 2002.
+            Shorten, track, and manage your links with powerful analytics and custom branded domains — all in one place.
           </p>
           <Card className="max-w-2xl mx-auto border-border/50 shadow-2xl shadow-primary/5">
             <CardContent className="p-6">
@@ -198,7 +198,7 @@ export default function HomePage() {
 
       <section className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-gradient">TinyURL Plans Include:</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-gradient">RELURL Plans Include:</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { icon: BarChart3, title: "Detailed Link Analytics", desc: "Stay on top of your links' performance and get insights into the clicks you earn and people you reach." },
@@ -224,7 +224,7 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gradient">Link Shortening Done Quick and Easy</h2>
           <p className="text-lg text-muted-foreground mb-4 max-w-2xl mx-auto">
-            Our URL shortener is not only among the first-ever link shorteners on the Internet &mdash; it&apos;s the best out there.
+            Our URL shortener makes link management simple, fast, and effective &mdash; whether for personal use or enterprise campaigns.
           </p>
           <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
             Wave goodbye to long, clunky links and give your audiences the experiences they deserve!
@@ -278,9 +278,9 @@ export default function HomePage() {
 
       <section className="py-24 px-4 text-center">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gradient">Transforming the Digital Landscape Since &apos;02</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gradient">Modern Link Management for Everyone</h2>
           <p className="text-lg text-muted-foreground">
-            Trusted by millions worldwide since 2002, we&apos;ve been at the forefront of the URL shortening revolution.
+            Built for marketers, creators, and businesses who need reliable link shortening with real-time analytics and full control.
           </p>
         </div>
       </section>
