@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
+import { articleFor } from "@/lib/seo"
 import { Copy, Check, Link2, ArrowRight, Zap, BarChart3, Globe, Shield, ChevronRight, QrCode } from "lucide-react"
 
 interface FAQItem {
@@ -28,11 +29,6 @@ interface URLLandingPageProps {
   allPages: { title: string; href: string }[]
   faqs?: FAQItem[]
   children?: React.ReactNode
-}
-
-function articleFor(text: string): string {
-  const startsWithVowel = /^[aeiou]/i.test(text.trim())
-  return startsWithVowel ? "an" : "a"
 }
 
 export default function URLLandingPage({
@@ -152,7 +148,7 @@ export default function URLLandingPage({
           <div className="absolute inset-0 pointer-events-none">
             <svg className="absolute -top-20 -right-40 w-[510px] h-[227px] opacity-20" viewBox="0 0 510 227" fill="none">
               <path fillRule="evenodd" clipRule="evenodd" d="M-87.152 -39.8215C-88.9236 -97.5924 -78.1971 -154.94 -48.4234 -204.479C-20.7542 -250.517 24.1466 -281.369 72.3104 -305.144C118.507 -327.949 168.356 -332.792 219.715 -336.844C285.535 -342.038 369.083 -381.424 412.88 -332.018C457.935 -281.194 406.048 -201.31 399.82 -133.678C395.679 -88.7194 394.135 -46.317 382.55 -2.68C368.135 51.6174 373.1 123.327 324.232 151.04C275.433 178.714 218.732 122.276 162.632 122.037C93.5849 121.742 20.3777 187.044 -37.5683 149.496C-93.687 113.131 -85.1022 27.0177 -87.152 -39.8215Z" fill="url(#u0)" fillOpacity="0.4"/>
-              <defs><linearGradient id="u0" x1="403.713" y1="80.0373" x2="-60.6291" y2="-29.7743"><stop stopColor="#14b8a6" stopOpacity="0"/><stop offset="1" stopColor="#14b8a6" stopOpacity="0.3"/></linearGradient></defs>
+              <defs><linearGradient id="u0" x1="403.713" y1="80.0373" x2="-60.6291" y2="-29.7743">              <stop stopColor="#6366f1" stopOpacity="0"/><stop offset="1" stopColor="#6366f1" stopOpacity="0.3"/></linearGradient></defs>
             </svg>
           </div>
           <div className="relative z-10 max-w-4xl mx-auto">

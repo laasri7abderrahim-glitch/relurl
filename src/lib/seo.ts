@@ -131,6 +131,11 @@ export function generateHowToJsonLd(steps: { name: string; text: string }[]) {
   }
 }
 
+export function articleFor(text: string): string {
+  const startsWithVowel = /^[aeiou]/i.test(text.trim())
+  return startsWithVowel ? "an" : "a"
+}
+
 export function generateBreadcrumbJsonLd(items: { name: string; item: string }[]) {
   return {
     "@context": "https://schema.org",

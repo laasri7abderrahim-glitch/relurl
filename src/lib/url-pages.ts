@@ -90,3 +90,4 @@ export function getRelatedPages(currentHref: string) {
 }
 
 export const allLandingPages = [...allPages, ...socialPages]
+export const allQRCodes = [...allPages, ...socialPages, ...qrPages]

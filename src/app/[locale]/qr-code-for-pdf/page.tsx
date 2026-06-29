@@ -1,9 +1,7 @@
 import type { Metadata } from "next"
 import { generateSEOMetadata } from "@/lib/seo"
-import { allLandingPages, qrPages } from "@/lib/url-pages"
+import { allQRCodes } from "@/lib/url-pages"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
-
-const allQRCodes = [...allLandingPages, ...qrPages]
 
 export const metadata: Metadata = generateSEOMetadata({
   title: "QR Code for PDF - Link PDF to QR Code",

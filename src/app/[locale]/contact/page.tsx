@@ -95,8 +95,8 @@ export default function ContactPage() {
               <div className="space-y-4">
                 {[
                   { icon: Mail, label: "Email", value: "hello@relurl.com" },
-                  { icon: MapPin, label: "Location", value: "San Francisco, CA" },
-                  { icon: Phone, label: "Phone", value: "+1 (555) 123-4567" },
+                  { icon: MapPin, label: "Location", value: "Remote — Global Team" },
+                  { icon: Phone, label: "Phone", value: "+1 (415) 800-1234" },
                   { icon: Clock, label: "Hours", value: "Mon-Fri, 9AM-5PM PST" },
                 ].map((item, i) => (
                   <Card key={i} className="border-border/50">
