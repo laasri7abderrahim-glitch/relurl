@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useLocale } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -11,7 +12,10 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { ArrowRight, BarChart3, Globe, Link2, QrCode, Shield, Sliders, Users, Copy, Check, Download } from "lucide-react";
 
+const baseUrl = "https://relurl.com"
+
 export default function HomePage() {
+  const locale = useLocale()
   const [tab, setTab] = useState<"shorten" | "qr">("shorten");
   const [url, setUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
@@ -58,7 +62,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <link rel="canonical" href="https://relurl.com" />
+      <link rel="canonical" href={locale === "en" ? baseUrl : `${baseUrl}/${locale}`} />
       <Header />
       <main className="flex-1">
       <section className="relative overflow-hidden px-4 pt-24 pb-32 text-center">

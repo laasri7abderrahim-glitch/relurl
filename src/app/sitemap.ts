@@ -19,7 +19,6 @@ function staticPages(priority = 0.8): MetadataRoute.Sitemap {
     "/features",
     "/pricing",
     "/integrations",
-    "/api",
     "/changelog",
     "/login",
     "/register",

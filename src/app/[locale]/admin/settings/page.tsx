@@ -72,7 +72,7 @@ export default function AdminSettingsPage() {
     return (
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold text-dark-50">System Settings</h1>
+          <div className="text-2xl font-bold text-dark-50">System Settings</div>
           <p className="mt-1 text-sm text-dark-100">Loading...</p>
         </div>
         <div className="space-y-4">

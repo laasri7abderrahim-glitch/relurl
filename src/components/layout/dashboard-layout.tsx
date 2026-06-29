@@ -139,6 +139,7 @@ function DashboardLayout({
                 type="button"
                 onClick={() => setSidebarOpen(false)}
                 className="hidden md:flex text-dark-100 hover:text-dark-50"
+                aria-label="Collapse sidebar"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -148,6 +149,7 @@ function DashboardLayout({
               type="button"
               onClick={() => setSidebarOpen(true)}
               className="text-dark-100 hover:text-dark-50"
+              aria-label="Expand sidebar"
             >
               <Menu className="h-5 w-5" />
             </button>
@@ -159,6 +161,7 @@ function DashboardLayout({
           type="button"
           onClick={() => setMobileSidebarOpen(false)}
           className="absolute right-2 top-4 text-dark-100 hover:text-dark-50 md:hidden"
+          aria-label="Close mobile sidebar"
         >
           <X className="h-5 w-5" />
         </button>
@@ -276,6 +279,7 @@ function DashboardLayout({
             type="button"
             onClick={() => setMobileSidebarOpen(true)}
             className="text-dark-100 hover:text-dark-50"
+            aria-label="Open mobile menu"
           >
             <Menu className="h-6 w-6" />
           </button>
@@ -305,6 +309,7 @@ function DashboardLayout({
             onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
             className="rounded-lg p-2 text-dark-100 hover:text-dark-50 hover:bg-dark-300 transition-colors"
             title="Toggle theme"
+            aria-label="Toggle theme"
           >
             {resolvedTheme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </button>

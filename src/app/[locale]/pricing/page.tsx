@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useLocale } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -80,12 +81,15 @@ const faqs = [
   { q: "Can I cancel anytime?", a: "Yes, you can cancel your subscription at any time. You'll retain access until the end of your billing period." },
 ];
 
+const baseUrl = "https://relurl.com"
+
 export default function PricingPage() {
+  const locale = useLocale()
   const [annual, setAnnual] = useState(false);
 
   return (
     <div className="py-24 px-4">
-      <link rel="canonical" href="https://relurl.com/pricing" />
+      <link rel="canonical" href={locale === "en" ? `${baseUrl}/pricing` : `${baseUrl}/${locale}/pricing`} />
       <div className="max-w-6xl mx-auto text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gradient">Simple, Transparent Pricing</h1>
         <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
@@ -96,6 +100,7 @@ export default function PricingPage() {
           <button
             onClick={() => setAnnual(!annual)}
             className="relative w-14 h-7 rounded-full bg-primary cursor-pointer transition-colors"
+            aria-label={`Switch to ${annual ? "monthly" : "annual"} billing`}
           >
             <div
               className={`absolute top-0.5 w-6 h-6 rounded-full bg-white transition-all ${annual ? "left-7" : "left-0.5"}`}

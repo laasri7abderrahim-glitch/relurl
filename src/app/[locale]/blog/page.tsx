@@ -1,11 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { useLocale } from "next-intl";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+
+const baseUrl = "https://relurl.com"
 
 const posts = [
   {
@@ -53,9 +56,27 @@ const posts = [
 ];
 
 export default function BlogPage() {
+  const locale = useLocale()
+  const blogUrl = locale === "en" ? `${baseUrl}/blog` : `${baseUrl}/${locale}/blog`
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "RELURL Blog",
+    description: "Tips, guides, and product updates to help you get the most out of your links.",
+    url: blogUrl,
+    blogPost: posts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.excerpt,
+      datePublished: post.date,
+      author: { "@type": "Organization", name: "RELURL" },
+    })),
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
-      <link rel="canonical" href="https://relurl.com/blog" />
+      <link rel="canonical" href={blogUrl} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Header />
       <main className="flex-1">
         <div className="py-24 px-4">

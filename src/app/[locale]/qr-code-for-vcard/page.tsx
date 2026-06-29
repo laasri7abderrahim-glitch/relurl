@@ -1,5 +1,5 @@
-"use client"
-
+import type { Metadata } from "next"
+import { generateSEOMetadata } from "@/lib/seo"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 
 const allQRCodes = [
@@ -25,10 +25,16 @@ const allQRCodes = [
   { title: "QR Code for App Download", href: "/qr-code-for-app-download" },
 ]
 
+export const metadata: Metadata = generateSEOMetadata({
+  title: "QR Code for vCard - Digital Contact Card",
+  description: "Generate a QR code with your full contact details. Scanners save your info directly to their phone contacts.",
+  path: "/qr-code-for-vcard",
+  keywords: ["qr code for vcard", "vcard qr code", "contact qr code"],
+})
+
 export default function QRCodeForVCardPage() {
   return (
     <>
-      <link rel="canonical" href="https://relurl.com/qr-code-for-vcard" />
       <QRCodeLandingPage
       title="QR Code for vCard"
       subtitle="Digital Contact Card"

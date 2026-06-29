@@ -105,7 +105,7 @@ export default function AnalyticsPage() {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-dark-50">Analytics</h1>
+            <div className="text-2xl font-bold text-dark-50">Analytics</div>
             <p className="mt-1 text-sm text-dark-100">Track your link performance</p>
           </div>
         </div>
@@ -159,7 +159,7 @@ export default function AnalyticsPage() {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-dark-50">Analytics</h1>
+            <div className="text-2xl font-bold text-dark-50">Analytics</div>
             <p className="mt-1 text-sm text-dark-100">Track your link performance</p>
           </div>
         </div>

@@ -56,7 +56,7 @@ export default function SettingsPage() {
       })
       .catch(() => addToast("Failed to load profile", "error"))
       .finally(() => setLoading(false))
-  }, [])
+  }, [addToast])
 
   const handleSaveProfile = async () => {
     setSaving(true)

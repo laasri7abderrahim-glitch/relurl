@@ -2,7 +2,7 @@ import { Metadata } from "next"
 
 const siteName = "RELURL"
 const baseUrl = "https://relurl.com"
-const defaultImage = `${baseUrl}/og-image.png`
+const defaultImage = `${baseUrl}/api/og`
 
 interface SEOProps {
   title: string
@@ -20,12 +20,9 @@ export function generateSEOMetadata({
   type = "website",
 }: SEOProps): Metadata {
   const url = `${baseUrl}${path}`
-
   return {
     title,
     description,
-    keywords: ["url shortener", "short links", "link analytics", "QR codes", ...keywords].join(", "),
-    alternates: { canonical: url },
     openGraph: {
       title,
       description,
@@ -82,7 +79,7 @@ export function generateOrganizationJsonLd() {
     "@type": "Organization",
     name: siteName,
     url: baseUrl,
-    logo: `${baseUrl}/logo.png`,
+    logo: `${baseUrl}/api/og`,
     sameAs: [],
     description: "RELURL is a free URL shortener service with analytics, QR codes, and branded short links.",
   }
@@ -117,5 +114,32 @@ export function generateSoftwareAppJsonLd() {
       price: "0",
       priceCurrency: "USD",
     },
+  }
+}
+
+export function generateHowToJsonLd(steps: { name: string; text: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to use this tool",
+    step: steps.map((step, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: step.name,
+      text: step.text,
+    })),
+  }
+}
+
+export function generateBreadcrumbJsonLd(items: { name: string; item: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: `${baseUrl}${item.item}`,
+    })),
   }
 }

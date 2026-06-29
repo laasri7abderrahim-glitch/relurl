@@ -32,7 +32,7 @@ const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
         {src ? (
           <img
             src={src}
-            alt={alt ?? ""}
+            alt={alt ?? "User avatar"}
             className="h-full w-full object-cover"
           />
         ) : (

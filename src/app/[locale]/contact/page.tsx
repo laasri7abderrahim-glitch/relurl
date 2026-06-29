@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLocale } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,7 +10,10 @@ import { Mail, MapPin, Phone, Clock, Loader2, Check } from "lucide-react";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
+const baseUrl = "https://relurl.com"
+
 export default function ContactPage() {
+  const locale = useLocale()
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
@@ -37,7 +41,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <link rel="canonical" href="https://relurl.com/contact" />
+      <link rel="canonical" href={locale === "en" ? `${baseUrl}/contact` : `${baseUrl}/${locale}/contact`} />
       <Header />
       <main className="flex-1">
         <div className="py-24 px-4">

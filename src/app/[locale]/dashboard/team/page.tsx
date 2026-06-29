@@ -300,7 +300,7 @@ export default function TeamPage() {
     return (
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold text-dark-50">Team</h1>
+          <div className="text-2xl font-bold text-dark-50">Team</div>
           <p className="mt-1 text-sm text-dark-100">Manage your team members and their roles</p>
         </div>
         <Card>

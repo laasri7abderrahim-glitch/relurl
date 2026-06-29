@@ -1,9 +1,10 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { AuthProvider } from "@/components/layout/auth-provider"
 import { ToastProvider } from "@/components/ui/toast"
 import { ThemeProvider } from "@/components/theme-provider"
+import { cookies } from "next/headers"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -13,7 +14,6 @@ export const metadata: Metadata = {
     template: "%s | RELURL",
   },
   description: "Free URL shortener with analytics, QR codes, and branded short links.",
-  keywords: ["url shortener", "short links", "branded links", "link management", "analytics"],
   robots: {
     index: true,
     follow: true,
@@ -28,9 +28,17 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://relurl.com"),
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+}
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies()
+  const locale = cookieStore.get("NEXT_LOCALE")?.value || "en"
+
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang={locale} className="dark" suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="0SZFU0NTSFhndtO-Mc5Zd8j4S0WyTHsxwXK_XjO6JuI" />
       </head>

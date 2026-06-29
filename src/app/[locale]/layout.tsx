@@ -76,6 +76,19 @@ export default async function LocaleLayout({ children, params }: Props) {
           }),
         }}
       />
+      <Script
+        id="schema-breadcrumb"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://relurl.com" },
+            ],
+          }),
+        }}
+      />
       {children}
     </NextIntlClientProvider>
   )

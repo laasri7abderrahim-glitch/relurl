@@ -126,6 +126,20 @@ export default function QRCodeLandingPage({
           mainEntity: faqSchema,
         })}}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          name: `How to use our ${title}`,
+          step: howItWorks.map((item, i) => ({
+            "@type": "HowToStep",
+            position: i + 1,
+            name: item.step,
+            text: item.desc,
+          })),
+        })}}
+      />
       <Header />
       <main className="flex-1">
         {/* Hero Section */}

@@ -1,5 +1,5 @@
-"use client"
-
+import type { Metadata } from "next"
+import { generateSEOMetadata } from "@/lib/seo"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 
 const allQRCodes = [
@@ -25,10 +25,16 @@ const allQRCodes = [
   { title: "QR Code for App Download", href: "/qr-code-for-app-download" },
 ]
 
+export const metadata: Metadata = generateSEOMetadata({
+  title: "QR Code for YouTube - Share Videos Easily",
+  description: "Create a QR code for your YouTube videos or channel. Viewers scan and watch instantly — perfect for promotion.",
+  path: "/qr-code-for-youtube",
+  keywords: ["qr code for youtube", "youtube qr code", "youtube channel qr"],
+})
+
 export default function QRCodeForYouTubePage() {
   return (
     <>
-      <link rel="canonical" href="https://relurl.com/qr-code-for-youtube" />
       <QRCodeLandingPage
       title="QR Code for YouTube"
       subtitle="Share Videos Easily"

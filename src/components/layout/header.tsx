@@ -29,6 +29,7 @@ function ThemeToggle() {
         onClick={() => setOpen(!open)}
         className="rounded-lg p-2 text-dark-100 hover:text-dark-50 hover:bg-dark-300 transition-colors"
         title="Toggle theme"
+        aria-label="Toggle theme"
       >
         {resolvedTheme === "dark" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
       </button>
@@ -43,6 +44,7 @@ function ThemeToggle() {
                 "flex items-center gap-2 w-full px-3 py-2 text-sm transition-colors hover:bg-dark-300",
                 resolvedTheme === "light" ? "text-[#2FA084] font-medium" : "text-dark-100"
               )}
+              aria-label="Switch to light theme"
             >
               <Sun className="h-4 w-4" /> Light
             </button>
@@ -53,6 +55,7 @@ function ThemeToggle() {
                 "flex items-center gap-2 w-full px-3 py-2 text-sm transition-colors hover:bg-dark-300",
                 resolvedTheme === "dark" ? "text-[#2FA084] font-medium" : "text-dark-100"
               )}
+              aria-label="Switch to dark theme"
             >
               <Moon className="h-4 w-4" /> Dark
             </button>
@@ -63,6 +66,7 @@ function ThemeToggle() {
                 "flex items-center gap-2 w-full px-3 py-2 text-sm transition-colors hover:bg-dark-300",
                 theme === "system" ? "text-[#2FA084] font-medium" : "text-dark-100"
               )}
+              aria-label="Switch to system theme"
             >
               <Monitor className="h-4 w-4" /> System
             </button>
@@ -118,6 +122,7 @@ function Header() {
             type="button"
             className="flex items-center justify-center"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
           >
             {mobileOpen ? (
               <X className="h-6 w-6 text-dark-50" />

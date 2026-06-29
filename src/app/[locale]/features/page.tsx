@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useLocale } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { BarChart3, Globe, Link2, QrCode, Shield, Users, Zap, Sliders, ArrowRight } from "lucide-react";
@@ -106,10 +107,13 @@ const features = [
   },
 ];
 
+const baseUrl = "https://relurl.com"
+
 export default function FeaturesPage() {
+  const locale = useLocale()
   return (
     <div className="min-h-screen flex flex-col">
-      <link rel="canonical" href="https://relurl.com/features" />
+      <link rel="canonical" href={locale === "en" ? `${baseUrl}/features` : `${baseUrl}/${locale}/features`} />
       <Header />
       <main className="flex-1">
         <div className="py-24 px-4">
