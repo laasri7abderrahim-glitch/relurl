@@ -1,18 +1,21 @@
-import type { Metadata } from "next"
 import { generateSEOMetadata } from "@/lib/seo"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { Check, ArrowRight, Zap, BarChart3, Shield, Globe } from "lucide-react"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "WordPress URL Shortener Plugin",
-  description: "Shorten links, track clicks, and manage UTM campaigns directly from WordPress. Free plugin with one-click install and bulk shortening.",
-  path: "/wordpress",
-  keywords: ["wordpress url shortener", "wordpress plugin", "link shortener plugin", "utm builder wordpress"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "WordPress URL Shortener Plugin",
+    description: "Shorten links, track clicks, and manage UTM campaigns directly from WordPress. Free plugin with one-click install and bulk shortening.",
+    path: "/wordpress",
+    keywords: ["wordpress url shortener", "wordpress plugin", "link shortener plugin", "utm builder wordpress"],
+    locale,
+  })
+}
 
 const features = [
   { icon: Zap, title: "One-Click Shortening", desc: "Shorten any URL directly from the WordPress admin bar or the dedicated page." },

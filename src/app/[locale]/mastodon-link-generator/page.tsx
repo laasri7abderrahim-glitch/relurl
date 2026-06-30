@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Mastodon Link Generator - Fediverse Post Links",
-  description: "Generate short links for Mastodon posts and profiles. Track engagement across the fediverse with RELURL's link shortener.",
-  path: "/mastodon-link-generator",
-  keywords: ["mastodon link generator", "fediverse links", "mastodon marketing"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Mastodon Link Generator - Fediverse Post Links",
+    description: "Generate short links for Mastodon posts and profiles. Track engagement across the fediverse with RELURL's link shortener.",
+    path: "/mastodon-link-generator",
+    keywords: ["mastodon link generator", "fediverse links", "mastodon marketing"],
+    locale,
+  })
+}
 
 export default function MastodonLinkGeneratorPage() {
   const href = "/mastodon-link-generator"
+  const relatedArticles = getPostsByLandingPage("/mastodon-link-generator").slice(0, 3)
   return (
     <URLLandingPage
       title="Mastodon Link Generator"
@@ -43,6 +48,8 @@ export default function MastodonLinkGeneratorPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

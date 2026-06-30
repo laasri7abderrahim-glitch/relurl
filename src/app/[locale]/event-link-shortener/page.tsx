@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Event Link Shortener - Event Promotion Links",
-  description: "Create short, trackable links for conferences, meetups, and virtual events. Boost registrations and measure event marketing reach.",
-  path: "/event-link-shortener",
-  keywords: ["event link shortener", "conference link generator", "event marketing"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Event Link Shortener - Event Promotion Links",
+    description: "Create short, trackable links for conferences, meetups, and virtual events. Boost registrations and measure event marketing reach.",
+    path: "/event-link-shortener",
+    keywords: ["event link shortener", "conference link generator", "event marketing"],
+    locale,
+  })
+}
 
 export default function EventLinkShortenerPage() {
   const href = "/event-link-shortener"
+  const relatedArticles = getPostsByLandingPage("/event-link-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Event Link Shortener"
@@ -43,6 +48,8 @@ export default function EventLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

@@ -1,16 +1,22 @@
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 
-export const metadata = generateSEOMetadata({
-  title: "TikTok Bio Link Generator - Link in Bio",
-  description: "Create the perfect TikTok bio link. Generate a short, branded URL for your TikTok profile that drives traffic to all your content platforms.",
-  path: "/tiktok-bio-link-generator",
-  keywords: ["tiktok bio link", "tiktok link generator", "link in bio tiktok"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "TikTok Bio Link Generator - Link in Bio",
+    description: "Create the perfect TikTok bio link. Generate a short, branded URL for your TikTok profile that drives traffic to all your content platforms.",
+    path: "/tiktok-bio-link-generator",
+    keywords: ["tiktok bio link", "tiktok link generator", "link in bio tiktok"],
+    locale,
+  })
+}
 
 export default function TikTokBioLinkGeneratorPage() {
   const href = "/tiktok-bio-link-generator"
+  const relatedArticles = getPostsByLandingPage("/tiktok-bio-link-generator").slice(0, 3)
   return (
     <URLLandingPage
       title="TikTok Bio Link Generator"
@@ -42,6 +48,8 @@ export default function TikTokBioLinkGeneratorPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Custom URL Shortener - Personalized Short Links",
-  description: "Create custom shortened URLs with personalized slugs. Make your links memorable and brandable with RELURL's custom URL shortener.",
-  path: "/custom-url-shortener",
-  keywords: ["custom url shortener", "personalized short links", "custom slug"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Custom URL Shortener - Personalized Short Links",
+    description: "Create custom shortened URLs with personalized slugs. Make your links memorable and brandable with RELURL's custom URL shortener.",
+    path: "/custom-url-shortener",
+    keywords: ["custom url shortener", "personalized short links", "custom slug"],
+    locale,
+  })
+}
 
 export default function CustomURLShortenerPage() {
   const href = "/custom-url-shortener"
+  const relatedArticles = getPostsByLandingPage("/custom-url-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Custom URL Shortener"
@@ -48,6 +53,8 @@ export default function CustomURLShortenerPage() {
         { q: "Can I change a slug after creating it?", a: "Yes, you can edit the slug of any link you own from your dashboard. The old URL will redirect to the new one, so you won't lose any traffic." },
         { q: "Do custom slugs affect SEO?", a: "Custom slugs with relevant keywords can improve click-through rates and are more trustworthy to users. The shortened URL's redirect passes link equity to your target page." },
       ]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

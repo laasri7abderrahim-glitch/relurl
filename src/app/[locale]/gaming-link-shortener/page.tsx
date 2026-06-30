@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Gaming Link Shortener - Stream & Game Links",
-  description: "Shorten Twitch, Steam, and game download links. Track player engagement and share gaming content with clean URLs via RELURL.",
-  path: "/gaming-link-shortener",
-  keywords: ["gaming link shortener", "stream link generator", "twitch link shortener"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Gaming Link Shortener - Stream & Game Links",
+    description: "Shorten Twitch, Steam, and game download links. Track player engagement and share gaming content with clean URLs via RELURL.",
+    path: "/gaming-link-shortener",
+    keywords: ["gaming link shortener", "stream link generator", "twitch link shortener"],
+    locale,
+  })
+}
 
 export default function GamingLinkShortenerPage() {
   const href = "/gaming-link-shortener"
+  const relatedArticles = getPostsByLandingPage("/gaming-link-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Gaming Link Shortener"
@@ -43,6 +48,8 @@ export default function GamingLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

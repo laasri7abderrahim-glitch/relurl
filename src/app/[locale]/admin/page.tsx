@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useTranslations } from "next-intl"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
@@ -35,6 +36,7 @@ interface RecentPayment {
 }
 
 export default function AdminDashboardPage() {
+  const t = useTranslations("admin.dashboard")
   const [stats, setStats] = useState<Stats | null>(null)
   const [recentUsers, setRecentUsers] = useState<RecentUser[]>([])
   const [recentPayments, setRecentPayments] = useState<RecentPayment[]>([])
@@ -84,8 +86,8 @@ export default function AdminDashboardPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-bold text-dark-50">Admin Dashboard</h1>
-        <p className="mt-1 text-sm text-dark-100">Overview of the RELURL platform</p>
+        <h1 className="text-2xl font-bold text-dark-50">{t("title")}</h1>
+        <p className="mt-1 text-sm text-dark-100">{t("subtitle")}</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -97,14 +99,14 @@ export default function AdminDashboardPage() {
               </div>
             </div>
             <div className="mt-4">
-              <p className="text-sm text-dark-100">Total Users</p>
+              <p className="text-sm text-dark-100">{t("stats.totalUsers")}</p>
               {loading ? (
                 <Skeleton className="mt-1 h-8 w-20" />
               ) : (
                 <p className="text-2xl font-bold text-dark-50">{formatNumber(stats?.users.total ?? 0)}</p>
               )}
               <p className="text-xs text-dark-100 mt-1">
-                {formatNumber(stats?.users.active ?? 0)} active
+                {t("stats.active", { count: formatNumber(stats?.users.active ?? 0) })}
               </p>
             </div>
           </CardContent>
@@ -118,14 +120,14 @@ export default function AdminDashboardPage() {
               </div>
             </div>
             <div className="mt-4">
-              <p className="text-sm text-dark-100">Total Links</p>
+              <p className="text-sm text-dark-100">{t("stats.totalLinks")}</p>
               {loading ? (
                 <Skeleton className="mt-1 h-8 w-20" />
               ) : (
                 <p className="text-2xl font-bold text-dark-50">{formatNumber(stats?.links.total ?? 0)}</p>
               )}
               <p className="text-xs text-dark-100 mt-1">
-                {formatNumber(stats?.links.active ?? 0)} active
+                {t("stats.activeLinks", { count: formatNumber(stats?.links.active ?? 0) })}
               </p>
             </div>
           </CardContent>
@@ -139,14 +141,14 @@ export default function AdminDashboardPage() {
               </div>
             </div>
             <div className="mt-4">
-              <p className="text-sm text-dark-100">Total Clicks</p>
+              <p className="text-sm text-dark-100">{t("stats.totalClicks")}</p>
               {loading ? (
                 <Skeleton className="mt-1 h-8 w-20" />
               ) : (
                 <p className="text-2xl font-bold text-dark-50">{formatNumber(stats?.clicks.total ?? 0)}</p>
               )}
               <p className="text-xs text-dark-100 mt-1">
-                {formatNumber(stats?.clicks.last24h ?? 0)} in last 24h
+                {t("stats.last24h", { count: formatNumber(stats?.clicks.last24h ?? 0) })}
               </p>
             </div>
           </CardContent>
@@ -160,13 +162,13 @@ export default function AdminDashboardPage() {
               </div>
             </div>
             <div className="mt-4">
-              <p className="text-sm text-dark-100">API Keys</p>
+              <p className="text-sm text-dark-100">{t("stats.apiKeys")}</p>
               {loading ? (
                 <Skeleton className="mt-1 h-8 w-20" />
               ) : (
                 <p className="text-2xl font-bold text-dark-50">{formatNumber(stats?.apiKeys.total ?? 0)}</p>
               )}
-              <p className="text-xs text-dark-100 mt-1">Active keys</p>
+              <p className="text-xs text-dark-100 mt-1">{t("stats.activeKeys")}</p>
             </div>
           </CardContent>
         </Card>
@@ -175,7 +177,7 @@ export default function AdminDashboardPage() {
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Recent Registrations</CardTitle>
+            <CardTitle className="text-lg">{t("recentRegistrations")}</CardTitle>
           </CardHeader>
           <CardContent>
             {loading ? (
@@ -185,15 +187,15 @@ export default function AdminDashboardPage() {
                 ))}
               </div>
             ) : recentUsers.length === 0 ? (
-              <p className="text-sm text-dark-100">No users yet.</p>
+              <p className="text-sm text-dark-100">{t("noUsers")}</p>
             ) : (
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Email</TableHead>
-                    <TableHead>Role</TableHead>
-                    <TableHead>Joined</TableHead>
+                    <TableHead>{t("userTableName")}</TableHead>
+                    <TableHead>{t("userTableEmail")}</TableHead>
+                    <TableHead>{t("userTableRole")}</TableHead>
+                    <TableHead>{t("userTableJoined")}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -219,7 +221,7 @@ export default function AdminDashboardPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Recent Payments</CardTitle>
+            <CardTitle className="text-lg">{t("recentPayments")}</CardTitle>
           </CardHeader>
           <CardContent>
             {loading ? (
@@ -229,15 +231,15 @@ export default function AdminDashboardPage() {
                 ))}
               </div>
             ) : recentPayments.length === 0 ? (
-              <p className="text-sm text-dark-100">No payments yet.</p>
+              <p className="text-sm text-dark-100">{t("noPayments")}</p>
             ) : (
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>User</TableHead>
-                    <TableHead>Amount</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Date</TableHead>
+                    <TableHead>{t("paymentTableUser")}</TableHead>
+                    <TableHead>{t("paymentTableAmount")}</TableHead>
+                    <TableHead>{t("paymentTableStatus")}</TableHead>
+                    <TableHead>{t("paymentTableDate")}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>

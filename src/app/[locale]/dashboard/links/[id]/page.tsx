@@ -1,9 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useTranslations } from "next-intl"
 import { useSession } from "next-auth/react"
 import { useRouter, useParams } from "next/navigation"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -12,6 +13,7 @@ import { Badge } from "@/components/ui/badge"
 import { RouteBuilder } from "@/components/smart-links/RouteBuilder"
 import { RoutePreview } from "@/components/smart-links/RoutePreview"
 import { RouteAnalytics } from "@/components/smart-links/RouteAnalytics"
+import TrafficForecast from "@/components/dashboard/traffic-forecast"
 import {
   ArrowLeft, Loader2, Save, Plus, Trash2, Power, PowerOff,
   Facebook, Globe, Zap, Linkedin, Twitter, Code, Sparkles,
@@ -43,6 +45,50 @@ interface ABTest {
   totalClicks: number
 }
 
+interface AIInsights {
+  peakHour: number
+  bestDay: string
+  totalClicks: number
+  uniqueVisitors: number
+  topReferrer: string
+  mobilePercentage: number
+  averageClicksPerDay: number
+}
+
+interface ExpiryPrediction {
+  trend: string
+  healthScore: number
+  healthStatus: string
+  estimatedDaysRemaining: number | null
+  weeklyChange: number
+  recommendation: string
+}
+
+interface AIResult {
+  hasData: boolean
+  bestTime?: string
+  predictedCtr?: number
+  confidence?: string
+  suggestions: string[]
+  insights?: AIInsights
+  expiryPrediction?: ExpiryPrediction
+}
+
+interface SmartRedirectConditions {
+  countries?: string[]
+  devices?: string[]
+  languages?: string[]
+  timeRanges?: { start: string; end: string; days?: number[] }[]
+}
+
+interface SmartRedirectSuggestion {
+  name: string
+  conditions: SmartRedirectConditions
+  destination: string
+  priority: number
+  reason: string
+}
+
 interface SmartRoute {
   id: string
   name: string
@@ -58,14 +104,15 @@ interface SmartRoute {
 }
 
 const pixelFields = [
-  { key: "facebookPixel", label: "Facebook Pixel ID", placeholder: "1234567890", icon: Facebook, color: "text-blue-500" },
-  { key: "googlePixel", label: "Google Analytics ID", placeholder: "G-XXXXXXXXXX", icon: Globe, color: "text-emerald-500" },
-  { key: "tiktokPixel", label: "TikTok Pixel ID", placeholder: "Cxxxxxxxxxxxxxxxxx", icon: Zap, color: "text-dark-50" },
-  { key: "linkedinPixel", label: "LinkedIn Pixel ID", placeholder: "1234567", icon: Linkedin, color: "text-blue-400" },
-  { key: "twitterPixel", label: "Twitter Pixel ID", placeholder: "o8xyz", icon: Twitter, color: "text-sky-500" },
+  { key: "facebookPixel" as const, labelKey: "facebookPixelId", placeholder: "1234567890", icon: Facebook, color: "text-blue-500" },
+  { key: "googlePixel" as const, labelKey: "googleAnalyticsId", placeholder: "G-XXXXXXXXXX", icon: Globe, color: "text-emerald-500" },
+  { key: "tiktokPixel" as const, labelKey: "tiktokPixelId", placeholder: "Cxxxxxxxxxxxxxxxxx", icon: Zap, color: "text-dark-50" },
+  { key: "linkedinPixel" as const, labelKey: "linkedinPixelId", placeholder: "1234567", icon: Linkedin, color: "text-blue-400" },
+  { key: "twitterPixel" as const, labelKey: "twitterPixelId", placeholder: "o8xyz", icon: Twitter, color: "text-sky-500" },
 ] as const
 
 export default function LinkDetailPage() {
+  const t = useTranslations('dashboard.links.detail')
   const { data: session, status } = useSession()
   const router = useRouter()
   const params = useParams()
@@ -91,7 +138,12 @@ export default function LinkDetailPage() {
 
   const [smartRoutes, setSmartRoutes] = useState<SmartRoute[]>([])
 
-  const [aiResult, setAiResult] = useState<Record<string, unknown> | null>(null)
+  const [aiResult, setAiResult] = useState<AIResult | null>(null)
+
+  const [aiSuggestions, setAiSuggestions] = useState<SmartRedirectSuggestion[]>([])
+  const [aiSuggestLoading, setAiSuggestLoading] = useState(false)
+  const [aiSuggestError, setAiSuggestError] = useState<string | null>(null)
+  const [applyingIdx, setApplyingIdx] = useState<number | null>(null)
 
   useEffect(() => {
     if (status === "unauthenticated") router.push("/auth/login")
@@ -168,10 +220,10 @@ export default function LinkDetailPage() {
   const activePixelCount = Object.values(pixels).filter((v) => v.trim()).length
 
   const tabs = [
-    { id: "retargeting" as const, label: "Retargeting Pixels", count: activePixelCount },
-    { id: "abtest" as const, label: "A/B Testing", count: abTests.length },
-    { id: "smart" as const, label: "Smart Routing", count: smartRoutes.length },
-    { id: "ai" as const, label: "AI Optimization", count: null },
+    { id: "retargeting" as const, labelKey: "tabRetargeting", count: activePixelCount },
+    { id: "abtest" as const, labelKey: "tabAbTesting", count: abTests.length },
+    { id: "smart" as const, labelKey: "tabSmartRouting", count: smartRoutes.length },
+    { id: "ai" as const, labelKey: "tabAiOptimization", count: null },
   ]
 
   if (status === "loading" || loading) {
@@ -189,11 +241,11 @@ export default function LinkDetailPage() {
           <ArrowLeft className="w-5 h-5" />
         </Link>
         <div className="flex-1">
-          <h1 className="text-2xl font-bold text-dark-50">{link?.title || link?.slug || "Link Details"}</h1>
+          <h1 className="text-2xl font-bold text-dark-50">{link?.title || link?.slug || t('title')}</h1>
           <p className="text-sm text-dark-100">relurl.com/{link?.slug}</p>
         </div>
         <a href={`/${link?.slug}`} target="_blank" rel="noopener noreferrer">
-          <Button variant="outline" size="sm">Open Link</Button>
+          <Button variant="outline" size="sm">{t('openLink')}</Button>
         </a>
       </div>
 
@@ -208,7 +260,7 @@ export default function LinkDetailPage() {
                 : "border-transparent text-dark-100 hover:text-dark-50"
             }`}
           >
-            {tab.label}
+            {t(tab.labelKey)}
             {tab.count !== null && tab.count > 0 && (
               <span className="ml-1.5 px-1.5 py-0.5 rounded-full text-xs bg-primary/10 text-primary">
                 {tab.count}
@@ -225,13 +277,13 @@ export default function LinkDetailPage() {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle className="text-lg">Retargeting Pixels</CardTitle>
+                  <CardTitle className="text-lg">{t('retargetingPixels')}</CardTitle>
                   <CardDescription>
-                    Add tracking pixels to fire when someone visits your short link
+                    {t('retargetingDesc')}
                   </CardDescription>
                 </div>
                 {activePixelCount > 0 && (
-                  <Badge variant="success">{activePixelCount} active</Badge>
+                  <Badge variant="success">{t('nActive', { count: activePixelCount })}</Badge>
                 )}
               </div>
             </CardHeader>
@@ -243,7 +295,7 @@ export default function LinkDetailPage() {
                     <div key={field.key}>
                       <label className="flex items-center gap-2 text-sm font-medium mb-1.5">
                         <Icon className={`w-4 h-4 ${field.color}`} />
-                        {field.label}
+                        {t(field.labelKey)}
                       </label>
                       <Input
                         value={pixels[field.key]}
@@ -256,30 +308,30 @@ export default function LinkDetailPage() {
                 <div>
                   <label className="flex items-center gap-2 text-sm font-medium mb-1.5">
                     <Code className="w-4 h-4 text-dark-100" />
-                    Custom Pixels
+                    {t('customPixels')}
                   </label>
                   <Textarea
                     value={pixels.customPixels}
                     onChange={(e) => setPixels({ ...pixels, customPixels: e.target.value })}
-                    placeholder='["https://example.com/pixel.js"]'
+                    placeholder={t('customPixelsPlaceholder')}
                     rows={2}
                   />
-                  <p className="text-xs text-dark-100 mt-1">JSON array of script URLs or inline script tags</p>
+                  <p className="text-xs text-dark-100 mt-1">{t('customPixelsHint')}</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-3 pt-2">
                 <Button onClick={savePixels} disabled={saving}>
                   {saving ? (
-                    <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saving...</>
+                    <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> {t('saving')}</>
                   ) : saved ? (
-                    <><Check className="mr-2 h-4 w-4" /> Saved!</>
+                    <><Check className="mr-2 h-4 w-4" /> {t('saved')}</>
                   ) : (
-                    <><Save className="mr-2 h-4 w-4" /> Save Pixels</>
+                    <><Save className="mr-2 h-4 w-4" /> {t('savePixels')}</>
                   )}
                 </Button>
                 {saved && (
-                  <span className="text-sm text-emerald-500">Pixels saved successfully</span>
+                  <span className="text-sm text-emerald-500">{t('pixelsSaved')}</span>
                 )}
               </div>
             </CardContent>
@@ -287,25 +339,25 @@ export default function LinkDetailPage() {
 
           <Card className="border-dark-100">
             <CardHeader>
-              <CardTitle className="text-base">How Retargeting Works</CardTitle>
+              <CardTitle className="text-base">{t('howRetargetingWorks')}</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3 text-sm text-dark-100">
-              <p>When someone clicks your short link, they&apos;ll briefly see an interstitial page that loads your tracking pixels before redirecting to the destination.</p>
-              <div className="grid md:grid-cols-3 gap-3">
-                <div className="p-3 rounded-lg bg-dark-300/50 border border-dark-100">
-                  <p className="font-medium text-dark-50 mb-1">1. Add Pixels</p>
-                  <p className="text-xs">Enter your pixel IDs for each platform above.</p>
+              <CardContent className="space-y-3 text-sm text-dark-100">
+                <p>{t('retargetingExplanation')}</p>
+                <div className="grid md:grid-cols-3 gap-3">
+                  <div className="p-3 rounded-lg bg-dark-300/50 border border-dark-100">
+                    <p className="font-medium text-dark-50 mb-1">{t('step1Title')}</p>
+                    <p className="text-xs">{t('step1Desc')}</p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-dark-300/50 border border-dark-100">
+                    <p className="font-medium text-dark-50 mb-1">{t('step2Title')}</p>
+                    <p className="text-xs">{t('step2Desc')}</p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-dark-300/50 border border-dark-100">
+                    <p className="font-medium text-dark-50 mb-1">{t('step3Title')}</p>
+                    <p className="text-xs">{t('step3Desc')}</p>
+                  </div>
                 </div>
-                <div className="p-3 rounded-lg bg-dark-300/50 border border-dark-100">
-                  <p className="font-medium text-dark-50 mb-1">2. Visitor Clicks</p>
-                  <p className="text-xs">Pixel scripts fire during the redirect.</p>
-                </div>
-                <div className="p-3 rounded-lg bg-dark-300/50 border border-dark-100">
-                  <p className="font-medium text-dark-50 mb-1">3. Retarget</p>
-                  <p className="text-xs">Visitor is added to your retargeting audience.</p>
-                </div>
-              </div>
-            </CardContent>
+              </CardContent>
           </Card>
         </div>
       )}
@@ -315,29 +367,29 @@ export default function LinkDetailPage() {
         <div className="space-y-6">
           <Card className="border-dark-100">
             <CardHeader>
-              <CardTitle className="text-lg">Create A/B Test</CardTitle>
-              <CardDescription>Split traffic between multiple destination URLs</CardDescription>
+              <CardTitle className="text-lg">{t('createAbTest')}</CardTitle>
+              <CardDescription>{t('createAbTestDesc')}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <label className="text-sm font-medium mb-1.5 block">Test Name</label>
+                <label className="text-sm font-medium mb-1.5 block">{t('testName')}</label>
                 <Input
                   value={newAbTest.name}
                   onChange={(e) => setNewAbTest({ ...newAbTest, name: e.target.value })}
-                  placeholder="e.g. Homepage vs Landing Page"
+                  placeholder={t('testNamePlaceholder')}
                 />
               </div>
               <div>
-                <label className="text-sm font-medium mb-1.5 block">Destination URLs (one per line)</label>
+                <label className="text-sm font-medium mb-1.5 block">{t('destinationUrls')}</label>
                 <Textarea
                   value={newAbTest.urls}
                   onChange={(e) => setNewAbTest({ ...newAbTest, urls: e.target.value })}
-                  placeholder={"https://example.com/variant-a\nhttps://example.com/variant-b"}
+                  placeholder={t('destinationUrlsPlaceholder')}
                   rows={4}
                 />
               </div>
               <Button onClick={createABTest} disabled={!newAbTest.name || !newAbTest.urls}>
-                <Plus className="mr-2 h-4 w-4" /> Create Test
+                <Plus className="mr-2 h-4 w-4" /> {t('createTest')}
               </Button>
             </CardContent>
           </Card>
@@ -345,7 +397,7 @@ export default function LinkDetailPage() {
           {abTests.length > 0 && (
             <Card className="border-dark-100">
               <CardHeader>
-                <CardTitle className="text-lg">Active Tests</CardTitle>
+                <CardTitle className="text-lg">{t('activeTests')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 {abTests.map((test) => (
@@ -353,11 +405,11 @@ export default function LinkDetailPage() {
                     <div>
                       <p className="font-medium text-dark-50">{test.name}</p>
                       <p className="text-sm text-dark-100">
-                        {JSON.parse(test.urls).length} variants · {test.totalClicks} clicks
+                        {t('testVariants', { count: JSON.parse(test.urls).length, clicks: test.totalClicks })}
                       </p>
                     </div>
                     <Badge variant={test.isActive ? "success" : "secondary"}>
-                      {test.isActive ? "Active" : "Inactive"}
+                      {test.isActive ? t('badgeActive') : t('badgeInactive')}
                     </Badge>
                   </div>
                 ))}
@@ -377,6 +429,126 @@ export default function LinkDetailPage() {
             routes={smartRoutes}
             onRoutesChange={setSmartRoutes}
           />
+
+          <Card className="border-dark-100">
+            <CardHeader>
+              <CardTitle className="text-base flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-primary" />
+                {t('aiSuggestRoutes')}
+              </CardTitle>
+              <CardDescription>{t('aiSuggestDesc')}</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <Button
+                onClick={async () => {
+                  setAiSuggestLoading(true)
+                  setAiSuggestError(null)
+                  setAiSuggestions([])
+                  try {
+                    const res = await fetch("/api/ai/smart-redirect-suggest", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ linkId }),
+                    })
+                    const data = await res.json()
+                    if (!res.ok) {
+                      setAiSuggestError(data.error || t('aiSuggestError'))
+                    } else {
+                      setAiSuggestions(data.suggestions || [])
+                    }
+                  } catch {
+                    setAiSuggestError(t('aiSuggestError'))
+                  } finally {
+                    setAiSuggestLoading(false)
+                  }
+                }}
+                disabled={aiSuggestLoading}
+              >
+                {aiSuggestLoading ? (
+                  <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> {t('aiSuggestLoading')}</>
+                ) : (
+                  <><Sparkles className="mr-2 h-4 w-4" /> {t('aiSuggestRoutes')}</>
+                )}
+              </Button>
+
+              {aiSuggestError && (
+                <p className="text-sm text-red-500">{aiSuggestError}</p>
+              )}
+
+              {!aiSuggestLoading && aiSuggestions.length === 0 && !aiSuggestError && (
+                <p className="text-sm text-dark-100">{t('aiSuggestNone')}</p>
+              )}
+
+              {aiSuggestions.map((s, idx) => (
+                <Card key={idx} className="border-dark-100 bg-dark-300/30">
+                  <CardContent className="p-4 space-y-3">
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <p className="font-medium text-dark-50 text-sm">{s.name}</p>
+                        <p className="text-xs text-dark-100 mt-1">{s.reason}</p>
+                      </div>
+                      <Badge variant="outline" className="shrink-0">P{s.priority}</Badge>
+                    </div>
+                    <div className="text-xs text-dark-100">
+                      {s.conditions.countries && (
+                        <span className="mr-3">Countries: {s.conditions.countries.join(", ")}</span>
+                      )}
+                      {s.conditions.devices && (
+                        <span className="mr-3">Devices: {s.conditions.devices.join(", ")}</span>
+                      )}
+                      {s.conditions.timeRanges && (
+                        <span>Peak hours active</span>
+                      )}
+                    </div>
+                    <div className="flex gap-2">
+                      <Button
+                        size="sm"
+                        disabled={applyingIdx === idx}
+                        onClick={async () => {
+                          setApplyingIdx(idx)
+                          try {
+                            await fetch("/api/smart-routes", {
+                              method: "POST",
+                              headers: { "Content-Type": "application/json" },
+                              body: JSON.stringify({
+                                linkId,
+                                name: s.name,
+                                conditions: s.conditions,
+                                destination: s.destination,
+                                priority: s.priority,
+                              }),
+                            })
+                            const res = await fetch(`/api/smart-routes?linkId=${linkId}`)
+                            const data = await res.json()
+                            if (data.data) setSmartRoutes(data.data)
+                            setAiSuggestions((prev) => prev.filter((_, i) => i !== idx))
+                          } catch {
+                            // ignore
+                          } finally {
+                            setApplyingIdx(null)
+                          }
+                        }}
+                      >
+                        {applyingIdx === idx ? (
+                          <Loader2 className="h-3 w-3 animate-spin" />
+                        ) : (
+                          <Check className="h-3 w-3" />
+                        )}
+                        <span className="ml-1">{t('applySuggestion')}</span>
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => setAiSuggestions((prev) => prev.filter((_, i) => i !== idx))}
+                      >
+                        {t('dismissSuggestion')}
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </CardContent>
+          </Card>
         </div>
       )}
 
@@ -387,16 +559,16 @@ export default function LinkDetailPage() {
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-primary" />
-                AI Link Optimization
+                {t('aiOptimization')}
               </CardTitle>
-              <CardDescription>Get AI-powered suggestions to optimize your link performance</CardDescription>
+              <CardDescription>{t('aiOptimizationDesc')}</CardDescription>
             </CardHeader>
             <CardContent>
               <Button onClick={runAIOptimization} disabled={saving}>
                 {saving ? (
-                  <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Analyzing...</>
+                  <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> {t('analyzing')}</>
                 ) : (
-                  <><Sparkles className="mr-2 h-4 w-4" /> Run AI Analysis</>
+                  <><Sparkles className="mr-2 h-4 w-4" /> {t('runAnalysis')}</>
                 )}
               </Button>
             </CardContent>
@@ -404,31 +576,100 @@ export default function LinkDetailPage() {
 
           {aiResult && (
             <div className="space-y-4">
-              <div className="grid grid-cols-3 gap-4">
-                <Card className="border-dark-100">
-                  <CardContent className="p-4 text-center">
-                    <p className="text-sm text-dark-100">Best Posting Time</p>
-                    <p className="text-lg font-bold text-primary">{String(aiResult.bestTime)}</p>
-                  </CardContent>
-                </Card>
-                <Card className="border-dark-100">
-                  <CardContent className="p-4 text-center">
-                    <p className="text-sm text-dark-100">Predicted CTR</p>
-                    <p className="text-lg font-bold text-primary">{String(aiResult.predictedCtr)}%</p>
-                  </CardContent>
-                </Card>
-                <Card className="border-dark-100">
-                  <CardContent className="p-4 text-center">
-                    <p className="text-sm text-dark-100">Confidence</p>
-                    <p className="text-lg font-bold text-primary">{String(aiResult.confidence)}%</p>
-                  </CardContent>
-                </Card>
-              </div>
+              {aiResult.hasData ? (
+                <>
+                  <div className="grid grid-cols-3 gap-4">
+                    <Card className="border-dark-100">
+                      <CardContent className="p-4 text-center">
+                        <p className="text-sm text-dark-100">{t('bestPostingTime')}</p>
+                        <p className="text-lg font-bold text-primary">{String(aiResult.bestTime)}</p>
+                      </CardContent>
+                    </Card>
+                    <Card className="border-dark-100">
+                      <CardContent className="p-4 text-center">
+                        <p className="text-sm text-dark-100">{t('estimatedCtr')}</p>
+                        <p className="text-lg font-bold text-primary">{String(aiResult.predictedCtr)}%</p>
+                      </CardContent>
+                    </Card>
+                    <Card className="border-dark-100">
+                      <CardContent className="p-4 text-center">
+                        <p className="text-sm text-dark-100">{t('confidence')}</p>
+                        <p className="text-lg font-bold text-primary">
+                          {typeof aiResult.confidence === "string"
+                            ? aiResult.confidence.charAt(0).toUpperCase() + aiResult.confidence.slice(1)
+                            : `${aiResult.confidence}%`}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
 
-              {Array.isArray(aiResult.suggestions) && (
+                  {aiResult.insights && (
+                    <Card className="border-dark-100">
+                      <CardHeader>
+                        <CardTitle className="text-base">{t('clickAnalytics')}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                          <div className="p-3 rounded-lg bg-dark-300/50 border border-dark-100">
+                            <p className="text-xs text-dark-100">{t('totalClicks')}</p>
+                            <p className="text-xl font-bold text-dark-50">{aiResult.insights.totalClicks}</p>
+                          </div>
+                          <div className="p-3 rounded-lg bg-dark-300/50 border border-dark-100">
+                            <p className="text-xs text-dark-100">{t('uniqueVisitors')}</p>
+                            <p className="text-xl font-bold text-dark-50">{aiResult.insights.uniqueVisitors}</p>
+                          </div>
+                          <div className="p-3 rounded-lg bg-dark-300/50 border border-dark-100">
+                            <p className="text-xs text-dark-100">{t('avgClicksPerDay')}</p>
+                            <p className="text-xl font-bold text-dark-50">{aiResult.insights.averageClicksPerDay}</p>
+                          </div>
+                          <div className="p-3 rounded-lg bg-dark-300/50 border border-dark-100">
+                            <p className="text-xs text-dark-100">{t('mobilePercentage')}</p>
+                            <p className="text-xl font-bold text-dark-50">{aiResult.insights.mobilePercentage}%</p>
+                          </div>
+                          <div className="p-3 rounded-lg bg-dark-300/50 border border-dark-100">
+                            <p className="text-xs text-dark-100">{t('peakHourUtc')}</p>
+                            <p className="text-xl font-bold text-dark-50">{aiResult.insights.peakHour}:00</p>
+                          </div>
+                          <div className="p-3 rounded-lg bg-dark-300/50 border border-dark-100">
+                            <p className="text-xs text-dark-100">{t('bestDay')}</p>
+                            <p className="text-xl font-bold text-dark-50">{aiResult.insights.bestDay}</p>
+                          </div>
+                          <div className="p-3 rounded-lg bg-dark-300/50 border border-dark-100">
+                            <p className="text-xs text-dark-100">{t('topReferrer')}</p>
+                            <p className="text-xl font-bold text-dark-50 truncate" title={aiResult.insights.topReferrer}>{aiResult.insights.topReferrer}</p>
+                          </div>
+                          <div className="p-3 rounded-lg bg-dark-300/50 border border-dark-100">
+                            <p className="text-xs text-dark-100">{t('estCtr')}</p>
+                            <p className="text-xl font-bold text-dark-50">{aiResult.predictedCtr}%</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  )}
+
+                  {aiResult.expiryPrediction && <TrafficForecast prediction={aiResult.expiryPrediction} />}
+
+                  {Array.isArray(aiResult.suggestions) && (
+                    <Card className="border-dark-100">
+                      <CardHeader>
+                        <CardTitle className="text-base">{t('suggestions')}</CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-2">
+                        {(aiResult.suggestions as string[]).map((s: string, i: number) => (
+                          <div key={i} className="flex items-start gap-2 text-sm">
+                            <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                            <span>{s}</span>
+                          </div>
+                        ))}
+                      </CardContent>
+                    </Card>
+                  )}
+                </>
+              ) : (
                 <Card className="border-dark-100">
                   <CardHeader>
-                    <CardTitle className="text-base">Suggestions</CardTitle>
+                    <CardTitle className="text-base">{t('noClickData')}</CardTitle>
+                    <CardDescription>{t('noClickDataDesc')}</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-2">
                     {(aiResult.suggestions as string[]).map((s: string, i: number) => (

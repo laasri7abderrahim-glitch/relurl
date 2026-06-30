@@ -1,5 +1,5 @@
-import { prisma } from "@/lib/prisma"
 import type { MetadataRoute } from "next"
+import { getAllSlugs } from "@/lib/blog/posts"
 
 const baseUrl = "https://relurl.com"
 const locales = ["en", "fr"] as const
@@ -13,15 +13,13 @@ function localizedUrls(path: string, priority = 0.8): MetadataRoute.Sitemap {
   }))
 }
 
-function staticPages(priority = 0.8): MetadataRoute.Sitemap {
+function staticPages(priority = 0.9): MetadataRoute.Sitemap {
   const pages = [
     "",
     "/features",
     "/pricing",
     "/integrations",
     "/changelog",
-    "/login",
-    "/register",
     "/blog",
     "/contact",
     "/privacy",
@@ -29,10 +27,21 @@ function staticPages(priority = 0.8): MetadataRoute.Sitemap {
     "/cookies",
     "/gdpr",
     "/dmca",
-    "/dashboard",
     "/wordpress",
   ]
   return pages.flatMap((p) => localizedUrls(p, p === "" ? 1 : priority))
+}
+
+function blogPages(priority = 0.8): MetadataRoute.Sitemap {
+  const slugs = getAllSlugs()
+  return slugs.flatMap((slug) =>
+    locales.map((locale) => ({
+      url: `${baseUrl}/${locale}/blog/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority,
+    }))
+  )
 }
 
 function landingPages(priority = 0.85): MetadataRoute.Sitemap {
@@ -131,28 +140,11 @@ function qrPages(priority = 0.85): MetadataRoute.Sitemap {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  let shortLinkEntries: MetadataRoute.Sitemap = []
-  try {
-    const links = await prisma.shortLink.findMany({
-      where: { isActive: true },
-      select: { slug: true, updatedAt: true },
-      orderBy: { updatedAt: "desc" },
-    })
-    shortLinkEntries = links.flatMap((link) =>
-      locales.map((locale) => ({
-        url: `${baseUrl}/${locale}/${link.slug}`,
-        lastModified: link.updatedAt,
-        changeFrequency: "daily" as const,
-        priority: 0.7,
-      }))
-    )
-  } catch {}
-
   return [
     ...staticPages(0.9),
     ...landingPages(),
     ...socialPages(0.8),
     ...qrPages(),
-    ...shortLinkEntries,
+    ...blogPages(),
   ]
 }

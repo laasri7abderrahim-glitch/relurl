@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Course Link Shortener - Online Course Promotion Links",
-  description: "Shorten course landing pages and enrollment links. Track signups and optimize your course marketing with RELURL's link shortener.",
-  path: "/course-link-shortener",
-  keywords: ["course link shortener", "online course links", "course promotion links"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Course Link Shortener - Online Course Promotion Links",
+    description: "Shorten course landing pages and enrollment links. Track signups and optimize your course marketing with RELURL's link shortener.",
+    path: "/course-link-shortener",
+    keywords: ["course link shortener", "online course links", "course promotion links"],
+    locale,
+  })
+}
 
 export default function CourseLinkShortenerPage() {
   const href = "/course-link-shortener"
+  const relatedArticles = getPostsByLandingPage("/course-link-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Course Link Shortener"
@@ -43,6 +48,8 @@ export default function CourseLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -23,6 +23,8 @@ import {
   Trash2,
   Inbox,
 } from "lucide-react"
+import { useTranslations } from "next-intl"
+
 type NotificationType = "INFO" | "WARNING" | "ERROR" | "SUCCESS" | "LINK_CLICKED" | "TEAM_INVITE" | "SUBSCRIPTION_EXPIRED" | "TRIAL_ENDING" | "PAYMENT_RECEIVED" | "PAYMENT_FAILED"
 
 interface Notification {
@@ -54,21 +56,22 @@ export default function NotificationsPage() {
   const [unreadCount, setUnreadCount] = useState(0)
   const [markingAll, setMarkingAll] = useState(false)
   const { addToast } = useToast()
+  const t = useTranslations("dashboard.notifications")
 
   const fetchNotifications = useCallback(async () => {
     setLoading(true)
     try {
       const res = await fetch("/api/notifications?limit=50")
       const json = await res.json()
-      if (!res.ok) throw new Error(json.error ?? "Failed to fetch notifications")
+      if (!res.ok) throw new Error(json.error ?? t("fetchError"))
       setNotifications(json.data.notifications ?? [])
       setUnreadCount(json.data.unreadCount ?? 0)
     } catch (err) {
-      addToast(err instanceof Error ? err.message : "Failed to load notifications", "error")
+      addToast(err instanceof Error ? err.message : t("fetchError"), "error")
     } finally {
       setLoading(false)
     }
-  }, [addToast])
+  }, [addToast, t])
 
   useEffect(() => {
     fetchNotifications()
@@ -105,12 +108,12 @@ export default function NotificationsPage() {
     try {
       const res = await fetch("/api/notifications/read-all", { method: "POST" })
       const json = await res.json()
-      if (!res.ok) throw new Error(json.error ?? "Failed to mark all as read")
+      if (!res.ok) throw new Error(json.error ?? t("toast.failedMarkAll"))
       setNotifications((prev) => prev.map((n) => ({ ...n, read: true })))
       setUnreadCount(0)
-      addToast(`Marked ${json.data.count} notification(s) as read`, "success")
+      addToast(t("toast.markedAll", { count: json.data.count }), "success")
     } catch (err) {
-      addToast(err instanceof Error ? err.message : "Failed to mark all as read", "error")
+      addToast(err instanceof Error ? err.message : t("toast.failedMarkAll"), "error")
     } finally {
       setMarkingAll(false)
     }
@@ -165,14 +168,12 @@ export default function NotificationsPage() {
       <div className="flex items-center justify-between">
         <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-2xl font-bold text-dark-50">Notifications</h1>
+            <h1 className="text-2xl font-bold text-dark-50">{t("title")}</h1>
             {unreadCount > 0 && (
               <Badge variant="destructive">{unreadCount}</Badge>
             )}
           </div>
-          <p className="mt-1 text-sm text-dark-100">
-            Stay updated on your account activity
-          </p>
+          <p className="mt-1 text-sm text-dark-100">{t("description")}</p>
         </div>
         {unreadCount > 0 && (
           <Button
@@ -181,7 +182,7 @@ export default function NotificationsPage() {
             disabled={markingAll}
           >
             <CheckCheck className="mr-2 h-4 w-4" />
-            Mark all read
+            {t("markAllRead")}
           </Button>
         )}
       </div>
@@ -194,10 +195,10 @@ export default function NotificationsPage() {
                 <Inbox className="h-8 w-8 text-dark-100" />
               </div>
               <h3 className="text-lg font-medium text-dark-50 mb-1">
-                No notifications
+                {t("empty.title")}
               </h3>
               <p className="text-sm text-dark-100 max-w-sm">
-                You&apos;re all caught up! Notifications will appear here when there&apos;s activity on your account.
+                {t("empty.description")}
               </p>
             </div>
           ) : (
@@ -243,7 +244,7 @@ export default function NotificationsPage() {
                             type="button"
                             onClick={() => handleDelete(notification.id)}
                             className="rounded-lg p-1.5 text-dark-100 hover:text-red-400 hover:bg-dark-300 transition-colors"
-                            title="Delete"
+                            title={t("actions.delete")}
                           >
                             <Trash2 className="h-3.5 w-3.5" />
                           </button>
@@ -257,7 +258,7 @@ export default function NotificationsPage() {
                             className="h-7 text-xs"
                             onClick={() => handleMarkAsRead(notification.id)}
                           >
-                            Mark read
+                            {t("actions.markRead")}
                           </Button>
                         )}
                         {notification.link && (
@@ -268,7 +269,7 @@ export default function NotificationsPage() {
                             }}
                             className="text-xs text-primary-400 hover:text-primary-300 transition-colors"
                           >
-                            View details
+                            {t("actions.viewDetails")}
                           </Link>
                         )}
                       </div>

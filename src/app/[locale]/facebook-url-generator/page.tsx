@@ -1,16 +1,22 @@
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 
-export const metadata = generateSEOMetadata({
-  title: "Facebook URL Generator - Link Shortener",
-  description: "Generate short Facebook links for pages, posts, events, and groups. Create custom URLs with analytics to optimize your Facebook marketing.",
-  path: "/facebook-url-generator",
-  keywords: ["facebook url generator", "facebook link shortener", "facebook page link"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Facebook URL Generator - Link Shortener",
+    description: "Generate short Facebook links for pages, posts, events, and groups. Create custom URLs with analytics to optimize your Facebook marketing.",
+    path: "/facebook-url-generator",
+    keywords: ["facebook url generator", "facebook link shortener", "facebook page link"],
+    locale,
+  })
+}
 
 export default function FacebookURLGeneratorPage() {
   const href = "/facebook-url-generator"
+  const relatedArticles = getPostsByLandingPage("/facebook-url-generator").slice(0, 3)
   return (
     <URLLandingPage
       title="Facebook URL Generator"
@@ -42,6 +48,8 @@ export default function FacebookURLGeneratorPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

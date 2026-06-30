@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { auth } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
+import { createAuditLog } from "@/lib/audit"
 
 export async function GET() {
   const session = await auth()
@@ -69,6 +70,14 @@ export async function PATCH(request: Request) {
         image: true,
         role: true,
       },
+    })
+
+    createAuditLog({
+      userId: session.user.id,
+      action: "UPDATE",
+      entity: "User",
+      entityId: session.user.id,
+      changes: data,
     })
 
     return NextResponse.json({ success: true, data: user })

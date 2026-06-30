@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "E-commerce URL Shortener - Boost Online Sales",
-  description: "Shorten product links to boost conversions. Track clicks, optimize campaigns, and drive more sales with RELURL's e-commerce link shortener.",
-  path: "/ecommerce-url-shortener",
-  keywords: ["ecommerce url shortener", "product link shortener", "shopify link shortener"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "E-commerce URL Shortener - Boost Online Sales",
+    description: "Shorten product links to boost conversions. Track clicks, optimize campaigns, and drive more sales with RELURL's e-commerce link shortener.",
+    path: "/ecommerce-url-shortener",
+    keywords: ["ecommerce url shortener", "product link shortener", "shopify link shortener"],
+    locale,
+  })
+}
 
 export default function EcommerceURLShortenerPage() {
   const href = "/ecommerce-url-shortener"
+  const relatedArticles = getPostsByLandingPage("/ecommerce-url-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="E-commerce URL Shortener"
@@ -43,6 +48,8 @@ export default function EcommerceURLShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

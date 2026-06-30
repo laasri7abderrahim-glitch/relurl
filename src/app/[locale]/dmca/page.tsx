@@ -1,11 +1,15 @@
-import type { Metadata } from "next"
+import { generateSEOMetadata } from "@/lib/seo"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 
-export const metadata: Metadata = {
-  title: "DMCA Policy - RELURL",
-  description: "RELURL DMCA policy. How to report copyright infringement and our takedown process.",
-  alternates: { canonical: "https://relurl.com/dmca" },
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "DMCA Policy - Copyright Complaints",
+    description: "Learn how to submit a DMCA copyright complaint regarding content on the RELURL platform.",
+    path: "/dmca",
+    locale,
+  })
 }
 
 export default function DmcaPage() {

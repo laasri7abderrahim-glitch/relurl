@@ -1,16 +1,22 @@
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 
-export const metadata = generateSEOMetadata({
-  title: "Instagram Link Generator - Bio & Profile Links",
-  description: "Generate short, trackable Instagram links for your bio, stories, and posts. Create custom URLs and track clicks to optimize your Instagram strategy.",
-  path: "/instagram-link-generator",
-  keywords: ["instagram link generator", "instagram bio link", "instagram profile link"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Instagram Link Generator - Bio & Profile Links",
+    description: "Generate short, trackable Instagram links for your bio, stories, and posts. Create custom URLs and track clicks to optimize your Instagram strategy.",
+    path: "/instagram-link-generator",
+    keywords: ["instagram link generator", "instagram bio link", "instagram profile link"],
+    locale,
+  })
+}
 
 export default function InstagramLinkGeneratorPage() {
   const href = "/instagram-link-generator"
+  const relatedArticles = getPostsByLandingPage("/instagram-link-generator").slice(0, 3)
   return (
     <URLLandingPage
       title="Instagram Link Generator"
@@ -42,6 +48,8 @@ export default function InstagramLinkGeneratorPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

@@ -19,16 +19,27 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   return {
     alternates: {
-      canonical: `https://relurl.com/${locale === "en" ? "" : locale}`,
+      canonical: `https://relurl.com/${locale}`,
       languages: {
         en: "https://relurl.com/en",
         fr: "https://relurl.com/fr",
-        "x-default": "https://relurl.com",
+        "x-default": "https://relurl.com/en",
       },
     },
     openGraph: {
       locale: locale === "fr" ? "fr_FR" : "en_US",
       siteName: t("siteName"),
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
   }
 }
@@ -47,13 +58,14 @@ export default async function LocaleLayout({ children, params }: Props) {
       <Script
         id="schema-org"
         type="application/ld+json"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
             name: "RELURL",
             url: "https://relurl.com",
-            logo: "https://relurl.com/logo.png",
+            logo: "https://relurl.com/favicon.svg",
             description: "RELURL is a free URL shortener service with analytics, QR codes, and branded short links.",
           }),
         }}
@@ -61,6 +73,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <Script
         id="schema-website"
         type="application/ld+json"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
@@ -76,19 +89,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           }),
         }}
       />
-      <Script
-        id="schema-breadcrumb"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://relurl.com" },
-            ],
-          }),
-        }}
-      />
+
       {children}
     </NextIntlClientProvider>
   )

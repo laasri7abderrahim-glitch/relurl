@@ -35,6 +35,7 @@ model User {
   domains       Domain[]
   utmCampaigns  UtmCampaign[]
   bioPages      BioPage[]
+  reportSchedules ReportSchedule[]
 }
 
 model Account {
@@ -142,6 +143,16 @@ model ShortLink {
   aiBestTime       String?
   aiPredictedCtr   Float?
   aiSuggestions    String?
+  aiTrend          String?
+  aiHealthScore    Float?
+  aiHealthStatus   String?
+  aiEstimatedDaysRemaining Float?
+  aiWeeklyChange   Float?
+  aiRecommendation String?
+
+  healthStatus   String?
+  healthCheckedAt DateTime?
+  healthStatusCode Int?
 
   user      User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
   team      Team?       @relation(fields: [teamId], references: [id], onDelete: SetNull)
@@ -167,7 +178,8 @@ model LinkClick {
   os        String?
   device    String?
   language  String?
-  isUnique  Boolean  @default(false)
+  isUnique      Boolean  @default(false)
+  isSuspicious  Boolean  @default(false)
 
   link ShortLink @relation(fields: [linkId], references: [id], onDelete: Cascade)
 }
@@ -373,4 +385,20 @@ model AuditLog {
 
   user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
   team Team? @relation(fields: [teamId], references: [id], onDelete: SetNull)
+}
+
+model ReportSchedule {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  frequency   String   // "daily" | "weekly" | "monthly"
+  dayOfWeek   Int?     // 0-6 (Sunday-Saturday), for weekly
+  dayOfMonth  Int?     // 1-31, for monthly
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isActive, frequency])
 }

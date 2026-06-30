@@ -1,16 +1,21 @@
-import type { Metadata } from "next"
 import { allQRCodes } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "QR Code for YouTube - Share Videos Easily",
-  description: "Create a QR code for your YouTube videos or channel. Viewers scan and watch instantly — perfect for promotion.",
-  path: "/qr-code-for-youtube",
-  keywords: ["qr code for youtube", "youtube qr code", "youtube channel qr"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "QR Code for YouTube - Share Videos Easily",
+    description: "Create a QR code for your YouTube videos or channel. Viewers scan and watch instantly — perfect for promotion.",
+    path: "/qr-code-for-youtube",
+    keywords: ["qr code for youtube", "youtube qr code", "youtube channel qr"],
+    locale,
+  })
+}
 
 export default function QRCodeForYouTubePage() {
+  const relatedArticles = getPostsByLandingPage("/qr-code-for-youtube").slice(0, 3)
   return (
     <>
       <QRCodeLandingPage
@@ -36,6 +41,8 @@ export default function QRCodeForYouTubePage() {
         { title: "Free QR Code Generator", href: "/free-qr-code-generator" },
       ]}
       allQRCodes={allQRCodes}
+
+      relatedArticles={relatedArticles}
     />
     </>
   )

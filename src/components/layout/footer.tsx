@@ -1,78 +1,88 @@
 "use client"
 
-import Link from "next/link"
+import { useState } from "react"
+import { useTranslations } from "next-intl"
+import { Link } from "@/i18n/navigation"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Twitter, Github, Linkedin, Mail, ArrowRight, Check } from "lucide-react"
 
-const footerColumns = [
-  {
-    title: "Product",
-    links: [
-      { label: "Features", href: "/features" },
-      { label: "Pricing", href: "/pricing" },
-      { label: "Integrations", href: "/integrations" },
-      { label: "API", href: "/api" },
-      { label: "Changelog", href: "/changelog" },
-    ],
-  },
-  {
-    title: "URL Shortener",
-    links: [
-      { label: "Custom URL Shortener", href: "/custom-url-shortener" },
-      { label: "Branded Link Shortener", href: "/branded-link-shortener" },
-      { label: "Bulk URL Shortener", href: "/bulk-url-shortener" },
-      { label: "Free URL Shortener", href: "/free-url-shortener" },
-      { label: "All URL Tools", href: "/custom-url-shortener" },
-    ],
-  },
-  {
-    title: "QR Codes",
-    links: [
-      { label: "QR Code Generator", href: "/qr-code-generator" },
-      { label: "Dynamic QR Codes", href: "/dynamic-qr-code-generator" },
-      { label: "WiFi QR Code", href: "/qr-code-for-wifi" },
-      { label: "vCard QR Code", href: "/qr-code-for-vcard" },
-      { label: "All QR Codes", href: "/qr-code-generator" },
-    ],
-  },
-  {
-    title: "Social Links",
-    links: [
-      { label: "Instagram Link Generator", href: "/instagram-link-generator" },
-      { label: "WhatsApp Link Generator", href: "/whatsapp-link-generator" },
-      { label: "TikTok Bio Link", href: "/tiktok-bio-link-generator" },
-      { label: "YouTube Link Generator", href: "/youtube-link-generator" },
-      { label: "All Social Tools", href: "/instagram-link-generator" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { label: "Privacy Policy", href: "/privacy" },
-      { label: "Terms of Service", href: "/terms" },
-      { label: "Cookie Policy", href: "/cookies" },
-      { label: "GDPR", href: "/gdpr" },
-      { label: "DMCA", href: "/dmca" },
-    ],
-  },
+const footerSections = [
+  { title: "layout.footer.product", key: "product", links: [
+    { label: "layout.footer.features", href: "/features" },
+    { label: "layout.footer.pricing", href: "/pricing" },
+    { label: "layout.footer.integrations", href: "/integrations" },
+    { label: "layout.footer.api", href: "/api" },
+    { label: "layout.footer.changelog", href: "/changelog" },
+  ]},
+  { title: "layout.footer.urlShortener", key: "url", links: [
+    { label: "layout.footer.customURL", href: "/custom-url-shortener" },
+    { label: "layout.footer.brandedLink", href: "/branded-link-shortener" },
+    { label: "layout.footer.bulkURL", href: "/bulk-url-shortener" },
+    { label: "layout.footer.freeURL", href: "/free-url-shortener" },
+    { label: "layout.footer.allURLTools", href: "/custom-url-shortener" },
+  ]},
+  { title: "layout.footer.qrCodes", key: "qr", links: [
+    { label: "layout.footer.qrGenerator", href: "/qr-code-generator" },
+    { label: "layout.footer.dynamicQR", href: "/dynamic-qr-code-generator" },
+    { label: "layout.footer.wifiQR", href: "/qr-code-for-wifi" },
+    { label: "layout.footer.vcardQR", href: "/qr-code-for-vcard" },
+    { label: "layout.footer.allQRCodes", href: "/qr-code-generator" },
+  ]},
+  { title: "layout.footer.socialLinks", key: "social", links: [
+    { label: "layout.footer.instagram", href: "/instagram-link-generator" },
+    { label: "layout.footer.whatsapp", href: "/whatsapp-link-generator" },
+    { label: "layout.footer.tiktok", href: "/tiktok-bio-link-generator" },
+    { label: "layout.footer.youtube", href: "/youtube-link-generator" },
+    { label: "layout.footer.allSocial", href: "/instagram-link-generator" },
+  ]},
+  { title: "layout.footer.legal", key: "legal", links: [
+    { label: "layout.footer.privacy", href: "/privacy" },
+    { label: "layout.footer.terms", href: "/terms" },
+    { label: "layout.footer.cookies", href: "/cookies" },
+    { label: "layout.footer.gdpr", href: "/gdpr" },
+    { label: "layout.footer.dmca", href: "/dmca" },
+  ]},
+]
+
+const socialLinks = [
+  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Github, href: "#", label: "GitHub" },
+  { icon: Mail, href: "#", label: "Email" },
 ]
 
 function Footer() {
+  const t = useTranslations()
+  const [email, setEmail] = useState("")
+  const [subscribed, setSubscribed] = useState(false)
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (email) {
+      setSubscribed(true)
+      setEmail("")
+      setTimeout(() => setSubscribed(false), 3000)
+    }
+  }
+
   return (
-    <footer className="border-t border-dark-100 bg-dark-700">
-      <div className="container py-16">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-5">
-          {footerColumns.map((column) => (
-            <div key={column.title}>
+    <footer className="border-t border-dark-100/60 bg-dark-700">
+      <div className="container pt-16 pb-8">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-6">
+          {footerSections.map((section) => (
+            <div key={section.key} className={section.key === "legal" ? "md:col-span-1" : ""}>
               <h3 className="mb-4 text-sm font-semibold text-dark-50">
-                {column.title}
+                {t(section.title)}
               </h3>
               <ul className="space-y-3">
-                {column.links.map((link) => (
+                {section.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
                       className="text-sm text-dark-100 transition-colors hover:text-dark-50"
                     >
-                      {link.label}
+                      {t(link.label)}
                     </Link>
                   </li>
                 ))}
@@ -81,14 +91,28 @@ function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 border-t border-dark-100 pt-8">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <Link href="/" className="flex items-center gap-2 text-lg font-bold tracking-tight text-dark-50">
-              <span className="text-primary-500">REL</span>
-              <span>URL</span>
-            </Link>
+        <div className="mt-12 pt-8 border-t border-dark-100/30">
+          <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+            <div className="flex items-center gap-4">
+              <Link href="/" className="flex items-center gap-1.5 text-lg font-bold tracking-tight">
+                <span className="bg-gradient-to-r from-[#AA1C41] to-[#E68457] bg-clip-text text-transparent">REL</span>
+                <span className="text-dark-50">URL</span>
+              </Link>
+              <div className="hidden sm:flex items-center gap-3">
+                {socialLinks.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    className="text-dark-100 hover:text-primary transition-colors"
+                    aria-label={s.label}
+                  >
+                    <s.icon className="w-4 h-4" />
+                  </a>
+                ))}
+              </div>
+            </div>
             <p className="text-xs text-dark-100">
-              &copy; {new Date().getFullYear()} RELURL. All rights reserved.
+              {t("layout.footer.copyright")}
             </p>
           </div>
         </div>

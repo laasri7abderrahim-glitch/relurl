@@ -1,16 +1,21 @@
-import type { Metadata } from "next"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 import { allQRCodes } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "QR Code for Gym - Fitness & Class QR Codes",
-  description: "Create QR codes for gym schedules, class bookings, and membership info. Streamline fitness center operations with RELURL QR codes.",
-  path: "/qr-code-for-gym",
-  keywords: ["qr code for gym", "fitness qr code", "gym class qr code"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "QR Code for Gym - Fitness & Class QR Codes",
+    description: "Create QR codes for gym schedules, class bookings, and membership info. Streamline fitness center operations with RELURL QR codes.",
+    path: "/qr-code-for-gym",
+    keywords: ["qr code for gym", "fitness qr code", "gym class qr code"],
+    locale,
+  })
+}
 
 export default function Page() {
+  const relatedArticles = getPostsByLandingPage("/qr-code-for-gym").slice(0, 3)
   return (
     <QRCodeLandingPage
       title="QR Code for Gym"
@@ -42,6 +47,8 @@ export default function Page() {
         { title: "QR Code for App Download", href: "/qr-code-for-app-download" },
       ]}
       allQRCodes={allQRCodes}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

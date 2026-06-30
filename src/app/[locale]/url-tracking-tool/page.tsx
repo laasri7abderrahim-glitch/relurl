@@ -1,16 +1,22 @@
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata = generateSEOMetadata({
-  title: "URL Tracking Tool - Track Link Clicks",
-  description: "Track every click on your shortened URLs. Get real-time analytics on location, devices, referrers, and more with RELURL.",
-  path: "/url-tracking-tool",
-  keywords: ["url tracking tool", "link tracking", "click tracking"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "URL Tracking Tool - Track Link Clicks",
+    description: "Track every click on your shortened URLs. Get real-time analytics on location, devices, referrers, and more with RELURL.",
+    path: "/url-tracking-tool",
+    keywords: ["url tracking tool", "link tracking", "click tracking"],
+    locale,
+  })
+}
 
 export default function URLTrackingToolPage() {
   const href = "/url-tracking-tool"
+  const relatedArticles = getPostsByLandingPage("/url-tracking-tool").slice(0, 3)
   return (
     <URLLandingPage
       title="URL Tracking Tool"
@@ -42,6 +48,8 @@ export default function URLTrackingToolPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

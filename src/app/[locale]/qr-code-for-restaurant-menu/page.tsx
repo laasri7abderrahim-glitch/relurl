@@ -1,16 +1,21 @@
-import type { Metadata } from "next"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 import { allQRCodes } from "@/lib/url-pages"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "QR Code for Restaurant Menu - Digital Menu",
-  description: "Create a QR code for your restaurant menu. Let customers scan to view your menu on their phones. Perfect for contactless dining experiences.",
-  path: "/qr-code-for-restaurant-menu",
-  keywords: ["qr code for restaurant menu", "restaurant menu qr code", "digital menu"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "QR Code for Restaurant Menu - Digital Menu",
+    description: "Create a QR code for your restaurant menu. Let customers scan to view your menu on their phones. Perfect for contactless dining experiences.",
+    path: "/qr-code-for-restaurant-menu",
+    keywords: ["qr code for restaurant menu", "restaurant menu qr code", "digital menu"],
+    locale,
+  })
+}
 
 export default function Page() {
+  const relatedArticles = getPostsByLandingPage("/qr-code-for-restaurant-menu").slice(0, 3)
   return (
     <QRCodeLandingPage
       title="QR Code for Restaurant Menu"
@@ -41,6 +46,8 @@ export default function Page() {
         { title: "Free QR Code Generator", href: "/free-qr-code-generator" },
       ]}
       allQRCodes={allQRCodes}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

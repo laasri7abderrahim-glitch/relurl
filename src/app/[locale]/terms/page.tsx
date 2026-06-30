@@ -1,11 +1,15 @@
-import type { Metadata } from "next"
+import { generateSEOMetadata } from "@/lib/seo"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 
-export const metadata: Metadata = {
-  title: "Terms of Service - RELURL",
-  description: "RELURL terms of service. Read our terms and conditions for using the URL shortener platform.",
-  alternates: { canonical: "https://relurl.com/terms" },
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Terms of Service - RELURL",
+    description: "Read the RELURL terms of service governing the use of our URL shortening and QR code platform.",
+    path: "/terms",
+    locale,
+  })
 }
 
 export default function TermsPage() {

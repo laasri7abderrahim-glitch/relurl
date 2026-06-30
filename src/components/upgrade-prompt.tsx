@@ -1,6 +1,6 @@
 "use client"
 
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { AlertTriangle, ArrowUpRight, X } from "lucide-react"
@@ -24,11 +24,11 @@ export function UpgradePrompt({ plan, feature, current, max, onDismiss }: Upgrad
   const isLimit = percentage >= 100
 
   return (
-    <Card className={`border-2 ${isLimit ? "border-red-500/50 bg-red-500/5" : isWarning ? "border-yellow-500/50 bg-yellow-500/5" : "border-[#2FA084]/50 bg-[#2FA084]/5"}`}>
+    <Card className={`border-2 ${isLimit ? "border-red-500/50 bg-red-500/5" : isWarning ? "border-yellow-500/50 bg-yellow-500/5" : "border-[#14B8A6]/50 bg-[#14B8A6]/5"}`}>
       <CardContent className="p-4">
         <div className="flex items-start gap-3">
-          <div className={`rounded-lg p-2 ${isLimit ? "bg-red-500/10" : isWarning ? "bg-yellow-500/10" : "bg-[#2FA084]/10"}`}>
-            <AlertTriangle className={`h-5 w-5 ${isLimit ? "text-red-500" : isWarning ? "text-yellow-500" : "text-[#2FA084]"}`} />
+          <div className={`rounded-lg p-2 ${isLimit ? "bg-red-500/10" : isWarning ? "bg-yellow-500/10" : "bg-[#14B8A6]/10"}`}>
+            <AlertTriangle className={`h-5 w-5 ${isLimit ? "text-red-500" : isWarning ? "text-yellow-500" : "text-[#14B8A6]"}`} />
           </div>
           <div className="flex-1">
             <h3 className="font-semibold text-dark-50">
@@ -42,7 +42,7 @@ export function UpgradePrompt({ plan, feature, current, max, onDismiss }: Upgrad
             {(isLimit || isWarning) && (
               <div className="mt-3 flex items-center gap-2">
                 <Link href="/pricing">
-                  <Button size="sm" className="bg-[#1F6F5F] hover:bg-[#2FA084]">
+                  <Button size="sm" className="bg-[#0D9488] hover:bg-[#14B8A6]">
                     Upgrade Plan
                     <ArrowUpRight className="ml-1 h-3 w-3" />
                   </Button>
@@ -76,7 +76,7 @@ interface PlanBadgeProps {
 export function PlanBadge({ plan }: PlanBadgeProps) {
   const colors: Record<string, string> = {
     FREE: "bg-dark-300 text-dark-100",
-    PRO: "bg-[#1F6F5F] text-white",
+    PRO: "bg-[#0D9488] text-white",
     BUSINESS: "bg-blue-500 text-white",
     ENTERPRISE: "bg-purple-500 text-white",
   }
@@ -110,7 +110,7 @@ export function UsageBar({ label, current, max }: UsageBarProps) {
         <div className="h-2 bg-dark-300 rounded-full overflow-hidden">
           <div
             className={`h-full rounded-full transition-all ${
-              percentage >= 100 ? "bg-red-500" : percentage >= 80 ? "bg-yellow-500" : "bg-[#2FA084]"
+              percentage >= 100 ? "bg-red-500" : percentage >= 80 ? "bg-yellow-500" : "bg-[#14B8A6]"
             }`}
             style={{ width: `${Math.min(100, percentage)}%` }}
           />

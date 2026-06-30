@@ -2,13 +2,15 @@
 
 import { useState, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
+import { useTranslations } from "next-intl"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 function ResetPasswordForm() {
+  const t = useTranslations("auth.resetPassword")
   const router = useRouter()
   const searchParams = useSearchParams()
   const token = searchParams.get("token")
@@ -25,13 +27,13 @@ function ResetPasswordForm() {
     setError(null)
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match")
+      setError(t("error.passwordMismatch"))
       setLoading(false)
       return
     }
 
     if (password.length < 8) {
-      setError("Password must be at least 8 characters")
+      setError(t("error.passwordMin"))
       setLoading(false)
       return
     }
@@ -45,14 +47,14 @@ function ResetPasswordForm() {
 
       if (!res.ok) {
         const json = await res.json()
-        setError(json.error || "Something went wrong")
+        setError(json.error || t("error.generic"))
         setLoading(false)
         return
       }
 
       setDone(true)
     } catch {
-      setError("Something went wrong. Please try again.")
+      setError(t("error.genericRetry"))
       setLoading(false)
     }
   }
@@ -60,9 +62,9 @@ function ResetPasswordForm() {
   if (!token) {
     return (
       <CardContent className="space-y-4 text-center">
-        <p className="text-sm text-red-400">Invalid or missing reset token.</p>
+        <p className="text-sm text-red-400">{t("invalidToken")}</p>
         <Link href="/forgot-password">
-          <Button variant="outline" className="w-full">Request a new reset link</Button>
+          <Button variant="outline" className="w-full">{t("requestNewLink")}</Button>
         </Link>
       </CardContent>
     )
@@ -82,9 +84,9 @@ function ResetPasswordForm() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
           </svg>
         </div>
-        <p className="text-sm text-dark-100">Your password has been reset successfully.</p>
+        <p className="text-sm text-dark-100">{t("successMessage")}</p>
         <Link href="/login">
-          <Button variant="primary" className="w-full">Sign in with new password</Button>
+          <Button variant="primary" className="w-full">{t("signInButton")}</Button>
         </Link>
       </CardContent>
     )
@@ -99,11 +101,11 @@ function ResetPasswordForm() {
       )}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="password">New Password</Label>
+          <Label htmlFor="password">{t("newPasswordLabel")}</Label>
           <Input
             id="password"
             type="password"
-            placeholder="••••••••"
+            placeholder={t("passwordPlaceholder")}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -112,11 +114,11 @@ function ResetPasswordForm() {
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="confirmPassword">Confirm Password</Label>
+          <Label htmlFor="confirmPassword">{t("confirmPasswordLabel")}</Label>
           <Input
             id="confirmPassword"
             type="password"
-            placeholder="••••••••"
+            placeholder={t("passwordPlaceholder")}
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
@@ -125,12 +127,12 @@ function ResetPasswordForm() {
           />
         </div>
         <Button type="submit" variant="primary" className="w-full" disabled={loading}>
-          {loading ? "Resetting..." : "Reset Password"}
+          {loading ? t("resettingButton") : t("resetButton")}
         </Button>
       </form>
       <p className="text-center text-sm text-dark-100">
         <Link href="/login" className="text-primary-500 hover:text-primary-400">
-          Back to sign in
+          {t("backToSignIn")}
         </Link>
       </p>
     </CardContent>
@@ -138,14 +140,15 @@ function ResetPasswordForm() {
 }
 
 export default function ResetPasswordPage() {
+  const t = useTranslations("auth.resetPassword")
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1 text-center">
-          <CardTitle className="text-2xl font-bold">Reset your password</CardTitle>
-          <p className="text-sm text-dark-100">Enter your new password below</p>
+          <CardTitle className="text-2xl font-bold">{t("title")}</CardTitle>
+          <p className="text-sm text-dark-100">{t("subtitle")}</p>
         </CardHeader>
-        <Suspense fallback={<CardContent><p className="text-sm text-dark-100">Loading...</p></CardContent>}>
+        <Suspense fallback={<CardContent><p className="text-sm text-dark-100">{t("loading")}</p></CardContent>}>
           <ResetPasswordForm />
         </Suspense>
       </Card>

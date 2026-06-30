@@ -1,16 +1,22 @@
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata = generateSEOMetadata({
-  title: "Short URL Analytics - Click Analytics",
-  description: "Get detailed analytics for every short URL. Track clicks, geographic data, devices, browsers, and referrers in real time.",
-  path: "/short-url-analytics",
-  keywords: ["short url analytics", "link analytics", "click analytics"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Short URL Analytics - Click Analytics",
+    description: "Get detailed analytics for every short URL. Track clicks, geographic data, devices, browsers, and referrers in real time.",
+    path: "/short-url-analytics",
+    keywords: ["short url analytics", "link analytics", "click analytics"],
+    locale,
+  })
+}
 
 export default function ShortURLAnalyticsPage() {
   const href = "/short-url-analytics"
+  const relatedArticles = getPostsByLandingPage("/short-url-analytics").slice(0, 3)
   return (
     <URLLandingPage
       title="Short URL Analytics"
@@ -42,6 +48,8 @@ export default function ShortURLAnalyticsPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

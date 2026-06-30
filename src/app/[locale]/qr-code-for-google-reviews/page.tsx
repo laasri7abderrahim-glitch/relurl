@@ -1,16 +1,21 @@
-import type { Metadata } from "next"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 import { allQRCodes } from "@/lib/url-pages"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "QR Code for Google Reviews - Get Reviews",
-  description: "Generate a QR code that links to your Google review page. Make it easy for happy customers to leave 5-star reviews and boost your ratings.",
-  path: "/qr-code-for-google-reviews",
-  keywords: ["qr code for google reviews", "google review qr code", "get more reviews"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "QR Code for Google Reviews - Get Reviews",
+    description: "Generate a QR code that links to your Google review page. Make it easy for happy customers to leave 5-star reviews and boost your ratings.",
+    path: "/qr-code-for-google-reviews",
+    keywords: ["qr code for google reviews", "google review qr code", "get more reviews"],
+    locale,
+  })
+}
 
 export default function Page() {
+  const relatedArticles = getPostsByLandingPage("/qr-code-for-google-reviews").slice(0, 3)
   return (
     <QRCodeLandingPage
       title="QR Code for Google Reviews"
@@ -41,6 +46,8 @@ export default function Page() {
         { title: "Free QR Code Generator", href: "/free-qr-code-generator" },
       ]}
       allQRCodes={allQRCodes}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

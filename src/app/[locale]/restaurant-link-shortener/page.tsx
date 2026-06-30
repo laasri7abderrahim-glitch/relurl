@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Restaurant Link Shortener - Menu & Reservation Links",
-  description: "Shorten menu, reservation, and delivery links for your restaurant. Drive more orders and bookings with clean, trackable URLs.",
-  path: "/restaurant-link-shortener",
-  keywords: ["restaurant link shortener", "menu link generator", "restaurant marketing"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Restaurant Link Shortener - Menu & Reservation Links",
+    description: "Shorten menu, reservation, and delivery links for your restaurant. Drive more orders and bookings with clean, trackable URLs.",
+    path: "/restaurant-link-shortener",
+    keywords: ["restaurant link shortener", "menu link generator", "restaurant marketing"],
+    locale,
+  })
+}
 
 export default function RestaurantLinkShortenerPage() {
   const href = "/restaurant-link-shortener"
+  const relatedArticles = getPostsByLandingPage("/restaurant-link-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Restaurant Link Shortener"
@@ -43,6 +48,8 @@ export default function RestaurantLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

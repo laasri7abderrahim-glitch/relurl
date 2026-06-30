@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
 import { Select } from "@/components/ui/select"
@@ -13,7 +14,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { Skeleton } from "@/components/ui/skeleton"
 import { useToast } from "@/components/ui/toast"
-import { formatDate } from "@/lib/utils"
+import { formatDate, sanitizeInput } from "@/lib/utils"
 import {
   Users,
   UserPlus,
@@ -28,7 +29,9 @@ import {
   Pencil,
   Check,
   X,
+  Plus,
 } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 type TeamRole = "OWNER" | "ADMIN" | "MEMBER"
 
@@ -57,25 +60,8 @@ interface Team {
   teamMembers: TeamMember[]
 }
 
-const roleConfig: Record<TeamRole, { label: string; icon: React.ReactNode; color: string }> = {
-  OWNER: {
-    label: "Owner",
-    icon: <Crown className="h-4 w-4" />,
-    color: "text-yellow-400",
-  },
-  ADMIN: {
-    label: "Admin",
-    icon: <ShieldCheck className="h-4 w-4" />,
-    color: "text-blue-400",
-  },
-  MEMBER: {
-    label: "Member",
-    icon: <Shield className="h-4 w-4" />,
-    color: "text-dark-100",
-  },
-}
-
 export default function TeamPage() {
+  const t = useTranslations("dashboard.team")
   const { data: session } = useSession()
   const [teams, setTeams] = useState<Team[]>([])
   const [selectedTeamId, setSelectedTeamId] = useState<string | null>(null)
@@ -92,7 +78,30 @@ export default function TeamPage() {
   const [editName, setEditName] = useState("")
   const [editDescription, setEditDescription] = useState("")
   const [saving, setSaving] = useState(false)
+  const [showCreateDialog, setShowCreateDialog] = useState(false)
+  const [createName, setCreateName] = useState("")
+  const [createSlug, setCreateSlug] = useState("")
+  const [createDescription, setCreateDescription] = useState("")
+  const [creating, setCreating] = useState(false)
   const { addToast } = useToast()
+
+  const roleConfig: Record<TeamRole, { label: string; icon: React.ReactNode; color: string }> = {
+    OWNER: {
+      label: t("roles.owner"),
+      icon: <Crown className="h-4 w-4" />,
+      color: "text-yellow-400",
+    },
+    ADMIN: {
+      label: t("roles.admin"),
+      icon: <ShieldCheck className="h-4 w-4" />,
+      color: "text-blue-400",
+    },
+    MEMBER: {
+      label: t("roles.member"),
+      icon: <Shield className="h-4 w-4" />,
+      color: "text-dark-100",
+    },
+  }
 
   const currentUserEmail = session?.user?.email
 
@@ -116,13 +125,13 @@ export default function TeamPage() {
           setSelectedTeamId(json.data.teams[0].id)
         }
       } catch {
-        addToast("Failed to load teams", "error")
+        addToast(t("toast.loadFailed"), "error")
       } finally {
         setLoading(false)
       }
     }
     fetchTeams()
-  }, [addToast])
+  }, [addToast, t])
 
   useEffect(() => {
     if (!selectedTeamId) return
@@ -138,13 +147,13 @@ export default function TeamPage() {
         }
         setTeam(json.data)
       } catch {
-        addToast("Failed to load team details", "error")
+        addToast(t("toast.loadDetailsFailed"), "error")
       } finally {
         setMembersLoading(false)
       }
     }
     fetchTeam()
-  }, [selectedTeamId, addToast])
+  }, [selectedTeamId, addToast, t])
 
   function startEditing() {
     if (!team) return
@@ -156,7 +165,7 @@ export default function TeamPage() {
   async function handleSave() {
     if (!team) return
     if (!editName.trim()) {
-      addToast("Team name is required", "error")
+      addToast(t("toast.nameRequired"), "error")
       return
     }
     setSaving(true)
@@ -173,9 +182,9 @@ export default function TeamPage() {
       }
       setTeam((prev) => prev ? { ...prev, name: json.data.name, description: json.data.description } : prev)
       setEditing(false)
-      addToast("Team updated", "success")
+      addToast(t("toast.updateSuccess"), "success")
     } catch {
-      addToast("Failed to update team", "error")
+      addToast(t("toast.updateFailed"), "error")
     } finally {
       setSaving(false)
     }
@@ -188,7 +197,7 @@ export default function TeamPage() {
   async function handleInvite() {
     if (!team) return
     if (!inviteEmail.trim()) {
-      addToast("Please enter an email address", "error")
+      addToast(t("toast.emailRequired"), "error")
       return
     }
     setInviting(true)
@@ -207,14 +216,74 @@ export default function TeamPage() {
         if (!prev) return prev
         return { ...prev, teamMembers: [...prev.teamMembers, json.data] }
       })
-      addToast(`Invitation sent to ${inviteEmail}`, "success")
+      addToast(t("toast.inviteSent", { email: inviteEmail }), "success")
       setShowInviteDialog(false)
       setInviteEmail("")
       setInviteRole("MEMBER")
     } catch {
-      addToast("Failed to invite member", "error")
+      addToast(t("toast.inviteFailed"), "error")
     } finally {
       setInviting(false)
+    }
+  }
+
+  function generateSlugFromName(name: string): string {
+    return name
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "")
+  }
+
+  function handleCreateNameChange(name: string) {
+    setCreateName(name)
+    const autoSlug = generateSlugFromName(name)
+    if (!createSlug || createSlug === generateSlugFromName(createName)) {
+      setCreateSlug(autoSlug)
+    }
+  }
+
+  async function handleCreateTeam() {
+    if (!createName.trim()) {
+      addToast(t("toast.nameRequired"), "error")
+      return
+    }
+    if (!createSlug.trim()) {
+      addToast(t("toast.slugRequired"), "error")
+      return
+    }
+    setCreating(true)
+    try {
+      const res = await fetch("/api/teams", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: sanitizeInput(createName.trim()),
+          slug: sanitizeInput(createSlug.trim()),
+          description: createDescription.trim() ? sanitizeInput(createDescription.trim()) : undefined,
+        }),
+      })
+      const json = await res.json()
+      if (json.error) {
+        addToast(json.error, "error")
+        return
+      }
+      setShowCreateDialog(false)
+      setCreateName("")
+      setCreateSlug("")
+      setCreateDescription("")
+      addToast(t("toast.createSuccess"), "success")
+      const res2 = await fetch("/api/teams?limit=50")
+      const json2 = await res2.json()
+      if (!json2.error) {
+        setTeams(json2.data.teams)
+        setSelectedTeamId(json.data.id)
+      }
+    } catch {
+      addToast(t("toast.createFailed"), "error")
+    } finally {
+      setCreating(false)
     }
   }
 
@@ -235,10 +304,10 @@ export default function TeamPage() {
         if (!prev) return prev
         return { ...prev, teamMembers: prev.teamMembers.filter((m) => m.id !== member.id) }
       })
-      addToast(`${member.user.name ?? member.user.email} removed from team`, "success")
+      addToast(t("toast.removeSuccess", { name: member.user.name ?? member.user.email }), "success")
       setRemoveConfirm(null)
     } catch {
-      addToast("Failed to remove member", "error")
+      addToast(t("toast.removeFailed"), "error")
     } finally {
       setRemoving(false)
     }
@@ -266,9 +335,9 @@ export default function TeamPage() {
           ),
         }
       })
-      addToast(`${member.user.name ?? member.user.email} role changed to ${newRole.toLowerCase()}`, "success")
+      addToast(t("toast.roleChanged", { name: member.user.name ?? member.user.email, role: t("roles." + newRole.toLowerCase()) }), "success")
     } catch {
-      addToast("Failed to change role", "error")
+      addToast(t("toast.roleChangeFailed"), "error")
     }
   }
 
@@ -300,14 +369,18 @@ export default function TeamPage() {
     return (
       <div className="space-y-6">
         <div>
-          <div className="text-2xl font-bold text-dark-50">Team</div>
-          <p className="mt-1 text-sm text-dark-100">Manage your team members and their roles</p>
+          <div className="text-2xl font-bold text-dark-50">{t("title")}</div>
+          <p className="mt-1 text-sm text-dark-100">{t("description")}</p>
         </div>
         <Card>
           <CardContent className="flex flex-col items-center justify-center py-12">
             <Users className="mb-4 h-12 w-12 text-dark-100" />
-            <p className="text-lg font-medium text-dark-50">No teams yet</p>
-            <p className="mt-1 text-sm text-dark-100">Create a team to start collaborating</p>
+            <p className="text-lg font-medium text-dark-50">{t("empty.title")}</p>
+            <p className="mt-1 text-sm text-dark-100">{t("empty.description")}</p>
+            <Button variant="primary" className="mt-6" onClick={() => setShowCreateDialog(true)}>
+              <Plus className="mr-2 h-4 w-4" />
+              {t("createTeam")}
+            </Button>
           </CardContent>
         </Card>
       </div>
@@ -318,8 +391,8 @@ export default function TeamPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-dark-50">Team</h1>
-          <p className="mt-1 text-sm text-dark-100">Manage your team members and their roles</p>
+          <h1 className="text-2xl font-bold text-dark-50">{t("title")}</h1>
+          <p className="mt-1 text-sm text-dark-100">{t("description")}</p>
         </div>
         <div className="flex items-center gap-3">
           <div className="relative">
@@ -328,17 +401,21 @@ export default function TeamPage() {
               onChange={(e) => setSelectedTeamId(e.target.value)}
               className="flex h-10 appearance-none rounded-lg border border-dark-100 bg-dark-500 px-3 pr-8 text-sm text-dark-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
             >
-              {teams.map((t) => (
-                <option key={t.id} value={t.id}>
-                  {t.name}
+              {teams.map((tm) => (
+                <option key={tm.id} value={tm.id}>
+                  {tm.name}
                 </option>
               ))}
             </select>
             <ChevronDown className="pointer-events-none absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-dark-100" />
           </div>
+          <Button variant="outline" onClick={() => setShowCreateDialog(true)}>
+            <Plus className="mr-2 h-4 w-4" />
+            {t("createTeam")}
+          </Button>
           <Button variant="primary" onClick={() => setShowInviteDialog(true)} disabled={!canManage}>
             <UserPlus className="mr-2 h-4 w-4" />
-            Invite Member
+            {t("inviteMember")}
           </Button>
         </div>
       </div>
@@ -352,21 +429,21 @@ export default function TeamPage() {
                   <Input
                     value={editName}
                     onChange={(e) => setEditName(e.target.value)}
-                    placeholder="Team name"
+                    placeholder={t("editTeamName")}
                   />
                   <Input
                     value={editDescription}
                     onChange={(e) => setEditDescription(e.target.value)}
-                    placeholder="Team description (optional)"
+                    placeholder={t("editTeamDescription")}
                   />
                   <div className="flex gap-2">
                     <Button size="sm" variant="primary" onClick={handleSave} disabled={saving}>
                       {saving ? <Loader2 className="mr-1 h-4 w-4 animate-spin" /> : <Check className="mr-1 h-4 w-4" />}
-                      Save
+                      {t("save")}
                     </Button>
                     <Button size="sm" variant="outline" onClick={cancelEditing}>
                       <X className="mr-1 h-4 w-4" />
-                      Cancel
+                      {t("cancel")}
                     </Button>
                   </div>
                 </div>
@@ -375,7 +452,7 @@ export default function TeamPage() {
                   <div>
                     <CardTitle className="text-lg">{selectedTeam.name}</CardTitle>
                     <CardDescription>
-                      {team?.teamMembers.length ?? 0} members &middot; {selectedTeam.slug}
+                      {t("membersCount", { count: team?.teamMembers.length ?? 0 })} &middot; {selectedTeam.slug}
                       {selectedTeam.description && <span> &middot; {selectedTeam.description}</span>}
                     </CardDescription>
                   </div>
@@ -403,10 +480,10 @@ export default function TeamPage() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Member</TableHead>
-                    <TableHead>Role</TableHead>
-                    <TableHead>Joined</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
+                    <TableHead>{t("table.member")}</TableHead>
+                    <TableHead>{t("table.role")}</TableHead>
+                    <TableHead>{t("table.joined")}</TableHead>
+                    <TableHead className="text-right">{t("table.actions")}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -424,8 +501,8 @@ export default function TeamPage() {
                             />
                             <div>
                               <p className="font-medium text-dark-50">
-                                {member.user.name ?? "Unnamed"}
-                                {isCurrentUser && <span className="ml-2 text-xs text-dark-100">(you)</span>}
+                                {member.user.name ?? t("unnamed")}
+                                {isCurrentUser && <span className="ml-2 text-xs text-dark-100">{t("you")}</span>}
                               </p>
                               <p className="text-xs text-dark-100">{member.user.email}</p>
                             </div>
@@ -438,8 +515,8 @@ export default function TeamPage() {
                               onChange={(e) => handleRoleChange(member, e.target.value as TeamRole)}
                               className="flex h-8 appearance-none rounded-lg border border-dark-100 bg-dark-500 px-2 pr-6 text-sm text-dark-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
                             >
-                              <option value="ADMIN">Admin</option>
-                              <option value="MEMBER">Member</option>
+                              <option value="ADMIN">{t("roles.admin")}</option>
+                              <option value="MEMBER">{t("roles.member")}</option>
                             </select>
                           ) : (
                             <div className={`flex items-center gap-1.5 text-sm font-medium ${role.color}`}>
@@ -457,13 +534,13 @@ export default function TeamPage() {
                               type="button"
                               onClick={() => setRemoveConfirm(member)}
                               className="rounded-lg p-2 text-dark-100 hover:text-red-400 hover:bg-dark-300 transition-colors"
-                              title="Remove member"
+                              title={t("removeMemberTitle")}
                               disabled={!isOwner}
                             >
                               <Trash2 className="h-4 w-4" />
                             </button>
                           ) : (
-                            <span className="text-xs text-dark-100">Owner</span>
+                            <span className="text-xs text-dark-100">{t("owner")}</span>
                           )}
                         </TableCell>
                       </TableRow>
@@ -479,36 +556,36 @@ export default function TeamPage() {
       <Dialog open={showInviteDialog} onOpenChange={(o) => { if (!o) setShowInviteDialog(false) }}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Invite Member</DialogTitle>
+            <DialogTitle>{t("inviteDialog.title")}</DialogTitle>
             <DialogDescription>
-              Send an invitation to join your team.
+              {t("inviteDialog.description")}
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4 pt-2">
             <div className="space-y-2">
-              <Label htmlFor="inviteEmail">Email Address</Label>
+              <Label htmlFor="inviteEmail">{t("inviteDialog.emailLabel")}</Label>
               <Input
                 id="inviteEmail"
                 type="email"
-                placeholder="colleague@company.com"
+                placeholder={t("inviteDialog.emailPlaceholder")}
                 value={inviteEmail}
                 onChange={(e) => setInviteEmail(e.target.value)}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="inviteRole">Role</Label>
+              <Label htmlFor="inviteRole">{t("inviteDialog.roleLabel")}</Label>
               <Select
                 id="inviteRole"
                 value={inviteRole}
                 onChange={(e) => setInviteRole(e.target.value as TeamRole)}
               >
-                <option value="MEMBER">Member</option>
-                <option value="ADMIN">Admin</option>
+                <option value="MEMBER">{t("roles.member")}</option>
+                <option value="ADMIN">{t("roles.admin")}</option>
               </Select>
             </div>
             <div className="flex justify-end gap-3 pt-2">
               <Button variant="outline" onClick={() => setShowInviteDialog(false)}>
-                Cancel
+                {t("inviteDialog.cancel")}
               </Button>
               <Button variant="primary" onClick={handleInvite} disabled={inviting}>
                 {inviting ? (
@@ -516,7 +593,59 @@ export default function TeamPage() {
                 ) : (
                   <Mail className="mr-2 h-4 w-4" />
                 )}
-                Send Invitation
+                {t("inviteDialog.send")}
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={showCreateDialog} onOpenChange={(o) => { if (!o) { setShowCreateDialog(false); setCreateName(""); setCreateSlug(""); setCreateDescription("") } }}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{t("createDialog.title")}</DialogTitle>
+            <DialogDescription>{t("createDialog.description")}</DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 pt-2">
+            <div className="space-y-2">
+              <Label htmlFor="createName">{t("createDialog.nameLabel")}</Label>
+              <Input
+                id="createName"
+                placeholder={t("createDialog.namePlaceholder")}
+                value={createName}
+                onChange={(e) => handleCreateNameChange(e.target.value)}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="createSlug">{t("createDialog.slugLabel")}</Label>
+              <Input
+                id="createSlug"
+                placeholder={t("createDialog.slugPlaceholder")}
+                value={createSlug}
+                onChange={(e) => setCreateSlug(e.target.value)}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="createDescription">{t("createDialog.descriptionLabel")}</Label>
+              <Textarea
+                id="createDescription"
+                placeholder={t("createDialog.descriptionPlaceholder")}
+                value={createDescription}
+                onChange={(e) => setCreateDescription(e.target.value)}
+                rows={3}
+              />
+            </div>
+            <div className="flex justify-end gap-3 pt-2">
+              <Button variant="outline" onClick={() => { setShowCreateDialog(false); setCreateName(""); setCreateSlug(""); setCreateDescription("") }}>
+                {t("createDialog.cancel")}
+              </Button>
+              <Button variant="primary" onClick={handleCreateTeam} disabled={creating}>
+                {creating ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : (
+                  <Plus className="mr-2 h-4 w-4" />
+                )}
+                {t("createDialog.create")}
               </Button>
             </div>
           </div>
@@ -528,16 +657,15 @@ export default function TeamPage() {
           <DialogHeader>
             <div className="flex items-center gap-2 text-red-400">
               <AlertCircle className="h-5 w-5" />
-              <DialogTitle>Remove Member</DialogTitle>
+              <DialogTitle>{t("removeDialog.title")}</DialogTitle>
             </div>
             <DialogDescription>
-              Are you sure you want to remove <strong>{removeConfirm?.user.name ?? removeConfirm?.user.email}</strong> from the team?
-              They will lose access to all team resources.
+              {t("removeDialog.desc1")} <strong>{removeConfirm?.user.name ?? removeConfirm?.user.email}</strong> {t("removeDialog.desc2")}
             </DialogDescription>
           </DialogHeader>
           <div className="flex justify-end gap-3 pt-2">
             <Button variant="outline" onClick={() => setRemoveConfirm(null)}>
-              Cancel
+              {t("removeDialog.cancel")}
             </Button>
             <Button
               variant="destructive"
@@ -549,7 +677,7 @@ export default function TeamPage() {
               ) : (
                 <Trash2 className="mr-2 h-4 w-4" />
               )}
-              Remove Member
+              {t("removeDialog.remove")}
             </Button>
           </div>
         </DialogContent>

@@ -3,6 +3,7 @@ import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { createAuditLog } from "@/lib/audit";
+import { invalidateCache } from "@/lib/cache";
 
 const updateLinkSchema = z.object({
   url: z.string().url().optional(),
@@ -103,6 +104,11 @@ export async function PATCH(
 
     const updated = await prisma.shortLink.update({ where: { id }, data });
 
+    invalidateCache(`link:slug:${link.slug}`).catch(() => {});
+    if (data.slug && data.slug !== link.slug) {
+      invalidateCache(`link:slug:${data.slug}`).catch(() => {});
+    }
+
     createAuditLog({ userId: session.user.id, action: "UPDATE", entity: "ShortLink", entityId: id });
 
     return NextResponse.json({ data: updated, error: null });
@@ -135,6 +141,8 @@ export async function DELETE(
       where: { id },
       data: { isActive: false },
     });
+
+    invalidateCache(`link:slug:${link.slug}`).catch(() => {});
 
     createAuditLog({ userId: session.user.id, action: "DELETE", entity: "ShortLink", entityId: id });
 

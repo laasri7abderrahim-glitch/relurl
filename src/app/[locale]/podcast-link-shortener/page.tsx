@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Podcast Link Shortener - Episode & Show Links",
-  description: "Create short, shareable links for podcast episodes, show notes, and subscription pages. Track listener engagement with RELURL.",
-  path: "/podcast-link-shortener",
-  keywords: ["podcast link shortener", "episode link generator", "podcast marketing"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Podcast Link Shortener - Episode & Show Links",
+    description: "Create short, shareable links for podcast episodes, show notes, and subscription pages. Track listener engagement with RELURL.",
+    path: "/podcast-link-shortener",
+    keywords: ["podcast link shortener", "episode link generator", "podcast marketing"],
+    locale,
+  })
+}
 
 export default function PodcastLinkShortenerPage() {
   const href = "/podcast-link-shortener"
+  const relatedArticles = getPostsByLandingPage("/podcast-link-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Podcast Link Shortener"
@@ -43,6 +48,8 @@ export default function PodcastLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

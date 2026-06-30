@@ -1,12 +1,16 @@
-import type { Metadata } from "next"
-import Link from "next/link"
+import { generateSEOMetadata } from "@/lib/seo"
+import { Link } from "@/i18n/navigation"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 
-export const metadata: Metadata = {
-  title: "Privacy Policy - RELURL",
-  description: "RELURL privacy policy. Learn how we collect, use, and protect your personal information.",
-  alternates: { canonical: "https://relurl.com/privacy" },
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Privacy Policy - How We Handle Your Data",
+    description: "Read the RELURL privacy policy to understand how we collect, use, and protect your personal information.",
+    path: "/privacy",
+    locale,
+  })
 }
 
 export default function PrivacyPage() {

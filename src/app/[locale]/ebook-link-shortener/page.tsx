@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Ebook Link Shortener - Download & Promotion Links",
-  description: "Shorten ebook download and landing page links. Track downloads, optimize promotions, and grow your reader base with RELURL.",
-  path: "/ebook-link-shortener",
-  keywords: ["ebook link shortener", "book download links", "ebook marketing links"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Ebook Link Shortener - Download & Promotion Links",
+    description: "Shorten ebook download and landing page links. Track downloads, optimize promotions, and grow your reader base with RELURL.",
+    path: "/ebook-link-shortener",
+    keywords: ["ebook link shortener", "book download links", "ebook marketing links"],
+    locale,
+  })
+}
 
 export default function EbookLinkShortenerPage() {
   const href = "/ebook-link-shortener"
+  const relatedArticles = getPostsByLandingPage("/ebook-link-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Ebook Link Shortener"
@@ -43,6 +48,8 @@ export default function EbookLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

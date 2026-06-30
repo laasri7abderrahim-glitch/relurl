@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Travel Link Shortener - Booking & Guide Links",
-  description: "Shorten travel booking links, itinerary pages, and destination guides. Track traveler clicks and optimize your travel marketing.",
-  path: "/travel-link-shortener",
-  keywords: ["travel link shortener", "booking link generator", "travel marketing links"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Travel Link Shortener - Booking & Guide Links",
+    description: "Shorten travel booking links, itinerary pages, and destination guides. Track traveler clicks and optimize your travel marketing.",
+    path: "/travel-link-shortener",
+    keywords: ["travel link shortener", "booking link generator", "travel marketing links"],
+    locale,
+  })
+}
 
 export default function TravelLinkShortenerPage() {
   const href = "/travel-link-shortener"
+  const relatedArticles = getPostsByLandingPage("/travel-link-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Travel Link Shortener"
@@ -43,6 +48,8 @@ export default function TravelLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

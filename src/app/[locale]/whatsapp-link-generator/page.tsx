@@ -1,16 +1,22 @@
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 
-export const metadata = generateSEOMetadata({
-  title: "WhatsApp Link Generator - Click to Chat Links",
-  description: "Generate WhatsApp click-to-chat links. Create short URLs that open WhatsApp conversations with your phone number and pre-filled messages.",
-  path: "/whatsapp-link-generator",
-  keywords: ["whatsapp link generator", "whatsapp click to chat", "wa.me link"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "WhatsApp Link Generator - Click to Chat Links",
+    description: "Generate WhatsApp click-to-chat links. Create short URLs that open WhatsApp conversations with your phone number and pre-filled messages.",
+    path: "/whatsapp-link-generator",
+    keywords: ["whatsapp link generator", "whatsapp click to chat", "wa.me link"],
+    locale,
+  })
+}
 
 export default function WhatsAppLinkGeneratorPage() {
   const href = "/whatsapp-link-generator"
+  const relatedArticles = getPostsByLandingPage("/whatsapp-link-generator").slice(0, 3)
   return (
     <URLLandingPage
       title="WhatsApp Link Generator"
@@ -42,6 +48,8 @@ export default function WhatsAppLinkGeneratorPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

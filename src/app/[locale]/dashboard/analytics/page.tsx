@@ -1,12 +1,18 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
+import { useSession } from "next-auth/react"
+import { useTranslations } from "next-intl"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Select } from "@/components/ui/select"
-import { LineChart, BarChart, PieChart } from "@/components/ui/chart"
-import { formatNumber } from "@/lib/utils"
+import { AreaChart, BarChart, PieChart } from "@/components/ui/chart"
+import { StatCard } from "@/components/ui/stat-card"
+import { SectionHeader } from "@/components/ui/section-header"
+import { SkeletonStats, SkeletonChart } from "@/components/ui/loading"
+import { ErrorState } from "@/components/ui/error-state"
+import { EmptyState } from "@/components/ui/empty-state"
+import { formatNumber, cn } from "@/lib/utils"
 import {
   MousePointerClick,
   Users,
@@ -15,17 +21,15 @@ import {
   Download,
   Globe,
   Monitor,
-  AlertCircle,
-  RefreshCw,
 } from "lucide-react"
 
 type DateRange = "7d" | "30d" | "90d" | "custom"
 
-const dateRangeOptions: { value: DateRange; label: string }[] = [
-  { value: "7d", label: "Last 7 Days" },
-  { value: "30d", label: "Last 30 Days" },
-  { value: "90d", label: "Last 90 Days" },
-  { value: "custom", label: "Custom" },
+const dateRangeOptions: { value: DateRange; labelKey: string }[] = [
+  { value: "7d", labelKey: "sevenDays" },
+  { value: "30d", labelKey: "thirtyDays" },
+  { value: "90d", labelKey: "ninetyDays" },
+  { value: "custom", labelKey: "customDate" },
 ]
 
 interface AnalyticsData {
@@ -38,6 +42,8 @@ interface AnalyticsData {
   browsers: { browser: string; count: number }[]
   devices: { device: string; count: number }[]
   os: { os: string; count: number }[]
+  topLink: { url: string; slug: string; clicks: number } | null
+  suspiciousClicks: number
 }
 
 function pct(value: number, total: number): number {
@@ -45,20 +51,41 @@ function pct(value: number, total: number): number {
   return Math.round((value / total) * 1000) / 10
 }
 
+function pctChange(current: number, previous: number): number {
+  if (previous === 0) return current > 0 ? 100 : 0
+  return Math.round(((current - previous) / previous) * 100)
+}
+
 export default function AnalyticsPage() {
+  const { data: session } = useSession()
+  const t = useTranslations("dashboard.analytics")
+  const dateRangeLabels: Record<DateRange, string> = {
+    "7d": t("sevenDays"),
+    "30d": t("thirtyDays"),
+    "90d": t("ninetyDays"),
+    custom: t("customDate"),
+  }
   const [dateRange, setDateRange] = useState<DateRange>("7d")
   const [customFrom, setCustomFrom] = useState("")
   const [customTo, setCustomTo] = useState("")
   const [data, setData] = useState<AnalyticsData | null>(null)
+  const [prevData, setPrevData] = useState<AnalyticsData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [retry, setRetry] = useState(0)
+  const [compareEnabled, setCompareEnabled] = useState(false)
+  const [liveVisitors, setLiveVisitors] = useState(0)
+
+  const refreshData = useCallback(() => {
+    setRetry((c) => c + 1)
+  }, [])
 
   useEffect(() => {
     let cancelled = false
     const fetchData = async () => {
       setLoading(true)
       setError(null)
+      setPrevData(null)
       try {
         let url = "/api/analytics?"
         if (dateRange === "custom") {
@@ -70,19 +97,106 @@ export default function AnalyticsPage() {
         } else {
           url += `period=${dateRange}`
         }
-        const res = await fetch(url)
-        if (!res.ok) throw new Error(`Request failed (${res.status})`)
-        const json: AnalyticsData = await res.json()
-        if (!cancelled) setData(json)
+
+        const fetches: Promise<AnalyticsData>[] = [
+          fetch(url).then(async (r) => {
+            if (!r.ok) throw new Error(`Request failed (${r.status})`)
+            return r.json()
+          }),
+        ]
+
+        if (compareEnabled) {
+          const days = dateRange === "custom" ? 0 : dateRange === "7d" ? 7 : dateRange === "30d" ? 30 : 90
+          let prevUrl: string
+          if (days > 0) {
+            const now = Date.now()
+            const prevTo = new Date(now - days * 86400000)
+            const prevFrom = new Date(prevTo.getTime() - days * 86400000)
+            prevUrl = `/api/analytics?from=${prevFrom.toISOString().split("T")[0]}&to=${prevTo.toISOString().split("T")[0]}`
+          } else {
+            const from = new Date(customFrom)
+            const to = new Date(customTo)
+            const diff = to.getTime() - from.getTime()
+            const prevTo = new Date(from.getTime() - 1)
+            const prevFrom = new Date(prevTo.getTime() - diff)
+            prevUrl = `/api/analytics?from=${prevFrom.toISOString().split("T")[0]}&to=${prevTo.toISOString().split("T")[0]}`
+          }
+          fetches.push(
+            fetch(prevUrl).then(async (r) => {
+              if (!r.ok) return null as unknown as AnalyticsData
+              return r.json()
+            }),
+          )
+        }
+
+        const [currentResult, prevResult] = await Promise.all(fetches)
+
+        if (!cancelled) {
+          setData(currentResult)
+          if (prevResult) setPrevData(prevResult)
+        }
       } catch (err) {
-        if (!cancelled) setError(err instanceof Error ? err.message : "Failed to load analytics")
+        if (!cancelled) setError(err instanceof Error ? err.message : t("errorTitle"))
       } finally {
         if (!cancelled) setLoading(false)
       }
     }
     fetchData()
     return () => { cancelled = true }
-  }, [dateRange, customFrom, customTo, retry])
+  }, [dateRange, customFrom, customTo, retry, compareEnabled])
+
+  useEffect(() => {
+    if (!session?.user?.id) return
+
+    const eventSource = new EventSource(`/api/analytics/live?userId=${session.user.id}`)
+
+    eventSource.onmessage = (event) => {
+      const data = JSON.parse(event.data)
+      if (data.type === "connected") return
+      if (data.type === "click") {
+        setLiveVisitors((c) => c + 1)
+      }
+    }
+
+    eventSource.onerror = () => {
+      eventSource.close()
+    }
+
+    return () => {
+      eventSource.close()
+    }
+  }, [session?.user?.id])
+
+  useEffect(() => {
+    if (liveVisitors === 0) return
+    const timer = setTimeout(() => {
+      setLiveVisitors(0)
+    }, 10000)
+    return () => clearTimeout(timer)
+  }, [liveVisitors])
+
+  useEffect(() => {
+    if (liveVisitors === 0) return
+    const timer = setTimeout(() => {
+      refreshData()
+    }, 3000)
+    return () => clearTimeout(timer)
+  }, [liveVisitors, refreshData])
+
+  const trends = {
+    clicks: compareEnabled && prevData
+      ? { value: Math.abs(pctChange(data?.clicks ?? 0, prevData.clicks)), positive: (data?.clicks ?? 0) >= prevData.clicks }
+      : undefined,
+    visitors: compareEnabled && prevData
+      ? { value: Math.abs(pctChange(data?.uniqueVisitors ?? 0, prevData.uniqueVisitors)), positive: (data?.uniqueVisitors ?? 0) >= prevData.uniqueVisitors }
+      : undefined,
+    links: compareEnabled && prevData
+      ? { value: Math.abs(pctChange(data?.totalLinks ?? 0, prevData.totalLinks)), positive: (data?.totalLinks ?? 0) >= prevData.totalLinks }
+      : undefined,
+    topLink: compareEnabled && prevData
+      ? { value: Math.abs(pctChange(data?.topLink?.clicks ?? 0, prevData.topLink?.clicks ?? 0)), positive: (data?.topLink?.clicks ?? 0) >= (prevData.topLink?.clicks ?? 0) }
+      : undefined,
+  }
 
   const referrers = (data?.referrers ?? []).map((r) => ({
     name: r.referrer,
@@ -105,51 +219,14 @@ export default function AnalyticsPage() {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <div className="text-2xl font-bold text-dark-50">Analytics</div>
-            <p className="mt-1 text-sm text-dark-100">Track your link performance</p>
+            <div className="text-2xl font-bold text-dark-50">{t("title")}</div>
+            <p className="mt-1 text-sm text-dark-100">{t("description")}</p>
           </div>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <Card key={i}>
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3">
-                  <div className="h-12 w-12 animate-pulse rounded-lg bg-dark-300" />
-                  <div className="space-y-2">
-                    <div className="h-3 w-20 animate-pulse rounded bg-dark-300" />
-                    <div className="h-5 w-16 animate-pulse rounded bg-dark-300" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        <Card>
-          <CardContent className="p-6">
-            <div className="h-64 animate-pulse rounded bg-dark-300" />
-          </CardContent>
-        </Card>
-        <div className="grid gap-6 lg:grid-cols-2">
-          <Card>
-            <CardContent className="p-6">
-              <div className="h-48 animate-pulse rounded bg-dark-300" />
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-6">
-              <div className="h-48 animate-pulse rounded bg-dark-300" />
-            </CardContent>
-          </Card>
-        </div>
-        <div className="grid gap-6 sm:grid-cols-3">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <Card key={i}>
-              <CardContent className="p-6">
-                <div className="h-48 animate-pulse rounded bg-dark-300" />
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        <SkeletonStats />
+        <SkeletonChart />
+        <SkeletonChart />
+        <SkeletonChart />
       </div>
     )
   }
@@ -157,53 +234,55 @@ export default function AnalyticsPage() {
   if (error) {
     return (
       <div className="space-y-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <div className="text-2xl font-bold text-dark-50">Analytics</div>
-            <p className="mt-1 text-sm text-dark-100">Track your link performance</p>
-          </div>
-        </div>
-        <Card>
-          <CardContent className="flex flex-col items-center justify-center gap-4 py-16">
-            <AlertCircle className="h-12 w-12 text-red-400" />
-            <p className="text-lg font-medium text-dark-50">Failed to load analytics</p>
-            <p className="text-sm text-dark-100">{error}</p>
-            <Button variant="outline" onClick={() => setRetry((c) => c + 1)}>
-              <RefreshCw className="mr-2 h-4 w-4" />
-              Try Again
-            </Button>
-          </CardContent>
-        </Card>
+        <SectionHeader title={t("title")} description={t("description")} />
+        <ErrorState
+          title={t("errorTitle")}
+          message={error}
+          onRetry={() => setRetry((c) => c + 1)}
+        />
       </div>
     )
   }
 
   if (!data) return null
 
+  if (data.clicks === 0) {
+    return (
+      <div className="space-y-6">
+        <SectionHeader title={t("title")} description={t("description")} />
+        <EmptyState
+          icon={<TrendingUp className="h-6 w-6" />}
+          title={t("emptyTitle")}
+          description={t("emptyDescription")}
+        />
+      </div>
+    )
+  }
+
   const exportCSV = () => {
     if (!data) return
     const rows = [
-      ["Metric", "Value"],
-      ["Total Clicks", data.clicks],
-      ["Unique Visitors", data.uniqueVisitors],
-      ["Total Links", data.totalLinks],
+      [t("metric"), t("value")],
+      [t("totalClicks"), data.clicks],
+      [t("uniqueVisitors"), data.uniqueVisitors],
+      [t("totalLinks"), data.totalLinks],
       [],
-      ["Date", "Clicks"],
+      [t("date"), t("clicks")],
       ...data.clicksByDay.map((d) => [d.date, d.clicks]),
       [],
-      ["Referrer", "Count"],
+      [t("referrer"), t("count")],
       ...data.referrers.map((r) => [r.referrer, r.count]),
       [],
-      ["Country", "Count"],
+      [t("country"), t("count")],
       ...data.countries.map((c) => [c.country, c.count]),
       [],
-      ["Browser", "Count"],
+      [t("browser"), t("count")],
       ...data.browsers.map((b) => [b.browser, b.count]),
       [],
-      ["Device", "Count"],
+      [t("device"), t("count")],
       ...data.devices.map((d) => [d.device, d.count]),
       [],
-      ["OS", "Count"],
+      [t("os"), t("count")],
       ...data.os.map((o) => [o.os, o.count]),
     ]
     const csv = rows.map((r) => r.join(",")).join("\n")
@@ -220,31 +299,34 @@ export default function AnalyticsPage() {
     if (!data) return
     const win = window.open("", "_blank")
     if (!win) return
+    const periodLabel = dateRange === "custom"
+      ? `${customFrom} ${t("to")} ${customTo}`
+      : dateRangeLabels[dateRange]
     win.document.write(`
-      <html><head><title>RELURL Analytics Report</title>
+      <html><head><title>${t("reportTitle")}</title>
       <style>body{font-family:sans-serif;padding:40px}h1{color:#1F6F5F}table{border-collapse:collapse;width:100%;margin:20px 0}th,td{border:1px solid #ddd;padding:8px;text-align:left}th{background:#1F6F5F;color:white}</style>
       </head><body>
-      <h1>RELURL Analytics Report</h1>
-      <p>Period: ${dateRange === "custom" ? `${customFrom} to ${customTo}` : dateRange}</p>
-      <h2>Summary</h2>
-      <table><tr><th>Metric</th><th>Value</th></tr>
-      <tr><td>Total Clicks</td><td>${data.clicks}</td></tr>
-      <tr><td>Unique Visitors</td><td>${data.uniqueVisitors}</td></tr>
-      <tr><td>Total Links</td><td>${data.totalLinks}</td></tr></table>
-      <h2>Clicks by Day</h2>
-      <table><tr><th>Date</th><th>Clicks</th></tr>
+      <h1>${t("reportTitle")}</h1>
+      <p>${t("period")}: ${periodLabel}</p>
+      <h2>${t("summary")}</h2>
+      <table><tr><th>${t("metric")}</th><th>${t("value")}</th></tr>
+      <tr><td>${t("totalClicks")}</td><td>${data.clicks}</td></tr>
+      <tr><td>${t("uniqueVisitors")}</td><td>${data.uniqueVisitors}</td></tr>
+      <tr><td>${t("totalLinks")}</td><td>${data.totalLinks}</td></tr></table>
+      <h2>${t("clicksByDay")}</h2>
+      <table><tr><th>${t("date")}</th><th>${t("clicks")}</th></tr>
       ${data.clicksByDay.map((d) => `<tr><td>${d.date}</td><td>${d.clicks}</td></tr>`).join("")}</table>
-      <h2>Top Referrers</h2>
-      <table><tr><th>Referrer</th><th>Count</th></tr>
+      <h2>${t("topReferrers")}</h2>
+      <table><tr><th>${t("referrer")}</th><th>${t("count")}</th></tr>
       ${data.referrers.slice(0, 10).map((r) => `<tr><td>${r.referrer}</td><td>${r.count}</td></tr>`).join("")}</table>
-      <h2>Top Countries</h2>
-      <table><tr><th>Country</th><th>Count</th></tr>
+      <h2>${t("topCountries")}</h2>
+      <table><tr><th>${t("country")}</th><th>${t("count")}</th></tr>
       ${data.countries.slice(0, 10).map((c) => `<tr><td>${c.country}</td><td>${c.count}</td></tr>`).join("")}</table>
-      <h2>Browsers</h2>
-      <table><tr><th>Browser</th><th>Count</th></tr>
+      <h2>${t("browsers")}</h2>
+      <table><tr><th>${t("browser")}</th><th>${t("count")}</th></tr>
       ${data.browsers.map((b) => `<tr><td>${b.browser}</td><td>${b.count}</td></tr>`).join("")}</table>
-      <h2>Devices</h2>
-      <table><tr><th>Device</th><th>Count</th></tr>
+      <h2>${t("devices")}</h2>
+      <table><tr><th>${t("device")}</th><th>${t("count")}</th></tr>
       ${data.devices.map((d) => `<tr><td>${d.device}</td><td>${d.count}</td></tr>`).join("")}</table>
       </body></html>
     `)
@@ -254,109 +336,141 @@ export default function AnalyticsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-dark-50">Analytics</h1>
-          <p className="mt-1 text-sm text-dark-100">Track your link performance</p>
-        </div>
-        <div className="flex items-center gap-3">
-          <Select
-            value={dateRange}
-            onChange={(e) => setDateRange(e.target.value as DateRange)}
-            className="w-40"
-          >
-            {dateRangeOptions.map((opt) => (
-              <option key={opt.value} value={opt.value}>{opt.label}</option>
-            ))}
-          </Select>
-          {dateRange === "custom" && (
-            <div className="flex items-center gap-2">
-              <input
-                type="date"
-                value={customFrom}
-                onChange={(e) => setCustomFrom(e.target.value)}
-                className="flex h-10 rounded-lg border border-dark-100 bg-dark-500 px-3 text-sm text-dark-50"
-              />
-              <span className="text-dark-100">to</span>
-              <input
-                type="date"
-                value={customTo}
-                onChange={(e) => setCustomTo(e.target.value)}
-                className="flex h-10 rounded-lg border border-dark-100 bg-dark-500 px-3 text-sm text-dark-50"
-              />
+      <div>
+        <SectionHeader
+          title={t("title")}
+          description={t("description")}
+          action={
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                </span>
+                <span className="text-xs font-medium text-emerald-400">{t("live")}</span>
+              </div>
+              <div className="flex rounded-lg border border-dark-100 bg-dark-500 p-0.5">
+                {dateRangeOptions.map((opt) => (
+                  <button
+                    key={opt.value}
+                    onClick={() => setDateRange(opt.value)}
+                    className={cn(
+                      "rounded-md px-3 py-1.5 text-sm font-medium transition-all",
+                      dateRange === opt.value
+                        ? "bg-primary-500 text-white shadow-sm"
+                        : "text-dark-100 hover:text-dark-50",
+                    )}
+                  >
+                    {dateRangeLabels[opt.value]}
+                  </button>
+                ))}
+              </div>
+              <button
+                onClick={() => setCompareEnabled(!compareEnabled)}
+                className={cn(
+                  "flex items-center gap-2 rounded-lg border px-3 py-1.5 text-sm font-medium transition-all",
+                  compareEnabled
+                    ? "border-primary-500 bg-primary-500/10 text-primary-500"
+                    : "border-dark-100 text-dark-100 hover:border-dark-50 hover:text-dark-50",
+                )}
+              >
+                <div
+                  className={cn(
+                    "flex h-4 w-8 rounded-full border transition-colors",
+                    compareEnabled ? "border-primary-500 bg-primary-500" : "border-dark-100 bg-dark-300",
+                  )}
+                >
+                  <div
+                    className={cn(
+                      "mt-px h-3 w-3 rounded-full bg-white transition-transform",
+                      compareEnabled ? "translate-x-[14px]" : "translate-x-[1px]",
+                    )}
+                  />
+                </div>
+                {t("compare")}
+              </button>
+              <Button variant="outline" size="sm" onClick={exportCSV}>
+                <Download className="mr-1.5 h-4 w-4" />
+                {t("exportCsv")}
+              </Button>
             </div>
-          )}
-        </div>
+          }
+        />
+        {dateRange === "custom" && (
+          <div className="mt-4 flex items-center gap-2">
+            <input
+              type="date"
+              value={customFrom}
+              onChange={(e) => setCustomFrom(e.target.value)}
+              className="flex h-10 rounded-lg border border-dark-100 bg-dark-500 px-3 text-sm text-dark-50"
+            />
+            <span className="text-dark-100">{t("to")}</span>
+            <input
+              type="date"
+              value={customTo}
+              onChange={(e) => setCustomTo(e.target.value)}
+              className="flex h-10 rounded-lg border border-dark-100 bg-dark-500 px-3 text-sm text-dark-50"
+            />
+          </div>
+        )}
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-3">
-              <div className="rounded-lg bg-dark-300 p-3">
-                <MousePointerClick className="h-5 w-5 text-primary-500" />
-              </div>
-              <div>
-                <p className="text-sm text-dark-100">Total Clicks</p>
-                <p className="text-2xl font-bold text-dark-50">{formatNumber(data.clicks)}</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-3">
-              <div className="rounded-lg bg-dark-300 p-3">
-                <Users className="h-5 w-5 text-blue-400" />
-              </div>
-              <div>
-                <p className="text-sm text-dark-100">Unique Visitors</p>
-                <p className="text-2xl font-bold text-dark-50">{formatNumber(data.uniqueVisitors)}</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-3">
-              <div className="rounded-lg bg-dark-300 p-3">
-                <TrendingUp className="h-5 w-5 text-emerald-400" />
-              </div>
-              <div>
-                <p className="text-sm text-dark-100">Total Links</p>
-                <p className="text-2xl font-bold text-dark-50">{formatNumber(data.totalLinks)}</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-3">
-              <div className="rounded-lg bg-dark-300 p-3">
-                <Trophy className="h-5 w-5 text-yellow-400" />
-              </div>
-              <div>
-                <p className="text-sm text-dark-100">Top Link</p>
-                <p className="text-xl font-bold text-dark-50 truncate">-</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+      {data.suspiciousClicks > 0 && (
+        <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-400">
+          {t("suspiciousActivity", { count: data.suspiciousClicks })}
+        </div>
+      )}
+
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <StatCard
+          label={t("totalClicks")}
+          value={formatNumber(data.clicks)}
+          icon={<MousePointerClick className="h-5 w-5" />}
+          trend={trends.clicks}
+        />
+        <StatCard
+          label={t("uniqueVisitors")}
+          value={formatNumber(data.uniqueVisitors)}
+          icon={<Users className="h-5 w-5" />}
+          trend={trends.visitors}
+        />
+        <StatCard
+          label={t("totalLinks")}
+          value={formatNumber(data.totalLinks)}
+          icon={<TrendingUp className="h-5 w-5" />}
+          trend={trends.links}
+        />
+        <StatCard
+          label={t("topLink")}
+          value={data.topLink ? `${data.topLink.slug} (${formatNumber(data.topLink.clicks)})` : "—"}
+          icon={<Trophy className="h-5 w-5" />}
+          trend={trends.topLink}
+        />
+        <StatCard
+          label={t("activeNow")}
+          value={formatNumber(liveVisitors)}
+          icon={
+            <span className="relative flex h-5 w-5 items-center justify-center">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500" />
+            </span>
+          }
+        />
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">Clicks Over Time</CardTitle>
+          <CardTitle className="text-lg">{t("clicksOverTime")}</CardTitle>
         </CardHeader>
         <CardContent>
-          <LineChart data={data.clicksByDay} xKey="date" yKey="clicks" />
+          <AreaChart data={data.clicksByDay} xKey="date" yKey="clicks" />
         </CardContent>
       </Card>
 
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Top Referrers</CardTitle>
+            <CardTitle className="text-lg">{t("topReferrers")}</CardTitle>
           </CardHeader>
           <CardContent>
             <BarChart data={referrers.slice(0, 6)} xKey="name" yKey="count" />
@@ -365,15 +479,15 @@ export default function AnalyticsPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Countries</CardTitle>
+            <CardTitle className="text-lg">{t("countries")}</CardTitle>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Country</TableHead>
-                  <TableHead className="text-right">Clicks</TableHead>
-                  <TableHead className="text-right">%</TableHead>
+                  <TableHead>{t("country")}</TableHead>
+                  <TableHead className="text-right">{t("clicks")}</TableHead>
+                  <TableHead className="text-right">{t("percent")}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -396,9 +510,9 @@ export default function AnalyticsPage() {
       <div className="grid gap-6 sm:grid-cols-3">
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-lg">
               <Monitor className="h-4 w-4 text-dark-100" />
-              Devices
+              {t("devices")}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -407,7 +521,7 @@ export default function AnalyticsPage() {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Browsers</CardTitle>
+            <CardTitle className="text-lg">{t("browsers")}</CardTitle>
           </CardHeader>
           <CardContent>
             <PieChart data={browsers} showLegend />
@@ -415,7 +529,7 @@ export default function AnalyticsPage() {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Operating Systems</CardTitle>
+            <CardTitle className="text-lg">{t("operatingSystems")}</CardTitle>
           </CardHeader>
           <CardContent>
             <PieChart data={os} showLegend />
@@ -426,11 +540,11 @@ export default function AnalyticsPage() {
       <div className="flex items-center justify-end gap-3">
         <Button variant="outline" onClick={exportCSV}>
           <Download className="mr-2 h-4 w-4" />
-          Export CSV
+          {t("exportCsv")}
         </Button>
         <Button variant="primary" onClick={exportPDF}>
           <Download className="mr-2 h-4 w-4" />
-          Export PDF
+          {t("exportPdf")}
         </Button>
       </div>
     </div>

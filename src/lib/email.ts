@@ -65,6 +65,15 @@ export async function sendWelcome(email: string, name: string): Promise<void> {
   });
 }
 
+export async function sendEmail({ to, subject, html }: { to: string; subject: string; html: string }): Promise<void> {
+  if (!resend) {
+    console.log(`[EMAIL] To: ${to}, Subject: ${subject}`)
+    return
+  }
+
+  await resend.emails.send({ from, to, subject, html })
+}
+
 export async function sendVerification(email: string, token: string): Promise<void> {
   const verifyLink = `${process.env.NEXT_PUBLIC_APP_URL}/verify-email?token=${token}`;
 

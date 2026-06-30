@@ -1,3 +1,5 @@
+import { redis } from "@/lib/cache"
+
 interface RateLimitEntry {
   count: number;
   resetTime: number;
@@ -14,7 +16,7 @@ interface RateLimitResult {
   resetTime: number;
 }
 
-const store = new Map<string, RateLimitEntry>();
+const inMemory = new Map<string, RateLimitEntry>();
 const CLEANUP_INTERVAL = 60_000;
 
 let cleanupTimer: ReturnType<typeof setInterval> | null = null;
@@ -23,27 +25,40 @@ function startCleanup(windowMs: number): void {
   if (cleanupTimer) return;
   cleanupTimer = setInterval(() => {
     const now = Date.now();
-    for (const [key, entry] of store.entries()) {
+    for (const [key, entry] of inMemory.entries()) {
       if (entry.resetTime <= now) {
-        store.delete(key);
+        inMemory.delete(key);
       }
     }
   }, Math.min(CLEANUP_INTERVAL, windowMs));
 }
 
-export function rateLimit(
+export async function rateLimit(
   ip: string,
   options: RateLimitOptions = {}
-): RateLimitResult {
+): Promise<RateLimitResult> {
   const { windowMs = 60_000, maxRequests = 10 } = options;
   const now = Date.now();
 
+  if (process.env.UPSTASH_REDIS_REST_URL) {
+    const key = `ratelimit:${ip}`;
+    const current = await redis.incr(key);
+    if (current === 1) {
+      await redis.expire(key, Math.ceil(windowMs / 1000));
+    }
+    const ttl = await redis.ttl(key);
+    return {
+      success: current <= maxRequests,
+      remaining: Math.max(0, maxRequests - current),
+      resetTime: now + (ttl > 0 ? ttl * 1000 : windowMs),
+    };
+  }
+
   startCleanup(windowMs);
 
-  const entry = store.get(ip);
-
+  const entry = inMemory.get(ip);
   if (!entry || entry.resetTime <= now) {
-    store.set(ip, { count: 1, resetTime: now + windowMs });
+    inMemory.set(ip, { count: 1, resetTime: now + windowMs });
     return { success: true, remaining: maxRequests - 1, resetTime: now + windowMs };
   }
 
@@ -60,9 +75,12 @@ export function rateLimit(
 }
 
 export function resetRateLimit(ip: string): void {
-  store.delete(ip);
+  inMemory.delete(ip);
+  if (process.env.UPSTASH_REDIS_REST_URL) {
+    redis.del(`ratelimit:${ip}`).catch(() => {});
+  }
 }
 
 export function clearRateLimits(): void {
-  store.clear();
+  inMemory.clear();
 }

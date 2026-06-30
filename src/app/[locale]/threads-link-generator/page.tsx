@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Threads Link Generator - Threads Post Links",
-  description: "Generate short, trackable links for Threads posts and profiles. Boost your Threads marketing and track engagement with RELURL.",
-  path: "/threads-link-generator",
-  keywords: ["threads link generator", "threads post links", "threads marketing"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Threads Link Generator - Threads Post Links",
+    description: "Generate short, trackable links for Threads posts and profiles. Boost your Threads marketing and track engagement with RELURL.",
+    path: "/threads-link-generator",
+    keywords: ["threads link generator", "threads post links", "threads marketing"],
+    locale,
+  })
+}
 
 export default function ThreadsLinkGeneratorPage() {
   const href = "/threads-link-generator"
+  const relatedArticles = getPostsByLandingPage("/threads-link-generator").slice(0, 3)
   return (
     <URLLandingPage
       title="Threads Link Generator"
@@ -43,6 +48,8 @@ export default function ThreadsLinkGeneratorPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

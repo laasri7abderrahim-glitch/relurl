@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Snapchat Link Generator - Snap & Story Links",
-  description: "Generate short links for Snapchat stories, snaps, and spotlights. Track swipe-ups and boost engagement with RELURL.",
-  path: "/snapchat-link-generator",
-  keywords: ["snapchat link generator", "snapchat story links", "snapchat marketing"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Snapchat Link Generator - Snap & Story Links",
+    description: "Generate short links for Snapchat stories, snaps, and spotlights. Track swipe-ups and boost engagement with RELURL.",
+    path: "/snapchat-link-generator",
+    keywords: ["snapchat link generator", "snapchat story links", "snapchat marketing"],
+    locale,
+  })
+}
 
 export default function SnapchatLinkGeneratorPage() {
   const href = "/snapchat-link-generator"
+  const relatedArticles = getPostsByLandingPage("/snapchat-link-generator").slice(0, 3)
   return (
     <URLLandingPage
       title="Snapchat Link Generator"
@@ -43,6 +48,8 @@ export default function SnapchatLinkGeneratorPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

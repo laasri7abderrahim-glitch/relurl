@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Nonprofit Link Shortener - Donation & Campaign Links",
-  description: "Create short links for donation pages, volunteer signups, and awareness campaigns. Track supporter engagement with RELURL.",
-  path: "/nonprofit-link-shortener",
-  keywords: ["nonprofit link shortener", "donation link generator", "charity links"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Nonprofit Link Shortener - Donation & Campaign Links",
+    description: "Create short links for donation pages, volunteer signups, and awareness campaigns. Track supporter engagement with RELURL.",
+    path: "/nonprofit-link-shortener",
+    keywords: ["nonprofit link shortener", "donation link generator", "charity links"],
+    locale,
+  })
+}
 
 export default function NonprofitLinkShortenerPage() {
   const href = "/nonprofit-link-shortener"
+  const relatedArticles = getPostsByLandingPage("/nonprofit-link-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Nonprofit Link Shortener"
@@ -43,6 +48,8 @@ export default function NonprofitLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

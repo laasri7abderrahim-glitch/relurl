@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { getCachedOrFetch } from "@/lib/cache";
 
 const querySchema = z.object({
   linkId: z.string().uuid().optional(),
@@ -63,101 +64,149 @@ export async function GET(req: NextRequest) {
 
     const { linkId, period, groupBy } = parsed.data;
 
-    const accessibleLinks = await prisma.shortLink.findMany({
-      where: linkId
-        ? { id: linkId, userId: session.user.id }
-        : { userId: session.user.id },
-      select: { id: true },
-    });
-    const linkIds = accessibleLinks.map((l) => l.id);
+    const cacheKey = `analytics:${session.user.id}:${linkId || "all"}:${period}:${groupBy}`;
 
-    if (linkIds.length === 0) {
-      return NextResponse.json({
-        data: {
-          totalClicks: 0,
-          uniqueClicks: 0,
-          clicksOverTime: [],
-          topReferrers: [],
-          topCountries: [],
-          topBrowsers: [],
-          topDevices: [],
-        },
-        error: null,
+    const result = await getCachedOrFetch(cacheKey, async () => {
+      const accessibleLinks = await prisma.shortLink.findMany({
+        where: linkId
+          ? { id: linkId, userId: session.user.id }
+          : { userId: session.user.id },
+        select: { id: true },
       });
-    }
+      const linkIds = accessibleLinks.map((l) => l.id);
 
-    const since = PERIOD_MS[period]
-      ? new Date(Date.now() - PERIOD_MS[period]!)
-      : undefined;
-    const clickWhere = {
-      linkId: { in: linkIds },
-      ...(since ? { timestamp: { gte: since } } : {}),
-    };
+      if (linkIds.length === 0) {
+        return {
+          clicks: 0,
+          uniqueVisitors: 0,
+          totalLinks: 0,
+          clicksByDay: [],
+          referrers: [],
+          countries: [],
+          browsers: [],
+          devices: [],
+          os: [],
+          topLink: null,
+        };
+      }
 
-    const [totalClicks, uniqueClicks, clicks, referrers, countries, browsers, devices] =
-      await Promise.all([
-        prisma.linkClick.count({ where: clickWhere }),
-        prisma.linkClick.count({ where: { ...clickWhere, isUnique: true } }),
-        prisma.linkClick.findMany({
-          where: clickWhere,
-          select: { timestamp: true, isUnique: true },
-          orderBy: { timestamp: "asc" },
-        }),
-        prisma.linkClick.groupBy({
-          by: ["referer"],
-          where: { ...clickWhere, referer: { not: null } },
-          _count: { id: true },
-          orderBy: { _count: { id: "desc" } },
-          take: 10,
-        }),
-        prisma.linkClick.groupBy({
-          by: ["country"],
-          where: { ...clickWhere, country: { not: null } },
-          _count: { id: true },
-          orderBy: { _count: { id: "desc" } },
-          take: 10,
-        }),
-        prisma.linkClick.groupBy({
-          by: ["browser"],
-          where: { ...clickWhere, browser: { not: null } },
-          _count: { id: true },
-          orderBy: { _count: { id: "desc" } },
-          take: 10,
-        }),
-        prisma.linkClick.groupBy({
-          by: ["device"],
-          where: { ...clickWhere, device: { not: null } },
-          _count: { id: true },
-          orderBy: { _count: { id: "desc" } },
-          take: 10,
-        }),
-      ]);
+      const since = PERIOD_MS[period]
+        ? new Date(Date.now() - PERIOD_MS[period]!)
+        : undefined;
+      const clickWhere = {
+        linkId: { in: linkIds },
+        ...(since ? { timestamp: { gte: since } } : {}),
+      };
 
-    const clicksOverTime = aggregateClicks(clicks, groupBy);
+      const [totalClicks, uniqueClicks, suspiciousClicks, clicks, referrers, countries, browsers, devices, os] =
+        await Promise.all([
+          prisma.linkClick.count({ where: clickWhere }),
+          prisma.linkClick.count({ where: { ...clickWhere, isUnique: true } }),
+          prisma.linkClick.count({ where: { ...clickWhere, isSuspicious: true } }),
+          prisma.linkClick.findMany({
+            where: clickWhere,
+            select: { timestamp: true, isUnique: true },
+            orderBy: { timestamp: "asc" },
+          }),
+          prisma.linkClick.groupBy({
+            by: ["referer"],
+            where: { ...clickWhere, referer: { not: null } },
+            _count: { id: true },
+            orderBy: { _count: { id: "desc" } },
+            take: 10,
+          }),
+          prisma.linkClick.groupBy({
+            by: ["country"],
+            where: { ...clickWhere, country: { not: null } },
+            _count: { id: true },
+            orderBy: { _count: { id: "desc" } },
+            take: 10,
+          }),
+          prisma.linkClick.groupBy({
+            by: ["browser"],
+            where: { ...clickWhere, browser: { not: null } },
+            _count: { id: true },
+            orderBy: { _count: { id: "desc" } },
+            take: 10,
+          }),
+          prisma.linkClick.groupBy({
+            by: ["device"],
+            where: { ...clickWhere, device: { not: null } },
+            _count: { id: true },
+            orderBy: { _count: { id: "desc" } },
+            take: 10,
+          }),
+          prisma.linkClick.groupBy({
+            by: ["os"],
+            where: { ...clickWhere, os: { not: null } },
+            _count: { id: true },
+            orderBy: { _count: { id: "desc" } },
+            take: 10,
+          }),
+        ]);
 
-    return NextResponse.json({
-      data: {
-        totalClicks,
-        uniqueClicks,
-        clicksOverTime,
-        topReferrers: referrers.map((r) => ({
-          name: r.referer ?? "Direct",
+      const clicksByDay = aggregateClicks(clicks, groupBy);
+
+      const topLinkGroup = await prisma.linkClick.groupBy({
+        by: ["linkId"],
+        where: clickWhere,
+        _count: { id: true },
+        orderBy: { _count: { id: "desc" } },
+        take: 1,
+      });
+
+      let topLink: { url: string; slug: string; clicks: number } | null = null;
+      if (topLinkGroup.length > 0) {
+        const link = await prisma.shortLink.findUnique({
+          where: { id: topLinkGroup[0].linkId },
+          select: { url: true, slug: true },
+        });
+        if (link) {
+          topLink = { url: link.url, slug: link.slug, clicks: topLinkGroup[0]._count.id };
+        }
+      }
+
+      return {
+        clicks: totalClicks,
+        uniqueVisitors: uniqueClicks,
+        suspiciousClicks,
+        totalLinks: linkIds.length,
+        clicksByDay,
+        referrers: referrers.map((r) => ({
+          referrer: r.referer ?? "Direct",
           count: r._count.id,
         })),
-        topCountries: countries.map((c) => ({
-          name: c.country ?? "Unknown",
+        countries: countries.map((c) => ({
+          country: c.country ?? "Unknown",
           count: c._count.id,
         })),
-        topBrowsers: browsers.map((b) => ({
-          name: b.browser ?? "Unknown",
+        browsers: browsers.map((b) => ({
+          browser: b.browser ?? "Unknown",
           count: b._count.id,
         })),
-        topDevices: devices.map((d) => ({
-          name: d.device ?? "Unknown",
+        devices: devices.map((d) => ({
+          device: d.device ?? "Unknown",
           count: d._count.id,
         })),
-      },
-      error: null,
+        os: os.map((o) => ({
+          os: o.os ?? "Unknown",
+          count: o._count.id,
+        })),
+        topLink,
+      };
+    }, 30);
+
+    return NextResponse.json(result ? result : {
+      clicks: 0,
+      uniqueVisitors: 0,
+      totalLinks: 0,
+      clicksByDay: [],
+      referrers: [],
+      countries: [],
+      browsers: [],
+      devices: [],
+      os: [],
+      topLink: null,
     });
   } catch (error) {
     return NextResponse.json(

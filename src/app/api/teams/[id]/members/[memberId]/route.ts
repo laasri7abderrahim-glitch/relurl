@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { createAuditLog } from "@/lib/audit";
 
 const updateRoleSchema = z.object({
   role: z.enum(["ADMIN", "MEMBER"]),
@@ -133,6 +134,15 @@ export async function DELETE(
     }
 
     await prisma.teamMember.delete({ where: { id: memberId } });
+
+    createAuditLog({
+      userId: session.user.id,
+      teamId: id,
+      action: "DELETE",
+      entity: "TeamMember",
+      entityId: memberId,
+      changes: { removedUserId: targetMember.userId, removedUserRole: targetMember.role },
+    });
 
     return NextResponse.json({ data: null, error: null });
   } catch (error) {

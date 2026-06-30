@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Photography Link Shortener - Portfolio & Gallery Links",
-  description: "Shorten portfolio, gallery, and booking links for photographers. Showcase your work and track client interest with RELURL.",
-  path: "/photography-link-shortener",
-  keywords: ["photography link shortener", "portfolio link generator", "photographer marketing"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Photography Link Shortener - Portfolio & Gallery Links",
+    description: "Shorten portfolio, gallery, and booking links for photographers. Showcase your work and track client interest with RELURL.",
+    path: "/photography-link-shortener",
+    keywords: ["photography link shortener", "portfolio link generator", "photographer marketing"],
+    locale,
+  })
+}
 
 export default function PhotographyLinkShortenerPage() {
   const href = "/photography-link-shortener"
+  const relatedArticles = getPostsByLandingPage("/photography-link-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Photography Link Shortener"
@@ -43,6 +48,8 @@ export default function PhotographyLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

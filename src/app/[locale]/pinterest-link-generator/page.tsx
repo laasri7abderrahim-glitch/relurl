@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Pinterest Link Generator - Pin & Board Links",
-  description: "Generate short, trackable links for Pinterest pins and boards. Optimize your Pinterest marketing strategy with RELURL analytics.",
-  path: "/pinterest-link-generator",
-  keywords: ["pinterest link generator", "pinterest pin links", "pinterest marketing"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Pinterest Link Generator - Pin & Board Links",
+    description: "Generate short, trackable links for Pinterest pins and boards. Optimize your Pinterest marketing strategy with RELURL analytics.",
+    path: "/pinterest-link-generator",
+    keywords: ["pinterest link generator", "pinterest pin links", "pinterest marketing"],
+    locale,
+  })
+}
 
 export default function PinterestLinkGeneratorPage() {
   const href = "/pinterest-link-generator"
+  const relatedArticles = getPostsByLandingPage("/pinterest-link-generator").slice(0, 3)
   return (
     <URLLandingPage
       title="Pinterest Link Generator"
@@ -43,6 +48,8 @@ export default function PinterestLinkGeneratorPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

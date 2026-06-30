@@ -1,12 +1,15 @@
-import type { Metadata } from "next"
+import { generateSEOMetadata } from "@/lib/seo"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 
-export const metadata: Metadata = {
-  title: "Changelog - RELURL Updates & Features",
-  description: "See what's new in RELURL. Latest features, improvements, and bug fixes for our URL shortener platform.",
-  alternates: { canonical: "https://relurl.com/changelog" },
-  openGraph: { title: "Changelog", description: "RELURL product updates." },
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Changelog - Product Updates & Releases",
+    description: "Stay up to date with the latest RELURL product updates, new features, and improvements.",
+    path: "/changelog",
+    locale,
+  })
 }
 
 const updates = [

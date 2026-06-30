@@ -1,16 +1,21 @@
-import type { Metadata } from "next"
 import { allQRCodes } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "QR Code for WhatsApp - Instant Messaging",
-  description: "Generate a QR code that opens a WhatsApp chat. Customers scan and message you instantly — perfect for support and sales.",
-  path: "/qr-code-for-whatsapp",
-  keywords: ["qr code for whatsapp", "whatsapp qr code", "whatsapp chat qr"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "QR Code for WhatsApp - Instant Messaging",
+    description: "Generate a QR code that opens a WhatsApp chat. Customers scan and message you instantly — perfect for support and sales.",
+    path: "/qr-code-for-whatsapp",
+    keywords: ["qr code for whatsapp", "whatsapp qr code", "whatsapp chat qr"],
+    locale,
+  })
+}
 
 export default function Page() {
+  const relatedArticles = getPostsByLandingPage("/qr-code-for-whatsapp").slice(0, 3)
   return (
     <>
       <QRCodeLandingPage
@@ -43,6 +48,8 @@ export default function Page() {
         { title: "Free QR Code Generator", href: "/free-qr-code-generator" },
       ]}
       allQRCodes={allQRCodes}
+
+      relatedArticles={relatedArticles}
     />
     </>
   )

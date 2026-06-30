@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Startup Link Shortener - Launch & Growth Links",
-  description: "Shorten landing pages, product hunt links, and pitch deck URLs. Track investor and user interest from every channel with RELURL.",
-  path: "/startup-link-shortener",
-  keywords: ["startup link shortener", "product launch links", "pitch deck link shortener"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Startup Link Shortener - Launch & Growth Links",
+    description: "Shorten landing pages, product hunt links, and pitch deck URLs. Track investor and user interest from every channel with RELURL.",
+    path: "/startup-link-shortener",
+    keywords: ["startup link shortener", "product launch links", "pitch deck link shortener"],
+    locale,
+  })
+}
 
 export default function StartupLinkShortenerPage() {
   const href = "/startup-link-shortener"
+  const relatedArticles = getPostsByLandingPage("/startup-link-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Startup Link Shortener"
@@ -43,6 +48,8 @@ export default function StartupLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

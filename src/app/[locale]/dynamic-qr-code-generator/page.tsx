@@ -1,18 +1,23 @@
-import type { Metadata } from "next"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 import { allLandingPages, qrPages } from "@/lib/url-pages"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 
 const allQRCodes = [...allLandingPages, ...qrPages]
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Dynamic QR Code Generator - Editable QR Codes",
-  description: "Create dynamic QR codes that can be edited after printing. Track scans and update destinations without changing the code.",
-  path: "/dynamic-qr-code-generator",
-  keywords: ["dynamic qr code", "editable qr code", "trackable qr code"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Dynamic QR Code Generator - Editable QR Codes",
+    description: "Create dynamic QR codes that can be edited after printing. Track scans and update destinations without changing the code.",
+    path: "/dynamic-qr-code-generator",
+    keywords: ["dynamic qr code", "editable qr code", "trackable qr code"],
+    locale,
+  })
+}
 
 export default function Page() {
+  const relatedArticles = getPostsByLandingPage("/dynamic-qr-code-generator").slice(0, 3)
   return (
     <QRCodeLandingPage
       title="Dynamic QR Code Generator"
@@ -48,6 +53,8 @@ export default function Page() {
         { q: "Can I see how many times my QR code was scanned?", a: "Yes, dynamic QR codes include scan analytics. Your dashboard shows total scans, scans over time, device types, operating systems, and geographic locations of scanners." },
         { q: "Is there a limit to how many times I can edit a dynamic QR code?", a: "No, you can edit dynamic QR codes as many times as you like. The link updates immediately, and the existing QR codes printed on your materials will still work — they'll now redirect to the new destination." },
       ]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

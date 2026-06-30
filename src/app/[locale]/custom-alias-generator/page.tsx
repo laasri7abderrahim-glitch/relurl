@@ -1,16 +1,22 @@
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata = generateSEOMetadata({
-  title: "Custom Alias Generator - Memorable Short Links",
-  description: "Generate custom aliases for your short URLs. Create memorable, branded, and meaningful link aliases that are easy to remember and share anywhere.",
-  path: "/custom-alias-generator",
-  keywords: ["custom alias generator", "short link alias", "url slug generator"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Custom Alias Generator - Memorable Short Links",
+    description: "Generate custom aliases for your short URLs. Create memorable, branded, and meaningful link aliases that are easy to remember and share anywhere.",
+    path: "/custom-alias-generator",
+    keywords: ["custom alias generator", "short link alias", "url slug generator"],
+    locale,
+  })
+}
 
 export default function CustomAliasGeneratorPage() {
   const href = "/custom-alias-generator"
+  const relatedArticles = getPostsByLandingPage("/custom-alias-generator").slice(0, 3)
   return (
     <URLLandingPage
       title="Custom Alias Generator"
@@ -42,6 +48,8 @@ export default function CustomAliasGeneratorPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

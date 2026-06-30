@@ -1,0 +1,50 @@
+import { BlogPost } from "../types"
+
+export const article: BlogPost = {
+  slug: "kw-60-how-to-customize-short-link",
+  title: "How to Customize a Short Link: Make Every URL Work for Your Brand",
+  metaDescription: "Learn how to customize a short link with branded slugs and domains. Boost click-through rates, build trust, and take control of every URL you share. Complete guide with RELURL.",
+  keywords: ["customize short link", "custom url shortener", "branded short link", "custom slug", "short link customization"],
+  landingPage: "/custom-url-shortener",
+  category: "Guides",
+  date: "June 29, 2026",
+  readTime: "7 min read",
+  image: "https://picsum.photos/seed/kw-60-how-to-customize-short-link/1200/630",
+  imageAlt: "How to Customize a Short Link: Make Every URL Work for Your Brand",
+  content: [
+    { type: "paragraph", content: "A generic short link like bit.ly/3xK9mQ gets the job done, but it communicates nothing about your brand. Customizing your short links transforms them from generic utilities into marketing assets. When you customize a short link, you choose the slug, the domain, and the destination giving you complete control over the message your link sends before someone even clicks it." },
+    { type: "heading", content: "What Does It Mean to Customize a Short Link?", level: 2 },
+    { type: "paragraph", content: "Customization operates at two levels: the slug and the domain. The slug is the trailing part of the short URL after the domain. A random slug like aB3xY9 is replaced with something descriptive like summer-sale or download-ebook. The domain itself can be your own branded domain instead of a generic shortener domain." },
+    { type: "paragraph", content: "When you customize a short link at both levels, you create something like yourbrand.link/summer-sale instead of relurl.com/aB3xY9. The difference in click-through rate is substantial studies consistently show 30-40 percent higher CTR for customized branded short links compared to generic ones." },
+    { type: "heading", content: "Step-by-Step: How to Customize a Short Link with RELURL", level: 2 },
+    { type: "list", items: ["Navigate to RELURL and create a free account or log in to your existing account", "Click the shortcut button and paste your destination URL into the input field", "Before generating, click the customize option to reveal the slug field", "Type your desired slug use lowercase letters, hyphens, and numbers for best results", "Select your branded domain if you have one configured, or use the default relurl.com domain", "Click create and your customized short link is ready to share"] },
+    { type: "paragraph", content: "The entire process takes under a minute. RELURL checks slug availability in real time, so you know instantly whether your desired slug is taken." },
+    { type: "heading", content: "Choosing the Perfect Slug", level: 2 },
+    { type: "paragraph", content: "A great slug is short, descriptive, and memorable. It tells the reader what to expect before they click. Compare relurl.com/guide vs. relurl.com/aB3xY9. The first one communicates value. The second one communicates nothing." },
+    { type: "paragraph", content: "Slug best practices include keeping it under 20 characters for easy typing on mobile, using hyphens to separate words for readability, avoiding special characters that may break in certain messaging apps, and aligning with your campaign naming conventions." },
+    { type: "paragraph", content: "For permanent links like your Instagram bio link, use a generic slug like links or about. For campaign-specific links, include the campaign name or offer. For content links, match the content title." },
+    { type: "heading", content: "Branded Domains: The Next Level of Customization", level: 2 },
+    { type: "paragraph", content: "Customizing the slug is the first step. Using your own domain is the upgrade. A branded short domain like yourbrand.link or go.yourcompany.com turns every short link into a brand impression. Every time someone sees the link, they see your brand name." },
+    { type: "paragraph", content: "RELURL supports custom branded domains on all plans. Setting one up requires configuring a CNAME record in your DNS settings pointing to RELURL's infrastructure. The process takes about five minutes, and once complete, you can select your branded domain from the dropdown whenever you create a link." },
+    { type: "paragraph", content: "Branded domains also improve security. Scammers cannot create links on your domain because you control the DNS. This protects your audience from phishing attacks that use lookalike shorteners." },
+    { type: "heading", content: "Editing Existing Short Links", level: 2 },
+    { type: "paragraph", content: "One of the most powerful customization features is the ability to edit a short link after creation. If you customize a short link with the slug summer-sale-2026 and the campaign shifts to a fall promotion, you do not need to create a new link. You edit the destination URL of the existing link." },
+    { type: "paragraph", content: "RELURL supports destination editing for all links. This means your printed materials, social media posts, and email campaigns do not need updating when your target URL changes. The short link stays the same, but where it leads can change instantly." },
+    { type: "paragraph", content: "You can also update the slug itself if you need to rebrand a link. This is useful when a campaign name changes or when you want to standardize your link naming conventions across past and future content." },
+    { type: "heading", content: "Analytics for Customized Links", level: 2 },
+    { type: "paragraph", content: "Customized short links benefit from the same analytics as any other link. RELURL records every click with geographic data, device information, referrer, and timestamp. When you customize a link, you can compare its performance against generic links to measure the impact of your branding." },
+    { type: "paragraph", content: "A/B testing is straightforward: share a customized branded link in one channel and a generic short link in another, then compare click-through rates. The data will likely confirm what studies already show branded links outperform generic ones, but your specific numbers help justify investment in branded domains." },
+    { type: "heading", content: "Common Customization Mistakes", level: 2 },
+    { type: "list", items: ["Using overly long slugs that defeat the purpose of shortening keep it under 25 characters", "Choosing slugs that are hard to spell or pronounce verbally avoid homophones and ambiguous spellings", "Changing slugs too frequently consistency builds recognition stick with a stable slug system", "Ignoring case sensitivity slugs are case-sensitive on most shorteners use lowercase consistently", "Forgetting to update link destinations when campaigns change check your old links periodically"] },
+    { type: "heading", content: "Scaling Customization for Teams", level: 2 },
+    { type: "paragraph", content: "When multiple team members create links, consistent customization becomes a challenge. RELURL's team workspace enforces naming conventions and domain selection. Administrators can require branded domains for all links, set slug format rules, and review all link creations in a centralized dashboard." },
+    { type: "paragraph", content: "This governance ensures that every link the team creates reinforces the brand rather than diluting it. A customer receiving links from different departments sees the same branded domain and consistent slug format every time." },
+    { type: "faq", faqs: [
+      { q: "Can I customize a short link after creating it?", a: "Yes. RELURL allows you to edit both the slug and the destination URL after creation. Your existing short links continue working while you make changes." },
+      { q: "What makes a good custom slug?", a: "A good slug is short (under 20 characters), descriptive, uses hyphens between words, and aligns with your brand or campaign name. Avoid random characters and special symbols." },
+      { q: "Do branded domains really increase click-through rates?", a: "Yes. Multiple studies show 30-40 percent higher CTR for branded short links compared to generic shortener domains, due to increased trust and recognition." },
+      { q: "Can I use multiple branded domains with RELURL?", a: "Yes. RELURL supports unlimited custom domains on applicable plans. You can use different domains for different campaigns or brands." }
+    ] },
+    { type: "cta", content: "Customize your first short link with RELURL custom URL shortener and make every link work for your brand." }
+  ]
+}

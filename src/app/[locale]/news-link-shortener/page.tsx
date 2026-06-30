@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "News Link Shortener - Article & Story Links",
-  description: "Shorten news articles and stories for easy social sharing. Track readership, optimize headlines, and boost engagement with RELURL.",
-  path: "/news-link-shortener",
-  keywords: ["news link shortener", "article link generator", "journalism links"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "News Link Shortener - Article & Story Links",
+    description: "Shorten news articles and stories for easy social sharing. Track readership, optimize headlines, and boost engagement with RELURL.",
+    path: "/news-link-shortener",
+    keywords: ["news link shortener", "article link generator", "journalism links"],
+    locale,
+  })
+}
 
 export default function NewsLinkShortenerPage() {
   const href = "/news-link-shortener"
+  const relatedArticles = getPostsByLandingPage("/news-link-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="News Link Shortener"
@@ -43,6 +48,8 @@ export default function NewsLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

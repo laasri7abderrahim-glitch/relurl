@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Discord Link Generator - Server & Community Links",
-  description: "Generate short links for Discord servers, channels, and events. Grow your community and track member engagement with RELURL.",
-  path: "/discord-link-generator",
-  keywords: ["discord link generator", "discord server links", "discord community links"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Discord Link Generator - Server & Community Links",
+    description: "Generate short links for Discord servers, channels, and events. Grow your community and track member engagement with RELURL.",
+    path: "/discord-link-generator",
+    keywords: ["discord link generator", "discord server links", "discord community links"],
+    locale,
+  })
+}
 
 export default function DiscordLinkGeneratorPage() {
   const href = "/discord-link-generator"
+  const relatedArticles = getPostsByLandingPage("/discord-link-generator").slice(0, 3)
   return (
     <URLLandingPage
       title="Discord Link Generator"
@@ -43,6 +48,8 @@ export default function DiscordLinkGeneratorPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

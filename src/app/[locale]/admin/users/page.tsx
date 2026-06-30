@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState, useCallback } from "react"
+import { useTranslations } from "next-intl"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
@@ -22,6 +23,7 @@ interface UserData {
 }
 
 export default function AdminUsersPage() {
+  const t = useTranslations("admin.users")
   const [users, setUsers] = useState<UserData[]>([])
   const [total, setTotal] = useState(0)
   const [page, setPage] = useState(1)
@@ -43,11 +45,11 @@ export default function AdminUsersPage() {
       setUsers(data.data.users)
       setTotal(data.data.total)
     } catch {
-      addToast("Failed to load users", "error")
+      addToast(t("toast.loadFailed"), "error")
     } finally {
       setLoading(false)
     }
-  }, [page, search, addToast])
+  }, [page, search, addToast, t])
 
   useEffect(() => {
     fetchUsers()
@@ -68,25 +70,25 @@ export default function AdminUsersPage() {
 
       if (!res.ok) throw new Error("Action failed")
 
-      addToast("User updated successfully", "success")
+      addToast(t("toast.updated"), "success")
       fetchUsers()
     } catch {
-      addToast("Failed to update user", "error")
+      addToast(t("toast.updateFailed"), "error")
     }
   }
 
   const handleDelete = async (userId: string) => {
-    if (!confirm("Are you sure you want to delete this user? This action cannot be undone.")) return
+    if (!confirm(t("deleteConfirm"))) return
 
     try {
       const res = await fetch(`/api/admin/users/${userId}`, { method: "DELETE" })
 
       if (!res.ok) throw new Error("Delete failed")
 
-      addToast("User deleted successfully", "success")
+      addToast(t("toast.deleted"), "success")
       fetchUsers()
     } catch {
-      addToast("Failed to delete user", "error")
+      addToast(t("toast.deleteFailed"), "error")
     }
   }
 
@@ -95,18 +97,18 @@ export default function AdminUsersPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-dark-50">Users</h1>
-        <p className="mt-1 text-sm text-dark-100">Manage all registered users</p>
+        <h1 className="text-2xl font-bold text-dark-50">{t("title")}</h1>
+        <p className="mt-1 text-sm text-dark-100">{t("subtitle")}</p>
       </div>
 
       <Card>
         <CardHeader>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <CardTitle className="text-lg">All Users ({formatNumber(total)})</CardTitle>
+            <CardTitle className="text-lg">{t("allUsers", { total: formatNumber(total) })}</CardTitle>
             <div className="relative max-w-xs">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-dark-100" />
               <Input
-                placeholder="Search by name or email..."
+                placeholder={t("searchPlaceholder")}
                 value={search}
                 onChange={(e) => { setSearch(e.target.value); setPage(1) }}
                 className="pl-9"
@@ -122,19 +124,19 @@ export default function AdminUsersPage() {
               ))}
             </div>
           ) : users.length === 0 ? (
-            <p className="text-sm text-dark-100">No users found.</p>
+            <p className="text-sm text-dark-100">{t("noUsers")}</p>
           ) : (
             <>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Email</TableHead>
-                    <TableHead>Role</TableHead>
-                    <TableHead>Links</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Joined</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
+                    <TableHead>{t("name")}</TableHead>
+                    <TableHead>{t("email")}</TableHead>
+                    <TableHead>{t("role")}</TableHead>
+                    <TableHead>{t("links")}</TableHead>
+                    <TableHead>{t("status")}</TableHead>
+                    <TableHead>{t("joined")}</TableHead>
+                    <TableHead className="text-right">{t("actions")}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -150,7 +152,7 @@ export default function AdminUsersPage() {
                       <TableCell className="text-dark-50">{formatNumber(user.linkCount)}</TableCell>
                       <TableCell>
                         <Badge variant={user.isActive ? "success" : "destructive"}>
-                          {user.isActive ? "Active" : "Banned"}
+                          {user.isActive ? t("active") : t("banned")}
                         </Badge>
                       </TableCell>
                       <TableCell className="text-dark-100 text-nowrap">
@@ -163,7 +165,7 @@ export default function AdminUsersPage() {
                               variant="ghost"
                               size="sm"
                               onClick={() => handleAction(user.id, "ban")}
-                              title="Ban user"
+                              title={t("banUser")}
                             >
                               <Ban className="h-4 w-4 text-red-400" />
                             </Button>
@@ -172,7 +174,7 @@ export default function AdminUsersPage() {
                               variant="ghost"
                               size="sm"
                               onClick={() => handleAction(user.id, "unban")}
-                              title="Unban user"
+                              title={t("unbanUser")}
                             >
                               <ShieldOff className="h-4 w-4 text-emerald-400" />
                             </Button>
@@ -182,7 +184,7 @@ export default function AdminUsersPage() {
                               variant="ghost"
                               size="sm"
                               onClick={() => handleAction(user.id, "role", "USER")}
-                              title="Remove admin"
+                              title={t("removeAdmin")}
                             >
                               <Shield className="h-4 w-4 text-orange-400" />
                             </Button>
@@ -191,7 +193,7 @@ export default function AdminUsersPage() {
                               variant="ghost"
                               size="sm"
                               onClick={() => handleAction(user.id, "role", "ADMIN")}
-                              title="Make admin"
+                              title={t("makeAdmin")}
                             >
                               <Shield className="h-4 w-4 text-dark-100" />
                             </Button>
@@ -200,7 +202,7 @@ export default function AdminUsersPage() {
                             variant="ghost"
                             size="sm"
                             onClick={() => handleDelete(user.id)}
-                            title="Delete user"
+                            title={t("deleteUser")}
                           >
                             <Trash2 className="h-4 w-4 text-red-400" />
                           </Button>
@@ -214,7 +216,7 @@ export default function AdminUsersPage() {
               {totalPages > 1 && (
                 <div className="flex items-center justify-between mt-4">
                   <p className="text-sm text-dark-100">
-                    Page {page} of {totalPages} ({formatNumber(total)} total)
+                    {t("pagination", { page: String(page), totalPages: String(totalPages), total: formatNumber(total) })}
                   </p>
                   <div className="flex gap-2">
                     <Button
@@ -224,7 +226,7 @@ export default function AdminUsersPage() {
                       onClick={() => setPage((p) => Math.max(1, p - 1))}
                     >
                       <ChevronLeft className="h-4 w-4 mr-1" />
-                      Previous
+                      {t("previous")}
                     </Button>
                     <Button
                       variant="outline"
@@ -232,7 +234,7 @@ export default function AdminUsersPage() {
                       disabled={page >= totalPages}
                       onClick={() => setPage((p) => p + 1)}
                     >
-                      Next
+                      {t("next")}
                       <ChevronRight className="h-4 w-4 ml-1" />
                     </Button>
                   </div>

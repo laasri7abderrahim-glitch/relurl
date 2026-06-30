@@ -8,6 +8,15 @@ const createQrSchema = z.object({
   linkId: z.string().uuid("Invalid link ID"),
   size: z.number().int().min(100).max(1000).optional(),
   format: z.enum(["png", "svg"]).optional(),
+  fgColor: z.string().regex(/^#[0-9a-fA-F]{6}$/, "Invalid foreground color").optional(),
+  bgColor: z.string().regex(/^#[0-9a-fA-F]{6}$/, "Invalid background color").optional(),
+  design: z
+    .object({
+      fg: z.string(),
+      bg: z.string(),
+      preset: z.string().optional(),
+    })
+    .optional(),
 })
 
 export async function GET() {
@@ -54,7 +63,14 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const { linkId, size = 300, format = "png" } = parsed.data
+    const {
+      linkId,
+      size = 300,
+      format = "png",
+      fgColor = "#0b1120",
+      bgColor = "#ffffff",
+      design,
+    } = parsed.data
 
     const link = await prisma.shortLink.findFirst({
       where: { id: linkId, userId: session.user.id },
@@ -67,6 +83,7 @@ export async function POST(req: NextRequest) {
     const qrDataUrl = await QRCodeLib.toDataURL(shortUrl, {
       width: size,
       margin: 2,
+      color: { dark: fgColor, light: bgColor },
     })
 
     const qrCode = await prisma.qrCode.create({
@@ -75,6 +92,7 @@ export async function POST(req: NextRequest) {
         name: link.slug,
         size,
         format,
+        design: design ? JSON.stringify(design) : null,
       },
     })
 

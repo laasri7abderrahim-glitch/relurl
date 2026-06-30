@@ -72,7 +72,7 @@ function ToastProvider({ children }: { children: ReactNode }) {
               key={toast.id}
               className={cn(
                 "flex items-center gap-3 rounded-lg border px-4 py-3 shadow-lg backdrop-blur-sm",
-                "animate-in slide-in-from-right-5 fade-in duration-200",
+                "animate-fade-in animate-slide-in-right",
                 colorMap[toast.type]
               )}
             >

@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Healthcare Link Shortener - Medical & Patient Links",
-  description: "Shorten patient portal links, appointment booking URLs, and health resources. Secure, HIPAA-conscious link management with RELURL.",
-  path: "/healthcare-link-shortener",
-  keywords: ["healthcare link shortener", "medical link generator", "patient portal links"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Healthcare Link Shortener - Medical & Patient Links",
+    description: "Shorten patient portal links, appointment booking URLs, and health resources. Secure, HIPAA-conscious link management with RELURL.",
+    path: "/healthcare-link-shortener",
+    keywords: ["healthcare link shortener", "medical link generator", "patient portal links"],
+    locale,
+  })
+}
 
 export default function HealthcareLinkShortenerPage() {
   const href = "/healthcare-link-shortener"
+  const relatedArticles = getPostsByLandingPage("/healthcare-link-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Healthcare Link Shortener"
@@ -43,6 +48,8 @@ export default function HealthcareLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

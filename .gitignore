@@ -42,3 +42,7 @@ prisma/dev.db-journal
 server.log
 
 .vercel
+
+# Google service account keys
+relurlwebsite-*.json
+*-key.json

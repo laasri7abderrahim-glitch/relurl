@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { parseUserAgent } from "@/lib/utils";
+import { detectClickFraud } from "./fraud-detection";
 
 type Period = "24h" | "7d" | "30d" | "90d" | "all";
 
@@ -71,6 +72,25 @@ export async function trackClick(
       })
     : null;
 
+  const fraudResult = await detectClickFraud(
+    {
+      ip: ip ?? "",
+      userAgent: userAgent ?? "",
+      linkId,
+      timestamp: new Date(),
+      referer,
+    },
+    async (linkId, ip, since) => {
+      return prisma.linkClick.count({
+        where: {
+          linkId,
+          ip,
+          timestamp: { gte: since },
+        },
+      })
+    }
+  )
+
   await prisma.linkClick.create({
     data: {
       linkId,
@@ -87,6 +107,7 @@ export async function trackClick(
       os,
       device,
       isUnique: !recentClick,
+      isSuspicious: fraudResult.isSuspicious,
     },
   });
 
@@ -94,6 +115,19 @@ export async function trackClick(
     where: { id: linkId },
     data: { lastClickedAt: new Date() },
   });
+
+  const { broadcastClick } = await import("@/lib/sse")
+
+  const link = await prisma.shortLink.findUnique({ where: { id: linkId }, select: { userId: true } })
+  if (link?.userId) {
+    broadcastClick(link.userId, {
+      linkId,
+      timestamp: new Date().toISOString(),
+      country: geo.country ?? undefined,
+      device: device ?? undefined,
+      browser: browser ?? undefined,
+    })
+  }
 }
 
 export async function getClickStats(

@@ -3,13 +3,15 @@
 import { useState, useEffect } from "react"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
+import { useTranslations } from "next-intl"
 
 export default function NewBioPagePage() {
   const { data: session, status } = useSession()
   const router = useRouter()
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const t = useTranslations("dashboard.bioPages.new")
 
   const [slug, setSlug] = useState("")
   const [title, setTitle] = useState("")
@@ -61,7 +63,7 @@ export default function NewBioPagePage() {
         router.push("/dashboard/bio-pages")
       }
     } catch {
-      setError("Failed to save")
+      setError(t("error"))
     } finally {
       setSaving(false)
     }
@@ -71,7 +73,7 @@ export default function NewBioPagePage() {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Create Bio Page</h1>
+      <h1 className="text-2xl font-bold mb-6">{t("title")}</h1>
 
       <form onSubmit={handleSubmit} className="space-y-6 bg-white rounded-xl border p-6">
         {error && (
@@ -79,60 +81,60 @@ export default function NewBioPagePage() {
         )}
 
         <div>
-          <label className="block text-sm font-medium mb-1">Slug</label>
+          <label className="block text-sm font-medium mb-1">{t("form.slug")}</label>
           <div className="flex items-center gap-2">
             <span className="text-gray-500 text-sm">relurl.com/b/</span>
             <input
               value={slug}
               onChange={(e) => setSlug(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""))}
               className="flex-1 px-3 py-2 border rounded-lg focus:ring-2 focus:ring-[#1F6F5F] focus:border-transparent"
-              placeholder="my-links"
+              placeholder={t("form.slugPlaceholder")}
               required
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Title</label>
+          <label className="block text-sm font-medium mb-1">{t("form.title")}</label>
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-[#1F6F5F] focus:border-transparent"
-            placeholder="My Links"
+            placeholder={t("form.titlePlaceholder")}
             required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Description</label>
+          <label className="block text-sm font-medium mb-1">{t("form.description")}</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-[#1F6F5F] focus:border-transparent"
-            placeholder="Check out my links!"
+            placeholder={t("form.descriptionPlaceholder")}
             rows={2}
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Avatar URL</label>
+          <label className="block text-sm font-medium mb-1">{t("form.avatarUrl")}</label>
           <input
             value={avatar}
             onChange={(e) => setAvatar(e.target.value)}
             className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-[#1F6F5F] focus:border-transparent"
-            placeholder="https://example.com/avatar.jpg"
+            placeholder={t("form.avatarUrlPlaceholder")}
           />
         </div>
 
         <div>
           <div className="flex items-center justify-between mb-3">
-            <label className="text-sm font-medium">Links</label>
+            <label className="text-sm font-medium">{t("form.links")}</label>
             <button
               type="button"
               onClick={addLink}
               className="text-sm text-[#1F6F5F] hover:underline"
             >
-              + Add Link
+              {t("form.addLink")}
             </button>
           </div>
           <div className="space-y-3">
@@ -142,19 +144,19 @@ export default function NewBioPagePage() {
                   value={link.icon}
                   onChange={(e) => updateLink(i, "icon", e.target.value)}
                   className="w-12 px-2 py-2 border rounded-lg text-center"
-                  placeholder="🔗"
+                  placeholder={t("form.linkIconPlaceholder")}
                 />
                 <input
                   value={link.title}
                   onChange={(e) => updateLink(i, "title", e.target.value)}
                   className="flex-1 px-3 py-2 border rounded-lg"
-                  placeholder="Link title"
+                  placeholder={t("form.linkTitlePlaceholder")}
                 />
                 <input
                   value={link.url}
                   onChange={(e) => updateLink(i, "url", e.target.value)}
                   className="flex-1 px-3 py-2 border rounded-lg"
-                  placeholder="https://..."
+                  placeholder={t("form.linkUrlPlaceholder")}
                 />
                 {links.length > 1 && (
                   <button
@@ -176,13 +178,13 @@ export default function NewBioPagePage() {
             disabled={saving}
             className="px-6 py-2 bg-[#1F6F5F] text-white rounded-lg hover:bg-[#2FA084] disabled:opacity-50"
           >
-            {saving ? "Saving..." : "Create Page"}
+            {saving ? t("submitting") : t("submit")}
           </button>
           <Link
             href="/dashboard/bio-pages"
             className="px-6 py-2 border rounded-lg hover:bg-gray-50"
           >
-            Cancel
+            {t("cancel")}
           </Link>
         </div>
       </form>

@@ -1,16 +1,22 @@
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata = generateSEOMetadata({
-  title: "Affiliate Link Shortener - Cloak & Track Links",
-  description: "Shorten and cloak your affiliate links for a cleaner look. Track clicks, conversions, and optimize your affiliate marketing campaigns with analytics.",
-  path: "/affiliate-link-shortener",
-  keywords: ["affiliate link shortener", "affiliate link cloaker", "affiliate tracking"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Affiliate Link Shortener - Cloak & Track Links",
+    description: "Shorten and cloak your affiliate links for a cleaner look. Track clicks, conversions, and optimize your affiliate marketing campaigns with analytics.",
+    path: "/affiliate-link-shortener",
+    keywords: ["affiliate link shortener", "affiliate link cloaker", "affiliate tracking"],
+    locale,
+  })
+}
 
 export default function AffiliateLinkShortenerPage() {
   const href = "/affiliate-link-shortener"
+  const relatedArticles = getPostsByLandingPage("/affiliate-link-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Affiliate Link Shortener"
@@ -47,6 +53,8 @@ export default function AffiliateLinkShortenerPage() {
         { q: "Do you support affiliate network tracking?", a: "We work with all major affiliate networks including Amazon Associates, ShareASale, Commission Junction, ClickBank, and Rakuten. The shortened link preserves all tracking parameters." },
         { q: "Will shortened affiliate links hurt my commissions?", a: "Not at all. Shortened links pass all UTM and tracking parameters through to your destination. Some affiliates report higher conversions because clean links build trust with their audience." },
       ]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

@@ -19,6 +19,7 @@ import {
   AlertCircle,
   Loader2,
 } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 interface ApiKey {
   id: string
@@ -48,6 +49,7 @@ export default function ApiKeysPage() {
   const [deleteConfirm, setDeleteConfirm] = useState<ApiKey | null>(null)
   const [revoking, setRevoking] = useState(false)
   const { addToast } = useToast()
+  const t = useTranslations("dashboard.apiKeys")
 
   const fetchKeys = useCallback(async () => {
     setLoading(true)
@@ -55,14 +57,14 @@ export default function ApiKeysPage() {
     try {
       const res = await fetch("/api/api-keys")
       const json = await res.json()
-      if (!res.ok) throw new Error(json.error ?? "Failed to fetch API keys")
+      if (!res.ok) throw new Error(json.error ?? t("fetchError"))
       setKeys(json.data ?? [])
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong")
+      setError(err instanceof Error ? err.message : t("genericError"))
     } finally {
       setLoading(false)
     }
-  }, [])
+  }, [t])
 
   useEffect(() => {
     fetchKeys()
@@ -70,7 +72,7 @@ export default function ApiKeysPage() {
 
   const handleCreate = async () => {
     if (!newKeyName.trim()) {
-      addToast("Please enter a key name", "error")
+      addToast(t("toast.enterName"), "error")
       return
     }
     setCreating(true)
@@ -81,12 +83,12 @@ export default function ApiKeysPage() {
         body: JSON.stringify({ name: newKeyName.trim() }),
       })
       const json = await res.json()
-      if (!res.ok) throw new Error(json.error ?? "Failed to create API key")
+      if (!res.ok) throw new Error(json.error ?? t("toast.failedCreate"))
       setGeneratedKey(json.data)
       setKeys((prev) => [json.data, ...prev])
-      addToast("API key created. Copy it now — you won't see it again.", "success")
+      addToast(t("toast.created"), "success")
     } catch (err) {
-      addToast(err instanceof Error ? err.message : "Failed to create key", "error")
+      addToast(err instanceof Error ? err.message : t("toast.failedCreate"), "error")
     } finally {
       setCreating(false)
     }
@@ -95,7 +97,7 @@ export default function ApiKeysPage() {
   const handleCopyKey = async (text: string) => {
     await navigator.clipboard.writeText(text)
     setCopied(true)
-    addToast("Copied to clipboard", "success")
+    addToast(t("toast.copied"), "success")
     setTimeout(() => setCopied(false), 3000)
   }
 
@@ -111,11 +113,11 @@ export default function ApiKeysPage() {
     try {
       const res = await fetch(`/api/api-keys?id=${key.id}`, { method: "DELETE" })
       const json = await res.json()
-      if (!res.ok) throw new Error(json.error ?? "Failed to revoke key")
+      if (!res.ok) throw new Error(json.error ?? t("toast.failedRevoke"))
       setKeys((prev) => prev.map((k) => (k.id === key.id ? { ...k, isActive: false } : k)))
-      addToast(`API key "${key.name}" revoked`, "success")
+      addToast(t("toast.revoked", { name: key.name }), "success")
     } catch (err) {
-      addToast(err instanceof Error ? err.message : "Failed to revoke key", "error")
+      addToast(err instanceof Error ? err.message : t("toast.failedRevoke"), "error")
     } finally {
       setRevoking(false)
       setDeleteConfirm(null)
@@ -125,9 +127,9 @@ export default function ApiKeysPage() {
   const handleCopyFromTable = async (id: string) => {
     try {
       await navigator.clipboard.writeText(keyDisplay(id))
-      addToast("Copied to clipboard", "success")
+      addToast(t("toast.copied"), "success")
     } catch {
-      addToast("Failed to copy", "error")
+      addToast(t("toast.failedCopy"), "error")
     }
   }
 
@@ -143,9 +145,9 @@ export default function ApiKeysPage() {
     return (
       <div className="flex flex-col items-center justify-center py-24 text-center">
         <AlertCircle className="h-8 w-8 text-red-400 mb-3" />
-        <p className="text-dark-50 font-medium mb-1">Failed to load API keys</p>
+        <p className="text-dark-50 font-medium mb-1">{t("error.title")}</p>
         <p className="text-sm text-dark-100 mb-4">{error}</p>
-        <Button variant="outline" onClick={fetchKeys}>Retry</Button>
+        <Button variant="outline" onClick={fetchKeys}>{t("error.retry")}</Button>
       </div>
     )
   }
@@ -154,14 +156,12 @@ export default function ApiKeysPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-dark-50">API Keys</h1>
-          <p className="mt-1 text-sm text-dark-100">
-            Manage your API keys for programmatic access
-          </p>
+          <h1 className="text-2xl font-bold text-dark-50">{t("title")}</h1>
+          <p className="mt-1 text-sm text-dark-100">{t("description")}</p>
         </div>
         <Button variant="primary" onClick={() => setShowCreateDialog(true)}>
           <Plus className="mr-2 h-4 w-4" />
-          Create API Key
+          {t("createKey")}
         </Button>
       </div>
 
@@ -172,25 +172,23 @@ export default function ApiKeysPage() {
               <div className="rounded-full bg-dark-300 p-4 mb-4">
                 <Key className="h-8 w-8 text-dark-100" />
               </div>
-              <h3 className="text-lg font-medium text-dark-50 mb-1">No API keys</h3>
-              <p className="text-sm text-dark-100 mb-6 max-w-sm">
-                Create your first API key to integrate with our API.
-              </p>
+              <h3 className="text-lg font-medium text-dark-50 mb-1">{t("empty.title")}</h3>
+              <p className="text-sm text-dark-100 mb-6 max-w-sm">{t("empty.description")}</p>
               <Button variant="primary" onClick={() => setShowCreateDialog(true)}>
                 <Plus className="mr-2 h-4 w-4" />
-                Create API Key
+                {t("createKey")}
               </Button>
             </div>
           ) : (
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Key</TableHead>
-                  <TableHead>Created</TableHead>
-                  <TableHead>Last Used</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
+                  <TableHead>{t("table.name")}</TableHead>
+                  <TableHead>{t("table.key")}</TableHead>
+                  <TableHead>{t("table.created")}</TableHead>
+                  <TableHead>{t("table.lastUsed")}</TableHead>
+                  <TableHead>{t("table.status")}</TableHead>
+                  <TableHead className="text-right">{t("table.actions")}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -206,7 +204,7 @@ export default function ApiKeysPage() {
                           type="button"
                           onClick={() => handleCopyFromTable(apiKey.id)}
                           className="rounded-lg p-1 text-dark-100 hover:text-dark-50 hover:bg-dark-300 transition-colors"
-                          title="Copy"
+                          title={t("actions.copy")}
                         >
                           <Copy className="h-3.5 w-3.5" />
                         </button>
@@ -216,11 +214,11 @@ export default function ApiKeysPage() {
                       {formatDate(apiKey.createdAt, "MMM d, yyyy")}
                     </TableCell>
                     <TableCell className="text-dark-100 text-nowrap">
-                      {apiKey.lastUsedAt ? formatDate(apiKey.lastUsedAt, "MMM d, yyyy") : "Never"}
+                      {apiKey.lastUsedAt ? formatDate(apiKey.lastUsedAt, "MMM d, yyyy") : t("never")}
                     </TableCell>
                     <TableCell>
                       <Badge variant={apiKey.isActive ? "success" : "destructive"}>
-                        {apiKey.isActive ? "Active" : "Revoked"}
+                        {apiKey.isActive ? t("status.active") : t("status.revoked")}
                       </Badge>
                     </TableCell>
                     <TableCell>
@@ -230,7 +228,7 @@ export default function ApiKeysPage() {
                             type="button"
                             onClick={() => setDeleteConfirm(apiKey)}
                             className="rounded-lg p-2 text-dark-100 hover:text-red-400 hover:bg-dark-300 transition-colors"
-                            title="Revoke"
+                            title={t("actions.revoke")}
                           >
                             <Trash2 className="h-4 w-4" />
                           </button>
@@ -248,26 +246,24 @@ export default function ApiKeysPage() {
       <Dialog open={showCreateDialog} onOpenChange={(o) => { if (!o) handleCloseDialog() }}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Create API Key</DialogTitle>
-            <DialogDescription>
-              Give your key a descriptive name so you can identify it later.
-            </DialogDescription>
+            <DialogTitle>{t("createDialog.title")}</DialogTitle>
+            <DialogDescription>{t("createDialog.description")}</DialogDescription>
           </DialogHeader>
           <div className="space-y-4 pt-2">
             {!generatedKey ? (
               <>
                 <div className="space-y-2">
-                  <Label htmlFor="keyName">Key Name</Label>
+                  <Label htmlFor="keyName">{t("createDialog.keyName")}</Label>
                   <Input
                     id="keyName"
-                    placeholder="e.g. Production API Key"
+                    placeholder={t("createDialog.placeholder")}
                     value={newKeyName}
                     onChange={(e) => setNewKeyName(e.target.value)}
                   />
                 </div>
                 <Button variant="primary" className="w-full" onClick={handleCreate} disabled={creating}>
                   {creating ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-                  Generate API Key
+                  {t("createDialog.generate")}
                 </Button>
               </>
             ) : (
@@ -276,10 +272,8 @@ export default function ApiKeysPage() {
                   <div className="flex items-start gap-3">
                     <Check className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-sm font-medium text-emerald-400">Key Created</p>
-                      <p className="text-xs text-dark-100 mt-1">
-                        Copy this key now. You will not be able to see it again.
-                      </p>
+                      <p className="text-sm font-medium text-emerald-400">{t("createDialog.keyCreated")}</p>
+                      <p className="text-xs text-dark-100 mt-1">{t("createDialog.copyWarning")}</p>
                     </div>
                   </div>
                 </div>
@@ -296,7 +290,7 @@ export default function ApiKeysPage() {
                   </Button>
                 </div>
                 <Button variant="outline" className="w-full" onClick={handleCloseDialog}>
-                  Done
+                  {t("createDialog.done")}
                 </Button>
               </>
             )}
@@ -309,16 +303,16 @@ export default function ApiKeysPage() {
           <DialogHeader>
             <div className="flex items-center gap-2 text-red-400">
               <AlertCircle className="h-5 w-5" />
-              <DialogTitle>Revoke API Key</DialogTitle>
+              <DialogTitle>{t("revokeDialog.title")}</DialogTitle>
             </div>
             <DialogDescription>
-              Are you sure you want to revoke <strong>{deleteConfirm?.name}</strong>?
-              Any services using this key will immediately lose access.
+              {t("revokeDialog.confirm", { name: deleteConfirm?.name ?? "" })}
+              {t("revokeDialog.warning")}
             </DialogDescription>
           </DialogHeader>
           <div className="flex justify-end gap-3 pt-2">
             <Button variant="outline" onClick={() => setDeleteConfirm(null)}>
-              Cancel
+              {t("revokeDialog.cancel")}
             </Button>
             <Button
               variant="destructive"
@@ -326,7 +320,7 @@ export default function ApiKeysPage() {
               disabled={revoking}
             >
               {revoking ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Trash2 className="mr-2 h-4 w-4" />}
-              Revoke Key
+              {t("revokeDialog.confirmButton")}
             </Button>
           </div>
         </DialogContent>

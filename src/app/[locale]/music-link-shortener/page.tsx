@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Music Link Shortener - Song & Album Links",
-  description: "Create short links for songs, albums, and playlists. Share music across platforms and track listener engagement with RELURL.",
-  path: "/music-link-shortener",
-  keywords: ["music link shortener", "song link generator", "album link shortener"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Music Link Shortener - Song & Album Links",
+    description: "Create short links for songs, albums, and playlists. Share music across platforms and track listener engagement with RELURL.",
+    path: "/music-link-shortener",
+    keywords: ["music link shortener", "song link generator", "album link shortener"],
+    locale,
+  })
+}
 
 export default function MusicLinkShortenerPage() {
   const href = "/music-link-shortener"
+  const relatedArticles = getPostsByLandingPage("/music-link-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Music Link Shortener"
@@ -43,6 +48,8 @@ export default function MusicLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

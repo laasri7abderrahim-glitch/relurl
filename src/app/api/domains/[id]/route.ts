@@ -2,10 +2,22 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import * as dns from "dns/promises";
+
+async function verifyDomain(domain: string, expectedToken: string): Promise<boolean> {
+  try {
+    const records = await dns.resolveTxt(domain);
+    const txts = records.flat();
+    return txts.some(txt => txt.includes(expectedToken));
+  } catch {
+    return false;
+  }
+}
 
 const updateDomainSchema = z.object({
   isVerified: z.boolean().optional(),
   verificationMethod: z.string().max(100).nullable().optional(),
+  action: z.literal("verify").optional(),
 });
 
 export async function GET(
@@ -62,6 +74,25 @@ export async function PATCH(
         { data: null, error: parsed.error.errors.map((e) => e.message).join(", ") },
         { status: 400 }
       );
+    }
+
+    if (parsed.data.action === "verify") {
+      const expectedToken = `relurl-verification=${id}`;
+      const isVerified = await verifyDomain(domain.domain, expectedToken);
+      if (!isVerified) {
+        return NextResponse.json(
+          {
+            data: null,
+            error: `DNS verification failed. Add a TXT record with value "${expectedToken}" to the domain "${domain.domain}" and try again.`,
+          },
+          { status: 400 }
+        );
+      }
+      const updated = await prisma.domain.update({
+        where: { id },
+        data: { isVerified: true, verificationMethod: "dns_txt" },
+      });
+      return NextResponse.json({ data: updated, error: null });
     }
 
     const data: Record<string, unknown> = {};

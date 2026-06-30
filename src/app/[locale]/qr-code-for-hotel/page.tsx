@@ -1,16 +1,21 @@
-import type { Metadata } from "next"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 import { allQRCodes } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "QR Code for Hotel - Guest Services & Info QR Codes",
-  description: "Create QR codes for hotel services, room info, and guest amenities. Enhance guest experience with instant access via RELURL QR codes.",
-  path: "/qr-code-for-hotel",
-  keywords: ["qr code for hotel", "hotel guest qr code", "hotel info qr code"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "QR Code for Hotel - Guest Services & Info QR Codes",
+    description: "Create QR codes for hotel services, room info, and guest amenities. Enhance guest experience with instant access via RELURL QR codes.",
+    path: "/qr-code-for-hotel",
+    keywords: ["qr code for hotel", "hotel guest qr code", "hotel info qr code"],
+    locale,
+  })
+}
 
 export default function Page() {
+  const relatedArticles = getPostsByLandingPage("/qr-code-for-hotel").slice(0, 3)
   return (
     <QRCodeLandingPage
       title="QR Code for Hotel"
@@ -42,6 +47,8 @@ export default function Page() {
         { title: "QR Code for Business Card", href: "/qr-code-for-business-card" },
       ]}
       allQRCodes={allQRCodes}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

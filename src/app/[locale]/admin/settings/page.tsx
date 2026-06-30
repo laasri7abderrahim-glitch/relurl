@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useTranslations } from "next-intl"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -21,6 +22,7 @@ interface SystemSettings {
 }
 
 export default function AdminSettingsPage() {
+  const t = useTranslations("admin.settings")
   const [settings, setSettings] = useState<SystemSettings>({
     siteName: "RELURL",
     siteDescription: "URL Shortener",
@@ -60,9 +62,9 @@ export default function AdminSettingsPage() {
 
       if (!res.ok) throw new Error("Failed to save settings")
 
-      addToast("Settings saved successfully", "success")
+      addToast(t("toast.saved"), "success")
     } catch {
-      addToast("Failed to save settings", "error")
+      addToast(t("toast.saveFailed"), "error")
     } finally {
       setSaving(false)
     }
@@ -72,8 +74,8 @@ export default function AdminSettingsPage() {
     return (
       <div className="space-y-6">
         <div>
-          <div className="text-2xl font-bold text-dark-50">System Settings</div>
-          <p className="mt-1 text-sm text-dark-100">Loading...</p>
+          <div className="text-2xl font-bold text-dark-50">{t("title")}</div>
+          <p className="mt-1 text-sm text-dark-100">{t("loading")}</p>
         </div>
         <div className="space-y-4">
           <Skeleton className="h-40 w-full" />
@@ -86,8 +88,8 @@ export default function AdminSettingsPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-bold text-dark-50">System Settings</h1>
-        <p className="mt-1 text-sm text-dark-100">Configure global platform settings</p>
+        <h1 className="text-2xl font-bold text-dark-50">{t("title")}</h1>
+        <p className="mt-1 text-sm text-dark-100">{t("subtitle")}</p>
       </div>
 
       <Card>
@@ -97,14 +99,14 @@ export default function AdminSettingsPage() {
               <Shield className="h-5 w-5 text-primary-500" />
             </div>
             <div>
-              <CardTitle className="text-lg">General</CardTitle>
-              <CardDescription>Basic platform information</CardDescription>
+              <CardTitle className="text-lg">{t("sectionGeneral")}</CardTitle>
+              <CardDescription>{t("sectionGeneralDesc")}</CardDescription>
             </div>
           </div>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-2">
-            <Label htmlFor="siteName">Site Name</Label>
+            <Label htmlFor="siteName">{t("siteNameLabel")}</Label>
             <Input
               id="siteName"
               value={settings.siteName}
@@ -114,12 +116,12 @@ export default function AdminSettingsPage() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="siteDescription">Site Description</Label>
+            <Label htmlFor="siteDescription">{t("siteDescriptionLabel")}</Label>
             <Input
               id="siteDescription"
               value={settings.siteDescription}
               onChange={(e) => setSettings((s) => ({ ...s, siteDescription: e.target.value }))}
-              placeholder="URL shortening platform"
+              placeholder={t("siteDescriptionPlaceholder")}
             />
           </div>
         </CardContent>
@@ -132,30 +134,30 @@ export default function AdminSettingsPage() {
               <Shield className="h-5 w-5 text-blue-400" />
             </div>
             <div>
-              <CardTitle className="text-lg">Defaults</CardTitle>
-              <CardDescription>Default configuration for new users</CardDescription>
+              <CardTitle className="text-lg">{t("sectionDefaults")}</CardTitle>
+              <CardDescription>{t("sectionDefaultsDesc")}</CardDescription>
             </div>
           </div>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-2">
-            <Label htmlFor="defaultPlan">Default Plan</Label>
+            <Label htmlFor="defaultPlan">{t("defaultPlanLabel")}</Label>
             <Select
               id="defaultPlan"
               value={settings.defaultPlan}
               onChange={(e) => setSettings((s) => ({ ...s, defaultPlan: e.target.value }))}
             >
-              <option value="FREE">Free</option>
-              <option value="PRO">Pro</option>
-              <option value="BUSINESS">Business</option>
-              <option value="ENTERPRISE">Enterprise</option>
+              <option value="FREE">{t("planFree")}</option>
+              <option value="PRO">{t("planPro")}</option>
+              <option value="BUSINESS">{t("planBusiness")}</option>
+              <option value="ENTERPRISE">{t("planEnterprise")}</option>
             </Select>
           </div>
 
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-dark-50">Allow Registration</p>
-              <p className="text-xs text-dark-100">Allow new users to sign up</p>
+              <p className="text-sm font-medium text-dark-50">{t("allowRegistration")}</p>
+              <p className="text-xs text-dark-100">{t("allowRegistrationDesc")}</p>
             </div>
             <button
               type="button"
@@ -183,17 +185,17 @@ export default function AdminSettingsPage() {
               <Shield className="h-5 w-5 text-emerald-400" />
             </div>
             <div>
-              <CardTitle className="text-lg">Maintenance</CardTitle>
-              <CardDescription>Control platform availability</CardDescription>
+              <CardTitle className="text-lg">{t("sectionMaintenance")}</CardTitle>
+              <CardDescription>{t("sectionMaintenanceDesc")}</CardDescription>
             </div>
           </div>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-dark-50">Maintenance Mode</p>
+              <p className="text-sm font-medium text-dark-50">{t("maintenanceModeLabel")}</p>
               <p className="text-xs text-dark-100">
-                When enabled, only admins can access the platform
+                {t("maintenanceModeDesc")}
               </p>
             </div>
             <button
@@ -220,7 +222,7 @@ export default function AdminSettingsPage() {
       <div className="flex justify-end">
         <Button variant="primary" onClick={handleSave} disabled={saving}>
           <Save className="mr-2 h-4 w-4" />
-          {saving ? "Saving..." : "Save Settings"}
+          {saving ? t("savingButton") : t("saveButton")}
         </Button>
       </div>
     </div>

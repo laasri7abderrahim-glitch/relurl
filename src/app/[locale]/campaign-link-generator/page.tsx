@@ -1,16 +1,22 @@
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata = generateSEOMetadata({
-  title: "Campaign Link Generator - Trackable URLs",
-  description: "Generate trackable campaign URLs with UTM parameters built in. Create, shorten, and monitor all your marketing campaign links from one place.",
-  path: "/campaign-link-generator",
-  keywords: ["campaign link generator", "utm link generator", "campaign url builder"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Campaign Link Generator - Trackable URLs",
+    description: "Generate trackable campaign URLs with UTM parameters built in. Create, shorten, and monitor all your marketing campaign links from one place.",
+    path: "/campaign-link-generator",
+    keywords: ["campaign link generator", "utm link generator", "campaign url builder"],
+    locale,
+  })
+}
 
 export default function CampaignLinkGeneratorPage() {
   const href = "/campaign-link-generator"
+  const relatedArticles = getPostsByLandingPage("/campaign-link-generator").slice(0, 3)
   return (
     <URLLandingPage
       title="Campaign Link Generator"
@@ -42,6 +48,8 @@ export default function CampaignLinkGeneratorPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

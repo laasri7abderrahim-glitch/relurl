@@ -1,23 +1,28 @@
-import type { Metadata } from "next"
-import { allQRCodes } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
+import { allQRCodes } from "@/lib/url-pages"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "QR Code for vCard - Digital Contact Card",
-  description: "Generate a QR code with your full contact details. Scanners save your info directly to their phone contacts.",
-  path: "/qr-code-for-vcard",
-  keywords: ["qr code for vcard", "vcard qr code", "contact qr code"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "QR Code for vCard - Digital Contact Card",
+    description: "Generate a QR code with your full contact details. Scanners save your info directly to their phone contacts.",
+    path: "/qr-code-for-vcard",
+    keywords: ["qr code for vcard", "vcard qr code", "contact qr code"],
+    locale,
+  })
+}
 
 export default function QRCodeForVCardPage() {
+  const relatedArticles = getPostsByLandingPage("/qr-code-for-vcard").slice(0, 3)
   return (
-    <>
-      <QRCodeLandingPage
+    <QRCodeLandingPage
       title="QR Code for vCard"
       subtitle="Digital Contact Card"
       description="Generate a QR code with your full contact details. Scanners save your info directly to their phone contacts."
       placeholder="BEGIN:VCARD&#10;VERSION:3.0&#10;FN:John Doe&#10;TEL:+1234567890&#10;EMAIL:john@example.com&#10;END:VCARD"
+      defaultValue="BEGIN:VCARD&#10;VERSION:3.0&#10;FN:John Doe&#10;TEL:+1234567890&#10;EMAIL:john@example.com&#10;END:VCARD"
       inputLabel="Enter vCard details or URL"
       generateLabel="Create vCard QR Code"
       features={["Auto-Save Contact", "Full Contact Info", "No Manual Entry", "Professional"]}
@@ -36,7 +41,7 @@ export default function QRCodeForVCardPage() {
         { title: "Free QR Code Generator", href: "/free-qr-code-generator" },
       ]}
       allQRCodes={allQRCodes}
+      relatedArticles={relatedArticles}
     />
-    </>
   )
 }

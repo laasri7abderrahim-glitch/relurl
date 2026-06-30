@@ -94,14 +94,19 @@ function DropdownMenuContent({ className, align = "start", children, ...props }:
 
 interface DropdownMenuItemProps extends HTMLAttributes<HTMLDivElement> {
   inset?: boolean
+  disabled?: boolean
 }
 
-function DropdownMenuItem({ className, inset, ...props }: DropdownMenuItemProps) {
+function DropdownMenuItem({ className, inset, disabled, ...props }: DropdownMenuItemProps) {
   const { setOpen } = useDropdownMenu()
   return (
     <div
       role="menuitem"
-      onClick={() => setOpen(false)}
+      data-disabled={disabled || undefined}
+      onClick={(e) => {
+        if (disabled) return
+        setOpen(false)
+      }}
       className={cn(
         "relative flex cursor-pointer select-none items-center rounded-md px-2 py-1.5 text-sm text-dark-50 outline-none transition-colors",
         "hover:bg-dark-300 focus-visible:bg-dark-300",

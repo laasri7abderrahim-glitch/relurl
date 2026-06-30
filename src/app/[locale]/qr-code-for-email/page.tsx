@@ -1,16 +1,21 @@
-import type { Metadata } from "next"
 import { allQRCodes } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "QR Code for Email - Email Made Simple",
-  description: "Generate a QR code that opens an email compose window with pre-filled subject and body. Perfect for feedback collection.",
-  path: "/qr-code-for-email",
-  keywords: ["qr code for email", "email qr code", "mailto qr code"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "QR Code for Email - Email Made Simple",
+    description: "Generate a QR code that opens an email compose window with pre-filled subject and body. Perfect for feedback collection.",
+    path: "/qr-code-for-email",
+    keywords: ["qr code for email", "email qr code", "mailto qr code"],
+    locale,
+  })
+}
 
 export default function QRCodeForEmailPage() {
+  const relatedArticles = getPostsByLandingPage("/qr-code-for-email").slice(0, 3)
   return (
     <>
       <QRCodeLandingPage
@@ -37,6 +42,8 @@ export default function QRCodeForEmailPage() {
         { title: "Free QR Code Generator", href: "/free-qr-code-generator" },
       ]}
       allQRCodes={allQRCodes}
+
+      relatedArticles={relatedArticles}
     />
     </>
   )

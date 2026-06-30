@@ -1,18 +1,23 @@
-import type { Metadata } from "next"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 import { allLandingPages, qrPages } from "@/lib/url-pages"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "QR Code Generator - Free QR Code Maker",
-  description: "Generate QR codes for free. Create QR codes for URLs, text, WiFi networks, vCard contacts, and more with our easy-to-use free QR code generator.",
-  path: "/qr-code-generator",
-  keywords: ["qr code generator", "free qr code", "qr code maker", "create qr code"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "QR Code Generator - Free QR Code Maker",
+    description: "Generate QR codes for free. Create QR codes for URLs, text, WiFi networks, vCard contacts, and more with our easy-to-use free QR code generator.",
+    path: "/qr-code-generator",
+    keywords: ["qr code generator", "free qr code", "qr code maker", "create qr code"],
+    locale,
+  })
+}
 
 const allQRCodes = [...allLandingPages, ...qrPages]
 
 export default function Page() {
+  const relatedArticles = getPostsByLandingPage("/qr-code-generator").slice(0, 3)
   return (
     <QRCodeLandingPage
       title="QR Code Generator"
@@ -48,6 +53,8 @@ export default function Page() {
         { q: "What file formats are available for download?", a: "Generated QR codes can be downloaded as high-resolution PNG images (up to 1024×1024px). Perfect for print materials, digital use, and embedding." },
         { q: "Do I need an account to generate QR codes?", a: "No account is needed for basic QR code generation. However, a free account unlocks additional features like design customization, scan analytics, and dynamic QR code management." },
       ]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

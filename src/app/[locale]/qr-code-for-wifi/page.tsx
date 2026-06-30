@@ -1,16 +1,21 @@
-import type { Metadata } from "next"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 import { allQRCodes } from "@/lib/url-pages"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "QR Code for WiFi - WiFi Login QR Code",
-  description: "Create a QR code for your WiFi network. Guests scan once and connect automatically without typing the password. Works with all routers.",
-  path: "/qr-code-for-wifi",
-  keywords: ["qr code for wifi", "wifi qr code", "wifi login qr code"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "QR Code for WiFi - WiFi Login QR Code",
+    description: "Create a QR code for your WiFi network. Guests scan once and connect automatically without typing the password. Works with all routers.",
+    path: "/qr-code-for-wifi",
+    keywords: ["qr code for wifi", "wifi qr code", "wifi login qr code"],
+    locale,
+  })
+}
 
 export default function Page() {
+  const relatedArticles = getPostsByLandingPage("/qr-code-for-wifi").slice(0, 3)
   return (
     <QRCodeLandingPage
       title="QR Code for WiFi"
@@ -42,6 +47,7 @@ export default function Page() {
         { title: "QR Code for Google Maps", href: "/qr-code-for-google-maps" },
       ]}
       allQRCodes={allQRCodes}
+      relatedArticles={relatedArticles}
     />
   )
 }

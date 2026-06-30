@@ -10,6 +10,7 @@ interface SEOProps {
   path: string
   keywords?: string[]
   type?: "website" | "article"
+  locale?: string
 }
 
 export function generateSEOMetadata({
@@ -18,11 +19,19 @@ export function generateSEOMetadata({
   path,
   keywords = [],
   type = "website",
+  locale = "en",
 }: SEOProps): Metadata {
-  const url = `${baseUrl}${path}`
+  const url = `${baseUrl}/${locale}${path}`
   return {
     title,
     description,
+    alternates: {
+      canonical: url,
+      languages: {
+        en: `${baseUrl}/en${path}`,
+        fr: `${baseUrl}/fr${path}`,
+      },
+    },
     openGraph: {
       title,
       description,

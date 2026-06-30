@@ -1,0 +1,50 @@
+import { BlogPost } from "../types"
+
+export const article: BlogPost = {
+  slug: "api-url-shortener-integration",
+  title: "API URL Shortener: Integrate Link Shortening into Your Workflow",
+  metaDescription: "Integrate an API URL shortener into your apps and workflows. Learn REST API endpoints, authentication, rate limits, and code examples in curl, Python, and JavaScript with RELURL.",
+  keywords: ["api url shortener", "url shortener api", "link shortening api", "rest api url shortener", "programmatic link shortening"],
+  landingPage: "/free-url-shortener",
+  category: "Developers",
+  date: "June 29, 2026",
+  readTime: "9 min read",
+  image: "https://picsum.photos/seed/api-url-shortener-integration/1200/630",
+  imageAlt: "API URL Shortener: Integrate Link Shortening into Your Workflow",
+  content: [
+    { type: "paragraph", content: "An API URL shortener gives developers programmatic control over link creation, management, and analytics. Instead of logging into a web dashboard to create links one at a time, you can shorten thousands of URLs with a single script, integrate shortening into your own applications, and pull analytics data directly into your reporting systems. This guide covers everything you need to integrate RELURL's API URL shortener into your development workflow, with working code examples in curl, Python, and JavaScript." },
+    { type: "heading", content: "Why Use an API URL Shortener?", level: 2 },
+    { type: "list", items: ["Bulk link creation: Generate hundreds or thousands of short links in seconds using a script, ideal for product catalogs, email campaigns, or redirect migrations.", "Automated workflows: Trigger link creation from CI/CD pipelines, form submissions, or e-commerce order confirmations without manual intervention.", "Custom integrations: Embed shortening directly into your CMS, social media scheduler, or analytics dashboard so your team never leaves your primary tool.", "Real-time data access: Pull click analytics, referrer data, and geographic breakdowns into your own dashboards and reporting tools via API."] },
+    { type: "heading", content: "Authentication and Getting Started", level: 2 },
+    { type: "paragraph", content: "Every request to the RELURL API requires authentication via an API key. You generate API keys from your RELURL dashboard under Settings > API Keys. Each key has configurable permissions read-only, full access, or scoped to specific workspaces. Store your API key securely. Treat it like a password. Never commit it to version control or expose it in client-side code." },
+    { type: "paragraph", content: "The base URL for all API requests is https://api.relurl.com/v1. All requests must include your API key in the Authorization header as a Bearer token. Responses are returned in JSON format. The API uses standard HTTP response codes to indicate success, errors, and rate limits." },
+    { type: "heading", content: "Core Endpoints Overview", level: 2 },
+    { type: "paragraph", content: "The RELURL API URL shortener exposes several endpoints. POST /links creates a new short link. GET /links lists all your links with pagination. GET /links/:id retrieves a specific link with full analytics. PATCH /links/:id updates a links destination, slug, or settings. DELETE /links/:id removes a link permanently. POST /links/:id/expire sets an expiration date on a link." },
+    { type: "paragraph", content: "Each endpoint accepts and returns structured JSON. The API documentation at docs.relurl.com lists every available parameter, response field, and error code with examples." },
+    { type: "heading", content: "Creating a Short Link with curl", level: 2 },
+    { type: "paragraph", content: "Using curl, you can test the API URL shortener directly from your terminal. The following command creates a short link with a custom alias and UTM parameters appended to the destination." },
+    { type: "code", content: "curl -X POST https://api.relurl.com/v1/links \\\n  -H \"Authorization: Bearer YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"destination\": \"https://example.com/landing-page\",\n    \"slug\": \"summer-campaign\",\n    \"utm_source\": \"twitter\",\n    \"utm_medium\": \"social\",\n    \"utm_campaign\": \"summer-2026\"\n  }'" },
+    { type: "paragraph", content: "The API responds with the newly created link object, including the short URL, the destination, the slug, and timestamps. The response also includes a unique link ID that you use for subsequent operations like updating or deleting the link." },
+    { type: "heading", content: "Creating Links with Python", level: 2 },
+    { type: "paragraph", content: "In Python, the requests library makes API URL shortener integration straightforward. Here is a function that creates a short link and returns the result." },
+    { type: "code", content: "import requests\n\ndef create_short_link(api_key, destination, slug=None):\n    url = \"https://api.relurl.com/v1/links\"\n    headers = {\n        \"Authorization\": f\"Bearer {api_key}\",\n        \"Content-Type\": \"application/json\"\n    }\n    payload = {\"destination\": destination}\n    if slug:\n        payload[\"slug\"] = slug\n    response = requests.post(url, json=payload, headers=headers)\n    response.raise_for_status()\n    return response.json()\n\n# Usage\nresult = create_short_link(\n    \"YOUR_API_KEY\",\n    \"https://example.com/landing-page\",\n    slug=\"summer-campaign\"\n)\nprint(f\"Short URL: {result['short_url']}\")" },
+    { type: "paragraph", content: "This pattern extends easily to bulk operations. Loop through a list of destinations, call the function for each one, and collect the results. Add error handling and backoff logic to handle rate limits gracefully in production code." },
+    { type: "heading", content: "JavaScript and Node.js Integration", level: 2 },
+    { type: "paragraph", content: "For Node.js applications, the fetch API or axios handles API URL shortener requests cleanly. Here is an async function that creates a link and returns analytics-ready data." },
+    { type: "code", content: "async function createShortLink(apiKey, destination, options = {}) {\n  const response = await fetch('https://api.relurl.com/v1/links', {\n    method: 'POST',\n    headers: {\n      'Authorization': `Bearer ${apiKey}`,\n      'Content-Type': 'application/json'\n    },\n    body: JSON.stringify({\n      destination,\n      slug: options.slug,\n      utm_source: options.utmSource,\n      utm_medium: options.utmMedium,\n      utm_campaign: options.utmCampaign\n    })\n  });\n  if (!response.ok) throw new Error(`API error: ${response.status}`);\n  return response.json();\n}\n\ncreateShortLink('YOUR_API_KEY', 'https://example.com', { slug: 'my-link' })\n  .then(data => console.log(data.short_url));" },
+    { type: "paragraph", content: "This approach works in serverless functions, backend services, and automation scripts. For frontend applications, always proxy API requests through your backend to keep your API key secret." },
+    { type: "heading", content: "Rate Limits and Error Handling", level: 2 },
+    { type: "paragraph", content: "The RELURL API URL shortener enforces rate limits to ensure platform stability. Free tier accounts are limited to 100 requests per minute. Paid plans offer higher limits up to 10,000 requests per minute. When you exceed the rate limit, the API returns a 429 Too Many Requests response with a Retry-After header indicating the number of seconds to wait." },
+    { type: "paragraph", content: "Implement exponential backoff in your integration. On receiving a 429, wait the number of seconds specified in Retry-After, then retry. If the request succeeds, gradually reduce the delay. This pattern prevents hammering the API during rate limits and ensures your integration remains stable under load." },
+    { type: "heading", content: "Webhook Integration for Event-Driven Workflows", level: 2 },
+    { type: "paragraph", content: "Beyond the request-response API, RELURL supports webhooks that notify your server when events occur. Configure webhook URLs in your dashboard, and RELURL sends POST requests to your endpoint with JSON payloads when links are clicked, created, or updated. This enables event-driven architectures where your application reacts to link activity in real time without polling." },
+    { type: "paragraph", content: "Combine the API URL shortener with webhooks for powerful automation. Create a link via the API, receive click notifications via webhook, and trigger downstream actions like updating a CRM record, sending a Slack alert, or adjusting an ad budget." },
+    { type: "faq", faqs: [
+      { q: "Do I need a paid plan to use the API?", a: "No. The API is available on the free tier with a limit of 100 requests per minute. Paid plans increase this limit." },
+      { q: "Can I generate API keys with restricted permissions?", a: "Yes. You can create read-only keys, full-access keys, or keys scoped to specific workspaces from your dashboard." },
+      { q: "Does the API support bulk link creation in a single request?", a: "The API accepts one link per request. For bulk operations, send requests in a loop with appropriate rate limiting." },
+      { q: "Are there SDKs available for the API?", a: "RELURL provides example code in the documentation. Community SDKs are available for Python, JavaScript, PHP, and Ruby." }
+    ] },
+    { type: "cta", content: "Start building with the RELURL API URL shortener. Get your API key and integrate link shortening into your workflow today." }
+  ]
+}

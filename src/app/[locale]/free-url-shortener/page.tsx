@@ -1,16 +1,22 @@
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata = generateSEOMetadata({
-  title: "Free URL Shortener - Free Short Links",
-  description: "Shorten URLs for free with RELURL. Get custom slugs, basic click analytics, and unlimited links on our free plan with no signup required.",
-  path: "/free-url-shortener",
-  keywords: ["free url shortener", "free short links", "shorten url free"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Free URL Shortener - Free Short Links",
+    description: "Shorten URLs for free with RELURL. Get custom slugs, basic click analytics, and unlimited links on our free plan with no signup required.",
+    path: "/free-url-shortener",
+    keywords: ["free url shortener", "free short links", "shorten url free"],
+    locale,
+  })
+}
 
 export default function FreeURLShortenerPage() {
   const href = "/free-url-shortener"
+  const relatedArticles = getPostsByLandingPage("/free-url-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Free URL Shortener"
@@ -47,6 +53,8 @@ export default function FreeURLShortenerPage() {
         { q: "Can I shorten URLs without signing up?", a: "Yes! You can generate short links instantly without any account. However, creating a free account lets you track clicks, manage your links, and use custom slugs." },
         { q: "What happens if my link goes viral?", a: "Shortened links on our platform handle high traffic automatically. Free plan links never expire or break, even if your content goes viral. Our infrastructure scales to meet demand." },
       ]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

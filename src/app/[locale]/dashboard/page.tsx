@@ -1,39 +1,65 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
-import Link from "next/link"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Link } from "@/i18n/navigation"
+
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { LineChart } from "@/components/ui/chart"
-import { Skeleton } from "@/components/ui/skeleton"
-import { formatDate, formatNumber } from "@/lib/utils"
+import { StatCard } from "@/components/ui/stat-card"
+import { SectionHeader } from "@/components/ui/section-header"
+import { SkeletonStats, SkeletonCard, SkeletonChart, SkeletonTable, LoadingSpinner } from "@/components/ui/loading"
+import { EmptyState } from "@/components/ui/empty-state"
+import { ErrorState } from "@/components/ui/error-state"
 import { UpgradePrompt, PlanBadge, UsageBar } from "@/components/upgrade-prompt"
+import { formatDate, formatNumber } from "@/lib/utils"
+import { AIChat } from "@/components/dashboard/ai-chat"
+import { ActivityFeed } from "@/components/dashboard/activity-feed"
 import {
   Link2,
   MousePointerClick,
   Activity,
   CalendarDays,
-  ArrowUpRight,
+  Plus,
+  BarChart3,
+  ExternalLink,
   Crown,
+  AlertCircle,
 } from "lucide-react"
 
-interface ClickOverTime {
+interface ClickByDay {
   date: string
   clicks: number
-  uniqueClicks: number
 }
 
-interface Link {
+interface AnalyticsData {
+  clicks: number
+  uniqueVisitors: number
+  totalLinks: number
+  clicksByDay: ClickByDay[]
+  referrers: { source: string; count: number }[]
+  countries: { country: string; count: number }[]
+  browsers: { browser: string; count: number }[]
+  devices: { device: string; count: number }[]
+  os: { os: string; count: number }[]
+  topLink: { url: string; slug: string; clicks: number } | null
+}
+
+interface LinkItem {
   id: string
   url: string
   slug: string
   clicks: number
   createdAt: string
   isActive: boolean
+}
+
+interface LinkResponse {
+  links: LinkItem[]
+  total: number
 }
 
 interface PlanData {
@@ -50,38 +76,12 @@ interface PlanData {
   }
 }
 
-function StatCard({ icon, label, value, trend }: { icon: React.ReactNode; label: string; value: string; trend?: string }) {
-  return (
-    <Card>
-      <CardContent className="p-6">
-        <div className="flex items-center justify-between">
-          <div className="rounded-lg bg-dark-300 p-3">{icon}</div>
-          {trend && (
-            <span className="flex items-center gap-1 text-xs font-medium text-emerald-400">
-              <ArrowUpRight className="h-3 w-3" />
-              {trend}
-            </span>
-          )}
-        </div>
-        <div className="mt-4">
-          <p className="text-sm text-dark-100">{label}</p>
-          <p className="text-2xl font-bold text-dark-50">{value}</p>
-        </div>
-      </CardContent>
-    </Card>
-  )
-}
-
 export default function DashboardPage() {
   const { data: session, status } = useSession()
   const router = useRouter()
-
-  const [analytics, setAnalytics] = useState<{
-    totalClicks: number
-    clicksOverTime: ClickOverTime[]
-  } | null>(null)
-  const [linksData, setLinksData] = useState<{ links: Link[]; total: number } | null>(null)
-  const [activeLinksCount, setActiveLinksCount] = useState(0)
+  const [analytics, setAnalytics] = useState<AnalyticsData | null>(null)
+  const [linksData, setLinksData] = useState<LinkResponse | null>(null)
+  const [activeLinksCount, setActiveLinksCount] = useState<number>(0)
   const [planData, setPlanData] = useState<PlanData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -92,7 +92,7 @@ export default function DashboardPage() {
     }
   }, [status, router])
 
-  function fetchAllData() {
+  const fetchAllData = useCallback(() => {
     setLoading(true)
     setError(null)
 
@@ -114,7 +114,8 @@ export default function DashboardPage() {
         if (analyticsJson.error) throw new Error(analyticsJson.error)
         if (linksJson.error) throw new Error(linksJson.error)
         if (activeLinksJson.error) throw new Error(activeLinksJson.error)
-        setAnalytics(analyticsJson.data)
+
+        setAnalytics(analyticsJson)
         setLinksData(linksJson.data)
         setActiveLinksCount(activeLinksJson.data.total)
         if (planRes.ok) {
@@ -128,29 +129,49 @@ export default function DashboardPage() {
       .finally(() => {
         setLoading(false)
       })
-  }
+  }, [])
 
   useEffect(() => {
     if (status === "authenticated") {
       fetchAllData()
     }
-  }, [status])
+  }, [status, fetchAllData])
+
+  useEffect(() => {
+    if (!session?.user?.id) return
+
+    const eventSource = new EventSource(`/api/analytics/live?userId=${session.user.id}`)
+
+    eventSource.onmessage = (event) => {
+      const data = JSON.parse(event.data)
+      if (data.type === "click") {
+        fetchAllData()
+      }
+    }
+
+    eventSource.onerror = () => {
+      eventSource.close()
+    }
+
+    return () => {
+      eventSource.close()
+    }
+  }, [session?.user?.id])
 
   function getClicksToday(): number {
-    if (!analytics?.clicksOverTime?.length) return 0
+    if (!analytics?.clicksByDay?.length) return 0
     const today = new Date().toISOString().slice(0, 10)
-    const todayEntry = analytics.clicksOverTime.find((d) => d.date === today)
+    const todayEntry = analytics.clicksByDay.find((d) => d.date === today)
     return todayEntry?.clicks ?? 0
   }
 
   const chartData =
-    analytics?.clicksOverTime?.map((d) => ({
+    analytics?.clicksByDay?.map((d) => ({
       date: formatDate(d.date, "MMM d"),
       clicks: d.clicks,
     })) ?? []
 
-  const displayName =
-    session?.user?.name?.split(" ")[0] ?? "User"
+  const displayName = session?.user?.name?.split(" ")[0] ?? "User"
 
   if (status === "loading") {
     return (
@@ -163,26 +184,35 @@ export default function DashboardPage() {
   if (error) {
     return (
       <div className="space-y-8">
-        <div>
-          <h1 className="text-2xl font-bold text-dark-50">Dashboard</h1>
-        </div>
-        <Card>
-          <CardContent className="flex flex-col items-center justify-center p-12">
-            <p className="mb-2 text-red-400">Failed to load dashboard data</p>
-            <p className="mb-4 text-sm text-dark-100">{error}</p>
-            <Button onClick={fetchAllData} variant="outline">
-              Retry
-            </Button>
-          </CardContent>
-        </Card>
+        <SectionHeader title="Dashboard" description="An overview of your link performance" />
+        <ErrorState
+          title="Failed to load dashboard data"
+          message={error}
+          onRetry={fetchAllData}
+        />
+      </div>
+    )
+  }
+
+  if (!loading && !analytics && !linksData) {
+    return (
+      <div className="space-y-8 animate-fade-in">
+        <SectionHeader title="Dashboard" description="An overview of your link performance" />
+        <EmptyState
+          icon={<AlertCircle className="h-6 w-6" />}
+          title="No data available"
+          description="Create your first link to see your dashboard come to life."
+                  action={{ label: "Create Link", onClick: () => router.push("/dashboard/links/new") }}
+        />
       </div>
     )
   }
 
   return (
-    <div className="space-y-8">
-      <div className="flex items-center justify-between">
-        <div>
+    <div className="space-y-8 animate-fade-in">
+      {/* Welcome Header */}
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="animate-fade-in-up">
           <h1 className="text-2xl font-bold text-dark-50">
             Welcome back, {displayName}
           </h1>
@@ -190,205 +220,201 @@ export default function DashboardPage() {
             Here&apos;s what&apos;s happening with your links today.
           </p>
         </div>
-        {planData && (
-          <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-3 animate-fade-in-up">
+          {planData && (
             <PlanBadge plan={planData.plan} />
-            {planData.plan === "FREE" && (
-              <Link href="/pricing">
-                <Button size="sm" className="bg-[#1F6F5F] hover:bg-[#2FA084]">
-                  <Crown className="mr-1 h-3 w-3" />
-                  Upgrade
-                </Button>
-              </Link>
-            )}
-          </div>
-        )}
+          )}
+          <Link href="/dashboard/links/new">
+            <Button size="sm" className="bg-[#1F6F5F] hover:bg-[#2FA084]">
+              <Plus className="mr-1 h-4 w-4" />
+              Create Link
+            </Button>
+          </Link>
+          <Link href="/dashboard/analytics">
+            <Button variant="outline" size="sm">
+              <BarChart3 className="mr-1 h-4 w-4" />
+              Analytics
+            </Button>
+          </Link>
+          <Link href="/dashboard/links">
+            <Button variant="outline" size="sm">
+              <ExternalLink className="mr-1 h-4 w-4" />
+              Links
+            </Button>
+          </Link>
+          {planData?.plan === "FREE" && (
+            <Link href="/pricing">
+              <Button size="sm" variant="primary">
+                <Crown className="mr-1 h-4 w-4" />
+                Upgrade
+              </Button>
+            </Link>
+          )}
+        </div>
       </div>
 
+      {/* Plan Usage Section */}
       {planData && planData.plan === "FREE" && (
-        <Card className="border-[#2FA084]/30">
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2 mb-3">
-              <Crown className="h-4 w-4 text-[#2FA084]" />
-              <span className="font-medium text-dark-50">Plan Usage</span>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <UsageBar
-                label="Links"
-                current={planData.usage.links.current}
-                max={planData.usage.links.max}
+        <div className="rounded-xl border border-[#2FA084]/30 bg-dark-500 p-4 shadow-lg animate-fade-in-up">
+          <div className="flex items-center gap-2 mb-3">
+            <Crown className="h-4 w-4 text-[#2FA084]" />
+            <span className="font-medium text-dark-50">Plan Usage</span>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <UsageBar
+              label="Links"
+              current={planData.usage.links.current}
+              max={planData.usage.links.max}
+            />
+            <UsageBar
+              label="Clicks (this month)"
+              current={planData.usage.clicks.current}
+              max={planData.usage.clicks.max}
+            />
+          </div>
+          {(planData.usage.links.current >= planData.usage.links.max * 0.8 ||
+            planData.usage.clicks.current >= planData.usage.clicks.max * 0.8) && (
+            <div className="mt-3">
+              <UpgradePrompt
+                plan={planData.plan}
+                feature={planData.usage.links.current >= planData.usage.links.max * 0.8 ? "links" : "clicks"}
+                current={planData.usage.links.current >= planData.usage.links.max * 0.8
+                  ? planData.usage.links.current
+                  : planData.usage.clicks.current}
+                max={planData.usage.links.current >= planData.usage.links.max * 0.8
+                  ? planData.usage.links.max
+                  : planData.usage.clicks.max}
               />
-              <UsageBar
-                label="Clicks (this month)"
-                current={planData.usage.clicks.current}
-                max={planData.usage.clicks.max}
-              />
             </div>
-            {(planData.usage.links.current >= planData.usage.links.max * 0.8 ||
-              planData.usage.clicks.current >= planData.usage.clicks.max * 0.8) && (
-              <div className="mt-3">
-                <UpgradePrompt
-                  plan={planData.plan}
-                  feature={planData.usage.links.current >= planData.usage.links.max * 0.8 ? "links" : "clicks"}
-                  current={planData.usage.links.current >= planData.usage.links.max * 0.8
-                    ? planData.usage.links.current
-                    : planData.usage.clicks.current}
-                  max={planData.usage.links.current >= planData.usage.links.max * 0.8
-                    ? planData.usage.links.max
-                    : planData.usage.clicks.max}
-                />
-              </div>
-            )}
-          </CardContent>
-        </Card>
+          )}
+        </div>
       )}
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {/* KPI Cards */}
+      {loading ? (
+        <SkeletonStats />
+      ) : (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 animate-fade-in-up">
+          <StatCard
+            icon={<Link2 className="h-5 w-5" />}
+            label="Total Links"
+            value={formatNumber(linksData?.total ?? 0)}
+            trend={{ value: 0, positive: true }}
+          />
+          <StatCard
+            icon={<MousePointerClick className="h-5 w-5" />}
+            label="Total Clicks"
+            value={formatNumber(analytics?.clicks ?? 0)}
+            trend={{ value: 0, positive: true }}
+          />
+          <StatCard
+            icon={<Activity className="h-5 w-5" />}
+            label="Active Links"
+            value={formatNumber(activeLinksCount)}
+            trend={{ value: 0, positive: true }}
+          />
+          <StatCard
+            icon={<CalendarDays className="h-5 w-5" />}
+            label="Clicks Today"
+            value={formatNumber(getClicksToday())}
+          />
+        </div>
+      )}
+
+      {/* Three-Column Layout */}
+      <div className="grid gap-6 lg:grid-cols-3">
+        {/* Click Activity Chart */}
         {loading ? (
-          <>
-            {Array.from({ length: 4 }).map((_, i) => (
-              <Card key={i}>
-                <CardContent className="p-6">
-                  <Skeleton className="h-10 w-10 rounded-lg" />
-                  <div className="mt-4 space-y-2">
-                    <Skeleton className="h-4 w-20" />
-                    <Skeleton className="h-8 w-16" />
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </>
+          <SkeletonChart />
         ) : (
-          <>
-            <StatCard
-              icon={<Link2 className="h-5 w-5 text-primary-500" />}
-              label="Total Links"
-              value={formatNumber(linksData?.total ?? 0)}
+          <div className="lg:col-span-2 rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg animate-fade-in-up">
+            <SectionHeader
+              title="Click Activity"
+              description="Last 7 days"
             />
-            <StatCard
-              icon={<MousePointerClick className="h-5 w-5 text-blue-400" />}
-              label="Total Clicks"
-              value={formatNumber(analytics?.totalClicks ?? 0)}
-            />
-            <StatCard
-              icon={<Activity className="h-5 w-5 text-emerald-400" />}
-              label="Active Links"
-              value={formatNumber(activeLinksCount)}
-            />
-            <StatCard
-              icon={<CalendarDays className="h-5 w-5 text-purple-400" />}
-              label="Clicks Today"
-              value={formatNumber(getClicksToday())}
-            />
-          </>
+            <div className="mt-4">
+              {chartData.length > 0 ? (
+                <LineChart data={chartData} xKey="date" yKey="clicks" />
+              ) : (
+                <div className="flex h-[300px] items-center justify-center text-sm text-dark-100">
+                  No click data available
+                </div>
+              )}
+            </div>
+          </div>
         )}
-      </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+        {/* Activity Feed */}
+        <div className="lg:row-span-2">
+          <ActivityFeed />
+        </div>
+
+        {/* Recent Links */}
         {loading ? (
-          <>
-            <Card>
-              <CardHeader>
-                <Skeleton className="h-6 w-32" />
-                <Skeleton className="mt-1 h-4 w-24" />
-              </CardHeader>
-              <CardContent>
-                <Skeleton className="h-[300px] w-full" />
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between">
-                <div>
-                  <Skeleton className="h-6 w-28" />
-                  <Skeleton className="mt-1 h-4 w-24" />
-                </div>
-                <Skeleton className="h-9 w-20" />
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Skeleton key={i} className="h-12 w-full" />
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </>
+          <div className="lg:col-span-2 rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg">
+            <SkeletonCard />
+          </div>
         ) : (
-          <>
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Click Activity</CardTitle>
-                <p className="text-sm text-dark-100">Last 7 days</p>
-              </CardHeader>
-              <CardContent>
-                {chartData.length > 0 ? (
-                  <LineChart data={chartData} xKey="date" yKey="clicks" />
-                ) : (
-                  <div className="flex h-[300px] items-center justify-center text-sm text-dark-100">
-                    No click data available
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between">
-                <div>
-                  <CardTitle className="text-lg">Recent Links</CardTitle>
-                  <p className="text-sm text-dark-100">Your last 5 links</p>
-                </div>
+          <div className="lg:col-span-2 rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg animate-fade-in-up">
+            <SectionHeader
+              title="Recent Links"
+              description="Your last 5 links"
+              action={
                 <Link href="/dashboard/links">
                   <Button variant="outline" size="sm">View All</Button>
                 </Link>
-              </CardHeader>
-              <CardContent>
-                {linksData?.links?.length ? (
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Short URL</TableHead>
-                        <TableHead>Clicks</TableHead>
-                        <TableHead>Date</TableHead>
-                        <TableHead>Status</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {linksData.links.map((link: Link) => (
-                        <TableRow key={link.id}>
-                          <TableCell>
-                            <div className="flex items-center gap-2">
-                              <Link2 className="h-4 w-4 shrink-0 text-dark-100" />
-                              <div className="min-w-0">
-                                <p className="truncate font-medium text-dark-50">
-                                  {link.slug}
-                                </p>
-                                <p className="truncate text-xs text-dark-100">
-                                  {link.url}
-                                </p>
-                              </div>
+              }
+            />
+            <div className="mt-4">
+              {linksData?.links?.length ? (
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Short URL</TableHead>
+                      <TableHead>Clicks</TableHead>
+                      <TableHead>Date</TableHead>
+                      <TableHead>Status</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {linksData.links.map((link: LinkItem) => (
+                      <TableRow key={link.id}>
+                        <TableCell>
+                          <div className="flex items-center gap-2">
+                            <Link2 className="h-4 w-4 shrink-0 text-dark-100" />
+                            <div className="min-w-0">
+                              <p className="truncate font-medium text-dark-50">
+                                {link.slug}
+                              </p>
+                              <p className="truncate text-xs text-dark-100">
+                                {link.url}
+                              </p>
                             </div>
-                          </TableCell>
-                          <TableCell className="text-dark-50">{formatNumber(link.clicks)}</TableCell>
-                          <TableCell className="text-dark-100">{formatDate(link.createdAt, "MMM d")}</TableCell>
-                          <TableCell>
-                            <Badge variant={link.isActive ? "success" : "destructive"}>
-                              {link.isActive ? "Active" : "Inactive"}
-                            </Badge>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                ) : (
-                  <p className="py-8 text-center text-sm text-dark-100">
-                    No links yet. Create your first link to get started.
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-          </>
+                          </div>
+                        </TableCell>
+                        <TableCell className="text-dark-50">{formatNumber(link.clicks)}</TableCell>
+                        <TableCell className="text-dark-100">{formatDate(link.createdAt, "MMM d")}</TableCell>
+                        <TableCell>
+                          <Badge variant={link.isActive ? "success" : "destructive"}>
+                            {link.isActive ? "Active" : "Inactive"}
+                          </Badge>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              ) : (
+                <EmptyState
+                  title="No links yet"
+                  description="Create your first link to get started."
+          action={{ label: "Create Link", onClick: () => router.push("/dashboard/links/new") }}
+                />
+              )}
+            </div>
+          </div>
         )}
       </div>
+      <AIChat />
     </div>
   )
 }

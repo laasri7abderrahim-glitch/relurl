@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Webinar Link Shortener - Webinar Registration Links",
-  description: "Shorten webinar registration and replay links. Track attendance, optimize promotions, and fill your webinars with RELURL.",
-  path: "/webinar-link-shortener",
-  keywords: ["webinar link shortener", "webinar registration links", "webinar marketing"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Webinar Link Shortener - Webinar Registration Links",
+    description: "Shorten webinar registration and replay links. Track attendance, optimize promotions, and fill your webinars with RELURL.",
+    path: "/webinar-link-shortener",
+    keywords: ["webinar link shortener", "webinar registration links", "webinar marketing"],
+    locale,
+  })
+}
 
 export default function WebinarLinkShortenerPage() {
   const href = "/webinar-link-shortener"
+  const relatedArticles = getPostsByLandingPage("/webinar-link-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Webinar Link Shortener"
@@ -43,6 +48,8 @@ export default function WebinarLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

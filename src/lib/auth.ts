@@ -1,4 +1,5 @@
 import NextAuth, { getServerSession, type AuthOptions, type DefaultSession } from "next-auth";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
@@ -25,6 +26,7 @@ declare module "next-auth/jwt" {
 }
 
 export const authOptions: AuthOptions = {
+  adapter: PrismaAdapter(prisma),
   providers: [
     Credentials({
       name: "credentials",
@@ -66,15 +68,13 @@ export const authOptions: AuthOptions = {
     strategy: "jwt",
   },
   callbacks: {
-    async jwt({ token, user, account }) {
+    async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
         token.role = user.role ?? "USER";
       }
-      if (account?.provider === "google" || account?.provider === "github") {
-        const dbUser = await prisma.user.findUnique({
-          where: { email: token.email! },
-        });
+      if (!token.id?.includes("-") && token.email) {
+        const dbUser = await prisma.user.findUnique({ where: { email: token.email } });
         if (dbUser) {
           token.id = dbUser.id;
           token.role = dbUser.role;

@@ -1,0 +1,52 @@
+import { BlogPost } from "../types"
+
+export const article: BlogPost = {
+  slug: "kw-63-how-to-create-link-for-tiktok-bio",
+  title: "How to Create a Link for TikTok Bio: Drive Traffic from Your Videos",
+  metaDescription: "Learn how to create a link for your TikTok bio that you can swap for campaigns, track referral traffic from TikTok, and grow your audience beyond the platform.",
+  keywords: ["link for tiktok bio", "tiktok bio link", "tiktok url shortener", "tiktok referral traffic", "tiktok link tracking"],
+  landingPage: "/free-url-shortener",
+  category: "Guides",
+  date: "June 29, 2026",
+  readTime: "7 min read",
+  image: "https://picsum.photos/seed/kw-63-how-to-create-link-for-tiktok-bio/1200/630",
+  imageAlt: "How to Create a Link for TikTok Bio: Drive Traffic from Your Videos",
+  content: [
+    { type: "paragraph", content: "TikTok gives you exactly one clickable link. It lives in your bio. That single link is the only way to send your TikTok audience to your website, product page, affiliate offer, or landing page. Learning how to create a link for TikTok bio that you can swap instantly, track with precision, and optimize for conversions is one of the highest-leverage skills for any creator or brand on the platform." },
+    { type: "paragraph", content: "The challenge is that one link must serve every video you post. If you talk about ten different products in ten different videos, your bio link needs to be the right destination for whoever arrives from whichever video. A static link fails this test. A dynamic or swappable bio link powered by a URL shortener like RELURL solves the problem." },
+    { type: "heading", content: "Why You Need a Trackable TikTok Bio Link", level: 2 },
+    { type: "paragraph", content: "TikTok does not natively support clickable links in video captions or comments for most accounts. The bio link is the only clickable surface. This makes it incredibly valuable and equally constrained. Every visitor who lands on your TikTok profile sees that link. If it points to a generic homepage, you waste the opportunity to send visitors to the most relevant destination for the content they just watched." },
+    { type: "paragraph", content: "A trackable bio link changed through a URL shortener solves several problems at once. You can update the destination without editing your TikTok bio. You can measure exactly how many clicks each video drives. You can route visitors to different pages based on your current campaign without making your followers type or remember a different URL." },
+    { type: "heading", content: "Step 1: Sign Up for a Shortener That Supports Link Swapping", level: 2 },
+    { type: "paragraph", content: "Not all URL shorteners let you change the destination of a link after creation. Some generate a permanent redirect that cannot be edited. This is a dealbreaker for TikTok bio links because you need the flexibility to point that single link to different places as your content evolves." },
+    { type: "paragraph", content: "RELURL allows you to edit the destination URL of any short link at any time. The short link stays the same. You update the destination. No one needs a new link. This is the core feature that makes a TikTok bio link strategy work." },
+    { type: "paragraph", content: "Sign up is free. No credit card required. You get a dashboard where you can create, edit, and track all your short links from one place. The free tier is generous enough to manage a TikTok bio link plus campaign tracking." },
+    { type: "heading", content: "Step 2: Create Your Permanent TikTok Bio Link", level: 2 },
+    { type: "paragraph", content: "Your TikTok bio link should be a short, clean URL that you put in your bio and never change. Something like relurl.com/yourname or yourbrand.link/tiktok. This permanent short link goes into your TikTok bio today and stays there forever." },
+    { type: "paragraph", content: "Inside RELURL, create a new short link. Paste your current best destination URL into the destination field. This could be your homepage, a lead magnet, a product page, or a link-in-bio page. Give the link a descriptive title so you can find it later. Copy the generated short URL and paste it into your TikTok bio." },
+    { type: "paragraph", content: "Once this short link is in your bio, you never need to edit your TikTok profile again. All future destination changes happen inside RELURL." },
+    { type: "heading", content: "Step 3: Swap the Destination for Each Campaign", level: 2 },
+    { type: "paragraph", content: "When you post a new video promoting a specific product, service, or piece of content, log into RELURL, find your TikTok bio link, and edit the destination URL to match whatever you are promoting in that video. The short link in your bio does not change. The redirect updates instantly." },
+    { type: "paragraph", content: "This means you can run a different offer every day without ever touching your TikTok bio settings. The link stays the same. The destination changes. Your audience always arrives at the right page for the content they just watched." },
+    { type: "paragraph", content: "Set a reminder to swap the link back to a default destination after a campaign ends. Some creators use a link-in-bio tool as their default and swap to specific landing pages during promotions." },
+    { type: "heading", content: "Step 4: Track TikTok Referral Traffic", level: 2 },
+    { type: "paragraph", content: "The click data from RELURL tells you exactly how much traffic your TikTok bio link is generating. You see total clicks, clicks over time, and geographic data about your audience. This information is gold for understanding which videos drive the most bio link traffic." },
+    { type: "paragraph", content: "To track individual video performance, use UTM parameters on the destination URL. Add ?utm_source=tiktok&utm_medium=social&utm_campaign=videoname to your destination link before pasting it into RELURL. Your analytics platform (Google Analytics, for example) will show you which TikTok video drove each visit." },
+    { type: "paragraph", content: "Cross-reference your TikTok analytics with your RELURL click data. If a video gets 100,000 views but only 50 bio link clicks, the call-to-action or offer may not be compelling enough. If a video gets 10,000 views and 500 clicks, that is a 5% click-through rate from bio traffic, which is excellent for TikTok." },
+    { type: "heading", content: "Advanced Strategy: Use Multiple Bio Links with a Link-in-Bio Page", level: 2 },
+    { type: "paragraph", content: "Some creators need more than one link. A link-in-bio page like Linktree, Beacons, or RELURL's own landing page feature gives you multiple clickable links from a single bio URL. This is useful when you want to send visitors to your latest video, your newsletter signup, your affiliate store, and your booking page all at once." },
+    { type: "paragraph", content: "Your TikTok bio link points to your link-in-bio page. Each link on that page can be a separate RELURL short link with its own tracking. You get detailed analytics on which links visitors click after arriving from TikTok, not just how many arrived." },
+    { type: "paragraph", content: "The tradeoff is that a link-in-bio page adds an extra step between the viewer and the destination. For maximum direct conversion, a single trackable short link that points straight to your offer usually converts better. Test both approaches with your audience." },
+    { type: "heading", content: "Common Mistakes with TikTok Bio Links", level: 2 },
+    { type: "list", items: ["Using a link that cannot be edited later. If you use a shortener that generates permanent links, you must create a new link every time you change your offer, and update your bio every time.", "Not tracking clicks. A TikTok bio link without analytics is a black hole. You have no idea how much traffic you are sending or which content drives the most visits.", "Sending all traffic to a homepage. Homepages are generic. Send TikTok traffic to a page that continues the conversation started by the video they just watched.", "Forgetting to swap links between campaigns. Leaving last week's offer live when this week's video promotes something different wastes traffic and confuses viewers."] },
+    { type: "heading", content: "TikTok Bio Link Best Practices", level: 2 },
+    { type: "list", items: ["Keep the short URL clean and brand-aligned. A messy or suspicious-looking short link reduces click-through rate.", "Always use HTTPS. TikTok may flag or block non-HTTPS links. RELURL links are HTTPS by default.", "Add UTM parameters for every destination swap. Consistent tracking makes analytics meaningful over time.", "Monitor click data daily during active campaigns. A sudden drop in clicks could indicate a broken link or a change in TikTok algorithm behavior.", "Test your link from a mobile device. Most TikTok traffic is mobile. Make sure the destination page loads fast and looks good on a phone screen."] },
+    { type: "faq", faqs: [
+      { q: "Can I put a clickable link in TikTok video captions?", a: "Only for accounts with 1,000+ followers in certain regions, and even then, the link appears in the caption text and must be manually copied by viewers. The bio link is the only guaranteed clickable link on TikTok." },
+      { q: "How often should I swap my TikTok bio link?", a: "Swap it every time you post a video promoting something specific. For general content, keep a default destination like your website or newsletter signup page." },
+      { q: "Does RELURL track TikTok as a referral source automatically?", a: "RELURL records all clicks with referrer data when available. You can identify TikTok traffic by the referrer domain. Adding UTM parameters gives you more precise attribution." },
+      { q: "Can I use a custom domain for my TikTok bio link?", a: "Yes. A branded short domain like yourbrand.link/tiktok looks more professional than a generic short URL. RELURL supports custom domains on all plans." }
+    ] },
+    { type: "cta", content: "Create your TikTok bio link with RELURL's free URL shortener. Swap destinations on the fly, track every click, and turn your bio into a traffic machine." }
+  ]
+}

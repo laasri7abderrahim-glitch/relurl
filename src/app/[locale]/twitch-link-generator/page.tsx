@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Twitch Link Generator - Stream & Channel Links",
-  description: "Generate short links for Twitch streams, channels, and clips. Track viewer engagement and grow your Twitch audience with RELURL.",
-  path: "/twitch-link-generator",
-  keywords: ["twitch link generator", "twitch stream links", "twitch marketing"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Twitch Link Generator - Stream & Channel Links",
+    description: "Generate short links for Twitch streams, channels, and clips. Track viewer engagement and grow your Twitch audience with RELURL.",
+    path: "/twitch-link-generator",
+    keywords: ["twitch link generator", "twitch stream links", "twitch marketing"],
+    locale,
+  })
+}
 
 export default function TwitchLinkGeneratorPage() {
   const href = "/twitch-link-generator"
+  const relatedArticles = getPostsByLandingPage("/twitch-link-generator").slice(0, 3)
   return (
     <URLLandingPage
       title="Twitch Link Generator"
@@ -43,6 +48,8 @@ export default function TwitchLinkGeneratorPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

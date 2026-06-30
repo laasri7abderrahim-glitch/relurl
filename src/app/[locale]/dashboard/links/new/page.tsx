@@ -7,7 +7,10 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
+import { useTranslations } from "next-intl"
 import { useToast } from "@/components/ui/toast"
+import { sanitizeInput } from "@/lib/utils"
+import { UtmBuilder } from "@/components/dashboard/utm-builder"
 import {
   Link2,
   ChevronDown,
@@ -21,10 +24,12 @@ import {
   Smartphone,
   Languages,
   CalendarClock,
+  WandSparkles,
 } from "lucide-react"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 
 export default function NewLinkPage() {
+  const t = useTranslations('dashboard.links.new')
   const [activeTab, setActiveTab] = useState<"single" | "bulk">("single")
   const [destinationUrl, setDestinationUrl] = useState("")
   const [domain, setDomain] = useState("relurl.com")
@@ -56,12 +61,20 @@ export default function NewLinkPage() {
   const [langEnabled, setLangEnabled] = useState(false)
   const [languages, setLanguages] = useState<string[]>([])
   const [scheduledAt, setScheduledAt] = useState("")
+  const [isFetchingPreview, setIsFetchingPreview] = useState(false)
+  const [previewData, setPreviewData] = useState<{
+    title: string | null
+    description: string | null
+    image: string | null
+    favicon: string | null
+  } | null>(null)
+  const [showUtmBuilder, setShowUtmBuilder] = useState(false)
   const { addToast } = useToast()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!destinationUrl) {
-      addToast("Destination URL is required", "error")
+      addToast(t('toastUrlRequired'), "error")
       return
     }
 
@@ -72,12 +85,12 @@ export default function NewLinkPage() {
     const body: Record<string, unknown> = {
       url: destinationUrl,
       domain,
-      title: title || undefined,
+      title: title ? sanitizeInput(title) : undefined,
       tags: tags
         ? tags.split(",").map((t) => t.trim()).filter(Boolean)
         : undefined,
       password: passwordProtect ? password : undefined,
-      slug: customAlias || undefined,
+      slug: customAlias ? sanitizeInput(customAlias) : undefined,
       utmSource: utmSource || undefined,
       utmMedium: utmMedium || undefined,
       utmCampaign: utmCampaign || undefined,
@@ -106,17 +119,17 @@ export default function NewLinkPage() {
       if (json.data && !json.error) {
         const link = json.data
         setShortUrl(`https://${link.domain}/${link.slug}`)
-        addToast("Link created successfully", "success")
+        addToast(t('toastCreated'), "success")
       } else if (json.upgradeRequired) {
         setError(json.error)
         addToast(json.error, "error")
       } else {
-        setError(json.error || "Failed to create link")
-        addToast(json.error || "Failed to create link", "error")
+        setError(json.error || t('toastCreateFailed'))
+        addToast(json.error || t('toastCreateFailed'), "error")
       }
     } catch {
-      setError("An unexpected error occurred")
-      addToast("An unexpected error occurred", "error")
+      setError(t('toastUnexpectedError'))
+      addToast(t('toastUnexpectedError'), "error")
     } finally {
       setIsCreating(false)
     }
@@ -125,7 +138,7 @@ export default function NewLinkPage() {
   const handleBulkSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!bulkUrls.trim()) {
-      addToast("Enter at least one URL", "error")
+      addToast(t('toastEnterUrl'), "error")
       return
     }
 
@@ -140,13 +153,13 @@ export default function NewLinkPage() {
       .map((url) => ({ url }))
 
     if (urls.length === 0) {
-      addToast("No valid URLs found", "error")
+      addToast(t('toastNoValidUrls'), "error")
       setIsCreating(false)
       return
     }
 
     if (urls.length > 50) {
-      addToast("Maximum 50 links per request", "error")
+      addToast(t('toastMaxLinks'), "error")
       setIsCreating(false)
       return
     }
@@ -164,17 +177,17 @@ export default function NewLinkPage() {
           errors: json.data.errors,
         })
         addToast(
-          `${json.data.created.length} of ${json.data.total} links created`,
+          t('toastBulkCreated', { created: json.data.created.length, total: json.data.total }),
           json.data.errors.length > 0 ? "warning" : "success"
         )
         setBulkUrls("")
       } else {
-        setError(json.error || "Failed to create links")
-        addToast(json.error || "Failed to create links", "error")
+        setError(json.error || t('toastCreateFailed'))
+        addToast(json.error || t('toastCreateFailed'), "error")
       }
     } catch {
-      setError("An unexpected error occurred")
-      addToast("An unexpected error occurred", "error")
+      setError(t('toastUnexpectedError'))
+      addToast(t('toastUnexpectedError'), "error")
     } finally {
       setIsCreating(false)
     }
@@ -183,8 +196,40 @@ export default function NewLinkPage() {
   const handleCopy = async () => {
     await navigator.clipboard.writeText(shortUrl)
     setCopied(true)
-    addToast("Copied to clipboard", "success")
+    addToast(t('toastCopied'), "success")
     setTimeout(() => setCopied(false), 2000)
+  }
+
+  const fetchPreview = async (targetUrl: string) => {
+    if (!targetUrl) return
+    setIsFetchingPreview(true)
+    setPreviewData(null)
+    try {
+      const res = await fetch("/api/ai/fetch-preview", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: targetUrl }),
+      })
+      if (!res.ok) return
+      const data = await res.json()
+      if (data.title) {
+        setTitle(data.title)
+      }
+      setPreviewData(data)
+    } catch {
+      // silently fail
+    } finally {
+      setIsFetchingPreview(false)
+    }
+  }
+
+  const handleUtmApply = (params: { utmSource: string; utmMedium: string; utmCampaign: string; utmContent: string; utmTerm: string }) => {
+    setUtmSource(params.utmSource)
+    setUtmMedium(params.utmMedium)
+    setUtmCampaign(params.utmCampaign)
+    setUtmContent(params.utmContent)
+    setUtmTerm(params.utmTerm)
+    setShowUtmBuilder(false)
   }
 
   return (
@@ -196,8 +241,8 @@ export default function NewLinkPage() {
           </Button>
         </Link>
         <div>
-          <h1 className="text-2xl font-bold text-dark-50">Create New Link</h1>
-          <p className="mt-1 text-sm text-dark-100">Shorten a URL and customize it</p>
+          <h1 className="text-2xl font-bold text-dark-50">{t('title')}</h1>
+          <p className="mt-1 text-sm text-dark-100">{t('subtitle')}</p>
         </div>
       </div>
 
@@ -212,7 +257,7 @@ export default function NewLinkPage() {
         >
           <span className="flex items-center gap-2">
             <Link2 className="h-4 w-4" />
-            Single Link
+            {t('tabSingle')}
           </span>
         </button>
         <button
@@ -225,7 +270,7 @@ export default function NewLinkPage() {
         >
           <span className="flex items-center gap-2">
             <FileUp className="h-4 w-4" />
-            Bulk Create
+            {t('tabBulk')}
           </span>
         </button>
       </div>
@@ -235,23 +280,70 @@ export default function NewLinkPage() {
           <div className="lg:col-span-2 space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Link Details</CardTitle>
-                <CardDescription>Enter the URL you want to shorten</CardDescription>
+                <CardTitle>{t('linkDetails')}</CardTitle>
+                <CardDescription>{t('linkDetailsDesc')}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="destination">Destination URL *</Label>
-                  <Input
-                    id="destination"
-                    placeholder="https://example.com/very-long-url"
-                    value={destinationUrl}
-                    onChange={(e) => setDestinationUrl(e.target.value)}
-                  />
+                  <Label htmlFor="destination">{t('destinationUrl')}</Label>
+                  <div className="flex gap-2">
+                    <Input
+                      id="destination"
+                      placeholder={t('destinationUrlPlaceholder')}
+                      value={destinationUrl}
+                      onChange={(e) => setDestinationUrl(e.target.value)}
+                      onBlur={(e) => {
+                        const val = e.target.value.trim()
+                        if (val && (val.startsWith("http://") || val.startsWith("https://"))) {
+                          fetchPreview(val)
+                        }
+                      }}
+                      className="flex-1"
+                    />
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      size="sm"
+                      onClick={() => fetchPreview(destinationUrl)}
+                      disabled={isFetchingPreview || !destinationUrl}
+                    >
+                      {isFetchingPreview ? (
+                        <span className="h-4 w-4 animate-spin rounded-full border-2 border-dark-100 border-t-transparent" />
+                      ) : (
+                        t('fetchPreview')
+                      )}
+                    </Button>
+                  </div>
+                  {isFetchingPreview && (
+                    <p className="text-xs text-dark-100">{t('fetchingPreview')}</p>
+                  )}
+                  {previewData && previewData.title && (
+                    <div className="flex items-center gap-3 p-3 rounded-lg bg-dark-300/50 border border-dark-100">
+                      <img
+                        src={previewData.favicon || "/globe.svg"}
+                        className="w-6 h-6 rounded"
+                        alt=""
+                        onError={(e) => { (e.target as HTMLImageElement).src = "/globe.svg" }}
+                      />
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-medium text-dark-50 truncate">{previewData.title}</p>
+                        <p className="text-xs text-dark-100 truncate">{new URL(destinationUrl).hostname}</p>
+                      </div>
+                      {previewData.image && (
+                        <img
+                          src={previewData.image}
+                          className="w-10 h-10 rounded object-cover"
+                          alt=""
+                          onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }}
+                        />
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="domain">Domain</Label>
+                    <Label htmlFor="domain">{t('domain')}</Label>
                     <Select
                       id="domain"
                       value={domain}
@@ -263,10 +355,10 @@ export default function NewLinkPage() {
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="alias">Custom Alias (optional)</Label>
+                    <Label htmlFor="alias">{t('customAlias')}</Label>
                     <Input
                       id="alias"
-                      placeholder="my-custom-slug"
+                      placeholder={t('customAliasPlaceholder')}
                       value={customAlias}
                       onChange={(e) => setCustomAlias(e.target.value)}
                     />
@@ -274,20 +366,20 @@ export default function NewLinkPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="title">Title (optional)</Label>
+                  <Label htmlFor="title">{t('titleField')}</Label>
                   <Input
                     id="title"
-                    placeholder="My Campaign Link"
+                    placeholder={t('titlePlaceholder')}
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="tags">Tags (optional, comma separated)</Label>
+                  <Label htmlFor="tags">{t('tags')}</Label>
                   <Input
                     id="tags"
-                    placeholder="marketing, social, campaign"
+                    placeholder={t('tagsPlaceholder')}
                     value={tags}
                     onChange={(e) => setTags(e.target.value)}
                   />
@@ -305,14 +397,14 @@ export default function NewLinkPage() {
                     <Label htmlFor="passwordProtect" className="cursor-pointer">
                       <div className="flex items-center gap-2">
                         <Lock className="h-4 w-4 text-dark-100" />
-                        <span>Password protect this link</span>
+                        <span>{t('passwordProtect')}</span>
                       </div>
                     </Label>
                   </div>
                   {passwordProtect && (
                     <Input
                       type="password"
-                      placeholder="Enter password"
+                      placeholder={t('passwordPlaceholder')}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
@@ -328,8 +420,8 @@ export default function NewLinkPage() {
                 className="flex w-full items-center justify-between p-6"
               >
                 <div className="text-left">
-                  <CardTitle className="text-lg">Advanced Options</CardTitle>
-                  <CardDescription>UTM parameters, expiration, and more</CardDescription>
+                  <CardTitle className="text-lg">{t('advancedOptions')}</CardTitle>
+                  <CardDescription>{t('advancedOptionsDesc')}</CardDescription>
                 </div>
                 {showAdvanced ? (
                   <ChevronUp className="h-5 w-5 text-dark-100" />
@@ -339,49 +431,61 @@ export default function NewLinkPage() {
               </button>
               {showAdvanced && (
                 <CardContent className="space-y-4 border-t border-dark-100 pt-6">
-                  <p className="text-sm font-medium text-dark-50">UTM Parameters</p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm font-medium text-dark-50">{t('utmParameters')}</p>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setShowUtmBuilder(true)}
+                      disabled={!destinationUrl}
+                    >
+                      <WandSparkles className="mr-1.5 h-4 w-4" />
+                      {t('utmAutoFill')}
+                    </Button>
+                  </div>
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div className="space-y-2">
-                      <Label htmlFor="utmSource">UTM Source</Label>
+                      <Label htmlFor="utmSource">{t('utmSource')}</Label>
                       <Input
                         id="utmSource"
-                        placeholder="google"
+                        placeholder={t('utmSourcePlaceholder')}
                         value={utmSource}
                         onChange={(e) => setUtmSource(e.target.value)}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="utmMedium">UTM Medium</Label>
+                      <Label htmlFor="utmMedium">{t('utmMedium')}</Label>
                       <Input
                         id="utmMedium"
-                        placeholder="cpc"
+                        placeholder={t('utmMediumPlaceholder')}
                         value={utmMedium}
                         onChange={(e) => setUtmMedium(e.target.value)}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="utmCampaign">UTM Campaign</Label>
+                      <Label htmlFor="utmCampaign">{t('utmCampaign')}</Label>
                       <Input
                         id="utmCampaign"
-                        placeholder="summer_sale"
+                        placeholder={t('utmCampaignPlaceholder')}
                         value={utmCampaign}
                         onChange={(e) => setUtmCampaign(e.target.value)}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="utmTerm">UTM Term</Label>
+                      <Label htmlFor="utmTerm">{t('utmTerm')}</Label>
                       <Input
                         id="utmTerm"
-                        placeholder="running+shoes"
+                        placeholder={t('utmTermPlaceholder')}
                         value={utmTerm}
                         onChange={(e) => setUtmTerm(e.target.value)}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="utmContent">UTM Content</Label>
+                      <Label htmlFor="utmContent">{t('utmContent')}</Label>
                       <Input
                         id="utmContent"
-                        placeholder="hero_banner"
+                        placeholder={t('utmContentPlaceholder')}
                         value={utmContent}
                         onChange={(e) => setUtmContent(e.target.value)}
                       />
@@ -389,7 +493,7 @@ export default function NewLinkPage() {
                   </div>
 
                   <div className="space-y-2 pt-2">
-                    <Label htmlFor="expiration">Expiration Date (optional)</Label>
+                    <Label htmlFor="expiration">{t('expirationDate')}</Label>
                     <Input
                       id="expiration"
                       type="date"
@@ -399,7 +503,7 @@ export default function NewLinkPage() {
                   </div>
 
                   <div className="space-y-4 pt-2 border-t border-dark-100 mt-4">
-                    <p className="text-sm font-medium text-dark-50">Targeting</p>
+                    <p className="text-sm font-medium text-dark-50">{t('targeting')}</p>
 
                     <div className="space-y-3">
                       <div className="flex items-center gap-3">
@@ -412,7 +516,7 @@ export default function NewLinkPage() {
                         />
                         <Label htmlFor="geoEnabled" className="cursor-pointer flex items-center gap-2">
                           <Globe className="h-4 w-4 text-dark-100" />
-                          Geo Targeting
+                          {t('geoTargeting')}
                         </Label>
                       </div>
                       {geoEnabled && (
@@ -447,7 +551,7 @@ export default function NewLinkPage() {
                         />
                         <Label htmlFor="deviceEnabled" className="cursor-pointer flex items-center gap-2">
                           <Smartphone className="h-4 w-4 text-dark-100" />
-                          Device Targeting
+                          {t('deviceTargeting')}
                         </Label>
                       </div>
                       {deviceEnabled && (
@@ -482,7 +586,7 @@ export default function NewLinkPage() {
                         />
                         <Label htmlFor="langEnabled" className="cursor-pointer flex items-center gap-2">
                           <Languages className="h-4 w-4 text-dark-100" />
-                          Language Targeting
+                          {t('languageTargeting')}
                         </Label>
                       </div>
                       {langEnabled && (
@@ -509,7 +613,7 @@ export default function NewLinkPage() {
                     <div className="space-y-2 pt-2">
                       <Label htmlFor="scheduledAt" className="flex items-center gap-2">
                         <CalendarClock className="h-4 w-4 text-dark-100" />
-                        Schedule Activation
+                        {t('scheduleActivation')}
                       </Label>
                       <Input
                         id="scheduledAt"
@@ -517,7 +621,7 @@ export default function NewLinkPage() {
                         value={scheduledAt}
                         onChange={(e) => setScheduledAt(e.target.value)}
                       />
-                      <p className="text-xs text-dark-100">Link will be activated at this date/time</p>
+                      <p className="text-xs text-dark-100">{t('scheduleActivationHint')}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -534,12 +638,12 @@ export default function NewLinkPage() {
               {isCreating ? (
                 <span className="flex items-center gap-2">
                   <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                  Creating...
+                  {t('creating')}
                 </span>
               ) : (
                 <span className="flex items-center gap-2">
                   <Link2 className="h-5 w-5" />
-                  Shorten
+                  {t('shorten')}
                 </span>
               )}
             </Button>
@@ -549,7 +653,7 @@ export default function NewLinkPage() {
                 <p className="text-red-400">{error}</p>
                 {error.includes("Upgrade") && (
                   <Link href="/pricing" className="text-[#2FA084] hover:underline font-medium">
-                    View Plans & Upgrade →
+                    {t('upgradeLink')}
                   </Link>
                 )}
               </div>
@@ -560,8 +664,8 @@ export default function NewLinkPage() {
             {shortUrl && (
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg">Your Short Link</CardTitle>
-                  <CardDescription>Share this link anywhere</CardDescription>
+                  <CardTitle className="text-lg">{t('yourShortLink')}</CardTitle>
+                  <CardDescription>{t('yourShortLinkDesc')}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="rounded-lg border border-primary-500/30 bg-primary-500/5 p-4">
@@ -575,12 +679,12 @@ export default function NewLinkPage() {
                     {copied ? (
                       <>
                         <Check className="mr-2 h-4 w-4" />
-                        Copied!
+                        {t('copied')}
                       </>
                     ) : (
                       <>
                         <Copy className="mr-2 h-4 w-4" />
-                        Copy URL
+                        {t('copyUrl')}
                       </>
                     )}
                   </Button>
@@ -590,13 +694,13 @@ export default function NewLinkPage() {
 
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Tips</CardTitle>
+                <CardTitle className="text-lg">{t('tips')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3 text-sm text-dark-100">
-                <p>Use custom aliases to make your links memorable.</p>
-                <p>Add UTM parameters to track campaign performance in analytics.</p>
-                <p>Password-protect links for private content.</p>
-                <p>Set an expiration date for time-sensitive campaigns.</p>
+                <p>{t('tip1')}</p>
+                <p>{t('tip2')}</p>
+                <p>{t('tip3')}</p>
+                <p>{t('tip4')}</p>
               </CardContent>
             </Card>
           </div>
@@ -608,20 +712,20 @@ export default function NewLinkPage() {
           <div className="lg:col-span-2 space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Bulk Create Links</CardTitle>
+                <CardTitle>{t('bulkTitle')}</CardTitle>
                 <CardDescription>
-                  Paste one URL per line (max 50 links). Optional slugs can be added as:
+                  {t('bulkDesc')}
                   <code className="ml-1 text-xs bg-dark-300 px-1 rounded">url|slug</code>
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleBulkSubmit} className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="bulkUrls">URLs (one per line)</Label>
+                    <Label htmlFor="bulkUrls">{t('bulkUrls')}</Label>
                     <Textarea
                       id="bulkUrls"
                       rows={12}
-                      placeholder={"https://example.com/page1\nhttps://example.com/page2|custom-slug\nhttps://example.com/page3"}
+                      placeholder={t('bulkPlaceholder')}
                       value={bulkUrls}
                       onChange={(e) => setBulkUrls(e.target.value)}
                       className="font-mono text-sm"
@@ -638,12 +742,12 @@ export default function NewLinkPage() {
                     {isCreating ? (
                       <span className="flex items-center gap-2">
                         <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                        Creating...
+                        {t('bulkCreating')}
                       </span>
                     ) : (
                       <span className="flex items-center gap-2">
                         <FileUp className="h-5 w-5" />
-                        Create All Links
+                        {t('createAll')}
                       </span>
                     )}
                   </Button>
@@ -660,18 +764,18 @@ export default function NewLinkPage() {
             {bulkResults && (
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg">Results</CardTitle>
+                  <CardTitle className="text-lg">{t('results')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-4">
                     <p className="text-sm font-medium text-green-400">
-                      {bulkResults.created} links created successfully
+                      {t('resultsCreated', { count: bulkResults.created })}
                     </p>
                   </div>
                   {bulkResults.errors.length > 0 && (
                     <div className="space-y-2">
                       <p className="text-sm font-medium text-red-400">
-                        {bulkResults.errors.length} failed:
+                        {t('resultsFailed', { count: bulkResults.errors.length })}
                       </p>
                       {bulkResults.errors.map((err) => (
                         <div
@@ -690,17 +794,25 @@ export default function NewLinkPage() {
 
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Tips</CardTitle>
+                <CardTitle className="text-lg">{t('tips')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3 text-sm text-dark-100">
-                <p>Paste one URL per line.</p>
-                <p>Add a custom slug by using the format: url|slug</p>
-                <p>Maximum 50 links per batch.</p>
-                <p>Duplicate slugs within a batch will be skipped.</p>
+                <p>{t('bulkTip1')}</p>
+                <p>{t('bulkTip2')}</p>
+                <p>{t('bulkTip3')}</p>
+                <p>{t('bulkTip4')}</p>
               </CardContent>
             </Card>
           </div>
         </div>
+      )}
+
+      {showUtmBuilder && (
+        <UtmBuilder
+          baseUrl={destinationUrl}
+          onApply={handleUtmApply}
+          onClose={() => setShowUtmBuilder(false)}
+        />
       )}
     </div>
   )

@@ -6,8 +6,18 @@
     "app/api/**/*.{js,ts}": {
       "maxDuration": 30
     },
-    "app/[slug]/page.tsx": {
+    "app/[locale]/[...rest]/page.tsx": {
       "maxDuration": 10
     }
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/cron/analytics-report",
+      "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/indexing",
+      "schedule": "0 7 * * *"
+    }
+  ]
 }

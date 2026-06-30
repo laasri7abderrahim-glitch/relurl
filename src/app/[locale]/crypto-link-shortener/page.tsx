@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Crypto Link Shortener - Blockchain & Token Links",
-  description: "Shorten wallet, DeFi, and crypto project links. Track investor interest and share blockchain content with RELURL's crypto link shortener.",
-  path: "/crypto-link-shortener",
-  keywords: ["crypto link shortener", "blockchain link generator", "defi link shortener"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Crypto Link Shortener - Blockchain & Token Links",
+    description: "Shorten wallet, DeFi, and crypto project links. Track investor interest and share blockchain content with RELURL's crypto link shortener.",
+    path: "/crypto-link-shortener",
+    keywords: ["crypto link shortener", "blockchain link generator", "defi link shortener"],
+    locale,
+  })
+}
 
 export default function CryptoLinkShortenerPage() {
   const href = "/crypto-link-shortener"
+  const relatedArticles = getPostsByLandingPage("/crypto-link-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Crypto Link Shortener"
@@ -43,6 +48,8 @@ export default function CryptoLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Reddit Link Generator - Post & Comment Links",
-  description: "Generate short, trackable links for Reddit posts and comments. Drive traffic from Reddit and track engagement with RELURL.",
-  path: "/reddit-link-generator",
-  keywords: ["reddit link generator", "reddit post links", "reddit marketing"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Reddit Link Generator - Post & Comment Links",
+    description: "Generate short, trackable links for Reddit posts and comments. Drive traffic from Reddit and track engagement with RELURL.",
+    path: "/reddit-link-generator",
+    keywords: ["reddit link generator", "reddit post links", "reddit marketing"],
+    locale,
+  })
+}
 
 export default function RedditLinkGeneratorPage() {
   const href = "/reddit-link-generator"
+  const relatedArticles = getPostsByLandingPage("/reddit-link-generator").slice(0, 3)
   return (
     <URLLandingPage
       title="Reddit Link Generator"
@@ -43,6 +48,8 @@ export default function RedditLinkGeneratorPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

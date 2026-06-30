@@ -1,16 +1,22 @@
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata = generateSEOMetadata({
-  title: "Marketing URL Shortener - Campaign Links",
-  description: "Shorten URLs for marketing campaigns. Track clicks, measure ROI, and optimize your marketing with detailed link analytics.",
-  path: "/marketing-url-shortener",
-  keywords: ["marketing url shortener", "campaign link shortener", "marketing links"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Marketing URL Shortener - Campaign Links",
+    description: "Shorten URLs for marketing campaigns. Track clicks, measure ROI, and optimize your marketing with detailed link analytics.",
+    path: "/marketing-url-shortener",
+    keywords: ["marketing url shortener", "campaign link shortener", "marketing links"],
+    locale,
+  })
+}
 
 export default function MarketingURLShortenerPage() {
   const href = "/marketing-url-shortener"
+  const relatedArticles = getPostsByLandingPage("/marketing-url-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Marketing URL Shortener"
@@ -42,6 +48,8 @@ export default function MarketingURLShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

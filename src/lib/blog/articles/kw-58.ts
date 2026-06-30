@@ -1,0 +1,50 @@
+import { BlogPost } from "../types"
+
+export const article: BlogPost = {
+  slug: "kw-58-how-to-shorten-link-for-youtube",
+  title: "How to Shorten a Link for YouTube: Optimize Your Video Descriptions",
+  metaDescription: "Learn how to shorten a link for YouTube descriptions, cards, and comments. Boost click-through rates, track video traffic, and clean up your channel with RELURL.",
+  keywords: ["shorten link for youtube", "youtube link shortener", "youtube video description links", "youtube link tracking", "youtube url shortener"],
+  landingPage: "/free-url-shortener",
+  category: "Guides",
+  date: "June 29, 2026",
+  readTime: "7 min read",
+  image: "https://picsum.photos/seed/kw-58-how-to-shorten-link-for-youtube/1200/630",
+  imageAlt: "How to Shorten a Link for YouTube: Optimize Your Video Descriptions",
+  content: [
+    { type: "paragraph", content: "YouTube video descriptions are prime real estate for driving traffic. The first two to three lines appear above the fold, visible without clicking \"Show more.\" Every character in that space determines whether a viewer clicks your link or scrolls past. Learning how to shorten a link for YouTube gives you more room to pitch, persuade, and direct traffic without wasting a single character." },
+    { type: "heading", content: "Why YouTube Creators Need Short Links", level: 2 },
+    { type: "paragraph", content: "YouTube's description box shows approximately 100 to 150 characters before the \"Show more\" button appears. That is where the most valuable links should go affiliate links, your website, a free download, or your latest product. A long URL eats 60 to 80 percent of that visible space, leaving almost nothing for context or a call to action." },
+    { type: "paragraph", content: "Short links solve this problem instantly. A link shortened with RELURL uses 20 to 25 characters regardless of the original URL length. That frees up 80 percent of your preview space for persuasive copy, emojis, timestamps, and social media handles." },
+    { type: "paragraph", content: "Beyond the description, short links are essential for YouTube cards, end screens, comments, and pinned posts. Each of these surfaces has character limits that make raw URLs impractical." },
+    { type: "list", items: ["Video descriptions preview only the first 100-150 characters", "YouTube cards show link text alongside a thumbnail short links fit better in the card overlay", "Comments with long URLs appear spammy and are more likely to be filtered by YouTube's spam detection", "Community posts display limited text before \"Show more\" clicks short links maximize visible content", "Pinned comments with clean links look professional and organized"] },
+    { type: "heading", content: "How to Shorten a Link for YouTube in 30 Seconds", level: 2 },
+    { type: "paragraph", content: "The process is identical regardless of where you plan to use the link. Open RELURL, paste your URL, and click shorten. For YouTube-specific use cases, take two extra steps that make a significant difference." },
+    { type: "paragraph", content: "First, customize the slug to match your video content. A slug like relurl.com/video-review or relurl.com/free-template tells viewers exactly what they are clicking. Generic random strings offer no information and reduce trust. Second, append UTM parameters before shortening to track YouTube traffic separately from other sources." },
+    { type: "paragraph", content: "Example: yoursite.com/free-guide?utm_source=youtube&utm_medium=description&utm_campaign=video-title becomes relurl.com/free-guide. The short link preserves the UTM parameters while being 90 percent shorter." },
+    { type: "heading", content: "Tracking YouTube Traffic with Short Links", level: 2 },
+    { type: "paragraph", content: "YouTube Studio provides basic analytics for your channel, but it does not tell you who clicked your links or what they did after clicking. A URL shortener fills this gap. When you shorten a link for YouTube with RELURL, every click is recorded with geographic data, device type, and the exact time of the click." },
+    { type: "paragraph", content: "This data is invaluable for understanding which videos drive the most off-platform engagement. Compare click rates across your video library. A video with 50,000 views and 200 link clicks may be outperforming a video with 100,000 views and 150 link clicks. Short link analytics reveal these patterns." },
+    { type: "paragraph", content: "RELURL's dashboard shows click trends over time, so you can see whether a video's link traffic spikes immediately after publishing or has lasting organic value. This helps you decide which videos deserve updated links or promotion." },
+    { type: "heading", content: "YouTube Card Links and Short URLs", level: 2 },
+    { type: "paragraph", content: "YouTube cards are interactive elements that appear as a small icon in the top-right corner of a video. Clicking the card reveals a teaser and a link. The card interface has space constraints that make short links essential. A card with a 30-character link looks clean and leaves room for the call-to-action text." },
+    { type: "paragraph", content: "When you add a card with a short link, YouTube displays both the link and the action text together. A short link ensures both fit without truncation. Viewers who see the full URL are more likely to trust and click it." },
+    { type: "heading", content: "End Screen Links and Branding", level: 2 },
+    { type: "paragraph", content: "End screens appear in the final 20 seconds of a video and can include up to four elements: a video, a playlist, a channel, or a link. The link element is an overlay with a button. YouTube generates a preview of your destination, and a short branded link reinforces your brand in those final moments." },
+    { type: "paragraph", content: "Using a branded short domain like yourbrand.link/end-screen makes your end screen look cohesive. Viewers see your domain name and a relevant slug, connecting your video content to your broader online presence." },
+    { type: "heading", content: "Avoiding Spam Filters with Short Links", level: 2 },
+    { type: "paragraph", content: "YouTube aggressively filters spam in comments and descriptions. Long URLs with multiple parameters, suspicious domains, or repetitive patterns trigger automatic moderation. Short links from established shortener domains are less likely to be flagged because they do not match the patterns that YouTube's spam filters look for." },
+    { type: "paragraph", content: "However, not all shorteners are equal. Some shortener domains appear on spam blocklists due to heavy abuse by automated accounts. RELURL's short domains are actively monitored and are not associated with spam campaigns. This means your links remain visible in comments and descriptions." },
+    { type: "heading", content: "Best Practices for YouTube Links", level: 2 },
+    { type: "list", items: ["Shorten every link in your description to maximize the preview area above the fold", "Use descriptive slugs that match your video topic for higher trust and click-through", "Track each link with unique UTM parameters to isolate performance by video", "Update short link destinations if your offer or landing page changes without editing the video", "Test your short link on both mobile and desktop YouTube before publishing"] },
+    { type: "heading", content: "Why RELURL Is the Best Choice for YouTube Creators", level: 2 },
+    { type: "paragraph", content: "RELURL offers unlimited free short links with no ads, making it ideal for creators who publish frequently. The analytics dashboard helps you understand which videos drive traffic, and custom slug support lets you create memorable links that match your brand. For channels with multiple creators, RELURL's team workspace ensures link ownership stays with the channel, not an individual." },
+    { type: "faq", faqs: [
+      { q: "Do short links work in YouTube video descriptions?", a: "Yes. YouTube renders short links as clickable hyperlinks in descriptions, and they generate the same link preview as full URLs." },
+      { q: "Can I track clicks from YouTube separately from other traffic?", a: "Yes. Use UTM parameters before shortening to tag YouTube traffic. RELURL also shows referrer data that helps identify YouTube as the source." },
+      { q: "Will short links trigger YouTube's spam filter in comments?", a: "Reputable shortener domains are not flagged by YouTube. RELURL domains are actively monitored to avoid blocklisting." },
+      { q: "What is the ideal slug length for YouTube links?", a: "Aim for 5-15 characters. Slugs like relurl.com/freetool or relurl.com/review are short enough to fit in cards and descriptive enough to build trust." }
+    ] },
+    { type: "cta", content: "Shorten your first YouTube link at RELURL free URL shortener and start tracking clicks from every video." }
+  ]
+}

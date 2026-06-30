@@ -1,13 +1,15 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
+import { useTranslations } from "next-intl"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 export default function ForgotPasswordPage() {
+  const t = useTranslations("auth.forgotPassword")
   const [email, setEmail] = useState("")
   const [loading, setLoading] = useState(false)
   const [sent, setSent] = useState(false)
@@ -27,14 +29,14 @@ export default function ForgotPasswordPage() {
 
       if (!res.ok) {
         const json = await res.json()
-        setError(json.error || "Something went wrong")
+        setError(json.error || t("error.generic"))
         setLoading(false)
         return
       }
 
       setSent(true)
     } catch {
-      setError("Something went wrong. Please try again.")
+      setError(t("error.genericRetry"))
       setLoading(false)
     }
   }
@@ -44,7 +46,7 @@ export default function ForgotPasswordPage() {
       <div className="flex min-h-screen items-center justify-center px-4">
         <Card className="w-full max-w-md">
           <CardHeader className="space-y-1 text-center">
-            <CardTitle className="text-2xl font-bold">Check your email</CardTitle>
+            <CardTitle className="text-2xl font-bold">{t("checkEmail")}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4 text-center">
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-500/10">
@@ -63,8 +65,7 @@ export default function ForgotPasswordPage() {
               </svg>
             </div>
             <p className="text-sm text-dark-100">
-              If an account with <span className="font-medium text-dark-50">{email}</span> exists,
-              we&apos;ve sent a password reset link. Please check your inbox.
+              {t.rich("checkEmailMessage", { email, bold: (chunks) => <span className="font-medium text-dark-50">{chunks}</span> })}
             </p>
             <Button
               variant="outline"
@@ -74,11 +75,11 @@ export default function ForgotPasswordPage() {
                 setEmail("")
               }}
             >
-              Send another email
+              {t("sendAnotherButton")}
             </Button>
             <p className="text-sm text-dark-100">
               <Link href="/login" className="text-primary-500 hover:text-primary-400">
-                Back to sign in
+                {t("backToSignIn")}
               </Link>
             </p>
           </CardContent>
@@ -91,10 +92,8 @@ export default function ForgotPasswordPage() {
     <div className="flex min-h-screen items-center justify-center px-4">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1 text-center">
-          <CardTitle className="text-2xl font-bold">Forgot your password?</CardTitle>
-          <p className="text-sm text-dark-100">
-            Enter your email and we&apos;ll send you a reset link
-          </p>
+          <CardTitle className="text-2xl font-bold">{t("title")}</CardTitle>
+          <p className="text-sm text-dark-100">{t("subtitle")}</p>
         </CardHeader>
         <CardContent className="space-y-4">
           {error && (
@@ -104,11 +103,11 @@ export default function ForgotPasswordPage() {
           )}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t("emailLabel")}</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="name@example.com"
+                placeholder={t("emailPlaceholder")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -116,12 +115,12 @@ export default function ForgotPasswordPage() {
               />
             </div>
             <Button type="submit" variant="primary" className="w-full" disabled={loading}>
-              {loading ? "Sending..." : "Send Reset Link"}
+              {loading ? t("sendingButton") : t("sendButton")}
             </Button>
           </form>
           <p className="text-center text-sm text-dark-100">
             <Link href="/login" className="text-primary-500 hover:text-primary-400">
-              Back to sign in
+              {t("backToSignIn")}
             </Link>
           </p>
         </CardContent>

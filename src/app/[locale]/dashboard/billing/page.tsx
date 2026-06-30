@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -22,6 +22,7 @@ import {
   Loader2,
   ExternalLink,
 } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 type Plan = "FREE" | "PRO" | "BUSINESS" | "ENTERPRISE"
 
@@ -69,74 +70,6 @@ const planLimits: Record<string, { links: number; clicks: number }> = {
   ENTERPRISE: { links: 999999, clicks: 9999999 },
 }
 
-const plans: PlanData[] = [
-  {
-    id: "FREE",
-    name: "Free",
-    price: "$0",
-    interval: "forever",
-    icon: <Zap className="h-5 w-5 text-dark-100" />,
-    features: [
-      { text: "1,000 links", included: true },
-      { text: "10,000 clicks/month", included: true },
-      { text: "Basic analytics", included: true },
-      { text: "1 team member", included: true },
-      { text: "Custom domains", included: false },
-      { text: "API access", included: false },
-      { text: "Priority support", included: false },
-    ],
-  },
-  {
-    id: "PRO",
-    name: "Pro",
-    price: "$29",
-    interval: "per month",
-    icon: <Zap className="h-5 w-5 text-primary-500" />,
-    highlighted: true,
-    features: [
-      { text: "10,000 links", included: true },
-      { text: "100,000 clicks/month", included: true },
-      { text: "Advanced analytics", included: true },
-      { text: "5 team members", included: true },
-      { text: "Custom domains", included: true },
-      { text: "API access", included: true },
-      { text: "Priority support", included: false },
-    ],
-  },
-  {
-    id: "BUSINESS",
-    name: "Business",
-    price: "$99",
-    interval: "per month",
-    icon: <Building2 className="h-5 w-5 text-blue-400" />,
-    features: [
-      { text: "100,000 links", included: true },
-      { text: "1,000,000 clicks/month", included: true },
-      { text: "Advanced analytics + exports", included: true },
-      { text: "Unlimited team members", included: true },
-      { text: "Custom domains", included: true },
-      { text: "API access", included: true },
-      { text: "Priority support", included: true },
-    ],
-  },
-  {
-    id: "ENTERPRISE",
-    name: "Enterprise",
-    price: "Custom",
-    interval: "contact us",
-    icon: <Infinity className="h-5 w-5 text-purple-400" />,
-    features: [
-      { text: "Unlimited links", included: true },
-      { text: "Unlimited clicks", included: true },
-      { text: "Full analytics suite", included: true },
-      { text: "Unlimited team members", included: true },
-      { text: "Custom domains", included: true },
-      { text: "API access + SLA", included: true },
-      { text: "Dedicated support", included: true },
-    ],
-  },
-]
-
 const billingHistory = [
   { id: "inv_001", date: new Date("2026-06-01"), amount: 2900, status: "paid" as const, pdfUrl: "#" },
   { id: "inv_002", date: new Date("2026-05-01"), amount: 2900, status: "paid" as const, pdfUrl: "#" },
@@ -145,17 +78,8 @@ const billingHistory = [
   { id: "inv_005", date: new Date("2026-02-01"), amount: 2900, status: "failed" as const, pdfUrl: "#" },
 ]
 
-function getStatusBadge(status: string | undefined) {
-  switch (status) {
-    case "ACTIVE": return <Badge variant="success">Active</Badge>
-    case "CANCELED": return <Badge variant="secondary">Canceled</Badge>
-    case "PAST_DUE": return <Badge variant="destructive">Past Due</Badge>
-    case "EXPIRED": return <Badge variant="secondary">Expired</Badge>
-    default: return <Badge variant="secondary">Unknown</Badge>
-  }
-}
-
 export default function BillingPage() {
+  const t = useTranslations("dashboard.billing")
   const [data, setData] = useState<BillingData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -163,20 +87,61 @@ export default function BillingPage() {
   const [managing, setManaging] = useState(false)
   const { addToast } = useToast()
 
+  const freeFeatures: string[] = t.raw("planFeatures.free")
+  const proFeatures: string[] = t.raw("planFeatures.pro")
+  const businessFeatures: string[] = t.raw("planFeatures.business")
+  const enterpriseFeatures: string[] = t.raw("planFeatures.enterprise")
+
+  const plans: PlanData[] = [
+    {
+      id: "FREE",
+      name: t("planNames.free"),
+      price: "$0",
+      interval: t("priceIntervals.forever"),
+      icon: <Zap className="h-5 w-5 text-dark-100" />,
+      features: freeFeatures.map((text, i) => ({ text, included: i < 4 })),
+    },
+    {
+      id: "PRO",
+      name: t("planNames.pro"),
+      price: "$29",
+      interval: t("priceIntervals.perMonth"),
+      icon: <Zap className="h-5 w-5 text-primary-500" />,
+      highlighted: true,
+      features: proFeatures.map((text, i) => ({ text, included: i < 6 })),
+    },
+    {
+      id: "BUSINESS",
+      name: t("planNames.business"),
+      price: "$99",
+      interval: t("priceIntervals.perMonth"),
+      icon: <Building2 className="h-5 w-5 text-blue-400" />,
+      features: businessFeatures.map((text) => ({ text, included: true })),
+    },
+    {
+      id: "ENTERPRISE",
+      name: t("planNames.enterprise"),
+      price: t("custom"),
+      interval: t("priceIntervals.contactUs"),
+      icon: <Infinity className="h-5 w-5 text-purple-400" />,
+      features: enterpriseFeatures.map((text) => ({ text, included: true })),
+    },
+  ]
+
   const fetchSubscription = useCallback(async () => {
     setLoading(true)
     setError(null)
     try {
       const res = await fetch("/api/billing/subscription")
       const json = await res.json()
-      if (!res.ok) throw new Error(json.error ?? "Failed to fetch billing data")
+      if (!res.ok) throw new Error(json.error ?? t("toast.fetchFailed"))
       setData(json)
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong")
+      setError(err instanceof Error ? err.message : t("toast.genericError"))
     } finally {
       setLoading(false)
     }
-  }, [])
+  }, [t])
 
   useEffect(() => {
     fetchSubscription()
@@ -188,7 +153,7 @@ export default function BillingPage() {
     if (planId === currentPlan) return
     const priceId = priceIds[planId]
     if (!priceId) {
-      addToast("Pricing is not configured for this plan", "error")
+      addToast(t("toast.pricingNotConfigured"), "error")
       return
     }
     setUpgrading(planId)
@@ -199,12 +164,12 @@ export default function BillingPage() {
         body: JSON.stringify({ plan: planId, priceId }),
       })
       const json = await res.json()
-      if (!res.ok) throw new Error(json.error ?? "Failed to create checkout")
+      if (!res.ok) throw new Error(json.error ?? t("toast.upgradeFailed"))
       if (json.url) {
         window.location.href = json.url
       }
     } catch (err) {
-      addToast(err instanceof Error ? err.message : "Failed to start upgrade", "error")
+      addToast(err instanceof Error ? err.message : t("toast.upgradeFailed"), "error")
     } finally {
       setUpgrading(null)
     }
@@ -215,14 +180,24 @@ export default function BillingPage() {
     try {
       const res = await fetch("/api/billing/portal", { method: "POST" })
       const json = await res.json()
-      if (!res.ok) throw new Error(json.error ?? "Failed to open portal")
+      if (!res.ok) throw new Error(json.error ?? t("toast.portalFailed"))
       if (json.url) {
         window.location.href = json.url
       }
     } catch (err) {
-      addToast(err instanceof Error ? err.message : "Failed to open manage portal", "error")
+      addToast(err instanceof Error ? err.message : t("toast.portalFailed"), "error")
     } finally {
       setManaging(false)
+    }
+  }
+
+  function getStatusBadge(status: string | undefined) {
+    switch (status) {
+      case "ACTIVE": return <Badge variant="success">{t("status.active")}</Badge>
+      case "CANCELED": return <Badge variant="secondary">{t("status.canceled")}</Badge>
+      case "PAST_DUE": return <Badge variant="destructive">{t("status.pastDue")}</Badge>
+      case "EXPIRED": return <Badge variant="secondary">{t("status.expired")}</Badge>
+      default: return <Badge variant="secondary">{t("status.unknown")}</Badge>
     }
   }
 
@@ -240,9 +215,9 @@ export default function BillingPage() {
     return (
       <div className="flex flex-col items-center justify-center py-24 text-center">
         <AlertCircle className="h-8 w-8 text-red-400 mb-3" />
-        <p className="text-dark-50 font-medium mb-1">Failed to load billing data</p>
+        <p className="text-dark-50 font-medium mb-1">{t("error.title")}</p>
         <p className="text-sm text-dark-100 mb-4">{error}</p>
-        <Button variant="outline" onClick={fetchSubscription}>Retry</Button>
+        <Button variant="outline" onClick={fetchSubscription}>{t("error.retry")}</Button>
       </div>
     )
   }
@@ -257,13 +232,13 @@ export default function BillingPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-dark-50">Billing</h1>
-          <p className="mt-1 text-sm text-dark-100">Manage your subscription and payment methods</p>
+          <h1 className="text-2xl font-bold text-dark-50">{t("title")}</h1>
+          <p className="mt-1 text-sm text-dark-100">{t("description")}</p>
         </div>
         {data?.subscription?.stripeCustomerId && (
           <Button variant="outline" onClick={handleManageSubscription} disabled={managing}>
             {managing ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <ExternalLink className="mr-2 h-4 w-4" />}
-            Manage Subscription
+            {t("manageSubscription")}
           </Button>
         )}
       </div>
@@ -273,13 +248,13 @@ export default function BillingPage() {
           <CardContent className="p-4 flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div>
-                <p className="text-sm text-dark-100">Current Plan</p>
-                <p className="text-lg font-semibold text-dark-50">{currentPlan}</p>
+                <p className="text-sm text-dark-100">{t("currentPlan")}</p>
+                <p className="text-lg font-semibold text-dark-50">{t("planNames." + currentPlan.toLowerCase())}</p>
               </div>
               {getStatusBadge(data.subscription.status)}
               {data.subscription.currentPeriodEnd && (
                 <div className="text-sm text-dark-100">
-                  Renews {formatDate(new Date(data.subscription.currentPeriodEnd), "MMM d, yyyy")}
+                  {t("renews", { date: formatDate(new Date(data.subscription.currentPeriodEnd), "MMM d, yyyy") })}
                 </div>
               )}
             </div>
@@ -291,7 +266,6 @@ export default function BillingPage() {
         {plans.map((plan) => {
           const isCurrent = currentPlan === plan.id
           const isUpgrade = planIndex.indexOf(plan.id) > planIndex.indexOf(currentPlan)
-          const isDowngrade = planIndex.indexOf(plan.id) < planIndex.indexOf(currentPlan)
 
           return (
             <Card
@@ -300,14 +274,14 @@ export default function BillingPage() {
             >
               {isCurrent && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <Badge variant="success">Current Plan</Badge>
+                  <Badge variant="success">{t("currentPlanBadge")}</Badge>
                 </div>
               )}
               <CardHeader>
                 <div className="flex items-center justify-between">
                   {plan.icon}
                   {plan.highlighted && !isCurrent && (
-                    <Badge variant="secondary">Popular</Badge>
+                    <Badge variant="secondary">{t("popularBadge")}</Badge>
                   )}
                 </div>
                 <CardTitle className="mt-3">{plan.name}</CardTitle>
@@ -333,31 +307,17 @@ export default function BillingPage() {
                 </ul>
                 {isCurrent ? (
                   <Button variant="outline" className="w-full" disabled>
-                    Current Plan
+                    {t("currentPlanButton")}
                   </Button>
                 ) : plan.id === "ENTERPRISE" ? (
                   <Link href="/contact">
                     <Button variant="outline" className="w-full">
-                      Contact Sales
+                      {t("contactSales")}
                     </Button>
                   </Link>
-                ) : isUpgrade ? (
-                  <Button
-                    variant="primary"
-                    className="w-full"
-                    onClick={() => handleUpgrade(plan.id)}
-                    disabled={upgrading === plan.id}
-                  >
-                    {upgrading === plan.id ? (
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    ) : (
-                      <ArrowUp className="mr-2 h-4 w-4" />
-                    )}
-                    Upgrade
-                  </Button>
                 ) : (
                   <Button
-                    variant="outline"
+                    variant={isUpgrade ? "primary" : "outline"}
                     className="w-full"
                     onClick={() => handleUpgrade(plan.id)}
                     disabled={upgrading === plan.id}
@@ -367,7 +327,7 @@ export default function BillingPage() {
                     ) : (
                       <ArrowUp className="mr-2 h-4 w-4" />
                     )}
-                    Upgrade
+                    {t("upgrade")}
                   </Button>
                 )}
               </CardContent>
@@ -382,8 +342,8 @@ export default function BillingPage() {
             <div className="flex items-center gap-3">
               <CreditCard className="h-5 w-5 text-dark-100" />
               <div>
-                <CardTitle className="text-lg">Payment Method</CardTitle>
-                <CardDescription>Manage your payment information</CardDescription>
+                <CardTitle className="text-lg">{t("paymentMethod.title")}</CardTitle>
+                <CardDescription>{t("paymentMethod.description")}</CardDescription>
               </div>
             </div>
           </CardHeader>
@@ -394,15 +354,15 @@ export default function BillingPage() {
                   <CreditCard className="h-5 w-5 text-dark-100" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-dark-50">Visa ending in 4242</p>
-                  <p className="text-xs text-dark-100">Expires 12/28</p>
+                  <p className="text-sm font-medium text-dark-50">{t("paymentMethod.cardInfo")}</p>
+                  <p className="text-xs text-dark-100">{t("paymentMethod.cardExpiry")}</p>
                 </div>
               </div>
-              <Badge variant="success">Default</Badge>
+              <Badge variant="success">{t("paymentMethod.defaultBadge")}</Badge>
             </div>
             <Button variant="outline" size="sm" onClick={handleManageSubscription} disabled={managing}>
               <CreditCard className="mr-2 h-4 w-4" />
-              Update Payment Method
+              {t("paymentMethod.update")}
             </Button>
           </CardContent>
         </Card>
@@ -412,9 +372,13 @@ export default function BillingPage() {
             <div className="flex items-center gap-3">
               <Zap className="h-5 w-5 text-dark-100" />
               <div>
-                <CardTitle className="text-lg">Usage Limits</CardTitle>
+                <CardTitle className="text-lg">{t("usageLimits.title")}</CardTitle>
                 <CardDescription>
-                  {currentPlan} plan &mdash; {limits.links >= 999999 ? "Unlimited" : formatNumber(limits.links)} links, {limits.clicks >= 9999999 ? "Unlimited" : formatNumber(limits.clicks)} clicks
+                  {t("usageLimits.description", {
+                    plan: t("planNames." + currentPlan.toLowerCase()),
+                    links: limits.links >= 999999 ? t("unlimited") : formatNumber(limits.links),
+                    clicks: limits.clicks >= 9999999 ? t("unlimited") : formatNumber(limits.clicks),
+                  })}
                 </CardDescription>
               </div>
             </div>
@@ -422,9 +386,9 @@ export default function BillingPage() {
           <CardContent className="space-y-5">
             <div className="space-y-1.5">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-dark-50">Links</span>
+                <span className="text-dark-50">{t("usageLimits.links")}</span>
                 <span className="text-dark-100">
-                  {formatNumber(linkUsed)} / {limits.links >= 999999 ? "Unlimited" : formatNumber(limits.links)}
+                  {formatNumber(linkUsed)} / {limits.links >= 999999 ? t("unlimited") : formatNumber(limits.links)}
                 </span>
               </div>
               <div className="h-2 w-full overflow-hidden rounded-full bg-dark-300">
@@ -436,9 +400,9 @@ export default function BillingPage() {
             </div>
             <div className="space-y-1.5">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-dark-50">Clicks</span>
+                <span className="text-dark-50">{t("usageLimits.clicks")}</span>
                 <span className="text-dark-100">
-                  {formatNumber(clickUsed)} / {limits.clicks >= 9999999 ? "Unlimited" : formatNumber(limits.clicks)}
+                  {formatNumber(clickUsed)} / {limits.clicks >= 9999999 ? t("unlimited") : formatNumber(limits.clicks)}
                 </span>
               </div>
               <div className="h-2 w-full overflow-hidden rounded-full bg-dark-300">
@@ -457,8 +421,8 @@ export default function BillingPage() {
           <div className="flex items-center gap-3">
             <FileText className="h-5 w-5 text-dark-100" />
             <div>
-              <CardTitle className="text-lg">Billing History</CardTitle>
-              <CardDescription>View your past invoices</CardDescription>
+              <CardTitle className="text-lg">{t("billingHistory.title")}</CardTitle>
+              <CardDescription>{t("billingHistory.description")}</CardDescription>
             </div>
           </div>
         </CardHeader>
@@ -466,10 +430,10 @@ export default function BillingPage() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Date</TableHead>
-                <TableHead>Amount</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead className="text-right">Invoice</TableHead>
+                <TableHead>{t("billingHistory.date")}</TableHead>
+                <TableHead>{t("billingHistory.amount")}</TableHead>
+                <TableHead>{t("billingHistory.status")}</TableHead>
+                <TableHead className="text-right">{t("billingHistory.invoice")}</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -483,14 +447,14 @@ export default function BillingPage() {
                   </TableCell>
                   <TableCell>
                     <Badge variant={inv.status === "paid" ? "success" : "destructive"}>
-                      {inv.status === "paid" ? "Paid" : "Failed"}
+                      {inv.status === "paid" ? t("billingHistory.paid") : t("billingHistory.failed")}
                     </Badge>
                   </TableCell>
                   <TableCell className="text-right">
                     <a href={inv.pdfUrl} target="_blank" rel="noopener noreferrer">
                       <Button variant="ghost" size="sm">
                         <Download className="mr-2 h-4 w-4" />
-                        PDF
+                        {t("billingHistory.pdf")}
                       </Button>
                     </a>
                   </TableCell>

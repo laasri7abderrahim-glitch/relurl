@@ -1,16 +1,21 @@
-import type { Metadata } from "next"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 import { allQRCodes } from "@/lib/url-pages"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "QR Code for Business Card - Digital Card",
-  description: "Add a QR code to your business card. Let people scan to save your contact info, website, and social profiles instantly to their phone.",
-  path: "/qr-code-for-business-card",
-  keywords: ["qr code for business card", "business card qr code", "digital business card"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "QR Code for Business Card - Digital Card",
+    description: "Add a QR code to your business card. Let people scan to save your contact info, website, and social profiles instantly to their phone.",
+    path: "/qr-code-for-business-card",
+    keywords: ["qr code for business card", "business card qr code", "digital business card"],
+    locale,
+  })
+}
 
 export default function Page() {
+  const relatedArticles = getPostsByLandingPage("/qr-code-for-business-card").slice(0, 3)
   return (
     <QRCodeLandingPage
       title="QR Code for Business Card"
@@ -41,6 +46,8 @@ export default function Page() {
         { title: "Free QR Code Generator", href: "/free-qr-code-generator" },
       ]}
       allQRCodes={allQRCodes}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

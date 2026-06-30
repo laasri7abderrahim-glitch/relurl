@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { trackClick } from "@/lib/analytics";
+import { getCachedOrFetch } from "@/lib/cache";
 
 type ShortLink = {
   id: string;
@@ -353,10 +354,14 @@ export async function GET(
   try {
     const { slug } = await params;
 
-    const link = await prisma.shortLink.findUnique({
-      where: { slug },
-      include: { abTests: { where: { isActive: true }, take: 1 } },
-    });
+    const link = await getCachedOrFetch(
+      `link:slug:${slug}`,
+      () => prisma.shortLink.findUnique({
+        where: { slug },
+        include: { abTests: { where: { isActive: true }, take: 1 } },
+      }),
+      60
+    );
     if (!link || !link.isActive) {
       return NextResponse.json({ data: null, error: "Link not found" }, { status: 404 });
     }
@@ -364,10 +369,7 @@ export async function GET(
     const check = checkTargeting(link as ShortLink, req);
     if (!check.allowed) {
       if (check.reason === "password_required") {
-        return NextResponse.json(
-          { requiresPassword: true, linkId: link.id, error: "Password required" },
-          { status: 401 }
-        );
+        return NextResponse.redirect(new URL(`/p/${slug}`, req.url));
       }
       if (check.reason === "expired") {
         return NextResponse.json({ data: null, error: "Link has expired" }, { status: 410 });

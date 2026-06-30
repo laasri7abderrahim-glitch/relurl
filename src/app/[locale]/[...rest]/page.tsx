@@ -1,7 +1,6 @@
-import { redirect } from "next/navigation"
+import { redirect, permanentRedirect, notFound } from "next/navigation"
 import { headers } from "next/headers"
 import { prisma } from "@/lib/prisma"
-import Link from "next/link"
 import type { Metadata } from "next"
 
 export const dynamic = "force-dynamic"
@@ -69,29 +68,13 @@ export default async function CatchAllPage({
   const link = await prisma.shortLink.findUnique({ where: { slug } })
 
   if (!link || !link.isActive || (link.expiresAt && link.expiresAt < new Date())) {
-    return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-dark-700 p-4">
-        <div className="text-center">
-          <div className="mb-8">
-            <span className="text-4xl font-bold text-primary-500">RELURL</span>
-          </div>
-          <h1 className="mb-4 text-2xl font-bold text-dark-50">
-            Link not found
-          </h1>
-          <p className="mb-8 text-dark-100">
-            The link you&apos;re looking for doesn&apos;t exist or has been removed.
-          </p>
-          <Link
-            href="/"
-            className="inline-flex h-10 items-center justify-center rounded-lg bg-primary-500 px-6 text-sm font-medium text-white hover:bg-primary-600"
-          >
-            Go to Homepage
-          </Link>
-        </div>
-      </div>
-    )
+    notFound()
+  }
+
+  if (link.password) {
+    redirect(`./p/${slug}`)
   }
 
   recordClick(link.id)
-  redirect(link.url)
+  permanentRedirect(link.url)
 }

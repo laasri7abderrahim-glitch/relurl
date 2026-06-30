@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RELURL Extension Options</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f0e17;
+      color: #e2e8f0;
+      padding: 40px 20px;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .logo {
+      width: 44px;
+      height: 44px;
+      background: #1e1b4b;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 24px;
+      color: #818cf8;
+    }
+    .brand h1 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .brand span {
+      font-size: 12px;
+      color: #818cf8;
+    }
+    .card {
+      background: #1a1932;
+      border: 1px solid #2d2b55;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .card h2 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+    .field { margin-bottom: 16px; }
+    .field:last-child { margin-bottom: 0; }
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-bottom: 6px;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="url"] {
+      width: 100%;
+      padding: 10px 12px;
+      background: #0f0e17;
+      border: 1px solid #2d2b55;
+      border-radius: 8px;
+      color: #e2e8f0;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus {
+      border-color: #818cf8;
+    }
+    input::placeholder {
+      color: #475569;
+    }
+    .hint {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 4px;
+    }
+    .hint a {
+      color: #818cf8;
+      text-decoration: none;
+    }
+    .hint a:hover {
+      text-decoration: underline;
+    }
+    .btn {
+      padding: 10px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #818cf8, #6366f1);
+      color: #fff;
+    }
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-secondary {
+      background: #1e1b4b;
+      color: #818cf8;
+      border: 1px solid #2d2b55;
+    }
+    .btn-secondary:hover { background: #2d2b55; }
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .status {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      margin-top: 16px;
+    }
+    .status.show { display: block; }
+    .status.success { background: #1a2d1b; color: #34d399; border: 1px solid #1a4a2b; }
+    .status.error { background: #2d1b1b; color: #fca5a5; border: 1px solid #7f1d1d; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">R</div>
+    <div class="brand">
+      <h1>RELURL</h1>
+      <span>Extension Settings</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>API Key</h2>
+    <div class="field">
+      <label for="apiKey">API Key</label>
+      <input type="password" id="apiKey" placeholder="Enter your RELURL API key">
+      <div class="hint">Get your API key from <a href="https://relurl.com/dashboard/api-keys" target="_blank">relurl.com/dashboard/api-keys</a></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Default Domain</h2>
+    <div class="field">
+      <label for="domain">Domain</label>
+      <input type="url" id="domain" value="https://relurl.com" placeholder="https://relurl.com">
+      <div class="hint">Custom domain for your short links (if you have one configured)</div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button id="saveBtn" class="btn btn-primary">Save Settings</button>
+    <button id="clearBtn" class="btn btn-secondary">Clear</button>
+  </div>
+
+  <div id="status" class="status"></div>
+
+  <script src="options.js"></script>
+</body>
+</html>

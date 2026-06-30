@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import { hash } from "bcryptjs";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { generateSlug } from "@/lib/nanoid";
 import { createAuditLog } from "@/lib/audit";
+import { rateLimit } from "@/lib/rate-limit";
 import { checkLinkLimit, getUpgradeMessage } from "@/lib/plans";
 
 const createLinkSchema = z.object({
@@ -24,6 +26,8 @@ const createLinkSchema = z.object({
   utmCampaign: z.string().max(200).optional(),
   utmTerm: z.string().max(200).optional(),
   utmContent: z.string().max(200).optional(),
+  geoTargeting: z.string().optional(),
+  deviceTargeting: z.string().optional(),
   languageTargeting: z.string().optional(),
   scheduledAt: z.string().datetime().optional(),
 });
@@ -74,9 +78,50 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
+    const ip = req.headers.get("x-forwarded-for") ?? req.headers.get("x-real-ip") ?? "unknown"
+    const rateLimitResult = await rateLimit(ip, { windowMs: 60_000, maxRequests: 30 })
+    if (!rateLimitResult.success) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429 }
+      )
+    }
+
     const session = await auth();
+
+    const body = await req.json();
+
+    // Anonymous users: basic URL only (no custom slug, no password, no analytics tracking, no UTM)
+    // Authenticated users: full features, subject to plan limits
     if (!session?.user?.id) {
-      return NextResponse.json({ data: null, error: "Unauthorized" }, { status: 401 });
+      const anonSchema = z.object({
+        url: z.string().url("Invalid URL"),
+      })
+      const parsed = anonSchema.safeParse(body)
+      if (!parsed.success) {
+        return NextResponse.json(
+          { data: null, error: parsed.error.errors.map((e) => e.message).join(", ") },
+          { status: 400 }
+        )
+      }
+
+      const finalSlug = generateSlug()
+      const existing = await prisma.shortLink.findUnique({ where: { slug: finalSlug } })
+      if (existing) {
+        return NextResponse.json({ data: null, error: "Slug already taken" }, { status: 409 })
+      }
+
+      const link = await prisma.shortLink.create({
+        data: {
+          url: parsed.data.url,
+          slug: finalSlug,
+          domain: "relurl.com",
+          isActive: true,
+          userId: null,
+        },
+      })
+
+      return NextResponse.json({ data: link, error: null }, { status: 201 })
     }
 
     const linkCheck = await checkLinkLimit(session.user.id);
@@ -94,7 +139,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const body = await req.json();
     const parsed = createLinkSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(
@@ -116,9 +160,13 @@ export async function POST(req: NextRequest) {
       utmCampaign,
       utmTerm,
       utmContent,
+      geoTargeting,
+      deviceTargeting,
       languageTargeting,
       scheduledAt,
     } = parsed.data;
+
+    const hashedPassword = password ? await hash(password, 10) : undefined;
 
     const finalSlug = slug ?? generateSlug();
 
@@ -134,13 +182,15 @@ export async function POST(req: NextRequest) {
         domain: domain ?? "relurl.com",
         title,
         tags: tags ? JSON.stringify(tags) : null,
-        password,
+        password: hashedPassword,
         expiresAt: expiresAt ? new Date(expiresAt) : null,
         utmSource,
         utmMedium,
         utmCampaign,
         utmTerm,
         utmContent,
+        geoTargeting: geoTargeting || null,
+        deviceTargeting: deviceTargeting || null,
         languageTargeting: languageTargeting || null,
         scheduledAt: scheduledAt ? new Date(scheduledAt) : null,
         isActive: scheduledAt ? new Date(scheduledAt) <= new Date() : true,

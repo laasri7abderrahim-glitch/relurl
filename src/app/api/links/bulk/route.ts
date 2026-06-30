@@ -3,6 +3,7 @@ import { z } from "zod"
 import { auth } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
 import { generateSlug } from "@/lib/nanoid"
+import { rateLimit } from "@/lib/rate-limit"
 
 const bulkLinkSchema = z.object({
   links: z
@@ -27,6 +28,14 @@ export async function POST(req: NextRequest) {
     const session = await auth()
     if (!session?.user?.id) {
       return NextResponse.json({ data: null, error: "Unauthorized" }, { status: 401 })
+    }
+
+    const rateLimitResult = await rateLimit(session.user.id, { windowMs: 60_000, maxRequests: 10 })
+    if (!rateLimitResult.success) {
+      return NextResponse.json(
+        { data: null, error: "Too many requests. Please try again later." },
+        { status: 429 }
+      )
     }
 
     const body = await req.json()

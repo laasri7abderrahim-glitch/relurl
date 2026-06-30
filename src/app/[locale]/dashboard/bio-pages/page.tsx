@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
+import { useTranslations } from "next-intl"
 
 interface BioPage {
   id: string
@@ -21,6 +22,7 @@ export default function BioPagesPage() {
   const router = useRouter()
   const [pages, setPages] = useState<BioPage[]>([])
   const [loading, setLoading] = useState(true)
+  const t = useTranslations("dashboard.bioPages")
 
   useEffect(() => {
     if (status === "unauthenticated") router.push("/auth/login")
@@ -47,25 +49,25 @@ export default function BioPagesPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Bio Pages</h1>
-          <p className="text-gray-500">Create link-in-bio pages for your social media</p>
+          <h1 className="text-2xl font-bold">{t("title")}</h1>
+          <p className="text-gray-500">{t("description")}</p>
         </div>
         <Link
           href="/dashboard/bio-pages/new"
           className="px-4 py-2 bg-[#1F6F5F] text-white rounded-lg hover:bg-[#2FA084] transition-colors"
         >
-          Create Page
+          {t("createPage")}
         </Link>
       </div>
 
       {pages.length === 0 ? (
         <div className="text-center py-12 bg-white rounded-xl border">
-          <p className="text-gray-500 mb-4">No bio pages yet</p>
+          <p className="text-gray-500 mb-4">{t("empty.title")}</p>
           <Link
             href="/dashboard/bio-pages/new"
             className="px-4 py-2 bg-[#1F6F5F] text-white rounded-lg hover:bg-[#2FA084]"
           >
-            Create Your First Page
+            {t("empty.createFirst")}
           </Link>
         </div>
       ) : (
@@ -76,9 +78,9 @@ export default function BioPagesPage() {
                 <h3 className="font-semibold">{page.title}</h3>
                 <p className="text-sm text-gray-500">relurl.com/b/{page.slug}</p>
                 <div className="flex gap-4 mt-2 text-xs text-gray-400">
-                  <span>{page.links.length} links</span>
-                  <span>{page.views} views</span>
-                  <span>{page.isPublic ? "Public" : "Private"}</span>
+                  <span>{t("linkCount", { count: page.links.length })}</span>
+                  <span>{t("viewCount", { count: page.views })}</span>
+                  <span>{page.isPublic ? t("public") : t("private")}</span>
                 </div>
               </div>
               <div className="flex gap-2">
@@ -87,13 +89,13 @@ export default function BioPagesPage() {
                   target="_blank"
                   className="px-3 py-1 text-sm border rounded hover:bg-gray-50"
                 >
-                  View
+                  {t("actions.view")}
                 </Link>
                 <Link
                   href={`/dashboard/bio-pages/${page.id}`}
                   className="px-3 py-1 text-sm bg-[#1F6F5F] text-white rounded hover:bg-[#2FA084]"
                 >
-                  Edit
+                  {t("actions.edit")}
                 </Link>
               </div>
             </div>

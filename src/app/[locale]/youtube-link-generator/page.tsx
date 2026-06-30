@@ -1,16 +1,22 @@
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 
-export const metadata = generateSEOMetadata({
-  title: "YouTube Link Generator - Video Share Links",
-  description: "Generate short YouTube links with custom timestamps. Create trackable video URLs for marketing campaigns, emails, and social media sharing.",
-  path: "/youtube-link-generator",
-  keywords: ["youtube link generator", "youtube short link", "youtube video link"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "YouTube Link Generator - Video Share Links",
+    description: "Generate short YouTube links with custom timestamps. Create trackable video URLs for marketing campaigns, emails, and social media sharing.",
+    path: "/youtube-link-generator",
+    keywords: ["youtube link generator", "youtube short link", "youtube video link"],
+    locale,
+  })
+}
 
 export default function YouTubeLinkGeneratorPage() {
   const href = "/youtube-link-generator"
+  const relatedArticles = getPostsByLandingPage("/youtube-link-generator").slice(0, 3)
   return (
     <URLLandingPage
       title="YouTube Link Generator"
@@ -42,6 +48,8 @@ export default function YouTubeLinkGeneratorPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

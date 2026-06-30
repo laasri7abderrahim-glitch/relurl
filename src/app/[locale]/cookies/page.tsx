@@ -1,11 +1,15 @@
-import type { Metadata } from "next"
+import { generateSEOMetadata } from "@/lib/seo"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 
-export const metadata: Metadata = {
-  title: "Cookie Policy - RELURL",
-  description: "RELURL cookie policy. Learn about the cookies we use and how to manage your preferences.",
-  alternates: { canonical: "https://relurl.com/cookies" },
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Cookie Policy - How RELURL Uses Cookies",
+    description: "Learn about how RELURL uses cookies and similar technologies to improve your browsing experience.",
+    path: "/cookies",
+    locale,
+  })
 }
 
 const cookies = [

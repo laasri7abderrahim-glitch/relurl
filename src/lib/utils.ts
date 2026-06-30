@@ -25,6 +25,12 @@ export function formatNumber(
   return new Intl.NumberFormat("en-US", options).format(number);
 }
 
+export function sanitizeInput(input: string): string {
+  return input
+    .replace(/[<>]/g, "")
+    .trim()
+}
+
 export function truncate(str: string, length: number): string {
   if (str.length <= length) return str;
   return str.slice(0, length).trimEnd() + "...";

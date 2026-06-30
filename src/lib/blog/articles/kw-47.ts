@@ -1,0 +1,46 @@
+import { BlogPost } from "../types"
+
+export const article: BlogPost = {
+  slug: "webhook-link-tracking-real-time-notifications",
+  title: "Webhook Link Tracking: Get Real-Time Click Notifications",
+  metaDescription: "Set up webhook link tracking for real-time click notifications. Learn event types, payload formats, and automation use cases with RELURL webhook integration.",
+  keywords: ["webhook link tracking", "real-time click notifications", "webhook url shortener", "automated link tracking", "click event webhook"],
+  landingPage: "/free-url-shortener",
+  category: "Developers",
+  date: "June 29, 2026",
+  readTime: "8 min read",
+  image: "https://picsum.photos/seed/webhook-link-tracking-real-time-notifications/1200/630",
+  imageAlt: "Webhook Link Tracking: Get Real-Time Click Notifications",
+  content: [
+    { type: "paragraph", content: "Webhook link tracking turns every click on your shortened URLs into a real-time event that your application can act on immediately. Instead of polling an API for new data or refreshing a dashboard, your server receives a structured HTTP request the moment someone clicks a link. This guide explains how RELURL webhooks work, the available event types, example payloads, and practical automation scenarios that become possible when your links can talk to your systems directly." },
+    { type: "heading", content: "What Are Webhooks and Why Use Them for Link Tracking?", level: 2 },
+    { type: "paragraph", content: "A webhook is an HTTP callback that fires when a specific event occurs. In the context of webhook link tracking, RELURL sends a POST request to a URL you specify every time a short link is clicked. Your server receives a payload containing details about the click the visitor IP, user agent, referrer, location, and more." },
+    { type: "paragraph", content: "The alternative to webhooks is polling: repeatedly calling an API endpoint to check for new data. Polling wastes resources, introduces latency, and is harder to scale. Webhooks deliver data instantly and only when there is something to deliver. For real-time use cases like lead notification, fraud detection, or live dashboards, webhook link tracking is the superior approach." },
+    { type: "heading", content: "Supported Event Types", level: 2 },
+    { type: "paragraph", content: "RELURL webhooks support several event types. The primary event is link.clicked, which fires whenever someone clicks a shortened link. Additional events include link.created when a new link is created via the dashboard or API, link.updated when a links destination or settings change, and link.expired when a link with an expiration date passes its threshold." },
+    { type: "paragraph", content: "You can subscribe to all events or filter to specific types. Each event type has a consistent payload structure with shared fields like event ID, timestamp, and link metadata, plus event-specific fields for click details or change records." },
+    { type: "heading", content: "Webhook Payload Structure", level: 2 },
+    { type: "paragraph", content: "When a click event fires, RELURL sends a JSON payload to your configured endpoint. The payload includes the event type, a unique event ID, the timestamp of the event, and a data object containing link information and click details." },
+    { type: "code", content: "{\n  \"event\": \"link.clicked\",\n  \"event_id\": \"evt_abc123\",\n  \"timestamp\": \"2026-06-29T14:30:00Z\",\n  \"data\": {\n    \"link_id\": \"lnk_xyz789\",\n    \"short_url\": \"https://relurl.co/abc123\",\n    \"destination\": \"https://example.com/page\",\n    \"slug\": \"abc123\",\n    \"click\": {\n      \"ip\": \"203.0.113.42\",\n      \"user_agent\": \"Mozilla/5.0 ...\",\n      \"referrer\": \"https://twitter.com/post/123\",\n      \"country\": \"US\",\n      \"city\": \"San Francisco\",\n      \"device\": \"mobile\",\n      \"browser\": \"Chrome\",\n      \"os\": \"iOS\"\n    }\n  }\n}" },
+    { type: "paragraph", content: "The click object within the payload contains everything you need for real-time analytics and automation. The IP address can be used for geographic lookup or fraud scoring. The referrer tells you which platform sent the visitor. The device and browser fields help you understand your audience composition as clicks happen." },
+    { type: "heading", content: "Setting Up a Webhook Endpoint", level: 2 },
+    { type: "paragraph", content: "Your webhook endpoint must be a publicly accessible URL that accepts POST requests. For development and testing, services like webhook.site or RequestBin let you inspect incoming payloads without writing code. For production, your endpoint should validate the request signature, process the payload, and return a 200 OK response within five seconds." },
+    { type: "paragraph", content: "RELURL signs every webhook request with an HMAC-SHA256 signature using a shared secret configured in your dashboard. Your endpoint computes the signature from the request body using the same secret and compares it to the X-RELURL-Signature header. This verification ensures the request genuinely came from RELURL and has not been tampered with." },
+    { type: "heading", content: "Processing Webhooks with Node.js", level: 2 },
+    { type: "paragraph", content: "Here is an Express.js endpoint that handles incoming webhook link tracking events, verifies the signature, and processes the data." },
+    { type: "code", content: "const crypto = require('crypto');\nconst express = require('express');\nconst app = express();\n\napp.post('/webhooks/relurl', express.json(), (req, res) => {\n  const signature = req.headers['x-relurl-signature'];\n  const payload = JSON.stringify(req.body);\n  const expected = crypto\n    .createHmac('sha256', process.env.WEBHOOK_SECRET)\n    .update(payload)\n    .digest('hex');\n  if (signature !== expected) {\n    return res.status(401).send('Invalid signature');\n  }\n  const event = req.body;\n  if (event.event === 'link.clicked') {\n    const click = event.data.click;\n    console.log(`Link clicked from ${click.country} on ${click.device}`);\n  }\n  res.status(200).send('OK');\n});\n\napp.listen(3000);" },
+    { type: "paragraph", content: "This pattern works with any Node.js framework. The key steps are always the same: verify the signature, parse the event type, and take action based on the payload data. Your endpoint must return 200 quickly. If you need to run long processing tasks, use a job queue to handle them asynchronously." },
+    { type: "heading", content: "Automation Use Cases", level: 2 },
+    { type: "list", items: ["Lead notification: When a prospect clicks a link in a sales email, webhook link tracking triggers an instant Slack or email notification to the sales rep so they can follow up while interest is hot.", "Fraud detection: Monitor click patterns in real time. If a single link receives hundreds of clicks from the same IP range within seconds, automatically flag and disable the link to prevent click fraud.", "CRM enrichment: Incoming click data updates contact records in your CRM with engagement scores, showing which leads are most interested based on real-time click behavior.", "Live analytics dashboards: Pipe click events into a real-time dashboard using WebSockets or server-sent events, giving your team a live view of campaign performance as it happens.", "Conditional content delivery: Use the click event to trigger personalized follow-up content. If someone clicks a pricing link, immediately queue a case study email tailored to their industry."] },
+    { type: "heading", content: "Retry Logic and Reliability", level: 2 },
+    { type: "paragraph", content: "Webhooks can fail. Your server might be down, a network issue might drop the request, or your endpoint might return a non-200 response. RELURL retries failed webhook deliveries up to five times with exponential backoff. Retries occur at approximately 1 minute, 5 minutes, 15 minutes, 30 minutes, and 1 hour after the initial attempt." },
+    { type: "paragraph", content: "Design your webhook endpoint to be idempotent. Use the event_id field to detect and ignore duplicate deliveries. If your endpoint receives the same event_id twice, it should process it only once. This prevents double-counting clicks or triggering duplicate automation actions." },
+    { type: "faq", faqs: [
+      { q: "Is webhook link tracking available on the free plan?", a: "Yes. Webhooks are available on all plans including the free tier, with standard rate limits." },
+      { q: "Can I configure multiple webhook endpoints?", a: "Yes. You can add up to five webhook URLs in your dashboard, each subscribing to different event types." },
+      { q: "What happens if my endpoint is slow to respond?", a: "RELURL waits up to five seconds for a 200 response. If your endpoint takes longer, the delivery is marked as failed and retried." },
+      { q: "How do I test webhooks during development?", a: "Use webhook.site to capture payloads for inspection, or configure a local tunnel like ngrok to expose your local server." }
+    ] },
+    { type: "cta", content: "Set up webhook link tracking with RELURL. Get real-time click notifications and automate your workflow." }
+  ]
+}

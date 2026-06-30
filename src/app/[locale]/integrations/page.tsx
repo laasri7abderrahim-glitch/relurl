@@ -1,13 +1,16 @@
-import type { Metadata } from "next"
-import Link from "next/link"
+import { generateSEOMetadata } from "@/lib/seo"
+import { Link } from "@/i18n/navigation"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 
-export const metadata: Metadata = {
-  title: "Integrations - Connect RELURL with Your Tools",
-  description: "Connect RELURL with Zapier, Make, WordPress, and more. Automate your link management workflow.",
-  alternates: { canonical: "https://relurl.com/integrations" },
-  openGraph: { title: "Integrations", description: "Connect RELURL with your favorite tools." },
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Integrations - Connect RELURL with Your Tools",
+    description: "Connect RELURL with Zapier, Make, and other tools to automate your link management workflow.",
+    path: "/integrations",
+    locale,
+  })
 }
 
 const featuredIntegrations = [

@@ -3,8 +3,16 @@ import createNextIntlPlugin from "next-intl/plugin"
 
 const withNextIntl = createNextIntlPlugin()
 
+const CSP = "default-src 'self' 'unsafe-inline' data: blob:; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' blob: data: https: http:; font-src 'self' data: https:; connect-src 'self' https: http: ws: wss:; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; media-src 'self' https:; frame-ancestors 'self'"
+
 const nextConfig: NextConfig = {
   output: "standalone",
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production" ? { exclude: ["error", "warn"] } : false,
+  },
+  experimental: {
+    optimizePackageImports: ["lucide-react", "recharts", "date-fns"],
+  },
   images: {
     remotePatterns: [
       {
@@ -18,6 +26,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "ui-avatars.com",
+      },
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
       },
     ],
   },
@@ -33,6 +45,24 @@ const nextConfig: NextConfig = {
         source: "/api/:path*",
         headers: [
           { key: "Cache-Control", value: "no-store" },
+        ],
+      },
+      {
+        source: "/(.*)",
+        headers: [
+          { key: "Content-Security-Policy", value: CSP },
+        ],
+      },
+      {
+        source: "/:path((?!api|dashboard|admin|_next).*)",
+        headers: [
+          { key: "X-Robots-Tag", value: "index, follow" },
+        ],
+      },
+      {
+        source: "/:locale(en|fr)/:path((?!api|dashboard|admin|_next).*)",
+        headers: [
+          { key: "X-Robots-Tag", value: "index, follow" },
         ],
       },
     ]

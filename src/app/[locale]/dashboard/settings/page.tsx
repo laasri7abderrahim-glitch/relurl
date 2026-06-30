@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Avatar } from "@/components/ui/avatar"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { useToast } from "@/components/ui/toast"
+import { Link } from "@/i18n/navigation"
 import {
   Sun,
   Moon,
@@ -20,17 +21,15 @@ import {
   Palette,
   Skull,
   Loader2,
+  Mail,
+  ArrowRight,
 } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 type Theme = "system" | "light" | "dark"
 
-const themes: { value: Theme; label: string; icon: React.ReactNode }[] = [
-  { value: "system", label: "System", icon: <Monitor className="h-4 w-4" /> },
-  { value: "light", label: "Light", icon: <Sun className="h-4 w-4" /> },
-  { value: "dark", label: "Dark", icon: <Moon className="h-4 w-4" /> },
-]
-
 export default function SettingsPage() {
+  const t = useTranslations("dashboard.settings.profile")
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [image, setImage] = useState("")
@@ -44,6 +43,12 @@ export default function SettingsPage() {
   const [saving, setSaving] = useState(false)
   const { addToast } = useToast()
 
+  const themes: { value: Theme; label: string; icon: React.ReactNode }[] = [
+    { value: "system", label: t("themeSystem"), icon: <Monitor className="h-4 w-4" /> },
+    { value: "light", label: t("themeLight"), icon: <Sun className="h-4 w-4" /> },
+    { value: "dark", label: t("themeDark"), icon: <Moon className="h-4 w-4" /> },
+  ]
+
   useEffect(() => {
     fetch("/api/user")
       .then((res) => res.json())
@@ -54,9 +59,9 @@ export default function SettingsPage() {
           setImage(json.data.image || "")
         }
       })
-      .catch(() => addToast("Failed to load profile", "error"))
+      .catch(() => addToast(t("toast.loadFailed"), "error"))
       .finally(() => setLoading(false))
-  }, [addToast])
+  }, [addToast, t])
 
   const handleSaveProfile = async () => {
     setSaving(true)
@@ -68,12 +73,12 @@ export default function SettingsPage() {
       })
       const json = await res.json()
       if (json.success) {
-        addToast("Profile updated successfully", "success")
+        addToast(t("toast.updateSuccess"), "success")
       } else {
-        addToast(json.error || "Failed to update profile", "error")
+        addToast(json.error || t("toast.updateFailed"), "error")
       }
     } catch {
-      addToast("Failed to update profile", "error")
+      addToast(t("toast.updateFailed"), "error")
     } finally {
       setSaving(false)
     }
@@ -81,18 +86,18 @@ export default function SettingsPage() {
 
   const handleChangePassword = () => {
     if (!currentPassword || !newPassword || !confirmPassword) {
-      addToast("Please fill in all password fields", "error")
+      addToast(t("toast.passwordFieldsRequired"), "error")
       return
     }
     if (newPassword !== confirmPassword) {
-      addToast("Passwords do not match", "error")
+      addToast(t("toast.passwordMismatch"), "error")
       return
     }
     if (newPassword.length < 8) {
-      addToast("Password must be at least 8 characters", "error")
+      addToast(t("toast.passwordMin"), "error")
       return
     }
-    addToast("Password change coming soon", "success")
+    addToast(t("toast.passwordChangeComing"), "success")
     setCurrentPassword("")
     setNewPassword("")
     setConfirmPassword("")
@@ -100,7 +105,7 @@ export default function SettingsPage() {
 
   const handleDeleteAccount = () => {
     if (deleteConfirmText !== "DELETE") return
-    addToast("Contact support to delete account", "success")
+    addToast(t("toast.deleteContactSupport"), "success")
     setShowDeleteDialog(false)
     setDeleteConfirmText("")
   }
@@ -129,8 +134,8 @@ export default function SettingsPage() {
   return (
     <div className="space-y-6 max-w-3xl">
       <div>
-        <h1 className="text-2xl font-bold text-dark-50">Settings</h1>
-        <p className="mt-1 text-sm text-dark-100">Manage your account settings</p>
+        <h1 className="text-2xl font-bold text-dark-50">{t("title")}</h1>
+        <p className="mt-1 text-sm text-dark-100">{t("description")}</p>
       </div>
 
       <Card>
@@ -138,8 +143,8 @@ export default function SettingsPage() {
           <div className="flex items-center gap-3">
             <User className="h-5 w-5 text-dark-100" />
             <div>
-              <CardTitle className="text-lg">Profile</CardTitle>
-              <CardDescription>Update your personal information</CardDescription>
+              <CardTitle className="text-lg">{t("profileCard")}</CardTitle>
+              <CardDescription>{t("profileCardDesc")}</CardDescription>
             </div>
           </div>
         </CardHeader>
@@ -147,7 +152,7 @@ export default function SettingsPage() {
           <div className="flex items-center gap-6">
             <Avatar src={image} size="xl" fallback={name} />
             <label className="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium ring-offset-dark-700 transition-all duration-200 border border-dark-100 bg-transparent text-dark-50 hover:bg-dark-100 h-9 px-3 cursor-pointer">
-              Change Avatar
+              {t("changeAvatar")}
               <input type="file" accept="image/*" className="hidden" onChange={(e) => {
                 const file = e.target.files?.[0];
                 if (file) {
@@ -160,11 +165,11 @@ export default function SettingsPage() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name">{t("name")}</Label>
               <Input id="name" value={name} onChange={(e) => setName(e.target.value)} />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t("email")}</Label>
               <Input id="email" type="email" value={email} disabled />
             </div>
           </div>
@@ -174,7 +179,7 @@ export default function SettingsPage() {
             ) : (
               <Save className="mr-2 h-4 w-4" />
             )}
-            {saving ? "Saving..." : "Save Changes"}
+            {saving ? t("saving") : t("saveChanges")}
           </Button>
         </CardContent>
       </Card>
@@ -184,14 +189,14 @@ export default function SettingsPage() {
           <div className="flex items-center gap-3">
             <Lock className="h-5 w-5 text-dark-100" />
             <div>
-              <CardTitle className="text-lg">Password</CardTitle>
-              <CardDescription>Change your account password</CardDescription>
+              <CardTitle className="text-lg">{t("passwordCard")}</CardTitle>
+              <CardDescription>{t("passwordCardDesc")}</CardDescription>
             </div>
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="currentPassword">Current Password</Label>
+            <Label htmlFor="currentPassword">{t("currentPassword")}</Label>
             <Input
               id="currentPassword"
               type="password"
@@ -201,7 +206,7 @@ export default function SettingsPage() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="newPassword">New Password</Label>
+              <Label htmlFor="newPassword">{t("newPassword")}</Label>
               <Input
                 id="newPassword"
                 type="password"
@@ -210,7 +215,7 @@ export default function SettingsPage() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirm New Password</Label>
+              <Label htmlFor="confirmPassword">{t("confirmPassword")}</Label>
               <Input
                 id="confirmPassword"
                 type="password"
@@ -221,7 +226,7 @@ export default function SettingsPage() {
           </div>
           <Button variant="primary" onClick={handleChangePassword}>
             <Lock className="mr-2 h-4 w-4" />
-            Change Password
+            {t("changePassword")}
           </Button>
         </CardContent>
       </Card>
@@ -231,29 +236,53 @@ export default function SettingsPage() {
           <div className="flex items-center gap-3">
             <Palette className="h-5 w-5 text-dark-100" />
             <div>
-              <CardTitle className="text-lg">Theme</CardTitle>
-              <CardDescription>Choose your preferred appearance</CardDescription>
+              <CardTitle className="text-lg">{t("themeCard")}</CardTitle>
+              <CardDescription>{t("themeCardDesc")}</CardDescription>
             </div>
           </div>
         </CardHeader>
         <CardContent>
           <div className="flex gap-3">
-            {themes.map((t) => (
+            {themes.map((th) => (
               <button
-                key={t.value}
+                key={th.value}
                 type="button"
-                onClick={() => setTheme(t.value)}
+                onClick={() => setTheme(th.value)}
                 className={`flex flex-1 items-center justify-center gap-2 rounded-lg border p-4 transition-all ${
-                  theme === t.value
+                  theme === th.value
                     ? "border-primary-500 bg-primary-500/10 text-primary-500"
                     : "border-dark-100 text-dark-100 hover:border-dark-50 hover:text-dark-50"
                 }`}
               >
-                {t.icon}
-                <span className="text-sm font-medium">{t.label}</span>
+                {th.icon}
+                <span className="text-sm font-medium">{th.label}</span>
               </button>
             ))}
           </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <div className="flex items-center gap-3">
+            <Mail className="h-5 w-5 text-dark-100" />
+            <div>
+              <CardTitle className="text-lg">{t("emailReportsCard")}</CardTitle>
+              <CardDescription>{t("emailReportsCardDesc")}</CardDescription>
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <p className="mb-4 text-sm text-dark-100">
+            {t("emailReportsText")}
+          </p>
+          <Link href="/dashboard/settings/reports">
+            <Button variant="outline">
+              <Mail className="mr-2 h-4 w-4" />
+              {t("configureReports")}
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
         </CardContent>
       </Card>
 
@@ -262,24 +291,23 @@ export default function SettingsPage() {
           <div className="flex items-center gap-3">
             <Skull className="h-5 w-5 text-red-400" />
             <div>
-              <CardTitle className="text-lg text-red-400">Danger Zone</CardTitle>
+              <CardTitle className="text-lg text-red-400">{t("dangerZone")}</CardTitle>
               <CardDescription>
-                Irreversible actions that will permanently delete your data
+                {t("dangerZoneDesc")}
               </CardDescription>
             </div>
           </div>
         </CardHeader>
         <CardContent>
           <p className="mb-4 text-sm text-dark-100">
-            Once you delete your account, there is no going back. All your links, analytics data,
-            and API keys will be permanently removed.
+            {t("dangerZoneText")}
           </p>
           <Button
             variant="destructive"
             onClick={() => setShowDeleteDialog(true)}
           >
             <Trash2 className="mr-2 h-4 w-4" />
-            Delete Account
+            {t("deleteAccount")}
           </Button>
         </CardContent>
       </Card>
@@ -289,22 +317,21 @@ export default function SettingsPage() {
           <DialogHeader>
             <div className="flex items-center gap-2 text-red-400">
               <AlertTriangle className="h-6 w-6" />
-              <DialogTitle>Delete Account</DialogTitle>
+              <DialogTitle>{t("deleteDialogTitle")}</DialogTitle>
             </div>
             <DialogDescription>
-              This action is permanent and cannot be undone. All your data will be deleted.
-              Type <strong>DELETE</strong> to confirm.
+              {t("deleteDialogDesc1")} <strong>DELETE</strong> {t("deleteDialogDesc2")}
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4 pt-2">
             <Input
-              placeholder='Type "DELETE" to confirm'
+              placeholder={t("deletePlaceholder")}
               value={deleteConfirmText}
               onChange={(e) => setDeleteConfirmText(e.target.value)}
             />
             <div className="flex justify-end gap-3">
               <Button variant="outline" onClick={() => { setShowDeleteDialog(false); setDeleteConfirmText("") }}>
-                Cancel
+                {t("cancel")}
               </Button>
               <Button
                 variant="destructive"
@@ -312,7 +339,7 @@ export default function SettingsPage() {
                 onClick={handleDeleteAccount}
               >
                 <Trash2 className="mr-2 h-4 w-4" />
-                Delete My Account
+                {t("deleteMyAccount")}
               </Button>
             </div>
           </div>

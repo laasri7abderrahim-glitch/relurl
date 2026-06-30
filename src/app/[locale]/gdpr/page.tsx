@@ -1,12 +1,16 @@
-import type { Metadata } from "next"
-import Link from "next/link"
+import { generateSEOMetadata } from "@/lib/seo"
+import { Link } from "@/i18n/navigation"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 
-export const metadata: Metadata = {
-  title: "GDPR - RELURL Data Protection",
-  description: "RELURL GDPR compliance. Your data protection rights under the General Data Protection Regulation.",
-  alternates: { canonical: "https://relurl.com/gdpr" },
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "GDPR Compliance - Data Protection",
+    description: "Learn about RELURL's commitment to GDPR compliance and data protection practices.",
+    path: "/gdpr",
+    locale,
+  })
 }
 
 export default function GdprPage() {

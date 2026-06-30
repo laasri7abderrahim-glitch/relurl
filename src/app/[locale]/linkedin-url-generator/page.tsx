@@ -1,16 +1,22 @@
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 
-export const metadata = generateSEOMetadata({
-  title: "LinkedIn URL Generator - Professional Links",
-  description: "Generate short LinkedIn links for profiles, company pages, posts, and job listings. Track engagement and optimize your B2B marketing efforts.",
-  path: "/linkedin-url-generator",
-  keywords: ["linkedin url generator", "linkedin link shortener", "linkedin profile link"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "LinkedIn URL Generator - Professional Links",
+    description: "Generate short LinkedIn links for profiles, company pages, posts, and job listings. Track engagement and optimize your B2B marketing efforts.",
+    path: "/linkedin-url-generator",
+    keywords: ["linkedin url generator", "linkedin link shortener", "linkedin profile link"],
+    locale,
+  })
+}
 
 export default function LinkedInURLGeneratorPage() {
   const href = "/linkedin-url-generator"
+  const relatedArticles = getPostsByLandingPage("/linkedin-url-generator").slice(0, 3)
   return (
     <URLLandingPage
       title="LinkedIn URL Generator"
@@ -42,6 +48,8 @@ export default function LinkedInURLGeneratorPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

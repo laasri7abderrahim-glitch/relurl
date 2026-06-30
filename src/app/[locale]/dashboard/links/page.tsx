@@ -1,30 +1,48 @@
 "use client"
 
 import { useState, useEffect, useCallback, useRef } from "react"
-import Link from "next/link"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { useRouter } from "next/navigation"
+import { useTranslations } from "next-intl"
+import { Link } from "@/i18n/navigation"
+import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Select } from "@/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
-import { QRCode } from "@/components/ui/qr-code"
+import { QRCode, SIZE_OPTIONS } from "@/components/ui/qr-code"
+import { QRCodeSettings } from "@/components/ui/qr-code-settings"
 import { useToast } from "@/components/ui/toast"
+import { StatCard } from "@/components/ui/stat-card"
+import { SectionHeader } from "@/components/ui/section-header"
+import { EmptyState } from "@/components/ui/empty-state"
+import { ErrorState } from "@/components/ui/error-state"
+import { SkeletonTable } from "@/components/ui/loading"
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu"
 import { formatDate, formatNumber, truncate } from "@/lib/utils"
 import {
   Search,
   Plus,
   Copy,
-  Edit3,
   Trash2,
   QrCode,
-  ExternalLink,
-  Link2,
   ChevronLeft,
   ChevronRight,
-  Check,
-  Settings,
+  MoreHorizontal,
+  Link2,
+  MousePointerClick,
+  CheckCheck,
+  BarChart3,
+  ArrowUpDown,
+  Download,
+  Files,
 } from "lucide-react"
 
 interface LinkItem {
@@ -36,6 +54,28 @@ interface LinkItem {
   clicks: number
   isActive: boolean
   createdAt: Date
+  tags?: string[]
+  healthStatus?: string | null
+  healthCheckedAt?: string | null
+  healthStatusCode?: number | null
+}
+
+interface HealthResult {
+  linkId: string
+  status: "healthy" | "unhealthy"
+  statusCode: number | null
+  redirectCount: number
+  error?: string
+}
+
+interface BatchHealthResponse {
+  results: HealthResult[]
+  stats: {
+    total: number
+    healthy: number
+    unhealthy: number
+    lastChecked: string
+  }
 }
 
 interface LinksResponse {
@@ -49,6 +89,8 @@ interface LinksResponse {
 const ITEMS_PER_PAGE = 10
 
 export default function LinksPage() {
+  const router = useRouter()
+  const t = useTranslations('dashboard.links.list')
   const [search, setSearch] = useState("")
   const [debouncedSearch, setDebouncedSearch] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
@@ -58,18 +100,33 @@ export default function LinksPage() {
   const [total, setTotal] = useState(0)
   const [totalPages, setTotalPages] = useState(0)
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
   const [qrLink, setQrLink] = useState<LinkItem | null>(null)
+  const [qrFgColor, setQrFgColor] = useState("#0b1120")
+  const [qrBgColor, setQrBgColor] = useState("#ffffff")
+  const [qrSize, setQrSize] = useState(200)
+  const [qrFormat, setQrFormat] = useState<"png" | "svg">("png")
   const [deleteConfirm, setDeleteConfirm] = useState<LinkItem | null>(null)
+  const [bulkDeleteConfirm, setBulkDeleteConfirm] = useState(false)
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
+  const [clicksToday, setClicksToday] = useState(0)
+  const [checkingHealth, setCheckingHealth] = useState(false)
+  const [healthLinks, setHealthLinks] = useState<string[]>([])
+  const [cloningId, setCloningId] = useState<string | null>(null)
+  const [healthMap, setHealthMap] = useState<Record<string, HealthResult>>({})
   const { addToast } = useToast()
   const linksRef = useRef<LinkItem[]>([])
   linksRef.current = links
 
+  const searchTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+
   useEffect(() => {
-    const timer = setTimeout(() => {
+    if (searchTimerRef.current) clearTimeout(searchTimerRef.current)
+    searchTimerRef.current = setTimeout(() => {
       setDebouncedSearch(search)
       setPage(1)
     }, 300)
-    return () => clearTimeout(timer)
+    return () => { if (searchTimerRef.current) clearTimeout(searchTimerRef.current) }
   }, [search])
 
   useEffect(() => {
@@ -78,22 +135,32 @@ export default function LinksPage() {
 
     const fetchLinks = async () => {
       setLoading(true)
+      setError(false)
       try {
-        const params = new URLSearchParams({ page: String(page), limit: String(ITEMS_PER_PAGE) })
-        if (debouncedSearch) params.set("search", debouncedSearch)
-        if (statusFilter !== "all") params.set("status", statusFilter)
-        if (dateFilter !== "all") params.set("date", dateFilter)
-
-        const res = await fetch(`/api/links?${params}`, { signal: controller.signal })
-        if (!res.ok) throw new Error("Failed to fetch links")
-        const data: LinksResponse = await res.json()
-        if (cancelled) return
+        let data: LinksResponse
+        if (debouncedSearch) {
+          const params = new URLSearchParams({ q: debouncedSearch, page: String(page), limit: String(ITEMS_PER_PAGE) })
+          const res = await fetch(`/api/links/search?${params}`, { signal: controller.signal })
+          if (!res.ok) throw new Error("Failed to fetch links")
+          const json = await res.json()
+          if (cancelled) return
+          data = { ...json.data, limit: ITEMS_PER_PAGE, totalPages: Math.ceil(json.data.total / ITEMS_PER_PAGE) }
+        } else {
+          const params = new URLSearchParams({ page: String(page), limit: String(ITEMS_PER_PAGE) })
+          if (statusFilter !== "all") params.set("status", statusFilter)
+          if (dateFilter !== "all") params.set("date", dateFilter)
+          const res = await fetch(`/api/links?${params}`, { signal: controller.signal })
+          if (!res.ok) throw new Error("Failed to fetch links")
+          const json = await res.json()
+          if (cancelled) return
+          data = json.data
+        }
         setLinks(data.links.map((l) => ({ ...l, createdAt: new Date(l.createdAt) })))
         setTotal(data.total)
         setTotalPages(data.totalPages)
       } catch (err) {
         if (cancelled || (err instanceof DOMException && err.name === "AbortError")) return
-        addToast("Failed to load links", "error")
+        setError(true)
         setLinks([])
         setTotal(0)
         setTotalPages(0)
@@ -106,10 +173,21 @@ export default function LinksPage() {
     return () => { cancelled = true; controller.abort() }
   }, [page, debouncedSearch, statusFilter, dateFilter, addToast])
 
+  useEffect(() => {
+    const controller = new AbortController()
+    fetch("/api/analytics/clicks-today", { signal: controller.signal })
+      .then((res) => res.ok ? res.json() : { clicks: 0 })
+      .then((data) => setClicksToday(data.clicks ?? 0))
+      .catch(() => {})
+    return () => controller.abort()
+  }, [])
+
+  const activeLinks = links.filter((l) => l.isActive)
+
   const handleCopy = useCallback((slug: string) => {
     navigator.clipboard.writeText(`https://relurl.com/${slug}`)
-    addToast("Copied to clipboard", "success")
-  }, [addToast])
+    addToast(t('toastCopied'), "success")
+  }, [addToast, t])
 
   const handleToggleActive = useCallback(async (link: LinkItem) => {
     const newActive = !link.isActive
@@ -121,11 +199,11 @@ export default function LinksPage() {
       })
       if (!res.ok) throw new Error("Failed to update link")
       setLinks((prev) => prev.map((l) => (l.id === link.id ? { ...l, isActive: newActive } : l)))
-      addToast(`Link ${newActive ? "activated" : "deactivated"}`, "success")
+      addToast(newActive ? t('toastActivated') : t('toastDeactivated'), "success")
     } catch {
-      addToast("Failed to update link", "error")
+      addToast(t('toastUpdateFailed'), "error")
     }
-  }, [addToast])
+  }, [addToast, t])
 
   const handleDelete = useCallback(async () => {
     if (!deleteConfirm) return
@@ -139,64 +217,204 @@ export default function LinksPage() {
     try {
       const res = await fetch(`/api/links/${linkId}`, { method: "DELETE" })
       if (!res.ok) throw new Error("Failed to delete link")
-      addToast("Link deleted", "success")
+      addToast(t('toastDeleted'), "success")
     } catch {
-      addToast("Failed to delete link", "error")
+      addToast(t('toastDeleteFailed'), "error")
     }
-  }, [deleteConfirm, page, addToast])
+  }, [deleteConfirm, page, addToast, t])
 
-  const renderSkeleton = () => (
-    <div className="animate-pulse">
-      <div className="flex items-center gap-4 border-b border-dark-300 p-4">
-        <div className="h-4 w-32 rounded bg-dark-300" />
-        <div className="h-4 flex-1 rounded bg-dark-300" />
-        <div className="h-4 w-16 rounded bg-dark-300" />
-        <div className="h-4 w-24 rounded bg-dark-300" />
-        <div className="h-6 w-16 rounded bg-dark-300" />
-        <div className="h-4 w-24 rounded bg-dark-300" />
-      </div>
-      {Array.from({ length: 5 }, (_, i) => (
-        <div key={i} className="flex items-center gap-4 border-b border-dark-300 p-4">
-          <div className="h-4 w-32 rounded bg-dark-300" />
-          <div className="h-4 flex-1 rounded bg-dark-300" />
-          <div className="h-4 w-16 rounded bg-dark-300" />
-          <div className="h-4 w-24 rounded bg-dark-300" />
-          <div className="h-6 w-16 rounded bg-dark-300" />
-          <div className="flex gap-2">
-            <div className="h-8 w-8 rounded bg-dark-300" />
-            <div className="h-8 w-8 rounded bg-dark-300" />
-            <div className="h-8 w-8 rounded bg-dark-300" />
-            <div className="h-8 w-8 rounded bg-dark-300" />
-          </div>
-        </div>
-      ))}
-    </div>
-  )
+  const handleClone = useCallback(async (link: LinkItem) => {
+    setCloningId(link.id)
+    try {
+      const res = await fetch(`/api/links/${link.id}/clone`, { method: "POST" })
+      if (!res.ok) {
+        const json = await res.json().catch(() => ({}))
+        throw new Error(json.error || "Failed to clone link")
+      }
+      const json = await res.json()
+      const newLink = { ...json.data, createdAt: new Date(json.data.createdAt) }
+      setLinks((prev) => [newLink, ...prev])
+      addToast(t('cloneSuccess'), "success")
+    } catch (err) {
+      addToast(err instanceof Error ? err.message : t('cloneError'), "error")
+    } finally {
+      setCloningId(null)
+    }
+  }, [addToast, t])
+
+  const bulkAction = useCallback(async (action: "activate" | "deactivate" | "delete") => {
+    const ids = Array.from(selectedIds)
+    if (ids.length === 0) return
+    if (action === "delete") {
+      setBulkDeleteConfirm(true)
+      return
+    }
+    const prevLinks = linksRef.current
+    const wasLastPage = prevLinks.length === ids.length && page > 1
+
+    try {
+      const res = await fetch("/api/links/bulk-operations", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ids, action }),
+      })
+      if (!res.ok) throw new Error("Failed")
+      const json = await res.json()
+      addToast(t('bulkSuccess', { count: json.data.count }), "success")
+      setSelectedIds(new Set())
+      if (wasLastPage) setPage((p) => p - 1)
+    } catch {
+      addToast(t('bulkError'), "error")
+    }
+  }, [selectedIds, page, addToast, t])
+
+  const handleBulkDelete = useCallback(async () => {
+    const ids = Array.from(selectedIds)
+    if (ids.length === 0) return
+    setBulkDeleteConfirm(false)
+    const prevLinks = linksRef.current
+    const wasLastPage = prevLinks.length === ids.length && page > 1
+
+    try {
+      const res = await fetch("/api/links/bulk-operations", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ids, action: "delete" }),
+      })
+      if (!res.ok) throw new Error("Failed")
+      const json = await res.json()
+      addToast(t('bulkSuccess', { count: json.data.count }), "success")
+      setSelectedIds(new Set())
+      if (wasLastPage) setPage((p) => p - 1)
+    } catch {
+      addToast(t('bulkError'), "error")
+    }
+  }, [selectedIds, page, addToast, t])
+
+  const handleCheckAll = useCallback(async () => {
+    setCheckingHealth(true)
+    try {
+      const res = await fetch("/api/links/health-check/batch")
+      if (!res.ok) throw new Error("Health check failed")
+      const json = await res.json()
+      const { results, stats } = json.data as BatchHealthResponse
+      const map: Record<string, HealthResult> = {}
+      results.forEach((r) => { map[r.linkId] = r })
+      setHealthMap((prev) => ({ ...prev, ...map }))
+      addToast(t("healthResults", { healthy: stats.healthy, total: stats.total }), stats.unhealthy > 0 ? "warning" : "success")
+    } catch {
+      addToast(t("healthError"), "error")
+    } finally {
+      setCheckingHealth(false)
+    }
+  }, [addToast, t])
+
+  const handleExportSelected = useCallback(() => {
+    const selected = links.filter((l) => selectedIds.has(l.id))
+    if (selected.length === 0) return
+    const headers = ["URL", "Short URL", "Title", "Clicks", "Status", "Created At"]
+    const rows = selected.map((l) => [
+      l.url,
+      `https://${l.domain}/${l.slug}`,
+      l.title ?? "",
+      String(l.clicks),
+      l.isActive ? "Active" : "Inactive",
+      formatDate(l.createdAt, "yyyy-MM-dd"),
+    ])
+    const csv = [headers.join(","), ...rows.map((r) => r.map((c) => `"${c.replace(/"/g, '""')}"`).join(","))].join("\n")
+    const blob = new Blob([csv], { type: "text/csv" })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement("a")
+    a.href = url
+    a.download = `links-export-${Date.now()}.csv`
+    a.click()
+    URL.revokeObjectURL(url)
+    addToast(t('toastExportStarted'), "success")
+  }, [links, selectedIds, addToast, t])
+
+  const toggleSelectAll = useCallback(() => {
+    if (selectedIds.size === links.length) {
+      setSelectedIds(new Set())
+    } else {
+      setSelectedIds(new Set(links.map((l) => l.id)))
+    }
+  }, [links, selectedIds])
+
+  const toggleSelect = useCallback((id: string) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
+  }, [])
+
+  const renderHealthBadge = (status?: string | null) => {
+    switch (status) {
+      case "healthy":
+        return (
+          <span className="inline-flex items-center gap-1 text-xs font-medium text-green-500">
+            <span className="h-2 w-2 rounded-full bg-green-500" />
+            {t('healthOk')}
+          </span>
+        )
+      case "unhealthy":
+        return (
+          <span className="inline-flex items-center gap-1 text-xs font-medium text-red-500">
+            <span className="h-2 w-2 rounded-full bg-red-500" />
+            {t('healthDown')}
+          </span>
+        )
+      default:
+        return (
+          <span className="inline-flex items-center gap-1 text-xs font-medium text-dark-100">
+            <span className="h-2 w-2 rounded-full bg-dark-100" />
+            {t('healthUnknown')}
+          </span>
+        )
+    }
+  }
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-dark-50">All Links</h1>
-          <p className="mt-1 text-sm text-dark-100">
-            Manage your shortened links
-          </p>
-        </div>
-        <Link href="/dashboard/links/new">
-          <Button variant="primary">
-            <Plus className="mr-2 h-4 w-4" />
-            Create New Link
-          </Button>
-        </Link>
+      <SectionHeader
+        title={t('title')}
+        description={t('description')}
+        action={
+          <Link href="/dashboard/links/new">
+            <Button variant="primary">
+              <Plus className="mr-2 h-4 w-4" />
+              {t('createNew')}
+            </Button>
+          </Link>
+        }
+      />
+
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <StatCard
+          label={t('totalLinks')}
+          value={total}
+          icon={<Link2 className="h-5 w-5" />}
+        />
+        <StatCard
+          label={t('activeLinks')}
+          value={activeLinks.length}
+          icon={<CheckCheck className="h-5 w-5" />}
+        />
+        <StatCard
+          label={t('clicksToday')}
+          value={formatNumber(clicksToday)}
+          icon={<MousePointerClick className="h-5 w-5" />}
+        />
       </div>
 
       <Card>
-        <CardHeader>
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <CardContent className="p-6">
+          <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="relative flex-1 max-w-md">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-dark-100" />
               <Input
-                placeholder="Search links..."
+                placeholder={t('searchPlaceholder')}
                 value={search}
                 onChange={(e) => { setSearch(e.target.value); setPage(1) }}
                 className="pl-9"
@@ -208,137 +426,240 @@ export default function LinksPage() {
                 onChange={(e) => { setDateFilter(e.target.value); setPage(1) }}
                 className="w-36"
               >
-                <option value="all">All Time</option>
-                <option value="7d">Last 7 Days</option>
-                <option value="30d">Last 30 Days</option>
-                <option value="90d">Last 90 Days</option>
+                <option value="all">{t('filterAllTime')}</option>
+                <option value="7d">{t('filterLast7Days')}</option>
+                <option value="30d">{t('filterLast30Days')}</option>
+                <option value="90d">{t('filterLast90Days')}</option>
               </Select>
               <Select
                 value={statusFilter}
                 onChange={(e) => { setStatusFilter(e.target.value); setPage(1) }}
                 className="w-36"
               >
-                <option value="all">All Status</option>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
+                <option value="all">{t('filterAllStatus')}</option>
+                <option value="active">{t('filterActive')}</option>
+                <option value="inactive">{t('filterInactive')}</option>
               </Select>
+              <Button variant="outline" size="sm" onClick={handleCheckAll} disabled={checkingHealth}>
+                <CheckCheck className="mr-1.5 h-4 w-4" />
+                {checkingHealth ? t('checkingHealth') : t('checkHealth')}
+              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm">
+                    <Download className="mr-1.5 h-4 w-4" />
+                    {t('exportCsv')}
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="min-w-[160px]">
+                  <DropdownMenuItem onClick={() => window.open('/api/export/links')}>
+                    {t('exportLinks')}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => window.open('/api/export/clicks')}>
+                    {t('exportClicks')}
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
-        </CardHeader>
-        <CardContent>
+
           {loading ? (
-            renderSkeleton()
+            <SkeletonTable rows={5} />
+          ) : error ? (
+            <ErrorState
+              title={t('loadingErrorTitle')}
+              message={t('loadingErrorMessage')}
+              onRetry={() => {
+                setPage(1)
+                setError(false)
+                setLoading(true)
+              }}
+            />
           ) : links.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-16 text-center">
-              <div className="rounded-full bg-dark-300 p-4 mb-4">
-                <Link2 className="h-8 w-8 text-dark-100" />
-              </div>
-              <h3 className="text-lg font-medium text-dark-50 mb-1">No links found</h3>
-              <p className="text-sm text-dark-100 mb-6 max-w-sm">
-                {search || statusFilter !== "all" || dateFilter !== "all"
-                  ? "Try adjusting your search or filters."
-                  : "Create your first shortened link to get started."}
-              </p>
-              {!search && statusFilter === "all" && dateFilter === "all" && (
-                <Link href="/dashboard/links/new">
-                  <Button variant="primary">
-                    <Plus className="mr-2 h-4 w-4" />
-                    Create Your First Link
-                  </Button>
-                </Link>
-              )}
-            </div>
+            <EmptyState
+              icon={<Link2 className="h-6 w-6" />}
+              title={search || statusFilter !== "all" || dateFilter !== "all" ? t('emptySearch') : t('emptyNoLinks')}
+              description={
+                search || statusFilter !== "all" || dateFilter !== "all"
+                  ? t('emptySearchDesc')
+                  : t('emptyNoLinksDesc')
+              }
+              action={
+                !search && statusFilter === "all" && dateFilter === "all"
+                  ? { label: t('emptyCreateFirst'), onClick: () => router.push("/dashboard/links/new") }
+                  : undefined
+              }
+            />
           ) : (
             <>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Short URL</TableHead>
-                    <TableHead>Original URL</TableHead>
-                    <TableHead>Clicks</TableHead>
-                    <TableHead>Date</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {links.map((link) => (
-                    <TableRow key={link.id}>
-                      <TableCell>
-                        <div className="min-w-0 max-w-[160px]">
-                          <p className="truncate font-medium text-dark-50">
-                            {link.domain}/{link.slug}
-                          </p>
-                          {link.title && (
-                            <p className="truncate text-xs text-dark-100">{link.title}</p>
-                          )}
-                        </div>
-                      </TableCell>
-                      <TableCell>
-                        <p className="truncate max-w-[240px] text-dark-100" title={link.url}>
-                          {truncate(link.url, 40)}
-                        </p>
-                      </TableCell>
-                      <TableCell className="text-dark-50">{formatNumber(link.clicks)}</TableCell>
-                      <TableCell className="text-dark-100 text-nowrap">{formatDate(link.createdAt, "MMM d, yyyy")}</TableCell>
-                      <TableCell>
-                        <button type="button" onClick={() => handleToggleActive(link)}>
-                          <Badge variant={link.isActive ? "success" : "destructive"}>
-                            {link.isActive ? "Active" : "Inactive"}
-                          </Badge>
-                        </button>
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex items-center justify-end gap-1">
-                          <Link
-                            href={`/dashboard/links/${link.id}`}
-                            className="rounded-lg p-2 text-dark-100 hover:text-[#1F6F5F] hover:bg-dark-300 transition-colors"
-                            title="Manage (Pixels, A/B, Routing, AI)"
-                          >
-                            <Settings className="h-4 w-4" />
-                          </Link>
-                          <button
-                            type="button"
-                            onClick={() => handleCopy(link.slug)}
-                            className="rounded-lg p-2 text-dark-100 hover:text-dark-50 hover:bg-dark-300 transition-colors"
-                            title="Copy"
-                          >
-                            <Copy className="h-4 w-4" />
-                          </button>
-                          <Link
-                            href={`/dashboard/links/${link.id}/edit`}
-                            className="rounded-lg p-2 text-dark-100 hover:text-dark-50 hover:bg-dark-300 transition-colors"
-                            title="Edit"
-                          >
-                            <Edit3 className="h-4 w-4" />
-                          </Link>
-                          <button
-                            type="button"
-                            onClick={() => setQrLink(link)}
-                            className="rounded-lg p-2 text-dark-100 hover:text-dark-50 hover:bg-dark-300 transition-colors"
-                            title="QR Code"
-                          >
-                            <QrCode className="h-4 w-4" />
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => setDeleteConfirm(link)}
-                            className="rounded-lg p-2 text-dark-100 hover:text-red-400 hover:bg-dark-300 transition-colors"
-                            title="Delete"
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </button>
-                        </div>
-                      </TableCell>
+              {selectedIds.size > 0 && (
+                <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 px-4 py-3 rounded-xl bg-dark-500 border border-dark-100 shadow-xl animate-in slide-in-from-bottom-4 duration-200">
+                  <span className="text-sm text-dark-50">{t('nSelected', { count: selectedIds.size })}</span>
+                  <div className="w-px h-5 bg-dark-100" />
+                  <Button size="sm" onClick={() => bulkAction("activate")}>{t('bulkActivate')}</Button>
+                  <Button size="sm" variant="outline" onClick={() => bulkAction("deactivate")}>{t('bulkDeactivate')}</Button>
+                  <Button size="sm" variant="destructive" onClick={() => setBulkDeleteConfirm(true)}>{t('bulkDelete')}</Button>
+                </div>
+              )}
+
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="w-10">
+                        <input
+                          type="checkbox"
+                          checked={links.length > 0 && selectedIds.size === links.length}
+                          onChange={toggleSelectAll}
+                          className="h-4 w-4 rounded border-dark-100 bg-dark-500 text-primary-500 focus:ring-primary-500"
+                        />
+                      </TableHead>
+                      <TableHead>
+                        <span className="inline-flex items-center gap-1">
+                          {t('tableShortUrl')} <ArrowUpDown className="h-3 w-3 text-dark-100" />
+                        </span>
+                      </TableHead>
+                      <TableHead>
+                        <span className="inline-flex items-center gap-1">
+                          {t('tableOriginalUrl')} <ArrowUpDown className="h-3 w-3 text-dark-100" />
+                        </span>
+                      </TableHead>
+                      <TableHead>
+                        <span className="inline-flex items-center gap-1">
+                          {t('tableClicks')} <ArrowUpDown className="h-3 w-3 text-dark-100" />
+                        </span>
+                      </TableHead>
+                      <TableHead className="hidden sm:table-cell">
+                        <span className="inline-flex items-center gap-1">
+                          {t('tableDate')} <ArrowUpDown className="h-3 w-3 text-dark-100" />
+                        </span>
+                      </TableHead>
+                      <TableHead>
+                        <span className="inline-flex items-center gap-1">
+                          {t('tableStatus')} <ArrowUpDown className="h-3 w-3 text-dark-100" />
+                        </span>
+                      </TableHead>
+                      <TableHead className="hidden sm:table-cell">Health</TableHead>
+                      <TableHead className="text-right">{t('tableActions')}</TableHead>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+                  </TableHeader>
+                  <TableBody>
+                    {links.map((link) => (
+                      <TableRow key={link.id} className={selectedIds.has(link.id) ? "bg-primary-500/5" : undefined}>
+                        <TableCell>
+                          <input
+                            type="checkbox"
+                            checked={selectedIds.has(link.id)}
+                            onChange={() => toggleSelect(link.id)}
+                            className="h-4 w-4 rounded border-dark-100 bg-dark-500 text-primary-500 focus:ring-primary-500"
+                          />
+                        </TableCell>
+                        <TableCell>
+                          <div className="min-w-0 max-w-[160px]">
+                            <p className="truncate font-medium text-dark-50">
+                              {link.domain}/{link.slug}
+                            </p>
+                            {link.title && (
+                              <p className="truncate text-xs text-dark-100">{link.title}</p>
+                            )}
+                            {link.tags && link.tags.length > 0 && (
+                              <div className="mt-1 flex flex-wrap gap-1">
+                                {link.tags.map((tag) => (
+                                  <Badge key={tag} variant="secondary" className="text-[10px] px-1.5 py-0">
+                                    {tag}
+                                  </Badge>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <p className="truncate max-w-[180px] text-dark-100 lg:max-w-[240px]" title={link.url}>
+                            {truncate(link.url, 36)}
+                          </p>
+                        </TableCell>
+                        <TableCell className="text-dark-50">{formatNumber(link.clicks)}</TableCell>
+                        <TableCell className="hidden text-nowrap text-dark-100 sm:table-cell">
+                          {formatDate(link.createdAt, "MMM d, yyyy")}
+                        </TableCell>
+                        <TableCell>
+                          <button type="button" onClick={() => handleToggleActive(link)}>
+                            <Badge variant={link.isActive ? "success" : "destructive"}>
+                              {link.isActive ? t('badgeActive') : t('badgeInactive')}
+                            </Badge>
+                          </button>
+                        </TableCell>
+                        <TableCell className="hidden sm:table-cell">
+                          {renderHealthBadge(healthMap[link.id]?.status ?? link.healthStatus)}
+                        </TableCell>
+                        <TableCell>
+                          <div className="flex items-center justify-end gap-1">
+                            <button
+                              type="button"
+                              onClick={() => setQrLink(link)}
+                              className="rounded-lg p-2 text-dark-100 hover:text-dark-50 hover:bg-dark-300 transition-colors"
+                              title={t('qrCodeTitle')}
+                            >
+                              <QrCode className="h-4 w-4" />
+                            </button>
+                            <DropdownMenu>
+                              <DropdownMenuTrigger asChild>
+                                <button
+                                  type="button"
+                                  className="rounded-lg p-2 text-dark-100 hover:text-dark-50 hover:bg-dark-300 transition-colors"
+                                  title={t('moreActions')}
+                                >
+                                  <MoreHorizontal className="h-4 w-4" />
+                                </button>
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent align="end" className="min-w-[180px]">
+                                <DropdownMenuItem onClick={() => handleCopy(link.slug)}>
+                                  <Copy className="mr-2 h-4 w-4" />
+                                  {t('copyShortUrl')}
+                                </DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => router.push(`/dashboard/analytics?linkId=${link.id}`)}>
+                                  <BarChart3 className="mr-2 h-4 w-4" />
+                                  {t('viewAnalytics')}
+                                </DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => router.push(`/dashboard/links/${link.id}/edit`)}>
+                                  <MousePointerClick className="mr-2 h-4 w-4" />
+                                  {t('edit')}
+                                </DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => handleClone(link)} disabled={cloningId === link.id}>
+                                  <Files className="mr-2 h-4 w-4" />
+                                  {cloningId === link.id ? t('cloning') : t('cloneLink')}
+                                </DropdownMenuItem>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem onClick={() => handleToggleActive(link)}>
+                                  <Badge
+                                    variant={link.isActive ? "destructive" : "success"}
+                                    className="mr-2 h-4 w-4 rounded-sm p-0 flex items-center justify-center"
+                                  >
+                                    <span className="text-[8px] font-bold">
+                                      {link.isActive ? t('badgeOff') : t('badgeOn')}
+                                    </span>
+                                  </Badge>
+                                  {link.isActive ? t('deactivate') : t('activate')}
+                                </DropdownMenuItem>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem onClick={() => setDeleteConfirm(link)}>
+                                  <Trash2 className="mr-2 h-4 w-4 text-red-400" />
+                                  <span className="text-red-400">{t('delete')}</span>
+                                </DropdownMenuItem>
+                              </DropdownMenuContent>
+                            </DropdownMenu>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
 
               {totalPages > 1 && (
-                <div className="flex items-center justify-between pt-4">
+                <div className="flex flex-col items-center justify-between gap-3 pt-4 sm:flex-row">
                   <p className="text-sm text-dark-100">
-                    Page {page} of {totalPages} ({total} total)
+                    {t('paginationPage', { current: page, total: totalPages, count: total })}
                   </p>
                   <div className="flex items-center gap-2">
                     <button
@@ -379,21 +700,50 @@ export default function LinksPage() {
         </CardContent>
       </Card>
 
-      <Dialog open={!!qrLink} onOpenChange={(open) => { if (!open) setQrLink(null) }}>
-        <DialogContent>
+      <Dialog open={!!qrLink} onOpenChange={(open) => {
+        if (!open) {
+          setQrLink(null)
+          setQrFgColor("#0b1120")
+          setQrBgColor("#ffffff")
+          setQrSize(200)
+          setQrFormat("png")
+        }
+      }}>
+        <DialogContent className="max-w-lg">
           <DialogHeader>
-            <DialogTitle>QR Code</DialogTitle>
+            <DialogTitle>{t('qrDialogTitle')}</DialogTitle>
             <DialogDescription>
-              Scan to open https://{qrLink?.domain}/{qrLink?.slug}
+              {t('qrDialogDesc', { url: `https://${qrLink?.domain}/${qrLink?.slug}` })}
             </DialogDescription>
           </DialogHeader>
-          <div className="flex justify-center py-4">
-            {qrLink && (
-              <QRCode
-                value={`https://${qrLink.domain}/${qrLink.slug}`}
-                size={200}
-              />
-            )}
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div className="flex items-center justify-center">
+              {qrLink && (
+                <QRCode
+                  value={`https://${qrLink.domain}/${qrLink.slug}`}
+                  size={qrSize}
+                  fgColor={qrFgColor}
+                  bgColor={qrBgColor}
+                  format={qrFormat}
+                />
+              )}
+            </div>
+            <div className="border-t border-dark-100 pt-4 sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
+              {qrLink && (
+                <QRCodeSettings
+                  fgColor={qrFgColor}
+                  bgColor={qrBgColor}
+                  size={qrSize}
+                  onFgColorChange={setQrFgColor}
+                  onBgColorChange={setQrBgColor}
+                  onSizeChange={setQrSize}
+                  onPresetSelect={(preset) => {
+                    setQrFgColor(preset.fg)
+                    setQrBgColor(preset.bg)
+                  }}
+                />
+              )}
+            </div>
           </div>
         </DialogContent>
       </Dialog>
@@ -401,22 +751,38 @@ export default function LinksPage() {
       <Dialog open={!!deleteConfirm} onOpenChange={(open) => { if (!open) setDeleteConfirm(null) }}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Delete Link</DialogTitle>
+            <DialogTitle>{t('deleteDialogTitle')}</DialogTitle>
             <DialogDescription>
-              Are you sure you want to delete this link? This action cannot be undone.
-              All click data will be permanently removed.
+              {t('deleteDialogDesc')}
             </DialogDescription>
           </DialogHeader>
           <div className="flex justify-end gap-3 pt-4">
             <Button variant="outline" onClick={() => setDeleteConfirm(null)}>
-              Cancel
+              {t('cancel')}
             </Button>
-            <Button
-              variant="destructive"
-              onClick={handleDelete}
-            >
+            <Button variant="destructive" onClick={handleDelete}>
               <Trash2 className="mr-2 h-4 w-4" />
-              Delete
+              {t('delete')}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={bulkDeleteConfirm} onOpenChange={(open) => { if (!open) setBulkDeleteConfirm(false) }}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{t('bulkDeleteTitle')}</DialogTitle>
+            <DialogDescription>
+              {t('bulkDeleteDesc', { count: selectedIds.size })}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex justify-end gap-3 pt-4">
+            <Button variant="outline" onClick={() => setBulkDeleteConfirm(false)}>
+              {t('cancel')}
+            </Button>
+            <Button variant="destructive" onClick={handleBulkDelete}>
+              <Trash2 className="mr-2 h-4 w-4" />
+              {t('bulkDeleteButton', { count: selectedIds.size })}
             </Button>
           </div>
         </DialogContent>

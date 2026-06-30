@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Agency Link Shortener - Client Campaign Links",
-  description: "Shorten client campaign links with white-label branding. Track performance across channels and deliver reports with RELURL.",
-  path: "/agency-link-shortener",
-  keywords: ["agency link shortener", "marketing agency links", "white label link shortener"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Agency Link Shortener - Client Campaign Links",
+    description: "Shorten client campaign links with white-label branding. Track performance across channels and deliver reports with RELURL.",
+    path: "/agency-link-shortener",
+    keywords: ["agency link shortener", "marketing agency links", "white label link shortener"],
+    locale,
+  })
+}
 
 export default function AgencyLinkShortenerPage() {
   const href = "/agency-link-shortener"
+  const relatedArticles = getPostsByLandingPage("/agency-link-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Agency Link Shortener"
@@ -43,6 +48,8 @@ export default function AgencyLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

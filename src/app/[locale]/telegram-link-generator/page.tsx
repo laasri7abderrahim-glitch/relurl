@@ -1,16 +1,22 @@
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 
-export const metadata = generateSEOMetadata({
-  title: "Telegram Link Generator - Share Telegram Links",
-  description: "Generate short Telegram links for channels, groups, and bots. Create custom t.me URLs with analytics to grow your Telegram community.",
-  path: "/telegram-link-generator",
-  keywords: ["telegram link generator", "t.me link", "telegram group link"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Telegram Link Generator - Share Telegram Links",
+    description: "Generate short Telegram links for channels, groups, and bots. Create custom t.me URLs with analytics to grow your Telegram community.",
+    path: "/telegram-link-generator",
+    keywords: ["telegram link generator", "t.me link", "telegram group link"],
+    locale,
+  })
+}
 
 export default function TelegramLinkGeneratorPage() {
   const href = "/telegram-link-generator"
+  const relatedArticles = getPostsByLandingPage("/telegram-link-generator").slice(0, 3)
   return (
     <URLLandingPage
       title="Telegram Link Generator"
@@ -42,6 +48,8 @@ export default function TelegramLinkGeneratorPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }

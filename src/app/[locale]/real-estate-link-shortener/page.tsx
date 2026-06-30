@@ -1,17 +1,22 @@
-import type { Metadata } from "next"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Real Estate Link Shortener - Property Listing Links",
-  description: "Create short, memorable links for property listings, open houses, and virtual tours. Track interest and generate leads with RELURL.",
-  path: "/real-estate-link-shortener",
-  keywords: ["real estate link shortener", "property listing links", "real estate marketing"],
-})
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return generateSEOMetadata({
+    title: "Real Estate Link Shortener - Property Listing Links",
+    description: "Create short, memorable links for property listings, open houses, and virtual tours. Track interest and generate leads with RELURL.",
+    path: "/real-estate-link-shortener",
+    keywords: ["real estate link shortener", "property listing links", "real estate marketing"],
+    locale,
+  })
+}
 
 export default function RealEstateLinkShortenerPage() {
   const href = "/real-estate-link-shortener"
+  const relatedArticles = getPostsByLandingPage("/real-estate-link-shortener").slice(0, 3)
   return (
     <URLLandingPage
       title="Real Estate Link Shortener"
@@ -43,6 +48,8 @@ export default function RealEstateLinkShortenerPage() {
       ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
+
+      relatedArticles={relatedArticles}
     />
   )
 }
