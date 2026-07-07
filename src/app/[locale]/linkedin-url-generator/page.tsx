@@ -7,7 +7,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   return generateSEOMetadata({
     title: "LinkedIn URL Generator - Professional Links",
-    description: "Generate short LinkedIn links for profiles, company pages, posts, and job listings. Track engagement and optimize your B2B marketing efforts.",
+    description: "Generate short LinkedIn links for profiles, company pages, posts, and job listings. Monitor clicks and refine your B2B marketing strategy.",
     path: "/linkedin-url-generator",
     keywords: ["linkedin url generator", "linkedin link shortener", "linkedin profile link"],
     locale,
@@ -21,7 +21,7 @@ export default function LinkedInURLGeneratorPage() {
     <URLLandingPage
       title="LinkedIn URL Generator"
       subtitle="Professional Link Management"
-      description="Create short, professional links for your LinkedIn profile, company page, posts, and job listings. Track engagement and optimize your B2B marketing."
+       description="Create short, professional links for your LinkedIn profile, company page, posts, and job listings. Measure clicks and improve your B2B marketing reach."
       placeholder="https://www.linkedin.com/in/your-profile-or-company"
       inputLabel="Enter your LinkedIn URL"
       generateLabel="Generate Link"

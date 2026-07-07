@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for Salon - Beauty & Booking QR Codes",
     description: "Create QR codes for salon services, booking pages, and style galleries. Fill more appointments with RELURL's salon QR code generator.",
     path: "/qr-code-for-salon",
-    keywords: ["qr code for salon", "beauty salon qr code", "salon booking qr code"],
+    keywords: ["qr code for salon", "beauty salon qr code", "salon booking qr code", "salon booking qr code online"],
     locale,
   })
 }
@@ -25,7 +25,7 @@ export default function Page() {
       defaultValue="https://your-salon.com/book/appointment"
       inputLabel="Enter your salon booking URL"
       generateLabel="Create Salon QR Code"
-      features={["Appointment Booking", "Service Menu", "Style Gallery", "Loyalty Program"]}
+      features={["Appointment Booking", "Service Menu", "Style Gallery", "Loyalty Program", "Product Purchase Links", "Staff Portfolio"]}
       howItWorks={[
         { step: "Enter Booking URL", desc: "Paste your online booking or service menu link." },
         { step: "Generate QR Code", desc: "Create a QR code that links to your booking page." },
@@ -37,6 +37,7 @@ export default function Page() {
         "Before-and-after galleries",
         "Loyalty program signups",
         "Product recommendation links",
+        "Gift card purchase and redemption",
       ]}
       relatedPages={[
         { title: "QR Code Generator", href: "/qr-code-generator" },

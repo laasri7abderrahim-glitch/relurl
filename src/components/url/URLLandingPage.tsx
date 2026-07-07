@@ -14,6 +14,7 @@ import { BlogPost } from "@/lib/blog/types"
 import { getLandingContent, RichContent } from "@/lib/landing-content"
 import { Copy, Check, Link2, ArrowRight, Zap, BarChart3, Globe, Shield, ChevronRight, QrCode, BookOpen, TrendingUp, Target, CheckCircle2, Star, Lightbulb, Activity, Hash, Users, MousePointerClick } from "lucide-react"
 import { DecorativePattern } from "@/components/ui/decorative-pattern"
+import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 
 interface FAQItem {
@@ -125,12 +126,14 @@ export default function URLLandingPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",
+          "@id": "https://relurl.com/#software",
           name: title,
           applicationCategory: "WebApplication",
           operatingSystem: "Web",
           url: "https://relurl.com",
           description,
           offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+          mainEntityOfPage: { "@type": "WebPage", "@id": `https://relurl.com${pathname}` },
         })}}
       />
       <script
@@ -162,7 +165,7 @@ export default function URLLandingPage({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://relurl.com" },
-            { "@type": "ListItem", position: 2, name: title, item: "https://relurl.com" },
+            { "@type": "ListItem", position: 2, name: title, item: `https://relurl.com${pathname}` },
           ],
         })}}
       />
@@ -171,8 +174,8 @@ export default function URLLandingPage({
         {/* Hero */}
         <section className="relative overflow-hidden px-4 pt-24 pb-16 md:pt-28 md:pb-32 bg-warm">
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-[#AA1C41]/10 via-[#E68457]/5 to-transparent rounded-full blur-[100px]" />
-            <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-gradient-to-tr from-[#E68457]/10 via-[#AA1C41]/5 to-transparent rounded-full blur-[100px]" />
+            <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-primary/10 via-accent/5 to-transparent rounded-full blur-[100px]" />
+            <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-gradient-to-tr from-accent/10 via-primary/5 to-transparent rounded-full blur-[100px]" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,rgba(170,28,65,0.03)_0%,transparent_70%)]" />
             <DecorativePattern className="absolute top-20 right-20 w-48 h-48 opacity-50" />
             <DecorativePattern className="absolute bottom-20 left-20 w-36 h-36 opacity-40 rotate-45" />
@@ -180,62 +183,28 @@ export default function URLLandingPage({
           <div className="relative z-10 max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="animate-fade-in-up">
-                <Badge className="mb-5 px-4 py-1.5 text-sm bg-[#AA1C41]/10 text-[#AA1C41] border-[#AA1C41]/20 rounded-full font-medium">
+                <Badge className="mb-5 px-4 py-1.5 text-sm bg-primary/10 text-foreground border-primary/20 rounded-full font-medium">
                   {t("landing.url.freeTool") || "Free URL Shortener"}
                 </Badge>
                 <p className="text-primary font-medium mb-2">{subtitle}</p>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
                   <span className="text-gradient">{title}</span>
                 </h1>
-                <p className="text-lg text-[#5E244E]/70 mb-8 max-w-lg leading-relaxed">{description}</p>
+                <p className="text-lg text-foreground/70 mb-8 max-w-lg leading-relaxed">{description}</p>
               </div>
               <div className="hidden md:block animate-fade-in">
                 <div className="relative">
-                  <div className="absolute -top-4 -right-4 w-full h-full bg-gradient-to-br from-[#E68457]/10 to-[#AA1C41]/5 rounded-3xl" />
-                  <div className="relative p-6 space-y-4">
-                    <div className="rounded-xl border border-[#E68457]/20 bg-background p-5 shadow-lg shadow-[#AA1C41]/5">
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#AA1C41] to-[#E68457] flex items-center justify-center shadow-lg shadow-[#AA1C41]/20">
-                          <Link2 className="w-6 h-6 text-white" />
-                        </div>
-                        <div>
-                          <p className="text-sm font-semibold text-[#5E244E]">Smart Short Links</p>
-                          <p className="text-xs text-[#5E244E]/60">Custom aliases with analytics</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2 p-2.5 bg-[#FFE8B4]/50 rounded-lg">
-                        <Globe className="w-4 h-4 text-[#AA1C41] shrink-0" />
-                        <span className="text-sm font-medium text-[#AA1C41] truncate">relurl.com/your-brand</span>
-                        <Badge className="ml-auto text-xs shrink-0 bg-[#AA1C41]/10 text-[#AA1C41] border-[#AA1C41]/20">
-                          <CheckCircle2 className="w-3 h-3 mr-1" /> Live
-                        </Badge>
-                      </div>
-                    </div>
-                    <div className="rounded-xl border border-[#E68457]/20 bg-background p-5 shadow-lg shadow-[#AA1C41]/5">
-                      <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#E68457] to-[#5E244E] flex items-center justify-center shadow-lg shadow-[#E68457]/20">
-                          <BarChart3 className="w-6 h-6 text-white" />
-                        </div>
-                        <div>
-                          <p className="text-sm font-semibold text-[#5E244E]">Real-Time Analytics</p>
-                          <p className="text-xs text-[#5E244E]/60">Track clicks, locations, devices</p>
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-3 gap-3 mt-4">
-                        <div className="text-center p-2 rounded-lg bg-[#FFE8B4]/50">
-                          <p className="text-xs text-[#5E244E]/60">Clicks</p>
-                          <p className="text-lg font-bold text-[#5E244E]">24.8K</p>
-                        </div>
-                        <div className="text-center p-2 rounded-lg bg-[#FFE8B4]/50">
-                          <p className="text-xs text-[#5E244E]/60">CTR</p>
-                          <p className="text-lg font-bold text-[#5E244E]">12.4%</p>
-                        </div>
-                        <div className="text-center p-2 rounded-lg bg-[#FFE8B4]/50">
-                          <p className="text-xs text-[#5E244E]/60">Countries</p>
-                          <p className="text-lg font-bold text-[#5E244E]">32</p>
-                        </div>
-                      </div>
-                    </div>
+                  <div className="absolute -top-4 -right-4 w-full h-full bg-gradient-to-br from-accent/10 to-primary/5 rounded-3xl" />
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/10">
+                    <Image
+                      src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80"
+                      alt="Team collaborating on link management and analytics"
+                      width={600}
+                      height={450}
+                      className="w-full h-auto object-cover"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
                   </div>
                 </div>
               </div>
@@ -269,7 +238,7 @@ export default function URLLandingPage({
                     onKeyDown={(e) => e.key === "Enter" && handleShorten()}
                     className="flex-1 h-12"
                   />
-                  <Button onClick={handleShorten} disabled={loading || !url} size="lg" className="h-12 px-8 bg-gradient-to-r from-[#AA1C41] to-[#E68457] text-white hover:from-[#8f1a39] hover:to-[#d97a4f] shadow-lg shadow-[#AA1C41]/25">
+                  <Button onClick={handleShorten} disabled={loading || !url} size="lg" className="h-12 px-8 bg-gradient-to-r from-primary to-accent text-white hover:from-primary/90 hover:to-accent/90 shadow-lg shadow-primary/25">
                     {loading ? t("common.loading") : generateLabel}
                   </Button>
                 </div>
@@ -284,8 +253,8 @@ export default function URLLandingPage({
                 )}
                 {shortUrl && (
                   <div className="mt-4 flex items-center justify-between p-3 bg-primary/10 border border-primary/20 rounded-lg">
-                    <a href={shortUrl} target="_blank" className="text-primary font-medium truncate mr-4">{shortUrl}</a>
-                    <Button variant="outline" size="sm" onClick={copyLink} className="shrink-0">
+                    <a href={shortUrl} target="_blank" rel="noopener noreferrer" className="text-primary font-medium truncate mr-4">{shortUrl}</a>
+                    <Button variant="outline" size="sm" onClick={copyLink} className="shrink-0" aria-label={copied ? t("common.copied") : t("common.copy")}>
                       {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                     </Button>
                   </div>
@@ -307,7 +276,7 @@ export default function URLLandingPage({
                 return (
                 <Card key={i} className="border-border/50 shadow-card hover:border-primary/30 shadow-card-hover transition-all duration-300 hover:-translate-y-1">
                   <CardContent className="p-6 text-center">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#AA1C41] to-[#E68457] flex items-center justify-center mx-auto mb-4 shadow-lg shadow-[#AA1C41]/20">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-4 shadow-lg shadow-primary/20">
                       <FeatureIcon className="w-6 h-6 text-white" />
                     </div>
                     <p className="text-sm font-medium">{feature}</p>
@@ -421,7 +390,7 @@ export default function URLLandingPage({
         </section>
 
         {/* All Pages Directory */}
-        <section className="px-4 py-16 bg-muted/30">
+        <nav aria-label={t("landing.url.allToolsTitle")} className="px-4 py-16 bg-muted/30">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-8 text-gradient">{t("landing.url.allToolsTitle")}</h2>
             <div className="grid md:grid-cols-4 lg:grid-cols-5 gap-3">
@@ -432,7 +401,7 @@ export default function URLLandingPage({
               ))}
             </div>
           </div>
-        </section>
+        </nav>
 
         {/* Related Blog Articles */}
         {relatedArticles.length > 0 && (
@@ -486,8 +455,12 @@ export default function URLLandingPage({
               {defaultFaqs.map((faq, i) => (
                 <Card key={i} className="border-border/50">
                   <CardContent className="p-6">
-                    <h3 className="font-semibold mb-2">{faq.q}</h3>
-                    <p className="text-sm text-muted-foreground">{faq.a}</p>
+                    <article itemScope itemType="https://schema.org/Question">
+                      <h3 itemProp="name" className="font-semibold mb-2">{faq.q}</h3>
+                      <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+                        <p itemProp="text" className="text-sm text-muted-foreground">{faq.a}</p>
+                      </div>
+                    </article>
                   </CardContent>
                 </Card>
               ))}

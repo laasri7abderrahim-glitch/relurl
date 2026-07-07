@@ -7,7 +7,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   return generateSEOMetadata({
     title: "Agency Link Shortener - Client Campaign Links",
-    description: "Shorten client campaign links with white-label branding. Track performance across channels and deliver reports with RELURL.",
+    description: "Shorten client campaign links with white-label branding. Monitor cross-channel performance and deliver client-ready reports with RELURL.",
     path: "/agency-link-shortener",
     keywords: ["agency link shortener", "marketing agency links", "white label link shortener"],
     locale,
@@ -21,7 +21,7 @@ export default function AgencyLinkShortenerPage() {
     <URLLandingPage
       title="Agency Link Shortener"
       subtitle="Deliver More Value"
-      description="Shorten client campaign links with white-label branding. Track performance across channels and deliver actionable reports."
+       description="Shorten client campaign links with white-label branding. Monitor cross-channel performance and deliver actionable client reports."
       placeholder="https://client-landing-page.com/summer-campaign"
       inputLabel="Enter your campaign URL"
       generateLabel="Shorten URL"

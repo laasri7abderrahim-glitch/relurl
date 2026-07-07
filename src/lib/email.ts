@@ -18,7 +18,7 @@ export async function sendMagicLink(email: string, token: string): Promise<void>
     html: `
       <h1>Sign in to RelURL</h1>
       <p>Click the link below to sign in to your account:</p>
-      <a href="${magicLink}" style="display:inline-block;padding:12px 24px;background:#0070f3;color:white;text-decoration:none;border-radius:6px;">Sign in</a>
+      <a href="${magicLink}" style="display:inline-block;padding:12px 24px;background:#0068FF;color:white;text-decoration:none;border-radius:6px;">Sign in</a>
       <p>This link will expire in 10 minutes.</p>
       <p>If you didn't request this, you can safely ignore this email.</p>
     `,
@@ -40,7 +40,7 @@ export async function sendPasswordReset(email: string, token: string): Promise<v
     html: `
       <h1>Reset your password</h1>
       <p>Click the link below to reset your password:</p>
-      <a href="${resetLink}" style="display:inline-block;padding:12px 24px;background:#0070f3;color:white;text-decoration:none;border-radius:6px;">Reset password</a>
+      <a href="${resetLink}" style="display:inline-block;padding:12px 24px;background:#0068FF;color:white;text-decoration:none;border-radius:6px;">Reset password</a>
       <p>This link will expire in 1 hour.</p>
       <p>If you didn't request a password reset, you can safely ignore this email.</p>
     `,
@@ -60,7 +60,7 @@ export async function sendWelcome(email: string, name: string): Promise<void> {
     html: `
       <h1>Welcome to RelURL, ${name}!</h1>
       <p>We're excited to have you on board. Start shortening your links and tracking their performance.</p>
-      <a href="${process.env.NEXT_PUBLIC_APP_URL}/dashboard" style="display:inline-block;padding:12px 24px;background:#0070f3;color:white;text-decoration:none;border-radius:6px;">Go to Dashboard</a>
+      <a href="${process.env.NEXT_PUBLIC_APP_URL}/dashboard" style="display:inline-block;padding:12px 24px;background:#0068FF;color:white;text-decoration:none;border-radius:6px;">Go to Dashboard</a>
     `,
   });
 }
@@ -89,7 +89,7 @@ export async function sendVerification(email: string, token: string): Promise<vo
     html: `
       <h1>Verify your email</h1>
       <p>Click the link below to verify your email address:</p>
-      <a href="${verifyLink}" style="display:inline-block;padding:12px 24px;background:#0070f3;color:white;text-decoration:none;border-radius:6px;">Verify email</a>
+      <a href="${verifyLink}" style="display:inline-block;padding:12px 24px;background:#0068FF;color:white;text-decoration:none;border-radius:6px;">Verify email</a>
       <p>This link will expire in 24 hours.</p>
     `,
   });

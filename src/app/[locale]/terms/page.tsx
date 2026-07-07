@@ -47,7 +47,7 @@ export default function TermsPage() {
             <p>We may update these terms at any time. Continued use constitutes acceptance of modified terms.</p>
 
             <h2 className="text-xl font-bold text-dark-50">9. Contact</h2>
-            <p>For questions about these terms, contact <a href="mailto:legal@relurl.com" className="text-[#2FA084] hover:underline">legal@relurl.com</a>.</p>
+            <p>For questions about these terms, contact <a href="mailto:legal@relurl.com" className="text-accent hover:underline">legal@relurl.com</a>.</p>
           </div>
         </section>
       </main>

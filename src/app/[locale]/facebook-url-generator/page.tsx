@@ -21,7 +21,7 @@ export default function FacebookURLGeneratorPage() {
     <URLLandingPage
       title="Facebook URL Generator"
       subtitle="Optimize Your Facebook Presence"
-      description="Create short, branded links for your Facebook pages, posts, events, and groups. Track engagement and optimize your Facebook marketing."
+       description="Generate custom Facebook URLs for pages, posts, events, and groups. Share across your Facebook presence and measure audience engagement."
       placeholder="https://www.facebook.com/your-page-or-post"
       inputLabel="Enter your Facebook URL"
       generateLabel="Generate Link"

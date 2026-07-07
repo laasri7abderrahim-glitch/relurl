@@ -1,7 +1,7 @@
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
-import { allLandingPages, qrPages } from "@/lib/url-pages"
+import { allQRCodes } from "@/lib/url-pages"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -9,12 +9,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code Generator - Free QR Code Maker",
     description: "Generate QR codes for free. Create QR codes for URLs, text, WiFi networks, vCard contacts, and more with our easy-to-use free QR code generator.",
     path: "/qr-code-generator",
-    keywords: ["qr code generator", "free qr code", "qr code maker", "create qr code"],
+    keywords: ["qr code generator", "free qr code", "qr code maker", "create qr code", "qr code online"],
     locale,
   })
 }
-
-const allQRCodes = [...allLandingPages, ...qrPages]
 
 export default function Page() {
   const relatedArticles = getPostsByLandingPage("/qr-code-generator").slice(0, 3)
@@ -27,7 +25,7 @@ export default function Page() {
       defaultValue="https://example.com"
       inputLabel="Enter URL or text"
       generateLabel="Generate QR Code"
-      features={["Instant Generation", "High Resolution", "No Signup Required", "Works Everywhere"]}
+      features={["Instant Generation", "High Resolution", "No Signup Required", "Works Everywhere", "Customizable Design", "Multiple Formats"]}
       howItWorks={[
         { step: "Enter Data", desc: "Type or paste any URL, text, or data" },
         { step: "Generate", desc: "Click generate to create your QR code instantly" },
@@ -38,6 +36,8 @@ export default function Page() {
         "Add to business cards and flyers",
         "Use in presentations and documents",
         "Embed in emails and newsletters",
+        "Marketing campaign materials",
+        "Product packaging and labels",
       ]}
       relatedPages={[
         { title: "Dynamic QR Code Generator", href: "/dynamic-qr-code-generator" },

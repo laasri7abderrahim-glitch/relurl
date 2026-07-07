@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from "react"
 import { Link } from "@/i18n/navigation"
 import { useLocale } from "next-intl"
 import { useSearchParams } from "next/navigation"
@@ -19,6 +20,32 @@ export default function BlogPageClient() {
   const totalPages = getTotalPages(perPage)
   const blogUrl = `https://relurl.com/${locale}/blog`
 
+  useEffect(() => {
+    const links: HTMLLinkElement[] = []
+    const canonical = document.createElement("link")
+    canonical.rel = "canonical"
+    canonical.href = blogUrl
+    document.head.appendChild(canonical)
+    links.push(canonical)
+
+    if (currentPage > 1) {
+      const prev = document.createElement("link")
+      prev.rel = "prev"
+      prev.href = `${blogUrl}?page=${currentPage - 1}`
+      document.head.appendChild(prev)
+      links.push(prev)
+    }
+    if (currentPage < totalPages) {
+      const next = document.createElement("link")
+      next.rel = "next"
+      next.href = `${blogUrl}?page=${currentPage + 1}`
+      document.head.appendChild(next)
+      links.push(next)
+    }
+
+    return () => links.forEach((l) => l.remove())
+  }, [currentPage, totalPages, blogUrl])
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "Blog",
@@ -37,6 +64,17 @@ export default function BlogPageClient() {
   return (
     <div className="min-h-screen flex flex-col">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://relurl.com" },
+            { "@type": "ListItem", position: 2, name: "Blog", item: blogUrl },
+          ],
+        })}}
+      />
       <Header />
       <main className="flex-1">
         <div className="py-24 px-4">

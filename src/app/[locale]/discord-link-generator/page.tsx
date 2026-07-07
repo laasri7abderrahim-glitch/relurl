@@ -21,7 +21,7 @@ export default function DiscordLinkGeneratorPage() {
     <URLLandingPage
       title="Discord Link Generator"
       subtitle="Grow Your Server"
-      description="Generate short links for Discord servers, channels, and events. Grow your community and track member engagement from every source."
+       description="Generate short links for Discord servers, channels, and events. Grow your community and attribute member growth to each promotion channel."
       placeholder="https://discord.gg/your-server-invite"
       inputLabel="Enter your Discord URL"
       generateLabel="Generate Link"

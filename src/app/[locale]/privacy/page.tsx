@@ -33,16 +33,16 @@ export default function PrivacyPage() {
             <p>Your data is stored securely on encrypted servers. We use industry-standard security measures to protect your information.</p>
 
             <h2 className="text-xl font-bold text-dark-50">4. Cookies</h2>
-            <p>We use cookies to maintain sessions and remember preferences. See our <Link href="/cookies" className="text-[#2FA084] hover:underline">Cookie Policy</Link> for details.</p>
+            <p>We use cookies to maintain sessions and remember preferences. See our <Link href="/cookies" className="text-accent hover:underline">Cookie Policy</Link> for details.</p>
 
             <h2 className="text-xl font-bold text-dark-50">5. Third-Party Services</h2>
             <p>We use Stripe for payments, Google for OAuth, and Resend for emails. Each has its own privacy policy governing data use.</p>
 
             <h2 className="text-xl font-bold text-dark-50">6. Your Rights</h2>
-            <p>You can access, update, or delete your account data at any time from your dashboard. For EU users, see our <Link href="/gdpr" className="text-[#2FA084] hover:underline">GDPR page</Link>.</p>
+            <p>You can access, update, or delete your account data at any time from your dashboard. For EU users, see our <Link href="/gdpr" className="text-accent hover:underline">GDPR page</Link>.</p>
 
             <h2 className="text-xl font-bold text-dark-50">7. Contact</h2>
-            <p>For privacy concerns, contact us at <a href="mailto:privacy@relurl.com" className="text-[#2FA084] hover:underline">privacy@relurl.com</a>.</p>
+            <p>For privacy concerns, contact us at <a href="mailto:privacy@relurl.com" className="text-accent hover:underline">privacy@relurl.com</a>.</p>
           </div>
         </section>
       </main>

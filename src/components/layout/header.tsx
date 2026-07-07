@@ -164,7 +164,7 @@ function Header() {
           href="/"
           className="flex items-center gap-1.5 text-xl font-bold tracking-tight"
         >
-          <span className="bg-gradient-to-r from-[#AA1C41] to-[#E68457] bg-clip-text text-transparent">REL</span>
+          <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">REL</span>
           <span className="text-dark-50">URL</span>
         </Link>
 
@@ -190,7 +190,7 @@ function Header() {
             <Button variant="ghost" size="sm">{t("layout.nav.login")}</Button>
           </Link>
           <Link href="/register">
-            <Button size="sm" className="bg-gradient-to-r from-[#AA1C41] to-[#E68457] text-white hover:from-[#8f1a39] hover:to-[#d97a4f] shadow-lg shadow-[#AA1C41]/25">{t("layout.nav.signUp")}</Button>
+            <Button size="sm" className="bg-gradient-to-r from-primary to-accent text-white hover:from-primary/90 hover:to-accent/90 shadow-lg shadow-primary/25">{t("layout.nav.signUp")}</Button>
           </Link>
         </div>
 
@@ -198,7 +198,7 @@ function Header() {
           <ThemeToggle />
           <button
             type="button"
-            className="flex items-center justify-center p-2 rounded-lg hover:bg-dark-300 transition-colors min-w-[44px] min-h-[44px]"
+            className="mobile-touch-target rounded-lg hover:bg-dark-300 transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
           >
@@ -248,7 +248,7 @@ function Header() {
               <Button variant="ghost" className="w-full h-12 text-sm" size="default">{t("layout.nav.login")}</Button>
             </Link>
             <Link href="/register">
-              <Button className="w-full h-12 text-sm bg-gradient-to-r from-[#AA1C41] to-[#E68457] text-white" size="default">{t("layout.nav.signUp")}</Button>
+              <Button className="w-full h-12 text-sm bg-gradient-to-r from-primary to-accent text-white" size="default">{t("layout.nav.signUp")}</Button>
             </Link>
           </div>
         </nav>

@@ -18,7 +18,7 @@ export default function NewBioPagePage() {
   const [description, setDescription] = useState("")
   const [avatar, setAvatar] = useState("")
   const [links, setLinks] = useState<{ title: string; url: string; icon: string; color: string }[]>([
-    { title: "", url: "", icon: "", color: "bg-white text-[#1F6F5F]" },
+    { title: "", url: "", icon: "", color: "bg-white text-accent" },
   ])
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function NewBioPagePage() {
   }, [status, router])
 
   const addLink = () => {
-    setLinks([...links, { title: "", url: "", icon: "", color: "bg-white text-[#1F6F5F]" }])
+    setLinks([...links, { title: "", url: "", icon: "", color: "bg-white text-accent" }])
   }
 
   const removeLink = (i: number) => {
@@ -87,7 +87,7 @@ export default function NewBioPagePage() {
             <input
               value={slug}
               onChange={(e) => setSlug(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""))}
-              className="flex-1 px-3 py-2 border rounded-lg focus:ring-2 focus:ring-[#1F6F5F] focus:border-transparent"
+              className="flex-1 px-3 py-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"
               placeholder={t("form.slugPlaceholder")}
               required
             />
@@ -99,7 +99,7 @@ export default function NewBioPagePage() {
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-[#1F6F5F] focus:border-transparent"
+            className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"
             placeholder={t("form.titlePlaceholder")}
             required
           />
@@ -110,7 +110,7 @@ export default function NewBioPagePage() {
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-[#1F6F5F] focus:border-transparent"
+            className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"
             placeholder={t("form.descriptionPlaceholder")}
             rows={2}
           />
@@ -121,7 +121,7 @@ export default function NewBioPagePage() {
           <input
             value={avatar}
             onChange={(e) => setAvatar(e.target.value)}
-            className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-[#1F6F5F] focus:border-transparent"
+            className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"
             placeholder={t("form.avatarUrlPlaceholder")}
           />
         </div>
@@ -132,7 +132,7 @@ export default function NewBioPagePage() {
             <button
               type="button"
               onClick={addLink}
-              className="text-sm text-[#1F6F5F] hover:underline"
+              className="text-sm text-accent hover:underline"
             >
               {t("form.addLink")}
             </button>
@@ -176,7 +176,7 @@ export default function NewBioPagePage() {
           <button
             type="submit"
             disabled={saving}
-            className="px-6 py-2 bg-[#1F6F5F] text-white rounded-lg hover:bg-[#2FA084] disabled:opacity-50"
+            className="px-6 py-2 bg-accent text-white rounded-lg hover:bg-accent/90 disabled:opacity-50"
           >
             {saving ? t("submitting") : t("submit")}
           </button>

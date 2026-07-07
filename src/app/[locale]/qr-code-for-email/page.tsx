@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for Email - Email Made Simple",
     description: "Generate a QR code that opens an email compose window with pre-filled subject and body. Perfect for feedback collection.",
     path: "/qr-code-for-email",
-    keywords: ["qr code for email", "email qr code", "mailto qr code"],
+    keywords: ["qr code for email", "email qr code", "mailto qr code", "email marketing qr code"],
     locale,
   })
 }
@@ -26,13 +26,13 @@ export default function QRCodeForEmailPage() {
       defaultValue="mailto:someone@example.com?subject=Hello"
       inputLabel="Enter email address or mailto link"
       generateLabel="Create Email QR Code"
-      features={["Pre-filled Subject", "One-Scan Compose", "No Typing Needed", "Feedback Friendly"]}
+      features={["Pre-filled Subject", "One-Scan Compose", "No Typing Needed", "Feedback Friendly", "Newsletter Signup", "Auto-Reply Setup"]}
       howItWorks={[
         { step: "Enter Email Details", desc: "Provide email address and optional subject/body" },
         { step: "Generate QR Code", desc: "Create a code that opens email compose" },
         { step: "Collect Responses", desc: "Display for instant feedback or inquiries" },
       ]}
-      useCases={["Customer feedback", "Support inquiries", "Contact forms", "Survey responses", "Job applications"]}
+      useCases={["Customer feedback", "Support inquiries", "Contact forms", "Survey responses", "Job applications", "Newsletter subscription"]}
       relatedPages={[
         { title: "QR Code for Phone Number", href: "/qr-code-for-phone" },
         { title: "QR Code for SMS", href: "/qr-code-for-sms" },

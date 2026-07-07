@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "Free QR Code Generator - No Sign Up",
     description: "Generate QR codes for free without signing up. Create high-quality QR codes for any purpose in seconds. No account required, completely free.",
     path: "/free-qr-code-generator",
-    keywords: ["free qr code generator", "no sign up qr code", "instant qr code"],
+    keywords: ["free qr code generator", "no sign up qr code", "instant qr code", "free qr code maker"],
     locale,
   })
 }
@@ -27,7 +27,7 @@ export default function Page() {
       defaultValue="https://example.com"
       inputLabel="Enter any URL or text"
       generateLabel="Generate Free QR Code"
-      features={["100% Free", "No Watermarks", "Unlimited Generation", "High Quality Output"]}
+      features={["100% Free", "No Watermarks", "Unlimited Generation", "High Quality Output", "Instant Download", "Cross-Platform Compatible"]}
       howItWorks={[
         { step: "Paste Content", desc: "Enter any URL, text, or data" },
         { step: "Click Generate", desc: "Your QR code is created instantly" },
@@ -38,6 +38,8 @@ export default function Page() {
         "Small business owners",
         "Event organizers",
         "Personal use",
+        "Nonprofit organizations",
+        "Personal projects and hobbies",
       ]}
       relatedPages={[
         { title: "QR Code Generator", href: "/qr-code-generator" },

@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for WhatsApp - Instant Messaging",
     description: "Generate a QR code that opens a WhatsApp chat. Customers scan and message you instantly — perfect for support and sales.",
     path: "/qr-code-for-whatsapp",
-    keywords: ["qr code for whatsapp", "whatsapp qr code", "whatsapp chat qr"],
+    keywords: ["qr code for whatsapp", "whatsapp qr code", "whatsapp chat qr", "whatsapp chat qr code"],
     locale,
   })
 }
@@ -26,7 +26,7 @@ export default function Page() {
       defaultValue="https://wa.me/1234567890"
       inputLabel="Enter your WhatsApp number or link"
       generateLabel="Create WhatsApp QR Code"
-      features={["Instant Chat", "No Contact Saving Needed", "Global Reach", "Business Friendly"]}
+      features={["Instant Chat", "No Contact Saving Needed", "Global Reach", "Business Friendly", "Broadcast List Signup", "Quick Reply Templates"]}
       howItWorks={[
         { step: "Enter WhatsApp Link", desc: "Use wa.me/your-number format" },
         { step: "Generate QR Code", desc: "Create a code that opens WhatsApp chat" },
@@ -38,6 +38,7 @@ export default function Page() {
         "Restaurant ordering",
         "Service bookings",
         "Event coordination",
+        "Real-time order updates",
       ]}
       relatedPages={[
         { title: "QR Code for SMS", href: "/qr-code-for-sms" },

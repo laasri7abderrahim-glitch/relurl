@@ -157,7 +157,7 @@ export function AIChat() {
             onKeyDown={handleKeyDown}
             placeholder={t("placeholder")}
             disabled={loading}
-            className="flex-1 rounded-lg border border-dark-100 bg-dark-600 px-3 py-2 text-sm text-dark-50 placeholder:text-dark-100 outline-none focus:border-[#14B8A6] transition-colors"
+            className="flex-1 rounded-lg border border-dark-100 bg-dark-600 px-3 py-2 text-sm text-dark-50 placeholder:text-dark-100 outline-none focus:border-accent transition-colors"
           />
           <Button
             size="icon"

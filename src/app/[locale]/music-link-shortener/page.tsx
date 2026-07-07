@@ -21,7 +21,7 @@ export default function MusicLinkShortenerPage() {
     <URLLandingPage
       title="Music Link Shortener"
       subtitle="Share Your Sound"
-      description="Create short links for songs, albums, and playlists. Share music across platforms and track listener engagement from every source."
+       description="Create short links for songs, albums, and playlists. Share music across platforms and see which channels drive the most listener streams."
       placeholder="https://open.spotify.com/track/your-song-id"
       inputLabel="Enter your music URL"
       generateLabel="Shorten URL"

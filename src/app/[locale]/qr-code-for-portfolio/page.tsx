@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for Portfolio - Creative Portfolio QR Codes",
     description: "Create QR codes for your creative portfolio website. Let clients and employers scan to view your best work with RELURL's QR code generator.",
     path: "/qr-code-for-portfolio",
-    keywords: ["qr code for portfolio", "creative portfolio qr code", "designer qr code"],
+    keywords: ["qr code for portfolio", "creative portfolio qr code", "designer qr code", "design portfolio qr code"],
     locale,
   })
 }
@@ -25,7 +25,7 @@ export default function Page() {
       defaultValue="https://your-portfolio.com"
       inputLabel="Enter your portfolio URL"
       generateLabel="Create Portfolio QR Code"
-      features={["Project Galleries", "Case Study Links", "Testimonial Pages", "Contact Forms"]}
+      features={["Project Galleries", "Case Study Links", "Testimonial Pages", "Contact Forms", "Video Resume Link", "Client Testimonials"]}
       howItWorks={[
         { step: "Enter Portfolio URL", desc: "Paste your portfolio website or project showcase link." },
         { step: "Generate QR Code", desc: "Create a visually appealing QR code for your brand." },
@@ -37,6 +37,7 @@ export default function Page() {
         "Conference handouts",
         "Freelance client proposals",
         "Art and design school applications",
+        "Architecture project showcases",
       ]}
       relatedPages={[
         { title: "QR Code Generator", href: "/qr-code-generator" },

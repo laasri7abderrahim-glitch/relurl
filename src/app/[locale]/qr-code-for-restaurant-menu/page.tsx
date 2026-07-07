@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for Restaurant Menu - Digital Menu",
     description: "Create a QR code for your restaurant menu. Let customers scan to view your menu on their phones. Perfect for contactless dining experiences.",
     path: "/qr-code-for-restaurant-menu",
-    keywords: ["qr code for restaurant menu", "restaurant menu qr code", "digital menu"],
+    keywords: ["qr code for restaurant menu", "restaurant menu qr code", "digital menu", "digital menu qr code"],
     locale,
   })
 }
@@ -24,7 +24,7 @@ export default function Page() {
       placeholder="https://yourrestaurant.com/menu"
       inputLabel="Enter your menu URL"
       generateLabel="Create Menu QR Code"
-      features={["Contactless Dining", "Easy to Update", "No App Required", "Multi-Language Support"]}
+      features={["Contactless Dining", "Easy to Update", "No App Required", "Multi-Language Support", "Daily Special Alerts", "Nutritional Info"]}
       howItWorks={[
         { step: "Upload Menu URL", desc: "Link to your online menu or PDF" },
         { step: "Generate QR Code", desc: "Create a code for table placement" },
@@ -36,6 +36,7 @@ export default function Page() {
         "Bars and pubs",
         "Catering services",
         "Hotel restaurants",
+        "Wine and beverage pairings",
       ]}
       relatedPages={[
         { title: "QR Code for PDF", href: "/qr-code-for-pdf" },

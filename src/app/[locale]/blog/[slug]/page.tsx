@@ -49,9 +49,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const t = await getTranslations({ locale, namespace: "blog" })
 
   const relatedPosts = getRelatedPosts(slug)
+  const blogUrl = `https://relurl.com/${locale}/blog/${slug}`
 
   return (
     <div className="min-h-screen flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "@id": `${blogUrl}#article`,
+          headline: post.title,
+          description: post.metaDescription,
+          datePublished: post.date,
+          author: { "@type": "Organization", name: "RELURL" },
+          image: post.image || "/api/og",
+          mainEntityOfPage: { "@type": "WebPage", "@id": blogUrl },
+        })}}
+      />
       <Header />
       <main className="flex-1">
         <div className="py-12 px-4">
@@ -74,6 +89,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     src={post.image}
                     alt={post.imageAlt || post.title}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
               )}

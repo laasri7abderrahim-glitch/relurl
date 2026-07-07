@@ -21,7 +21,7 @@ export default function WebinarLinkShortenerPage() {
     <URLLandingPage
       title="Webinar Link Shortener"
       subtitle="Fill Every Webinar"
-      description="Shorten webinar registration and replay links. Track attendance, optimize your promotions, and fill every webinar session."
+       description="Shorten webinar registration and replay links. Track attendance, improve your promotional campaigns, and fill every webinar session."
       placeholder="https://zoom.us/webinar/register/your-webinar"
       inputLabel="Enter your webinar URL"
       generateLabel="Shorten URL"

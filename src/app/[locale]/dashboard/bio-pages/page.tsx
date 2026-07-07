@@ -40,7 +40,7 @@ export default function BioPagesPage() {
   if (status === "loading" || loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#1F6F5F]"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent"></div>
       </div>
     )
   }
@@ -54,7 +54,7 @@ export default function BioPagesPage() {
         </div>
         <Link
           href="/dashboard/bio-pages/new"
-          className="px-4 py-2 bg-[#1F6F5F] text-white rounded-lg hover:bg-[#2FA084] transition-colors"
+          className="px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent/90 transition-colors"
         >
           {t("createPage")}
         </Link>
@@ -65,7 +65,7 @@ export default function BioPagesPage() {
           <p className="text-gray-500 mb-4">{t("empty.title")}</p>
           <Link
             href="/dashboard/bio-pages/new"
-            className="px-4 py-2 bg-[#1F6F5F] text-white rounded-lg hover:bg-[#2FA084]"
+            className="px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent/90"
           >
             {t("empty.createFirst")}
           </Link>

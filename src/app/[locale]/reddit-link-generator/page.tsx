@@ -7,7 +7,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   return generateSEOMetadata({
     title: "Reddit Link Generator - Post & Comment Links",
-    description: "Generate short, trackable links for Reddit posts and comments. Drive traffic from Reddit and track engagement with RELURL.",
+    description: "Build compact Reddit links for posts and comments to boost community sharing. Drive organic traffic and track upvote-driven engagement with RELURL.",
     path: "/reddit-link-generator",
     keywords: ["reddit link generator", "reddit post links", "reddit marketing"],
     locale,
@@ -21,7 +21,7 @@ export default function RedditLinkGeneratorPage() {
     <URLLandingPage
       title="Reddit Link Generator"
       subtitle="Win on Reddit"
-      description="Generate short, trackable links for Reddit posts and comments. Drive traffic from Reddit communities and track engagement."
+       description="Build compact Reddit links for posts and comments. Drive traffic from Reddit communities and track community engagement."
       placeholder="https://your-site.com/relevant-content-page"
       inputLabel="Enter your destination URL"
       generateLabel="Generate Link"

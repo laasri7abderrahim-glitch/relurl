@@ -163,7 +163,7 @@ export function ActivityFeed() {
                   <p
                     className={`truncate text-sm ${
                       item.linkSlug
-                        ? "font-medium text-dark-50 group-hover:text-[#14B8A6] transition-colors"
+                        ? "font-medium text-dark-50 group-hover:text-accent transition-colors"
                         : "text-dark-50"
                     }`}
                   >

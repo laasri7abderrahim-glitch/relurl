@@ -39,7 +39,7 @@ export default function DmcaPage() {
             <h2 className="text-xl font-bold text-dark-50 mt-8">Submit a Notice</h2>
             <div className="bg-dark-500 border border-dark-100 rounded-xl p-6">
               <p className="mb-3">Send DMCA notices to:</p>
-              <p className="font-mono text-[#6FCF97]">dmca@relurl.com</p>
+              <p className="font-mono text-accent">dmca@relurl.com</p>
               <p className="mt-2 text-sm">or mail to:</p>
               <p className="text-sm">RELURL DMCA Agent<br />123 Privacy Way<br />San Francisco, CA 94102</p>
             </div>

@@ -8,6 +8,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: t("metaTitle"),
     description: t("metaDescription"),
     path: "/contact",
+    keywords: ["contact relurl", "link shortener support", "url shortener help"],
     locale,
   })
 }

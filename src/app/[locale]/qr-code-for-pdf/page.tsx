@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for PDF - Link PDF to QR Code",
     description: "Generate a QR code that links directly to your PDF document. Share PDFs easily with scannable QR codes that open on any smartphone.",
     path: "/qr-code-for-pdf",
-    keywords: ["qr code for pdf", "pdf qr code", "link pdf to qr code"],
+    keywords: ["qr code for pdf", "pdf qr code", "link pdf to qr code", "document qr code"],
     locale,
   })
 }
@@ -24,7 +24,7 @@ export default function Page() {
       placeholder="https://example.com/document.pdf"
       inputLabel="Enter PDF URL"
       generateLabel="Create PDF QR Code"
-      features={["Instant PDF Access", "Works on All Devices", "No App Needed", "Track Downloads"]}
+      features={["Instant PDF Access", "Works on All Devices", "No App Needed", "Track Downloads", "Password Protection", "PDF Preview Mode"]}
       howItWorks={[
         { step: "Upload or Link PDF", desc: "Enter the URL where your PDF is hosted" },
         { step: "Generate QR Code", desc: "Create a scannable code for your document" },
@@ -36,6 +36,7 @@ export default function Page() {
         "Event programs and schedules",
         "Legal documents and contracts",
         "Educational materials",
+        "Brochure and catalog distribution",
       ]}
       relatedPages={[
         { title: "QR Code Generator", href: "/qr-code-generator" },

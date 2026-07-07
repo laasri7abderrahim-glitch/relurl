@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for Restaurant - Menu & Table QR Codes",
     description: "Create QR codes for restaurant menus, table ordering, and reservations. Boost dine-in and takeout orders with RELURL's QR code generator.",
     path: "/qr-code-for-restaurant",
-    keywords: ["qr code for restaurant", "restaurant menu qr code", "table qr code"],
+    keywords: ["qr code for restaurant", "restaurant menu qr code", "table qr code", "restaurant qr code dining"],
     locale,
   })
 }
@@ -25,7 +25,7 @@ export default function Page() {
       defaultValue="https://your-restaurant.com/menu"
       inputLabel="Enter your menu or ordering URL"
       generateLabel="Create Restaurant QR Code"
-      features={["Menu Display", "Table-Specific Codes", "Ordering Integration", "Multi-Language Support"]}
+      features={["Menu Display", "Table-Specific Codes", "Ordering Integration", "Multi-Language Support", "Reservation System", "Allergen Info Access"]}
       howItWorks={[
         { step: "Enter Menu URL", desc: "Paste your digital menu or online ordering link." },
         { step: "Generate QR Code", desc: "Create a scannable QR code for your restaurant." },
@@ -37,6 +37,7 @@ export default function Page() {
         "Takeout and delivery links",
         "Happy hour promotions",
         "Event and catering menus",
+        "Contactless payment at tables",
       ]}
       relatedPages={[
         { title: "QR Code Generator", href: "/qr-code-generator" },

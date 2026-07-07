@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for Hotel - Guest Services & Info QR Codes",
     description: "Create QR codes for hotel services, room info, and guest amenities. Enhance guest experience with instant access via RELURL QR codes.",
     path: "/qr-code-for-hotel",
-    keywords: ["qr code for hotel", "hotel guest qr code", "hotel info qr code"],
+    keywords: ["qr code for hotel", "hotel guest qr code", "hotel info qr code", "hotel service qr code"],
     locale,
   })
 }
@@ -25,7 +25,7 @@ export default function Page() {
       defaultValue="https://your-hotel.com/rooms/amenities"
       inputLabel="Enter your hotel service URL"
       generateLabel="Create Hotel QR Code"
-      features={["Room Service Links", "Concierge Access", "Amenity Guides", "Review Collection"]}
+      features={["Room Service Links", "Concierge Access", "Amenity Guides", "Review Collection", "Digital Room Keys", "Contactless Checkout"]}
       howItWorks={[
         { step: "Enter Service URL", desc: "Paste your hotel service, amenity, or info page link." },
         { step: "Generate QR Code", desc: "Create a branded QR code for your property." },
@@ -37,6 +37,7 @@ export default function Page() {
         "WiFi access for guests",
         "Local attraction guides",
         "Guest feedback collection",
+        "Loyalty program enrollment",
       ]}
       relatedPages={[
         { title: "QR Code Generator", href: "/qr-code-generator" },

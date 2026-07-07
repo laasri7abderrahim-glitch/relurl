@@ -10,6 +10,7 @@ import { Check, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import Image from "next/image";
 
 const planConfig = [
   { key: "free", href: "/register", popular: false, price: { monthly: 0, annual: 0 } },
@@ -36,6 +37,17 @@ export default function PricingPageClient() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://relurl.com" },
+            { "@type": "ListItem", position: 2, name: "Pricing", item: `https://relurl.com/${locale}/pricing` },
+          ],
+        })}}
+      />
       <Header />
       <main className="flex-1">
       <div className="py-24 px-4">
@@ -44,6 +56,17 @@ export default function PricingPageClient() {
         <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
           {t("subtitle")}
         </p>
+        <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 max-w-4xl mx-auto mb-10">
+          <Image
+            src="https://images.unsplash.com/photo-1553729459-afe8f2e2e0cb?w=1200&q=80"
+            alt="Analytics and growth metrics dashboard"
+            width={1200}
+            height={400}
+            className="w-full h-auto object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/10 to-transparent" />
+        </div>
         <div className="flex items-center justify-center gap-4">
           <span className={annual ? "text-muted-foreground" : "text-white font-medium"}>{t("monthly")}</span>
           <button
@@ -102,7 +125,7 @@ export default function PricingPageClient() {
             </CardContent>
             <CardFooter>
               <Link href={plan.href} className="w-full">
-                <Button className={cn("w-full", plan.popular && "bg-gradient-to-r from-[#AA1C41] to-[#E68457] text-white hover:from-[#8f1a39] hover:to-[#d97a4f] shadow-lg shadow-[#AA1C41]/25")} variant={plan.popular ? "default" : "outline"}>
+                <Button className={cn("w-full", plan.popular && "bg-gradient-to-r from-primary to-accent text-white hover:from-primary/90 hover:to-accent/90 shadow-lg shadow-primary/25")} variant={plan.popular ? "default" : "outline"}>
                   {plan.cta}
                 </Button>
               </Link>
@@ -131,15 +154,15 @@ export default function PricingPageClient() {
       </div>
 
       <div className="relative overflow-hidden rounded-3xl p-12 text-center mt-24">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#5E244E] via-[#7a2e63] to-[#AA1C41]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-primary" />
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-5 left-1/2 -translate-x-1/2 w-40 h-40 bg-[#E68457]/20 rounded-full blur-[80px]" />
+          <div className="absolute top-5 left-1/2 -translate-x-1/2 w-40 h-40 bg-accent/20 rounded-full blur-[80px]" />
         </div>
         <div className="relative z-10">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#FFE8B4]">{t("ctaTitle")}</h2>
-          <p className="text-[#FFE8B4]/70 mb-8 max-w-xl mx-auto">{t("ctaDesc")}</p>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-muted">{t("ctaTitle")}</h2>
+          <p className="text-muted/70 mb-8 max-w-xl mx-auto">{t("ctaDesc")}</p>
           <Link href="/register">
-            <Button size="lg" className="bg-[#FFE8B4] text-[#5E244E] hover:bg-[#FFE8B4]/90 shadow-xl shadow-[#FFE8B4]/20 px-8 font-bold">
+            <Button size="lg" className="bg-muted text-foreground hover:bg-muted/90 shadow-xl shadow-muted/20 px-8 font-bold">
               {t("ctaButton")} <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </Link>

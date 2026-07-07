@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for Fundraiser - Donation & Charity QR Codes",
     description: "Create QR codes for fundraiser donation pages and charity events. Maximize donations with easy-to-scan QR codes from RELURL.",
     path: "/qr-code-for-fundraiser",
-    keywords: ["qr code for fundraiser", "donation qr code", "charity qr code"],
+    keywords: ["qr code for fundraiser", "donation qr code", "charity qr code", "donation page qr code"],
     locale,
   })
 }
@@ -25,7 +25,7 @@ export default function Page() {
       defaultValue="https://charity.org/donate/annual-fundraiser"
       inputLabel="Enter your donation page URL"
       generateLabel="Create Fundraiser QR Code"
-      features={["Donation Page Links", "Event Registration", "Sponsor Tracking", "Social Sharing"]}
+      features={["Donation Page Links", "Event Registration", "Sponsor Tracking", "Social Sharing", "Recurring Donation", "Progress Tracker"]}
       howItWorks={[
         { step: "Enter Donation URL", desc: "Paste your donation page or fundraiser event link." },
         { step: "Generate QR Code", desc: "Create a code that links directly to your donation form." },
@@ -37,6 +37,7 @@ export default function Page() {
         "Community event giving",
         "Online fundraiser promotion",
         "Sponsor recognition displays",
+        "Crowdfunding campaign promotion",
       ]}
       relatedPages={[
         { title: "QR Code Generator", href: "/qr-code-generator" },

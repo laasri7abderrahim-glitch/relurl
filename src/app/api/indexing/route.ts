@@ -53,8 +53,7 @@ async function submitUrl(url: string): Promise<{ ok: boolean; error?: string }> 
 }
 
 export async function POST(req: Request) {
-  const authHeader = req.headers.get("authorization")
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (!isAuthorized(req)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   }
 
@@ -87,23 +86,65 @@ export async function POST(req: Request) {
   return NextResponse.json({ submitted: urlsToSubmit.length, ok, fail, results })
 }
 
-export async function GET(req: Request) {
+function isAuthorized(req: Request): boolean {
+  if (req.headers.get("x-vercel-cron") === "1") return true
   const authHeader = req.headers.get("authorization")
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (authHeader === `Bearer ${process.env.CRON_SECRET}`) return true
+  return false
+}
+
+const staticPaths = [
+  "", "/features", "/pricing", "/integrations", "/changelog",
+  "/blog", "/contact", "/privacy", "/terms", "/cookies", "/gdpr", "/dmca", "/wordpress",
+  "/login", "/register", "/forgot-password", "/reset-password",
+  "/custom-url-shortener", "/branded-link-shortener", "/bulk-url-shortener",
+  "/affiliate-link-shortener", "/marketing-url-shortener", "/free-url-shortener",
+  "/url-tracking-tool", "/campaign-link-generator", "/short-url-analytics",
+  "/custom-alias-generator", "/ecommerce-url-shortener", "/real-estate-link-shortener",
+  "/saas-link-shortener", "/podcast-link-shortener", "/event-link-shortener",
+  "/news-link-shortener", "/education-link-shortener", "/healthcare-link-shortener",
+  "/nonprofit-link-shortener", "/travel-link-shortener", "/restaurant-link-shortener",
+  "/music-link-shortener", "/photography-link-shortener", "/gaming-link-shortener",
+  "/crypto-link-shortener", "/agency-link-shortener", "/startup-link-shortener",
+  "/ebook-link-shortener", "/course-link-shortener", "/webinar-link-shortener",
+  "/password-protected-links", "/link-expiration", "/url-shortener-api",
+  "/custom-domain-links", "/link-in-bio",
+  "/shorten-pdf-link", "/shorten-image-url", "/shorten-video-url",
+  "/shorten-github-url", "/shorten-google-drive-link", "/shorten-google-docs-link",
+  "/shorten-dropbox-link",
+  "/instagram-link-generator", "/whatsapp-link-generator", "/telegram-link-generator",
+  "/tiktok-bio-link-generator", "/youtube-link-generator", "/facebook-url-generator",
+  "/linkedin-url-generator", "/pinterest-link-generator", "/snapchat-link-generator",
+  "/reddit-link-generator", "/discord-link-generator", "/twitch-link-generator",
+  "/twitter-link-generator", "/threads-link-generator", "/mastodon-link-generator",
+  "/shorten-youtube-url", "/shorten-instagram-url", "/shorten-facebook-url",
+  "/shorten-whatsapp-link", "/shorten-linkedin-url", "/shorten-tiktok-url",
+  "/shorten-x-url", "/shorten-discord-invite-link",
+  "/bitly-alternative", "/tinyurl-alternative", "/rebrandly-alternative",
+  "/short-io-alternative", "/best-url-shortener",
+  "/how-to-shorten-a-url", "/how-to-create-short-links",
+  "/how-to-track-link-clicks", "/how-to-create-qr-codes",
+  "/how-to-create-branded-links", "/how-to-use-utm-parameters",
+  "/qr-code-generator", "/dynamic-qr-code-generator", "/free-qr-code-generator",
+  "/qr-code-for-wifi", "/qr-code-for-vcard", "/qr-code-for-business-card",
+  "/qr-code-for-restaurant-menu", "/qr-code-for-app-download", "/qr-code-for-google-maps",
+  "/qr-code-for-google-reviews", "/qr-code-for-facebook", "/qr-code-for-instagram",
+  "/qr-code-for-linkedin", "/qr-code-for-youtube", "/qr-code-for-whatsapp",
+  "/qr-code-for-email", "/qr-code-for-sms", "/qr-code-for-phone", "/qr-code-for-event",
+  "/qr-code-for-pdf", "/qr-code-for-restaurant", "/qr-code-for-hotel", "/qr-code-for-gym",
+  "/qr-code-for-salon", "/qr-code-for-store", "/qr-code-for-resume", "/qr-code-for-portfolio",
+  "/qr-code-for-wedding", "/qr-code-for-birthday", "/qr-code-for-concert", "/qr-code-for-class",
+  "/qr-code-for-fundraiser",
+]
+
+export async function GET(req: Request) {
+  if (!isAuthorized(req)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://relurl.com"
   const locales = ["en", "fr"]
   const slugs = getAllSlugs()
-
-  const staticPaths = [
-    "", "/features", "/pricing", "/integrations", "/changelog",
-    "/blog", "/contact", "/privacy", "/terms", "/cookies", "/gdpr", "/dmca", "/wordpress",
-    "/custom-url-shortener", "/branded-link-shortener", "/bulk-url-shortener",
-    "/affiliate-link-shortener", "/free-url-shortener", "/qr-code-generator",
-    "/dynamic-qr-code-generator", "/free-qr-code-generator",
-  ]
 
   const urls: string[] = []
   for (const locale of locales) {

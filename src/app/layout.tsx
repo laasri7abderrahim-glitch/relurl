@@ -16,10 +16,13 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "RELURL - URL Shortener, Branded Short Links & Analytics",
+    default: "RELURL - Free URL Shortener, Branded Links & Analytics",
     template: "%s | RELURL",
   },
-  description: "Free URL shortener with analytics, QR codes, and branded short links.",
+  description: "Free URL shortener with custom slugs, click analytics, QR codes, and branded domains. Shorten your links and track performance in real time.",
+  applicationName: "RELURL",
+  category: "technology",
+  referrer: "origin-when-cross-origin",
   robots: {
     index: true,
     follow: true,
@@ -38,11 +41,27 @@ export const metadata: Metadata = {
       { url: "/favicon.svg", sizes: "32x32", type: "image/svg+xml" },
     ],
   },
+  openGraph: {
+    siteName: "RELURL",
+    type: "website",
+    locale: "en_US",
+    images: [{ url: "/api/og", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@relurl",
+    images: ["/api/og"],
+  },
 }
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0f1e" },
+  ],
+  colorScheme: "light dark",
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -54,7 +73,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <head>
         <meta name="google-site-verification" content="0SZFU0NTSFhndtO-Mc5Zd8j4S0WyTHsxwXK_XjO6JuI" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.svg" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="apple-touch-icon" href="/ios-icon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>

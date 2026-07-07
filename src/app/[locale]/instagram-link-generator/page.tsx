@@ -21,7 +21,7 @@ export default function InstagramLinkGeneratorPage() {
     <URLLandingPage
       title="Instagram Link Generator"
       subtitle="Grow Your Instagram Audience"
-      description="Create short, branded links for your Instagram bio, stories, and posts. Track clicks and optimize your Instagram marketing strategy."
+       description="Build branded Instagram links for your bio, stories, and posts. Track click-throughs and maximize engagement on every Instagram campaign."
       placeholder="https://example.com/your-landing-page"
       inputLabel="Enter your destination URL"
       generateLabel="Generate Link"

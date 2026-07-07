@@ -7,7 +7,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   return generateSEOMetadata({
     title: "Threads Link Generator - Threads Post Links",
-    description: "Generate short, trackable links for Threads posts and profiles. Boost your Threads marketing and track engagement with RELURL.",
+    description: "Create concise links for Threads conversations and profiles. Boost social engagement on Threads and track audience growth with RELURL.",
     path: "/threads-link-generator",
     keywords: ["threads link generator", "threads post links", "threads marketing"],
     locale,
@@ -21,7 +21,7 @@ export default function ThreadsLinkGeneratorPage() {
     <URLLandingPage
       title="Threads Link Generator"
       subtitle="Thrive on Threads"
-      description="Generate short, trackable links for Threads posts and profiles. Boost your Threads marketing and track audience engagement."
+       description="Create concise links for Threads conversations and profiles. Boost your Threads presence and track conversation-driven engagement."
       placeholder="https://your-site.com/threads-content"
       inputLabel="Enter your destination URL"
       generateLabel="Generate Link"

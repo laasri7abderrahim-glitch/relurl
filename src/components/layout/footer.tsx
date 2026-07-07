@@ -95,7 +95,7 @@ function Footer() {
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
             <div className="flex items-center gap-4">
               <Link href="/" className="flex items-center gap-1.5 text-lg font-bold tracking-tight">
-                <span className="bg-gradient-to-r from-[#AA1C41] to-[#E68457] bg-clip-text text-transparent">REL</span>
+                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">REL</span>
                 <span className="text-dark-50">URL</span>
               </Link>
               <div className="hidden sm:flex items-center gap-3">

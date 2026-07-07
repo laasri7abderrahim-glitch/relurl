@@ -7,7 +7,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   return generateSEOMetadata({
     title: "Pinterest Link Generator - Pin & Board Links",
-    description: "Generate short, trackable links for Pinterest pins and boards. Optimize your Pinterest marketing strategy with RELURL analytics.",
+    description: "Create short links for Pinterest pins and boards to drive visual traffic. Optimize your pin marketing strategy with RELURL click analytics.",
     path: "/pinterest-link-generator",
     keywords: ["pinterest link generator", "pinterest pin links", "pinterest marketing"],
     locale,
@@ -21,7 +21,7 @@ export default function PinterestLinkGeneratorPage() {
     <URLLandingPage
       title="Pinterest Link Generator"
       subtitle="Boost Pinterest Engagement"
-      description="Generate short, trackable links for Pinterest pins and boards. Optimize your Pinterest marketing and drive more traffic to your site."
+       description="Create short links for Pinterest pins and boards to boost visual traffic. Optimize your pin marketing and drive more visitors to your site."
       placeholder="https://your-site.com/your-pinterest-worthy-content"
       inputLabel="Enter your destination URL"
       generateLabel="Generate Link"

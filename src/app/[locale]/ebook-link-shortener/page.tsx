@@ -21,7 +21,7 @@ export default function EbookLinkShortenerPage() {
     <URLLandingPage
       title="Ebook Link Shortener"
       subtitle="Grow Your Readership"
-      description="Shorten ebook download and landing page links. Track downloads, optimize your promotions, and grow your reader base effectively."
+       description="Shorten ebook download and landing page links. Track downloads, refine your promotional efforts, and grow your reader base effectively."
       placeholder="https://your-site.com/ebooks/digital-marketing-guide"
       inputLabel="Enter your ebook URL"
       generateLabel="Shorten URL"

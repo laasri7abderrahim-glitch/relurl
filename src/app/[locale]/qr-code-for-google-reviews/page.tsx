@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for Google Reviews - Get Reviews",
     description: "Generate a QR code that links to your Google review page. Make it easy for happy customers to leave 5-star reviews and boost your ratings.",
     path: "/qr-code-for-google-reviews",
-    keywords: ["qr code for google reviews", "google review qr code", "get more reviews"],
+    keywords: ["qr code for google reviews", "google review qr code", "get more reviews", "review qr code"],
     locale,
   })
 }
@@ -24,7 +24,7 @@ export default function Page() {
       placeholder="https://g.page/your-business/review"
       inputLabel="Enter your Google review link"
       generateLabel="Create Review QR Code"
-      features={["Direct to Review Page", "Boost Review Count", "Easy for Customers", "Track Review Scans"]}
+      features={["Direct to Review Page", "Boost Review Count", "Easy for Customers", "Track Review Scans", "Review Response Link", "Rating Dashboard"]}
       howItWorks={[
         { step: "Get Review Link", desc: "Copy your Google Business review URL" },
         { step: "Generate QR Code", desc: "Create a code that opens the review page" },
@@ -36,6 +36,7 @@ export default function Page() {
         "Hotels",
         "Service businesses",
         "Healthcare offices",
+        "Automotive dealership reviews",
       ]}
       relatedPages={[
         { title: "QR Code for Google Maps", href: "/qr-code-for-google-maps" },

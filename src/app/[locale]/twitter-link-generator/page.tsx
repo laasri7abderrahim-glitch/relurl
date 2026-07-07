@@ -7,7 +7,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   return generateSEOMetadata({
     title: "Twitter/X Link Generator - Tweet & Thread Links",
-    description: "Generate short, trackable links for Twitter/X tweets, threads, and profiles. Optimize your Twitter marketing with RELURL.",
+    description: "Shorten URLs for tweets, threads, and X profiles to save character space. Optimize your Twitter/X presence and grow follower engagement with RELURL.",
     path: "/twitter-link-generator",
     keywords: ["twitter link generator", "x link generator", "tweet link shortener"],
     locale,
@@ -21,7 +21,7 @@ export default function TwitterLinkGeneratorPage() {
     <URLLandingPage
       title="Twitter/X Link Generator"
       subtitle="Optimize Your Tweets"
-      description="Generate short, trackable links for Twitter/X tweets, threads, and profiles. Optimize your Twitter marketing and track engagement."
+       description="Shorten URLs for tweets, threads, and X profiles to save character space. Optimize your Twitter/X content and track audience interaction."
       placeholder="https://your-site.com/your-article-or-landing"
       inputLabel="Enter your destination URL"
       generateLabel="Generate Link"

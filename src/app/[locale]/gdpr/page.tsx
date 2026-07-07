@@ -57,7 +57,7 @@ export default function GdprPage() {
             <p>Data may be processed in the US or other countries where our service providers operate. We ensure appropriate safeguards are in place.</p>
 
             <h2 className="text-xl font-bold text-dark-50">Exercise Your Rights</h2>
-            <p>To exercise any of these rights, contact our Data Protection Officer at <a href="mailto:dpo@relurl.com" className="text-[#2FA084] hover:underline">dpo@relurl.com</a> or manage your data from your <Link href="/dashboard/settings" className="text-[#2FA084] hover:underline">account settings</Link>.</p>
+            <p>To exercise any of these rights, contact our Data Protection Officer at <a href="mailto:dpo@relurl.com" className="text-accent hover:underline">dpo@relurl.com</a> or manage your data from your <Link href="/dashboard/settings" className="text-accent hover:underline">account settings</Link>.</p>
 
             <h2 className="text-xl font-bold text-dark-50">Complaints</h2>
             <p>You have the right to lodge a complaint with your local data protection authority if you believe your rights have been violated.</p>

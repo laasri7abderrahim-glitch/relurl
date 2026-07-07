@@ -21,7 +21,7 @@ export default function BrandedLinkShortenerPage() {
     <URLLandingPage
       title="Branded Link Shortener"
       subtitle="Put Your Brand on Every Link"
-      description="Shorten URLs with your custom branded domain. Create short links that reinforce your brand identity and build trust with every click."
+       description="Shorten URLs with your custom branded domain. Every link becomes a trust signal that strengthens your brand recognition with every click."
       placeholder="https://example.com/your-long-url"
       inputLabel="Enter your long URL"
       generateLabel="Shorten URL"

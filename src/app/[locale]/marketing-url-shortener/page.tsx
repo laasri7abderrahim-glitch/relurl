@@ -21,7 +21,7 @@ export default function MarketingURLShortenerPage() {
     <URLLandingPage
       title="Marketing URL Shortener"
       subtitle="Optimize Every Campaign"
-      description="Create trackable short links for your marketing campaigns. Monitor performance across channels and optimize your marketing spend with real-time data."
+       description="Create trackable short links for your marketing campaigns. Review channel-by-channel performance and optimize your marketing spend with real-time data."
       placeholder="https://your-site.com/spring-sale-2024?utm_source=email&utm_medium=newsletter"
       inputLabel="Enter your campaign URL"
       generateLabel="Shorten URL"

@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for Birthday - Birthday Party & Gift QR Codes",
     description: "Create QR codes for birthday party details, gift registries, and photo sharing. Make celebrations memorable with RELURL QR codes.",
     path: "/qr-code-for-birthday",
-    keywords: ["qr code for birthday", "birthday party qr code", "birthday gift qr code"],
+    keywords: ["qr code for birthday", "birthday party qr code", "birthday gift qr code", "birthday invitation qr code"],
     locale,
   })
 }
@@ -25,7 +25,7 @@ export default function Page() {
       defaultValue="https://your-birthday-party.com/details"
       inputLabel="Enter your birthday page URL"
       generateLabel="Create Birthday QR Code"
-      features={["Party Details", "Gift Registry", "Photo Album", "RSVP Tracking"]}
+      features={["Party Details", "Gift Registry", "Photo Album", "RSVP Tracking", "Party Playlist", "Thank You Messages"]}
       howItWorks={[
         { step: "Enter Party URL", desc: "Paste your birthday party page, registry, or photo link." },
         { step: "Generate QR Code", desc: "Create a festive QR code for your celebration." },
@@ -37,6 +37,7 @@ export default function Page() {
         "Photo booth and album access",
         "Milestone birthday celebrations",
         "Children's party activities",
+        "Virtual birthday celebrations",
       ]}
       relatedPages={[
         { title: "QR Code Generator", href: "/qr-code-generator" },

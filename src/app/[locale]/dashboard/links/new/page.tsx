@@ -652,7 +652,7 @@ export default function NewLinkPage() {
               <div className="text-sm text-center space-y-2">
                 <p className="text-red-400">{error}</p>
                 {error.includes("Upgrade") && (
-                  <Link href="/pricing" className="text-[#2FA084] hover:underline font-medium">
+                  <Link href="/pricing" className="text-accent hover:underline font-medium">
                     {t('upgradeLink')}
                   </Link>
                 )}

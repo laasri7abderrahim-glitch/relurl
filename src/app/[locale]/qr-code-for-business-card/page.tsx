@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for Business Card - Digital Card",
     description: "Add a QR code to your business card. Let people scan to save your contact info, website, and social profiles instantly to their phone.",
     path: "/qr-code-for-business-card",
-    keywords: ["qr code for business card", "business card qr code", "digital business card"],
+    keywords: ["qr code for business card", "business card qr code", "digital business card", "digital business card qr"],
     locale,
   })
 }
@@ -24,7 +24,7 @@ export default function Page() {
       placeholder="https://yoursite.com"
       inputLabel="Enter your website or portfolio URL"
       generateLabel="Create Business Card QR Code"
-      features={["Professional Look", "Instant Contact Sharing", "Works on Any Card", "Track Scans"]}
+      features={["Professional Look", "Instant Contact Sharing", "Works on Any Card", "Track Scans", "Multi-Profile Links", "Design Customization"]}
       howItWorks={[
         { step: "Enter Your URL", desc: "Link to your website, LinkedIn, or portfolio" },
         { step: "Generate QR Code", desc: "Create a professional QR code" },
@@ -36,6 +36,7 @@ export default function Page() {
         "Freelancers and consultants",
         "Real estate agents",
         "Job seekers",
+        "Trade show networking",
       ]}
       relatedPages={[
         { title: "QR Code for vCard", href: "/qr-code-for-vcard" },

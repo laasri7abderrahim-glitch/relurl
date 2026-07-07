@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for Facebook - Connect on Facebook",
     description: "Generate a QR code for your Facebook page or group. Help people find and follow your business on Facebook.",
     path: "/qr-code-for-facebook",
-    keywords: ["qr code for facebook", "facebook qr code", "facebook page qr"],
+    keywords: ["qr code for facebook", "facebook qr code", "facebook page qr", "facebook page qr code"],
     locale,
   })
 }
@@ -25,13 +25,13 @@ export default function QRCodeForFacebookPage() {
       placeholder="https://facebook.com/yourpage"
       inputLabel="Enter your Facebook page or group URL"
       generateLabel="Create Facebook QR Code"
-      features={["Grow Page Likes", "Event Promotion", "Community Building", "Easy Sharing"]}
+      features={["Grow Page Likes", "Event Promotion", "Community Building", "Easy Sharing", "Facebook Group Links", "Event RSVP"]}
       howItWorks={[
         { step: "Enter Page URL", desc: "Paste your Facebook page or group link" },
         { step: "Generate QR Code", desc: "Create a scannable code" },
         { step: "Promote Everywhere", desc: "Add to print ads, displays, or packaging" },
       ]}
-      useCases={["Business page growth", "Event promotion", "Community building", "Product launches", "Store displays"]}
+      useCases={["Business page growth", "Event promotion", "Community building", "Product launches", "Store displays", "Facebook fundraiser promotion"]}
       relatedPages={[
         { title: "QR Code for Instagram", href: "/qr-code-for-instagram" },
         { title: "QR Code for LinkedIn", href: "/qr-code-for-linkedin" },

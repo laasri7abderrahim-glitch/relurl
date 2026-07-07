@@ -176,7 +176,7 @@ export default function DashboardPage() {
   if (status === "loading") {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#1F6F5F]"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent"></div>
       </div>
     )
   }
@@ -225,7 +225,7 @@ export default function DashboardPage() {
             <PlanBadge plan={planData.plan} />
           )}
           <Link href="/dashboard/links/new">
-            <Button size="sm" className="bg-[#1F6F5F] hover:bg-[#2FA084]">
+            <Button size="sm" className="bg-accent hover:bg-accent/90">
               <Plus className="mr-1 h-4 w-4" />
               Create Link
             </Button>
@@ -257,7 +257,7 @@ export default function DashboardPage() {
       {planData && planData.plan === "FREE" && (
         <div className="rounded-xl border border-[#2FA084]/30 bg-dark-500 p-4 shadow-lg animate-fade-in-up">
           <div className="flex items-center gap-2 mb-3">
-            <Crown className="h-4 w-4 text-[#2FA084]" />
+            <Crown className="h-4 w-4 text-accent" />
             <span className="font-medium text-dark-50">Plan Usage</span>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">

@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for Gym - Fitness & Class QR Codes",
     description: "Create QR codes for gym schedules, class bookings, and membership info. Streamline fitness center operations with RELURL QR codes.",
     path: "/qr-code-for-gym",
-    keywords: ["qr code for gym", "fitness qr code", "gym class qr code"],
+    keywords: ["qr code for gym", "fitness qr code", "gym class qr code", "fitness center qr code"],
     locale,
   })
 }
@@ -25,7 +25,7 @@ export default function Page() {
       defaultValue="https://your-gym.com/classes/schedule"
       inputLabel="Enter your gym service URL"
       generateLabel="Create Gym QR Code"
-      features={["Class Booking Links", "Membership Info", "Workout Library", "Trainer Profiles"]}
+      features={["Class Booking Links", "Membership Info", "Workout Library", "Trainer Profiles", "Equipment Tutorials", "Event Registration"]}
       howItWorks={[
         { step: "Enter Gym URL", desc: "Paste your class schedule, booking, or membership link." },
         { step: "Generate QR Code", desc: "Create a QR code for your gym's digital resources." },
@@ -37,6 +37,7 @@ export default function Page() {
         "Membership renewal links",
         "Workout video access",
         "Nutrition plan downloads",
+        "Personal training package purchases",
       ]}
       relatedPages={[
         { title: "QR Code Generator", href: "/qr-code-generator" },

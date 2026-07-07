@@ -25,6 +25,7 @@ export function generateSEOMetadata({
   return {
     title,
     description,
+    keywords: keywords.length > 0 ? keywords.join(", ") : undefined,
     alternates: {
       canonical: url,
       languages: {

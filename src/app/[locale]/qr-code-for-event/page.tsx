@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for Event Registration - Streamline Check-in",
     description: "Create a QR code for event registration. Attendees scan to register, check in, or access event details instantly.",
     path: "/qr-code-for-event",
-    keywords: ["qr code for event", "event qr code", "registration qr code"],
+    keywords: ["qr code for event", "event qr code", "registration qr code", "event registration qr code"],
     locale,
   })
 }
@@ -25,13 +25,13 @@ export default function QRCodeForEventPage() {
       placeholder="https://yourEvent.com/register"
       inputLabel="Enter event registration URL"
       generateLabel="Create Event QR Code"
-      features={["Fast Check-in", "Contactless Registration", "Real-time Tracking", "Print Ready"]}
+      features={["Fast Check-in", "Contactless Registration", "Real-time Tracking", "Print Ready", "Schedule Access", "Speaker Profiles"]}
       howItWorks={[
         { step: "Enter Registration URL", desc: "Link to your event registration page" },
         { step: "Generate QR Code", desc: "Create a code for promotion" },
         { step: "Promote Event", desc: "Add to flyers, posters, and social media" },
       ]}
-      useCases={["Conferences and seminars", "Workshops and classes", "Networking events", "Sports events", "Concerts and festivals"]}
+      useCases={["Conferences and seminars", "Workshops and classes", "Networking events", "Sports events", "Concerts and festivals", "Virtual event streaming links"]}
       relatedPages={[
         { title: "QR Code for Google Maps", href: "/qr-code-for-google-maps" },
         { title: "QR Code for PDF", href: "/qr-code-for-pdf" },

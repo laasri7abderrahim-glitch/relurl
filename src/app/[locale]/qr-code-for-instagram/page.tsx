@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for Instagram - Grow Your Following",
     description: "Create a QR code for your Instagram profile or posts. Help followers find you instantly and grow your audience.",
     path: "/qr-code-for-instagram",
-    keywords: ["qr code for instagram", "instagram qr code", "instagram profile qr"],
+    keywords: ["qr code for instagram", "instagram qr code", "instagram profile qr", "instagram profile qr code"],
     locale,
   })
 }
@@ -25,7 +25,7 @@ export default function Page() {
       placeholder="https://instagram.com/yourusername"
       inputLabel="Enter your Instagram profile URL"
       generateLabel="Create Instagram QR Code"
-      features={["Grow Followers", "Share Posts Easily", "Works on All Devices", "Print Ready"]}
+      features={["Grow Followers", "Share Posts Easily", "Works on All Devices", "Print Ready", "Link in Bio Alternative", "Story View Counter"]}
       howItWorks={[
         { step: "Enter Profile URL", desc: "Paste your Instagram profile or post link" },
         { step: "Generate QR Code", desc: "Create a scannable code" },
@@ -37,6 +37,7 @@ export default function Page() {
         "Event promotion",
         "Product packaging",
         "Store displays",
+        "Contest and giveaway entries",
       ]}
       relatedPages={[
         { title: "QR Code for Facebook", href: "/qr-code-for-facebook" },

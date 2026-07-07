@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for YouTube - Share Videos Easily",
     description: "Create a QR code for your YouTube videos or channel. Viewers scan and watch instantly — perfect for promotion.",
     path: "/qr-code-for-youtube",
-    keywords: ["qr code for youtube", "youtube qr code", "youtube channel qr"],
+    keywords: ["qr code for youtube", "youtube qr code", "youtube channel qr", "youtube video qr code"],
     locale,
   })
 }
@@ -25,13 +25,13 @@ export default function QRCodeForYouTubePage() {
       placeholder="https://youtube.com/@yourchannel"
       inputLabel="Enter your YouTube video or channel URL"
       generateLabel="Create YouTube QR Code"
-      features={["Instant Video Access", "Grow Subscribers", "Works on All Devices", "Print Ready"]}
+      features={["Instant Video Access", "Grow Subscribers", "Works on All Devices", "Print Ready", "Playlist Sharing", "Channel Trailer Link"]}
       howItWorks={[
         { step: "Enter Video URL", desc: "Paste your YouTube video or channel link" },
         { step: "Generate QR Code", desc: "Create a scannable code" },
         { step: "Share Everywhere", desc: "Add to posters, packaging, or business cards" },
       ]}
-      useCases={["Video promotion", "Product demonstrations", "Event entertainment", "Educational content", "Music releases"]}
+      useCases={["Video promotion", "Product demonstrations", "Event entertainment", "Educational content", "Music releases", "Tutorial and how-to video sharing"]}
       relatedPages={[
         { title: "QR Code for Instagram", href: "/qr-code-for-instagram" },
         { title: "QR Code for Facebook", href: "/qr-code-for-facebook" },

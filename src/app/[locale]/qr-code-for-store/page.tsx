@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for Store - Retail & Product QR Codes",
     description: "Create QR codes for store product pages, promotions, and checkout. Boost retail sales with scannable QR codes from RELURL.",
     path: "/qr-code-for-store",
-    keywords: ["qr code for store", "retail qr code", "product qr code"],
+    keywords: ["qr code for store", "retail qr code", "product qr code", "retail store qr code"],
     locale,
   })
 }
@@ -25,7 +25,7 @@ export default function Page() {
       defaultValue="https://your-store.com/products/bestseller"
       inputLabel="Enter your product or store URL"
       generateLabel="Create Store QR Code"
-      features={["Product Page Links", "Promotion Codes", "Checkout Integration", "Inventory Lookup"]}
+      features={["Product Page Links", "Promotion Codes", "Checkout Integration", "Inventory Lookup", "Gift Registry", "Store Locator"]}
       howItWorks={[
         { step: "Enter Product URL", desc: "Paste your product page, promotion, or store link." },
         { step: "Generate QR Code", desc: "Create a scannable code for your retail environment." },
@@ -37,6 +37,7 @@ export default function Page() {
         "Self-checkout links",
         "Price comparison tools",
         "Loyalty program enrollment",
+        "Click-and-collect ordering",
       ]}
       relatedPages={[
         { title: "QR Code Generator", href: "/qr-code-generator" },

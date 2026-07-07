@@ -2,7 +2,6 @@ import { NextIntlClientProvider } from "next-intl"
 import { getMessages, getTranslations } from "next-intl/server"
 import { routing } from "@/i18n/routing"
 import { notFound } from "next/navigation"
-import Script from "next/script"
 
 type Props = {
   children: React.ReactNode
@@ -18,6 +17,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: "seo" })
 
   return {
+    title: {
+      default: t("siteName"),
+      template: "%s | " + t("siteName"),
+    },
+    description: t("siteDescription"),
     alternates: {
       canonical: `https://relurl.com/${locale}`,
       languages: {
@@ -29,6 +33,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     openGraph: {
       locale: locale === "fr" ? "fr_FR" : "en_US",
       siteName: t("siteName"),
+      title: t("siteName"),
+      description: t("siteDescription"),
+      images: [{ url: "/api/og", width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@relurl",
+      title: t("siteName"),
+      description: t("siteDescription"),
+      images: ["/api/og"],
     },
     robots: {
       index: true,
@@ -55,14 +69,13 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <Script
-        id="schema-org"
+      <script
         type="application/ld+json"
-        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
+            "@id": "https://relurl.com/#organization",
             name: "RELURL",
             url: "https://relurl.com",
             logo: "https://relurl.com/favicon.svg",
@@ -70,14 +83,13 @@ export default async function LocaleLayout({ children, params }: Props) {
           }),
         }}
       />
-      <Script
-        id="schema-website"
+      <script
         type="application/ld+json"
-        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
+            "@id": "https://relurl.com/#website",
             name: "RELURL",
             url: "https://relurl.com",
             description: "Free URL shortener with analytics, QR codes, and branded links",

@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "Dynamic QR Code Generator - Editable QR Codes",
     description: "Create dynamic QR codes that can be edited after printing. Track scans and update destinations without changing the code.",
     path: "/dynamic-qr-code-generator",
-    keywords: ["dynamic qr code", "editable qr code", "trackable qr code"],
+    keywords: ["dynamic qr code", "editable qr code", "trackable qr code", "dynamic qr code generator"],
     locale,
   })
 }
@@ -27,7 +27,7 @@ export default function Page() {
       defaultValue="https://example.com"
       inputLabel="Enter destination URL"
       generateLabel="Create Dynamic QR Code"
-      features={["Edit Destination Anytime", "Scan Analytics", "No Reprinting Needed", "Track Performance"]}
+      features={["Edit Destination Anytime", "Scan Analytics", "No Reprinting Needed", "Track Performance", "Campaign Management", "Geo-Targeting"]}
       howItWorks={[
         { step: "Enter URL", desc: "Set your initial destination URL" },
         { step: "Generate & Save", desc: "Create your dynamic QR code and save it" },
@@ -38,6 +38,8 @@ export default function Page() {
         "Product packaging with updatable info",
         "Event materials with real-time updates",
         "A/B testing different landing pages",
+        "Retargeting ads",
+        "Seasonal promotions",
       ]}
       relatedPages={[
         { title: "QR Code Generator", href: "/qr-code-generator" },

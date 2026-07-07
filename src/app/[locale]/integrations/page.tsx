@@ -9,6 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "Integrations - Connect RELURL with Your Tools",
     description: "Connect RELURL with Zapier, Make, and other tools to automate your link management workflow.",
     path: "/integrations",
+    keywords: ["relurl integrations", "zapier url shortener", "link management api", "wordpress short link plugin"],
     locale,
   })
 }
@@ -107,7 +108,7 @@ export default function IntegrationsPage() {
             {featuredIntegrations.map((integration) => (
               <div
                 key={integration.name}
-                className="bg-dark-500 border border-dark-100 rounded-xl p-8 hover:border-[#2FA084] transition-colors"
+                className="bg-dark-500 border border-dark-100 rounded-xl p-8 hover:border-accent transition-colors"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>
@@ -122,7 +123,7 @@ export default function IntegrationsPage() {
                 {integration.endpoint && (
                   <div className="bg-dark-700 rounded-lg p-3 mb-4">
                     <p className="text-xs text-dark-100 mb-1">Endpoint:</p>
-                    <code className="text-sm text-[#2FA084]">POST {integration.endpoint}</code>
+                    <code className="text-sm text-accent">POST {integration.endpoint}</code>
                   </div>
                 )}
                 <div className="space-y-2">
@@ -144,7 +145,7 @@ export default function IntegrationsPage() {
             {moreIntegrations.map((integration) => (
               <div
                 key={integration.name}
-                className="bg-dark-500 border border-dark-100 rounded-xl p-6 hover:border-[#2FA084] transition-colors"
+                className="bg-dark-500 border border-dark-100 rounded-xl p-6 hover:border-accent transition-colors"
               >
                 <div className="text-2xl mb-2">{integration.icon}</div>
                 <h3 className="text-base font-semibold text-dark-50 mb-1">{integration.name}</h3>
@@ -165,7 +166,7 @@ export default function IntegrationsPage() {
             </p>
             <Link
               href="/api"
-              className="inline-block px-6 py-3 bg-[#1F6F5F] text-white rounded-lg hover:bg-[#2FA084] transition-colors font-medium"
+              className="inline-block px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent/90 transition-colors font-medium"
             >
               View API Docs
             </Link>

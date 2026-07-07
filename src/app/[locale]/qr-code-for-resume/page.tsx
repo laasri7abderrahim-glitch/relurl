@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "QR Code for Resume - Digital CV & Portfolio QR Codes",
     description: "Create QR codes for your resume, CV, and online portfolio. Stand out in job applications with a scannable resume QR code from RELURL.",
     path: "/qr-code-for-resume",
-    keywords: ["qr code for resume", "cv qr code", "portfolio qr code"],
+    keywords: ["qr code for resume", "cv qr code", "portfolio qr code", "digital cv qr code"],
     locale,
   })
 }
@@ -25,7 +25,7 @@ export default function Page() {
       defaultValue="https://your-portfolio.com/resume"
       inputLabel="Enter your resume or portfolio URL"
       generateLabel="Create Resume QR Code"
-      features={["Portfolio Linking", "LinkedIn Integration", "Project Showcases", "Contact Details"]}
+      features={["Portfolio Linking", "LinkedIn Integration", "Project Showcases", "Contact Details", "Cover Letter Link", "Certification Proofs"]}
       howItWorks={[
         { step: "Enter Resume URL", desc: "Paste your online resume, portfolio, or LinkedIn profile." },
         { step: "Generate QR Code", desc: "Create a professional QR code for your job applications." },
@@ -37,6 +37,7 @@ export default function Page() {
         "LinkedIn profile sharing",
         "Freelancer portfolios",
         "Conference networking",
+        "Internship application headers",
       ]}
       relatedPages={[
         { title: "QR Code Generator", href: "/qr-code-generator" },

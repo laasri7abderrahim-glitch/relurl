@@ -7,7 +7,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   return generateSEOMetadata({
     title: "Event Link Shortener - Event Promotion Links",
-    description: "Create short, trackable links for conferences, meetups, and virtual events. Boost registrations and measure event marketing reach.",
+    description: "Shorten event URLs to promote conferences, meetups, and virtual events. Track registration sources and measure campaign reach with RELURL.",
     path: "/event-link-shortener",
     keywords: ["event link shortener", "conference link generator", "event marketing"],
     locale,
@@ -21,7 +21,7 @@ export default function EventLinkShortenerPage() {
     <URLLandingPage
       title="Event Link Shortener"
       subtitle="Maximize Event Reach"
-      description="Create short, trackable links for conferences, meetups, and virtual events. Boost registrations and measure your marketing reach."
+       description="Shorten event URLs to promote conferences, meetups, and virtual events. Track registration sources and measure your campaign reach."
       placeholder="https://eventbrite.com/e/your-event-12345"
       inputLabel="Enter your event URL"
       generateLabel="Shorten URL"

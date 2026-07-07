@@ -46,7 +46,7 @@ export default function CookiesPage() {
                 <tbody>
                   {cookies.map((c) => (
                     <tr key={c.name} className="border-b border-dark-100 last:border-0">
-                      <td className="p-3 font-mono text-xs text-[#6FCF97]">{c.name}</td>
+                      <td className="p-3 font-mono text-xs text-accent">{c.name}</td>
                       <td className="p-3">{c.purpose}</td>
                       <td className="p-3">{c.type}</td>
                       <td className="p-3">{c.duration}</td>
@@ -63,7 +63,7 @@ export default function CookiesPage() {
             <p>Stripe may set cookies during payment processing. Their use is governed by Stripe&apos;s privacy policy.</p>
 
             <h2 className="text-xl font-bold text-dark-50">Contact</h2>
-            <p>For cookie-related questions, contact <a href="mailto:privacy@relurl.com" className="text-[#2FA084] hover:underline">privacy@relurl.com</a>.</p>
+            <p>For cookie-related questions, contact <a href="mailto:privacy@relurl.com" className="text-accent hover:underline">privacy@relurl.com</a>.</p>
           </div>
         </section>
       </main>

@@ -80,6 +80,18 @@ function landingPages(priority = 0.85): MetadataRoute.Sitemap {
     "/ebook-link-shortener",
     "/course-link-shortener",
     "/webinar-link-shortener",
+    "/password-protected-links",
+    "/link-expiration",
+    "/url-shortener-api",
+    "/custom-domain-links",
+    "/link-in-bio",
+    "/shorten-pdf-link",
+    "/shorten-image-url",
+    "/shorten-video-url",
+    "/shorten-github-url",
+    "/shorten-google-drive-link",
+    "/shorten-google-docs-link",
+    "/shorten-dropbox-link",
   ]
   return paths.flatMap((p) => localizedUrls(p, priority))
 }
@@ -101,6 +113,14 @@ function socialPages(priority = 0.8): MetadataRoute.Sitemap {
     "/twitter-link-generator",
     "/threads-link-generator",
     "/mastodon-link-generator",
+    "/shorten-youtube-url",
+    "/shorten-instagram-url",
+    "/shorten-facebook-url",
+    "/shorten-whatsapp-link",
+    "/shorten-linkedin-url",
+    "/shorten-tiktok-url",
+    "/shorten-x-url",
+    "/shorten-discord-invite-link",
   ]
   return paths.flatMap((p) => localizedUrls(p, priority))
 }
@@ -143,12 +163,37 @@ function qrPages(priority = 0.85): MetadataRoute.Sitemap {
   return paths.flatMap((p) => localizedUrls(p, priority))
 }
 
+function comparisonPages(priority = 0.8): MetadataRoute.Sitemap {
+  const paths = [
+    "/bitly-alternative",
+    "/tinyurl-alternative",
+    "/rebrandly-alternative",
+    "/short-io-alternative",
+    "/best-url-shortener",
+  ]
+  return paths.flatMap((p) => localizedUrls(p, priority))
+}
+
+function guidePages(priority = 0.8): MetadataRoute.Sitemap {
+  const paths = [
+    "/how-to-shorten-a-url",
+    "/how-to-create-short-links",
+    "/how-to-track-link-clicks",
+    "/how-to-create-qr-codes",
+    "/how-to-create-branded-links",
+    "/how-to-use-utm-parameters",
+  ]
+  return paths.flatMap((p) => localizedUrls(p, priority))
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticPages(0.9),
     ...landingPages(),
     ...socialPages(0.8),
     ...qrPages(),
+    ...comparisonPages(),
+    ...guidePages(),
     ...blogPages(),
   ]
 }

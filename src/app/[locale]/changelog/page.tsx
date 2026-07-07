@@ -8,6 +8,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: "Changelog - Product Updates & Releases",
     description: "Stay up to date with the latest RELURL product updates, new features, and improvements.",
     path: "/changelog",
+    keywords: ["relurl changelog", "product updates", "new features", "url shortener releases"],
     locale,
   })
 }
@@ -71,7 +72,7 @@ export default function ChangelogPage() {
             {updates.map((update) => (
               <div key={update.version} className="bg-dark-500 border border-dark-100 rounded-xl p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="px-3 py-1 bg-[#1F6F5F] text-white text-sm font-bold rounded-full">
+                  <span className="px-3 py-1 bg-accent text-white text-sm font-bold rounded-full">
                     v{update.version}
                   </span>
                   <span className="text-sm text-dark-100">{update.date}</span>
@@ -80,7 +81,7 @@ export default function ChangelogPage() {
                 <ul className="space-y-2">
                   {update.changes.map((change, i) => (
                     <li key={i} className="flex items-start gap-2 text-dark-100">
-                      <span className="text-[#6FCF97] mt-1">✓</span>
+                      <span className="text-accent mt-1">✓</span>
                       {change}
                     </li>
                   ))}
