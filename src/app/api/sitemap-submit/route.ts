@@ -50,7 +50,7 @@ export async function POST(req: Request) {
     const encodedSitemap = encodeURIComponent(sitemapUrl)
 
     await c.request({
-      url: `https://searchconsole.googleapis.com/v1/sites/${encodedSite}/sitemaps/${encodedSitemap}`,
+      url: `https://www.googleapis.com/webmasters/v3/sites/${encodedSite}/sitemaps/${encodedSitemap}`,
       method: "PUT",
     })
 
@@ -76,7 +76,7 @@ export async function GET(req: Request) {
     const encodedSitemap = encodeURIComponent(sitemapUrl)
 
     await c.request({
-      url: `https://searchconsole.googleapis.com/v1/sites/${encodedSite}/sitemaps/${encodedSitemap}`,
+      url: `https://www.googleapis.com/webmasters/v3/sites/${encodedSite}/sitemaps/${encodedSitemap}`,
       method: "PUT",
     })
 
@@ -84,6 +84,6 @@ export async function GET(req: Request) {
   } catch (err: any) {
     const status = err.response?.status || 500
     const body = err.response?.data || err.message
-    return NextResponse.json({ ok: false, error: body, details: JSON.stringify(err.response?.data || {}) }, { status })
+    return NextResponse.json({ ok: false, error: body }, { status })
   }
 }
