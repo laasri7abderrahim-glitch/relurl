@@ -1,4 +1,4 @@
-import { allQRCodes } from "@/lib/url-pages"
+import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
@@ -15,7 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default function QRCodeForEventPage() {
-  const relatedArticles = getPostsByLandingPage("/qr-code-for-event").slice(0, 3)
+  const href = "/qr-code-for-event"
+  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
   return (
     <>
       <QRCodeLandingPage
@@ -32,14 +33,7 @@ export default function QRCodeForEventPage() {
         { step: "Promote Event", desc: "Add to flyers, posters, and social media" },
       ]}
       useCases={["Conferences and seminars", "Workshops and classes", "Networking events", "Sports events", "Concerts and festivals", "Virtual event streaming links"]}
-      relatedPages={[
-        { title: "QR Code for Google Maps", href: "/qr-code-for-google-maps" },
-        { title: "QR Code for PDF", href: "/qr-code-for-pdf" },
-        { title: "QR Code for Restaurant Menu", href: "/qr-code-for-restaurant-menu" },
-        { title: "QR Code Generator", href: "/qr-code-generator" },
-        { title: "QR Code for Instagram", href: "/qr-code-for-instagram" },
-        { title: "Free QR Code Generator", href: "/free-qr-code-generator" },
-      ]}
+      relatedPages={getRelatedQrPages(href)}
       allQRCodes={allQRCodes}
 
       relatedArticles={relatedArticles}

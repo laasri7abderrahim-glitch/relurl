@@ -2,7 +2,14 @@ import { ImageResponse } from "next/og"
 
 export const runtime = "edge"
 
-export async function GET() {
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url)
+  const title = searchParams.get("title")
+  const description = searchParams.get("description")
+
+  const pageTitle = title || "URL Shortener, Branded Short Links & Analytics"
+  const pageDesc = description || "Free URL shortener with custom slugs, click analytics, QR codes, and branded domains"
+
   return new ImageResponse(
     (
       <div
@@ -31,15 +38,28 @@ export async function GET() {
         </div>
         <div
           style={{
-            fontSize: 28,
+            fontSize: 32,
+            color: "#FFFFFF",
+            marginTop: 24,
+            textAlign: "center",
+            maxWidth: 700,
+            lineHeight: 1.3,
+            fontWeight: 600,
+          }}
+        >
+          {pageTitle}
+        </div>
+        <div
+          style={{
+            fontSize: 22,
             color: "#94a3b8",
-            marginTop: 20,
+            marginTop: 16,
             textAlign: "center",
             maxWidth: 600,
             lineHeight: 1.4,
           }}
         >
-          URL Shortener, Branded Short Links & Analytics
+          {pageDesc}
         </div>
       </div>
     ),

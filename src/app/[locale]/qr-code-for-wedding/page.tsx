@@ -1,5 +1,5 @@
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
-import { allQRCodes } from "@/lib/url-pages"
+import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
 
@@ -15,7 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default function Page() {
-  const relatedArticles = getPostsByLandingPage("/qr-code-for-wedding").slice(0, 3)
+  const href = "/qr-code-for-wedding"
+  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
   return (
     <QRCodeLandingPage
       title="QR Code for Wedding"
@@ -39,14 +40,7 @@ export default function Page() {
         "Guestbook and well-wishes",
         "Virtual wedding live stream",
       ]}
-      relatedPages={[
-        { title: "QR Code Generator", href: "/qr-code-generator" },
-        { title: "QR Code for Event", href: "/qr-code-for-event" },
-        { title: "QR Code for WiFi", href: "/qr-code-for-wifi" },
-        { title: "QR Code for Google Maps", href: "/qr-code-for-google-maps" },
-        { title: "QR Code for Email", href: "/qr-code-for-email" },
-        { title: "QR Code for Photo", href: "/qr-code-for-instagram" },
-      ]}
+      relatedPages={getRelatedQrPages(href)}
       allQRCodes={allQRCodes}
 
       relatedArticles={relatedArticles}

@@ -1,4 +1,4 @@
-import { allQRCodes } from "@/lib/url-pages"
+import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
@@ -15,7 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default function QRCodeForYouTubePage() {
-  const relatedArticles = getPostsByLandingPage("/qr-code-for-youtube").slice(0, 3)
+  const href = "/qr-code-for-youtube"
+  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
   return (
     <>
       <QRCodeLandingPage
@@ -32,14 +33,7 @@ export default function QRCodeForYouTubePage() {
         { step: "Share Everywhere", desc: "Add to posters, packaging, or business cards" },
       ]}
       useCases={["Video promotion", "Product demonstrations", "Event entertainment", "Educational content", "Music releases", "Tutorial and how-to video sharing"]}
-      relatedPages={[
-        { title: "QR Code for Instagram", href: "/qr-code-for-instagram" },
-        { title: "QR Code for Facebook", href: "/qr-code-for-facebook" },
-        { title: "QR Code for LinkedIn", href: "/qr-code-for-linkedin" },
-        { title: "QR Code Generator", href: "/qr-code-generator" },
-        { title: "QR Code for App Download", href: "/qr-code-for-app-download" },
-        { title: "Free QR Code Generator", href: "/free-qr-code-generator" },
-      ]}
+      relatedPages={getRelatedQrPages(href)}
       allQRCodes={allQRCodes}
 
       relatedArticles={relatedArticles}

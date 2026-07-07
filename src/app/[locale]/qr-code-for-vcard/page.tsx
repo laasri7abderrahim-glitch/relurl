@@ -1,6 +1,6 @@
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
-import { allQRCodes } from "@/lib/url-pages"
+import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -15,7 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default function QRCodeForVCardPage() {
-  const relatedArticles = getPostsByLandingPage("/qr-code-for-vcard").slice(0, 3)
+  const href = "/qr-code-for-vcard"
+  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
   return (
     <QRCodeLandingPage
       title="QR Code for vCard"
@@ -32,14 +33,7 @@ export default function QRCodeForVCardPage() {
         { step: "Share Everywhere", desc: "Add to business cards or email signature" },
       ]}
       useCases={["Business networking", "Real estate agents", "Sales teams", "Consultants", "Conference speakers", "Real estate open house contacts"]}
-      relatedPages={[
-        { title: "QR Code for Business Card", href: "/qr-code-for-business-card" },
-        { title: "QR Code for LinkedIn", href: "/qr-code-for-linkedin" },
-        { title: "QR Code for Phone Number", href: "/qr-code-for-phone" },
-        { title: "QR Code Generator", href: "/qr-code-generator" },
-        { title: "QR Code for Email", href: "/qr-code-for-email" },
-        { title: "Free QR Code Generator", href: "/free-qr-code-generator" },
-      ]}
+      relatedPages={getRelatedQrPages(href)}
       allQRCodes={allQRCodes}
       relatedArticles={relatedArticles}
     />

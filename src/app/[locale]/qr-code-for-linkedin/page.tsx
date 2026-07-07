@@ -1,4 +1,4 @@
-import { allQRCodes } from "@/lib/url-pages"
+import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
@@ -15,7 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default function QRCodeForLinkedInPage() {
-  const relatedArticles = getPostsByLandingPage("/qr-code-for-linkedin").slice(0, 3)
+  const href = "/qr-code-for-linkedin"
+  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
   return (
     <>
       <QRCodeLandingPage
@@ -32,14 +33,7 @@ export default function QRCodeForLinkedInPage() {
         { step: "Network Smart", desc: "Add to business cards or wear at events" },
       ]}
       useCases={["Conference networking", "Job fairs", "Business meetings", "Recruitment events", "Professional services", "Co-founder and partner searching"]}
-      relatedPages={[
-        { title: "QR Code for Business Card", href: "/qr-code-for-business-card" },
-        { title: "QR Code for vCard", href: "/qr-code-for-vcard" },
-        { title: "QR Code for Email", href: "/qr-code-for-email" },
-        { title: "QR Code Generator", href: "/qr-code-generator" },
-        { title: "QR Code for Facebook", href: "/qr-code-for-facebook" },
-        { title: "Free QR Code Generator", href: "/free-qr-code-generator" },
-      ]}
+      relatedPages={getRelatedQrPages(href)}
       allQRCodes={allQRCodes}
 
       relatedArticles={relatedArticles}

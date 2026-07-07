@@ -1,4 +1,4 @@
-import { allQRCodes } from "@/lib/url-pages"
+import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
@@ -15,7 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default function QRCodeForGoogleMapsPage() {
-  const relatedArticles = getPostsByLandingPage("/qr-code-for-google-maps").slice(0, 3)
+  const href = "/qr-code-for-google-maps"
+  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
   return (
     <>
       <QRCodeLandingPage
@@ -32,14 +33,7 @@ export default function QRCodeForGoogleMapsPage() {
         { step: "Guide Customers", desc: "Display at events, on cards, or website" },
       ]}
       useCases={["Retail stores", "Restaurants", "Event venues", "Real estate", "Tourist attractions", "Real estate open house directions"]}
-      relatedPages={[
-        { title: "QR Code for Google Reviews", href: "/qr-code-for-google-reviews" },
-        { title: "QR Code for Event Registration", href: "/qr-code-for-event" },
-        { title: "QR Code for Restaurant Menu", href: "/qr-code-for-restaurant-menu" },
-        { title: "QR Code Generator", href: "/qr-code-generator" },
-        { title: "QR Code for Business Card", href: "/qr-code-for-business-card" },
-        { title: "Free QR Code Generator", href: "/free-qr-code-generator" },
-      ]}
+      relatedPages={getRelatedQrPages(href)}
       allQRCodes={allQRCodes}
 
       relatedArticles={relatedArticles}

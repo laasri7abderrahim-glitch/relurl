@@ -1,6 +1,6 @@
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
-import { allLandingPages, qrPages } from "@/lib/url-pages"
+import { allLandingPages, qrPages, getRelatedQrPages } from "@/lib/url-pages"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 
 const allQRCodes = [...allLandingPages, ...qrPages]
@@ -17,7 +17,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default function Page() {
-  const relatedArticles = getPostsByLandingPage("/dynamic-qr-code-generator").slice(0, 3)
+  const href = "/dynamic-qr-code-generator"
+  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
   return (
     <QRCodeLandingPage
       title="Dynamic QR Code Generator"
@@ -41,14 +42,7 @@ export default function Page() {
         "Retargeting ads",
         "Seasonal promotions",
       ]}
-      relatedPages={[
-        { title: "QR Code Generator", href: "/qr-code-generator" },
-        { title: "QR Code for Marketing", href: "/qr-code-for-google-reviews" },
-        { title: "QR Code for Restaurant Menu", href: "/qr-code-for-restaurant-menu" },
-        { title: "QR Code for Event Registration", href: "/qr-code-for-event" },
-        { title: "QR Code for App Download", href: "/qr-code-for-app-download" },
-        { title: "Free QR Code Generator", href: "/free-qr-code-generator" },
-      ]}
+      relatedPages={getRelatedQrPages(href)}
       allQRCodes={allQRCodes}
       faqs={[
         { q: "What is the difference between static and dynamic QR codes?", a: "Static QR codes encode the destination directly into the code and cannot be changed. Dynamic QR codes contain a short URL that redirects to your destination, so you can update the destination anytime without changing the QR image." },

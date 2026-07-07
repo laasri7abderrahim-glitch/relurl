@@ -1,6 +1,6 @@
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
-import { allLandingPages, qrPages } from "@/lib/url-pages"
+import { allLandingPages, qrPages, getRelatedQrPages } from "@/lib/url-pages"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 
 const allQRCodes = [...allLandingPages, ...qrPages]
@@ -17,7 +17,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default function Page() {
-  const relatedArticles = getPostsByLandingPage("/free-qr-code-generator").slice(0, 3)
+  const href = "/free-qr-code-generator"
+  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
   return (
     <QRCodeLandingPage
       title="Free QR Code Generator"
@@ -41,14 +42,7 @@ export default function Page() {
         "Nonprofit organizations",
         "Personal projects and hobbies",
       ]}
-      relatedPages={[
-        { title: "QR Code Generator", href: "/qr-code-generator" },
-        { title: "Dynamic QR Code Generator", href: "/dynamic-qr-code-generator" },
-        { title: "QR Code for PDF", href: "/qr-code-for-pdf" },
-        { title: "QR Code for WiFi", href: "/qr-code-for-wifi" },
-        { title: "QR Code for Instagram", href: "/qr-code-for-instagram" },
-        { title: "QR Code for WhatsApp", href: "/qr-code-for-whatsapp" },
-      ]}
+      relatedPages={getRelatedQrPages(href)}
       allQRCodes={allQRCodes}
 
       relatedArticles={relatedArticles}

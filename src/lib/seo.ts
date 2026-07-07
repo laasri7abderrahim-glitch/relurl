@@ -11,6 +11,13 @@ interface SEOProps {
   keywords?: string[]
   type?: "website" | "article"
   locale?: string
+  image?: string
+}
+
+function ogImageUrl(title: string, description: string): string {
+  const t = encodeURIComponent(title.slice(0, 100))
+  const d = encodeURIComponent(description.slice(0, 200))
+  return `${baseUrl}/api/og?title=${t}&description=${d}`
 }
 
 export function generateSEOMetadata({
@@ -20,8 +27,10 @@ export function generateSEOMetadata({
   keywords = [],
   type = "website",
   locale = "en",
+  image,
 }: SEOProps): Metadata {
   const url = `${baseUrl}/${locale}${path}`
+  const ogUrl = image || ogImageUrl(title, description)
   return {
     title,
     description,
@@ -40,7 +49,7 @@ export function generateSEOMetadata({
       siteName,
       images: [
         {
-          url: defaultImage,
+          url: ogUrl,
           width: 1200,
           height: 630,
           alt: title,
@@ -52,7 +61,7 @@ export function generateSEOMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [defaultImage],
+      images: [ogUrl],
     },
     robots: {
       index: true,

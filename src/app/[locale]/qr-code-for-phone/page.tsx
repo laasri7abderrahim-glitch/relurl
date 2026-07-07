@@ -1,4 +1,4 @@
-import { allQRCodes } from "@/lib/url-pages"
+import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
@@ -15,7 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default function QRCodeForPhonePage() {
-  const relatedArticles = getPostsByLandingPage("/qr-code-for-phone").slice(0, 3)
+  const href = "/qr-code-for-phone"
+  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
   return (
     <>
       <QRCodeLandingPage
@@ -33,14 +34,7 @@ export default function QRCodeForPhonePage() {
         { step: "Share Everywhere", desc: "Add to signs, ads, or business materials" },
       ]}
       useCases={["Business contact", "Emergency services", "Delivery services", "Real estate listings", "Service providers", "Doctor's office appointment calls"]}
-      relatedPages={[
-        { title: "QR Code for SMS", href: "/qr-code-for-sms" },
-        { title: "QR Code for WhatsApp", href: "/qr-code-for-whatsapp" },
-        { title: "QR Code for Email", href: "/qr-code-for-email" },
-        { title: "QR Code Generator", href: "/qr-code-generator" },
-        { title: "QR Code for vCard", href: "/qr-code-for-vcard" },
-        { title: "Free QR Code Generator", href: "/free-qr-code-generator" },
-      ]}
+      relatedPages={getRelatedQrPages(href)}
       allQRCodes={allQRCodes}
 
       relatedArticles={relatedArticles}

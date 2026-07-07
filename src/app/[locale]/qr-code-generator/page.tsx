@@ -1,7 +1,7 @@
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
-import { allQRCodes } from "@/lib/url-pages"
+import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -15,7 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default function Page() {
-  const relatedArticles = getPostsByLandingPage("/qr-code-generator").slice(0, 3)
+  const href = "/qr-code-generator"
+  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
   return (
     <QRCodeLandingPage
       title="QR Code Generator"
@@ -39,14 +40,7 @@ export default function Page() {
         "Marketing campaign materials",
         "Product packaging and labels",
       ]}
-      relatedPages={[
-        { title: "Dynamic QR Code Generator", href: "/dynamic-qr-code-generator" },
-        { title: "Free QR Code Generator", href: "/free-qr-code-generator" },
-        { title: "QR Code for Business Card", href: "/qr-code-for-business-card" },
-        { title: "QR Code for WiFi", href: "/qr-code-for-wifi" },
-        { title: "QR Code for PDF", href: "/qr-code-for-pdf" },
-        { title: "QR Code for Google Reviews", href: "/qr-code-for-google-reviews" },
-      ]}
+      relatedPages={getRelatedQrPages(href)}
       allQRCodes={allQRCodes}
       faqs={[
         { q: "What types of QR codes can I create?", a: "You can create QR codes for URLs, plain text, WiFi network credentials, vCard contacts, email addresses, phone numbers, SMS messages, and event calendar entries." },
