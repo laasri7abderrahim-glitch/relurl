@@ -18,6 +18,7 @@ import { UpgradePrompt, PlanBadge, UsageBar } from "@/components/upgrade-prompt"
 import { formatDate, formatNumber } from "@/lib/utils"
 import { AIChat } from "@/components/dashboard/ai-chat"
 import { ActivityFeed } from "@/components/dashboard/activity-feed"
+import { WeeklyInsights } from "@/components/dashboard/weekly-insights"
 import {
   Link2,
   MousePointerClick,
@@ -345,8 +346,9 @@ export default function DashboardPage() {
         )}
 
         {/* Activity Feed */}
-        <div className="lg:row-span-2">
+        <div className="lg:row-span-2 space-y-4">
           <ActivityFeed />
+          <WeeklyInsights />
         </div>
 
         {/* Recent Links */}

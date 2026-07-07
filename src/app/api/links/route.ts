@@ -30,6 +30,7 @@ const createLinkSchema = z.object({
   deviceTargeting: z.string().optional(),
   languageTargeting: z.string().optional(),
   scheduledAt: z.string().datetime().optional(),
+  campaignId: z.string().uuid().optional(),
 });
 
 export async function GET(req: NextRequest) {
@@ -164,6 +165,7 @@ export async function POST(req: NextRequest) {
       deviceTargeting,
       languageTargeting,
       scheduledAt,
+      campaignId,
     } = parsed.data;
 
     const hashedPassword = password ? await hash(password, 10) : undefined;
@@ -194,6 +196,7 @@ export async function POST(req: NextRequest) {
         languageTargeting: languageTargeting || null,
         scheduledAt: scheduledAt ? new Date(scheduledAt) : null,
         isActive: scheduledAt ? new Date(scheduledAt) <= new Date() : true,
+        campaignId: campaignId || null,
         userId: session.user.id,
       },
     });

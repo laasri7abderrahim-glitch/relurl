@@ -23,6 +23,8 @@ import {
   Sun,
   Moon,
   Wand2,
+  FolderKanban,
+  QrCode,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Avatar } from "@/components/ui/avatar"
@@ -43,9 +45,11 @@ const sidebarItems: SidebarItem[] = [
     sub: [
       { label: "All Links", href: "/dashboard/links" },
       { label: "New Link", href: "/dashboard/links/new" },
+      { label: "Campaigns", href: "/dashboard/campaigns" },
     ],
   },
   { label: "Analytics", icon: <BarChart3 className="h-5 w-5" />, href: "/dashboard/analytics" },
+  { label: "QR Codes", icon: <QrCode className="h-5 w-5" />, href: "/dashboard/qrcodes" },
   { label: "UTM Builder", icon: <Wand2 className="h-5 w-5" />, href: "/dashboard/utm-builder" },
   { label: "API Keys", icon: <Key className="h-5 w-5" />, href: "/dashboard/api-keys" },
   { label: "Domains", icon: <Globe className="h-5 w-5" />, href: "/dashboard/domains" },

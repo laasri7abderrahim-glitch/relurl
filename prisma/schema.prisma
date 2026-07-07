@@ -24,6 +24,7 @@ model User {
 
   accounts      Account[]
   sessions      Session[]
+  campaigns     Campaign[]
   links         ShortLink[]
   apiKeys       ApiKey[]
   subscriptions Subscription[]
@@ -156,9 +157,11 @@ model ShortLink {
 
   user      User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
   team      Team?       @relation(fields: [teamId], references: [id], onDelete: SetNull)
-  linkClicks LinkClick[]
-  qrCodes   QrCode[]
-  abTests   ABTest[]
+  campaignId  String?
+  campaign    Campaign? @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+  linkClicks  LinkClick[]
+  qrCodes     QrCode[]
+  abTests     ABTest[]
   smartRoutes SmartRoute[]
 }
 
@@ -267,12 +270,16 @@ model QrCode {
   id        String   @id @default(uuid())
   linkId    String
   name      String
+  type      String   @default("url")      // url, vcard, wifi, text, email, sms
+  content   String?                        // JSON: type-specific content
   design    String?
   size      Int      @default(300)
   format    String   @default("png")
   createdAt DateTime @default(now())
 
   link ShortLink @relation(fields: [linkId], references: [id], onDelete: Cascade)
+
+  @@index([linkId])
 }
 
 model UtmCampaign {
@@ -356,6 +363,21 @@ model BioLink {
   updatedAt   DateTime @updatedAt
 
   page BioPage @relation(fields: [pageId], references: [id], onDelete: Cascade)
+}
+
+model Campaign {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  color       String   @default("#4f46e5")
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user  User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  links ShortLink[]
+
+  @@index([userId])
 }
 
 model Notification {
