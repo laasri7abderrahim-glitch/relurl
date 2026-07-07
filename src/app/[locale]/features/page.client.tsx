@@ -10,14 +10,14 @@ import { Footer } from "@/components/layout/footer";
 import Image from "next/image";
 
 const featureConfig = [
-  { icon: Link2, key: "linkShortening" },
-  { icon: Globe, key: "brandedDomains" },
-  { icon: BarChart3, key: "advancedAnalytics" },
-  { icon: QrCode, key: "qrCodes" },
-  { icon: Zap, key: "apiPlatform" },
-  { icon: Users, key: "teamCollab" },
-  { icon: Shield, key: "enterpriseSecurity" },
-  { icon: Sliders, key: "linkManagement" },
+  { icon: Link2, key: "linkShortening", img: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80", alt: "Link shortening interface preview" },
+  { icon: Globe, key: "brandedDomains", img: "https://images.unsplash.com/photo-1504711434969-e33886168d8c?w=600&q=80", alt: "Branded domains and custom links" },
+  { icon: BarChart3, key: "advancedAnalytics", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80", alt: "Advanced analytics dashboard with charts" },
+  { icon: QrCode, key: "qrCodes", img: "https://images.unsplash.com/photo-1595079676334-5e40e64cecbf?w=600&q=80", alt: "QR code scanning on smartphone" },
+  { icon: Zap, key: "apiPlatform", img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80", alt: "API and developer platform code" },
+  { icon: Users, key: "teamCollab", img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80", alt: "Team collaboration and workspace" },
+  { icon: Shield, key: "enterpriseSecurity", img: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&q=80", alt: "Enterprise security and data protection" },
+  { icon: Sliders, key: "linkManagement", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80", alt: "Link management control panel" },
 ];
 
 export default function FeaturesPageClient() {
@@ -29,6 +29,8 @@ export default function FeaturesPageClient() {
     title: t(f.key + ".title"),
     desc: t(f.key + ".desc"),
     details: tRaw.raw(f.key + ".details") as string[],
+    img: f.img,
+    alt: f.alt,
   }));
   return (
     <div className="min-h-screen flex flex-col">
@@ -89,34 +91,16 @@ export default function FeaturesPageClient() {
                   </div>
                   <div className="flex-1 w-full">
                     <Card className="border-border/50 bg-gradient-to-br from-primary/5 to-transparent overflow-hidden">
-                      <CardContent className="p-8">
-                        {i === 0 ? (
-                          <div className="relative rounded-lg overflow-hidden">
-                            <Image
-                              src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80"
-                              alt="Link shortening interface preview"
-                              width={600}
-                              height={400}
-                              className="w-full h-auto object-cover"
-                              loading="lazy"
-                            />
-                          </div>
-                        ) : i === 1 ? (
-                          <div className="relative rounded-lg overflow-hidden">
-                            <Image
-                              src="https://images.unsplash.com/photo-1504711434969-e33886168d8c?w=600&q=80"
-                              alt="Branded domains and custom links"
-                              width={600}
-                              height={400}
-                              className="w-full h-auto object-cover"
-                              loading="lazy"
-                            />
-                          </div>
-                        ) : (
-                          <div className="aspect-video rounded-lg bg-background/50 border border-border/50 flex items-center justify-center">
-                            <feature.icon className="w-24 h-24 text-primary/30" />
-                          </div>
-                        )}
+                      <CardContent className="p-0 overflow-hidden">
+                        <div className="relative aspect-video">
+                          <Image
+                            src={feature.img}
+                            alt={feature.alt}
+                            fill
+                            className="object-cover"
+                            loading="lazy"
+                          />
+                        </div>
                       </CardContent>
                     </Card>
                   </div>
