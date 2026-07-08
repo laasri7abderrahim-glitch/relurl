@@ -166,11 +166,19 @@ export async function GET(req: Request) {
     }
   }
 
+  // Rotate through all URLs each day to avoid submitting the same 200
+  const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000)
+  const batchSize = 200
+  const startIndex = (dayOfYear * batchSize) % urls.length
+  const batch = []
+  for (let i = 0; i < batchSize && i < urls.length; i++) {
+    batch.push(urls[(startIndex + i) % urls.length])
+  }
+
   const results = []
-  const maxSubmit = Math.min(urls.length, 200)
-  for (let i = 0; i < maxSubmit; i++) {
-    const result = await submitUrl(urls[i])
-    results.push({ url: urls[i], ...result })
+  for (let i = 0; i < batch.length; i++) {
+    const result = await submitUrl(batch[i])
+    results.push({ url: batch[i], ...result })
   }
 
   const ok = results.filter((r) => r.ok).length
@@ -178,9 +186,11 @@ export async function GET(req: Request) {
 
   return NextResponse.json({
     totalAvailable: urls.length,
-    submitted: maxSubmit,
+    submitted: batch.length,
     ok,
     fail,
-    note: "Google daily quota is 200 URLs. Run this endpoint daily to index all pages.",
+    batchStart: startIndex,
+    batchEnd: (startIndex + batch.length) % urls.length,
+    note: "Google daily quota is 200 URLs. URLs rotate daily to cover all pages over ~4 days.",
   })
 }
