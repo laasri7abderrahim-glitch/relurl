@@ -122,6 +122,8 @@ export default function SettingsPage() {
   }, [addToast, t])
 
   useEffect(() => {
+    const savedLocale = localStorage.getItem("relurl_locale")
+    if (savedLocale) setLocale(savedLocale)
     fetch("/api/sessions")
       .then((r) => r.json())
       .then((d) => { if (d.data) setSessions(d.data) })
@@ -384,7 +386,7 @@ export default function SettingsPage() {
                 <option key={l.value} value={l.value}>{l.label}</option>
               ))}
             </Select>
-            <Button variant="outline" onClick={() => { addToast("Language preference saved", "success") }}>
+            <Button variant="outline" onClick={() => { localStorage.setItem("relurl_locale", locale); addToast("Language preference saved", "success") }}>
               <Save className="mr-2 h-4 w-4" />
               Save
             </Button>
@@ -462,11 +464,6 @@ export default function SettingsPage() {
                       <p className="text-xs text-dark-100">{s.browser} · {s.ip} · Last active just now</p>
                     </div>
                   </div>
-                  {!s.isCurrent && (
-                    <Button variant="ghost" size="sm" className="text-red-400 hover:text-red-300" onClick={() => handleRevokeSession(String(i))}>
-                      <X className="h-4 w-4" />
-                    </Button>
-                  )}
                 </div>
               ))}
             </div>
@@ -552,7 +549,13 @@ export default function SettingsPage() {
           </DialogHeader>
           <div className="flex flex-col items-center gap-4 py-4">
             {twoFactorEnabled ? (
-              <Button variant="destructive" onClick={() => { setTwoFactorEnabled(false); setShow2faDialog(false); addToast("2FA disabled", "success") }}>
+              <Button variant="destructive" onClick={async () => {
+                try {
+                  const res = await fetch("/api/user/2fa", { method: "DELETE" })
+                  if (res.ok) { setTwoFactorEnabled(false); setShow2faDialog(false); addToast("2FA disabled", "success") }
+                  else addToast("Failed to disable 2FA", "error")
+                } catch { addToast("Failed to disable 2FA", "error") }
+              }}>
                 <X className="mr-2 h-4 w-4" />
                 Disable 2FA
               </Button>
@@ -562,7 +565,13 @@ export default function SettingsPage() {
                   <Shield className="h-16 w-16 text-dark-100" />
                 </div>
                 <p className="text-xs text-dark-100">Setup key: RELU-XXXX-XXXX-XXXX</p>
-                <Button variant="primary" onClick={() => { setTwoFactorEnabled(true); setShow2faDialog(false); addToast("2FA enabled successfully", "success") }}>
+                <Button variant="primary" onClick={async () => {
+                  try {
+                    const res = await fetch("/api/user/2fa", { method: "POST" })
+                    if (res.ok) { setTwoFactorEnabled(true); setShow2faDialog(false); addToast("2FA enabled successfully", "success") }
+                    else addToast("Failed to enable 2FA", "error")
+                  } catch { addToast("Failed to enable 2FA", "error") }
+                }}>
                   <ShieldCheck className="mr-2 h-4 w-4" />
                   Confirm 2FA Setup
                 </Button>

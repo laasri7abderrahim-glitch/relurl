@@ -221,6 +221,10 @@ export default function LinksPage() {
   }, [page, debouncedSearch, statusFilter, dateFilter, sortField, sortDir, tagsFilter, addToast])
 
   useEffect(() => {
+    setSelectedIds(new Set())
+  }, [page, debouncedSearch, statusFilter, dateFilter, sortField, sortDir, tagsFilter])
+
+  useEffect(() => {
     const controller = new AbortController()
     fetch("/api/analytics/clicks-today", { signal: controller.signal })
       .then((res) => res.ok ? res.json() : { clicks: 0 })
@@ -264,6 +268,8 @@ export default function LinksPage() {
     try {
       const res = await fetch(`/api/links/${linkId}`, { method: "DELETE" })
       if (!res.ok) throw new Error("Failed to delete link")
+      setLinks((prev) => prev.filter((l) => l.id !== linkId))
+      setSelectedIds((prev) => { const next = new Set(prev); next.delete(linkId); return next })
       addToast(t('toastDeleted'), "success")
     } catch {
       addToast(t('toastDeleteFailed'), "error")
@@ -307,6 +313,7 @@ export default function LinksPage() {
       })
       if (!res.ok) throw new Error("Failed")
       const json = await res.json()
+      setLinks((prev) => prev.map((l) => ids.includes(l.id) ? { ...l, isActive: action === "activate" } : l))
       addToast(t('bulkSuccess', { count: json.data.count }), "success")
       setSelectedIds(new Set())
       if (wasLastPage) setPage((p) => p - 1)
@@ -330,6 +337,7 @@ export default function LinksPage() {
       })
       if (!res.ok) throw new Error("Failed")
       const json = await res.json()
+      setLinks((prev) => prev.filter((l) => !ids.includes(l.id)))
       addToast(t('bulkSuccess', { count: json.data.count }), "success")
       setSelectedIds(new Set())
       if (wasLastPage) setPage((p) => p - 1)

@@ -91,6 +91,8 @@ function DashboardLayout({
   const [showShortcuts, setShowShortcuts] = useState(false)
   const [showCommandPalette, setShowCommandPalette] = useState(false)
   const [commandQuery, setCommandQuery] = useState("")
+  const [showQuickCreate, setShowQuickCreate] = useState(false)
+  const quickCreateRef = useRef<HTMLDivElement>(null)
   const commandRef = useRef<HTMLInputElement>(null)
 
   const fetchUnreadCount = useCallback(async () => {
@@ -134,6 +136,17 @@ function DashboardLayout({
     }
     if (!showCommandPalette) setCommandQuery("")
   }, [showCommandPalette])
+
+  useEffect(() => {
+    if (!showQuickCreate) return
+    function handleClick(e: MouseEvent) {
+      if (quickCreateRef.current && !quickCreateRef.current.contains(e.target as Node)) {
+        setShowQuickCreate(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClick)
+    return () => document.removeEventListener("mousedown", handleClick)
+  }, [showQuickCreate])
 
   const commandItems = [
     { label: "Create Link", icon: <Plus className="h-4 w-4" />, href: "/dashboard/links/new", shortcut: "C" },
@@ -377,25 +390,20 @@ function DashboardLayout({
             <span className="hidden xl:inline ml-4 text-[10px] border border-dark-100 rounded px-1 py-0.5">⌘K</span>
           </button>
           {/* Quick create dropdown */}
-          <div className="relative">
+          <div ref={quickCreateRef} className="relative">
             <button
               type="button"
-              onClick={() => {
-                const menu = document.getElementById("quick-create-menu")
-                if (menu) menu.classList.toggle("hidden")
-              }}
+              onClick={() => setShowQuickCreate((prev) => !prev)}
               className="flex items-center gap-1.5 rounded-lg bg-accent px-3 py-1.5 text-sm font-medium text-white hover:bg-accent/90 transition-colors"
             >
               <PlusCircle className="h-4 w-4" />
               <span className="hidden lg:inline">Quick Create</span>
             </button>
-            <div
-              id="quick-create-menu"
-              className="absolute right-0 top-full mt-1 z-50 hidden min-w-[200px] rounded-lg border border-dark-100 bg-dark-500 p-1 shadow-xl animate-in fade-in zoom-in-95 duration-150"
-            >
+            {showQuickCreate && (
+            <div className="absolute right-0 top-full mt-1 z-50 min-w-[200px] rounded-lg border border-dark-100 bg-dark-500 p-1 shadow-xl animate-in fade-in zoom-in-95 duration-150">
               <button
                 type="button"
-                onClick={() => { router.push("/dashboard/links/new"); document.getElementById("quick-create-menu")?.classList.add("hidden") }}
+                onClick={() => { setShowQuickCreate(false); router.push("/dashboard/links/new") }}
                 className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm text-dark-50 hover:bg-dark-300 transition-colors"
               >
                 <Plus className="h-4 w-4 text-accent" />
@@ -403,7 +411,7 @@ function DashboardLayout({
               </button>
               <button
                 type="button"
-                onClick={() => { router.push("/dashboard/qrcodes"); document.getElementById("quick-create-menu")?.classList.add("hidden") }}
+                onClick={() => { setShowQuickCreate(false); router.push("/dashboard/qrcodes") }}
                 className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm text-dark-50 hover:bg-dark-300 transition-colors"
               >
                 <QrCode className="h-4 w-4 text-accent" />
@@ -411,7 +419,7 @@ function DashboardLayout({
               </button>
               <button
                 type="button"
-                onClick={() => { router.push("/dashboard/campaigns"); document.getElementById("quick-create-menu")?.classList.add("hidden") }}
+                onClick={() => { setShowQuickCreate(false); router.push("/dashboard/campaigns") }}
                 className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm text-dark-50 hover:bg-dark-300 transition-colors"
               >
                 <FolderKanban className="h-4 w-4 text-accent" />
@@ -419,13 +427,14 @@ function DashboardLayout({
               </button>
               <button
                 type="button"
-                onClick={() => { router.push("/dashboard/bio-pages"); document.getElementById("quick-create-menu")?.classList.add("hidden") }}
+                onClick={() => { setShowQuickCreate(false); router.push("/dashboard/bio-pages/new") }}
                 className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm text-dark-50 hover:bg-dark-300 transition-colors"
               >
                 <UserCircle className="h-4 w-4 text-accent" />
                 New Bio Page
               </button>
             </div>
+            )}
           </div>
           {/* Keyboard shortcuts hint */}
           <button

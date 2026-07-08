@@ -550,7 +550,7 @@ export default function DashboardPage() {
       )}
 
       {/* Top Performing Links */}
-      {!loading && linksData?.links?.length && (
+      {!loading && linksData?.links && linksData.links.length > 0 && (
         <div className="rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg animate-fade-in-up">
           <SectionHeader
             title="Top Performing Links"
