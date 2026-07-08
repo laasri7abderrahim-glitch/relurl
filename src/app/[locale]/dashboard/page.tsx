@@ -8,7 +8,7 @@ import { Link } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { LineChart } from "@/components/ui/chart"
+import { LineChart, PieChart as PieChartComponent, BarChart as BarChartComponent } from "@/components/ui/chart"
 import { StatCard } from "@/components/ui/stat-card"
 import { SectionHeader } from "@/components/ui/section-header"
 import { SkeletonStats, SkeletonCard, SkeletonChart, SkeletonTable, LoadingSpinner } from "@/components/ui/loading"
@@ -29,8 +29,16 @@ import {
   ExternalLink,
   Crown,
   AlertCircle,
+  Globe,
+  Smartphone,
+  Monitor,
+  TrendingUp,
+  Zap,
+  Download,
+  Share2,
+  QrCode,
+  ArrowUpRight,
 } from "lucide-react"
-
 interface ClickByDay {
   date: string
   clicks: number
@@ -322,7 +330,49 @@ export default function DashboardPage() {
         </div>
       )}
 
-      {/* Three-Column Layout */}
+      {/* Quick Actions */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 animate-fade-in-up">
+        <Link href="/dashboard/links/new" className="group flex items-center gap-3 rounded-xl border border-dark-100 bg-dark-500 p-4 hover:border-accent/50 hover:bg-dark-400 transition-all shadow-lg">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent group-hover:bg-accent/20">
+            <Plus className="h-5 w-5" />
+          </div>
+          <div>
+            <p className="text-sm font-medium text-dark-50">Create Link</p>
+            <p className="text-xs text-dark-100">Shorten a URL</p>
+          </div>
+          <ArrowUpRight className="ml-auto h-4 w-4 text-dark-100 opacity-0 group-hover:opacity-100 transition-opacity" />
+        </Link>
+        <Link href="/dashboard/qrcodes" className="group flex items-center gap-3 rounded-xl border border-dark-100 bg-dark-500 p-4 hover:border-accent/50 hover:bg-dark-400 transition-all shadow-lg">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20">
+            <QrCode className="h-5 w-5" />
+          </div>
+          <div>
+            <p className="text-sm font-medium text-dark-50">QR Code</p>
+            <p className="text-xs text-dark-100">Generate instantly</p>
+          </div>
+          <ArrowUpRight className="ml-auto h-4 w-4 text-dark-100 opacity-0 group-hover:opacity-100 transition-opacity" />
+        </Link>
+        <Link href="/dashboard/analytics" className="group flex items-center gap-3 rounded-xl border border-dark-100 bg-dark-500 p-4 hover:border-accent/50 hover:bg-dark-400 transition-all shadow-lg">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-purple-500/10 text-purple-500 group-hover:bg-purple-500/20">
+            <BarChart3 className="h-5 w-5" />
+          </div>
+          <div>
+            <p className="text-sm font-medium text-dark-50">Analytics</p>
+            <p className="text-xs text-dark-100">View reports</p>
+          </div>
+          <ArrowUpRight className="ml-auto h-4 w-4 text-dark-100 opacity-0 group-hover:opacity-100 transition-opacity" />
+        </Link>
+        <Link href="/dashboard/utm-builder" className="group flex items-center gap-3 rounded-xl border border-dark-100 bg-dark-500 p-4 hover:border-accent/50 hover:bg-dark-400 transition-all shadow-lg">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-500/10 text-orange-500 group-hover:bg-orange-500/20">
+            <Share2 className="h-5 w-5" />
+          </div>
+          <div>
+            <p className="text-sm font-medium text-dark-50">UTM Builder</p>
+            <p className="text-xs text-dark-100">Tag your links</p>
+          </div>
+          <ArrowUpRight className="ml-auto h-4 w-4 text-dark-100 opacity-0 group-hover:opacity-100 transition-opacity" />
+        </Link>
+      </div>
       <div className="grid gap-6 lg:grid-cols-3">
         {/* Click Activity Chart */}
         {loading ? (
@@ -416,6 +466,144 @@ export default function DashboardPage() {
           </div>
         )}
       </div>
+
+      {/* Analytics Charts Row */}
+      {!loading && analytics && (
+        <div className="grid gap-6 lg:grid-cols-2 animate-fade-in-up">
+          {/* Top Referrers */}
+          <div className="rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg">
+            <SectionHeader title="Traffic Sources" description="Top referrers" />
+            <div className="mt-4">
+              {analytics.referrers && analytics.referrers.length > 0 ? (
+                <PieChartComponent
+                  data={analytics.referrers.slice(0, 6).map((r) => ({ name: r.source === "direct" ? "Direct" : r.source, value: r.count }))}
+                  showLegend
+                  innerRadius={50}
+                />
+              ) : (
+                <div className="flex h-[300px] items-center justify-center text-sm text-dark-100">No referrer data yet</div>
+              )}
+            </div>
+          </div>
+
+          {/* Device Breakdown */}
+          <div className="rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg">
+            <SectionHeader title="Devices" description="By device type" />
+            <div className="mt-4">
+              {analytics.devices && analytics.devices.length > 0 ? (
+                <BarChartComponent
+                  data={analytics.devices.map((d) => ({ name: d.device === "desktop" ? "Desktop" : d.device === "mobile" ? "Mobile" : d.device === "tablet" ? "Tablet" : d.device, value: d.count }))}
+                  xKey="name"
+                  yKey="value"
+                  color="#14b8a6"
+                />
+              ) : (
+                <div className="flex h-[300px] items-center justify-center text-sm text-dark-100">No device data yet</div>
+              )}
+            </div>
+          </div>
+
+          {/* Top Countries */}
+          <div className="rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg">
+            <SectionHeader title="Top Countries" description="By click location" />
+            <div className="mt-4">
+              {analytics.countries && analytics.countries.length > 0 ? (
+                <div className="space-y-3">
+                  {analytics.countries.slice(0, 8).map((c, i) => (
+                    <div key={c.country} className="flex items-center gap-3">
+                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-dark-300 text-xs font-medium text-dark-50">{i + 1}</span>
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="text-sm text-dark-50">{c.country}</span>
+                          <span className="text-xs text-dark-100">{formatNumber(c.count)} clicks</span>
+                        </div>
+                        <div className="h-1.5 rounded-full bg-dark-300 overflow-hidden">
+                          <div className="h-full rounded-full bg-accent" style={{ width: `${(c.count / Math.max(...analytics.countries.map((x) => x.count))) * 100}%` }} />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex h-[300px] items-center justify-center text-sm text-dark-100">No country data yet</div>
+              )}
+            </div>
+          </div>
+
+          {/* Top Browsers */}
+          <div className="rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg">
+            <SectionHeader title="Browsers" description="By browser type" />
+            <div className="mt-4">
+              {analytics.browsers && analytics.browsers.length > 0 ? (
+                <BarChartComponent
+                  data={analytics.browsers.map((b) => ({ name: b.browser, value: b.count }))}
+                  xKey="name"
+                  yKey="value"
+                  color="#8b5cf6"
+                />
+              ) : (
+                <div className="flex h-[300px] items-center justify-center text-sm text-dark-100">No browser data yet</div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Top Performing Links */}
+      {!loading && linksData?.links?.length && (
+        <div className="rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg animate-fade-in-up">
+          <SectionHeader
+            title="Top Performing Links"
+            description="Sorted by clicks"
+            action={
+              <Link href="/dashboard/links">
+                <Button variant="outline" size="sm">View All</Button>
+              </Link>
+            }
+          />
+          <div className="mt-4">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Rank</TableHead>
+                  <TableHead>Short URL</TableHead>
+                  <TableHead>Clicks</TableHead>
+                  <TableHead>Status</TableHead>
+                  <TableHead>Created</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {[...linksData.links]
+                  .sort((a: LinkItem, b: LinkItem) => b.clicks - a.clicks)
+                  .slice(0, 5)
+                  .map((link: LinkItem, i: number) => (
+                    <TableRow key={link.id}>
+                      <TableCell>
+                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-dark-300 text-xs font-bold text-dark-50">
+                          {i + 1}
+                        </span>
+                      </TableCell>
+                      <TableCell>
+                        <div className="min-w-0">
+                          <p className="truncate font-medium text-dark-50">{link.slug}</p>
+                          <p className="truncate text-xs text-dark-100">{link.url}</p>
+                        </div>
+                      </TableCell>
+                      <TableCell className="text-dark-50 font-medium">{formatNumber(link.clicks)}</TableCell>
+                      <TableCell>
+                        <Badge variant={link.isActive ? "success" : "destructive"}>
+                          {link.isActive ? "Active" : "Inactive"}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-dark-100">{formatDate(link.createdAt, "MMM d")}</TableCell>
+                    </TableRow>
+                  ))}
+              </TableBody>
+            </Table>
+          </div>
+        </div>
+      )}
+
       <AIChat />
     </div>
   )

@@ -41,8 +41,14 @@ import {
   CheckCheck,
   BarChart3,
   ArrowUpDown,
+  ArrowUp,
+  ArrowDown,
   Download,
   Files,
+  Columns,
+  Tags,
+  Eye,
+  EyeOff,
 } from "lucide-react"
 
 interface LinkItem {
@@ -120,6 +126,44 @@ export default function LinksPage() {
 
   const searchTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
 
+  const [sortField, setSortField] = useState("createdAt")
+  const [sortDir, setSortDir] = useState<"asc" | "desc">("desc")
+  const [tagsFilter, setTagsFilter] = useState("all")
+  const [visibleColumns, setVisibleColumns] = useState({
+    select: true,
+    shortUrl: true,
+    originalUrl: true,
+    clicks: true,
+    date: true,
+    status: true,
+    health: true,
+    actions: true,
+  })
+
+  const toggleSort = (field: string) => {
+    if (sortField === field) {
+      setSortDir((prev) => (prev === "asc" ? "desc" : "asc"))
+    } else {
+      setSortField(field)
+      setSortDir("desc")
+    }
+    setPage(1)
+  }
+
+  const columnLabels: Record<string, string> = {
+    shortUrl: "Short URL",
+    originalUrl: "Original URL",
+    clicks: "Clicks",
+    date: "Date",
+    status: "Status",
+    health: "Health",
+  }
+
+  const SortIcon = ({ field }: { field: string }) => {
+    if (sortField !== field) return <ArrowUpDown className="h-3 w-3 text-dark-100" />
+    return sortDir === "asc" ? <ArrowUp className="h-3 w-3 text-accent" /> : <ArrowDown className="h-3 w-3 text-accent" />
+  }
+
   useEffect(() => {
     if (searchTimerRef.current) clearTimeout(searchTimerRef.current)
     searchTimerRef.current = setTimeout(() => {
@@ -149,6 +193,9 @@ export default function LinksPage() {
           const params = new URLSearchParams({ page: String(page), limit: String(ITEMS_PER_PAGE) })
           if (statusFilter !== "all") params.set("status", statusFilter)
           if (dateFilter !== "all") params.set("date", dateFilter)
+          params.set("sort", sortField)
+          params.set("dir", sortDir)
+          if (tagsFilter !== "all") params.set("tags", tagsFilter)
           const res = await fetch(`/api/links?${params}`, { signal: controller.signal })
           if (!res.ok) throw new Error("Failed to fetch links")
           const json = await res.json()
@@ -171,7 +218,7 @@ export default function LinksPage() {
 
     fetchLinks()
     return () => { cancelled = true; controller.abort() }
-  }, [page, debouncedSearch, statusFilter, dateFilter, addToast])
+  }, [page, debouncedSearch, statusFilter, dateFilter, sortField, sortDir, tagsFilter, addToast])
 
   useEffect(() => {
     const controller = new AbortController()
@@ -440,10 +487,38 @@ export default function LinksPage() {
                 <option value="active">{t('filterActive')}</option>
                 <option value="inactive">{t('filterInactive')}</option>
               </Select>
+              <Select
+                value={tagsFilter}
+                onChange={(e) => { setTagsFilter(e.target.value); setPage(1) }}
+                className="w-36"
+              >
+                <option value="all">All Tags</option>
+                <option value="marketing">Marketing</option>
+                <option value="social">Social</option>
+                <option value="campaign">Campaign</option>
+                <option value="product">Product</option>
+                <option value="blog">Blog</option>
+              </Select>
               <Button variant="outline" size="sm" onClick={handleCheckAll} disabled={checkingHealth}>
                 <CheckCheck className="mr-1.5 h-4 w-4" />
                 {checkingHealth ? t('checkingHealth') : t('checkHealth')}
               </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm">
+                    <Columns className="mr-1.5 h-4 w-4" />
+                    Columns
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="min-w-[160px]">
+                  {Object.entries(columnLabels).map(([key, label]) => (
+                    <DropdownMenuItem key={key} onClick={() => setVisibleColumns((prev) => ({ ...prev, [key]: !prev[key as keyof typeof visibleColumns] }))}>
+                      {visibleColumns[key as keyof typeof visibleColumns] ? <Eye className="mr-2 h-4 w-4 text-accent" /> : <EyeOff className="mr-2 h-4 w-4 text-dark-100" />}
+                      {label}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" size="sm">
@@ -506,46 +581,63 @@ export default function LinksPage() {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead className="w-10">
-                        <input
-                          type="checkbox"
-                          checked={links.length > 0 && selectedIds.size === links.length}
-                          onChange={toggleSelectAll}
-                          className="h-4 w-4 rounded border-dark-100 bg-dark-500 text-primary-500 focus:ring-primary-500"
-                        />
-                      </TableHead>
-                      <TableHead>
-                        <span className="inline-flex items-center gap-1">
-                          {t('tableShortUrl')} <ArrowUpDown className="h-3 w-3 text-dark-100" />
-                        </span>
-                      </TableHead>
-                      <TableHead>
-                        <span className="inline-flex items-center gap-1">
-                          {t('tableOriginalUrl')} <ArrowUpDown className="h-3 w-3 text-dark-100" />
-                        </span>
-                      </TableHead>
-                      <TableHead>
-                        <span className="inline-flex items-center gap-1">
-                          {t('tableClicks')} <ArrowUpDown className="h-3 w-3 text-dark-100" />
-                        </span>
-                      </TableHead>
-                      <TableHead className="hidden sm:table-cell">
-                        <span className="inline-flex items-center gap-1">
-                          {t('tableDate')} <ArrowUpDown className="h-3 w-3 text-dark-100" />
-                        </span>
-                      </TableHead>
-                      <TableHead>
-                        <span className="inline-flex items-center gap-1">
-                          {t('tableStatus')} <ArrowUpDown className="h-3 w-3 text-dark-100" />
-                        </span>
-                      </TableHead>
-                      <TableHead className="hidden sm:table-cell">Health</TableHead>
-                      <TableHead className="text-right">{t('tableActions')}</TableHead>
+                      {visibleColumns.select && (
+                        <TableHead className="w-10">
+                          <input
+                            type="checkbox"
+                            checked={links.length > 0 && selectedIds.size === links.length}
+                            onChange={toggleSelectAll}
+                            className="h-4 w-4 rounded border-dark-100 bg-dark-500 text-primary-500 focus:ring-primary-500"
+                          />
+                        </TableHead>
+                      )}
+                      {visibleColumns.shortUrl && (
+                        <TableHead>
+                          <button type="button" onClick={() => toggleSort("slug")} className="inline-flex items-center gap-1 hover:text-dark-50 transition-colors">
+                            {t('tableShortUrl')} <SortIcon field="slug" />
+                          </button>
+                        </TableHead>
+                      )}
+                      {visibleColumns.originalUrl && (
+                        <TableHead>
+                          <button type="button" onClick={() => toggleSort("url")} className="inline-flex items-center gap-1 hover:text-dark-50 transition-colors">
+                            {t('tableOriginalUrl')} <SortIcon field="url" />
+                          </button>
+                        </TableHead>
+                      )}
+                      {visibleColumns.clicks && (
+                        <TableHead>
+                          <button type="button" onClick={() => toggleSort("clicks")} className="inline-flex items-center gap-1 hover:text-dark-50 transition-colors">
+                            {t('tableClicks')} <SortIcon field="clicks" />
+                          </button>
+                        </TableHead>
+                      )}
+                      {visibleColumns.date && (
+                        <TableHead className="hidden sm:table-cell">
+                          <button type="button" onClick={() => toggleSort("createdAt")} className="inline-flex items-center gap-1 hover:text-dark-50 transition-colors">
+                            {t('tableDate')} <SortIcon field="createdAt" />
+                          </button>
+                        </TableHead>
+                      )}
+                      {visibleColumns.status && (
+                        <TableHead>
+                          <button type="button" onClick={() => toggleSort("isActive")} className="inline-flex items-center gap-1 hover:text-dark-50 transition-colors">
+                            {t('tableStatus')} <SortIcon field="isActive" />
+                          </button>
+                        </TableHead>
+                      )}
+                      {visibleColumns.health && (
+                        <TableHead className="hidden sm:table-cell">Health</TableHead>
+                      )}
+                      {visibleColumns.actions && (
+                        <TableHead className="text-right">{t('tableActions')}</TableHead>
+                      )}
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {links.map((link) => (
                       <TableRow key={link.id} className={selectedIds.has(link.id) ? "bg-primary-500/5" : undefined}>
+                        {visibleColumns.select && (
                         <TableCell>
                           <input
                             type="checkbox"
@@ -554,6 +646,8 @@ export default function LinksPage() {
                             className="h-4 w-4 rounded border-dark-100 bg-dark-500 text-primary-500 focus:ring-primary-500"
                           />
                         </TableCell>
+                        )}
+                        {visibleColumns.shortUrl && (
                         <TableCell>
                           <div className="min-w-0 max-w-[160px]">
                             <p className="truncate font-medium text-dark-50">
@@ -573,15 +667,23 @@ export default function LinksPage() {
                             )}
                           </div>
                         </TableCell>
+                        )}
+                        {visibleColumns.originalUrl && (
                         <TableCell>
                           <p className="truncate max-w-[180px] text-dark-100 lg:max-w-[240px]" title={link.url}>
                             {truncate(link.url, 36)}
                           </p>
                         </TableCell>
+                        )}
+                        {visibleColumns.clicks && (
                         <TableCell className="text-dark-50">{formatNumber(link.clicks)}</TableCell>
+                        )}
+                        {visibleColumns.date && (
                         <TableCell className="hidden text-nowrap text-dark-100 sm:table-cell">
                           {formatDate(link.createdAt, "MMM d, yyyy")}
                         </TableCell>
+                        )}
+                        {visibleColumns.status && (
                         <TableCell>
                           <button type="button" onClick={() => handleToggleActive(link)}>
                             <Badge variant={link.isActive ? "success" : "destructive"}>
@@ -589,9 +691,13 @@ export default function LinksPage() {
                             </Badge>
                           </button>
                         </TableCell>
+                        )}
+                        {visibleColumns.health && (
                         <TableCell className="hidden sm:table-cell">
                           {renderHealthBadge(healthMap[link.id]?.status ?? link.healthStatus)}
                         </TableCell>
+                        )}
+                        {visibleColumns.actions && (
                         <TableCell>
                           <div className="flex items-center justify-end gap-1">
                             <button
@@ -650,7 +756,8 @@ export default function LinksPage() {
                             </DropdownMenu>
                           </div>
                         </TableCell>
-                      </TableRow>
+                      )}
+                    </TableRow>
                     ))}
                   </TableBody>
                 </Table>
