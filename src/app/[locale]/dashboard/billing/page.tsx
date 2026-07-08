@@ -1,13 +1,14 @@
 "use client"
 
-import { useState, useEffect, useCallback, useMemo } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
+import { useSearchParams } from "next/navigation"
 import { Link } from "@/i18n/navigation"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { useToast } from "@/components/ui/toast"
-import { formatDate, formatNumber } from "@/lib/utils"
+import { cn, formatDate, formatNumber } from "@/lib/utils"
 import {
   CreditCard,
   Check,
@@ -26,7 +27,6 @@ import {
 import { useTranslations } from "next-intl"
 
 type Plan = "FREE" | "PRO" | "BUSINESS" | "ENTERPRISE"
-type Gateway = "stripe" | "paddle"
 type Interval = "monthly" | "annual"
 
 interface PlanFeature {
@@ -50,9 +50,8 @@ interface SubscriptionData {
   status: string
   currentPeriodEnd: string | null
   currentPeriodStart: string | null
-  stripeCustomerId: string | null
   canceledAt: string | null
-  gateway: Gateway | null
+  gateway: string | null
   paddleCustomerId: string | null
 }
 
@@ -60,12 +59,6 @@ interface BillingData {
   subscription: SubscriptionData | null
   linkCount: number
   clickCount: number
-}
-
-const stripePriceIds: Record<string, string> = {
-  FREE: process.env.NEXT_PUBLIC_STRIPE_PRICE_FREE ?? "",
-  PRO: process.env.NEXT_PUBLIC_STRIPE_PRICE_PRO ?? "",
-  BUSINESS: process.env.NEXT_PUBLIC_STRIPE_PRICE_BUSINESS ?? "",
 }
 
 function getPaddlePriceId(plan: Plan, interval: Interval): string {
@@ -94,13 +87,13 @@ const planLimits: Record<string, { links: number; clicks: number }> = {
   ENTERPRISE: { links: 999999, clicks: 9999999 },
 }
 
-const billingHistory = [
-  { id: "inv_001", date: new Date("2026-06-01"), amount: 2900, status: "paid" as const, pdfUrl: "#" },
-  { id: "inv_002", date: new Date("2026-05-01"), amount: 2900, status: "paid" as const, pdfUrl: "#" },
-  { id: "inv_003", date: new Date("2026-04-01"), amount: 2900, status: "paid" as const, pdfUrl: "#" },
-  { id: "inv_004", date: new Date("2026-03-01"), amount: 2900, status: "paid" as const, pdfUrl: "#" },
-  { id: "inv_005", date: new Date("2026-02-01"), amount: 2900, status: "failed" as const, pdfUrl: "#" },
-]
+interface Invoice {
+  id: string
+  date: Date
+  amount: number
+  status: "paid" | "failed" | "pending"
+  pdfUrl: string
+}
 
 export default function BillingPage() {
   const t = useTranslations("dashboard.billing")
@@ -109,11 +102,14 @@ export default function BillingPage() {
   const [error, setError] = useState<string | null>(null)
   const [upgrading, setUpgrading] = useState<string | null>(null)
   const [managing, setManaging] = useState(false)
-  const [gateway, setGateway] = useState<Gateway>("stripe")
+  const gateway = "paddle"
   const [interval, setInterval] = useState<Interval>("monthly")
   const [paddle, setPaddle] = useState<Awaited<ReturnType<typeof import("@paddle/paddle-js").initializePaddle>> | null>(null)
-  const [paddleLoading, setPaddleLoading] = useState(false)
+  const [invoices, setInvoices] = useState<Invoice[]>([])
+  const [invoicesLoading, setInvoicesLoading] = useState(true)
   const { addToast } = useToast()
+  const searchParams = useSearchParams()
+  const planRef = useRef<HTMLDivElement>(null)
 
   const freeFeatures: string[] = t.raw("planFeatures.free")
   const proFeatures: string[] = t.raw("planFeatures.pro")
@@ -174,6 +170,15 @@ export default function BillingPage() {
     initPaddle()
   }, [])
 
+  useEffect(() => {
+    const plan = searchParams.get("plan")
+    if (plan && planRef.current) {
+      setTimeout(() => {
+        planRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })
+      }, 500)
+    }
+  }, [searchParams])
+
   const fetchSubscription = useCallback(async () => {
     setLoading(true)
     setError(null)
@@ -182,9 +187,6 @@ export default function BillingPage() {
       const json = await res.json()
       if (!res.ok) throw new Error(json.error ?? t("toast.fetchFailed"))
       setData(json)
-      if (json.subscription?.gateway) {
-        setGateway(json.subscription.gateway)
-      }
     } catch (err) {
       setError(err instanceof Error ? err.message : t("toast.genericError"))
     } finally {
@@ -198,32 +200,29 @@ export default function BillingPage() {
 
   const currentPlan: Plan = data?.subscription?.plan ?? "FREE"
 
-  const handleUpgradeStripe = async (planId: Plan) => {
-    const priceId = stripePriceIds[planId]
-    if (!priceId) {
-      addToast(t("toast.pricingNotConfigured"), "error")
-      return
-    }
-    setUpgrading(planId)
+  const fetchInvoices = useCallback(async () => {
     try {
-      const res = await fetch("/api/billing/create-checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ plan: planId, priceId }),
-      })
+      const res = await fetch("/api/billing/invoices")
       const json = await res.json()
-      if (!res.ok) throw new Error(json.error ?? t("toast.upgradeFailed"))
-      if (json.url) {
-        window.location.href = json.url
+      if (res.ok && json.invoices) {
+        setInvoices(json.invoices.map((inv: { id: string; amount: number; currency: string; status: string; pdfUrl: string | null; paidAt: string | null; createdAt: string }) => ({
+          ...inv,
+          date: new Date(inv.paidAt ?? inv.createdAt),
+          status: inv.status.toLowerCase() as "paid" | "failed" | "pending",
+        })))
       }
-    } catch (err) {
-      addToast(err instanceof Error ? err.message : t("toast.upgradeFailed"), "error")
+    } catch {
+      // silently fail
     } finally {
-      setUpgrading(null)
+      setInvoicesLoading(false)
     }
-  }
+  }, [])
 
-  const handleUpgradePaddle = async (planId: Plan) => {
+  useEffect(() => {
+    fetchInvoices()
+  }, [fetchInvoices])
+
+  const handleUpgrade = async (planId: Plan) => {
     const priceId = getPaddlePriceId(planId, interval)
     if (!priceId || !paddle) {
       addToast(t("toast.pricingNotConfigured"), "error")
@@ -236,50 +235,28 @@ export default function BillingPage() {
       userId = session?.user?.id ?? ""
     } catch {}
     setUpgrading(planId)
-    setPaddleLoading(true)
     try {
-      paddle.Checkout.open({
+      await paddle.Checkout.open({
         items: [{ priceId, quantity: 1 }],
         customData: { userId, plan: planId },
         settings: { displayMode: "overlay", theme: "dark" },
       })
+      fetchSubscription()
     } catch (err) {
       addToast(err instanceof Error ? err.message : t("toast.upgradeFailed"), "error")
-      setPaddleLoading(false)
     } finally {
       setUpgrading(null)
-    }
-  }
-
-  const handleUpgrade = async (planId: Plan) => {
-    if (planId === currentPlan && gateway === (data?.subscription?.gateway ?? "stripe")) return
-    if (gateway === "paddle") {
-      await handleUpgradePaddle(planId)
-    } else {
-      await handleUpgradeStripe(planId)
     }
   }
 
   const handleManageSubscription = async () => {
     setManaging(true)
     try {
-      const sub = data?.subscription
-      const subGateway = sub?.gateway ?? gateway
-
-      if (subGateway === "paddle") {
-        const res = await fetch("/api/billing/paddle-portal", { method: "POST" })
-        const json = await res.json()
-        if (!res.ok) throw new Error(json.error ?? t("toast.portalFailed"))
-        if (json.url) {
-          window.location.href = json.url
-        }
-      } else {
-        const res = await fetch("/api/billing/portal", { method: "POST" })
-        const json = await res.json()
-        if (!res.ok) throw new Error(json.error ?? t("toast.portalFailed"))
-        if (json.url) {
-          window.location.href = json.url
-        }
+      const res = await fetch("/api/billing/paddle-portal", { method: "POST" })
+      const json = await res.json()
+      if (!res.ok) throw new Error(json.error ?? t("toast.portalFailed"))
+      if (json.url) {
+        window.location.href = json.url
       }
     } catch (err) {
       addToast(err instanceof Error ? err.message : t("toast.portalFailed"), "error")
@@ -325,7 +302,7 @@ export default function BillingPage() {
   const linkPct = Math.min((linkUsed / limits.links) * 100, 100)
   const clickPct = Math.min((clickUsed / limits.clicks) * 100, 100)
 
-  const hasActiveSubscription = data?.subscription?.stripeCustomerId != null || data?.subscription?.paddleCustomerId != null
+  const hasActiveSubscription = data?.subscription?.paddleCustomerId != null
 
   return (
     <div className="space-y-6">
@@ -356,103 +333,83 @@ export default function BillingPage() {
                   {t("renews", { date: formatDate(new Date(data.subscription.currentPeriodEnd), "MMM d, yyyy") })}
                 </div>
               )}
-              <Badge variant="secondary">
-                {data.subscription.gateway?.toUpperCase() ?? "STRIPE"}
-              </Badge>
+              <Badge variant="secondary">PADDLE</Badge>
             </div>
           </CardContent>
         </Card>
       )}
 
-      <div className="flex flex-wrap items-center gap-3 rounded-lg border border-dark-100 p-3">
-        <div className="flex items-center gap-2">
-          <Database className="h-4 w-4 text-dark-100" />
-          <span className="text-sm text-dark-100">{t("paymentMethod.gatewayLabel")}</span>
-          <div className="flex gap-1 ml-2">
-            <button
-              type="button"
-              onClick={() => setGateway("stripe")}
-              className={`px-3 py-1 text-sm rounded-md transition-colors ${
-                gateway === "stripe"
-                  ? "bg-primary-500 text-white"
-                  : "bg-dark-300 text-dark-100 hover:text-dark-50"
-              }`}
-              disabled={!!data?.subscription?.gateway}
-            >
-              Stripe
-            </button>
-            <button
-              type="button"
-              onClick={() => setGateway("paddle")}
-              className={`px-3 py-1 text-sm rounded-md transition-colors ${
-                gateway === "paddle"
-                  ? "bg-primary-500 text-white"
-                  : "bg-dark-300 text-dark-100 hover:text-dark-50"
-              }`}
-              disabled={!!data?.subscription?.gateway}
-            >
-              Paddle
-            </button>
-          </div>
+      <div className="flex items-center gap-3 rounded-xl border border-dark-100/30 bg-dark-600/50 p-3">
+        <span className="text-sm text-dark-200">{t("billingInterval")}</span>
+        <div className="relative flex rounded-lg bg-dark-700 p-0.5">
+          <div className={cn(
+            "absolute top-0.5 h-[calc(100%-4px)] w-[calc(50%-2px)] rounded-md bg-gradient-to-r from-primary to-accent shadow-lg shadow-primary/20 transition-all duration-300",
+            interval === "annual" ? "translate-x-full" : "translate-x-0"
+          )} />
+          <button
+            type="button"
+            onClick={() => setInterval("monthly")}
+            className="relative px-3 py-1.5 text-sm font-medium rounded-md transition-colors z-10"
+          >
+            <span className={interval === "monthly" ? "text-white" : "text-dark-200 hover:text-dark-50"}>
+              {t("monthly")}
+            </span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setInterval("annual")}
+            className="relative px-3 py-1.5 text-sm font-medium rounded-md transition-colors z-10"
+          >
+            <span className={interval === "annual" ? "text-white" : "text-dark-200 hover:text-dark-50"}>
+              {t("annual")}
+            </span>
+          </button>
         </div>
-        {gateway === "paddle" && (
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-dark-100">{t("billingInterval")}</span>
-            <div className="flex gap-1">
-              <button
-                type="button"
-                onClick={() => setInterval("monthly")}
-                className={`px-3 py-1 text-sm rounded-md transition-colors ${
-                  interval === "monthly"
-                    ? "bg-primary-500 text-white"
-                    : "bg-dark-300 text-dark-100 hover:text-dark-50"
-                }`}
-              >
-                {t("monthly")}
-              </button>
-              <button
-                type="button"
-                onClick={() => setInterval("annual")}
-                className={`px-3 py-1 text-sm rounded-md transition-colors ${
-                  interval === "annual"
-                    ? "bg-primary-500 text-white"
-                    : "bg-dark-300 text-dark-100 hover:text-dark-50"
-                }`}
-              >
-                {t("annual")}
-              </button>
-            </div>
-          </div>
-        )}
       </div>
 
       <div className="grid gap-4 lg:grid-cols-4">
         {plans.map((plan) => {
           const isCurrent = currentPlan === plan.id
           const isUpgrade = planIndex.indexOf(plan.id) > planIndex.indexOf(currentPlan)
-          const canUpgrade = plan.id !== "ENTERPRISE" && plan.id !== "FREE" && (!isCurrent || gateway !== (data?.subscription?.gateway ?? "stripe"))
+          const isTarget = searchParams.get("plan") === plan.id
 
           return (
             <Card
               key={plan.id}
-              className={`relative ${plan.highlighted ? "border-primary-500 ring-1 ring-primary-500" : ""} ${isCurrent ? "ring-2 ring-emerald-500" : ""}`}
+              ref={isTarget ? planRef : undefined}
+              className={cn(
+                "relative scroll-mt-24 flex flex-col transition-all duration-300 hover:translate-y-[-2px]",
+                plan.highlighted
+                  ? "border-primary-500/60 shadow-lg shadow-primary/10"
+                  : "border-dark-100/30 hover:border-dark-100/60",
+                isCurrent && "ring-2 ring-emerald-500/60 shadow-lg shadow-emerald-500/10",
+                isTarget && "ring-2 ring-yellow-400/60 animate-pulse"
+              )}
             >
               {isCurrent && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <Badge variant="success">{t("currentPlanBadge")}</Badge>
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                  <Badge variant="success" className="shadow-lg shadow-emerald-500/20">{t("currentPlanBadge")}</Badge>
                 </div>
               )}
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  {plan.icon}
+                  <div className={cn(
+                    "rounded-lg p-2",
+                    plan.id === "PRO" ? "bg-primary/10" :
+                    plan.id === "BUSINESS" ? "bg-blue-500/10" :
+                    plan.id === "ENTERPRISE" ? "bg-purple-500/10" :
+                    "bg-dark-300"
+                  )}>
+                    {plan.icon}
+                  </div>
                   {plan.highlighted && !isCurrent && (
-                    <Badge variant="secondary">{t("popularBadge")}</Badge>
+                    <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30">{t("popularBadge")}</Badge>
                   )}
                 </div>
-                <CardTitle className="mt-3">{plan.name}</CardTitle>
+                <CardTitle className="mt-3 text-dark-50">{plan.name}</CardTitle>
                 <div className="flex items-baseline gap-1">
                   <span className="text-3xl font-bold text-dark-50">{plan.price}</span>
-                  <span className="text-sm text-dark-100">/{plan.interval}</span>
+                  <span className="text-sm text-dark-200">/{plan.interval}</span>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -474,7 +431,7 @@ export default function BillingPage() {
                   <Button variant="outline" className="w-full" disabled>
                     {t("currentPlanButton")}
                   </Button>
-                ) : plan.id === "ENTERPRISE" && gateway !== "paddle" ? (
+                ) : plan.id === "FREE" ? null : plan.id === "ENTERPRISE" ? (
                   <Link href="/contact">
                     <Button variant="outline" className="w-full">
                       {t("contactSales")}
@@ -485,7 +442,7 @@ export default function BillingPage() {
                     variant={isUpgrade ? "primary" : "outline"}
                     className="w-full"
                     onClick={() => handleUpgrade(plan.id)}
-                    disabled={upgrading === plan.id || (gateway === "paddle" && !paddle && plan.id !== "FREE")}
+                    disabled={upgrading === plan.id || !paddle}
                   >
                     {upgrading === plan.id ? (
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -516,18 +473,12 @@ export default function BillingPage() {
             <div className="flex items-center justify-between rounded-lg border border-dark-100 p-4">
               <div className="flex items-center gap-3">
                 <div className="rounded-lg bg-dark-300 p-2">
-                  {gateway === "paddle" ? (
-                    <Database className="h-5 w-5 text-dark-100" />
-                  ) : (
-                    <CreditCard className="h-5 w-5 text-dark-100" />
-                  )}
+                  <Database className="h-5 w-5 text-dark-100" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-dark-50 capitalize">{gateway}</p>
+                  <p className="text-sm font-medium text-dark-50 capitalize">Paddle</p>
                   <p className="text-xs text-dark-100">
-                    {gateway === "paddle"
-                      ? t("paymentMethod.paddleInfo")
-                      : t("paymentMethod.cardInfo")}
+                    {t("paymentMethod.paddleInfo")}
                   </p>
                 </div>
               </div>
@@ -566,9 +517,12 @@ export default function BillingPage() {
                   {formatNumber(linkUsed)} / {limits.links >= 999999 ? t("unlimited") : formatNumber(limits.links)}
                 </span>
               </div>
-              <div className="h-2 w-full overflow-hidden rounded-full bg-dark-300">
+              <div className="h-2 w-full overflow-hidden rounded-full bg-dark-700">
                 <div
-                  className={`h-full rounded-full transition-all ${linkPct > 80 ? "bg-orange-400" : "bg-primary-500"}`}
+                  className={cn(
+                    "h-full rounded-full transition-all duration-700 ease-out",
+                    linkPct > 80 ? "bg-gradient-to-r from-orange-400 to-red-500" : "bg-gradient-to-r from-primary to-accent"
+                  )}
                   style={{ width: `${linkPct}%` }}
                 />
               </div>
@@ -580,9 +534,12 @@ export default function BillingPage() {
                   {formatNumber(clickUsed)} / {limits.clicks >= 9999999 ? t("unlimited") : formatNumber(limits.clicks)}
                 </span>
               </div>
-              <div className="h-2 w-full overflow-hidden rounded-full bg-dark-300">
+              <div className="h-2 w-full overflow-hidden rounded-full bg-dark-700">
                 <div
-                  className={`h-full rounded-full transition-all ${clickPct > 80 ? "bg-orange-400" : "bg-blue-400"}`}
+                  className={cn(
+                    "h-full rounded-full transition-all duration-700 ease-out",
+                    clickPct > 80 ? "bg-gradient-to-r from-orange-400 to-red-500" : "bg-gradient-to-r from-blue-400 to-purple-500"
+                  )}
                   style={{ width: `${clickPct}%` }}
                 />
               </div>
@@ -602,41 +559,58 @@ export default function BillingPage() {
           </div>
         </CardHeader>
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>{t("billingHistory.date")}</TableHead>
-                <TableHead>{t("billingHistory.amount")}</TableHead>
-                <TableHead>{t("billingHistory.status")}</TableHead>
-                <TableHead className="text-right">{t("billingHistory.invoice")}</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {billingHistory.map((inv) => (
-                <TableRow key={inv.id}>
-                  <TableCell className="text-dark-50 text-nowrap">
-                    {formatDate(inv.date, "MMM d, yyyy")}
-                  </TableCell>
-                  <TableCell className="text-dark-50 font-medium">
-                    ${(inv.amount / 100).toFixed(2)}
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant={inv.status === "paid" ? "success" : "destructive"}>
-                      {inv.status === "paid" ? t("billingHistory.paid") : t("billingHistory.failed")}
-                    </Badge>
-                  </TableCell>
-                  <TableCell className="text-right">
-                    <a href={inv.pdfUrl} target="_blank" rel="noopener noreferrer">
-                      <Button variant="ghost" size="sm">
-                        <Download className="mr-2 h-4 w-4" />
-                        {t("billingHistory.pdf")}
-                      </Button>
-                    </a>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          {invoicesLoading ? (
+            <div className="flex items-center justify-center py-8">
+              <Loader2 className="h-6 w-6 animate-spin text-dark-100" />
+            </div>
+          ) : invoices.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-8 text-center">
+              <FileText className="h-8 w-8 text-dark-100 mb-3" />
+              <p className="text-sm text-dark-100">{t("billingHistory.empty") || "No invoices yet"}</p>
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>{t("billingHistory.date")}</TableHead>
+                    <TableHead>{t("billingHistory.amount")}</TableHead>
+                    <TableHead>{t("billingHistory.status")}</TableHead>
+                    <TableHead className="text-right">{t("billingHistory.invoice")}</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {invoices.map((inv) => (
+                    <TableRow key={inv.id}>
+                      <TableCell className="text-dark-50 text-nowrap">
+                        {formatDate(inv.date, "MMM d, yyyy")}
+                      </TableCell>
+                      <TableCell className="text-dark-50 font-medium">
+                        ${(inv.amount / 100).toFixed(2)}
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant={inv.status === "paid" ? "success" : inv.status === "failed" ? "destructive" : "secondary"}>
+                          {inv.status === "paid" ? t("billingHistory.paid") : inv.status === "failed" ? t("billingHistory.failed") : inv.status}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {inv.pdfUrl ? (
+                          <a href={inv.pdfUrl} target="_blank" rel="noopener noreferrer">
+                            <Button variant="ghost" size="sm">
+                              <Download className="mr-2 h-4 w-4" />
+                              {t("billingHistory.pdf")}
+                            </Button>
+                          </a>
+                        ) : (
+                          <span className="text-xs text-dark-100">—</span>
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>

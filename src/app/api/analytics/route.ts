@@ -107,6 +107,7 @@ export async function GET(req: NextRequest) {
             where: clickWhere,
             select: { timestamp: true, isUnique: true },
             orderBy: { timestamp: "asc" },
+            take: 1000,
           }),
           prisma.linkClick.groupBy({
             by: ["referer"],
@@ -194,7 +195,7 @@ export async function GET(req: NextRequest) {
         })),
         topLink,
       };
-    }, 30);
+    }, 300);
 
     return NextResponse.json(result ? result : {
       clicks: 0,

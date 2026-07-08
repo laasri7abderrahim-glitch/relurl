@@ -15,7 +15,8 @@ import { SkeletonStats, SkeletonCard, SkeletonChart, SkeletonTable, LoadingSpinn
 import { EmptyState } from "@/components/ui/empty-state"
 import { ErrorState } from "@/components/ui/error-state"
 import { UpgradePrompt, PlanBadge, UsageBar } from "@/components/upgrade-prompt"
-import { formatDate, formatNumber } from "@/lib/utils"
+import { cn, formatDate, formatNumber } from "@/lib/utils"
+import { useLiveAnalytics } from "@/hooks/use-live-analytics"
 import { AIChat } from "@/components/dashboard/ai-chat"
 import { ActivityFeed } from "@/components/dashboard/activity-feed"
 import { WeeklyInsights } from "@/components/dashboard/weekly-insights"
@@ -34,16 +35,9 @@ import {
   ExternalLink,
   Crown,
   AlertCircle,
-  Globe,
-  Smartphone,
-  Monitor,
-  TrendingUp,
-  Zap,
-  Download,
   Share2,
   QrCode,
   ArrowUpRight,
-  AlertTriangle,
   ShieldAlert,
 } from "lucide-react"
 interface ClickByDay {
@@ -165,26 +159,7 @@ export default function DashboardPage() {
     }
   }, [status, fetchAllData])
 
-  useEffect(() => {
-    if (!session?.user?.id) return
-
-    const eventSource = new EventSource(`/api/analytics/live?userId=${session.user.id}`)
-
-    eventSource.onmessage = (event) => {
-      const data = JSON.parse(event.data)
-      if (data.type === "click") {
-        fetchAllData()
-      }
-    }
-
-    eventSource.onerror = () => {
-      eventSource.close()
-    }
-
-    return () => {
-      eventSource.close()
-    }
-  }, [session?.user?.id])
+  useLiveAnalytics({ onRefresh: fetchAllData })
 
   function getClicksToday(): number {
     if (!analytics?.clicksByDay?.length) return 0
@@ -249,18 +224,20 @@ export default function DashboardPage() {
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2 animate-fade-in-up">
-          <div className="flex rounded-lg border border-dark-100 bg-dark-500 p-0.5">
+          <div className="relative flex rounded-lg bg-dark-700 p-0.5">
+            <div className={cn(
+              "absolute top-0.5 h-[calc(100%-4px)] w-[calc(33.33%-2px)] rounded-md bg-gradient-to-r from-primary to-accent shadow-lg shadow-primary/20 transition-all duration-300",
+              period === "30d" ? "translate-x-full" : period === "90d" ? "translate-x-[200%]" : "translate-x-0"
+            )} />
             {(["7d", "30d", "90d"] as const).map((p) => (
               <button
                 key={p}
                 onClick={() => setPeriod(p)}
-                className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
-                  period === p
-                    ? "bg-accent text-white shadow-sm"
-                    : "text-dark-100 hover:text-dark-50"
-                }`}
+                className="relative px-3 py-1.5 text-xs font-medium rounded-md transition-colors z-10"
               >
-                {p === "7d" ? "7 days" : p === "30d" ? "30 days" : "90 days"}
+                <span className={period === p ? "text-white" : "text-dark-200 hover:text-dark-50"}>
+                  {p === "7d" ? "7 days" : p === "30d" ? "30 days" : "90 days"}
+                </span>
               </button>
             ))}
           </div>
@@ -298,7 +275,7 @@ export default function DashboardPage() {
 
       {/* Plan Usage Section */}
       {planData && planData.plan === "FREE" && (
-        <div className="rounded-xl border border-[#2FA084]/30 bg-dark-500 p-4 shadow-lg animate-fade-in-up">
+        <div className="rounded-xl border border-[#2FA084]/30 bg-dark-600/50 p-4 shadow-lg animate-fade-in-up">
           <div className="flex items-center gap-2 mb-3">
             <Crown className="h-4 w-4 text-accent" />
             <span className="font-medium text-dark-50">Plan Usage</span>
@@ -352,25 +329,21 @@ export default function DashboardPage() {
             icon={<Link2 className="h-5 w-5" />}
             label="Total Links"
             value={formatNumber(linksData?.total ?? 0)}
-            trend={{ value: 0, positive: true }}
           />
           <StatCard
             icon={<MousePointerClick className="h-5 w-5" />}
             label="Total Clicks"
             value={formatNumber(analytics?.clicks ?? 0)}
-            trend={{ value: 0, positive: true }}
           />
           <StatCard
             icon={<Users className="h-5 w-5" />}
             label="Unique Visitors"
             value={formatNumber(analytics?.uniqueVisitors ?? 0)}
-            trend={{ value: 0, positive: true }}
           />
           <StatCard
             icon={<Activity className="h-5 w-5" />}
             label="Active Links"
             value={formatNumber(activeLinksCount)}
-            trend={{ value: 0, positive: true }}
           />
           <StatCard
             icon={<CalendarDays className="h-5 w-5" />}
@@ -382,45 +355,45 @@ export default function DashboardPage() {
 
       {/* Quick Actions */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 animate-fade-in-up">
-        <Link href="/dashboard/links/new" className="group flex items-center gap-3 rounded-xl border border-dark-100 bg-dark-500 p-4 hover:border-accent/50 hover:bg-dark-400 transition-all shadow-lg">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent group-hover:bg-accent/20">
+        <Link href="/dashboard/links/new" className="group flex items-center gap-3 rounded-xl border border-dark-100/30 bg-dark-600/50 p-4 hover:border-accent/50 hover:bg-dark-500/80 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-accent/20 to-accent/5 text-accent group-hover:from-accent/30 group-hover:to-accent/10 transition-all">
             <Plus className="h-5 w-5" />
           </div>
           <div>
             <p className="text-sm font-medium text-dark-50">Create Link</p>
-            <p className="text-xs text-dark-100">Shorten a URL</p>
+            <p className="text-xs text-dark-200">Shorten a URL</p>
           </div>
-          <ArrowUpRight className="ml-auto h-4 w-4 text-dark-100 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <ArrowUpRight className="ml-auto h-4 w-4 text-dark-200 opacity-0 group-hover:opacity-100 transition-all" />
         </Link>
-        <Link href="/dashboard/qrcodes" className="group flex items-center gap-3 rounded-xl border border-dark-100 bg-dark-500 p-4 hover:border-accent/50 hover:bg-dark-400 transition-all shadow-lg">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20">
+        <Link href="/dashboard/qrcodes" className="group flex items-center gap-3 rounded-xl border border-dark-100/30 bg-dark-600/50 p-4 hover:border-primary/50 hover:bg-dark-500/80 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 text-primary group-hover:from-primary/30 group-hover:to-primary/10 transition-all">
             <QrCode className="h-5 w-5" />
           </div>
           <div>
             <p className="text-sm font-medium text-dark-50">QR Code</p>
-            <p className="text-xs text-dark-100">Generate instantly</p>
+            <p className="text-xs text-dark-200">Generate instantly</p>
           </div>
-          <ArrowUpRight className="ml-auto h-4 w-4 text-dark-100 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <ArrowUpRight className="ml-auto h-4 w-4 text-dark-200 opacity-0 group-hover:opacity-100 transition-all" />
         </Link>
-        <Link href="/dashboard/analytics" className="group flex items-center gap-3 rounded-xl border border-dark-100 bg-dark-500 p-4 hover:border-accent/50 hover:bg-dark-400 transition-all shadow-lg">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-purple-500/10 text-purple-500 group-hover:bg-purple-500/20">
+        <Link href="/dashboard/analytics" className="group flex items-center gap-3 rounded-xl border border-dark-100/30 bg-dark-600/50 p-4 hover:border-purple-500/50 hover:bg-dark-500/80 hover:shadow-lg hover:shadow-purple-500/5 transition-all duration-300">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500/20 to-purple-500/5 text-purple-400 group-hover:from-purple-500/30 group-hover:to-purple-500/10 transition-all">
             <BarChart3 className="h-5 w-5" />
           </div>
           <div>
             <p className="text-sm font-medium text-dark-50">Analytics</p>
-            <p className="text-xs text-dark-100">View reports</p>
+            <p className="text-xs text-dark-200">View reports</p>
           </div>
-          <ArrowUpRight className="ml-auto h-4 w-4 text-dark-100 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <ArrowUpRight className="ml-auto h-4 w-4 text-dark-200 opacity-0 group-hover:opacity-100 transition-all" />
         </Link>
-        <Link href="/dashboard/utm-builder" className="group flex items-center gap-3 rounded-xl border border-dark-100 bg-dark-500 p-4 hover:border-accent/50 hover:bg-dark-400 transition-all shadow-lg">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-500/10 text-orange-500 group-hover:bg-orange-500/20">
+        <Link href="/dashboard/utm-builder" className="group flex items-center gap-3 rounded-xl border border-dark-100/30 bg-dark-600/50 p-4 hover:border-orange-500/50 hover:bg-dark-500/80 hover:shadow-lg hover:shadow-orange-500/5 transition-all duration-300">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500/20 to-orange-500/5 text-orange-400 group-hover:from-orange-500/30 group-hover:to-orange-500/10 transition-all">
             <Share2 className="h-5 w-5" />
           </div>
           <div>
             <p className="text-sm font-medium text-dark-50">UTM Builder</p>
-            <p className="text-xs text-dark-100">Tag your links</p>
+            <p className="text-xs text-dark-200">Tag your links</p>
           </div>
-          <ArrowUpRight className="ml-auto h-4 w-4 text-dark-100 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <ArrowUpRight className="ml-auto h-4 w-4 text-dark-200 opacity-0 group-hover:opacity-100 transition-all" />
         </Link>
       </div>
       {/* Insights & Forecast Row */}
@@ -442,7 +415,7 @@ export default function DashboardPage() {
         {loading ? (
           <SkeletonChart />
         ) : (
-          <div className="lg:col-span-2 rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg animate-fade-in-up">
+          <div className="lg:col-span-2 rounded-xl border border-dark-100/30 bg-dark-600/50 p-6 shadow-lg backdrop-blur-sm animate-fade-in-up">
             <SectionHeader
               title="Click Activity"
               description={`Last ${period === "7d" ? "7" : period === "30d" ? "30" : "90"} days`}
@@ -467,11 +440,11 @@ export default function DashboardPage() {
 
         {/* Recent Links */}
         {loading ? (
-          <div className="lg:col-span-2 rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg">
+            <div className="lg:col-span-2 rounded-xl border border-dark-100/30 bg-dark-600/50 p-6 shadow-lg">
             <SkeletonCard />
           </div>
         ) : (
-          <div className="lg:col-span-2 rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg animate-fade-in-up">
+          <div className="lg:col-span-2 rounded-xl border border-dark-100/30 bg-dark-600/50 p-6 shadow-lg animate-fade-in-up">
             <SectionHeader
               title="Recent Links"
               description="Your last 5 links"
@@ -535,7 +508,7 @@ export default function DashboardPage() {
       {!loading && analytics && (
         <div className="grid gap-6 lg:grid-cols-2 animate-fade-in-up">
           {/* Top Referrers */}
-          <div className="rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg">
+          <div className="rounded-xl border border-dark-100/30 bg-dark-600/50 p-6 shadow-lg">
             <SectionHeader title="Traffic Sources" description="Top referrers" />
             <div className="mt-4">
               {analytics.referrers && analytics.referrers.length > 0 ? (
@@ -551,7 +524,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Device Breakdown */}
-          <div className="rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg">
+          <div className="rounded-xl border border-dark-100/30 bg-dark-600/50 p-6 shadow-lg">
             <SectionHeader title="Devices" description="By device type" />
             <div className="mt-4">
               {analytics.devices && analytics.devices.length > 0 ? (
@@ -568,7 +541,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Top Countries */}
-          <div className="rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg">
+          <div className="rounded-xl border border-dark-100/30 bg-dark-600/50 p-6 shadow-lg">
             <SectionHeader title="Top Countries" description="By click location" />
             <div className="mt-4">
               {analytics.countries && analytics.countries.length > 0 ? (
@@ -595,7 +568,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Top Browsers */}
-          <div className="rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg">
+          <div className="rounded-xl border border-dark-100/30 bg-dark-600/50 p-6 shadow-lg">
             <SectionHeader title="Browsers" description="By browser type" />
             <div className="mt-4">
               {analytics.browsers && analytics.browsers.length > 0 ? (
@@ -612,7 +585,7 @@ export default function DashboardPage() {
           </div>
 
           {/* OS Breakdown */}
-          <div className="rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg">
+          <div className="rounded-xl border border-dark-100/30 bg-dark-600/50 p-6 shadow-lg">
             <SectionHeader title="Operating Systems" description="By OS type" />
             <div className="mt-4">
               {analytics.os && analytics.os.length > 0 ? (
@@ -631,7 +604,7 @@ export default function DashboardPage() {
 
       {/* Top Performing Links */}
       {!loading && linksData?.links && linksData.links.length > 0 && (
-        <div className="rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg animate-fade-in-up">
+        <div className="rounded-xl border border-dark-100/30 bg-dark-600/50 p-6 shadow-lg animate-fade-in-up">
           <SectionHeader
             title="Top Performing Links"
             description="Sorted by clicks"

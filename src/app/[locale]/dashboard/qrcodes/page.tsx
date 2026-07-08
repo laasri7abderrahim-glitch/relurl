@@ -162,15 +162,14 @@ export default function QRCodesPage() {
           <CardContent className="space-y-4">
             <div>
               <Label>Type</Label>
-              <select
+              <Select
                 value={selectedType}
                 onChange={(e) => setSelectedType(e.target.value)}
-                className="w-full rounded-lg border border-dark-100 bg-dark-500 px-3 py-2 text-sm text-dark-50"
               >
                 {types.map((t) => (
                   <option key={t.id} value={t.id}>{t.name} — {t.description}</option>
                 ))}
-              </select>
+              </Select>
             </div>
 
             {currentType?.fields.map((field) => (
@@ -187,15 +186,14 @@ export default function QRCodesPage() {
                     rows={3}
                   />
                 ) : field.type === "select" ? (
-                  <select
+                  <Select
                     value={formData[field.key] || ""}
                     onChange={(e) => updateField(field.key, e.target.value)}
-                    className="w-full rounded-lg border border-dark-100 bg-dark-500 px-3 py-2 text-sm text-dark-50 mt-1"
                   >
                     {field.options?.map((opt) => (
                       <option key={opt} value={opt}>{opt}</option>
                     ))}
-                  </select>
+                  </Select>
                 ) : field.type === "boolean" ? (
                   <div className="flex gap-2 mt-1">
                     <button

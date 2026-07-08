@@ -212,6 +212,7 @@ export default function CampaignDetailPage() {
             <CardTitle className="text-lg">Links ({campaign.links.length})</CardTitle>
           </CardHeader>
           <CardContent className="p-0">
+            <div className="overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow>
@@ -250,6 +251,7 @@ export default function CampaignDetailPage() {
                 ))}
               </TableBody>
             </Table>
+            </div>
           </CardContent>
         </Card>
       )}

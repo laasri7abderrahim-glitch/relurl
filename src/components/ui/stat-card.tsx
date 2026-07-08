@@ -14,11 +14,11 @@ interface StatCardProps {
 
 function StatCard({ label, value, icon, trend, className }: StatCardProps) {
   return (
-    <Card className={cn("", className)}>
+    <Card className={cn("group border-dark-100/30 hover:border-dark-100/60 transition-all duration-300", className)}>
       <CardContent className="p-6">
         <div className="flex items-center justify-between">
-          <p className="text-sm font-medium text-dark-100">{label}</p>
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-500/10 text-primary-500">
+          <p className="text-sm font-medium text-dark-200">{label}</p>
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary/10 to-accent/10 text-accent group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-300">
             {icon}
           </div>
         </div>

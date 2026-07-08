@@ -23,35 +23,10 @@ function getClientIp(req: Request): string | null {
 function getReferer(req: Request): string | null {
   return req.headers.get("referer") ?? req.headers.get("referrer") ?? null;
 }
-
-async function geoLookup(ip: string): Promise<{
-  country: string | null;
-  city: string | null;
-  region: string | null;
-  latitude: number | null;
-  longitude: number | null;
-}> {
-  try {
-    const res = await fetch(`http://ip-api.com/json/${ip}?fields=country,city,regionName,lat,lon`, {
-      signal: AbortSignal.timeout(3000),
-    });
-    if (!res.ok) return { country: null, city: null, region: null, latitude: null, longitude: null };
-    const data = await res.json();
-    return {
-      country: data.country ?? null,
-      city: data.city ?? null,
-      region: data.regionName ?? null,
-      latitude: data.lat ?? null,
-      longitude: data.lon ?? null,
-    };
-  } catch {
-    return { country: null, city: null, region: null, latitude: null, longitude: null };
-  }
-}
-
 export async function trackClick(
   linkId: string,
-  req: Request
+  req: Request,
+  options?: { country?: string | null; userId?: string | null }
 ): Promise<void> {
   const ip = getClientIp(req);
   const userAgent = req.headers.get("user-agent");
@@ -60,7 +35,7 @@ export async function trackClick(
 
   const { browser, os, device } = parseUserAgent(userAgent);
 
-  const geo = ip ? await geoLookup(ip) : { country: null, city: null, region: null, latitude: null, longitude: null };
+  const country = options?.country ?? req.headers.get("x-vercel-ip-country") ?? "Unknown";
 
   const recentClick = ip
     ? await prisma.linkClick.findFirst({
@@ -98,11 +73,11 @@ export async function trackClick(
       userAgent,
       referer,
       language,
-      country: geo.country,
-      city: geo.city,
-      region: geo.region,
-      latitude: geo.latitude,
-      longitude: geo.longitude,
+      country,
+      city: null,
+      region: null,
+      latitude: null,
+      longitude: null,
       browser,
       os,
       device,
@@ -118,12 +93,11 @@ export async function trackClick(
 
   const { broadcastClick } = await import("@/lib/sse")
 
-  const link = await prisma.shortLink.findUnique({ where: { id: linkId }, select: { userId: true } })
-  if (link?.userId) {
-    broadcastClick(link.userId, {
+  if (options?.userId) {
+    broadcastClick(options.userId, {
       linkId,
       timestamp: new Date().toISOString(),
-      country: geo.country ?? undefined,
+      country: country ?? undefined,
       device: device ?? undefined,
       browser: browser ?? undefined,
     })
@@ -149,6 +123,7 @@ export async function getClickStats(
       where,
       select: { timestamp: true, isUnique: true },
       orderBy: { timestamp: "asc" },
+      take: 1000,
     }),
   ]);
 

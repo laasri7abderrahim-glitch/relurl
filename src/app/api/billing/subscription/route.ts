@@ -21,7 +21,6 @@ export async function GET() {
         status: true,
         currentPeriodEnd: true,
         currentPeriodStart: true,
-        stripeCustomerId: true,
         paddleCustomerId: true,
         canceledAt: true,
         gateway: true,

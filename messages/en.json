@@ -504,35 +504,82 @@
     "popularBadge": "Most Popular",
     "free": {
       "name": "Free",
-      "desc": "Perfect for getting started with link shortening.",
-      "features": ["1,000 links/month", "1,000 clicks/month", "Basic analytics", "Standard support", "API access (100 req/hr)"],
+      "desc": "Essential link shortening at no cost.",
+      "features": [
+        "Unlimited short links",
+        "Custom aliases",
+        "Permanent redirects — never expire",
+        "Automatic QR codes for every link",
+        "Link history management",
+        "No credit card required"
+      ],
       "cta": "Get Started"
     },
     "pro": {
       "name": "Pro",
-      "desc": "For professionals who need more power and control.",
-      "features": ["Unlimited links", "100,000 clicks/month", "Detailed analytics", "Custom branded domains", "Priority support", "API access (1,000 req/hr)", "Team seats (5)", "CSV export"],
-      "cta": "Start Free Trial"
+      "desc": "Advanced analytics and branding for professionals.",
+      "features": [
+        "5,000 active short links",
+        "50,000 tracked clicks/month",
+        "Up to 3 custom branded domains",
+        "Detailed analytics dashboard: clicks over time, by referrer, geography, device, browser & OS",
+        "2-year analytics history",
+        "Link tags for organization",
+        "Edit and delete links anytime",
+        "Custom alias support",
+        "QR codes for every link",
+        "API access (1,000 req/hr)",
+        "Priority email support"
+      ],
+      "cta": "Get Started"
     },
     "business": {
       "name": "Business",
-      "desc": "For teams and businesses with advanced needs.",
-      "features": ["Unlimited links", "1,000,000 clicks/month", "Real-time analytics", "Multiple branded domains", "Dedicated support", "API access (10,000 req/hr)", "Team seats (25)", "Advanced integrations"],
-      "cta": "Contact Sales"
+      "desc": "High-volume link management for teams.",
+      "features": [
+        "Unlimited active short links",
+        "1,000,000 tracked clicks/month",
+        "Up to 10 custom branded domains",
+        "Real-time analytics dashboard",
+        "Bulk link shortening",
+        "Full API access (10,000 req/hr)",
+        "CSV export of all data",
+        "Up to 25 team seats",
+        "Link tags and advanced filtering",
+        "Edit and delete links anytime",
+        "Dedicated support"
+      ],
+      "cta": "Get Started"
     },
     "enterprise": {
       "name": "Enterprise",
       "desc": "Custom solutions for large organizations.",
-      "features": ["Everything in Business", "Unlimited clicks", "Custom SLA", "SSO/SAML", "Dedicated account manager", "Custom integrations", "On-premise option", "Unlimited team seats"],
-      "cta": "Contact Us"
+      "features": [
+        "Everything in Business",
+        "Unlimited everything — links, clicks, domains",
+        "Custom SLA with 99.9% uptime guarantee",
+        "SSO/SAML authentication",
+        "Dedicated account manager",
+        "Custom integrations",
+        "On-premise deployment option",
+        "Emergency phone support",
+        "Unlimited team seats",
+        "Custom contract terms"
+      ],
+      "cta": "Contact Sales"
     },
     "faqTitle": "Frequently Asked Questions",
     "faq": [
       { "q": "Can I change my plan later?", "a": "Yes, you can upgrade or downgrade at any time. Changes take effect immediately." },
       { "q": "Is there a free trial?", "a": "Yes, all paid plans come with a 14-day free trial. No credit card required." },
       { "q": "What happens when I exceed my plan limits?", "a": "We'll notify you and optionally auto-upgrade your plan or pause link creation." },
-      { "q": "Can I cancel anytime?", "a": "Yes, you can cancel your subscription at any time. You'll retain access until the end of your billing period." }
-    ]
+      { "q": "Can I cancel anytime?", "a": "Yes, you can cancel your subscription at any time. You'll retain access until the end of your billing period." },
+      { "q": "Can I use my own branded domain?", "a": "Yes, Pro and Business plans allow you to use custom branded domains for your short links. This helps build brand recognition and trust." },
+      { "q": "Do you offer refunds?", "a": "Yes, we offer a full refund within 30 days of purchase if you're not satisfied. No questions asked." }
+    ],
+    "ctaTitle": "Ready to Get Started?",
+    "ctaDesc": "Pick your plan and start shortening links in seconds. No hidden fees. No surprises.",
+    "ctaButton": "Start Free Now"
   },
   "register": {
     "title": "Create Account",

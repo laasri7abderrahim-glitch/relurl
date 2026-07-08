@@ -504,21 +504,81 @@
     "popularBadge": "Le plus populaire",
     "free": {
       "name": "Gratuit",
-      "desc": "Idéal pour commencer avec le raccourcissement de liens.",
-      "features": ["1 000 liens/mois", "1 000 clics/mois", "Analytique de base", "Support standard", "Accès API (100 req/h)"],
+      "desc": "Raccourcissement de liens essentiel, sans frais.",
+      "features": [
+        "Liens courts illimités",
+        "Alias personnalisés",
+        "Redirections permanentes — n'expirent jamais",
+        "QR codes automatiques pour chaque lien",
+        "Historique des liens",
+        "Aucune carte de crédit requise"
+      ],
       "cta": "Commencer"
+    },
+    "pro": {
+      "name": "Pro",
+      "desc": "Analytiques avancées et image de marque pour les professionnels.",
+      "features": [
+        "5 000 liens actifs",
+        "50 000 clics suivis/mois",
+        "Jusqu'à 3 domaines personnalisés",
+        "Tableau de bord détaillé : clics dans le temps, par référent, géographie, appareil, navigateur et OS",
+        "2 ans d'historique analytique",
+        "Étiquettes de liens pour l'organisation",
+        "Modifier et supprimer des liens à tout moment",
+        "Alias personnalisés",
+        "QR codes pour chaque lien",
+        "Accès API (1 000 req/h)",
+        "Support prioritaire par email"
+      ],
+      "cta": "Choisir Pro"
+    },
+    "business": {
+      "name": "Business",
+      "desc": "Gestion de liens à haut volume pour les équipes.",
+      "features": [
+        "Liens actifs illimités",
+        "1 000 000 clics suivis/mois",
+        "Jusqu'à 10 domaines personnalisés",
+        "Analytiques en temps réel",
+        "Raccourcissement en masse",
+        "Accès API complet (10 000 req/h)",
+        "Export CSV de toutes les données",
+        "Jusqu'à 25 sièges d'équipe",
+        "Étiquettes et filtrage avancé",
+        "Modifier et supprimer des liens à tout moment",
+        "Support dédié"
+      ],
+      "cta": "Choisir Business"
+    },
+    "enterprise": {
+      "name": "Entreprise",
+      "desc": "Solutions personnalisées pour les grandes organisations.",
+      "features": [
+        "Tout dans Business",
+        "Illimité — liens, clics, domaines",
+        "SLA personnalisé avec garantie 99,9 % de disponibilité",
+        "Authentification SSO/SAML",
+        "Gestionnaire de compte dédié",
+        "Intégrations personnalisées",
+        "Option de déploiement sur site",
+        "Support téléphonique d'urgence",
+        "Sièges d'équipe illimités",
+        "Conditions contractuelles personnalisées"
+      ],
+      "cta": "Nous contacter"
     },
     "pro": {
       "name": "Pro",
       "desc": "Pour les professionnels qui ont besoin de plus de puissance et de contrôle.",
       "features": ["Liens illimités", "100 000 clics/mois", "Analytique détaillée", "Domaines de marque personnalisés", "Support prioritaire", "Accès API (1 000 req/h)", "5 places d'équipe", "Export CSV"],
-      "cta": "Essai gratuit"
+      "cta": "Choisir Pro"
     },
     "business": {
       "name": "Business",
       "desc": "Pour les équipes et les entreprises ayant des besoins avancés.",
       "features": ["Liens illimités", "1 000 000 clics/mois", "Analytique en temps réel", "Plusieurs domaines de marque", "Support dédié", "Accès API (10 000 req/h)", "25 places d'équipe", "Intégrations avancées"],
-      "cta": "Contacter les ventes"
+      "cta": "Choisir Business"
     },
     "enterprise": {
       "name": "Entreprise",
@@ -531,7 +591,9 @@
       { "q": "Puis-je changer de forfait plus tard ?", "a": "Oui, vous pouvez passer à un forfait supérieur ou inférieur à tout moment. Les modifications prennent effet immédiatement." },
       { "q": "Y a-t-il un essai gratuit ?", "a": "Oui, tous les forfaits payants incluent un essai gratuit de 14 jours. Aucune carte de crédit requise." },
       { "q": "Que se passe-t-il si je dépasse les limites de mon forfait ?", "a": "Nous vous avertirons et pourrons automatiquement mettre à niveau votre forfait ou suspendre la création de liens." },
-      { "q": "Puis-je annuler à tout moment ?", "a": "Oui, vous pouvez annuler votre abonnement à tout moment. Vous conservez l'accès jusqu'à la fin de votre période de facturation." }
+      { "q": "Puis-je annuler à tout moment ?", "a": "Oui, vous pouvez annuler votre abonnement à tout moment. Vous conservez l'accès jusqu'à la fin de votre période de facturation." },
+      { "q": "Puis-je utiliser mon propre domaine de marque ?", "a": "Oui, les forfaits Pro et Business vous permettent d'utiliser des domaines personnalisés pour vos liens courts. Cela renforce la reconnaissance et la confiance en votre marque." },
+      { "q": "Proposez-vous des remboursements ?", "a": "Oui, nous offrons un remboursement complet dans les 30 jours suivant l'achat si vous n'êtes pas satisfait. Aucune question posée." }
     ]
   },
   "register": {

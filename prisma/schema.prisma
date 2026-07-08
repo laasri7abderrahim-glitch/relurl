@@ -163,6 +163,9 @@ model ShortLink {
   qrCodes     QrCode[]
   abTests     ABTest[]
   smartRoutes SmartRoute[]
+
+  @@index([userId])
+  @@index([userId, createdAt])
 }
 
 model LinkClick {
@@ -185,6 +188,15 @@ model LinkClick {
   isSuspicious  Boolean  @default(false)
 
   link ShortLink @relation(fields: [linkId], references: [id], onDelete: Cascade)
+
+  @@index([linkId, timestamp])
+  @@index([linkId, ip, timestamp])
+  @@index([linkId, timestamp, isUnique])
+  @@index([linkId, country])
+  @@index([linkId, browser])
+  @@index([linkId, device])
+  @@index([linkId, os])
+  @@index([linkId, referer])
 }
 
 model ApiKey {
@@ -198,6 +210,8 @@ model ApiKey {
   createdAt   DateTime  @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model Subscription {
@@ -236,6 +250,8 @@ model Payment {
 
   user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   subscription Subscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model Invoice {
@@ -254,6 +270,8 @@ model Invoice {
 
   user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   subscription Subscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model Domain {
@@ -396,6 +414,8 @@ model Notification {
   createdAt DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model AuditLog {
@@ -412,6 +432,8 @@ model AuditLog {
 
   user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
   team Team? @relation(fields: [teamId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
 }
 
 model ReportSchedule {

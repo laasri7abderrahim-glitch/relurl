@@ -11,9 +11,9 @@ import Image from "next/image";
 
 const featureConfig = [
   { icon: Link2, key: "linkShortening", img: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80", alt: "Link shortening interface preview" },
-  { icon: Globe, key: "brandedDomains", img: "https://images.unsplash.com/photo-1504711434969-e33886168d8c?w=600&q=80", alt: "Branded domains and custom links" },
+  { icon: Globe, key: "brandedDomains", img: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80", alt: "Branded domains and custom links" },
   { icon: BarChart3, key: "advancedAnalytics", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80", alt: "Advanced analytics dashboard with charts" },
-  { icon: QrCode, key: "qrCodes", img: "https://images.unsplash.com/photo-1595079676334-5e40e64cecbf?w=600&q=80", alt: "QR code scanning on smartphone" },
+  { icon: QrCode, key: "qrCodes", img: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&q=80", alt: "QR code scanning on smartphone" },
   { icon: Zap, key: "apiPlatform", img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80", alt: "API and developer platform code" },
   { icon: Users, key: "teamCollab", img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80", alt: "Team collaboration and workspace" },
   { icon: Shield, key: "enterpriseSecurity", img: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&q=80", alt: "Enterprise security and data protection" },
@@ -75,7 +75,7 @@ export default function FeaturesPageClient() {
                   className={`flex flex-col ${i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-12 items-center`}
                 >
                   <div className="flex-1">
-                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-6 shadow-lg shadow-primary/10">
                       <feature.icon className="w-7 h-7 text-primary" />
                     </div>
                     <h2 className="text-3xl font-bold mb-4">{feature.title}</h2>
@@ -113,11 +113,11 @@ export default function FeaturesPageClient() {
                 <div className="absolute top-5 left-1/2 -translate-x-1/2 w-40 h-40 bg-accent/20 rounded-full blur-[80px]" />
               </div>
               <div className="relative z-10">
-                <h2 className="text-2xl md:text-3xl font-bold mb-4 text-muted">{t("ctaTitle")}</h2>
-                <p className="text-muted/70 mb-8 max-w-xl mx-auto">{t("ctaDesc")}</p>
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">{t("ctaTitle")}</h2>
+                <p className="text-white/70 mb-8 max-w-xl mx-auto">{t("ctaDesc")}</p>
                 <Link href="/register">
-                  <Button size="lg" className="bg-muted text-foreground hover:bg-muted/90 shadow-xl shadow-muted/20 px-8 font-bold">
-                    {t("ctaButton")} <ArrowRight className="ml-2 w-4 h-4" />
+                  <Button size="lg" className="bg-white text-primary hover:bg-white/90 shadow-xl shadow-black/20 px-8 font-bold">
+                    {t("ctaButton")} <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
               </div>

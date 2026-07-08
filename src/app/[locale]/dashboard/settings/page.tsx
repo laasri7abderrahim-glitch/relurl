@@ -415,6 +415,9 @@ export default function SettingsPage() {
                 </div>
                 <button
                   type="button"
+                  role="switch"
+                  aria-checked={notifPrefs[opt.key]}
+                  aria-label={opt.label}
                   onClick={() => setNotifPrefs((prev) => ({ ...prev, [opt.key]: !prev[opt.key] }))}
                   className={`relative h-6 w-11 rounded-full transition-colors ${
                     notifPrefs[opt.key] ? "bg-accent" : "bg-dark-100"

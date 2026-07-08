@@ -5,6 +5,10 @@ import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { Link } from "@/i18n/navigation"
 import { useTranslations } from "next-intl"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { ExternalLink, Edit3, Eye, Globe, Plus, Loader2 } from "lucide-react"
 
 interface BioPage {
   id: string
@@ -40,7 +44,7 @@ export default function BioPagesPage() {
   if (status === "loading" || loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent"></div>
+        <Loader2 className="h-8 w-8 animate-spin text-accent" />
       </div>
     )
   }
@@ -49,56 +53,59 @@ export default function BioPagesPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">{t("title")}</h1>
-          <p className="text-gray-500">{t("description")}</p>
+          <h1 className="text-2xl font-bold text-dark-50">{t("title")}</h1>
+          <p className="text-sm text-dark-100">{t("description")}</p>
         </div>
-        <Link
-          href="/dashboard/bio-pages/new"
-          className="px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent/90 transition-colors"
-        >
-          {t("createPage")}
+        <Link href="/dashboard/bio-pages/new">
+          <Button size="sm" className="bg-accent hover:bg-accent/90">
+            <Plus className="mr-1 h-4 w-4" />
+            {t("createPage")}
+          </Button>
         </Link>
       </div>
 
       {pages.length === 0 ? (
-        <div className="text-center py-12 bg-white rounded-xl border">
-          <p className="text-gray-500 mb-4">{t("empty.title")}</p>
-          <Link
-            href="/dashboard/bio-pages/new"
-            className="px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent/90"
-          >
-            {t("empty.createFirst")}
-          </Link>
-        </div>
+        <Card>
+          <CardContent className="flex flex-col items-center justify-center py-12">
+            <Globe className="h-10 w-10 text-dark-100 mb-4" />
+            <p className="text-dark-100 mb-4">{t("empty.title")}</p>
+            <Link href="/dashboard/bio-pages/new">
+              <Button variant="primary">{t("empty.createFirst")}</Button>
+            </Link>
+          </CardContent>
+        </Card>
       ) : (
         <div className="grid gap-4">
           {pages.map((page) => (
-            <div key={page.id} className="bg-white rounded-xl border p-4 flex items-center justify-between">
-              <div>
-                <h3 className="font-semibold">{page.title}</h3>
-                <p className="text-sm text-gray-500">relurl.com/b/{page.slug}</p>
-                <div className="flex gap-4 mt-2 text-xs text-gray-400">
-                  <span>{t("linkCount", { count: page.links.length })}</span>
-                  <span>{t("viewCount", { count: page.views })}</span>
-                  <span>{page.isPublic ? t("public") : t("private")}</span>
+            <Card key={page.id}>
+              <CardContent className="p-4 flex items-center justify-between">
+                <div>
+                  <h3 className="font-semibold text-dark-50">{page.title}</h3>
+                  <p className="text-sm text-accent">relurl.com/b/{page.slug}</p>
+                  <div className="flex gap-4 mt-2 text-xs text-dark-100">
+                    <span>{t("linkCount", { count: page.links.length })}</span>
+                    <span>{t("viewCount", { count: page.views })}</span>
+                    <Badge variant={page.isPublic ? "success" : "secondary"}>
+                      {page.isPublic ? t("public") : t("private")}
+                    </Badge>
+                  </div>
                 </div>
-              </div>
-              <div className="flex gap-2">
-                <Link
-                  href={`/b/${page.slug}`}
-                  target="_blank"
-                  className="px-3 py-1 text-sm border rounded hover:bg-gray-50"
-                >
-                  {t("actions.view")}
-                </Link>
-                <Link
-                  href={`/dashboard/bio-pages/${page.id}`}
-                  className="px-3 py-1 text-sm bg-[#1F6F5F] text-white rounded hover:bg-[#2FA084]"
-                >
-                  {t("actions.edit")}
-                </Link>
-              </div>
-            </div>
+                <div className="flex gap-2">
+                  <Link href={`/b/${page.slug}`} target="_blank">
+                    <Button variant="outline" size="sm">
+                      <Eye className="mr-1 h-3 w-3" />
+                      {t("actions.view")}
+                    </Button>
+                  </Link>
+                  <Link href={`/dashboard/bio-pages/${page.id}`}>
+                    <Button variant="primary" size="sm">
+                      <Edit3 className="mr-1 h-3 w-3" />
+                      {t("actions.edit")}
+                    </Button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       )}

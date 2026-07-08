@@ -103,20 +103,9 @@ export async function checkClickLimit(userId: string): Promise<{ allowed: boolea
   currentMonth.setDate(1)
   currentMonth.setHours(0, 0, 0, 0)
 
-  const links = await prisma.shortLink.findMany({
-    where: { userId },
-    select: { id: true },
-  })
-
-  const linkIds = links.map((l) => l.id)
-
-  if (linkIds.length === 0) {
-    return { allowed: true, current: 0, max: limits.maxClicks, plan }
-  }
-
   const count = await prisma.linkClick.count({
     where: {
-      linkId: { in: linkIds },
+      link: { userId },
       timestamp: { gte: currentMonth },
     },
   })

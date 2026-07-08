@@ -84,7 +84,9 @@ export default function RegisterPage() {
         return
       }
 
-      router.push("/dashboard")
+      const params = new URLSearchParams(window.location.search)
+      const plan = params.get("plan")
+      router.push(plan ? "/dashboard/billing" : "/dashboard")
       router.refresh()
     } catch {
       setServerError(t("serverErrorGeneric"))
@@ -94,13 +96,23 @@ export default function RegisterPage() {
 
   async function handleOAuth(provider: string) {
     setLoading(true)
-    await signIn(provider, { callbackUrl: "/dashboard" })
+    const params = new URLSearchParams(window.location.search)
+    const plan = params.get("plan")
+    await signIn(provider, { callbackUrl: plan ? "/dashboard/billing" : "/dashboard" })
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="space-y-1 text-center">
+    <div className="flex min-h-screen items-center justify-center px-4 bg-grid">
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-accent/5 pointer-events-none" />
+      <Card className="relative w-full max-w-md border-dark-300/50 shadow-glow-lg">
+        <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/10 rounded-full blur-[80px] pointer-events-none" />
+        <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-accent/10 rounded-full blur-[80px] pointer-events-none" />
+        <CardHeader className="space-y-1 text-center relative">
+          <div className="mx-auto w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-2 shadow-lg shadow-primary/10">
+            <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+            </svg>
+          </div>
           <CardTitle className="text-2xl font-bold">{t("title")}</CardTitle>
           <p className="text-sm text-dark-100">{t("subtitle")}</p>
         </CardHeader>

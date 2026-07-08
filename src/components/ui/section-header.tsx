@@ -28,11 +28,14 @@ function SectionHeader({
         className
       )}
     >
-      <div>
-        <h2 className="text-lg font-semibold text-dark-50">{title}</h2>
-        {description && (
-          <p className="text-sm text-dark-100">{description}</p>
-        )}
+      <div className="flex items-center gap-3">
+        <div className="hidden sm:block w-1 h-8 rounded-full bg-gradient-to-b from-primary to-accent" />
+        <div>
+          <h2 className="text-lg font-semibold text-dark-50">{title}</h2>
+          {description && (
+            <p className="text-sm text-dark-200">{description}</p>
+          )}
+        </div>
       </div>
       {action && <div className="mt-2 sm:mt-0">{action}</div>}
     </div>

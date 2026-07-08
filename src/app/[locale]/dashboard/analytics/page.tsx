@@ -10,6 +10,7 @@ import { AreaChart, BarChart, PieChart } from "@/components/ui/chart"
 import { StatCard } from "@/components/ui/stat-card"
 import { SectionHeader } from "@/components/ui/section-header"
 import { SkeletonStats, SkeletonChart } from "@/components/ui/loading"
+import { useLiveAnalytics } from "@/hooks/use-live-analytics"
 import { ErrorState } from "@/components/ui/error-state"
 import { EmptyState } from "@/components/ui/empty-state"
 import { formatNumber, cn } from "@/lib/utils"
@@ -145,27 +146,9 @@ export default function AnalyticsPage() {
     return () => { cancelled = true }
   }, [dateRange, customFrom, customTo, retry, compareEnabled])
 
-  useEffect(() => {
-    if (!session?.user?.id) return
-
-    const eventSource = new EventSource(`/api/analytics/live?userId=${session.user.id}`)
-
-    eventSource.onmessage = (event) => {
-      const data = JSON.parse(event.data)
-      if (data.type === "connected") return
-      if (data.type === "click") {
-        setLiveVisitors((c) => c + 1)
-      }
-    }
-
-    eventSource.onerror = () => {
-      eventSource.close()
-    }
-
-    return () => {
-      eventSource.close()
-    }
-  }, [session?.user?.id])
+  useLiveAnalytics({
+    onLiveVisitor: () => setLiveVisitors((c) => c + 1),
+  })
 
   useEffect(() => {
     if (liveVisitors === 0) return
@@ -297,41 +280,43 @@ export default function AnalyticsPage() {
 
   const exportPDF = () => {
     if (!data) return
-    const win = window.open("", "_blank")
-    if (!win) return
     const periodLabel = dateRange === "custom"
       ? `${customFrom} ${t("to")} ${customTo}`
       : dateRangeLabels[dateRange]
-    win.document.write(`
-      <html><head><title>${t("reportTitle")}</title>
-      <style>body{font-family:sans-serif;padding:40px}h1{color:#1F6F5F}table{border-collapse:collapse;width:100%;margin:20px 0}th,td{border:1px solid #ddd;padding:8px;text-align:left}th{background:#1F6F5F;color:white}</style>
-      </head><body>
-      <h1>${t("reportTitle")}</h1>
-      <p>${t("period")}: ${periodLabel}</p>
-      <h2>${t("summary")}</h2>
-      <table><tr><th>${t("metric")}</th><th>${t("value")}</th></tr>
-      <tr><td>${t("totalClicks")}</td><td>${data.clicks}</td></tr>
-      <tr><td>${t("uniqueVisitors")}</td><td>${data.uniqueVisitors}</td></tr>
-      <tr><td>${t("totalLinks")}</td><td>${data.totalLinks}</td></tr></table>
-      <h2>${t("clicksByDay")}</h2>
-      <table><tr><th>${t("date")}</th><th>${t("clicks")}</th></tr>
-      ${data.clicksByDay.map((d) => `<tr><td>${d.date}</td><td>${d.clicks}</td></tr>`).join("")}</table>
-      <h2>${t("topReferrers")}</h2>
-      <table><tr><th>${t("referrer")}</th><th>${t("count")}</th></tr>
-      ${data.referrers.slice(0, 10).map((r) => `<tr><td>${r.referrer}</td><td>${r.count}</td></tr>`).join("")}</table>
-      <h2>${t("topCountries")}</h2>
-      <table><tr><th>${t("country")}</th><th>${t("count")}</th></tr>
-      ${data.countries.slice(0, 10).map((c) => `<tr><td>${c.country}</td><td>${c.count}</td></tr>`).join("")}</table>
-      <h2>${t("browsers")}</h2>
-      <table><tr><th>${t("browser")}</th><th>${t("count")}</th></tr>
-      ${data.browsers.map((b) => `<tr><td>${b.browser}</td><td>${b.count}</td></tr>`).join("")}</table>
-      <h2>${t("devices")}</h2>
-      <table><tr><th>${t("device")}</th><th>${t("count")}</th></tr>
-      ${data.devices.map((d) => `<tr><td>${d.device}</td><td>${d.count}</td></tr>`).join("")}</table>
-      </body></html>
-    `)
-    win.document.close()
-    win.print()
+    const html = `<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>${t("reportTitle")}</title>
+<style>body{font-family:sans-serif;padding:40px;color:#222}h1{color:#1F6F5F}table{border-collapse:collapse;width:100%;margin:20px 0}th,td{border:1px solid #ddd;padding:8px;text-align:left}th{background:#1F6F5F;color:white}</style>
+</head><body>
+<h1>${t("reportTitle")}</h1>
+<p>${t("period")}: ${periodLabel}</p>
+<h2>${t("summary")}</h2>
+<table><tr><th>${t("metric")}</th><th>${t("value")}</th></tr>
+<tr><td>${t("totalClicks")}</td><td>${data.clicks}</td></tr>
+<tr><td>${t("uniqueVisitors")}</td><td>${data.uniqueVisitors}</td></tr>
+<tr><td>${t("totalLinks")}</td><td>${data.totalLinks}</td></tr></table>
+<h2>${t("clicksByDay")}</h2>
+<table><tr><th>${t("date")}</th><th>${t("clicks")}</th></tr>
+${data.clicksByDay.map((d) => `<tr><td>${d.date}</td><td>${d.clicks}</td></tr>`).join("")}</table>
+<h2>${t("topReferrers")}</h2>
+<table><tr><th>${t("referrer")}</th><th>${t("count")}</th></tr>
+${data.referrers.slice(0, 10).map((r) => `<tr><td>${r.referrer}</td><td>${r.count}</td></tr>`).join("")}</table>
+<h2>${t("topCountries")}</h2>
+<table><tr><th>${t("country")}</th><th>${t("count")}</th></tr>
+${data.countries.slice(0, 10).map((c) => `<tr><td>${c.country}</td><td>${c.count}</td></tr>`).join("")}</table>
+<h2>${t("browsers")}</h2>
+<table><tr><th>${t("browser")}</th><th>${t("count")}</th></tr>
+${data.browsers.map((b) => `<tr><td>${b.browser}</td><td>${b.count}</td></tr>`).join("")}</table>
+<h2>${t("devices")}</h2>
+<table><tr><th>${t("device")}</th><th>${t("count")}</th></tr>
+${data.devices.map((d) => `<tr><td>${d.device}</td><td>${d.count}</td></tr>`).join("")}</table>
+</body></html>`
+    const blob = new Blob([html], { type: "text/html" })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement("a")
+    a.href = url
+    a.download = `analytics-report-${dateRange}.html`
+    a.click()
+    URL.revokeObjectURL(url)
   }
 
   return (
@@ -367,8 +352,10 @@ export default function AnalyticsPage() {
               </div>
               <button
                 onClick={() => setCompareEnabled(!compareEnabled)}
+                role="switch"
+                aria-checked={compareEnabled}
                 className={cn(
-                  "flex items-center gap-2 rounded-lg border px-3 py-1.5 text-sm font-medium transition-all",
+                  "flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all",
                   compareEnabled
                     ? "border-primary-500 bg-primary-500/10 text-primary-500"
                     : "border-dark-100 text-dark-100 hover:border-dark-50 hover:text-dark-50",
