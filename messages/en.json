@@ -1005,6 +1005,9 @@
       "title": "Billing",
       "description": "Manage your subscription and payment methods",
       "manageSubscription": "Manage Subscription",
+      "billingInterval": "Billing",
+      "monthly": "Monthly",
+      "annual": "Annual",
       "currentPlan": "Current Plan",
       "renews": "Renews {date}",
       "currentPlanBadge": "Current Plan",
@@ -1023,8 +1026,10 @@
       "paymentMethod": {
         "title": "Payment Method",
         "description": "Manage your payment information",
+        "gatewayLabel": "Gateway",
         "cardInfo": "Visa ending in 4242",
         "cardExpiry": "Expires 12/28",
+        "paddleInfo": "Pay with card, PayPal, or other methods",
         "defaultBadge": "Default",
         "update": "Update Payment Method"
       },

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useMemo } from "react"
 import { Link } from "@/i18n/navigation"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -21,10 +21,13 @@ import {
   Infinity,
   Loader2,
   ExternalLink,
+  Database,
 } from "lucide-react"
 import { useTranslations } from "next-intl"
 
 type Plan = "FREE" | "PRO" | "BUSINESS" | "ENTERPRISE"
+type Gateway = "stripe" | "paddle"
+type Interval = "monthly" | "annual"
 
 interface PlanFeature {
   text: string
@@ -49,6 +52,8 @@ interface SubscriptionData {
   currentPeriodStart: string | null
   stripeCustomerId: string | null
   canceledAt: string | null
+  gateway: Gateway | null
+  paddleCustomerId: string | null
 }
 
 interface BillingData {
@@ -57,10 +62,29 @@ interface BillingData {
   clickCount: number
 }
 
-const priceIds: Record<string, string> = {
+const stripePriceIds: Record<string, string> = {
   FREE: process.env.NEXT_PUBLIC_STRIPE_PRICE_FREE ?? "",
   PRO: process.env.NEXT_PUBLIC_STRIPE_PRICE_PRO ?? "",
   BUSINESS: process.env.NEXT_PUBLIC_STRIPE_PRICE_BUSINESS ?? "",
+}
+
+function getPaddlePriceId(plan: Plan, interval: Interval): string {
+  if (plan === "PRO") {
+    return interval === "annual"
+      ? (process.env.NEXT_PUBLIC_PADDLE_PRICE_PRO_ANNUAL ?? "")
+      : (process.env.NEXT_PUBLIC_PADDLE_PRICE_PRO ?? "")
+  }
+  if (plan === "BUSINESS") {
+    return interval === "annual"
+      ? (process.env.NEXT_PUBLIC_PADDLE_PRICE_BUSINESS_ANNUAL ?? "")
+      : (process.env.NEXT_PUBLIC_PADDLE_PRICE_BUSINESS ?? "")
+  }
+  if (plan === "ENTERPRISE") {
+    return interval === "annual"
+      ? (process.env.NEXT_PUBLIC_PADDLE_PRICE_ENTERPRISE_ANNUAL ?? "")
+      : (process.env.NEXT_PUBLIC_PADDLE_PRICE_ENTERPRISE ?? "")
+  }
+  return ""
 }
 
 const planLimits: Record<string, { links: number; clicks: number }> = {
@@ -85,6 +109,10 @@ export default function BillingPage() {
   const [error, setError] = useState<string | null>(null)
   const [upgrading, setUpgrading] = useState<string | null>(null)
   const [managing, setManaging] = useState(false)
+  const [gateway, setGateway] = useState<Gateway>("stripe")
+  const [interval, setInterval] = useState<Interval>("monthly")
+  const [paddle, setPaddle] = useState<Awaited<ReturnType<typeof import("@paddle/paddle-js").initializePaddle>> | null>(null)
+  const [paddleLoading, setPaddleLoading] = useState(false)
   const { addToast } = useToast()
 
   const freeFeatures: string[] = t.raw("planFeatures.free")
@@ -128,6 +156,24 @@ export default function BillingPage() {
     },
   ]
 
+  useEffect(() => {
+    async function initPaddle() {
+      const clientToken = process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN
+      if (!clientToken) return
+      try {
+        const { initializePaddle } = await import("@paddle/paddle-js")
+        const instance = await initializePaddle({
+          token: clientToken,
+          environment: (process.env.NEXT_PUBLIC_PADDLE_ENV as "sandbox" | "production") ?? "sandbox",
+        })
+        setPaddle(instance)
+      } catch {
+        // Paddle SDK failed to load - Paddle checkout won't be available
+      }
+    }
+    initPaddle()
+  }, [])
+
   const fetchSubscription = useCallback(async () => {
     setLoading(true)
     setError(null)
@@ -136,6 +182,9 @@ export default function BillingPage() {
       const json = await res.json()
       if (!res.ok) throw new Error(json.error ?? t("toast.fetchFailed"))
       setData(json)
+      if (json.subscription?.gateway) {
+        setGateway(json.subscription.gateway)
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : t("toast.genericError"))
     } finally {
@@ -149,9 +198,8 @@ export default function BillingPage() {
 
   const currentPlan: Plan = data?.subscription?.plan ?? "FREE"
 
-  const handleUpgrade = async (planId: Plan) => {
-    if (planId === currentPlan) return
-    const priceId = priceIds[planId]
+  const handleUpgradeStripe = async (planId: Plan) => {
+    const priceId = stripePriceIds[planId]
     if (!priceId) {
       addToast(t("toast.pricingNotConfigured"), "error")
       return
@@ -175,14 +223,63 @@ export default function BillingPage() {
     }
   }
 
+  const handleUpgradePaddle = async (planId: Plan) => {
+    const priceId = getPaddlePriceId(planId, interval)
+    if (!priceId || !paddle) {
+      addToast(t("toast.pricingNotConfigured"), "error")
+      return
+    }
+    let userId = ""
+    try {
+      const sessionRes = await fetch("/api/auth/session")
+      const session = await sessionRes.json()
+      userId = session?.user?.id ?? ""
+    } catch {}
+    setUpgrading(planId)
+    setPaddleLoading(true)
+    try {
+      paddle.Checkout.open({
+        items: [{ priceId, quantity: 1 }],
+        customData: { userId, plan: planId },
+        settings: { displayMode: "overlay", theme: "dark" },
+      })
+    } catch (err) {
+      addToast(err instanceof Error ? err.message : t("toast.upgradeFailed"), "error")
+      setPaddleLoading(false)
+    } finally {
+      setUpgrading(null)
+    }
+  }
+
+  const handleUpgrade = async (planId: Plan) => {
+    if (planId === currentPlan && gateway === (data?.subscription?.gateway ?? "stripe")) return
+    if (gateway === "paddle") {
+      await handleUpgradePaddle(planId)
+    } else {
+      await handleUpgradeStripe(planId)
+    }
+  }
+
   const handleManageSubscription = async () => {
     setManaging(true)
     try {
-      const res = await fetch("/api/billing/portal", { method: "POST" })
-      const json = await res.json()
-      if (!res.ok) throw new Error(json.error ?? t("toast.portalFailed"))
-      if (json.url) {
-        window.location.href = json.url
+      const sub = data?.subscription
+      const subGateway = sub?.gateway ?? gateway
+
+      if (subGateway === "paddle") {
+        const res = await fetch("/api/billing/paddle-portal", { method: "POST" })
+        const json = await res.json()
+        if (!res.ok) throw new Error(json.error ?? t("toast.portalFailed"))
+        if (json.url) {
+          window.location.href = json.url
+        }
+      } else {
+        const res = await fetch("/api/billing/portal", { method: "POST" })
+        const json = await res.json()
+        if (!res.ok) throw new Error(json.error ?? t("toast.portalFailed"))
+        if (json.url) {
+          window.location.href = json.url
+        }
       }
     } catch (err) {
       addToast(err instanceof Error ? err.message : t("toast.portalFailed"), "error")
@@ -228,6 +325,8 @@ export default function BillingPage() {
   const linkPct = Math.min((linkUsed / limits.links) * 100, 100)
   const clickPct = Math.min((clickUsed / limits.clicks) * 100, 100)
 
+  const hasActiveSubscription = data?.subscription?.stripeCustomerId != null || data?.subscription?.paddleCustomerId != null
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -235,7 +334,7 @@ export default function BillingPage() {
           <h1 className="text-2xl font-bold text-dark-50">{t("title")}</h1>
           <p className="mt-1 text-sm text-dark-100">{t("description")}</p>
         </div>
-        {data?.subscription?.stripeCustomerId && (
+        {hasActiveSubscription && (
           <Button variant="outline" onClick={handleManageSubscription} disabled={managing}>
             {managing ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <ExternalLink className="mr-2 h-4 w-4" />}
             {t("manageSubscription")}
@@ -257,15 +356,81 @@ export default function BillingPage() {
                   {t("renews", { date: formatDate(new Date(data.subscription.currentPeriodEnd), "MMM d, yyyy") })}
                 </div>
               )}
+              <Badge variant="secondary">
+                {data.subscription.gateway?.toUpperCase() ?? "STRIPE"}
+              </Badge>
             </div>
           </CardContent>
         </Card>
       )}
 
+      <div className="flex flex-wrap items-center gap-3 rounded-lg border border-dark-100 p-3">
+        <div className="flex items-center gap-2">
+          <Database className="h-4 w-4 text-dark-100" />
+          <span className="text-sm text-dark-100">{t("paymentMethod.gatewayLabel")}</span>
+          <div className="flex gap-1 ml-2">
+            <button
+              type="button"
+              onClick={() => setGateway("stripe")}
+              className={`px-3 py-1 text-sm rounded-md transition-colors ${
+                gateway === "stripe"
+                  ? "bg-primary-500 text-white"
+                  : "bg-dark-300 text-dark-100 hover:text-dark-50"
+              }`}
+              disabled={!!data?.subscription?.gateway}
+            >
+              Stripe
+            </button>
+            <button
+              type="button"
+              onClick={() => setGateway("paddle")}
+              className={`px-3 py-1 text-sm rounded-md transition-colors ${
+                gateway === "paddle"
+                  ? "bg-primary-500 text-white"
+                  : "bg-dark-300 text-dark-100 hover:text-dark-50"
+              }`}
+              disabled={!!data?.subscription?.gateway}
+            >
+              Paddle
+            </button>
+          </div>
+        </div>
+        {gateway === "paddle" && (
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-dark-100">{t("billingInterval")}</span>
+            <div className="flex gap-1">
+              <button
+                type="button"
+                onClick={() => setInterval("monthly")}
+                className={`px-3 py-1 text-sm rounded-md transition-colors ${
+                  interval === "monthly"
+                    ? "bg-primary-500 text-white"
+                    : "bg-dark-300 text-dark-100 hover:text-dark-50"
+                }`}
+              >
+                {t("monthly")}
+              </button>
+              <button
+                type="button"
+                onClick={() => setInterval("annual")}
+                className={`px-3 py-1 text-sm rounded-md transition-colors ${
+                  interval === "annual"
+                    ? "bg-primary-500 text-white"
+                    : "bg-dark-300 text-dark-100 hover:text-dark-50"
+                }`}
+              >
+                {t("annual")}
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+
       <div className="grid gap-4 lg:grid-cols-4">
         {plans.map((plan) => {
           const isCurrent = currentPlan === plan.id
           const isUpgrade = planIndex.indexOf(plan.id) > planIndex.indexOf(currentPlan)
+          const canUpgrade = plan.id !== "ENTERPRISE" && plan.id !== "FREE" && (!isCurrent || gateway !== (data?.subscription?.gateway ?? "stripe"))
 
           return (
             <Card
@@ -309,7 +474,7 @@ export default function BillingPage() {
                   <Button variant="outline" className="w-full" disabled>
                     {t("currentPlanButton")}
                   </Button>
-                ) : plan.id === "ENTERPRISE" ? (
+                ) : plan.id === "ENTERPRISE" && gateway !== "paddle" ? (
                   <Link href="/contact">
                     <Button variant="outline" className="w-full">
                       {t("contactSales")}
@@ -320,7 +485,7 @@ export default function BillingPage() {
                     variant={isUpgrade ? "primary" : "outline"}
                     className="w-full"
                     onClick={() => handleUpgrade(plan.id)}
-                    disabled={upgrading === plan.id}
+                    disabled={upgrading === plan.id || (gateway === "paddle" && !paddle && plan.id !== "FREE")}
                   >
                     {upgrading === plan.id ? (
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -351,19 +516,29 @@ export default function BillingPage() {
             <div className="flex items-center justify-between rounded-lg border border-dark-100 p-4">
               <div className="flex items-center gap-3">
                 <div className="rounded-lg bg-dark-300 p-2">
-                  <CreditCard className="h-5 w-5 text-dark-100" />
+                  {gateway === "paddle" ? (
+                    <Database className="h-5 w-5 text-dark-100" />
+                  ) : (
+                    <CreditCard className="h-5 w-5 text-dark-100" />
+                  )}
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-dark-50">{t("paymentMethod.cardInfo")}</p>
-                  <p className="text-xs text-dark-100">{t("paymentMethod.cardExpiry")}</p>
+                  <p className="text-sm font-medium text-dark-50 capitalize">{gateway}</p>
+                  <p className="text-xs text-dark-100">
+                    {gateway === "paddle"
+                      ? t("paymentMethod.paddleInfo")
+                      : t("paymentMethod.cardInfo")}
+                  </p>
                 </div>
               </div>
               <Badge variant="success">{t("paymentMethod.defaultBadge")}</Badge>
             </div>
-            <Button variant="outline" size="sm" onClick={handleManageSubscription} disabled={managing}>
-              <CreditCard className="mr-2 h-4 w-4" />
-              {t("paymentMethod.update")}
-            </Button>
+            {hasActiveSubscription && (
+              <Button variant="outline" size="sm" onClick={handleManageSubscription} disabled={managing}>
+                <CreditCard className="mr-2 h-4 w-4" />
+                {t("paymentMethod.update")}
+              </Button>
+            )}
           </CardContent>
         </Card>
 

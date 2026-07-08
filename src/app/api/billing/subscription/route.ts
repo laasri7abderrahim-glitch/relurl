@@ -22,7 +22,9 @@ export async function GET() {
         currentPeriodEnd: true,
         currentPeriodStart: true,
         stripeCustomerId: true,
+        paddleCustomerId: true,
         canceledAt: true,
+        gateway: true,
       },
     });
 

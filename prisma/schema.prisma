@@ -206,8 +206,11 @@ model Subscription {
   teamId              String?
   plan                String   @default("FREE")
   status              String   @default("ACTIVE")
+  gateway             String   @default("STRIPE")
   stripeSubscriptionId String?
   stripeCustomerId    String?
+  paddleSubscriptionId String?
+  paddleCustomerId    String?
   currentPeriodStart  DateTime?
   currentPeriodEnd    DateTime?
   canceledAt          DateTime?
@@ -225,6 +228,7 @@ model Payment {
   userId               String
   subscriptionId       String
   stripePaymentIntentId String?
+  paddleTransactionId  String?
   amount               Int
   currency             String   @default("usd")
   status               String   @default("PENDING")
@@ -239,6 +243,7 @@ model Invoice {
   userId            String
   subscriptionId    String
   stripeInvoiceId   String?
+  paddleInvoiceId   String?
   amount            Int
   currency          String   @default("usd")
   status            String   @default("UNPAID")

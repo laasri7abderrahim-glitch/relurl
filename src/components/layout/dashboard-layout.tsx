@@ -31,6 +31,7 @@ import {
   Plus,
   ExternalLink,
   MousePointerClick,
+  Layers,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Avatar } from "@/components/ui/avatar"
@@ -59,6 +60,7 @@ const sidebarItems: SidebarItem[] = [
   { label: "Analytics", icon: <BarChart3 className="h-5 w-5" />, href: "/dashboard/analytics" },
   { label: "QR Codes", icon: <QrCode className="h-5 w-5" />, href: "/dashboard/qrcodes" },
   { label: "UTM Builder", icon: <Wand2 className="h-5 w-5" />, href: "/dashboard/utm-builder" },
+  { label: "Batch Shortener", icon: <Layers className="h-5 w-5" />, href: "/dashboard/tools/batch-shortener" },
   { label: "API Keys", icon: <Key className="h-5 w-5" />, href: "/dashboard/api-keys" },
   { label: "Domains", icon: <Globe className="h-5 w-5" />, href: "/dashboard/domains" },
   { label: "Bio Pages", icon: <UserCircle className="h-5 w-5" />, href: "/dashboard/bio-pages" },
@@ -206,9 +208,26 @@ function DashboardLayout({
         <div className={cn("flex h-16 items-center border-b border-dark-100 px-4", sidebarOpen ? "justify-between" : "justify-center")}>
           {sidebarOpen ? (
             <>
-              <Link href="/dashboard" className="flex items-center gap-2 text-lg font-bold tracking-tight text-dark-50">
-                <span className="text-primary-500">REL</span>
-                <span>URL</span>
+              <Link href="/dashboard" className="flex items-center gap-2">
+                <svg width="28" height="28" viewBox="0 0 100 100">
+                  <defs>
+                    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#6366f1"/>
+                      <stop offset="100%" stop-color="#a855f7"/>
+                    </linearGradient>
+                  </defs>
+                  <rect width="100" height="100" rx="20" fill="url(#logoGrad)"/>
+                  <g fill="white">
+                    <rect x="28" y="18" width="12" height="64" rx="4"/>
+                    <rect x="40" y="18" width="28" height="12" rx="4"/>
+                    <path d="M68 28 C68 48 58 52 40 52 L40 28 Z"/>
+                    <path d="M54 46 L68 82 L58 82 L46 46 Z"/>
+                  </g>
+                </svg>
+                <span className="text-lg font-bold tracking-tight">
+                  <span className="text-primary-500">REL</span>
+                  <span className="text-dark-50">URL</span>
+                </span>
               </Link>
               <button
                 type="button"
@@ -226,7 +245,21 @@ function DashboardLayout({
               className="text-dark-100 hover:text-dark-50"
               aria-label="Expand sidebar"
             >
-              <Menu className="h-5 w-5" />
+              <svg width="24" height="24" viewBox="0 0 100 100">
+                <defs>
+                  <linearGradient id="logoGradSmall" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#6366f1"/>
+                    <stop offset="100%" stop-color="#a855f7"/>
+                  </linearGradient>
+                </defs>
+                <rect width="100" height="100" rx="20" fill="url(#logoGradSmall)"/>
+                <g fill="white">
+                  <rect x="28" y="18" width="12" height="64" rx="4"/>
+                  <rect x="40" y="18" width="28" height="12" rx="4"/>
+                  <path d="M68 28 C68 48 58 52 40 52 L40 28 Z"/>
+                  <path d="M54 46 L68 82 L58 82 L46 46 Z"/>
+                </g>
+              </svg>
             </button>
           )}
         </div>

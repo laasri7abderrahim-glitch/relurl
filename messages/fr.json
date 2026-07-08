@@ -1005,6 +1005,9 @@
       "title": "Facturation",
       "description": "Gérez votre abonnement et vos méthodes de paiement",
       "manageSubscription": "Gérer l'abonnement",
+      "billingInterval": "Facturation",
+      "monthly": "Mensuel",
+      "annual": "Annuel",
       "currentPlan": "Forfait actuel",
       "renews": "Renouvellement le {date}",
       "currentPlanBadge": "Forfait actuel",
@@ -1023,8 +1026,10 @@
       "paymentMethod": {
         "title": "Moyen de paiement",
         "description": "Gérez vos informations de paiement",
+        "gatewayLabel": "Passerelle",
         "cardInfo": "Visa se terminant par 4242",
         "cardExpiry": "Expire le 12/28",
+        "paddleInfo": "Payer par carte, PayPal ou autres",
         "defaultBadge": "Par défaut",
         "update": "Mettre à jour le moyen de paiement"
       },

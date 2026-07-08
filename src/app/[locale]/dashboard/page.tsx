@@ -19,11 +19,16 @@ import { formatDate, formatNumber } from "@/lib/utils"
 import { AIChat } from "@/components/dashboard/ai-chat"
 import { ActivityFeed } from "@/components/dashboard/activity-feed"
 import { WeeklyInsights } from "@/components/dashboard/weekly-insights"
+import ClickForecast from "@/components/dashboard/click-forecast"
+import GoalTracker from "@/components/dashboard/goal-tracker"
+import QuickCompare from "@/components/dashboard/quick-compare"
+import HealthOverview from "@/components/dashboard/health-overview"
 import {
   Link2,
   MousePointerClick,
   Activity,
   CalendarDays,
+  Users,
   Plus,
   BarChart3,
   ExternalLink,
@@ -38,6 +43,8 @@ import {
   Share2,
   QrCode,
   ArrowUpRight,
+  AlertTriangle,
+  ShieldAlert,
 } from "lucide-react"
 interface ClickByDay {
   date: string
@@ -55,6 +62,14 @@ interface AnalyticsData {
   devices: { device: string; count: number }[]
   os: { os: string; count: number }[]
   topLink: { url: string; slug: string; clicks: number } | null
+  suspiciousClicks?: number
+}
+
+interface HealthStats {
+  total: number
+  healthy: number
+  unhealthy: number
+  lastChecked: string
 }
 
 interface LinkItem {
@@ -92,8 +107,10 @@ export default function DashboardPage() {
   const [linksData, setLinksData] = useState<LinkResponse | null>(null)
   const [activeLinksCount, setActiveLinksCount] = useState<number>(0)
   const [planData, setPlanData] = useState<PlanData | null>(null)
+  const [period, setPeriod] = useState<"7d" | "30d" | "90d">("7d")
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [healthStats, setHealthStats] = useState<HealthStats | null>(null)
 
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -106,12 +123,13 @@ export default function DashboardPage() {
     setError(null)
 
     Promise.all([
-      fetch("/api/analytics?period=7d"),
+      fetch(`/api/analytics?period=${period}`),
       fetch("/api/links?limit=5"),
       fetch("/api/links?limit=1&isActive=true"),
       fetch("/api/user/plan"),
+      fetch("/api/links/health-check/batch").then((r) => r.ok ? r.json().then((d) => d.stats) : null).catch(() => null),
     ])
-      .then(async ([analyticsRes, linksRes, activeLinksRes, planRes]) => {
+      .then(async ([analyticsRes, linksRes, activeLinksRes, planRes, health]) => {
         if (!analyticsRes.ok || !linksRes.ok || !activeLinksRes.ok) {
           throw new Error("Failed to fetch dashboard data")
         }
@@ -127,6 +145,7 @@ export default function DashboardPage() {
         setAnalytics(analyticsJson)
         setLinksData(linksJson.data)
         setActiveLinksCount(activeLinksJson.data.total)
+        if (health) setHealthStats(health)
         if (planRes.ok) {
           const planJson = await planRes.json()
           setPlanData(planJson)
@@ -138,7 +157,7 @@ export default function DashboardPage() {
       .finally(() => {
         setLoading(false)
       })
-  }, [])
+  }, [period])
 
   useEffect(() => {
     if (status === "authenticated") {
@@ -229,7 +248,22 @@ export default function DashboardPage() {
             Here&apos;s what&apos;s happening with your links today.
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-3 animate-fade-in-up">
+        <div className="flex flex-wrap items-center gap-2 animate-fade-in-up">
+          <div className="flex rounded-lg border border-dark-100 bg-dark-500 p-0.5">
+            {(["7d", "30d", "90d"] as const).map((p) => (
+              <button
+                key={p}
+                onClick={() => setPeriod(p)}
+                className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
+                  period === p
+                    ? "bg-accent text-white shadow-sm"
+                    : "text-dark-100 hover:text-dark-50"
+                }`}
+              >
+                {p === "7d" ? "7 days" : p === "30d" ? "30 days" : "90 days"}
+              </button>
+            ))}
+          </div>
           {planData && (
             <PlanBadge plan={planData.plan} />
           )}
@@ -299,11 +333,21 @@ export default function DashboardPage() {
         </div>
       )}
 
+      {/* Suspicious Activity Alert */}
+      {!loading && analytics?.suspiciousClicks && analytics.suspiciousClicks > 0 && (
+        <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-400 flex items-center gap-2 animate-fade-in-up">
+          <ShieldAlert className="h-4 w-4 shrink-0" />
+          <span>{analytics.suspiciousClicks} suspicious click{analytics.suspiciousClicks > 1 ? "s" : ""} detected.{" "}
+            <Link href="/dashboard/analytics" className="underline hover:text-amber-300">View details</Link>
+          </span>
+        </div>
+      )}
+
       {/* KPI Cards */}
       {loading ? (
         <SkeletonStats />
       ) : (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 animate-fade-in-up">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5 animate-fade-in-up">
           <StatCard
             icon={<Link2 className="h-5 w-5" />}
             label="Total Links"
@@ -314,6 +358,12 @@ export default function DashboardPage() {
             icon={<MousePointerClick className="h-5 w-5" />}
             label="Total Clicks"
             value={formatNumber(analytics?.clicks ?? 0)}
+            trend={{ value: 0, positive: true }}
+          />
+          <StatCard
+            icon={<Users className="h-5 w-5" />}
+            label="Unique Visitors"
+            value={formatNumber(analytics?.uniqueVisitors ?? 0)}
             trend={{ value: 0, positive: true }}
           />
           <StatCard
@@ -373,6 +423,20 @@ export default function DashboardPage() {
           <ArrowUpRight className="ml-auto h-4 w-4 text-dark-100 opacity-0 group-hover:opacity-100 transition-opacity" />
         </Link>
       </div>
+      {/* Insights & Forecast Row */}
+      {!loading && analytics && (
+        <div className="grid gap-6 lg:grid-cols-3 animate-fade-in-up">
+          <div className="lg:col-span-2">
+            <ClickForecast clicksByDay={analytics.clicksByDay} />
+          </div>
+          <div className="space-y-4">
+            <GoalTracker clicksByDay={analytics.clicksByDay} />
+            <QuickCompare clicksByDay={analytics.clicksByDay} />
+            <HealthOverview stats={healthStats} />
+          </div>
+        </div>
+      )}
+
       <div className="grid gap-6 lg:grid-cols-3">
         {/* Click Activity Chart */}
         {loading ? (
@@ -381,7 +445,7 @@ export default function DashboardPage() {
           <div className="lg:col-span-2 rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg animate-fade-in-up">
             <SectionHeader
               title="Click Activity"
-              description="Last 7 days"
+              description={`Last ${period === "7d" ? "7" : period === "30d" ? "30" : "90"} days`}
             />
             <div className="mt-4">
               {chartData.length > 0 ? (
@@ -543,6 +607,22 @@ export default function DashboardPage() {
                 />
               ) : (
                 <div className="flex h-[300px] items-center justify-center text-sm text-dark-100">No browser data yet</div>
+              )}
+            </div>
+          </div>
+
+          {/* OS Breakdown */}
+          <div className="rounded-xl border border-dark-100 bg-dark-500 p-6 shadow-lg">
+            <SectionHeader title="Operating Systems" description="By OS type" />
+            <div className="mt-4">
+              {analytics.os && analytics.os.length > 0 ? (
+                <PieChartComponent
+                  data={analytics.os.slice(0, 6).map((o) => ({ name: o.os, value: o.count }))}
+                  showLegend
+                  innerRadius={50}
+                />
+              ) : (
+                <div className="flex h-[300px] items-center justify-center text-sm text-dark-100">No OS data yet</div>
               )}
             </div>
           </div>
