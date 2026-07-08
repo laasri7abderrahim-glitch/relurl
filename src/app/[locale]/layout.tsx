@@ -23,7 +23,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     description: t("siteDescription"),
     alternates: {
-      canonical: `https://relurl.com/${locale}`,
       languages: {
         en: "https://relurl.com/en",
         fr: "https://relurl.com/fr",
