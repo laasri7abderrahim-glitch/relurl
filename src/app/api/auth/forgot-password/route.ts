@@ -36,7 +36,8 @@ export async function POST(request: Request) {
         },
       })
 
-      const resetUrl = `${process.env.NEXT_PUBLIC_APP_URL}/reset-password?token=${token}`
+      const appUrl = process.env.APP_URL || "https://relurl.com"
+      const resetUrl = `${appUrl}/reset-password?token=${token}`
 
       try {
         await sendPasswordReset(email, token)

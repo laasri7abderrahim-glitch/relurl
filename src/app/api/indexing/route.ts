@@ -115,6 +115,7 @@ const staticPaths = [
   "/shorten-shopify-link", "/shorten-medium-link", "/shorten-notion-link",
   "/shorten-figma-link", "/shorten-calendly-link", "/shorten-patreon-link",
   "/shorten-etsy-link", "/shorten-airbnb-link", "/shorten-substack-link",
+  "/instagram-link-generator", "/whatsapp-link-generator", "/telegram-link-generator",
   "/signal-link-generator", "/wechat-link-generator", "/slack-link-generator",
   "/tiktok-bio-link-generator", "/youtube-link-generator", "/facebook-url-generator",
   "/linkedin-url-generator", "/pinterest-link-generator", "/snapchat-link-generator",
@@ -152,7 +153,7 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://relurl.com"
+  const baseUrl = "https://relurl.com"
   const locales = ["en", "fr"]
   const slugs = getAllSlugs()
 

@@ -92,6 +92,28 @@ function landingPages(priority = 0.85): MetadataRoute.Sitemap {
     "/shorten-google-drive-link",
     "/shorten-google-docs-link",
     "/shorten-dropbox-link",
+    "/shorten-spotify-link",
+    "/shorten-amazon-link",
+    "/shorten-shopify-link",
+    "/shorten-medium-link",
+    "/shorten-notion-link",
+    "/shorten-figma-link",
+    "/shorten-calendly-link",
+    "/shorten-patreon-link",
+    "/shorten-etsy-link",
+    "/shorten-airbnb-link",
+    "/shorten-substack-link",
+    "/url-shortener-no-signup",
+    "/url-shortener-without-signup",
+    "/url-shortener-for-business",
+    "/url-shortener-for-marketers",
+    "/url-shortener-for-social-media",
+    "/url-shortener-in-india",
+    "/url-shortener-in-uk",
+    "/url-shortener-in-canada",
+    "/url-shortener-with-qr-codes",
+    "/url-shortener-with-analytics",
+    "/url-shortener-no-ads",
   ]
   return paths.flatMap((p) => localizedUrls(p, priority))
 }
@@ -101,6 +123,9 @@ function socialPages(priority = 0.8): MetadataRoute.Sitemap {
     "/instagram-link-generator",
     "/whatsapp-link-generator",
     "/telegram-link-generator",
+    "/signal-link-generator",
+    "/wechat-link-generator",
+    "/slack-link-generator",
     "/tiktok-bio-link-generator",
     "/youtube-link-generator",
     "/facebook-url-generator",
@@ -170,6 +195,8 @@ function comparisonPages(priority = 0.8): MetadataRoute.Sitemap {
     "/rebrandly-alternative",
     "/short-io-alternative",
     "/best-url-shortener",
+    "/relurl-vs-tinyurl",
+    "/relurl-vs-bitly",
   ]
   return paths.flatMap((p) => localizedUrls(p, priority))
 }
@@ -182,6 +209,8 @@ function guidePages(priority = 0.8): MetadataRoute.Sitemap {
     "/how-to-create-qr-codes",
     "/how-to-create-branded-links",
     "/how-to-use-utm-parameters",
+    "/how-to-create-qr-codes-for-business",
+    "/how-to-make-money-with-url-shortener",
   ]
   return paths.flatMap((p) => localizedUrls(p, priority))
 }

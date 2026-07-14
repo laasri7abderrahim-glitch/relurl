@@ -263,7 +263,7 @@ export default function DashboardPage() {
             </Button>
           </Link>
           {planData?.plan === "FREE" && (
-            <Link href="/pricing">
+            <Link href="/dashboard/billing?plan=PRO">
               <Button size="sm" variant="primary">
                 <Crown className="mr-1 h-4 w-4" />
                 Upgrade

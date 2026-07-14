@@ -104,7 +104,7 @@ export default function PricingPageClient() {
 
   const plans = planConfig.map((p) => ({
     ...p,
-    href: p.authHref || (isLoggedIn ? "#" : p.href),
+    href: p.key === "free" && isLoggedIn ? "/dashboard/billing" : (p.authHref || (isLoggedIn ? "#" : p.href)),
     name: t(p.key + ".name"),
     desc: t(p.key + ".desc"),
     features: tRaw.raw(p.key + ".features") as string[],

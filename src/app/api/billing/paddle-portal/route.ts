@@ -19,7 +19,7 @@ export async function POST() {
       return NextResponse.json({ error: "No Paddle subscription found" }, { status: 400 });
     }
 
-    const origin = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+    const origin = process.env.APP_URL ?? "https://relurl.com";
     const result = await getPaddleCustomerPortalLink(sub.paddleCustomerId);
     const url = result.data.url;
 

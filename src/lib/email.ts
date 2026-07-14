@@ -4,7 +4,8 @@ const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KE
 const from = "noreply@relurl.com";
 
 export async function sendMagicLink(email: string, token: string): Promise<void> {
-  const magicLink = `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/callback/email?token=${token}`;
+  const appUrl = process.env.APP_URL || "https://relurl.com"
+  const magicLink = `${appUrl}/api/auth/callback/email?token=${token}`;
 
   if (!resend) {
     console.log(`[EMAIL] Magic link for ${email}: ${magicLink}`)
@@ -26,7 +27,8 @@ export async function sendMagicLink(email: string, token: string): Promise<void>
 }
 
 export async function sendPasswordReset(email: string, token: string): Promise<void> {
-  const resetLink = `${process.env.NEXT_PUBLIC_APP_URL}/reset-password?token=${token}`;
+  const appUrl = process.env.APP_URL || "https://relurl.com"
+  const resetLink = `${appUrl}/reset-password?token=${token}`;
 
   if (!resend) {
     console.log(`[EMAIL] Password reset for ${email}: ${resetLink}`)
@@ -48,6 +50,7 @@ export async function sendPasswordReset(email: string, token: string): Promise<v
 }
 
 export async function sendWelcome(email: string, name: string): Promise<void> {
+  const appUrl = process.env.APP_URL || "https://relurl.com"
   if (!resend) {
     console.log(`[EMAIL] Welcome email for ${email}`)
     return
@@ -60,7 +63,7 @@ export async function sendWelcome(email: string, name: string): Promise<void> {
     html: `
       <h1>Welcome to RelURL, ${name}!</h1>
       <p>We're excited to have you on board. Start shortening your links and tracking their performance.</p>
-      <a href="${process.env.NEXT_PUBLIC_APP_URL}/dashboard" style="display:inline-block;padding:12px 24px;background:#0068FF;color:white;text-decoration:none;border-radius:6px;">Go to Dashboard</a>
+      <a href="${appUrl}/dashboard" style="display:inline-block;padding:12px 24px;background:#0068FF;color:white;text-decoration:none;border-radius:6px;">Go to Dashboard</a>
     `,
   });
 }
@@ -75,7 +78,8 @@ export async function sendEmail({ to, subject, html }: { to: string; subject: st
 }
 
 export async function sendVerification(email: string, token: string): Promise<void> {
-  const verifyLink = `${process.env.NEXT_PUBLIC_APP_URL}/verify-email?token=${token}`;
+  const appUrl = process.env.APP_URL || "https://relurl.com"
+  const verifyLink = `${appUrl}/verify-email?token=${token}`;
 
   if (!resend) {
     console.log(`[EMAIL] Verification for ${email}: ${verifyLink}`)
