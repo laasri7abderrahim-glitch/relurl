@@ -46,6 +46,7 @@
     },
     "localeSwitcher": {
       "en": "English",
+      "es": "Español",
       "fr": "Français"
     }
   },
@@ -372,32 +373,78 @@
       "title": "Free URL Shortener",
       "subtitle": "100% Free, No Strings Attached",
       "description": "Shorten unlimited URLs for free. No account required. Get clean short links with basic analytics — completely free forever.",
-      "features": ["Unlimited Free Links", "No Account Required", "Basic Click Analytics", "Custom Aliases", "Permanent Links", "No Expiration"],
-      "howItWorks": [
-        {"step": "Paste URL", "desc": "Enter any long URL — no signup needed."},
-        {"step": "Get Short Link", "desc": "Receive your short URL instantly."},
-        {"step": "Share & Track", "desc": "Share your link and monitor clicks in real time."}
+      "features": [
+        "Unlimited Free Links",
+        "No Account Required",
+        "Basic Click Analytics",
+        "Custom Aliases",
+        "Permanent Links",
+        "No Expiration"
       ],
-      "useCases": ["Personal link sharing", "Student projects", "Small business websites", "Blog post link optimization", "Social media sharing", "Quick link shortening"]
+      "howItWorks": [
+        {
+          "step": "Paste URL",
+          "desc": "Enter any long URL — no signup needed."
+        },
+        {
+          "step": "Get Short Link",
+          "desc": "Receive your short URL instantly."
+        },
+        {
+          "step": "Share & Track",
+          "desc": "Share your link and monitor clicks in real time."
+        }
+      ],
+      "useCases": [
+        "Personal link sharing",
+        "Student projects",
+        "Small business websites",
+        "Blog post link optimization",
+        "Social media sharing",
+        "Quick link shortening"
+      ]
     },
     "custom-url-shortener": {
       "title": "Custom URL Shortener",
       "subtitle": "Personalize Your Links",
       "description": "Create memorable, branded short links with custom slugs. Replace random characters with meaningful words that reflect your brand.",
-      "features": ["Custom Slug Selection", "Brandable Link Names", "Descriptive Aliases", "Case-Sensitive Options", "Emoji Support", "Bulk Custom Shortening"],
-      "howItWorks": [
-        {"step": "Paste Your URL", "desc": "Enter the long URL you want to shorten."},
-        {"step": "Choose Custom Slug", "desc": "Pick a memorable word or phrase for your short link."},
-        {"step": "Share Everywhere", "desc": "Use your custom link in emails, social media, and marketing."}
+      "features": [
+        "Custom Slug Selection",
+        "Brandable Link Names",
+        "Descriptive Aliases",
+        "Case-Sensitive Options",
+        "Emoji Support",
+        "Bulk Custom Shortening"
       ],
-      "useCases": ["Brand promotion with memorable links", "Product launch landing pages", "Social media bio links", "Email marketing campaigns", "Print materials and business cards", "Event invitations"]
+      "howItWorks": [
+        {
+          "step": "Paste Your URL",
+          "desc": "Enter the long URL you want to shorten."
+        },
+        {
+          "step": "Choose Custom Slug",
+          "desc": "Pick a memorable word or phrase for your short link."
+        },
+        {
+          "step": "Share Everywhere",
+          "desc": "Use your custom link in emails, social media, and marketing."
+        }
+      ],
+      "useCases": [
+        "Brand promotion with memorable links",
+        "Product launch landing pages",
+        "Social media bio links",
+        "Email marketing campaigns",
+        "Print materials and business cards",
+        "Event invitations"
+      ]
     }
   },
   "features": {
     "metaTitle": "Features - Link Management Tools",
     "metaDescription": "Explore RELURL's powerful features: link shortening, branded domains, advanced analytics, team collaboration, and more.",
     "title": "Everything You Need for Link Management",
-    "subtitle": "From simple link shortening to enterprise-grade analytics and security \u2014 we've got you covered.",
+    "subtitle": "From simple link shortening to enterprise-grade analytics and security — we've got you covered.",
     "linkShortening": {
       "title": "Link Shortening",
       "desc": "Shorten any long URL into a clean, manageable link in seconds. Our engine handles millions of links daily with 99.9% uptime.",
@@ -570,12 +617,30 @@
     },
     "faqTitle": "Frequently Asked Questions",
     "faq": [
-      { "q": "Can I change my plan later?", "a": "Yes, you can upgrade or downgrade at any time. Changes take effect immediately." },
-      { "q": "Is there a free trial?", "a": "Yes, all paid plans come with a 14-day free trial. No credit card required." },
-      { "q": "What happens when I exceed my plan limits?", "a": "We'll notify you and optionally auto-upgrade your plan or pause link creation." },
-      { "q": "Can I cancel anytime?", "a": "Yes, you can cancel your subscription at any time. You'll retain access until the end of your billing period." },
-      { "q": "Can I use my own branded domain?", "a": "Yes, Pro and Business plans allow you to use custom branded domains for your short links. This helps build brand recognition and trust." },
-      { "q": "Do you offer refunds?", "a": "Yes, we offer a full refund within 30 days of purchase if you're not satisfied. No questions asked." }
+      {
+        "q": "Can I change my plan later?",
+        "a": "Yes, you can upgrade or downgrade at any time. Changes take effect immediately."
+      },
+      {
+        "q": "Is there a free trial?",
+        "a": "Yes, all paid plans come with a 14-day free trial. No credit card required."
+      },
+      {
+        "q": "What happens when I exceed my plan limits?",
+        "a": "We'll notify you and optionally auto-upgrade your plan or pause link creation."
+      },
+      {
+        "q": "Can I cancel anytime?",
+        "a": "Yes, you can cancel your subscription at any time. You'll retain access until the end of your billing period."
+      },
+      {
+        "q": "Can I use my own branded domain?",
+        "a": "Yes, Pro and Business plans allow you to use custom branded domains for your short links. This helps build brand recognition and trust."
+      },
+      {
+        "q": "Do you offer refunds?",
+        "a": "Yes, we offer a full refund within 30 days of purchase if you're not satisfied. No questions asked."
+      }
     ],
     "ctaTitle": "Ready to Get Started?",
     "ctaDesc": "Pick your plan and start shortening links in seconds. No hidden fees. No surprises.",
@@ -589,9 +654,9 @@
     "emailLabel": "Email",
     "emailPlaceholder": "name@example.com",
     "passwordLabel": "Password",
-    "passwordPlaceholder": "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022",
+    "passwordPlaceholder": "••••••••",
     "confirmPasswordLabel": "Confirm Password",
-    "confirmPasswordPlaceholder": "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022",
+    "confirmPasswordPlaceholder": "••••••••",
     "submitButton": "Create Account",
     "submittingText": "Creating account...",
     "termsText": "I agree to the",
@@ -631,7 +696,7 @@
     "sidebarEmail": "Email",
     "sidebarEmailValue": "hello@relurl.com",
     "sidebarLocation": "Location",
-    "sidebarLocationValue": "Remote \u2014 Global Team",
+    "sidebarLocationValue": "Remote — Global Team",
     "sidebarPhone": "Phone",
     "sidebarPhoneValue": "+1 (415) 800-1234",
     "sidebarHours": "Hours",
@@ -932,7 +997,15 @@
         "weekly": "Weekly",
         "monthly": "Monthly",
         "dayOfWeek": "Day of Week",
-        "days": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "days": [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
         "dayOfMonth": "Day of Month",
         "monthlyInfo": "Reports will be sent on the {day}{suffix} of each month",
         "ordinalFirst": "st",
@@ -1065,10 +1138,42 @@
       "unlimited": "Unlimited",
       "custom": "Custom",
       "planFeatures": {
-        "free": ["1,000 links", "10,000 clicks/month", "Basic analytics", "1 team member", "Custom domains", "API access", "Priority support"],
-        "pro": ["10,000 links", "100,000 clicks/month", "Advanced analytics", "5 team members", "Custom domains", "API access", "Priority support"],
-        "business": ["100,000 links", "1,000,000 clicks/month", "Advanced analytics + exports", "Unlimited team members", "Custom domains", "API access", "Priority support"],
-        "enterprise": ["Unlimited links", "Unlimited clicks", "Full analytics suite", "Unlimited team members", "Custom domains", "API access + SLA", "Dedicated support"]
+        "free": [
+          "1,000 links",
+          "10,000 clicks/month",
+          "Basic analytics",
+          "1 team member",
+          "Custom domains",
+          "API access",
+          "Priority support"
+        ],
+        "pro": [
+          "10,000 links",
+          "100,000 clicks/month",
+          "Advanced analytics",
+          "5 team members",
+          "Custom domains",
+          "API access",
+          "Priority support"
+        ],
+        "business": [
+          "100,000 links",
+          "1,000,000 clicks/month",
+          "Advanced analytics + exports",
+          "Unlimited team members",
+          "Custom domains",
+          "API access",
+          "Priority support"
+        ],
+        "enterprise": [
+          "Unlimited links",
+          "Unlimited clicks",
+          "Full analytics suite",
+          "Unlimited team members",
+          "Custom domains",
+          "API access + SLA",
+          "Dedicated support"
+        ]
       },
       "paymentMethod": {
         "title": "Payment Method",
@@ -1310,5 +1415,195 @@
     "siteName": "RELURL",
     "siteDescription": "Free URL shortener with analytics, QR codes, and branded links",
     "orgDescription": "RELURL is a free URL shortener service with analytics, QR codes, and branded short links."
+  },
+  "marketplace": {
+    "meta": {
+      "title": "MarocMarket - La première marketplace au Maroc",
+      "description": "Achetez, vendez ou louez sur la première marketplace marocaine. Des milliers d'annonces dans tout le Maroc.",
+      "siteName": "MarocMarket",
+      "keywords": "MarocMarket, marketplace Maroc, acheter Maroc, vendre Maroc, annonces Maroc, petites annonces, immobilier Maroc, voiture Maroc, emploi Maroc"
+    },
+    "nav": {
+      "home": "Accueil",
+      "categories": "Catégories",
+      "createAd": "Déposer une annonce",
+      "profile": "Mon profil",
+      "favorites": "Favoris",
+      "login": "Connexion",
+      "register": "Inscription",
+      "dashboard": "Tableau de bord",
+      "messages": "Messages",
+      "notifications": "Notifications"
+    },
+    "hero": {
+      "title": "La première marketplace au Maroc",
+      "subtitle": "Achetez, vendez ou louez facilement et en toute sécurité. Des milliers d'annonces partout au Maroc.",
+      "searchPlaceholder": "Que cherchez-vous ?",
+      "allCities": "Toutes les villes",
+      "search": "Rechercher",
+      "popularCategories": "Catégories populaires"
+    },
+    "search": {
+      "placeholder": "Rechercher une annonce...",
+      "noResults": "Aucune annonce trouvée",
+      "results": "résultats",
+      "filters": "Filtres",
+      "sort": "Trier par",
+      "price": "Prix",
+      "city": "Ville",
+      "category": "Catégorie",
+      "type": "Type",
+      "condition": "État",
+      "newest": "Plus récents",
+      "oldest": "Plus anciens",
+      "priceAsc": "Prix croissant",
+      "priceDesc": "Prix décroissant",
+      "mostViewed": "Plus vus",
+      "apply": "Appliquer les filtres",
+      "reset": "Réinitialiser"
+    },
+    "categories": {
+      "title": "Catégories",
+      "viewAll": "Voir tout",
+      "immobilier": "Immobilier",
+      "automobile": "Automobile",
+      "highTech": "High-Tech",
+      "maison": "Maison & Jardin",
+      "mode": "Mode & Beauté",
+      "emploi": "Emploi & Formation",
+      "services": "Services",
+      "animaux": "Animaux",
+      "agriculture": "Agriculture",
+      "industrie": "Industrie & Construction",
+      "sports": "Sports & Loisirs",
+      "tourisme": "Tourisme & Voyages",
+      "education": "Éducation",
+      "sante": "Santé & Bien-être",
+      "immobilierCount": "12 000+ annonces",
+      "automobileCount": "8 500+ annonces",
+      "highTechCount": "15 000+ annonces",
+      "maisonCount": "6 000+ annonces"
+    },
+    "listings": {
+      "featured": "Annonces à la une",
+      "recent": "Annonces récentes",
+      "viewAll": "Voir toutes les annonces",
+      "noListings": "Aucune annonce pour le moment",
+      "beFirst": "Soyez le premier à publier une annonce !",
+      "createFirst": "Publier une annonce",
+      "noSimilar": "Aucune annonce similaire pour le moment",
+      "description": "Description",
+      "details": "Détails",
+      "location": "Localisation",
+      "price": "Prix",
+      "city": "Ville",
+      "region": "Région",
+      "condition": "État",
+      "brand": "Marque",
+      "model": "Modèle",
+      "year": "Année",
+      "surface": "Surface",
+      "rooms": "Pièces",
+      "bedrooms": "Chambres",
+      "bathrooms": "Salle de bain",
+      "views": "vues",
+      "favorites": "favoris",
+      "contact": "Contacter",
+      "message": "Envoyer un message",
+      "report": "Signaler",
+      "share": "Partager",
+      "save": "Favori",
+      "sold": "Vendu",
+      "promoted": "Sponsorisé",
+      "urgent": "Urgent",
+      "negotiable": "Négociable"
+    },
+    "dashboard": {
+      "overview": "Vue d'ensemble",
+      "myListings": "Mes annonces",
+      "favorites": "Favoris",
+      "messages": "Messages",
+      "reviews": "Avis",
+      "stats": "Statistiques",
+      "subscription": "Abonnement",
+      "settings": "Paramètres",
+      "createAd": "Créer une annonce",
+      "totalViews": "Vues totales",
+      "totalFavorites": "Favoris",
+      "totalMessages": "Messages",
+      "activeListings": "Annonces actives"
+    },
+    "cities": {
+      "title": "Annonces par ville",
+      "viewAll": "Voir toutes les villes"
+    },
+    "whyMarocMarket": {
+      "title": "Pourquoi MarocMarket ?",
+      "subtitle": "La plateforme de petites annonces la plus fiable et moderne au Maroc",
+      "secure": {
+        "title": "Paiements sécurisés",
+        "description": "Transactions protégées et système de vérification des vendeurs pour des achats en toute confiance."
+      },
+      "fast": {
+        "title": "Rapide & Efficace",
+        "description": "Interface optimisée pour des recherches instantanées et une publication d'annonces en quelques clics."
+      },
+      "trusted": {
+        "title": "Communauté de confiance",
+        "description": "Des milliers d'utilisateurs actifs au Maroc. Évaluations et avis pour chaque vendeur."
+      },
+      "verified": {
+        "title": "Profils vérifiés",
+        "description": "Vérification d'identité, téléphone et email pour garantir l'authenticité des utilisateurs."
+      },
+      "messaging": {
+        "title": "Messagerie intégrée",
+        "description": "Communiquez directement avec les vendeurs et acheteurs via notre messagerie temps réel."
+      },
+      "payment": {
+        "title": "Paiement en ligne",
+        "description": "Payez en ligne en toute sécurité par carte bancaire ou Mobile Money avec notre système sécurisé."
+      }
+    },
+    "footer": {
+      "categories": "Catégories",
+      "forSellers": "Pour les vendeurs",
+      "help": "Aide & Support",
+      "about": "À propos",
+      "createAd": "Déposer une annonce",
+      "myDashboard": "Mon tableau de bord",
+      "myListings": "Mes annonces",
+      "messages": "Messages",
+      "settings": "Paramètres",
+      "faq": "FAQ",
+      "safety": "Conseils de sécurité",
+      "terms": "Conditions d'utilisation",
+      "privacy": "Confidentialité",
+      "contact": "Contact",
+      "aboutUs": "Qui sommes-nous",
+      "blog": "Blog",
+      "cities": "Villes",
+      "professionals": "Professionnels",
+      "pricing": "Tarifs",
+      "rights": "Tous droits réservés."
+    },
+    "errors": {
+      "notFound": "Page non trouvée",
+      "notFoundDesc": "La page que vous recherchez n'existe pas.",
+      "serverError": "Erreur serveur",
+      "serverErrorDesc": "Une erreur est survenue. Veuillez réessayer."
+    }
+  },
+  "categories": {
+    "modeCount": "5,200+ listings",
+    "emploiCount": "3,800+ listings",
+    "servicesCount": "4,500+ listings",
+    "animauxCount": "1,800+ listings",
+    "agricultureCount": "2,100+ listings",
+    "industrieCount": "1,500+ listings",
+    "sportsCount": "2,900+ listings",
+    "tourismeCount": "3,200+ listings",
+    "educationCount": "2,600+ listings",
+    "santeCount": "1,400+ listings"
   }
 }

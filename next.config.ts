@@ -40,6 +40,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "cdn.jsdelivr.net",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
     ],
   },
   async headers() {
@@ -69,7 +73,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/:locale(en|fr)/:path((?!api|dashboard|admin|_next).*)",
+        source: "/:locale(en|fr|es)/:path((?!api|dashboard|admin|_next).*)",
         headers: [
           { key: "X-Robots-Tag", value: "index, follow" },
         ],

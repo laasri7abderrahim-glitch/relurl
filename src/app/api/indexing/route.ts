@@ -154,7 +154,7 @@ export async function GET(req: Request) {
   }
 
   const baseUrl = "https://relurl.com"
-  const locales = ["en", "fr"]
+  const locales = ["en", "fr", "es"]
   const slugs = getAllSlugs()
 
   const urls: string[] = []

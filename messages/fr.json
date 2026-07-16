@@ -46,6 +46,7 @@
     },
     "localeSwitcher": {
       "en": "English",
+      "es": "Español",
       "fr": "Français"
     }
   },
@@ -372,32 +373,78 @@
       "title": "Raccourcisseur d'URL gratuit",
       "subtitle": "100 % gratuit, sans engagement",
       "description": "Raccourcissez un nombre illimité d'URL gratuitement. Aucun compte requis. Obtenez des liens courts et propres avec des analytiques de base — complètement gratuit pour toujours.",
-      "features": ["Liens gratuits illimités", "Aucun compte requis", "Analytique de clics de base", "Alias personnalisés", "Liens permanents", "Aucune expiration"],
-      "howItWorks": [
-        {"step": "Collez l'URL", "desc": "Entrez n'importe quelle longue URL — aucune inscription nécessaire."},
-        {"step": "Obtenez le lien court", "desc": "Recevez votre URL raccourcie instantanément."},
-        {"step": "Partagez et suivez", "desc": "Partagez votre lien et surveillez les clics en temps réel."}
+      "features": [
+        "Liens gratuits illimités",
+        "Aucun compte requis",
+        "Analytique de clics de base",
+        "Alias personnalisés",
+        "Liens permanents",
+        "Aucune expiration"
       ],
-      "useCases": ["Partage de liens personnels", "Projets étudiants", "Sites web de petites entreprises", "Optimisation de liens de blog", "Partage sur les réseaux sociaux", "Raccourcissement rapide de liens"]
+      "howItWorks": [
+        {
+          "step": "Collez l'URL",
+          "desc": "Entrez n'importe quelle longue URL — aucune inscription nécessaire."
+        },
+        {
+          "step": "Obtenez le lien court",
+          "desc": "Recevez votre URL raccourcie instantanément."
+        },
+        {
+          "step": "Partagez et suivez",
+          "desc": "Partagez votre lien et surveillez les clics en temps réel."
+        }
+      ],
+      "useCases": [
+        "Partage de liens personnels",
+        "Projets étudiants",
+        "Sites web de petites entreprises",
+        "Optimisation de liens de blog",
+        "Partage sur les réseaux sociaux",
+        "Raccourcissement rapide de liens"
+      ]
     },
     "custom-url-shortener": {
       "title": "Raccourcisseur d'URL personnalisé",
       "subtitle": "Personnalisez vos liens",
       "description": "Créez des liens courts mémorables avec des slugs personnalisés. Remplacez les caractères aléatoires par des mots significatifs qui reflètent votre marque.",
-      "features": ["Sélection de slug personnalisé", "Noms de liens de marque", "Alias descriptifs", "Options sensibles à la casse", "Support des émojis", "Personnalisation en masse"],
-      "howItWorks": [
-        {"step": "Collez votre URL", "desc": "Entrez l'URL longue à raccourcir."},
-        {"step": "Choisissez un slug personnalisé", "desc": "Choisissez un mot ou une phrase mémorable."},
-        {"step": "Partagez partout", "desc": "Utilisez votre lien personnalisé dans vos emails, réseaux sociaux et marketing."}
+      "features": [
+        "Sélection de slug personnalisé",
+        "Noms de liens de marque",
+        "Alias descriptifs",
+        "Options sensibles à la casse",
+        "Support des émojis",
+        "Personnalisation en masse"
       ],
-      "useCases": ["Promotion de marque avec des liens mémorables", "Pages de lancement de produit", "Liens bio pour réseaux sociaux", "Campagnes d'email marketing", "Matériel imprimé et cartes de visite", "Invitations à des événements"]
+      "howItWorks": [
+        {
+          "step": "Collez votre URL",
+          "desc": "Entrez l'URL longue à raccourcir."
+        },
+        {
+          "step": "Choisissez un slug personnalisé",
+          "desc": "Choisissez un mot ou une phrase mémorable."
+        },
+        {
+          "step": "Partagez partout",
+          "desc": "Utilisez votre lien personnalisé dans vos emails, réseaux sociaux et marketing."
+        }
+      ],
+      "useCases": [
+        "Promotion de marque avec des liens mémorables",
+        "Pages de lancement de produit",
+        "Liens bio pour réseaux sociaux",
+        "Campagnes d'email marketing",
+        "Matériel imprimé et cartes de visite",
+        "Invitations à des événements"
+      ]
     }
   },
   "features": {
     "metaTitle": "Fonctionnalités - Outils de gestion de liens",
     "metaDescription": "Découvrez les fonctionnalités puissantes de RELURL : raccourcissement de liens, domaines de marque, analytique avancée, collaboration d'équipe et plus encore.",
     "title": "Tout ce dont vous avez besoin pour la gestion de liens",
-    "subtitle": "Du simple raccourcissement de liens à l'analytique de niveau entreprise et la sécurité \u2014 nous avons tout ce qu'il vous faut.",
+    "subtitle": "Du simple raccourcissement de liens à l'analytique de niveau entreprise et la sécurité — nous avons tout ce qu'il vous faut.",
     "linkShortening": {
       "title": "Raccourcissement de liens",
       "desc": "Raccourcissez n'importe quelle longue URL en un lien propre et gérable en quelques secondes. Notre moteur traite des millions de liens chaque jour avec une disponibilité de 99,9 %.",
@@ -517,83 +564,75 @@
     },
     "pro": {
       "name": "Pro",
-      "desc": "Analytiques avancées et image de marque pour les professionnels.",
-      "features": [
-        "5 000 liens actifs",
-        "50 000 clics suivis/mois",
-        "Jusqu'à 3 domaines personnalisés",
-        "Tableau de bord détaillé : clics dans le temps, par référent, géographie, appareil, navigateur et OS",
-        "2 ans d'historique analytique",
-        "Étiquettes de liens pour l'organisation",
-        "Modifier et supprimer des liens à tout moment",
-        "Alias personnalisés",
-        "QR codes pour chaque lien",
-        "Accès API (1 000 req/h)",
-        "Support prioritaire par email"
-      ],
-      "cta": "Choisir Pro"
-    },
-    "business": {
-      "name": "Business",
-      "desc": "Gestion de liens à haut volume pour les équipes.",
-      "features": [
-        "Liens actifs illimités",
-        "1 000 000 clics suivis/mois",
-        "Jusqu'à 10 domaines personnalisés",
-        "Analytiques en temps réel",
-        "Raccourcissement en masse",
-        "Accès API complet (10 000 req/h)",
-        "Export CSV de toutes les données",
-        "Jusqu'à 25 sièges d'équipe",
-        "Étiquettes et filtrage avancé",
-        "Modifier et supprimer des liens à tout moment",
-        "Support dédié"
-      ],
-      "cta": "Choisir Business"
-    },
-    "enterprise": {
-      "name": "Entreprise",
-      "desc": "Solutions personnalisées pour les grandes organisations.",
-      "features": [
-        "Tout dans Business",
-        "Illimité — liens, clics, domaines",
-        "SLA personnalisé avec garantie 99,9 % de disponibilité",
-        "Authentification SSO/SAML",
-        "Gestionnaire de compte dédié",
-        "Intégrations personnalisées",
-        "Option de déploiement sur site",
-        "Support téléphonique d'urgence",
-        "Sièges d'équipe illimités",
-        "Conditions contractuelles personnalisées"
-      ],
-      "cta": "Nous contacter"
-    },
-    "pro": {
-      "name": "Pro",
       "desc": "Pour les professionnels qui ont besoin de plus de puissance et de contrôle.",
-      "features": ["Liens illimités", "100 000 clics/mois", "Analytique détaillée", "Domaines de marque personnalisés", "Support prioritaire", "Accès API (1 000 req/h)", "5 places d'équipe", "Export CSV"],
+      "features": [
+        "Liens illimités",
+        "100 000 clics/mois",
+        "Analytique détaillée",
+        "Domaines de marque personnalisés",
+        "Support prioritaire",
+        "Accès API (1 000 req/h)",
+        "5 places d'équipe",
+        "Export CSV"
+      ],
       "cta": "Choisir Pro"
     },
     "business": {
       "name": "Business",
       "desc": "Pour les équipes et les entreprises ayant des besoins avancés.",
-      "features": ["Liens illimités", "1 000 000 clics/mois", "Analytique en temps réel", "Plusieurs domaines de marque", "Support dédié", "Accès API (10 000 req/h)", "25 places d'équipe", "Intégrations avancées"],
+      "features": [
+        "Liens illimités",
+        "1 000 000 clics/mois",
+        "Analytique en temps réel",
+        "Plusieurs domaines de marque",
+        "Support dédié",
+        "Accès API (10 000 req/h)",
+        "25 places d'équipe",
+        "Intégrations avancées"
+      ],
       "cta": "Choisir Business"
     },
     "enterprise": {
       "name": "Entreprise",
       "desc": "Solutions sur mesure pour les grandes organisations.",
-      "features": ["Tout ce qui est inclus dans Business", "Clics illimités", "SLA personnalisé", "SSO/SAML", "Gestionnaire de compte dédié", "Intégrations personnalisées", "Option sur site", "Places d'équipe illimitées"],
+      "features": [
+        "Tout ce qui est inclus dans Business",
+        "Clics illimités",
+        "SLA personnalisé",
+        "SSO/SAML",
+        "Gestionnaire de compte dédié",
+        "Intégrations personnalisées",
+        "Option sur site",
+        "Places d'équipe illimitées"
+      ],
       "cta": "Nous contacter"
     },
     "faqTitle": "Questions fréquentes",
     "faq": [
-      { "q": "Puis-je changer de forfait plus tard ?", "a": "Oui, vous pouvez passer à un forfait supérieur ou inférieur à tout moment. Les modifications prennent effet immédiatement." },
-      { "q": "Y a-t-il un essai gratuit ?", "a": "Oui, tous les forfaits payants incluent un essai gratuit de 14 jours. Aucune carte de crédit requise." },
-      { "q": "Que se passe-t-il si je dépasse les limites de mon forfait ?", "a": "Nous vous avertirons et pourrons automatiquement mettre à niveau votre forfait ou suspendre la création de liens." },
-      { "q": "Puis-je annuler à tout moment ?", "a": "Oui, vous pouvez annuler votre abonnement à tout moment. Vous conservez l'accès jusqu'à la fin de votre période de facturation." },
-      { "q": "Puis-je utiliser mon propre domaine de marque ?", "a": "Oui, les forfaits Pro et Business vous permettent d'utiliser des domaines personnalisés pour vos liens courts. Cela renforce la reconnaissance et la confiance en votre marque." },
-      { "q": "Proposez-vous des remboursements ?", "a": "Oui, nous offrons un remboursement complet dans les 30 jours suivant l'achat si vous n'êtes pas satisfait. Aucune question posée." }
+      {
+        "q": "Puis-je changer de forfait plus tard ?",
+        "a": "Oui, vous pouvez passer à un forfait supérieur ou inférieur à tout moment. Les modifications prennent effet immédiatement."
+      },
+      {
+        "q": "Y a-t-il un essai gratuit ?",
+        "a": "Oui, tous les forfaits payants incluent un essai gratuit de 14 jours. Aucune carte de crédit requise."
+      },
+      {
+        "q": "Que se passe-t-il si je dépasse les limites de mon forfait ?",
+        "a": "Nous vous avertirons et pourrons automatiquement mettre à niveau votre forfait ou suspendre la création de liens."
+      },
+      {
+        "q": "Puis-je annuler à tout moment ?",
+        "a": "Oui, vous pouvez annuler votre abonnement à tout moment. Vous conservez l'accès jusqu'à la fin de votre période de facturation."
+      },
+      {
+        "q": "Puis-je utiliser mon propre domaine de marque ?",
+        "a": "Oui, les forfaits Pro et Business vous permettent d'utiliser des domaines personnalisés pour vos liens courts. Cela renforce la reconnaissance et la confiance en votre marque."
+      },
+      {
+        "q": "Proposez-vous des remboursements ?",
+        "a": "Oui, nous offrons un remboursement complet dans les 30 jours suivant l'achat si vous n'êtes pas satisfait. Aucune question posée."
+      }
     ]
   },
   "register": {
@@ -604,9 +643,9 @@
     "emailLabel": "E-mail",
     "emailPlaceholder": "prenom@exemple.com",
     "passwordLabel": "Mot de passe",
-    "passwordPlaceholder": "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022",
+    "passwordPlaceholder": "••••••••",
     "confirmPasswordLabel": "Confirmer le mot de passe",
-    "confirmPasswordPlaceholder": "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022",
+    "confirmPasswordPlaceholder": "••••••••",
     "submitButton": "Créer un compte",
     "submittingText": "Création du compte...",
     "termsText": "J'accepte les",
@@ -646,7 +685,7 @@
     "sidebarEmail": "E-mail",
     "sidebarEmailValue": "hello@relurl.com",
     "sidebarLocation": "Emplacement",
-    "sidebarLocationValue": "À distance \u2014 Équipe mondiale",
+    "sidebarLocationValue": "À distance — Équipe mondiale",
     "sidebarPhone": "Téléphone",
     "sidebarPhoneValue": "+1 (415) 800-1234",
     "sidebarHours": "Horaires",
@@ -947,7 +986,15 @@
         "weekly": "Hebdomadaire",
         "monthly": "Mensuel",
         "dayOfWeek": "Jour de la semaine",
-        "days": ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
+        "days": [
+          "Dimanche",
+          "Lundi",
+          "Mardi",
+          "Mercredi",
+          "Jeudi",
+          "Vendredi",
+          "Samedi"
+        ],
         "dayOfMonth": "Jour du mois",
         "monthlyInfo": "Les rapports seront envoyés le {day}{suffix} de chaque mois",
         "ordinalFirst": "er",
@@ -1080,10 +1127,42 @@
       "unlimited": "Illimité",
       "custom": "Sur mesure",
       "planFeatures": {
-        "free": ["1 000 liens", "10 000 clics/mois", "Analytique de base", "1 membre d'équipe", "Domaines personnalisés", "Accès API", "Support prioritaire"],
-        "pro": ["10 000 liens", "100 000 clics/mois", "Analytique avancée", "5 membres d'équipe", "Domaines personnalisés", "Accès API", "Support prioritaire"],
-        "business": ["100 000 liens", "1 000 000 clics/mois", "Analytique avancée + exports", "Membres d'équipe illimités", "Domaines personnalisés", "Accès API", "Support prioritaire"],
-        "enterprise": ["Liens illimités", "Clics illimités", "Suite analytique complète", "Membres d'équipe illimités", "Domaines personnalisés", "Accès API + SLA", "Support dédié"]
+        "free": [
+          "1 000 liens",
+          "10 000 clics/mois",
+          "Analytique de base",
+          "1 membre d'équipe",
+          "Domaines personnalisés",
+          "Accès API",
+          "Support prioritaire"
+        ],
+        "pro": [
+          "10 000 liens",
+          "100 000 clics/mois",
+          "Analytique avancée",
+          "5 membres d'équipe",
+          "Domaines personnalisés",
+          "Accès API",
+          "Support prioritaire"
+        ],
+        "business": [
+          "100 000 liens",
+          "1 000 000 clics/mois",
+          "Analytique avancée + exports",
+          "Membres d'équipe illimités",
+          "Domaines personnalisés",
+          "Accès API",
+          "Support prioritaire"
+        ],
+        "enterprise": [
+          "Liens illimités",
+          "Clics illimités",
+          "Suite analytique complète",
+          "Membres d'équipe illimités",
+          "Domaines personnalisés",
+          "Accès API + SLA",
+          "Support dédié"
+        ]
       },
       "paymentMethod": {
         "title": "Moyen de paiement",
@@ -1318,5 +1397,195 @@
     "siteName": "RELURL",
     "siteDescription": "Free URL shortener with analytics, QR codes, and branded links",
     "orgDescription": "RELURL is a free URL shortener service with analytics, QR codes, and branded short links."
+  },
+  "marketplace": {
+    "meta": {
+      "title": "MarocMarket - La première marketplace au Maroc",
+      "description": "Achetez, vendez ou louez sur la première marketplace marocaine. Des milliers d'annonces dans tout le Maroc.",
+      "siteName": "MarocMarket",
+      "keywords": "MarocMarket, marketplace Maroc, acheter Maroc, vendre Maroc, annonces Maroc, petites annonces, immobilier Maroc, voiture Maroc, emploi Maroc"
+    },
+    "nav": {
+      "home": "Accueil",
+      "categories": "Catégories",
+      "createAd": "Déposer une annonce",
+      "profile": "Mon profil",
+      "favorites": "Favoris",
+      "login": "Connexion",
+      "register": "Inscription",
+      "dashboard": "Tableau de bord",
+      "messages": "Messages",
+      "notifications": "Notifications"
+    },
+    "hero": {
+      "title": "La première marketplace au Maroc",
+      "subtitle": "Achetez, vendez ou louez facilement et en toute sécurité. Des milliers d'annonces partout au Maroc.",
+      "searchPlaceholder": "Que cherchez-vous ?",
+      "allCities": "Toutes les villes",
+      "search": "Rechercher",
+      "popularCategories": "Catégories populaires"
+    },
+    "search": {
+      "placeholder": "Rechercher une annonce...",
+      "noResults": "Aucune annonce trouvée",
+      "results": "résultats",
+      "filters": "Filtres",
+      "sort": "Trier par",
+      "price": "Prix",
+      "city": "Ville",
+      "category": "Catégorie",
+      "type": "Type",
+      "condition": "État",
+      "newest": "Plus récents",
+      "oldest": "Plus anciens",
+      "priceAsc": "Prix croissant",
+      "priceDesc": "Prix décroissant",
+      "mostViewed": "Plus vus",
+      "apply": "Appliquer les filtres",
+      "reset": "Réinitialiser"
+    },
+    "categories": {
+      "title": "Catégories",
+      "viewAll": "Voir tout",
+      "immobilier": "Immobilier",
+      "automobile": "Automobile",
+      "highTech": "High-Tech",
+      "maison": "Maison & Jardin",
+      "mode": "Mode & Beauté",
+      "emploi": "Emploi & Formation",
+      "services": "Services",
+      "animaux": "Animaux",
+      "agriculture": "Agriculture",
+      "industrie": "Industrie & Construction",
+      "sports": "Sports & Loisirs",
+      "tourisme": "Tourisme & Voyages",
+      "education": "Éducation",
+      "sante": "Santé & Bien-être",
+      "immobilierCount": "12 000+ annonces",
+      "automobileCount": "8 500+ annonces",
+      "highTechCount": "15 000+ annonces",
+      "maisonCount": "6 000+ annonces"
+    },
+    "listings": {
+      "featured": "Annonces à la une",
+      "recent": "Annonces récentes",
+      "viewAll": "Voir toutes les annonces",
+      "noListings": "Aucune annonce pour le moment",
+      "beFirst": "Soyez le premier à publier une annonce !",
+      "createFirst": "Publier une annonce",
+      "noSimilar": "Aucune annonce similaire pour le moment",
+      "description": "Description",
+      "details": "Détails",
+      "location": "Localisation",
+      "price": "Prix",
+      "city": "Ville",
+      "region": "Région",
+      "condition": "État",
+      "brand": "Marque",
+      "model": "Modèle",
+      "year": "Année",
+      "surface": "Surface",
+      "rooms": "Pièces",
+      "bedrooms": "Chambres",
+      "bathrooms": "Salle de bain",
+      "views": "vues",
+      "favorites": "favoris",
+      "contact": "Contacter",
+      "message": "Envoyer un message",
+      "report": "Signaler",
+      "share": "Partager",
+      "save": "Favori",
+      "sold": "Vendu",
+      "promoted": "Sponsorisé",
+      "urgent": "Urgent",
+      "negotiable": "Négociable"
+    },
+    "dashboard": {
+      "overview": "Vue d'ensemble",
+      "myListings": "Mes annonces",
+      "favorites": "Favoris",
+      "messages": "Messages",
+      "reviews": "Avis",
+      "stats": "Statistiques",
+      "subscription": "Abonnement",
+      "settings": "Paramètres",
+      "createAd": "Créer une annonce",
+      "totalViews": "Vues totales",
+      "totalFavorites": "Favoris",
+      "totalMessages": "Messages",
+      "activeListings": "Annonces actives"
+    },
+    "cities": {
+      "title": "Annonces par ville",
+      "viewAll": "Voir toutes les villes"
+    },
+    "whyMarocMarket": {
+      "title": "Pourquoi MarocMarket ?",
+      "subtitle": "La plateforme de petites annonces la plus fiable et moderne au Maroc",
+      "secure": {
+        "title": "Paiements sécurisés",
+        "description": "Transactions protégées et système de vérification des vendeurs pour des achats en toute confiance."
+      },
+      "fast": {
+        "title": "Rapide & Efficace",
+        "description": "Interface optimisée pour des recherches instantanées et une publication d'annonces en quelques clics."
+      },
+      "trusted": {
+        "title": "Communauté de confiance",
+        "description": "Des milliers d'utilisateurs actifs au Maroc. Évaluations et avis pour chaque vendeur."
+      },
+      "verified": {
+        "title": "Profils vérifiés",
+        "description": "Vérification d'identité, téléphone et email pour garantir l'authenticité des utilisateurs."
+      },
+      "messaging": {
+        "title": "Messagerie intégrée",
+        "description": "Communiquez directement avec les vendeurs et acheteurs via notre messagerie temps réel."
+      },
+      "payment": {
+        "title": "Paiement en ligne",
+        "description": "Payez en ligne en toute sécurité par carte bancaire ou Mobile Money avec notre système sécurisé."
+      }
+    },
+    "footer": {
+      "categories": "Catégories",
+      "forSellers": "Pour les vendeurs",
+      "help": "Aide & Support",
+      "about": "À propos",
+      "createAd": "Déposer une annonce",
+      "myDashboard": "Mon tableau de bord",
+      "myListings": "Mes annonces",
+      "messages": "Messages",
+      "settings": "Paramètres",
+      "faq": "FAQ",
+      "safety": "Conseils de sécurité",
+      "terms": "Conditions d'utilisation",
+      "privacy": "Confidentialité",
+      "contact": "Contact",
+      "aboutUs": "Qui sommes-nous",
+      "blog": "Blog",
+      "cities": "Villes",
+      "professionals": "Professionnels",
+      "pricing": "Tarifs",
+      "rights": "Tous droits réservés."
+    },
+    "errors": {
+      "notFound": "Page non trouvée",
+      "notFoundDesc": "La page que vous recherchez n'existe pas.",
+      "serverError": "Erreur serveur",
+      "serverErrorDesc": "Une erreur est survenue. Veuillez réessayer."
+    }
+  },
+  "categories": {
+    "modeCount": "5 200+ annonces",
+    "emploiCount": "3 800+ annonces",
+    "servicesCount": "4 500+ annonces",
+    "animauxCount": "1 800+ annonces",
+    "agricultureCount": "2 100+ annonces",
+    "industrieCount": "1 500+ annonces",
+    "sportsCount": "2 900+ annonces",
+    "tourismeCount": "3 200+ annonces",
+    "educationCount": "2 600+ annonces",
+    "santeCount": "1 400+ annonces"
   }
 }

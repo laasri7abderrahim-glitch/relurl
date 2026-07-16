@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next"
 import { getAllSlugs } from "@/lib/blog/posts"
 
 const baseUrl = "https://relurl.com"
-const locales = ["en", "fr"] as const
+const locales = ["en", "fr", "es"] as const
 
 function localizedUrls(path: string, priority = 0.8): MetadataRoute.Sitemap {
   return locales.map((locale) => ({

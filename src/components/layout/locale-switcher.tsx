@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 
 const locales = [
   { code: "en", label: "EN" },
+  { code: "es", label: "ES" },
   { code: "fr", label: "FR" },
 ] as const
 

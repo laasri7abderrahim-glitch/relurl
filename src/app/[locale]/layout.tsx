@@ -26,11 +26,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       languages: {
         en: "https://relurl.com/en",
         fr: "https://relurl.com/fr",
+        es: "https://relurl.com/es",
+        ar: "https://relurl.com/ar",
         "x-default": "https://relurl.com/en",
       },
     },
     openGraph: {
-      locale: locale === "fr" ? "fr_FR" : "en_US",
+      locale: locale === "ar" ? "ar_MA" : locale === "fr" ? "fr_FR" : locale === "es" ? "es_ES" : "en_US",
       siteName: t("siteName"),
       title: t("siteName"),
       description: t("siteDescription"),
