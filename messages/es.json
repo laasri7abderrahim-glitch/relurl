@@ -120,7 +120,7 @@
     "step2Title": "Acorta al instante",
     "step2Desc": "Nuestro sistema genera un enlace corto limpio y trazable en milisegundos. Sin esperas ni complicaciones.",
     "step3Title": "Comparte en cualquier lugar",
-    "step3Desc": "Copia tu enlace, genera un código QR y compártelo por email, redes sociales, anuncios o en tus materiales impresos.",
+    "step3Desc": "Copia tu enlace, genera un código QR y compártelo por correo, redes sociales, anuncios o en tus materiales impresos.",
     "featuresBadge": "Funciones premium",
     "plansTitle": "Todo lo que necesitas para gestionar tus enlaces como un profesional",
     "plansDesc": "Herramientas diseñadas para profesionales de marketing, creadores y empresas que se toman sus enlaces en serio.",
@@ -427,7 +427,7 @@
         },
         {
           "step": "Comparte en todas partes",
-          "desc": "Usa tu enlace personalizado en emails, redes sociales y campañas de marketing."
+          "desc": "Usa tu enlace personalizado en correos, redes sociales y campañas de marketing."
         }
       ],
       "useCases": [
@@ -464,7 +464,7 @@
         "Certificados SSL gratuitos",
         "Verificación de dominio con un clic",
         "Dominios de marca ilimitados en Pro+",
-        "Páginas de redirect en marca blanca"
+        "Páginas de redirección en marca blanca"
       ]
     },
     "advancedAnalytics": {
@@ -1330,7 +1330,7 @@
         "tabAbTesting": "Pruebas A/B",
         "tabSmartRouting": "Enrutamiento inteligente",
         "tabAiOptimization": "Optimización IA",
-        "retargetingPixels": "Píxeles de retargeting",
+        "retargetingPixels": "Píxeles de reorientación",
         "retargetingDesc": "Agrega píxeles de seguimiento para reorientar a tu audiencia en todas las plataformas.",
         "nActive": "{count} activos",
         "facebookPixelId": "ID de píxel de Facebook",
@@ -1345,14 +1345,14 @@
         "saved": "Guardado",
         "savePixels": "Guardar píxeles",
         "pixelsSaved": "Píxeles guardados correctamente",
-        "howRetargetingWorks": "Cómo funciona el retargeting",
+        "howRetargetingWorks": "Cómo funciona la reorientación",
         "retargetingExplanation": "Agrega píxeles de seguimiento a tus enlaces cortos para reorientar a los visitantes que hacen clic. Cuando alguien hace clic en tu enlace, el píxel se activa y los agrega a la audiencia de tu plataforma publicitaria.",
         "step1Title": "Agrega IDs de píxel",
         "step1Desc": "Ingresa tus IDs de píxel de Facebook, Google, TikTok, LinkedIn o Twitter.",
         "step2Title": "Comparte tu enlace",
         "step2Desc": "Cuando los visitantes hacen clic en tu enlace, los eventos de píxel se activan automáticamente.",
         "step3Title": "Reorienta audiencias",
-        "step3Desc": "Crea campañas de retargeting en tus plataformas publicitarias para llegar a los visitantes de tu enlace.",
+        "step3Desc": "Crea campañas de reorientación en tus plataformas publicitarias para llegar a los visitantes de tu enlace.",
         "createAbTest": "Crear prueba A/B",
         "createAbTestDesc": "Divide tu tráfico entre múltiples URLs de destino para encontrar el de mejor rendimiento.",
         "testName": "Nombre de la prueba",

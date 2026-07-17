@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   return {
     title: {
-      default: t("siteName"),
+      default: t("siteDescription"),
       template: "%s | " + t("siteName"),
     },
     description: t("siteDescription"),

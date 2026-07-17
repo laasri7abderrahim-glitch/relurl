@@ -7,6 +7,19 @@ const CSP = "default-src 'self' 'unsafe-inline' data: blob:; script-src 'self' '
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  async redirects() {
+    return [
+      {
+        source: "/:path((?!_next|api|static|favicon\\.ico).*)",
+        has: [{ type: "host", value: "www.relurl.com" }],
+        destination: "https://relurl.com/:path",
+        permanent: true,
+      },
+    ]
+  },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production" ? { exclude: ["error", "warn"] } : false,
   },

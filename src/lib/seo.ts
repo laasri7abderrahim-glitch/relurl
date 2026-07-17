@@ -41,6 +41,7 @@ export function generateSEOMetadata({
         "x-default": `${baseUrl}/en${path}`,
         en: `${baseUrl}/en${path}`,
         fr: `${baseUrl}/fr${path}`,
+        es: `${baseUrl}/es${path}`,
       },
     },
     openGraph: {

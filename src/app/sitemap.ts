@@ -28,10 +28,10 @@ function staticPages(priority = 0.9): MetadataRoute.Sitemap {
     "/gdpr",
     "/dmca",
     "/wordpress",
-    "/login",
-    "/register",
-    "/forgot-password",
-    "/reset-password",
+    // "/login",     // noindex — no SEO value
+    // "/register",  // noindex — no SEO value
+    // "/forgot-password", // noindex — no SEO value
+    // "/reset-password",  // noindex — no SEO value
   ]
   return pages.flatMap((p) => localizedUrls(p, p === "" ? 1 : priority))
 }
