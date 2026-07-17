@@ -1,0 +1,75 @@
+version: "3.8"
+
+services:
+  marketplace-app:
+    build:
+      context: ..
+      dockerfile: MARKETPLACE/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - MARKETPLACE_DATABASE_URL=postgresql://postgres:postgres@marketplace-db:5432/marocmarket?schema=public
+      - MARKETPLACE_DIRECT_URL=postgresql://postgres:postgres@marketplace-db:5432/marocmarket?schema=public
+      - REDIS_URL=redis://marketplace-redis:6379
+      - NEXTAUTH_SECRET=dev-secret-change-in-production
+      - NEXTAUTH_URL=http://localhost:3000
+    depends_on:
+      marketplace-db:
+        condition: service_healthy
+      marketplace-redis:
+        condition: service_started
+    networks:
+      - marketplace-network
+    restart: unless-stopped
+
+  marketplace-db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: marocmarket
+    ports:
+      - "5433:5432"
+    volumes:
+      - marketplace-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - marketplace-network
+    restart: unless-stopped
+
+  marketplace-redis:
+    image: redis:7-alpine
+    ports:
+      - "6380:6379"
+    volumes:
+      - marketplace-redis-data:/data
+    networks:
+      - marketplace-network
+    restart: unless-stopped
+
+  marketplace-elasticsearch:
+    image: elasticsearch:8.11.0
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9201:9200"
+    volumes:
+      - marketplace-es-data:/usr/share/elasticsearch/data
+    networks:
+      - marketplace-network
+    restart: unless-stopped
+
+volumes:
+  marketplace-pgdata:
+  marketplace-redis-data:
+  marketplace-es-data:
+
+networks:
+  marketplace-network:
+    driver: bridge

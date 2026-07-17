@@ -1,0 +1,180 @@
+{
+  "marketplace": {
+    "meta": {
+      "title": "MarocMarket - La première marketplace au Maroc",
+      "description": "Achetez, vendez ou louez sur la première marketplace marocaine. Des milliers d'annonces dans tout le Maroc.",
+      "siteName": "MarocMarket",
+      "keywords": "MarocMarket, marketplace Maroc, acheter Maroc, vendre Maroc, annonces Maroc, petites annonces, immobilier Maroc, voiture Maroc, emploi Maroc"
+    },
+    "nav": {
+      "home": "Accueil",
+      "categories": "Catégories",
+      "createAd": "Déposer une annonce",
+      "profile": "Mon profil",
+      "favorites": "Favoris",
+      "login": "Connexion",
+      "register": "Inscription",
+      "dashboard": "Tableau de bord",
+      "messages": "Messages",
+      "notifications": "Notifications"
+    },
+    "hero": {
+      "title": "La première marketplace au Maroc",
+      "subtitle": "Achetez, vendez ou louez facilement et en toute sécurité. Des milliers d'annonces partout au Maroc.",
+      "searchPlaceholder": "Que cherchez-vous ?",
+      "allCities": "Toutes les villes",
+      "search": "Rechercher",
+      "popularCategories": "Catégories populaires"
+    },
+    "search": {
+      "placeholder": "Rechercher une annonce...",
+      "noResults": "Aucune annonce trouvée",
+      "results": "résultats",
+      "filters": "Filtres",
+      "sort": "Trier par",
+      "price": "Prix",
+      "city": "Ville",
+      "category": "Catégorie",
+      "type": "Type",
+      "condition": "État",
+      "newest": "Plus récents",
+      "oldest": "Plus anciens",
+      "priceAsc": "Prix croissant",
+      "priceDesc": "Prix décroissant",
+      "mostViewed": "Plus vus",
+      "apply": "Appliquer les filtres",
+      "reset": "Réinitialiser"
+    },
+    "categories": {
+      "title": "Catégories",
+      "viewAll": "Voir tout",
+      "immobilier": "Immobilier",
+      "automobile": "Automobile",
+      "highTech": "High-Tech",
+      "maison": "Maison & Jardin",
+      "mode": "Mode & Beauté",
+      "emploi": "Emploi & Formation",
+      "services": "Services",
+      "animaux": "Animaux",
+      "agriculture": "Agriculture",
+      "industrie": "Industrie & Construction",
+      "sports": "Sports & Loisirs",
+      "tourisme": "Tourisme & Voyages",
+      "education": "Éducation",
+      "sante": "Santé & Bien-être",
+      "immobilierCount": "12 000+ annonces",
+      "automobileCount": "8 500+ annonces",
+      "highTechCount": "15 000+ annonces",
+      "maisonCount": "6 000+ annonces"
+    },
+    "listings": {
+      "featured": "Annonces à la une",
+      "recent": "Annonces récentes",
+      "viewAll": "Voir toutes les annonces",
+      "noListings": "Aucune annonce pour le moment",
+      "beFirst": "Soyez le premier à publier une annonce !",
+      "createFirst": "Publier une annonce",
+      "noSimilar": "Aucune annonce similaire pour le moment",
+      "description": "Description",
+      "details": "Détails",
+      "location": "Localisation",
+      "price": "Prix",
+      "city": "Ville",
+      "region": "Région",
+      "condition": "État",
+      "brand": "Marque",
+      "model": "Modèle",
+      "year": "Année",
+      "surface": "Surface",
+      "rooms": "Pièces",
+      "bedrooms": "Chambres",
+      "bathrooms": "Salle de bain",
+      "views": "vues",
+      "favorites": "favoris",
+      "contact": "Contacter",
+      "message": "Envoyer un message",
+      "report": "Signaler",
+      "share": "Partager",
+      "save": "Favori",
+      "sold": "Vendu",
+      "promoted": "Sponsorisé",
+      "urgent": "Urgent",
+      "negotiable": "Négociable"
+    },
+    "dashboard": {
+      "overview": "Vue d'ensemble",
+      "myListings": "Mes annonces",
+      "favorites": "Favoris",
+      "messages": "Messages",
+      "reviews": "Avis",
+      "stats": "Statistiques",
+      "subscription": "Abonnement",
+      "settings": "Paramètres",
+      "createAd": "Créer une annonce",
+      "totalViews": "Vues totales",
+      "totalFavorites": "Favoris",
+      "totalMessages": "Messages",
+      "activeListings": "Annonces actives"
+    },
+    "cities": {
+      "title": "Annonces par ville",
+      "viewAll": "Voir toutes les villes"
+    },
+    "whyMarocMarket": {
+      "title": "Pourquoi MarocMarket ?",
+      "subtitle": "La plateforme de petites annonces la plus fiable et moderne au Maroc",
+      "secure": {
+        "title": "Paiements sécurisés",
+        "description": "Transactions protégées et système de vérification des vendeurs pour des achats en toute confiance."
+      },
+      "fast": {
+        "title": "Rapide & Efficace",
+        "description": "Interface optimisée pour des recherches instantanées et une publication d'annonces en quelques clics."
+      },
+      "trusted": {
+        "title": "Communauté de confiance",
+        "description": "Des milliers d'utilisateurs actifs au Maroc. Évaluations et avis pour chaque vendeur."
+      },
+      "verified": {
+        "title": "Profils vérifiés",
+        "description": "Vérification d'identité, téléphone et email pour garantir l'authenticité des utilisateurs."
+      },
+      "messaging": {
+        "title": "Messagerie intégrée",
+        "description": "Communiquez directement avec les vendeurs et acheteurs via notre messagerie temps réel."
+      },
+      "payment": {
+        "title": "Paiement en ligne",
+        "description": "Payez en ligne en toute sécurité par carte bancaire ou Mobile Money avec notre système sécurisé."
+      }
+    },
+    "footer": {
+      "categories": "Catégories",
+      "forSellers": "Pour les vendeurs",
+      "help": "Aide & Support",
+      "about": "À propos",
+      "createAd": "Déposer une annonce",
+      "myDashboard": "Mon tableau de bord",
+      "myListings": "Mes annonces",
+      "messages": "Messages",
+      "settings": "Paramètres",
+      "faq": "FAQ",
+      "safety": "Conseils de sécurité",
+      "terms": "Conditions d'utilisation",
+      "privacy": "Confidentialité",
+      "contact": "Contact",
+      "aboutUs": "Qui sommes-nous",
+      "blog": "Blog",
+      "cities": "Villes",
+      "professionals": "Professionnels",
+      "pricing": "Tarifs",
+      "rights": "Tous droits réservés."
+    },
+    "errors": {
+      "notFound": "Page non trouvée",
+      "notFoundDesc": "La page que vous recherchez n'existe pas.",
+      "serverError": "Erreur serveur",
+      "serverErrorDesc": "Une erreur est survenue. Veuillez réessayer."
+    }
+  }
+}

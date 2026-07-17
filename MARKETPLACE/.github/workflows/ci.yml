@@ -1,0 +1,70 @@
+name: MarocMarket CI/CD
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "MARKETPLACE/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "MARKETPLACE/**"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: MARKETPLACE
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+      - run: npm ci
+      - run: npm run lint
+
+  typecheck:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: MARKETPLACE
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+      - run: npm ci
+      - run: npx tsc --noEmit
+
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: MARKETPLACE
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+      - run: npm ci
+      - run: npx vitest run
+
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: MARKETPLACE
+    needs: [lint, typecheck, test]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+      - run: npm ci
+      - run: npx prisma generate --schema=prisma/schema.prisma
+      - run: npm run build

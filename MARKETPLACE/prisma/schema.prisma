@@ -1,0 +1,453 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("MARKETPLACE_DATABASE_URL")
+  directUrl = env("MARKETPLACE_DIRECT_URL")
+}
+
+enum ListingType {
+  VENTE
+  LOCATION
+  SERVICE
+  EMPLOI
+  ECHANGE
+  DON
+  RECHERCHE
+  URGENT
+  PROFESSIONNEL
+  PARTICULIER
+}
+
+enum ListingStatus {
+  ACTIVE
+  INACTIVE
+  SOLD
+  RENTED
+  DELETED
+  DRAFT
+  PENDING
+  REJECTED
+}
+
+enum UserRole {
+  USER
+  PROFESSIONAL
+  MODERATOR
+  ADMIN
+}
+
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model MarketplaceUser {
+  id               String    @id @default(uuid())
+  email            String    @unique
+  name             String?
+  phone            String?
+  phoneVerified    Boolean   @default(false)
+  password         String?
+  image            String?
+  role             UserRole  @default(USER)
+  emailVerified    DateTime?
+  isActive         Boolean   @default(true)
+  twoFactorEnabled Boolean   @default(false)
+  twoFactorSecret  String?
+  isVerified       Boolean   @default(false)
+  verifiedAt       DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  listings       MarketplaceListing[]
+  favorites      MarketplaceFavorite[]
+  reviews        MarketplaceReview[]       @relation("ReviewAuthor")
+  reviewsGiven   MarketplaceReview[]       @relation("ReviewTarget")
+  messages       MarketplaceMessage[]
+  conversations  MarketplaceConversation[] @relation("ConversationUser")
+  conversations2 MarketplaceConversation[] @relation("ConversationParticipant")
+  reports        MarketplaceReport[]
+  shop           MarketplaceShop?
+  subscriptions  MarketplaceSubscription[]
+  notifications  MarketplaceNotification[]
+  views          MarketplaceListingView[]
+  offersGiven    MarketplaceOffer[]        @relation("OfferBuyer")
+  offersReceived MarketplaceOffer[]        @relation("OfferSeller")
+  savedSearches  MarketplaceSavedSearch[]
+
+  @@map("marketplace_users")
+}
+
+model MarketplaceCategory {
+  id            String   @id @default(uuid())
+  slug          String   @unique
+  nameFr        String
+  nameAr        String
+  descriptionFr String?
+  descriptionAr String?
+  icon          String?
+  image         String?
+  color         String?
+  parentId      String?
+  order         Int      @default(0)
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  parent   MarketplaceCategory?  @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children MarketplaceCategory[] @relation("CategoryHierarchy")
+  listings MarketplaceListing[]
+
+  @@index([parentId])
+  @@index([slug])
+  @@map("marketplace_categories")
+}
+
+model MarketplaceListing {
+  id             String        @id @default(uuid())
+  title          String
+  slug           String        @unique
+  description    String
+  price          Float?
+  currency       String        @default("MAD")
+  listingType    ListingType   @default(VENTE)
+  status         ListingStatus @default(PENDING)
+  condition      String?
+  year           Int?
+  brand          String?
+  model          String?
+  surface        Float?
+  rooms          Int?
+  bedrooms       Int?
+  bathrooms      Int?
+  address        String?
+  city           String
+  region         String?
+  latitude       Float?
+  longitude      Float?
+  isNegotiable   Boolean       @default(false)
+  isUrgent       Boolean       @default(false)
+  isProfessional Boolean       @default(false)
+  isPromoted     Boolean       @default(false)
+  promotedUntil  DateTime?
+  viewsCount     Int           @default(0)
+  favoritesCount Int           @default(0)
+  contactPhone   String?
+  contactEmail   String?
+  whatsapp       String?
+  tags           String?
+  seoTitle       String?
+  seoDescription String?
+  expiresAt      DateTime?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  userId     String
+  categoryId String
+
+  user                 MarketplaceUser           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category             MarketplaceCategory       @relation(fields: [categoryId], references: [id])
+  images               MarketplaceListingImage[]
+  favorites            MarketplaceFavorite[]
+  views                MarketplaceListingView[]
+  reports              MarketplaceReport[]
+  offers               MarketplaceOffer[]
+  MarketplacePromotion MarketplacePromotion[]
+
+  @@index([userId])
+  @@index([categoryId])
+  @@index([city])
+  @@index([slug])
+  @@index([status])
+  @@index([listingType])
+  @@index([price])
+  @@index([createdAt])
+  @@index([city, categoryId])
+  @@index([city, status])
+  @@index([categoryId, status])
+  @@map("marketplace_listings")
+}
+
+model MarketplaceListingImage {
+  id        String   @id @default(uuid())
+  url       String
+  publicId  String?
+  alt       String?
+  order     Int      @default(0)
+  isPrimary Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  listingId String
+  listing   MarketplaceListing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  @@index([listingId])
+  @@map("marketplace_listing_images")
+}
+
+model MarketplaceListingView {
+  id        String   @id @default(uuid())
+  ip        String?
+  userAgent String?
+  referer   String?
+  country   String?
+  city      String?
+  device    String?
+  browser   String?
+  os        String?
+  createdAt DateTime @default(now())
+
+  listingId String
+  listing   MarketplaceListing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  userId    String?
+  user      MarketplaceUser?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([listingId])
+  @@index([createdAt])
+  @@map("marketplace_listing_views")
+}
+
+model MarketplaceFavorite {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  userId    String
+  listingId String
+  user      MarketplaceUser    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listing   MarketplaceListing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, listingId])
+  @@index([userId])
+  @@index([listingId])
+  @@map("marketplace_favorites")
+}
+
+model MarketplaceReview {
+  id        String       @id @default(uuid())
+  rating    Int
+  comment   String?
+  status    ReviewStatus @default(PENDING)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  authorId  String
+  targetId  String
+  listingId String?
+
+  author MarketplaceUser @relation("ReviewAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+  target MarketplaceUser @relation("ReviewTarget", fields: [targetId], references: [id], onDelete: Cascade)
+
+  @@unique([authorId, targetId, listingId])
+  @@index([targetId])
+  @@index([authorId])
+  @@map("marketplace_reviews")
+}
+
+model MarketplaceConversation {
+  id        String   @id @default(uuid())
+  subject   String?
+  listingId String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId        String
+  participantId String
+
+  user        MarketplaceUser      @relation("ConversationUser", fields: [userId], references: [id], onDelete: Cascade)
+  participant MarketplaceUser      @relation("ConversationParticipant", fields: [participantId], references: [id], onDelete: Cascade)
+  messages    MarketplaceMessage[]
+
+  @@unique([userId, participantId, listingId])
+  @@index([userId])
+  @@index([participantId])
+  @@map("marketplace_conversations")
+}
+
+model MarketplaceMessage {
+  id        String    @id @default(uuid())
+  content   String
+  read      Boolean   @default(false)
+  readAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  conversationId String
+  senderId       String
+
+  conversation MarketplaceConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  sender       MarketplaceUser         @relation(fields: [senderId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId])
+  @@index([senderId])
+  @@index([createdAt])
+  @@map("marketplace_messages")
+}
+
+model MarketplaceReport {
+  id          String   @id @default(uuid())
+  reason      String
+  description String?
+  status      String   @default("PENDING")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  userId    String
+  listingId String
+
+  user    MarketplaceUser    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listing MarketplaceListing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, listingId])
+  @@index([listingId])
+  @@map("marketplace_reports")
+}
+
+model MarketplaceShop {
+  id           String   @id @default(uuid())
+  name         String
+  slug         String   @unique
+  description  String?
+  logo         String?
+  cover        String?
+  phone        String?
+  email        String?
+  website      String?
+  address      String?
+  city         String
+  latitude     Float?
+  longitude    Float?
+  isVerified   Boolean  @default(false)
+  isActive     Boolean  @default(true)
+  rating       Float    @default(0)
+  reviewsCount Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  userId String          @unique
+  user   MarketplaceUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([slug])
+  @@index([city])
+  @@map("marketplace_shops")
+}
+
+model MarketplaceSubscription {
+  id                   String    @id @default(uuid())
+  plan                 String    @default("FREE")
+  status               String    @default("ACTIVE")
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  currentPeriodStart   DateTime?
+  currentPeriodEnd     DateTime?
+  canceledAt           DateTime?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  userId String          @unique
+  user   MarketplaceUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("marketplace_subscriptions")
+}
+
+model MarketplaceNotification {
+  id        String   @id @default(uuid())
+  type      String   @default("INFO")
+  title     String
+  message   String?
+  read      Boolean  @default(false)
+  link      String?
+  createdAt DateTime @default(now())
+
+  userId String
+  user   MarketplaceUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([read])
+  @@map("marketplace_notifications")
+}
+
+model MarketplaceCoupon {
+  id          String    @id @default(uuid())
+  code        String    @unique
+  description String?
+  discount    Int
+  type        String    @default("PERCENTAGE")
+  maxUses     Int?
+  usedCount   Int       @default(0)
+  expiresAt   DateTime?
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+
+  @@map("marketplace_coupons")
+}
+
+model MarketplacePromotion {
+  id        String   @id @default(uuid())
+  type      String   @default("FEATURED")
+  startDate DateTime
+  endDate   DateTime
+  price     Float
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  listingId String
+  listing   MarketplaceListing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  @@index([listingId])
+  @@index([endDate])
+  @@map("marketplace_promotions")
+}
+
+enum OfferStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  COUNTERED
+  EXPIRED
+}
+
+model MarketplaceOffer {
+  id            String      @id @default(uuid())
+  amount        Float
+  message       String?
+  status        OfferStatus @default(PENDING)
+  counterAmount Float?
+  expiresAt     DateTime?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  buyerId   String
+  sellerId  String
+  listingId String
+
+  buyer   MarketplaceUser    @relation("OfferBuyer", fields: [buyerId], references: [id], onDelete: Cascade)
+  seller  MarketplaceUser    @relation("OfferSeller", fields: [sellerId], references: [id], onDelete: Cascade)
+  listing MarketplaceListing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  @@unique([buyerId, listingId])
+  @@index([sellerId])
+  @@index([listingId])
+  @@index([status])
+  @@map("marketplace_offers")
+}
+
+model MarketplaceSavedSearch {
+  id             String    @id @default(uuid())
+  name           String
+  query          String?
+  filters        Json
+  emailAlerts    Boolean   @default(true)
+  isActive       Boolean   @default(true)
+  lastNotifiedAt DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  userId String
+  user   MarketplaceUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([emailAlerts, isActive])
+  @@map("marketplace_saved_searches")
+}
