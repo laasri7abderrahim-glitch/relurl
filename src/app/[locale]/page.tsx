@@ -337,9 +337,21 @@ export default function HomePage() {
                   </CardContent>
                 </Card>
 
-                <div className="mt-5 flex items-center gap-2 text-sm text-foreground/60">
-                  <Star className="w-4 h-4 text-accent fill-accent" />
-                  <span>{t("homepage.trustedBy")}</span>
+                <div className="mt-5 space-y-2">
+                  <div className="flex items-center gap-2 text-sm text-foreground/60">
+                    <Star className="w-4 h-4 text-accent fill-accent" />
+                    <span>{t("homepage.trustedBy")}</span>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-foreground/50">
+                    <span className="inline-flex items-center gap-1">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-accent" />
+                      {t("homepage.freeAnalyticsBadge")}
+                    </span>
+                    <Link href="/browser-extension" className="inline-flex items-center gap-1 text-accent hover:text-accent/80 transition-colors font-medium">
+                      <Zap className="w-3.5 h-3.5" />
+                      {t("homepage.extensionPromo")}
+                    </Link>
+                  </div>
                 </div>
               </div>
 

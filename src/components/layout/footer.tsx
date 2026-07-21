@@ -14,6 +14,7 @@ const footerSections = [
     { label: "layout.footer.integrations", href: "/integrations" },
     { label: "layout.footer.api", href: "/api" },
     { label: "layout.footer.changelog", href: "/changelog" },
+    { label: "layout.footer.browserExtension", href: "/browser-extension" },
   ]},
   { title: "layout.footer.urlShortener", key: "url", links: [
     { label: "layout.footer.customURL", href: "/custom-url-shortener" },

@@ -248,7 +248,21 @@ export default function PricingPageClient() {
         ))}
       </div>
 
-      <div className="max-w-3xl mx-auto mt-24">
+      {/* Comparison hint vs TinyURL */}
+      <div className="max-w-4xl mx-auto mt-20 mb-8">
+        <Card className="border-accent/20 bg-gradient-to-r from-primary/5 to-accent/5">
+          <CardContent className="p-6 text-center">
+            <p className="text-sm text-foreground/70 mb-2">
+              <span className="font-semibold text-foreground">Why choose RELURL?</span> Unlike TinyURL's free plan (zero analytics, no link editing), every RELURL plan includes click analytics, geo & device data, and permanent links. No link expiration. Ever.
+            </p>
+            <Link href="/relurl-vs-tinyurl" className="text-sm text-accent hover:text-accent/80 font-medium inline-flex items-center gap-1">
+              Full comparison → <ArrowRight className="w-3 h-3" />
+            </Link>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="max-w-3xl mx-auto mt-8">
         <h2 className="text-2xl font-bold text-center mb-10">{t("faqTitle")}</h2>
         <div className="space-y-4">
           {faqs.map((faq, i) => (

@@ -6,10 +6,10 @@ import { getPostsByLandingPage } from "@/lib/blog/posts"
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   return generateSEOMetadata({
-    title: "RELURL vs TinyURL",
-    description: "Compare RELURL vs TinyURL to find the best URL shortener for your needs. See feature differences, pricing, link management capabilities, and analytics quality.",
+    title: "RELURL vs TinyURL (2026) — Which Is Better?",
+    description: "Compare RELURL vs TinyURL: Free plan analytics vs zero, 5,000 active links vs 500, team collaboration vs none, geo-targeting, QR codes, and more. See why thousands switch.",
     path: "/relurl-vs-tinyurl",
-    keywords: ["relurl vs tinyurl", "tinyurl alternative", "relurl or tinyurl", "compare url shorteners"],
+    keywords: ["relurl vs tinyurl", "tinyurl alternative", "relurl or tinyurl", "compare url shorteners", "tinyurl free plan no analytics"],
     locale,
   })
 }
@@ -19,24 +19,41 @@ export default function Page() {
   const relatedArticles = getPostsByLandingPage("/free-url-shortener").slice(0, 3)
   return (
     <URLLandingPage
-      title="RELURL vs TinyURL"
-      subtitle="Which Is Better?"
-      description="Compare RELURL vs TinyURL to find the best URL shortener for your needs. RELURL offers modern analytics, custom aliases, QR codes, and a free forever plan with no link expiration."
+      title="RELURL vs TinyURL (2026)"
+      subtitle="The Honest Comparison"
+      description="TinyURL is great for one-off shortening — it's fast and has been around since 2002. But if you need analytics, team tools, branded domains, or any marketing features, RELURL wins on every front. Here's the breakdown."
       placeholder="Compare features now..."
-      generateLabel="Compare vs TinyURL"
-      features={["Click Analytics", "Custom Branded Slugs", "QR Code Generation", "Real-time Tracking", "No Expiration", "Free Forever"]}
-      howItWorks={[
-        { step: "Compare Feature Sets", desc: "See how RELURL's modern link management platform stacks up against TinyURL's basic shortening service." },
-        { step: "Check Analytics Quality", desc: "RELURL provides real-time click analytics with geo-location data, while TinyURL offers limited stats." },
-        { step: "Choose Your Platform", desc: "Pick RELURL for advanced features, custom domains, and a generous free plan that TinyURL can't match." },
+      generateLabel="See the difference"
+      features={[
+        "Free plan includes full click analytics (TinyURL Free = zero analytics)",
+        "5,000 active links on Pro — TinyURL caps you at 500",
+        "Team collaboration with role-based access — TinyURL has none",
+        "Geo & device targeting for international campaigns",
+        "Link-in-bio pages for social media profiles",
+        "Webhook notifications on every click"
       ]}
-      useCases={["Replace TinyURL with a more feature-rich alternative", "Get detailed analytics TinyURL doesn't offer", "Create custom branded slugs for professional links", "Generate QR codes for every shortened link", "Use custom domains for branded short URLs"]}
+      howItWorks={[
+        { step: "Free Plan Analytics", desc: "RELURL Free includes click tracking, geo data, devices, and referrers. TinyURL Free gives you nothing — not even basic click counts." },
+        { step: "Scale Without Limits", desc: "RELURL Pro gives 5,000 active links and 50,000 tracked clicks/month. TinyURL Pro caps you at 500 links with no explicit click allowance." },
+        { step: "Team & Marketing Tools", desc: "RELURL includes team workspaces, UTM builder, link health monitoring, and bio pages. TinyURL offers none of these." },
+      ]}
+      useCases={[
+        "Get real analytics on your free plan — TinyURL Free has zero tracking",
+        "Scale beyond 500 links without hitting a cap",
+        "Collaborate with your team on link campaigns",
+        "Route users by country or device type",
+        "Build link-in-bio pages for Instagram, TikTok, YouTube",
+        "Monitor link health and get broken link alerts"
+      ]}
       relatedPages={getRelatedPages(href)}
       allPages={[...allLandingPages, ...qrPages]}
       faqs={[
-        { q: "What features does RELURL have that TinyURL doesn't?", a: "RELURL offers click analytics, custom aliases, QR code generation, custom domains, link expiration control, and password protection — all on a free plan." },
-        { q: "Is RELURL really free compared to TinyURL?", a: "Yes, RELURL has a generous free forever plan with no link expiration, unlike TinyURL which limits free features." },
-        { q: "Can I migrate my links from TinyURL to RELURL?", a: "While you can't migrate automatically, you can recreate your important links on RELURL with custom aliases to match." },
+        { q: "Does RELURL's free plan really have analytics?", a: "Yes. Unlike TinyURL's free plan which offers zero click tracking, RELURL Free includes full analytics: total clicks, unique visitors, geographic data, device breakdown, browser info, and referrer tracking — all at no cost." },
+        { q: "How many links can I create on each platform?", a: "RELURL Free: unlimited links. RELURL Pro: 5,000 active links. TinyURL Free: unlimited (but no editing or analytics). TinyURL Pro: only 500 active URLs — 10x less than RELURL Pro for a comparable price." },
+        { q: "Does TinyURL have team collaboration?", a: "No. TinyURL has no team features whatsoever. RELURL offers multi-user workspaces with role-based access (Owner, Admin, Member), shared link libraries, team analytics, and centralized billing." },
+        { q: "Which is better for international campaigns?", a: "RELURL. You can route users to different destinations based on their country or device type. TinyURL has no geo-targeting or device routing capabilities." },
+        { q: "Can I use my own branded domain?", a: "Both support branded domains. But RELURL Pro includes up to 3 custom domains, and Business includes up to 10. TinyURL Pro only allows 1 branded domain." },
+        { q: "Do links expire on either platform?", a: "RELURL links never expire on any plan. TinyURL Free and Pro links are permanent, but their Bulk ($99+/mo) plan has a 90-day expiration — links stop working after 90 days unless you actively manage them." },
       ]}
       relatedArticles={relatedArticles}
     />

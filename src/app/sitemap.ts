@@ -28,6 +28,7 @@ function staticPages(priority = 0.9): MetadataRoute.Sitemap {
     "/gdpr",
     "/dmca",
     "/wordpress",
+    "/browser-extension",
     // "/login",     // noindex — no SEO value
     // "/register",  // noindex — no SEO value
     // "/forgot-password", // noindex — no SEO value

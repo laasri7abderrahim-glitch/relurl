@@ -33,6 +33,7 @@ const platformItems = [
       { icon: Shield, label: "Link Health", desc: "Monitor your link performance", href: "/features" },
       { icon: Sliders, label: "UTM Builder", desc: "Track with UTM parameters", href: "/features" },
       { icon: Users, label: "Team Collaboration", desc: "Work together seamlessly", href: "/features" },
+      { icon: Zap, label: "Browser Extension", desc: "Shorten links with one click", href: "/browser-extension" },
     ],
   },
 ]
