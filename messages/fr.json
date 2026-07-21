@@ -9,7 +9,8 @@
       "blog": "Blog",
       "contact": "Contact",
       "login": "Connexion",
-      "signUp": "S'inscrire"
+      "signUp": "S'inscrire",
+      "browserExtension": "Extension Navigateur"
     },
     "footer": {
       "product": "Produit",
@@ -18,6 +19,7 @@
       "integrations": "Intégrations",
       "api": "API",
       "changelog": "Journal des modifications",
+      "browserExtension": "Extension Navigateur",
       "urlShortener": "Raccourcisseur d'URL",
       "customURL": "Raccourcisseur d'URL personnalisé",
       "brandedLink": "Raccourcisseur de liens de marque",
@@ -52,6 +54,8 @@
   },
   "homepage": {
     "badge": "Raccourcisseur d'URL gratuit",
+    "freeAnalyticsBadge": "✓ Le plan gratuit inclut les statistiques complètes",
+    "extensionPromo": "Obtenez l'Extension →",
     "title": "Raccourcissez, suivez et développez avec des liens intelligents",
     "subtitle": "Raccourcissez, suivez et gérez vos liens avec des analytiques puissantes et des domaines de marque personnalisés — le tout en un seul endroit.",
     "shortenTab": "Raccourcir un lien",
@@ -633,7 +637,10 @@
         "q": "Proposez-vous des remboursements ?",
         "a": "Oui, nous offrons un remboursement complet dans les 30 jours suivant l'achat si vous n'êtes pas satisfait. Aucune question posée."
       }
-    ]
+    ],
+    "ctaTitle": "Prêt à commencer ?",
+    "ctaDesc": "Choisissez votre forfait et commencez à raccourcir des liens en quelques secondes. Sans frais cachés. Sans surprises.",
+    "ctaButton": "Commencez gratuitement"
   },
   "register": {
     "title": "Créer un compte",
@@ -690,6 +697,46 @@
     "sidebarPhoneValue": "+1 (415) 800-1234",
     "sidebarHours": "Horaires",
     "sidebarHoursValue": "Lun-Ven, 9h-17h PST"
+  },
+  "extension": {
+    "metaTitle": "Extension Navigateur — Raccourcissez des URLs Instantanément",
+    "metaDescription": "L'extension navigateur RELURL pour Chrome et Firefox. Raccourcissez des URLs, générez des QR codes et copiez des liens courts en un clic.",
+    "title": "Raccourcissez des Liens en un Clin d'Œil",
+    "subtitle": "L'Extension Navigateur RELURL",
+    "desc": "Installez l'extension RELURL et raccourcissez n'importe quelle URL sans quitter la page sur laquelle vous êtes. Un clic — lien court instantané, copié et prêt à partager.",
+    "badge": "Extension Gratuite",
+    "feature1Title": "Raccourcissement en un Clic",
+    "feature1Desc": "Cliquez sur l'icône RELURL dans votre barre d'outils et l'URL de l'onglet actif est raccourcie instantanément. Sans copier, sans coller, sans étapes supplémentaires.",
+    "feature2Title": "Copie Automatique",
+    "feature2Desc": "Votre nouveau lien court est automatiquement copié dans le presse-papiers. Cliquez et collez — pas de clics supplémentaires.",
+    "feature3Title": "QR Code à la Demande",
+    "feature3Desc": "Générez un QR code pour n'importe quel lien raccourci directement depuis la fenêtre contextuelle. Idéal pour transférer des liens vers votre téléphone ou partager hors ligne.",
+    "feature4Title": "Vos Liens, Synchronisés",
+    "feature4Desc": "Tous les liens créés avec l'extension apparaissent dans votre tableau de bord RELURL. Gérez, modifiez et suivez-les aux côtés des liens créés sur le web.",
+    "howItWorksTitle": "Comment Ça Marche",
+    "howItWorks1Title": "Installez l'Extension",
+    "howItWorks1Desc": "Ajoutez RELURL à Chrome ou Firefox depuis la boutique officielle. Cela prend 10 secondes.",
+    "howItWorks2Title": "Cliquez sur l'icône",
+    "howItWorks2Desc": "Accédez à n'importe quelle page à raccourcir et cliquez sur l'icône RELURL dans votre barre d'outils.",
+    "howItWorks3Title": "Partagez Instantanément",
+    "howItWorks3Desc": "Votre lien court est copié automatiquement. Collez-le où vous voulez — e-mail, réseaux sociaux, messages.",
+    "ctaTitle": "Obtenez l'Extension",
+    "ctaDesc": "Disponible pour Chrome et Firefox. Gratuite, rapide et respectueuse de votre vie privée.",
+    "addToChrome": "Ajouter à Chrome",
+    "addToFirefox": "Ajouter à Firefox",
+    "comingSoon": "Bientôt disponible",
+    "browsersSupported": "Chrome 90+ • Firefox 100+ • Edge 90+ • Opera 80+",
+    "whyTitle": "Pourquoi utiliser l'extension RELURL ?",
+    "why1": "Fini le copier-coller-changement d'onglet. Raccourcissez des liens sans quitter votre page.",
+    "why2": "Vos liens sont toujours synchronisés avec votre tableau de bord et leurs statistiques complètes.",
+    "why3": "QR codes en un clic — parfaits pour un partage mobile rapide.",
+    "why4": "Gratuit pour toujours. Pas besoin de compte pour commencer (mais connectez-vous pour les statistiques).",
+    "faq1Q": "L'extension navigateur RELURL est-elle gratuite ?",
+    "faq1A": "Oui, l'extension est entièrement gratuite. Vous n'avez pas besoin de compte pour raccourcir des liens, mais la connexion vous donne accès aux statistiques de clics et à la gestion des liens.",
+    "faq2Q": "Quels navigateurs sont pris en charge ?",
+    "faq2A": "L'extension RELURL est disponible pour Chrome, Firefox, Edge et Opera. Nous recommandons d'utiliser la dernière version de votre navigateur pour une expérience optimale.",
+    "faq3Q": "L'extension suit-elle ma navigation ?",
+    "faq3A": "Non. L'extension ne s'active que lorsque vous cliquez sur l'icône. Elle ne lit jamais votre historique de navigation, ne suit pas votre activité et n'envoie pas de données sans votre action."
   },
   "blog": {
     "backToBlog": "Retour au blog",
@@ -1296,7 +1343,14 @@
         "cloneLink": "Dupliquer",
         "cloning": "Duplication...",
         "cloneSuccess": "Lien dupliqué !",
-        "cloneError": "Échec de la duplication"
+        "cloneError": "Échec de la duplication",
+        "healthOk": "OK",
+        "healthDown": "Inaccessible",
+        "healthUnknown": "Inconnu",
+        "checkHealth": "Vérifier tout",
+        "checkingHealth": "Vérification...",
+        "healthResults": "{healthy}/{total} liens en bonne santé",
+        "healthError": "Échec de la vérification"
       },
       "detail": {
         "aiSuggestRoutes": "Suggestions IA",
