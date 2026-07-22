@@ -281,19 +281,22 @@ export default function PricingPageClient() {
         </div>
       </div>
 
-      <div className="relative overflow-hidden rounded-3xl p-12 text-center mt-24">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-primary" />
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-5 left-1/2 -translate-x-1/2 w-40 h-40 bg-accent/20 rounded-full blur-[80px]" />
-        </div>
-        <div className="relative z-10">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">{t("ctaTitle")}</h2>
-          <p className="text-white/70 mb-8 max-w-xl mx-auto">{t("ctaDesc")}</p>
-          <Link href={isLoggedIn ? "/dashboard/billing" : "/register"}>
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 shadow-xl shadow-black/20 px-8 font-bold">
-              {t("ctaButton")} <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
-          </Link>
+      <div className="max-w-5xl mx-auto mt-24">
+        <div className="relative overflow-hidden rounded-3xl p-8 md:p-16 text-center">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-primary" />
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-5 left-1/2 -translate-x-1/2 w-40 h-40 bg-accent/20 rounded-full blur-[80px]" />
+            <div className="absolute bottom-5 right-10 w-60 h-60 bg-accent/10 rounded-full blur-[100px]" />
+          </div>
+          <div className="relative z-10">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 text-white leading-tight">{t("ctaTitle")}</h2>
+            <p className="text-white/70 mb-8 max-w-xl mx-auto text-sm md:text-base">{t("ctaDesc")}</p>
+            <Link href={isLoggedIn ? "/dashboard/billing" : "/register"}>
+              <Button size="lg" className="bg-white text-primary hover:bg-white/90 shadow-xl shadow-black/20 px-10 py-6 text-base font-bold h-auto">
+                {t("ctaButton")} <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
       </div>
