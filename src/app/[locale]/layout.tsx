@@ -22,12 +22,17 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   let currentPath = "/"
   try {
     const h = await headers()
-    const invokePath = h.get("x-invoke-path") || h.get("x-middleware-invoke-path") || ""
-    if (invokePath) {
-      const localePrefix = `/${locale}`
-      currentPath = invokePath.startsWith(localePrefix)
-        ? invokePath.slice(localePrefix.length) || "/"
-        : "/"
+    const rawUrl = h.get("x-url") || h.get("next-url") || h.get("x-invoke-path") || h.get("x-middleware-invoke-path") || ""
+    if (rawUrl) {
+      try {
+        const parsed = new URL(rawUrl.startsWith("http") ? rawUrl : `https://relurl.com${rawUrl}`)
+        const p = parsed.pathname
+        const localePrefix = `/${locale}`
+        currentPath = p.startsWith(localePrefix) ? p.slice(localePrefix.length) || "/" : "/"
+      } catch {
+        const localePrefix = `/${locale}`
+        currentPath = rawUrl.startsWith(localePrefix) ? rawUrl.slice(localePrefix.length) || "/" : "/"
+      }
     }
   } catch {}
 
