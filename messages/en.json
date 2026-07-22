@@ -650,7 +650,10 @@
     ],
     "ctaTitle": "Ready to Get Started?",
     "ctaDesc": "Pick your plan and start shortening links in seconds. No hidden fees. No surprises.",
-    "ctaButton": "Start Free Now"
+    "ctaButton": "Start Free Now",
+    "comparisonTitle": "Why choose RELURL?",
+    "comparisonText": "Unlike TinyURL's free plan (zero analytics, no link editing), every RELURL plan includes click analytics, geo & device data, and permanent links. No link expiration. Ever.",
+    "comparisonLink": "Full comparison →"
   },
   "register": {
     "title": "Create Account",

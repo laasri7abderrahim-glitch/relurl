@@ -253,10 +253,10 @@ export default function PricingPageClient() {
         <Card className="border-accent/20 bg-gradient-to-r from-primary/5 to-accent/5">
           <CardContent className="p-6 text-center">
             <p className="text-sm text-foreground/70 mb-2">
-              <span className="font-semibold text-foreground">Why choose RELURL?</span> Unlike TinyURL's free plan (zero analytics, no link editing), every RELURL plan includes click analytics, geo & device data, and permanent links. No link expiration. Ever.
+              <span className="font-semibold text-foreground">{t("comparisonTitle")}</span> {t("comparisonText")}
             </p>
             <Link href="/relurl-vs-tinyurl" className="text-sm text-accent hover:text-accent/80 font-medium inline-flex items-center gap-1">
-              Full comparison → <ArrowRight className="w-3 h-3" />
+              {t("comparisonLink")} <ArrowRight className="w-3 h-3" />
             </Link>
           </CardContent>
         </Card>

@@ -640,7 +640,10 @@
     ],
     "ctaTitle": "Prêt à commencer ?",
     "ctaDesc": "Choisissez votre forfait et commencez à raccourcir des liens en quelques secondes. Sans frais cachés. Sans surprises.",
-    "ctaButton": "Commencez gratuitement"
+    "ctaButton": "Commencez gratuitement",
+    "comparisonTitle": "Pourquoi choisir RELURL ?",
+    "comparisonText": "Contrairement au plan gratuit de TinyURL (zéro statistiques, pas de modification de liens), chaque plan RELURL inclut des statistiques de clics, des données géographiques et d'appareil, et des liens permanents. Sans expiration. Jamais.",
+    "comparisonLink": "Comparaison complète →"
   },
   "register": {
     "title": "Créer un compte",
