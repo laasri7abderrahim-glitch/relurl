@@ -750,7 +750,9 @@
     "backToBlog": "Volver al blog",
     "targetKeyword": "Palabra clave objetivo",
     "useTheTool": "Usar la herramienta {keyword}",
-    "relatedArticles": "Artículos relacionados"
+    "relatedArticles": "Artículos relacionados",
+    "readTime": "{minutes} min de lectura",
+    "readArticle": "Leer"
   },
   "dashboard": {
     "analytics": {

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react"
 import { Link } from "@/i18n/navigation"
-import { useLocale } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { useSearchParams } from "next/navigation"
 import { getPaginatedPostMetas, getTotalPages } from "@/lib/blog/post-metas"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
@@ -13,6 +13,7 @@ import { Footer } from "@/components/layout/footer"
 
 export default function BlogPageClient() {
   const locale = useLocale()
+  const t = useTranslations("blog")
   const searchParams = useSearchParams()
   const currentPage = Math.max(1, Number(searchParams.get("page")) || 1)
   const perPage = 24
@@ -97,10 +98,10 @@ export default function BlogPageClient() {
                   <CardFooter className="px-6 pb-4 pt-0 flex items-center justify-between text-xs text-muted-foreground">
                     <div className="flex items-center gap-3">
                       <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {post.date}</span>
-                      <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {post.readTime}</span>
+                      <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {t("readTime", { minutes: post.readTime.match(/\d+/)?.[0] || "5" })}</span>
                     </div>
                     <Link href={`/blog/${post.slug}`}>
-                      <Button variant="ghost" size="sm" className="text-primary">Read <ArrowRight className="w-3 h-3 ml-1" /></Button>
+                      <Button variant="ghost" size="sm" className="text-primary">{t("readArticle")} <ArrowRight className="w-3 h-3 ml-1" /></Button>
                     </Link>
                   </CardFooter>
                 </Card>

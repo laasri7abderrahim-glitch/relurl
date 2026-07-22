@@ -752,7 +752,9 @@
     "backToBlog": "Back to Blog",
     "targetKeyword": "Target Keyword",
     "useTheTool": "Use the {keyword} Tool",
-    "relatedArticles": "Related Articles"
+    "relatedArticles": "Related Articles",
+    "readTime": "{minutes} min read",
+    "readArticle": "Read"
   },
   "dashboard": {
     "analytics": {

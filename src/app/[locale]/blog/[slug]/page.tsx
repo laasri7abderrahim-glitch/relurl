@@ -79,7 +79,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <div className="mb-8">
               <div className="flex items-center gap-3 text-sm text-muted-foreground mb-4">
                 <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> {post.date}</span>
-                <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> {post.readTime}</span>
+                <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> {t("readTime", { minutes: post.readTime.match(/\d+/)?.[0] || "5" })}</span>
                 <span className="flex items-center gap-1"><Tag className="w-4 h-4" /> {post.category}</span>
               </div>
               <h1 className="text-3xl md:text-4xl font-bold mb-4">{post.title}</h1>
