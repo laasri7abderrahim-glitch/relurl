@@ -2,10 +2,11 @@ import type { MetadataRoute } from "next"
 import { getAllSlugs } from "@/lib/blog/posts"
 
 const baseUrl = "https://relurl.com"
-const locales = ["en", "fr", "es"] as const
+// Blog, pricing, contact, features — fully translated per locale
+const translatedLocales = ["en", "fr", "es"] as const
 
 function localizedUrls(path: string, priority = 0.8): MetadataRoute.Sitemap {
-  return locales.map((locale) => ({
+  return translatedLocales.map((locale) => ({
     url: `${baseUrl}/${locale}${path}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
@@ -13,34 +14,30 @@ function localizedUrls(path: string, priority = 0.8): MetadataRoute.Sitemap {
   }))
 }
 
+function enOnlyUrls(path: string, priority = 0.8): MetadataRoute.Sitemap {
+  return [{
+    url: `${baseUrl}/en${path}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority,
+  }]
+}
+
 function staticPages(priority = 0.9): MetadataRoute.Sitemap {
-  const pages = [
-    "",
-    "/features",
-    "/pricing",
-    "/integrations",
-    "/changelog",
-    "/blog",
-    "/contact",
-    "/privacy",
-    "/terms",
-    "/cookies",
-    "/gdpr",
-    "/dmca",
-    "/wordpress",
-    "/browser-extension",
-    // "/login",     // noindex — no SEO value
-    // "/register",  // noindex — no SEO value
-    // "/forgot-password", // noindex — no SEO value
-    // "/reset-password",  // noindex — no SEO value
+  // Pages with actual translated content — include all locales
+  const translated = ["", "/features", "/pricing", "/integrations", "/changelog", "/blog", "/contact", "/browser-extension"]
+  // Pages with hardcoded English content — EN only to avoid duplicates
+  const enPages = ["/privacy", "/terms", "/cookies", "/gdpr", "/dmca", "/wordpress"]
+  return [
+    ...translated.flatMap((p) => localizedUrls(p, p === "" ? 1 : priority)),
+    ...enPages.flatMap((p) => enOnlyUrls(p, priority)),
   ]
-  return pages.flatMap((p) => localizedUrls(p, p === "" ? 1 : priority))
 }
 
 function blogPages(priority = 0.8): MetadataRoute.Sitemap {
   const slugs = getAllSlugs()
   return slugs.flatMap((slug) =>
-    locales.map((locale) => ({
+    translatedLocales.map((locale) => ({
       url: `${baseUrl}/${locale}/blog/${slug}`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
@@ -50,6 +47,7 @@ function blogPages(priority = 0.8): MetadataRoute.Sitemap {
 }
 
 function landingPages(priority = 0.85): MetadataRoute.Sitemap {
+  // Content not translated per locale — EN only to avoid duplicate detection
   const paths = [
     "/custom-url-shortener",
     "/branded-link-shortener",
@@ -116,7 +114,7 @@ function landingPages(priority = 0.85): MetadataRoute.Sitemap {
     "/url-shortener-with-analytics",
     "/url-shortener-no-ads",
   ]
-  return paths.flatMap((p) => localizedUrls(p, priority))
+  return paths.flatMap((p) => enOnlyUrls(p, priority))
 }
 
 function socialPages(priority = 0.8): MetadataRoute.Sitemap {
@@ -148,7 +146,7 @@ function socialPages(priority = 0.8): MetadataRoute.Sitemap {
     "/shorten-x-url",
     "/shorten-discord-invite-link",
   ]
-  return paths.flatMap((p) => localizedUrls(p, priority))
+  return paths.flatMap((p) => enOnlyUrls(p, priority))
 }
 
 function qrPages(priority = 0.85): MetadataRoute.Sitemap {
@@ -186,7 +184,7 @@ function qrPages(priority = 0.85): MetadataRoute.Sitemap {
     "/qr-code-for-class",
     "/qr-code-for-fundraiser",
   ]
-  return paths.flatMap((p) => localizedUrls(p, priority))
+  return paths.flatMap((p) => enOnlyUrls(p, priority))
 }
 
 function comparisonPages(priority = 0.8): MetadataRoute.Sitemap {
@@ -199,7 +197,7 @@ function comparisonPages(priority = 0.8): MetadataRoute.Sitemap {
     "/relurl-vs-tinyurl",
     "/relurl-vs-bitly",
   ]
-  return paths.flatMap((p) => localizedUrls(p, priority))
+  return paths.flatMap((p) => enOnlyUrls(p, priority))
 }
 
 function guidePages(priority = 0.8): MetadataRoute.Sitemap {
@@ -213,7 +211,7 @@ function guidePages(priority = 0.8): MetadataRoute.Sitemap {
     "/how-to-create-qr-codes-for-business",
     "/how-to-make-money-with-url-shortener",
   ]
-  return paths.flatMap((p) => localizedUrls(p, priority))
+  return paths.flatMap((p) => enOnlyUrls(p, priority))
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

@@ -2,6 +2,7 @@ import { NextIntlClientProvider } from "next-intl"
 import { getMessages, getTranslations } from "next-intl/server"
 import { routing } from "@/i18n/routing"
 import { notFound } from "next/navigation"
+import { headers } from "next/headers"
 
 type Props = {
   children: React.ReactNode
@@ -16,6 +17,26 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: "seo" })
 
+  const baseUrl = "https://relurl.com"
+
+  let currentPath = "/"
+  try {
+    const h = await headers()
+    const invokePath = h.get("x-invoke-path") || h.get("x-middleware-invoke-path") || ""
+    if (invokePath) {
+      const localePrefix = `/${locale}`
+      currentPath = invokePath.startsWith(localePrefix)
+        ? invokePath.slice(localePrefix.length) || "/"
+        : "/"
+    }
+  } catch {}
+
+  const languages: Record<string, string> = {}
+  for (const l of routing.locales) {
+    languages[l] = `${baseUrl}/${l}${currentPath}`
+  }
+  languages["x-default"] = `${baseUrl}/en${currentPath}`
+
   return {
     title: {
       default: t("siteDescription"),
@@ -23,13 +44,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     description: t("siteDescription"),
     alternates: {
-      languages: {
-        en: "https://relurl.com/en",
-        fr: "https://relurl.com/fr",
-        es: "https://relurl.com/es",
-        ar: "https://relurl.com/ar",
-        "x-default": "https://relurl.com/en",
-      },
+      canonical: `${baseUrl}/${locale}${currentPath}`,
+      languages,
     },
     openGraph: {
       locale: locale === "ar" ? "ar_MA" : locale === "fr" ? "fr_FR" : locale === "es" ? "es_ES" : "en_US",
