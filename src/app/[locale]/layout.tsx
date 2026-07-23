@@ -2,7 +2,7 @@ import { NextIntlClientProvider } from "next-intl"
 import { getMessages, getTranslations } from "next-intl/server"
 import { routing } from "@/i18n/routing"
 import { notFound } from "next/navigation"
-import { headers } from "next/headers"
+import { RevealAnimations } from "@/components/ui/reveal-animations"
 
 type Props = {
   children: React.ReactNode
@@ -19,39 +19,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   const baseUrl = "https://relurl.com"
 
-  let currentPath = "/"
-  try {
-    const h = await headers()
-    const rawUrl = h.get("x-url") || h.get("next-url") || h.get("x-invoke-path") || h.get("x-middleware-invoke-path") || ""
-    if (rawUrl) {
-      try {
-        const parsed = new URL(rawUrl.startsWith("http") ? rawUrl : `https://relurl.com${rawUrl}`)
-        const p = parsed.pathname
-        const localePrefix = `/${locale}`
-        currentPath = p.startsWith(localePrefix) ? p.slice(localePrefix.length) || "/" : "/"
-      } catch {
-        const localePrefix = `/${locale}`
-        currentPath = rawUrl.startsWith(localePrefix) ? rawUrl.slice(localePrefix.length) || "/" : "/"
-      }
-    }
-  } catch {}
-
-  const languages: Record<string, string> = {}
-  for (const l of routing.locales) {
-    languages[l] = `${baseUrl}/${l}${currentPath}`
-  }
-  languages["x-default"] = `${baseUrl}/en${currentPath}`
-
   return {
     title: {
       default: t("siteDescription"),
       template: "%s | " + t("siteName"),
     },
     description: t("siteDescription"),
-    alternates: {
-      canonical: `${baseUrl}/${locale}${currentPath}`,
-      languages,
-    },
     openGraph: {
       locale: locale === "ar" ? "ar_MA" : locale === "fr" ? "fr_FR" : locale === "es" ? "es_ES" : "en_US",
       siteName: t("siteName"),
@@ -65,17 +38,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: t("siteName"),
       description: t("siteDescription"),
       images: ["/api/og"],
-    },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
     },
   }
 }
@@ -124,7 +86,9 @@ export default async function LocaleLayout({ children, params }: Props) {
         }}
       />
 
-      {children}
+      <RevealAnimations>
+        {children}
+      </RevealAnimations>
     </NextIntlClientProvider>
   )
 }

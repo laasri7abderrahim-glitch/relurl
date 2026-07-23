@@ -2,53 +2,41 @@ import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "twitter-link-generator"
+const pagePath = "/twitter-link-generator"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "Twitter/X Link Generator - Tweet & Thread Links",
-    description: "Shorten URLs for tweets, threads, and X profiles to save character space. Optimize your Twitter/X presence and grow follower engagement with RELURL.",
-    path: "/twitter-link-generator",
-    keywords: ["twitter link generator", "x link generator", "tweet link shortener"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function TwitterLinkGeneratorPage() {
-  const href = "/twitter-link-generator"
-  const relatedArticles = getPostsByLandingPage("/twitter-link-generator").slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <URLLandingPage
-      title="Twitter/X Link Generator"
-      subtitle="Optimize Your Tweets"
-       description="Shorten URLs for tweets, threads, and X profiles to save character space. Optimize your Twitter/X content and track audience interaction."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://your-site.com/your-article-or-landing"
       inputLabel="Enter your destination URL"
       generateLabel="Generate Link"
-      features={[
-        "Tweet Click Tracking",
-        "Thread Link Analytics",
-        "Profile Bio Optimization",
-        "Character-Saving Links",
-        "Twitter Card Support",
-        "Engagement Attribution",
-      ]}
-      howItWorks={[
-        { step: "Paste Your URL", desc: "Enter the page you want to share on Twitter/X." },
-        { step: "Generate Short Link", desc: "Create a character-efficient URL for your tweet." },
-        { step: "Tweet & Track", desc: "Post in tweets and threads, then monitor engagement." },
-      ]}
-      useCases={[
-        "Blog post promotion on Twitter",
-        "Product launch tweets",
-        "Thread engagement tracking",
-        "Profile bio link optimization",
-        "Twitter Ad landing pages",
-        "Community engagement links",
-      ]}
-      relatedPages={getRelatedPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedPages(pagePath)}
       allPages={[...allLandingPages, ...qrPages]}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )

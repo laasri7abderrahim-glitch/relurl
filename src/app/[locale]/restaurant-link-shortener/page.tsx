@@ -2,53 +2,41 @@ import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "restaurant-link-shortener"
+const pagePath = "/restaurant-link-shortener"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "Restaurant Link Shortener - Menu & Reservation Links",
-    description: "Shorten menu, reservation, and delivery links for your restaurant. Drive more orders and bookings with clean, trackable URLs.",
-    path: "/restaurant-link-shortener",
-    keywords: ["restaurant link shortener", "menu link generator", "restaurant marketing"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function RestaurantLinkShortenerPage() {
-  const href = "/restaurant-link-shortener"
-  const relatedArticles = getPostsByLandingPage("/restaurant-link-shortener").slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <URLLandingPage
-      title="Restaurant Link Shortener"
-      subtitle="Fill More Tables"
-      description="Shorten menu, reservation, and delivery links. Drive more orders and bookings with clean, trackable URLs that customers remember."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://restaurant.com/menu/lunch-specials"
       inputLabel="Enter your restaurant URL"
       generateLabel="Shorten URL"
-      features={[
-        "Menu Link Tracking",
-        "Reservation Analytics",
-        "Delivery Platform Links",
-        "QR Code for Tables",
-        "Seasonal Menu Updates",
-        "Local SEO Friendly",
-      ]}
-      howItWorks={[
-        { step: "Paste Restaurant URL", desc: "Enter your menu, reservation, or delivery page link." },
-        { step: "Create Short Link", desc: "Generate a clean URL easy for customers to type." },
-        { step: "Promote & Fill Tables", desc: "Share on social media, print on menus, and track orders." },
-      ]}
-      useCases={[
-        "Online menu sharing",
-        "Reservation page links",
-        "Delivery platform promotion",
-        "Special event announcements",
-        "Loyalty program signups",
-        "Catering inquiry links",
-      ]}
-      relatedPages={getRelatedPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedPages(pagePath)}
       allPages={[...allLandingPages, ...qrPages]}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )

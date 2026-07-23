@@ -1,44 +1,44 @@
-import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
+import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
-import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
+import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "qr-code-for-sms"
+const pagePath = "/qr-code-for-sms"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "QR Code for SMS - Text Message QR Code",
-    description: "Generate a QR code that opens a pre-filled SMS message. Perfect for opt-ins, feedback, and quick responses.",
-    path: "/qr-code-for-sms",
-    keywords: ["qr code for sms", "sms qr code", "text message qr code", "text message qr code rsvp"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function QRCodeForSMSPage() {
-  const href = "/qr-code-for-sms"
-  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
-    <>
-      <QRCodeLandingPage
-      title="QR Code for SMS"
-      subtitle="Text Message QR Code"
-      description="Generate a QR code that opens a pre-filled SMS message. Perfect for opt-ins, feedback, and quick responses."
+    <QRCodeLandingPage
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="sms:+1234567890?body=Hello"
       defaultValue="sms:+1234567890?body=Hello"
       inputLabel="Enter phone number and message"
       generateLabel="Create SMS QR Code"
-      features={["Pre-filled Message", "One-Scan Text", "No Typing Required", "Marketing Ready", "Auto-Response Setup", "Keyword Opt-In"]}
-      howItWorks={[
-        { step: "Enter Phone & Message", desc: "Provide number and default message text" },
-        { step: "Generate QR Code", desc: "Create a code that opens SMS app" },
-        { step: "Collect Responses", desc: "Display for opt-ins or quick feedback" },
-      ]}
-      useCases={["SMS marketing opt-in", "Event RSVP", "Quick surveys", "Product feedback", "Support requests", "Coupon and discount delivery"]}
-      relatedPages={getRelatedQrPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedQrPages(pagePath)}
       allQRCodes={allQRCodes}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
-    </>
   )
 }

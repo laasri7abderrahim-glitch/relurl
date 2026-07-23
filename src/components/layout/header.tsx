@@ -47,7 +47,7 @@ function ThemeToggle() {
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="rounded-lg p-2 text-dark-100 hover:text-dark-50 hover:bg-dark-300 transition-colors"
+        className="rounded-lg p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
         aria-label="Toggle theme"
       >
         {resolvedTheme === "dark" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
@@ -55,13 +55,13 @@ function ThemeToggle() {
       {open && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 top-full mt-2 z-50 bg-dark-500 border border-dark-100 rounded-xl shadow-dropdown py-1 min-w-[140px]">
+          <div className="absolute right-0 top-full mt-2 z-50 glass-card py-1 min-w-[140px]">
             <button
               type="button"
               onClick={() => { setTheme("light"); setOpen(false) }}
               className={cn(
-                "flex items-center gap-2 w-full px-3 py-2 text-sm transition-colors hover:bg-dark-300",
-                resolvedTheme === "light" ? "text-primary font-medium" : "text-dark-100"
+                "flex items-center gap-2 w-full px-3 py-2 text-sm transition-colors hover:bg-muted",
+                resolvedTheme === "light" ? "text-primary font-medium" : "text-muted-foreground"
               )}
             >
               <Sun className="h-4 w-4" /> Light
@@ -70,8 +70,8 @@ function ThemeToggle() {
               type="button"
               onClick={() => { setTheme("dark"); setOpen(false) }}
               className={cn(
-                "flex items-center gap-2 w-full px-3 py-2 text-sm transition-colors hover:bg-dark-300",
-                resolvedTheme === "dark" ? "text-primary font-medium" : "text-dark-100"
+                "flex items-center gap-2 w-full px-3 py-2 text-sm transition-colors hover:bg-muted",
+                resolvedTheme === "dark" ? "text-primary font-medium" : "text-muted-foreground"
               )}
             >
               <Moon className="h-4 w-4" /> Dark
@@ -104,7 +104,7 @@ function MegaMenu() {
         onClick={() => setOpen(!open)}
         className={cn(
           "flex items-center gap-1 text-sm font-medium transition-colors",
-          open ? "text-primary" : "text-dark-100 hover:text-dark-50"
+          open ? "text-primary" : "text-muted-foreground hover:text-foreground"
         )}
       >
         Platform <ChevronDown className={cn("w-3.5 h-3.5 transition-transform", open && "rotate-180")} />
@@ -112,11 +112,11 @@ function MegaMenu() {
       {open && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
-          <div className="absolute left-0 top-full mt-3 z-50 w-[580px] bg-dark-500 border border-dark-100 rounded-2xl shadow-dropdown p-5 animate-fade-in-down">
+          <div className="absolute left-0 top-full mt-3 z-50 w-[580px] glass shadow-glass rounded-2xl p-5 animate-fade-in-down">
             <div className="grid grid-cols-2 gap-4">
               {platformItems.map((section) => (
                 <div key={section.group}>
-                  <p className="text-xs font-semibold text-dark-100 uppercase tracking-wider mb-3 px-3">{section.group}</p>
+                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3 px-3">{section.group}</p>
                   <div className="space-y-1">
                     {section.items.map((item) => (
                       <Link
@@ -129,8 +129,8 @@ function MegaMenu() {
                           <item.icon className="w-4.5 h-4.5 text-primary" />
                         </div>
                         <div>
-                          <p className="text-sm font-medium text-dark-50">{item.label}</p>
-                          <p className="text-xs text-dark-100 mt-0.5">{item.desc}</p>
+                          <p className="text-sm font-medium text-foreground">{item.label}</p>
+                          <p className="text-xs text-muted-foreground mt-0.5">{item.desc}</p>
                         </div>
                       </Link>
                     ))}
@@ -138,11 +138,11 @@ function MegaMenu() {
                 </div>
               ))}
             </div>
-            <div className="mt-4 pt-4 border-t border-dark-100/30">
+            <div className="mt-4 pt-4 border-t border-border/50">
               <Link
                 href="/features"
                 onClick={() => setOpen(false)}
-                className="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-dark-100 hover:text-primary hover:bg-primary/5 transition-colors"
+                className="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors"
               >
                 View all features <span aria-hidden="true">→</span>
               </Link>
@@ -156,17 +156,34 @@ function MegaMenu() {
 
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const t = useTranslations()
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-dark-100/60 bg-dark-700/80 backdrop-blur-xl">
+    <header
+      className={cn(
+        "sticky top-0 z-50 w-full transition-all duration-300",
+        scrolled
+          ? "bg-background/80 backdrop-blur-xl shadow-glass border-b border-border/50"
+          : "bg-background/60 backdrop-blur-md border-b border-border/30"
+      )}
+    >
       <div className="container flex h-16 items-center justify-between">
         <Link
           href="/"
           className="flex items-center gap-1.5 text-xl font-bold tracking-tight"
         >
           <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">REL</span>
-          <span className="text-dark-50">URL</span>
+          <span className="text-foreground">URL</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -175,7 +192,7 @@ function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-dark-100 transition-colors hover:text-dark-50"
+              className="relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
             >
               {t(link.label)}
             </Link>
@@ -184,9 +201,9 @@ function Header() {
 
         <div className="hidden items-center gap-2 md:flex">
           <ThemeToggle />
-          <div className="w-px h-6 bg-dark-100/30 mx-1" />
+          <div className="w-px h-6 bg-border/50 mx-1" />
           <LocaleSwitcher />
-          <div className="w-px h-6 bg-dark-100/30 mx-1" />
+          <div className="w-px h-6 bg-border/50 mx-1" />
           <Link href="/login">
             <Button variant="ghost" size="sm">{t("layout.nav.login")}</Button>
           </Link>
@@ -199,14 +216,14 @@ function Header() {
           <ThemeToggle />
           <button
             type="button"
-            className="mobile-touch-target rounded-lg hover:bg-dark-300 transition-colors"
+            className="mobile-touch-target rounded-lg hover:bg-muted transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
           >
             {mobileOpen ? (
-              <X className="h-6 w-6 text-dark-50" />
+              <X className="h-6 w-6 text-foreground" />
             ) : (
-              <Menu className="h-6 w-6 text-dark-50" />
+              <Menu className="h-6 w-6 text-foreground" />
             )}
           </button>
         </div>
@@ -218,28 +235,28 @@ function Header() {
           mobileOpen ? "max-h-[32rem] pb-6" : "max-h-0"
         )}
       >
-        <nav className="flex flex-col gap-1">
+        <nav className="flex flex-col gap-1 rounded-2xl glass p-4 mx-0">
           <div className="flex flex-col gap-0.5 pt-2">
-            <p className="text-xs font-semibold text-dark-100 uppercase tracking-wider px-4 mb-1 mt-2">Platform</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 mb-1 mt-2">Platform</p>
             {platformItems.flatMap(s => s.items).map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="flex items-center gap-3 rounded-xl px-4 py-3 min-h-[44px] text-sm font-medium text-dark-100 hover:text-dark-50 hover:bg-dark-300 transition-colors"
+                className="flex items-center gap-3 rounded-xl px-4 py-3 min-h-[44px] text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
               >
                 <item.icon className="w-5 h-5 text-primary" />
                 {item.label}
               </Link>
             ))}
           </div>
-          <div className="border-t border-dark-300/50 my-2 mx-4" />
+          <div className="border-t border-border/50 my-2 mx-4" />
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="flex items-center min-h-[44px] px-4 text-sm font-medium text-dark-100 transition-colors hover:text-dark-50 hover:bg-dark-300 rounded-xl"
+              className="flex items-center min-h-[44px] px-4 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-muted rounded-xl"
             >
               {t(link.label)}
             </Link>

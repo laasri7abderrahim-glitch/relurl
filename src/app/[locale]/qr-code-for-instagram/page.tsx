@@ -1,50 +1,43 @@
-import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
+import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
-import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
+import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "qr-code-for-instagram"
+const pagePath = "/qr-code-for-instagram"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "QR Code for Instagram - Grow Your Following",
-    description: "Create a QR code for your Instagram profile or posts. Help followers find you instantly and grow your audience.",
-    path: "/qr-code-for-instagram",
-    keywords: ["qr code for instagram", "instagram qr code", "instagram profile qr", "instagram profile qr code"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function Page() {
-  const href = "/qr-code-for-instagram"
-  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
-    <>
-      <QRCodeLandingPage
-      title="QR Code for Instagram"
-      subtitle="Grow Your Following"
-      description="Create a QR code for your Instagram profile or posts. Help followers find you instantly and grow your audience."
+    <QRCodeLandingPage
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://instagram.com/yourusername"
       inputLabel="Enter your Instagram profile URL"
       generateLabel="Create Instagram QR Code"
-      features={["Grow Followers", "Share Posts Easily", "Works on All Devices", "Print Ready", "Link in Bio Alternative", "Story View Counter"]}
-      howItWorks={[
-        { step: "Enter Profile URL", desc: "Paste your Instagram profile or post link" },
-        { step: "Generate QR Code", desc: "Create a scannable code" },
-        { step: "Share Everywhere", desc: "Add to print materials, packaging, or displays" },
-      ]}
-      useCases={[
-        "Influencers and creators",
-        "Business profiles",
-        "Event promotion",
-        "Product packaging",
-        "Store displays",
-        "Contest and giveaway entries",
-      ]}
-      relatedPages={getRelatedQrPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedQrPages(pagePath)}
       allQRCodes={allQRCodes}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
-    </>
   )
 }

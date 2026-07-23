@@ -2,53 +2,41 @@ import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "twitch-link-generator"
+const pagePath = "/twitch-link-generator"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "Twitch Link Generator - Stream & Channel Links",
-    description: "Generate short links for Twitch streams, channels, and clips. Track viewer engagement and grow your Twitch audience with RELURL.",
-    path: "/twitch-link-generator",
-    keywords: ["twitch link generator", "twitch stream links", "twitch marketing"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function TwitchLinkGeneratorPage() {
-  const href = "/twitch-link-generator"
-  const relatedArticles = getPostsByLandingPage("/twitch-link-generator").slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <URLLandingPage
-      title="Twitch Link Generator"
-      subtitle="Grow Your Channel"
-      description="Generate short links for Twitch streams, channels, and clips. Track viewer engagement and grow your Twitch audience from every platform."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://twitch.tv/your-channel"
       inputLabel="Enter your Twitch URL"
       generateLabel="Generate Link"
-      features={[
-        "Stream Link Tracking",
-        "Clip Share Analytics",
-        "Channel Page Optimization",
-        "Raid Link Support",
-        "Merch Store Integration",
-        "Follower Source Attribution",
-      ]}
-      howItWorks={[
-        { step: "Paste Twitch URL", desc: "Enter your channel, stream, or clip link." },
-        { step: "Generate Short Link", desc: "Create a clean URL for your Twitch content." },
-        { step: "Share & Track", desc: "Post on social media and track viewer sources." },
-      ]}
-      useCases={[
-        "Stream promotion on social media",
-        "Clip sharing across platforms",
-        "Channel raid links",
-        "Merch store promotion",
-        "Sponsor landing pages",
-        "Community event links",
-      ]}
-      relatedPages={getRelatedPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedPages(pagePath)}
       allPages={[...allLandingPages, ...qrPages]}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )

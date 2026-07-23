@@ -4,6 +4,13 @@ const siteName = "RELURL"
 const baseUrl = "https://relurl.com"
 const defaultImage = `${baseUrl}/api/og`
 
+// Paths that have genuine per-locale translations (not just EN fallback)
+const translatedPaths = ["/pricing", "/features", "/contact", "/blog", "/browser-extension"]
+
+function hasRealTranslations(path: string): boolean {
+  return translatedPaths.some((tp) => path.startsWith(tp))
+}
+
 interface SEOProps {
   title: string
   description: string
@@ -29,20 +36,28 @@ export function generateSEOMetadata({
   locale = "en",
   image,
 }: SEOProps): Metadata {
-  const url = `${baseUrl}/${locale}${path}`
+  // Untranslated pages canonical to EN to avoid duplicate-content issues
+  const canonicalLocale = locale !== "en" && !hasRealTranslations(path) ? "en" : locale
+  const url = `${baseUrl}/${canonicalLocale}${path}`
   const ogUrl = image || ogImageUrl(title, description)
+
+  // Only include hreflang for actually translated locales to avoid confusing crawlers
+  const languages: Record<string, string> = {
+    "x-default": `${baseUrl}/en${path}`,
+    en: `${baseUrl}/en${path}`,
+  }
+  if (hasRealTranslations(path) || locale === "en") {
+    languages.fr = `${baseUrl}/fr${path}`
+    languages.es = `${baseUrl}/es${path}`
+  }
+
   return {
     title,
     description,
     keywords: keywords.length > 0 ? keywords.join(", ") : undefined,
     alternates: {
       canonical: url,
-      languages: {
-        "x-default": `${baseUrl}/en${path}`,
-        en: `${baseUrl}/en${path}`,
-        fr: `${baseUrl}/fr${path}`,
-        es: `${baseUrl}/es${path}`,
-      },
+      languages,
     },
     openGraph: {
       title,

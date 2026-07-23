@@ -68,12 +68,51 @@ function Footer() {
   }
 
   return (
-    <footer className="border-t border-dark-100/60 bg-dark-700">
-      <div className="container pt-16 pb-8">
+    <footer className="relative border-t border-border/60 bg-background overflow-hidden">
+      <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none" />
+
+      <div className="container relative z-10 section-padding">
+        {/* Newsletter */}
+        <div className="glass-card rounded-xl p-6 md:p-8 mb-12">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">
+                Get the latest updates
+              </h3>
+              <p className="text-sm text-muted-foreground mt-1">
+                Subscribe to our newsletter for new features and tips.
+              </p>
+            </div>
+            <form onSubmit={handleSubscribe} className="flex w-full md:w-auto gap-3">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full md:w-64"
+                required
+              />
+              <Button type="submit" disabled={subscribed}>
+                {subscribed ? (
+                  <><Check className="w-4 h-4 mr-1" /> Subscribed!</>
+                ) : (
+                  <><ArrowRight className="w-4 h-4 mr-1" /> Subscribe</>
+                )}
+              </Button>
+            </form>
+          </div>
+        </div>
+
+        {/* Link Sections */}
         <div className="grid grid-cols-2 gap-8 md:grid-cols-6">
           {footerSections.map((section) => (
-            <div key={section.key} className={section.key === "legal" ? "md:col-span-1" : ""}>
-              <h3 className="mb-4 text-sm font-semibold text-dark-50">
+            <div
+              key={section.key}
+              className={`glass-card rounded-lg p-4 ${
+                section.key === "legal" ? "md:col-span-1" : ""
+              }`}
+            >
+              <h3 className="mb-4 text-sm font-semibold text-foreground">
                 {t(section.title)}
               </h3>
               <ul className="space-y-3">
@@ -81,7 +120,7 @@ function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-dark-100 transition-colors hover:text-dark-50"
+                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                     >
                       {t(link.label)}
                     </Link>
@@ -92,29 +131,34 @@ function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 pt-8 border-t border-dark-100/30">
-          <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-            <div className="flex items-center gap-4">
-              <Link href="/" className="flex items-center gap-1.5 text-lg font-bold tracking-tight">
-                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">REL</span>
-                <span className="text-dark-50">URL</span>
-              </Link>
-              <div className="hidden sm:flex items-center gap-3">
-                {socialLinks.map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    className="text-dark-100 hover:text-primary transition-colors"
-                    aria-label={s.label}
-                  >
-                    <s.icon className="w-4 h-4" />
-                  </a>
-                ))}
+        {/* Copyright */}
+        <div className="mt-12 pt-8 border-t border-border/30">
+          <div className="glass-card rounded-lg px-6 py-4">
+            <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+              <div className="flex items-center gap-4">
+                <Link href="/" className="flex items-center gap-1.5 text-lg font-bold tracking-tight">
+                  <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">REL</span>
+                  <span className="text-foreground">URL</span>
+                </Link>
+                <div className="hidden sm:flex items-center gap-3">
+                  {socialLinks.map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      className="group relative flex items-center justify-center w-8 h-8 rounded-full text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
+                      aria-label={s.label}
+                    >
+                      <div className="absolute inset-0 rounded-full bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-300" />
+                      <s.icon className="w-4 h-4 relative z-10" />
+                    </a>
+                  ))}
+                </div>
               </div>
+              <p className="text-xs text-muted-foreground">
+                {t("layout.footer.copyright")}
+              </p>
             </div>
-            <p className="text-xs text-dark-100">
-              {t("layout.footer.copyright")}
-            </p>
           </div>
         </div>
       </div>

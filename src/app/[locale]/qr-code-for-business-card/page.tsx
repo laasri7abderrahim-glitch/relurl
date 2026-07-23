@@ -1,47 +1,42 @@
+import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
 import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
-import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "qr-code-for-business-card"
+const pagePath = "/qr-code-for-business-card"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "QR Code for Business Card - Digital Card",
-    description: "Add a QR code to your business card. Let people scan to save your contact info, website, and social profiles instantly to their phone.",
-    path: "/qr-code-for-business-card",
-    keywords: ["qr code for business card", "business card qr code", "digital business card", "digital business card qr"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function Page() {
-  const href = "/qr-code-for-business-card"
-  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <QRCodeLandingPage
-      title="QR Code for Business Card"
-      subtitle="Networking Made Easy"
-      description="Add a QR code to your business card that links to your website, portfolio, or contact info. Make every connection count."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://yoursite.com"
       inputLabel="Enter your website or portfolio URL"
       generateLabel="Create Business Card QR Code"
-      features={["Professional Look", "Instant Contact Sharing", "Works on Any Card", "Track Scans", "Multi-Profile Links", "Design Customization"]}
-      howItWorks={[
-        { step: "Enter Your URL", desc: "Link to your website, LinkedIn, or portfolio" },
-        { step: "Generate QR Code", desc: "Create a professional QR code" },
-        { step: "Add to Card", desc: "Place it on your business card design" },
-      ]}
-      useCases={[
-        "Networking events",
-        "Sales teams",
-        "Freelancers and consultants",
-        "Real estate agents",
-        "Job seekers",
-        "Trade show networking",
-      ]}
-      relatedPages={getRelatedQrPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedQrPages(pagePath)}
       allQRCodes={allQRCodes}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )

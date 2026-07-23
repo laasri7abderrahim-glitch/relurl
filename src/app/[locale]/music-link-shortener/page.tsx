@@ -2,53 +2,41 @@ import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "music-link-shortener"
+const pagePath = "/music-link-shortener"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "Music Link Shortener - Song & Album Links",
-    description: "Create short links for songs, albums, and playlists. Share music across platforms and track listener engagement with RELURL.",
-    path: "/music-link-shortener",
-    keywords: ["music link shortener", "song link generator", "album link shortener"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function MusicLinkShortenerPage() {
-  const href = "/music-link-shortener"
-  const relatedArticles = getPostsByLandingPage("/music-link-shortener").slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <URLLandingPage
-      title="Music Link Shortener"
-      subtitle="Share Your Sound"
-       description="Create short links for songs, albums, and playlists. Share music across platforms and see which channels drive the most listener streams."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://open.spotify.com/track/your-song-id"
       inputLabel="Enter your music URL"
       generateLabel="Shorten URL"
-      features={[
-        "Multi-Platform Links",
-        "Listener Source Tracking",
-        "Playlist Shortening",
-        "Release Campaign Analytics",
-        "Pre-Save Link Support",
-        "Merch Store Integration",
-      ]}
-      howItWorks={[
-        { step: "Paste Music URL", desc: "Enter your Spotify, Apple Music, or SoundCloud link." },
-        { step: "Generate Short Link", desc: "Create a clean URL for fans to find your music." },
-        { step: "Share & Track Plays", desc: "Distribute on social media and monitor listener sources." },
-      ]}
-      useCases={[
-        "New release promotions",
-        "Playlist sharing",
-        "Concert ticket sales",
-        "Merch store links",
-        "Collaboration announcements",
-        "Fan engagement campaigns",
-      ]}
-      relatedPages={getRelatedPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedPages(pagePath)}
       allPages={[...allLandingPages, ...qrPages]}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )

@@ -1,48 +1,43 @@
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
-import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
+import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "qr-code-for-resume"
+const pagePath = "/qr-code-for-resume"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "QR Code for Resume - Digital CV & Portfolio QR Codes",
-    description: "Create QR codes for your resume, CV, and online portfolio. Stand out in job applications with a scannable resume QR code from RELURL.",
-    path: "/qr-code-for-resume",
-    keywords: ["qr code for resume", "cv qr code", "portfolio qr code", "digital cv qr code"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function Page() {
-  const href = "/qr-code-for-resume"
-  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <QRCodeLandingPage
-      title="QR Code for Resume"
-      subtitle="Stand Out in Applications"
-      description="Create QR codes for your resume, CV, and online portfolio. Let recruiters scan to view your full professional profile instantly."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://your-portfolio.com/resume"
       defaultValue="https://your-portfolio.com/resume"
       inputLabel="Enter your resume or portfolio URL"
       generateLabel="Create Resume QR Code"
-      features={["Portfolio Linking", "LinkedIn Integration", "Project Showcases", "Contact Details", "Cover Letter Link", "Certification Proofs"]}
-      howItWorks={[
-        { step: "Enter Resume URL", desc: "Paste your online resume, portfolio, or LinkedIn profile." },
-        { step: "Generate QR Code", desc: "Create a professional QR code for your job applications." },
-        { step: "Add to Application", desc: "Print on your resume header or include in email signatures." },
-      ]}
-      useCases={[
-        "Job application resume headers",
-        "Business card attachments",
-        "LinkedIn profile sharing",
-        "Freelancer portfolios",
-        "Conference networking",
-        "Internship application headers",
-      ]}
-      relatedPages={getRelatedQrPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedQrPages(pagePath)}
       allQRCodes={allQRCodes}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )

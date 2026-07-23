@@ -2,53 +2,41 @@ import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "agency-link-shortener"
+const pagePath = "/agency-link-shortener"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "Agency Link Shortener - Client Campaign Links",
-    description: "Shorten client campaign links with white-label branding. Monitor cross-channel performance and deliver client-ready reports with RELURL.",
-    path: "/agency-link-shortener",
-    keywords: ["agency link shortener", "marketing agency links", "white label link shortener"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function AgencyLinkShortenerPage() {
-  const href = "/agency-link-shortener"
-  const relatedArticles = getPostsByLandingPage("/agency-link-shortener").slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <URLLandingPage
-      title="Agency Link Shortener"
-      subtitle="Deliver More Value"
-       description="Shorten client campaign links with white-label branding. Monitor cross-channel performance and deliver actionable client reports."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://client-landing-page.com/summer-campaign"
       inputLabel="Enter your campaign URL"
       generateLabel="Shorten URL"
-      features={[
-        "White-Label Branding",
-        "Multi-Client Management",
-        "Campaign Performance Reports",
-        "UTM Parameter Builder",
-        "A/B Test Support",
-        "API Access",
-      ]}
-      howItWorks={[
-        { step: "Paste Campaign URL", desc: "Enter your client's landing page or campaign link." },
-        { step: "Brand & Tag", desc: "Add client branding and UTM parameters for tracking." },
-        { step: "Report & Optimize", desc: "Share results with clients and optimize campaigns." },
-      ]}
-      useCases={[
-        "Client PPC campaign links",
-        "Social media management",
-        "Email marketing for clients",
-        "Influencer campaign tracking",
-        "Multi-channel attribution",
-        "White-label link management",
-      ]}
-      relatedPages={getRelatedPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedPages(pagePath)}
       allPages={[...allLandingPages, ...qrPages]}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )

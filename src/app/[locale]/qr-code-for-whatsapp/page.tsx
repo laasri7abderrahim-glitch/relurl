@@ -1,51 +1,44 @@
-import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
+import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
-import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
+import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "qr-code-for-whatsapp"
+const pagePath = "/qr-code-for-whatsapp"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "QR Code for WhatsApp - Instant Messaging",
-    description: "Generate a QR code that opens a WhatsApp chat. Customers scan and message you instantly — perfect for support and sales.",
-    path: "/qr-code-for-whatsapp",
-    keywords: ["qr code for whatsapp", "whatsapp qr code", "whatsapp chat qr", "whatsapp chat qr code"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function Page() {
-  const href = "/qr-code-for-whatsapp"
-  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
-    <>
-      <QRCodeLandingPage
-      title="QR Code for WhatsApp"
-      subtitle="Instant Messaging"
-      description="Generate a QR code that opens a WhatsApp chat. Customers scan and message you instantly — perfect for support and sales."
+    <QRCodeLandingPage
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://wa.me/1234567890"
       defaultValue="https://wa.me/1234567890"
       inputLabel="Enter your WhatsApp number or link"
       generateLabel="Create WhatsApp QR Code"
-      features={["Instant Chat", "No Contact Saving Needed", "Global Reach", "Business Friendly", "Broadcast List Signup", "Quick Reply Templates"]}
-      howItWorks={[
-        { step: "Enter WhatsApp Link", desc: "Use wa.me/your-number format" },
-        { step: "Generate QR Code", desc: "Create a code that opens WhatsApp chat" },
-        { step: "Share with Customers", desc: "Display on website, prints, or store" },
-      ]}
-      useCases={[
-        "Customer support",
-        "Sales inquiries",
-        "Restaurant ordering",
-        "Service bookings",
-        "Event coordination",
-        "Real-time order updates",
-      ]}
-      relatedPages={getRelatedQrPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedQrPages(pagePath)}
       allQRCodes={allQRCodes}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
-    </>
   )
 }

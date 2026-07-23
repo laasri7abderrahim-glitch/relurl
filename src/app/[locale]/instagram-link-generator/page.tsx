@@ -1,54 +1,42 @@
-import { generateSEOMetadata } from "@/lib/seo"
-import { getPostsByLandingPage } from "@/lib/blog/posts"
 import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
+import { generateSEOMetadata } from "@/lib/seo"
+import { getPostsByLandingPage } from "@/lib/blog/posts"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "instagram-link-generator"
+const pagePath = "/instagram-link-generator"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "Instagram Link Generator - Bio & Profile Links",
-    description: "Generate short, trackable Instagram links for your bio, stories, and posts. Create custom URLs and track clicks to optimize your Instagram strategy.",
-    path: "/instagram-link-generator",
-    keywords: ["instagram link generator", "instagram bio link", "instagram profile link"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function InstagramLinkGeneratorPage() {
-  const href = "/instagram-link-generator"
-  const relatedArticles = getPostsByLandingPage("/instagram-link-generator").slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <URLLandingPage
-      title="Instagram Link Generator"
-      subtitle="Grow Your Instagram Audience"
-       description="Build branded Instagram links for your bio, stories, and posts. Track click-throughs and maximize engagement on every Instagram campaign."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://example.com/your-landing-page"
       inputLabel="Enter your destination URL"
       generateLabel="Generate Link"
-      features={[
-        "Bio Link Optimization",
-        "Story Link Tracking",
-        "Click Analytics",
-        "Custom Aliases",
-        "Mobile-Optimized",
-        "QR Code Generation",
-      ]}
-      howItWorks={[
-        { step: "Paste Your URL", desc: "Enter the page you want to link from your Instagram." },
-        { step: "Customize Slug", desc: "Choose a memorable alias for your Instagram link." },
-        { step: "Add to Bio", desc: "Paste your short link into your Instagram bio or stories." },
-      ]}
-      useCases={[
-        "Instagram bio link optimization",
-        "Story swipe-up links",
-        "Product page links",
-        "Blog post promotion",
-        "Event registration links",
-        "Newsletter signup links",
-      ]}
-      relatedPages={getRelatedPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedPages(pagePath)}
       allPages={[...allLandingPages, ...qrPages]}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )

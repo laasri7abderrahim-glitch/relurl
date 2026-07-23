@@ -2,53 +2,41 @@ import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "pinterest-link-generator"
+const pagePath = "/pinterest-link-generator"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "Pinterest Link Generator - Pin & Board Links",
-    description: "Create short links for Pinterest pins and boards to drive visual traffic. Optimize your pin marketing strategy with RELURL click analytics.",
-    path: "/pinterest-link-generator",
-    keywords: ["pinterest link generator", "pinterest pin links", "pinterest marketing"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function PinterestLinkGeneratorPage() {
-  const href = "/pinterest-link-generator"
-  const relatedArticles = getPostsByLandingPage("/pinterest-link-generator").slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <URLLandingPage
-      title="Pinterest Link Generator"
-      subtitle="Boost Pinterest Engagement"
-       description="Create short links for Pinterest pins and boards to boost visual traffic. Optimize your pin marketing and drive more visitors to your site."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://your-site.com/your-pinterest-worthy-content"
       inputLabel="Enter your destination URL"
       generateLabel="Generate Link"
-      features={[
-        "Pin Click Tracking",
-        "Board Link Analytics",
-        "Rich Pin Optimization",
-        "Custom Aliases",
-        "Seasonal Campaign Support",
-        "Visual Content Attribution",
-      ]}
-      howItWorks={[
-        { step: "Paste Your URL", desc: "Enter the page you want to link from Pinterest." },
-        { step: "Customize Slug", desc: "Choose a descriptive alias that complements your pin." },
-        { step: "Add to Pin", desc: "Use your short link in pins and board descriptions." },
-      ]}
-      useCases={[
-        "Product pin links",
-        "Blog post promotion via Pinterest",
-        "DIY tutorial traffic",
-        "Recipe and food blog links",
-        "Fashion and lifestyle pins",
-        "Seasonal campaign promotion",
-      ]}
-      relatedPages={getRelatedPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedPages(pagePath)}
       allPages={[...allLandingPages, ...qrPages]}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )

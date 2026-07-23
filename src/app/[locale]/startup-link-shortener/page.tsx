@@ -2,53 +2,41 @@ import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "startup-link-shortener"
+const pagePath = "/startup-link-shortener"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "Startup Link Shortener - Launch & Growth Links",
-    description: "Shorten landing pages, product hunt links, and pitch deck URLs. Track investor and user interest from every channel with RELURL.",
-    path: "/startup-link-shortener",
-    keywords: ["startup link shortener", "product launch links", "pitch deck link shortener"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function StartupLinkShortenerPage() {
-  const href = "/startup-link-shortener"
-  const relatedArticles = getPostsByLandingPage("/startup-link-shortener").slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <URLLandingPage
-      title="Startup Link Shortener"
-      subtitle="Accelerate Growth"
-      description="Shorten landing pages, Product Hunt links, and pitch deck URLs. Track investor and user interest from every channel."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://your-startup.com/landing/beta-signup"
       inputLabel="Enter your startup URL"
       generateLabel="Shorten URL"
-      features={[
-        "Landing Page Tracking",
-        "Investor Link Analytics",
-        "Product Hunt Optimization",
-        "Beta Signup Attribution",
-        "Pitch Deck Sharing",
-        "Growth Metric Dashboard",
-      ]}
-      howItWorks={[
-        { step: "Paste Startup URL", desc: "Enter your landing page, Product Hunt, or pitch link." },
-        { step: "Generate Short Link", desc: "Create a memorable URL for your startup campaign." },
-        { step: "Launch & Measure", desc: "Share with investors and users, then track traction." },
-      ]}
-      useCases={[
-        "Product Hunt launch campaigns",
-        "Beta signup promotion",
-        "Investor pitch sharing",
-        "Demo day links",
-        "Press release distribution",
-        "Founder social media posts",
-      ]}
-      relatedPages={getRelatedPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedPages(pagePath)}
       allPages={[...allLandingPages, ...qrPages]}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )

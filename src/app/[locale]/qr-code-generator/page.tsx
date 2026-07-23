@@ -2,52 +2,42 @@ import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
 import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "qr-code-generator"
+const pagePath = "/qr-code-generator"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "QR Code Generator - Free QR Code Maker",
-    description: "Generate QR codes for free. Create QR codes for URLs, text, WiFi networks, vCard contacts, and more with our easy-to-use free QR code generator.",
-    path: "/qr-code-generator",
-    keywords: ["qr code generator", "free qr code", "qr code maker", "create qr code", "qr code online"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function Page() {
-  const href = "/qr-code-generator"
-  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <QRCodeLandingPage
-      title="QR Code Generator"
-      subtitle="Free Online Tool"
-      description="Create high-quality QR codes instantly. Generate custom QR codes for URLs, text, and more — 100% free, no signup required."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://example.com"
       defaultValue="https://example.com"
       inputLabel="Enter URL or text"
       generateLabel="Generate QR Code"
-      features={["Instant Generation", "High Resolution", "No Signup Required", "Works Everywhere", "Customizable Design", "Multiple Formats"]}
-      howItWorks={[
-        { step: "Enter Data", desc: "Type or paste any URL, text, or data" },
-        { step: "Generate", desc: "Click generate to create your QR code instantly" },
-        { step: "Download", desc: "Download as PNG or copy to clipboard" },
-      ]}
-      useCases={[
-        "Share website links on print materials",
-        "Add to business cards and flyers",
-        "Use in presentations and documents",
-        "Embed in emails and newsletters",
-        "Marketing campaign materials",
-        "Product packaging and labels",
-      ]}
-      relatedPages={getRelatedQrPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedQrPages(pagePath)}
       allQRCodes={allQRCodes}
-      faqs={[
-        { q: "What types of QR codes can I create?", a: "You can create QR codes for URLs, plain text, WiFi network credentials, vCard contacts, email addresses, phone numbers, SMS messages, and event calendar entries." },
-        { q: "What file formats are available for download?", a: "Generated QR codes can be downloaded as high-resolution PNG images (up to 1024×1024px). Perfect for print materials, digital use, and embedding." },
-        { q: "Do I need an account to generate QR codes?", a: "No account is needed for basic QR code generation. However, a free account unlocks additional features like design customization, scan analytics, and dynamic QR code management." },
-      ]}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )

@@ -2,53 +2,41 @@ import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "discord-link-generator"
+const pagePath = "/discord-link-generator"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "Discord Link Generator - Server & Community Links",
-    description: "Generate short links for Discord servers, channels, and events. Grow your community and track member engagement with RELURL.",
-    path: "/discord-link-generator",
-    keywords: ["discord link generator", "discord server links", "discord community links"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function DiscordLinkGeneratorPage() {
-  const href = "/discord-link-generator"
-  const relatedArticles = getPostsByLandingPage("/discord-link-generator").slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <URLLandingPage
-      title="Discord Link Generator"
-      subtitle="Grow Your Server"
-       description="Generate short links for Discord servers, channels, and events. Grow your community and attribute member growth to each promotion channel."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://discord.gg/your-server-invite"
       inputLabel="Enter your Discord URL"
       generateLabel="Generate Link"
-      features={[
-        "Server Invite Tracking",
-        "Channel Link Analytics",
-        "Event Promotion Links",
-        "Bot Dashboard Links",
-        "Custom Branded Invites",
-        "Member Source Attribution",
-      ]}
-      howItWorks={[
-        { step: "Paste Discord URL", desc: "Enter your server invite, channel, or event link." },
-        { step: "Create Short Link", desc: "Generate a memorable URL for your community." },
-        { step: "Share & Grow", desc: "Post across platforms and track where members come from." },
-      ]}
-      useCases={[
-        "Server invite sharing",
-        "Event promotion campaigns",
-        "Content creator community building",
-        "Gaming clan recruitment",
-        "Community partner links",
-        "Cross-platform growth",
-      ]}
-      relatedPages={getRelatedPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedPages(pagePath)}
       allPages={[...allLandingPages, ...qrPages]}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )

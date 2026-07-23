@@ -1,44 +1,44 @@
-import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
+import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
-import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
+import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "qr-code-for-email"
+const pagePath = "/qr-code-for-email"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "QR Code for Email - Email Made Simple",
-    description: "Generate a QR code that opens an email compose window with pre-filled subject and body. Perfect for feedback collection.",
-    path: "/qr-code-for-email",
-    keywords: ["qr code for email", "email qr code", "mailto qr code", "email marketing qr code"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function QRCodeForEmailPage() {
-  const href = "/qr-code-for-email"
-  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
-    <>
-      <QRCodeLandingPage
-      title="QR Code for Email"
-      subtitle="Email Made Simple"
-      description="Generate a QR code that opens an email compose window with pre-filled subject and body. Perfect for feedback collection."
+    <QRCodeLandingPage
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="mailto:someone@example.com?subject=Hello"
       defaultValue="mailto:someone@example.com?subject=Hello"
       inputLabel="Enter email address or mailto link"
       generateLabel="Create Email QR Code"
-      features={["Pre-filled Subject", "One-Scan Compose", "No Typing Needed", "Feedback Friendly", "Newsletter Signup", "Auto-Reply Setup"]}
-      howItWorks={[
-        { step: "Enter Email Details", desc: "Provide email address and optional subject/body" },
-        { step: "Generate QR Code", desc: "Create a code that opens email compose" },
-        { step: "Collect Responses", desc: "Display for instant feedback or inquiries" },
-      ]}
-      useCases={["Customer feedback", "Support inquiries", "Contact forms", "Survey responses", "Job applications", "Newsletter subscription"]}
-      relatedPages={getRelatedQrPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedQrPages(pagePath)}
       allQRCodes={allQRCodes}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
-    </>
   )
 }

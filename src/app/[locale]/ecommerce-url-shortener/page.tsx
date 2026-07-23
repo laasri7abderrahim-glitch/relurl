@@ -2,53 +2,41 @@ import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "ecommerce-url-shortener"
+const pagePath = "/ecommerce-url-shortener"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "E-commerce URL Shortener - Boost Online Sales",
-    description: "Shorten product links to boost conversions. Track clicks, optimize campaigns, and drive more sales with RELURL's e-commerce link shortener.",
-    path: "/ecommerce-url-shortener",
-    keywords: ["ecommerce url shortener", "product link shortener", "shopify link shortener"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function EcommerceURLShortenerPage() {
-  const href = "/ecommerce-url-shortener"
-  const relatedArticles = getPostsByLandingPage("/ecommerce-url-shortener").slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <URLLandingPage
-      title="E-commerce URL Shortener"
-      subtitle="Boost Online Sales"
-      description="Shorten product and category URLs to boost conversions. Track clicks, optimize campaigns, and drive more sales with powerful analytics."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://your-store.com/products/long-product-name"
       inputLabel="Enter your product URL"
       generateLabel="Shorten URL"
-      features={[
-        "Product Link Tracking",
-        "Conversion Analytics",
-        "Bulk Shortening",
-        "UTM Parameter Support",
-        "Custom Brand Slugs",
-        "A/B Testing Ready",
-      ]}
-      howItWorks={[
-        { step: "Paste Product URL", desc: "Enter your product or category page URL." },
-        { step: "Customize & Shorten", desc: "Add a branded slug and UTM parameters for tracking." },
-        { step: "Share & Track", desc: "Use the short link in ads and emails, then monitor conversions." },
-      ]}
-      useCases={[
-        "Product page link sharing",
-        "Email marketing campaigns",
-        "Social media product posts",
-        "Affiliate program links",
-        "Retargeting ad campaigns",
-        "Print catalog QR codes",
-      ]}
-      relatedPages={getRelatedPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedPages(pagePath)}
       allPages={[...allLandingPages, ...qrPages]}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )

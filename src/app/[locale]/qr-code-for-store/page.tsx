@@ -1,48 +1,43 @@
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
-import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
+import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "qr-code-for-store"
+const pagePath = "/qr-code-for-store"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "QR Code for Store - Retail & Product QR Codes",
-    description: "Create QR codes for store product pages, promotions, and checkout. Boost retail sales with scannable QR codes from RELURL.",
-    path: "/qr-code-for-store",
-    keywords: ["qr code for store", "retail qr code", "product qr code", "retail store qr code"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function Page() {
-  const href = "/qr-code-for-store"
-  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <QRCodeLandingPage
-      title="QR Code for Store"
-      subtitle="Boost Retail Sales"
-      description="Create QR codes for store product pages, promotions, and checkout. Let customers scan to browse products and complete purchases."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://your-store.com/products/bestseller"
       defaultValue="https://your-store.com/products/bestseller"
       inputLabel="Enter your product or store URL"
       generateLabel="Create Store QR Code"
-      features={["Product Page Links", "Promotion Codes", "Checkout Integration", "Inventory Lookup", "Gift Registry", "Store Locator"]}
-      howItWorks={[
-        { step: "Enter Product URL", desc: "Paste your product page, promotion, or store link." },
-        { step: "Generate QR Code", desc: "Create a scannable code for your retail environment." },
-        { step: "Display in Store", desc: "Place on shelves, tags, windows, and marketing materials." },
-      ]}
-      useCases={[
-        "Product information displays",
-        "In-store promotion campaigns",
-        "Self-checkout links",
-        "Price comparison tools",
-        "Loyalty program enrollment",
-        "Click-and-collect ordering",
-      ]}
-      relatedPages={getRelatedQrPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedQrPages(pagePath)}
       allQRCodes={allQRCodes}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )

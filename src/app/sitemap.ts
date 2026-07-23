@@ -25,9 +25,9 @@ function enOnlyUrls(path: string, priority = 0.8): MetadataRoute.Sitemap {
 
 function staticPages(priority = 0.9): MetadataRoute.Sitemap {
   // Pages with actual translated content — include all locales
-  const translated = ["", "/features", "/pricing", "/integrations", "/changelog", "/blog", "/contact", "/browser-extension"]
+  const translated = ["", "/features", "/pricing", "/blog", "/contact", "/browser-extension"]
   // Pages with hardcoded English content — EN only to avoid duplicates
-  const enPages = ["/privacy", "/terms", "/cookies", "/gdpr", "/dmca", "/wordpress"]
+  const enPages = ["/privacy", "/terms", "/cookies", "/gdpr", "/dmca", "/wordpress", "/integrations", "/changelog"]
   return [
     ...translated.flatMap((p) => localizedUrls(p, p === "" ? 1 : priority)),
     ...enPages.flatMap((p) => enOnlyUrls(p, priority)),

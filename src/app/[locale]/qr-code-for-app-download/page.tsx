@@ -1,43 +1,43 @@
-import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
+import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
-import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
+import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "qr-code-for-app-download"
+const pagePath = "/qr-code-for-app-download"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "QR Code for App Download - Boost Installs",
-    description: "Generate a QR code for your mobile app. Users scan and are directed to the right app store for their device.",
-    path: "/qr-code-for-app-download",
-    keywords: ["qr code for app download", "app qr code", "app store qr code", "app download qr code"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function QRCodeForAppDownloadPage() {
-  const href = "/qr-code-for-app-download"
-  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
-    <>
-      <QRCodeLandingPage
-      title="QR Code for App Download"
-      subtitle="Boost Installs"
-      description="Generate a QR code for your mobile app. Users scan and are directed to the right app store for their device."
+    <QRCodeLandingPage
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://play.google.com/store/apps/details?id=com.yourapp"
       inputLabel="Enter your app store URL"
       generateLabel="Create App Download QR Code"
-      features={["Auto Device Detection", "Boost Installs", "Cross-Platform", "Print Ready", "Smart Redirect", "Analytics Tracking"]}
-      howItWorks={[
-        { step: "Enter App Store URL", desc: "Link to Google Play or App Store" },
-        { step: "Generate QR Code", desc: "Create a code for app promotion" },
-        { step: "Promote Your App", desc: "Add to packaging, displays, or ads" },
-      ]}
-      useCases={["App launches", "Product packaging", "Store displays", "Event promotion", "Print advertising", "User acquisition campaigns"]}
-      relatedPages={getRelatedQrPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedQrPages(pagePath)}
       allQRCodes={allQRCodes}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
-    </>
   )
 }

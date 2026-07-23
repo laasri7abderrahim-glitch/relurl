@@ -2,53 +2,41 @@ import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "ebook-link-shortener"
+const pagePath = "/ebook-link-shortener"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "Ebook Link Shortener - Download & Promotion Links",
-    description: "Shorten ebook download and landing page links. Track downloads, optimize promotions, and grow your reader base with RELURL.",
-    path: "/ebook-link-shortener",
-    keywords: ["ebook link shortener", "book download links", "ebook marketing links"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function EbookLinkShortenerPage() {
-  const href = "/ebook-link-shortener"
-  const relatedArticles = getPostsByLandingPage("/ebook-link-shortener").slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <URLLandingPage
-      title="Ebook Link Shortener"
-      subtitle="Grow Your Readership"
-       description="Shorten ebook download and landing page links. Track downloads, refine your promotional efforts, and grow your reader base effectively."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://your-site.com/ebooks/digital-marketing-guide"
       inputLabel="Enter your ebook URL"
       generateLabel="Shorten URL"
-      features={[
-        "Download Tracking",
-        "Landing Page Analytics",
-        "Multi-Platform Distribution",
-        "Email Capture Integration",
-        "Author Branding",
-        "Sales Funnel Attribution",
-      ]}
-      howItWorks={[
-        { step: "Paste Ebook URL", desc: "Enter your ebook landing page or download link." },
-        { step: "Create Short Link", desc: "Generate a clean URL easy for readers to share." },
-        { step: "Promote & Track", desc: "Share across platforms and monitor download conversions." },
-      ]}
-      useCases={[
-        "Free ebook promotion",
-        "Amazon Kindle page links",
-        "Email list building campaigns",
-        "Guest blog resource links",
-        "Social media book launches",
-        "Bookstore partnership links",
-      ]}
-      relatedPages={getRelatedPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedPages(pagePath)}
       allPages={[...allLandingPages, ...qrPages]}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )

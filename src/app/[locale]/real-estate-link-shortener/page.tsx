@@ -2,53 +2,41 @@ import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "real-estate-link-shortener"
+const pagePath = "/real-estate-link-shortener"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "Real Estate Link Shortener - Property Listing Links",
-    description: "Create short, memorable links for property listings, open houses, and virtual tours. Track interest and generate leads with RELURL.",
-    path: "/real-estate-link-shortener",
-    keywords: ["real estate link shortener", "property listing links", "real estate marketing"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function RealEstateLinkShortenerPage() {
-  const href = "/real-estate-link-shortener"
-  const relatedArticles = getPostsByLandingPage("/real-estate-link-shortener").slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <URLLandingPage
-      title="Real Estate Link Shortener"
-      subtitle="Streamline Property Links"
-      description="Create short, memorable links for property listings, open houses, and virtual tours. Track buyer interest and generate more leads."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://realtor.com/listings/1234567890"
       inputLabel="Enter your property listing URL"
       generateLabel="Shorten URL"
-      features={[
-        "Property-Specific Tracking",
-        "Lead Generation Analytics",
-        "QR Code Integration",
-        "Custom Neighborhood Slugs",
-        "Mobile-Optimized Links",
-        "Open House Campaigns",
-      ]}
-      howItWorks={[
-        { step: "Paste Listing URL", desc: "Enter your MLS listing or property page URL." },
-        { step: "Create Short Link", desc: "Generate a clean, memorable short URL for the listing." },
-        { step: "Share & Generate Leads", desc: "Post on social media, print flyers, and track buyer interest." },
-      ]}
-      useCases={[
-        "Property listing promotion",
-        "Open house invitations",
-        "Virtual tour sharing",
-        "Real estate social media marketing",
-        "Print brochure links",
-        "Email drip campaigns",
-      ]}
-      relatedPages={getRelatedPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedPages(pagePath)}
       allPages={[...allLandingPages, ...qrPages]}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )

@@ -1,48 +1,43 @@
 import QRCodeLandingPage from "@/components/qr/QRCodeLandingPage"
-import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
+import { allQRCodes, getRelatedQrPages } from "@/lib/url-pages"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "qr-code-for-portfolio"
+const pagePath = "/qr-code-for-portfolio"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "QR Code for Portfolio - Creative Portfolio QR Codes",
-    description: "Create QR codes for your creative portfolio website. Let clients and employers scan to view your best work with RELURL's QR code generator.",
-    path: "/qr-code-for-portfolio",
-    keywords: ["qr code for portfolio", "creative portfolio qr code", "designer qr code", "design portfolio qr code"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function Page() {
-  const href = "/qr-code-for-portfolio"
-  const relatedArticles = getPostsByLandingPage(href).slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <QRCodeLandingPage
-      title="QR Code for Portfolio"
-      subtitle="Showcase Your Work"
-      description="Create QR codes for your creative portfolio website. Let clients and employers scan to view your best work and projects instantly."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://your-portfolio.com"
       defaultValue="https://your-portfolio.com"
       inputLabel="Enter your portfolio URL"
       generateLabel="Create Portfolio QR Code"
-      features={["Project Galleries", "Case Study Links", "Testimonial Pages", "Contact Forms", "Video Resume Link", "Client Testimonials"]}
-      howItWorks={[
-        { step: "Enter Portfolio URL", desc: "Paste your portfolio website or project showcase link." },
-        { step: "Generate QR Code", desc: "Create a visually appealing QR code for your brand." },
-        { step: "Share Everywhere", desc: "Add to business cards, resumes, and promotional materials." },
-      ]}
-      useCases={[
-        "Business card portfolio links",
-        "Exhibition and gallery displays",
-        "Conference handouts",
-        "Freelance client proposals",
-        "Art and design school applications",
-        "Architecture project showcases",
-      ]}
-      relatedPages={getRelatedQrPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedQrPages(pagePath)}
       allQRCodes={allQRCodes}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )

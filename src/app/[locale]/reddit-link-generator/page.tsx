@@ -2,53 +2,41 @@ import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "reddit-link-generator"
+const pagePath = "/reddit-link-generator"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "Reddit Link Generator - Post & Comment Links",
-    description: "Build compact Reddit links for posts and comments to boost community sharing. Drive organic traffic and track upvote-driven engagement with RELURL.",
-    path: "/reddit-link-generator",
-    keywords: ["reddit link generator", "reddit post links", "reddit marketing"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function RedditLinkGeneratorPage() {
-  const href = "/reddit-link-generator"
-  const relatedArticles = getPostsByLandingPage("/reddit-link-generator").slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <URLLandingPage
-      title="Reddit Link Generator"
-      subtitle="Win on Reddit"
-       description="Build compact Reddit links for posts and comments. Drive traffic from Reddit communities and track community engagement."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="https://your-site.com/relevant-content-page"
       inputLabel="Enter your destination URL"
       generateLabel="Generate Link"
-      features={[
-        "Post Link Tracking",
-        "Comment Click Analytics",
-        "Subreddit Attribution",
-        "Non-Spammy Shortening",
-        "AMA Link Support",
-        "Organic Traffic Insights",
-      ]}
-      howItWorks={[
-        { step: "Paste Your URL", desc: "Enter the content you want to share on Reddit." },
-        { step: "Generate Short Link", desc: "Create a clean, non-spammy URL for your post." },
-        { step: "Share on Reddit", desc: "Post in relevant subreddits and track community engagement." },
-      ]}
-      useCases={[
-        "Content marketing on Reddit",
-        "AMA session links",
-        "Product feedback campaigns",
-        "Community engagement tracking",
-        "Blog post promotion",
-        "Resource sharing in subreddits",
-      ]}
-      relatedPages={getRelatedPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedPages(pagePath)}
       allPages={[...allLandingPages, ...qrPages]}
-
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )

@@ -2,42 +2,40 @@ import URLLandingPage from "@/components/url/URLLandingPage"
 import { allLandingPages, qrPages, getRelatedPages } from "@/lib/url-pages"
 import { generateSEOMetadata } from "@/lib/seo"
 import { getPostsByLandingPage } from "@/lib/blog/posts"
+import { getPageContent } from "@/lib/page-translations"
+
+const pageKey = "url-shortener-for-marketers"
+const pagePath = "/url-shortener-for-marketers"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
   return generateSEOMetadata({
-    title: "URL Shortener for Marketers",
-    description: "Campaign-ready URL shortener for marketers. Track campaign performance, build UTM parameters, manage multi-channel links, and optimize your marketing ROI with RELURL.",
-    path: "/url-shortener-for-marketers",
-    keywords: ["url shortener for marketers", "marketing url shortener", "campaign link shortener", "marketing link management"],
+    title: content.title,
+    description: content.metaDescription,
+    path: pagePath,
+    keywords: content.keywords,
     locale,
   })
 }
 
-export default function Page() {
-  const href = "/url-shortener-for-marketers"
-  const relatedArticles = getPostsByLandingPage("/free-url-shortener").slice(0, 3)
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = await getPageContent(locale, pageKey)
+  const relatedArticles = getPostsByLandingPage(pagePath).slice(0, 3)
   return (
     <URLLandingPage
-      title="URL Shortener for Marketers"
-      subtitle="Campaign-Ready Links"
-      description="Campaign-ready URL shortener for marketers. Track campaign performance, build UTM parameters, manage multi-channel links, and optimize your marketing ROI with RELURL."
+      title={content.title}
+      subtitle={content.subtitle}
+      description={content.description}
       placeholder="Paste your campaign URL..."
       generateLabel="Marketing Plan"
-      features={["Campaign Tracking", "UTM Builder", "Click Analytics", "Custom Branded Slugs", "Bulk Shortening", "Geo-Targeting"]}
-      howItWorks={[
-        { step: "Create Your Campaign Link", desc: "Paste your destination URL and add UTM parameters for campaign attribution." },
-        { step: "Customize & Brand", desc: "Set custom slugs and choose tracking options to match your marketing campaign." },
-        { step: "Track Multi-Channel Performance", desc: "Monitor clicks, conversions, and engagement across all your marketing channels in real time." },
-      ]}
-      useCases={["Track email newsletter click-through rates with precision", "Manage multi-channel campaign links from one dashboard", "Build and save UTM-parameterized links effortlessly", "A/B test different link destinations for campaign optimization", "Create branded short links for paid ad campaigns"]}
-      relatedPages={getRelatedPages(href)}
+      features={content.features}
+      howItWorks={content.howItWorks}
+      useCases={content.useCases}
+      relatedPages={getRelatedPages(pagePath)}
       allPages={[...allLandingPages, ...qrPages]}
-      faqs={[
-        { q: "Can I add UTM parameters to my shortened links?", a: "Yes, RELURL has a built-in UTM builder that makes adding tracking parameters quick and error-free." },
-        { q: "Can I see which marketing channel drives the most clicks?", a: "Absolutely. RELURL analytics break down clicks by referrer, device, location, and campaign tag." },
-        { q: "Can I bulk create links for multiple campaigns?", a: "Yes, RELURL supports bulk link creation and CSV export for easy campaign management." },
-      ]}
+      faqs={content.faqs}
       relatedArticles={relatedArticles}
     />
   )
