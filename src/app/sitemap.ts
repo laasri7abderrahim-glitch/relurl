@@ -2,16 +2,22 @@ import type { MetadataRoute } from "next"
 import { getAllSlugs } from "@/lib/blog/posts"
 
 const baseUrl = "https://relurl.com"
-// Blog, pricing, contact, features — fully translated per locale
 const translatedLocales = ["en", "fr", "es"] as const
 
-function localizedUrls(path: string, priority = 0.8): MetadataRoute.Sitemap {
-  return translatedLocales.map((locale) => ({
-    url: `${baseUrl}/${locale}${path}`,
+export async function generateSitemaps() {
+  return [{ id: "translated" }, { id: "landing" }, { id: "tools" }, { id: "static" }]
+}
+
+function localizedUrl(path: string, priority = 0.8) {
+  const languages: Record<string, string> = { "x-default": `${baseUrl}/en${path}` }
+  for (const l of translatedLocales) languages[l] = `${baseUrl}/${l}${path}`
+  return {
+    url: `${baseUrl}/en${path}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: path === "" ? 1 : priority,
-  }))
+    alternates: { languages },
+  }
 }
 
 function enOnlyUrls(path: string, priority = 0.8): MetadataRoute.Sitemap {
@@ -23,205 +29,115 @@ function enOnlyUrls(path: string, priority = 0.8): MetadataRoute.Sitemap {
   }]
 }
 
-function staticPages(priority = 0.9): MetadataRoute.Sitemap {
-  // Pages with actual translated content — include all locales
-  const translated = ["", "/features", "/pricing", "/blog", "/contact", "/browser-extension"]
-  // Pages with hardcoded English content — EN only to avoid duplicates
-  const enPages = ["/privacy", "/terms", "/cookies", "/gdpr", "/dmca", "/wordpress", "/integrations", "/changelog"]
-  return [
-    ...translated.flatMap((p) => localizedUrls(p, p === "" ? 1 : priority)),
-    ...enPages.flatMap((p) => enOnlyUrls(p, priority)),
-  ]
-}
+const landingPaths = [
+  "/custom-url-shortener", "/branded-link-shortener", "/bulk-url-shortener",
+  "/affiliate-link-shortener", "/marketing-url-shortener", "/free-url-shortener",
+  "/url-tracking-tool", "/campaign-link-generator", "/short-url-analytics",
+  "/custom-alias-generator", "/ecommerce-url-shortener", "/real-estate-link-shortener",
+  "/saas-link-shortener", "/podcast-link-shortener", "/event-link-shortener",
+  "/news-link-shortener", "/education-link-shortener", "/healthcare-link-shortener",
+  "/nonprofit-link-shortener", "/travel-link-shortener", "/restaurant-link-shortener",
+  "/music-link-shortener", "/photography-link-shortener", "/gaming-link-shortener",
+  "/crypto-link-shortener", "/agency-link-shortener", "/startup-link-shortener",
+  "/ebook-link-shortener", "/course-link-shortener", "/webinar-link-shortener",
+  "/password-protected-links", "/link-expiration", "/url-shortener-api",
+  "/custom-domain-links", "/link-in-bio", "/shorten-pdf-link", "/shorten-image-url",
+  "/shorten-video-url", "/shorten-github-url", "/shorten-google-drive-link",
+  "/shorten-google-docs-link", "/shorten-dropbox-link", "/shorten-spotify-link",
+  "/shorten-amazon-link", "/shorten-shopify-link", "/shorten-medium-link",
+  "/shorten-notion-link", "/shorten-figma-link", "/shorten-calendly-link",
+  "/shorten-patreon-link", "/shorten-etsy-link", "/shorten-airbnb-link",
+  "/shorten-substack-link", "/url-shortener-no-signup", "/url-shortener-without-signup",
+  "/url-shortener-for-business", "/url-shortener-for-marketers",
+  "/url-shortener-for-social-media", "/url-shortener-in-india", "/url-shortener-in-uk",
+  "/url-shortener-in-canada", "/url-shortener-with-qr-codes",
+  "/url-shortener-with-analytics", "/url-shortener-no-ads",
+]
 
-function blogPages(priority = 0.8): MetadataRoute.Sitemap {
-  const slugs = getAllSlugs()
-  return slugs.flatMap((slug) =>
-    translatedLocales.map((locale) => ({
-      url: `${baseUrl}/${locale}/blog/${slug}`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority,
-    }))
-  )
-}
+const socialPaths = [
+  "/instagram-link-generator", "/whatsapp-link-generator", "/telegram-link-generator",
+  "/signal-link-generator", "/wechat-link-generator", "/slack-link-generator",
+  "/tiktok-bio-link-generator", "/youtube-link-generator", "/facebook-url-generator",
+  "/linkedin-url-generator", "/pinterest-link-generator", "/snapchat-link-generator",
+  "/reddit-link-generator", "/discord-link-generator", "/twitch-link-generator",
+  "/twitter-link-generator", "/threads-link-generator", "/mastodon-link-generator",
+  "/shorten-youtube-url", "/shorten-instagram-url", "/shorten-facebook-url",
+  "/shorten-whatsapp-link", "/shorten-linkedin-url", "/shorten-tiktok-url",
+  "/shorten-x-url", "/shorten-discord-invite-link",
+]
 
-function landingPages(priority = 0.85): MetadataRoute.Sitemap {
-  // Content not translated per locale — EN only to avoid duplicate detection
-  const paths = [
-    "/custom-url-shortener",
-    "/branded-link-shortener",
-    "/bulk-url-shortener",
-    "/affiliate-link-shortener",
-    "/marketing-url-shortener",
-    "/free-url-shortener",
-    "/url-tracking-tool",
-    "/campaign-link-generator",
-    "/short-url-analytics",
-    "/custom-alias-generator",
-    "/ecommerce-url-shortener",
-    "/real-estate-link-shortener",
-    "/saas-link-shortener",
-    "/podcast-link-shortener",
-    "/event-link-shortener",
-    "/news-link-shortener",
-    "/education-link-shortener",
-    "/healthcare-link-shortener",
-    "/nonprofit-link-shortener",
-    "/travel-link-shortener",
-    "/restaurant-link-shortener",
-    "/music-link-shortener",
-    "/photography-link-shortener",
-    "/gaming-link-shortener",
-    "/crypto-link-shortener",
-    "/agency-link-shortener",
-    "/startup-link-shortener",
-    "/ebook-link-shortener",
-    "/course-link-shortener",
-    "/webinar-link-shortener",
-    "/password-protected-links",
-    "/link-expiration",
-    "/url-shortener-api",
-    "/custom-domain-links",
-    "/link-in-bio",
-    "/shorten-pdf-link",
-    "/shorten-image-url",
-    "/shorten-video-url",
-    "/shorten-github-url",
-    "/shorten-google-drive-link",
-    "/shorten-google-docs-link",
-    "/shorten-dropbox-link",
-    "/shorten-spotify-link",
-    "/shorten-amazon-link",
-    "/shorten-shopify-link",
-    "/shorten-medium-link",
-    "/shorten-notion-link",
-    "/shorten-figma-link",
-    "/shorten-calendly-link",
-    "/shorten-patreon-link",
-    "/shorten-etsy-link",
-    "/shorten-airbnb-link",
-    "/shorten-substack-link",
-    "/url-shortener-no-signup",
-    "/url-shortener-without-signup",
-    "/url-shortener-for-business",
-    "/url-shortener-for-marketers",
-    "/url-shortener-for-social-media",
-    "/url-shortener-in-india",
-    "/url-shortener-in-uk",
-    "/url-shortener-in-canada",
-    "/url-shortener-with-qr-codes",
-    "/url-shortener-with-analytics",
-    "/url-shortener-no-ads",
-  ]
-  return paths.flatMap((p) => enOnlyUrls(p, priority))
-}
+const qrPaths = [
+  "/qr-code-generator", "/dynamic-qr-code-generator", "/free-qr-code-generator",
+  "/qr-code-for-wifi", "/qr-code-for-vcard", "/qr-code-for-business-card",
+  "/qr-code-for-restaurant-menu", "/qr-code-for-app-download",
+  "/qr-code-for-google-maps", "/qr-code-for-google-reviews", "/qr-code-for-facebook",
+  "/qr-code-for-instagram", "/qr-code-for-linkedin", "/qr-code-for-youtube",
+  "/qr-code-for-whatsapp", "/qr-code-for-email", "/qr-code-for-sms",
+  "/qr-code-for-phone", "/qr-code-for-event", "/qr-code-for-pdf",
+  "/qr-code-for-restaurant", "/qr-code-for-hotel", "/qr-code-for-gym",
+  "/qr-code-for-salon", "/qr-code-for-store", "/qr-code-for-resume",
+  "/qr-code-for-portfolio", "/qr-code-for-wedding", "/qr-code-for-birthday",
+  "/qr-code-for-concert", "/qr-code-for-class", "/qr-code-for-fundraiser",
+]
 
-function socialPages(priority = 0.8): MetadataRoute.Sitemap {
-  const paths = [
-    "/instagram-link-generator",
-    "/whatsapp-link-generator",
-    "/telegram-link-generator",
-    "/signal-link-generator",
-    "/wechat-link-generator",
-    "/slack-link-generator",
-    "/tiktok-bio-link-generator",
-    "/youtube-link-generator",
-    "/facebook-url-generator",
-    "/linkedin-url-generator",
-    "/pinterest-link-generator",
-    "/snapchat-link-generator",
-    "/reddit-link-generator",
-    "/discord-link-generator",
-    "/twitch-link-generator",
-    "/twitter-link-generator",
-    "/threads-link-generator",
-    "/mastodon-link-generator",
-    "/shorten-youtube-url",
-    "/shorten-instagram-url",
-    "/shorten-facebook-url",
-    "/shorten-whatsapp-link",
-    "/shorten-linkedin-url",
-    "/shorten-tiktok-url",
-    "/shorten-x-url",
-    "/shorten-discord-invite-link",
-  ]
-  return paths.flatMap((p) => enOnlyUrls(p, priority))
-}
+const comparisonPaths = [
+  "/bitly-alternative", "/tinyurl-alternative", "/rebrandly-alternative",
+  "/short-io-alternative", "/best-url-shortener", "/relurl-vs-tinyurl",
+  "/relurl-vs-bitly",
+]
 
-function qrPages(priority = 0.85): MetadataRoute.Sitemap {
-  const paths = [
-    "/qr-code-generator",
-    "/dynamic-qr-code-generator",
-    "/free-qr-code-generator",
-    "/qr-code-for-wifi",
-    "/qr-code-for-vcard",
-    "/qr-code-for-business-card",
-    "/qr-code-for-restaurant-menu",
-    "/qr-code-for-app-download",
-    "/qr-code-for-google-maps",
-    "/qr-code-for-google-reviews",
-    "/qr-code-for-facebook",
-    "/qr-code-for-instagram",
-    "/qr-code-for-linkedin",
-    "/qr-code-for-youtube",
-    "/qr-code-for-whatsapp",
-    "/qr-code-for-email",
-    "/qr-code-for-sms",
-    "/qr-code-for-phone",
-    "/qr-code-for-event",
-    "/qr-code-for-pdf",
-    "/qr-code-for-restaurant",
-    "/qr-code-for-hotel",
-    "/qr-code-for-gym",
-    "/qr-code-for-salon",
-    "/qr-code-for-store",
-    "/qr-code-for-resume",
-    "/qr-code-for-portfolio",
-    "/qr-code-for-wedding",
-    "/qr-code-for-birthday",
-    "/qr-code-for-concert",
-    "/qr-code-for-class",
-    "/qr-code-for-fundraiser",
-  ]
-  return paths.flatMap((p) => enOnlyUrls(p, priority))
-}
+const guidePaths = [
+  "/how-to-shorten-a-url", "/how-to-create-short-links", "/how-to-track-link-clicks",
+  "/how-to-create-qr-codes", "/how-to-create-branded-links",
+  "/how-to-use-utm-parameters", "/how-to-create-qr-codes-for-business",
+  "/how-to-make-money-with-url-shortener",
+]
 
-function comparisonPages(priority = 0.8): MetadataRoute.Sitemap {
-  const paths = [
-    "/bitly-alternative",
-    "/tinyurl-alternative",
-    "/rebrandly-alternative",
-    "/short-io-alternative",
-    "/best-url-shortener",
-    "/relurl-vs-tinyurl",
-    "/relurl-vs-bitly",
-  ]
-  return paths.flatMap((p) => enOnlyUrls(p, priority))
-}
+const staticMultiPaths = [
+  "/privacy", "/terms", "/cookies", "/gdpr", "/dmca", "/wordpress",
+]
 
-function guidePages(priority = 0.8): MetadataRoute.Sitemap {
-  const paths = [
-    "/how-to-shorten-a-url",
-    "/how-to-create-short-links",
-    "/how-to-track-link-clicks",
-    "/how-to-create-qr-codes",
-    "/how-to-create-branded-links",
-    "/how-to-use-utm-parameters",
-    "/how-to-create-qr-codes-for-business",
-    "/how-to-make-money-with-url-shortener",
-  ]
-  return paths.flatMap((p) => enOnlyUrls(p, priority))
-}
+const staticEnOnlyPaths = [
+  "/integrations", "/changelog", "/api-reference",
+]
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  return [
-    ...staticPages(0.9),
-    ...landingPages(),
-    ...socialPages(0.8),
-    ...qrPages(),
-    ...comparisonPages(),
-    ...guidePages(),
-    ...blogPages(),
-  ]
+export default async function sitemap({
+  id,
+}: {
+  id: string
+}): Promise<MetadataRoute.Sitemap> {
+  switch (id) {
+    case "translated":
+      return [
+        localizedUrl("", 1),
+        localizedUrl("/features"),
+        localizedUrl("/pricing"),
+        localizedUrl("/contact"),
+        localizedUrl("/browser-extension"),
+        ...getAllSlugs().flatMap((slug) => {
+          const languages: Record<string, string> = { "x-default": `${baseUrl}/en/blog/${slug}` }
+          for (const l of translatedLocales) languages[l] = `${baseUrl}/${l}/blog/${slug}`
+          return {
+            url: `${baseUrl}/en/blog/${slug}`,
+            lastModified: new Date(),
+            changeFrequency: "weekly" as const,
+            priority: 0.8,
+            alternates: { languages },
+          }
+        }),
+      ]
+    case "landing":
+      return landingPaths.map((p) => localizedUrl(p, 0.85))
+    case "tools":
+      return [...socialPaths, ...qrPaths, ...comparisonPaths, ...guidePaths].map(
+        (p) => localizedUrl(p, 0.8)
+      )
+    case "static":
+      return [
+        ...staticMultiPaths.map((p) => localizedUrl(p, 0.9)),
+        ...staticEnOnlyPaths.flatMap((p) => enOnlyUrls(p, 0.9)),
+      ]
+    default:
+      return []
+  }
 }
