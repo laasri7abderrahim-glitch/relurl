@@ -5,6 +5,16 @@ import { createHash } from "crypto"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
+// Import jsonwebtoken for Ghost/Discord if not available, use a simple fallback
+let jsonwebtoken
+
+try {
+  jsonwebtoken = require("jsonwebtoken")
+} catch (e) {
+  console.log("   Note: 'jsonwebtoken' not available, using fallback for Ghost API")
+  jsonwebtoken = null
+}
+
 // Auto-load .env file
 try {
   const envPath = path.join(__dirname, ".env")
@@ -411,6 +421,52 @@ async function publishWriteas(title, body, tags, canonicalUrl) {
   return { platform: "Write.as", status: "success", url: data.data.url }
 }
 
+async function publishGhost(title, body, tags, canonicalUrl) {
+  if (!CONFIG.GHOST_URL || !CONFIG.GHOST_ADMIN_KEY) return { platform: "Ghost", status: "skipped", reason: "No config" }
+  const [id, secret] = CONFIG.GHOST_ADMIN_KEY.split(":")
+  if (!id || !secret) return { platform: "Ghost", status: "error", error: "Invalid key format" }
+  const iat = Math.floor(Date.now() / 1000)
+  const jwt = require("jsonwebtoken")?.sign({}, Buffer.from(secret, "hex"), { keyid: id, algorithm: "HS256", expiresIn: "5m", audience: "/admin/" })
+  if (!jwt) return { platform: "Ghost", status: "skipped", reason: "Need 'jsonwebtoken' package" }
+  const htmlBody = body
+    .replace(/^### (.+)$/gm, "<h3>$1</h3>")
+    .replace(/^## (.+)$/gm, "<h2>$1</h2>")
+    .replace(/^# (.+)$/gm, "<h1>$1</h1>")
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+  const res = await fetch(`${CONFIG.GHOST_URL}/ghost/api/admin/posts`, {
+    method: "POST",
+    headers: { Authorization: `Ghost ${jwt}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ posts: [{ title, html: htmlBody, status: "published", tags: tags.map(t => ({ name: t })) }] }),
+  })
+  if (!res.ok) return { platform: "Ghost", status: "error", error: await res.text() }
+  const data = await res.json()
+  return { platform: "Ghost", status: "success", url: data.posts?.[0]?.url || "published" }
+}
+
+async function publishJustPasteIt(title, body, tags, canonicalUrl) {
+  // JustPaste.it — DA ~89, dofollow, no auth needed for anonymous pastes
+  const html = body
+    .replace(/^### (.+)$/gm, "<h3>$1</h3>")
+    .replace(/^## (.+)$/gm, "<h2>$1</h2>")
+    .replace(/^# (.+)$/gm, "<h1>$1</h1>")
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+    .replace(/\n\n/g, "</p><p>")
+    .replace(/\n/g, "<br>")
+  const payload = `<html><head><title>${title}</title></head><body><p>${html}</p></body></html>`
+  try {
+    const res = await fetch("https://just-paste.it/documents", {
+      method: "POST",
+      headers: { "Content-Type": "text/plain" },
+      body: payload,
+    })
+    if (!res.ok) return { platform: "JustPaste.it", status: "error", error: await res.text() }
+    const data = await res.json()
+    return { platform: "JustPaste.it", status: "success", url: `https://justpaste.it/${data.key}` }
+  } catch (e) {
+    return { platform: "JustPaste.it", status: "error", error: e.message }
+  }
+}
+
 async function publishBearBlog(title, body, tags, canonicalUrl) {
   if (!CONFIG.BEARBLOG_KEY) return { platform: "Bear Blog", status: "skipped", reason: "No API key" }
   const htmlBody = body
@@ -572,9 +628,105 @@ async function publishJustPasteIt(title, body, tags, canonicalUrl) {
     })
     if (!res.ok) return { platform: "JustPaste.it", status: "error", error: await res.text() }
     const data = await res.json()
-    return { platform: "JustPaste.it", status: "success", url: `https://justpaste.it/${data.key}` }
+    return { platform: "JustPaste.it", status: "success", url: `https://just-paste.it/${data.key}/` }
   } catch (e) {
     return { platform: "JustPaste.it", status: "error", error: e.message }
+  }
+}
+
+async function publishRentry(title, body, tags, canonicalUrl) {
+  // Rentry.co — DA ~55, dofollow (rel=""), no auth, anonymous markdown pastebin
+  // API: POST /api/new with form-urlencoded {text, edit_code(optional)}
+  // Returns: {status, url, url_short, edit_code}
+  const editCode = `relurl-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`
+  try {
+    const res = await fetch("https://rentry.co/api/new", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        text: body + `\n\n---\n*Originally published at [RelURL](${canonicalUrl})*`,
+        edit_code: editCode,
+      }),
+    })
+    if (!res.ok) return { platform: "Rentry.co", status: "error", error: await res.text() }
+    const data = await res.json()
+    if (data.status !== "200") return { platform: "Rentry.co", status: "error", error: data.content || data.errors }
+    return { platform: "Rentry.co", status: "success", url: data.url }
+  } catch (e) {
+    return { platform: "Rentry.co", status: "error", error: e.message }
+  }
+}
+
+async function publishNonograph(title, body, tags, canonicalUrl) {
+  // Nonogra.ph — Telegra.ph clone with CSRF protection
+  // Links have rel="noopener noreferrer" but NOT nofollow (dofollow equity passes)
+  try {
+    // Step 1: GET homepage to extract CSRF token
+    const homeRes = await fetch("https://nonogra.ph", {
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; RelURL/1.0)" },
+    })
+    const html = await homeRes.text()
+    const csrfMatch = html.match(/name="csrf_token"\s+value="([^"]+)"/)
+    if (!csrfMatch) return { platform: "Nonogra.ph", status: "error", error: "Could not find CSRF token" }
+    const csrfToken = csrfMatch[1]
+
+    // Step 2: Build article title from first heading in body
+    const firstLine = body.split("\n")[0].replace(/^#\s+/, "").trim()
+    const articleTitle = title || firstLine
+    
+    // Ensure slug is unique and within reasonable length (alias should be < 64 chars)
+    const timestamp = Date.now().toString(36)
+    const slug = (
+      articleTitle
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, "-")
+        .replace(/^-|-$/g, "")
+        .slice(0, 50) +
+      "-" +
+      timestamp.slice(0, 10)
+    ).slice(0, 60)
+
+    // Convert markdown to simple HTML
+    let htmlBody = body
+      .replace(/^### (.+)$/gm, "<h3>$1</h3>")
+      .replace(/^## (.+)$/gm, "<h2>$1</h2>")
+      .replace(/^# (.+)$/gm, "<h1>$1</h1>")
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+      .replace(/\n\n/g, "</p><p>")
+      .replace(/\n/g, "<br>")
+
+    const formBody = new URLSearchParams({
+      title: articleTitle,
+      alias: slug,
+      content: `<p>${htmlBody}</p>`,
+      csrf_token: csrfToken,
+    })
+
+    const res = await fetch("https://nonogra.ph/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "User-Agent": "Mozilla/5.0 (compatible; RelURL/1.0)",
+        Referer: "https://nonogra.ph/",
+      },
+      body: formBody,
+      redirect: "manual",
+    })
+
+    if (res.status >= 300 && res.status < 400) {
+      const location = res.headers.get("location")
+      let url = location?.startsWith("http") ? location : `https://nonogra.ph${location || ""}`
+      // Fix URL format - ensure it uses proper path
+      if (url.includes('https://nonogra.ph/?error=')) {
+        return { platform: "Nonogra.ph", status: "error", error: `URL generation failed: ${url}` }
+      }
+      if (!url.includes('/')) url = `https://nonogra.ph/${slug}/`
+      return { platform: "Nonogra.ph", status: "success", url }
+    }
+    const text = await res.text()
+    return { platform: "Nonogra.ph", status: "error", error: `HTTP ${res.status}: ${text.slice(0, 200)}` }
+  } catch (e) {
+    return { platform: "Nonogra.ph", status: "error", error: e.message }
   }
 }
 
@@ -637,7 +789,8 @@ async function main() {
   // NOFOLLOW platforms second (brand visibility)
   const publishers = [
     // Dofollow article platforms
-    publishDevto, publishTelegraph, publishJustPasteIt, publishWordPress,
+    publishDevto, publishTelegraph, publishJustPasteIt, publishRentry,
+    publishNonograph, publishWordPress,
     publishGhost, publishScoopit, publishLiveJournal,
     publishWriteas, publishBearBlog, publishBlogger,
     publishWriteFreely, publishForem,
