@@ -102,6 +102,18 @@ export async function trackClick(
       browser: browser ?? undefined,
     })
   }
+
+  try {
+    const { triggerWebhooks } = await import("@/lib/webhooks")
+    await triggerWebhooks("link.clicked", {
+      linkId,
+      country,
+      device,
+      browser,
+      os,
+      isUnique: !recentClick,
+    })
+  } catch { }
 }
 
 export async function getClickStats(

@@ -1,0 +1,1478 @@
+{
+    "qr-code-for-class":  {
+                              "title":  "Código QR para el Salón de Clases",
+                              "subtitle":  "Simplifica el Acceso al Aprendizaje",
+                              "description":  "Crea códigos QR para recursos educativos, tareas y materiales de aprendizaje. Permite que los estudiantes escaneen y accedan al contenido del curso al instante.",
+                              "metaDescription":  "Crea códigos QR para recursos del salón de clases, tareas y materiales de aprendizaje. Optimiza la educación con códigos QR escaneables de RELURL.",
+                              "keywords":  [
+                                               "codigo qr para salón de clases",
+                                               "codigo qr educativo",
+                                               "codigo qr recursos escolares",
+                                               "codigo qr para educación"
+                                           ],
+                              "features":  [
+                                               "Enlaces de Tareas",
+                                               "Biblioteca de Recursos",
+                                               "Portal para Padres",
+                                               "Seguimiento de Asistencia",
+                                               "Enlaces de Cuestionarios y Encuestas",
+                                               "Acceso a Lecciones en Video"
+                                           ],
+                              "howItWorks":  [
+                                                 {
+                                                     "desc":  "Pega el enlace de tu tarea, material o página del curso.",
+                                                     "step":  "Ingresa la URL del Recurso"
+                                                 },
+                                                 {
+                                                     "desc":  "Crea un código para que los estudiantes accedan rápido a los recursos.",
+                                                     "step":  "Genera el Código QR"
+                                                 },
+                                                 {
+                                                     "desc":  "Colócalo en pizarrones, escritorios y materiales impresos.",
+                                                     "step":  "Preséntalo en el Aula"
+                                                 }
+                                             ],
+                              "useCases":  [
+                                               "Acceso a tareas escolares",
+                                               "Compartir materiales complementarios",
+                                               "Enlaces de comunicación con padres",
+                                               "Acceso a recursos de biblioteca",
+                                               "Entrada a clases virtuales",
+                                               "Compartir información de excursiones"
+                                           ]
+                          },
+    "qr-code-for-app-download":  {
+                                     "title":  "Código QR para Descargar App",
+                                     "subtitle":  "Aumenta las Instalaciones",
+                                     "description":  "Genera un código QR para tu app móvil. Los usuarios escanean y son dirigidos a la tienda de aplicaciones correcta según su dispositivo.",
+                                     "metaDescription":  "Genera un código QR para tu app móvil. Los usuarios escanean y son dirigidos a la tienda de aplicaciones correcta según su dispositivo.",
+                                     "keywords":  [
+                                                      "codigo qr para descargar app",
+                                                      "codigo qr de app",
+                                                      "codigo qr tienda de apps",
+                                                      "codigo qr descarga de aplicacion"
+                                                  ],
+                                     "features":  [
+                                                      "Detección Automática de Dispositivo",
+                                                      "Aumenta Instalaciones",
+                                                      "Multiplataforma",
+                                                      "Listo para Imprimir",
+                                                      "Redirección Inteligente",
+                                                      "Seguimiento Analítico"
+                                                  ],
+                                     "howItWorks":  [
+                                                        {
+                                                            "desc":  "Enlaza a Google Play o App Store",
+                                                            "step":  "Ingresa la URL de la Tienda"
+                                                        },
+                                                        {
+                                                            "desc":  "Crea un código para promocionar tu app",
+                                                            "step":  "Genera el Código QR"
+                                                        },
+                                                        {
+                                                            "desc":  "Agrégalo a empaques, exhibidores o anuncios",
+                                                            "step":  "Promociona tu App"
+                                                        }
+                                                    ],
+                                     "useCases":  [
+                                                      "Lanzamientos de apps",
+                                                      "Empaques de productos",
+                                                      "Exhibidores en tiendas",
+                                                      "Promoción de eventos",
+                                                      "Publicidad impresa",
+                                                      "Campañas de adquisición de usuarios"
+                                                  ]
+                                 },
+    "qr-code-for-restaurant-menu":  {
+                                        "title":  "Código QR para Menú de Restaurante",
+                                        "subtitle":  "Solución de Menú Digital",
+                                        "description":  "Crea un código QR para el menú de tu restaurante. Los comensales escanean y ven tu menú en sus teléfonos — sin contacto y moderno.",
+                                        "metaDescription":  "Crea un código QR para el menú de tu restaurante. Permite que los clientes escaneen y vean tu menú en sus teléfonos. Perfecto para experiencias gastronómicas sin contacto.",
+                                        "keywords":  [
+                                                         "codigo qr para menu de restaurante",
+                                                         "codigo qr menu restaurante",
+                                                         "menu digital",
+                                                         "codigo qr menu digital"
+                                                     ],
+                                        "features":  [
+                                                         "Comida Sin Contacto",
+                                                         "Fácil de Actualizar",
+                                                         "Sin App Necesaria",
+                                                         "Soporte Multilenguaje",
+                                                         "Alertas de Especiales del Día",
+                                                         "Información Nutricional"
+                                                     ],
+                                        "howItWorks":  [
+                                                           {
+                                                               "desc":  "Enlaza a tu menú en línea o PDF",
+                                                               "step":  "Sube la URL del Menú"
+                                                           },
+                                                           {
+                                                               "desc":  "Crea un código para colocar en las mesas",
+                                                               "step":  "Genera el Código QR"
+                                                           },
+                                                           {
+                                                               "desc":  "Imprime y colócalo en cada mesa",
+                                                               "step":  "Colócalo en las Mesas"
+                                                           }
+                                                       ],
+                                        "useCases":  [
+                                                         "Restaurantes y cafeterías",
+                                                         "Camiones de comida",
+                                                         "Bares y pubs",
+                                                         "Servicios de catering",
+                                                         "Restaurantes de hotel",
+                                                         "Maridajes de vinos y bebidas"
+                                                     ]
+                                    },
+    "qr-code-for-google-reviews":  {
+                                       "title":  "Código QR para Reseñas de Google",
+                                       "subtitle":  "Aumenta tus Reseñas",
+                                       "description":  "Genera un código QR que enlace directamente a tu página de reseñas de Google. Facilita que los clientes dejen su opinión.",
+                                       "metaDescription":  "Genera un código QR que enlace a tu página de reseñas de Google. Haz que los clientes satisfechos dejen reseñas de 5 estrellas y mejoren tu calificación.",
+                                       "keywords":  [
+                                                        "codigo qr para reseñas de google",
+                                                        "codigo qr reseña google",
+                                                        "obtener mas reseñas",
+                                                        "codigo qr de reseñas"
+                                                    ],
+                                       "features":  [
+                                                        "Directo a la Página de Reseñas",
+                                                        "Aumenta el Número de Reseñas",
+                                                        "Fácil para los Clientes",
+                                                        "Rastrea Escaneos de Reseñas",
+                                                        "Enlace para Responder Reseñas",
+                                                        "Panel de Calificaciones"
+                                                    ],
+                                       "howItWorks":  [
+                                                          {
+                                                              "desc":  "Copia la URL de reseñas de tu negocio en Google",
+                                                              "step":  "Obtén el Enlace de Reseñas"
+                                                          },
+                                                          {
+                                                              "desc":  "Crea un código que abra la página de reseñas",
+                                                              "step":  "Genera el Código QR"
+                                                          },
+                                                          {
+                                                              "desc":  "Colócalo cerca de la caja o en los recibos",
+                                                              "step":  "Preséntalo en tu Local"
+                                                          }
+                                                      ],
+                                       "useCases":  [
+                                                        "Tiendas minoristas",
+                                                        "Restaurantes y cafeterías",
+                                                        "Hoteles",
+                                                        "Negocios de servicios",
+                                                        "Consultorios médicos",
+                                                        "Reseñas de concesionarios automotrices"
+                                                    ]
+                                   },
+    "qr-code-for-event":  {
+                              "title":  "Código QR para Registro de Eventos",
+                              "subtitle":  "Optimiza el Check-in",
+                              "description":  "Crea un código QR para registro de eventos. Los asistentes escanean para registrarse, hacer check-in o acceder a los detalles del evento al instante.",
+                              "metaDescription":  "Crea un código QR para registro de eventos. Los asistentes escanean para registrarse, hacer check-in o acceder a los detalles del evento al instante.",
+                              "keywords":  [
+                                               "codigo qr para eventos",
+                                               "codigo qr de evento",
+                                               "codigo qr de registro",
+                                               "codigo qr registro de eventos"
+                                           ],
+                              "features":  [
+                                               "Check-in Rápido",
+                                               "Registro Sin Contacto",
+                                               "Seguimiento en Tiempo Real",
+                                               "Listo para Imprimir",
+                                               "Acceso a Horarios",
+                                               "Perfiles de Ponentes"
+                                           ],
+                              "howItWorks":  [
+                                                 {
+                                                     "desc":  "Enlaza a tu página de registro de eventos",
+                                                     "step":  "Ingresa la URL de Registro"
+                                                 },
+                                                 {
+                                                     "desc":  "Crea un código para promocionar el evento",
+                                                     "step":  "Genera el Código QR"
+                                                 },
+                                                 {
+                                                     "desc":  "Agrégalo a volantes, carteles y redes sociales",
+                                                     "step":  "Promociona el Evento"
+                                                 }
+                                             ],
+                              "useCases":  [
+                                               "Conferencias y seminarios",
+                                               "Talleres y clases",
+                                               "Eventos de networking",
+                                               "Eventos deportivos",
+                                               "Conciertos y festivales",
+                                               "Enlaces de transmisión de eventos virtuales"
+                                           ]
+                          },
+    "qr-code-for-business-card":  {
+                                      "title":  "Código QR para Tarjeta de Presentación",
+                                      "subtitle":  "Networking Hecho Fácil",
+                                      "description":  "Agrega un código QR a tu tarjeta de presentación que enlace a tu sitio web, portafolio o información de contacto. Haz que cada conexión cuente.",
+                                      "metaDescription":  "Agrega un código QR a tu tarjeta de presentación. Permite que las personas escaneen y guarden tu información de contacto, sitio web y perfiles sociales al instante.",
+                                      "keywords":  [
+                                                       "codigo qr para tarjeta de presentacion",
+                                                       "codigo qr tarjeta de presentacion",
+                                                       "tarjeta de presentacion digital",
+                                                       "codigo qr tarjeta digital"
+                                                   ],
+                                      "features":  [
+                                                       "Aspecto Profesional",
+                                                       "Contacto Instantáneo",
+                                                       "Funciona en Cualquier Tarjeta",
+                                                       "Rastrea Escaneos",
+                                                       "Enlaces a Múltiples Perfiles",
+                                                       "Personalización de Diseño"
+                                                   ],
+                                      "howItWorks":  [
+                                                         {
+                                                             "desc":  "Enlaza a tu sitio web, LinkedIn o portafolio",
+                                                             "step":  "Ingresa tu URL"
+                                                         },
+                                                         {
+                                                             "desc":  "Crea un código QR profesional",
+                                                             "step":  "Genera el Código QR"
+                                                         },
+                                                         {
+                                                             "desc":  "Colócalo en el diseño de tu tarjeta de presentación",
+                                                             "step":  "Agrégalo a la Tarjeta"
+                                                         }
+                                                     ],
+                                      "useCases":  [
+                                                       "Eventos de networking",
+                                                       "Equipos de ventas",
+                                                       "Freelancers y consultores",
+                                                       "Agentes de bienes raíces",
+                                                       "Buscadores de empleo",
+                                                       "Networking en ferias comerciales"
+                                                   ]
+                                  },
+    "nonprofit-link-shortener":  {
+                                     "title":  "Acortador de Enlaces para ONG",
+                                     "subtitle":  "Amplifica tu Causa",
+                                     "description":  "Crea enlaces cortos para páginas de donación, registro de voluntarios y campañas de concientización. Rastrea el compromiso de los seguidores y maximiza el impacto.",
+                                     "metaDescription":  "Crea enlaces cortos para páginas de donación, registro de voluntarios y campañas de concientización. Rastrea el compromiso de los seguidores con RELURL.",
+                                     "keywords":  [
+                                                      "acortador de enlaces para ong",
+                                                      "generador de enlaces de donacion",
+                                                      "enlaces para organizaciones beneficas"
+                                                  ],
+                                     "features":  [
+                                                      "Seguimiento de Páginas de Donación",
+                                                      "Analíticas de Registro de Voluntarios",
+                                                      "Atribución de Campañas",
+                                                      "Enlaces para Registro de Eventos",
+                                                      "Optimizado para Redes Sociales",
+                                                      "Enlaces de Donación Recurrente"
+                                                  ],
+                                     "howItWorks":  [
+                                                        {
+                                                            "desc":  "Ingresa el enlace de tu página de donación, voluntariado o campaña.",
+                                                            "step":  "Pega la URL de la Campaña"
+                                                        },
+                                                        {
+                                                            "desc":  "Genera una URL simple y compartible para tus seguidores.",
+                                                            "step":  "Crea un Enlace Corto"
+                                                        },
+                                                        {
+                                                            "desc":  "Distribuye a través de tus canales y mide el compromiso.",
+                                                            "step":  "Comparte y Rastrea"
+                                                        }
+                                                    ],
+                                     "useCases":  [
+                                                      "Promoción de campañas de recaudación de fondos",
+                                                      "Reclutamiento de voluntarios",
+                                                      "Enlaces de campañas de concientización",
+                                                      "Registro de eventos",
+                                                      "Llamados a donación en boletines",
+                                                      "Solicitudes en redes sociales"
+                                                  ]
+                                 },
+    "qr-code-for-resume":  {
+                               "title":  "Código QR para Currículum",
+                               "subtitle":  "Destaca en tus Solicitudes",
+                               "description":  "Crea códigos QR para tu currículum, CV y portafolio en línea. Permite que los reclutadores escaneen y vean tu perfil profesional completo al instante.",
+                               "metaDescription":  "Crea códigos QR para tu currículum, CV y portafolio en línea. Destaca en tus solicitudes de empleo con un código QR escaneable de RELURL.",
+                               "keywords":  [
+                                                "codigo qr para curriculum",
+                                                "codigo qr cv",
+                                                "codigo qr portafolio",
+                                                "codigo qr cv digital"
+                                            ],
+                               "features":  [
+                                                "Enlace a Portafolio",
+                                                "Integración con LinkedIn",
+                                                "Muestras de Proyectos",
+                                                "Datos de Contacto",
+                                                "Enlace a Carta de Presentación",
+                                                "Certificaciones"
+                                            ],
+                               "howItWorks":  [
+                                                  {
+                                                      "desc":  "Pega el enlace de tu currículum en línea, portafolio o perfil de LinkedIn.",
+                                                      "step":  "Ingresa la URL del Currículum"
+                                                  },
+                                                  {
+                                                      "desc":  "Crea un código QR profesional para tus solicitudes de empleo.",
+                                                      "step":  "Genera el Código QR"
+                                                  },
+                                                  {
+                                                      "desc":  "Imprímelo en el encabezado de tu currículum o inclúyelo en firmas de correo.",
+                                                      "step":  "Agrégalo a tu Solicitud"
+                                                  }
+                                              ],
+                               "useCases":  [
+                                                "Encabezados de currículum para solicitudes de empleo",
+                                                "Adjuntos a tarjetas de presentación",
+                                                "Compartir perfil de LinkedIn",
+                                                "Portafolios de freelancers",
+                                                "Networking en conferencias",
+                                                "Encabezados para solicitudes de prácticas"
+                                            ]
+                           },
+    "qr-code-for-hotel":  {
+                              "title":  "Código QR para Hotel",
+                              "subtitle":  "Mejora la Experiencia del Huésped",
+                              "description":  "Crea códigos QR para servicios hoteleros, información de habitaciones y amenidades. Ofrece a los huéspedes acceso instantáneo a todo lo que necesitan con un rápido escaneo.",
+                              "metaDescription":  "Crea códigos QR para servicios hoteleros, información de habitaciones y amenidades. Mejora la experiencia del huésped con acceso instantáneo mediante códigos QR de RELURL.",
+                              "keywords":  [
+                                               "codigo qr para hotel",
+                                               "codigo qr huesped hotel",
+                                               "codigo qr informacion hotel",
+                                               "codigo qr servicios hotel"
+                                           ],
+                              "features":  [
+                                               "Enlaces a Servicio a la Habitación",
+                                               "Acceso a Conserjería",
+                                               "Guías de Amenidades",
+                                               "Recolección de Reseñas",
+                                               "Llaves Digitales de Habitación",
+                                               "Check-out Sin Contacto"
+                                           ],
+                              "howItWorks":  [
+                                                 {
+                                                     "desc":  "Pega el enlace de tu servicio hotelero, amenidad o página de información.",
+                                                     "step":  "Ingresa la URL del Servicio"
+                                                 },
+                                                 {
+                                                     "desc":  "Crea un código QR con la marca de tu hotel.",
+                                                     "step":  "Genera el Código QR"
+                                                 },
+                                                 {
+                                                     "desc":  "Imprímelo en tarjetas, letreros o pantallas por todo el hotel.",
+                                                     "step":  "Colócalo en las Habitaciones"
+                                                 }
+                                             ],
+                              "useCases":  [
+                                               "Menús de servicio a la habitación",
+                                               "Reservas de conserjería y spa",
+                                               "Acceso WiFi para huéspedes",
+                                               "Guías de atracciones locales",
+                                               "Recolección de comentarios de huéspedes",
+                                               "Inscripción al programa de lealtad"
+                                           ]
+                          },
+    "marketing-url-shortener":  {
+                                    "title":  "Acortador de Enlaces para Marketing",
+                                    "subtitle":  "Optimiza Cada Campaña",
+                                    "description":  "Crea enlaces cortos rastreables para tus campañas de marketing. Revisa el rendimiento canal por canal y optimiza tu inversión en marketing con datos en tiempo real.",
+                                    "metaDescription":  "Acorta URLs para campañas de marketing. Rastrea clics, mide ROI y optimiza tu marketing con analíticas detalladas de enlaces.",
+                                    "keywords":  [
+                                                     "acortador de enlaces de marketing",
+                                                     "acortador de enlaces de campaña",
+                                                     "enlaces de marketing"
+                                                 ],
+                                    "features":  [
+                                                     "Soporte para Parámetros UTM",
+                                                     "Seguimiento de Campañas",
+                                                     "Analíticas Multicanal",
+                                                     "Pruebas A/B",
+                                                     "Píxeles de Retargeting",
+                                                     "Generación de Códigos QR"
+                                                 ],
+                                    "howItWorks":  [
+                                                       {
+                                                           "desc":  "Ingresa tu URL de marketing con parámetros UTM.",
+                                                           "step":  "Pega la URL de la Campaña"
+                                                       },
+                                                       {
+                                                           "desc":  "Agrega etiquetas de campaña y reglas de segmentación.",
+                                                           "step":  "Configura las Opciones de Seguimiento"
+                                                       },
+                                                       {
+                                                           "desc":  "Rastrea clics, conversiones y ROI por campaña.",
+                                                           "step":  "Analiza los Resultados"
+                                                       }
+                                                   ],
+                                    "useCases":  [
+                                                     "Campañas de email marketing",
+                                                     "Publicidad en redes sociales",
+                                                     "PPC y Google Ads",
+                                                     "Marketing de influencers",
+                                                     "Campañas impresas y en vallas publicitarias",
+                                                     "Promociones de eventos y seminarios web"
+                                                 ]
+                                },
+    "qr-code-for-concert":  {
+                                "title":  "Código QR para Concierto",
+                                "subtitle":  "Amplifica la Experiencia",
+                                "description":  "Crea códigos QR para boletos de concierto, setlists e información del recinto. Mejora la experiencia de la música en vivo con acceso instantáneo mediante códigos QR.",
+                                "metaDescription":  "Crea códigos QR para boletos de concierto, setlists e información del recinto. Mejora la experiencia del concierto con códigos QR escaneables de RELURL.",
+                                "keywords":  [
+                                                 "codigo qr para concierto",
+                                                 "codigo qr boleto concierto",
+                                                 "codigo qr evento musical",
+                                                 "codigo qr musica en vivo"
+                                             ],
+                                "features":  [
+                                                 "Verificación de Boletos",
+                                                 "Compartir Setlist",
+                                                 "Mapas del Recinto",
+                                                 "Enlaces a Tienda de Merch",
+                                                 "Pases de Acceso VIP",
+                                                 "Enlaces para Pre-Guardar Música"
+                                             ],
+                                "howItWorks":  [
+                                                   {
+                                                       "desc":  "Pega el enlace de tu página de boletos, información del evento o setlist.",
+                                                       "step":  "Ingresa la URL del Concierto"
+                                                   },
+                                                   {
+                                                       "desc":  "Crea un código escaneable para tu concierto.",
+                                                       "step":  "Genera el Código QR"
+                                                   },
+                                                   {
+                                                       "desc":  "Colócalo en la entrada, puestos de merchandising y áreas promocionales.",
+                                                       "step":  "Preséntalo en el Recinto"
+                                                   }
+                                               ],
+                                "useCases":  [
+                                                 "Escaneo de boletos en la entrada",
+                                                 "Compartir setlist e información de canciones",
+                                                 "Enlaces a tienda de merchandising",
+                                                 "Mapa del recinto y direcciones",
+                                                 "Compartir fotos post-concierto",
+                                                 "Registro al club de fans"
+                                             ]
+                            },
+    "qr-code-for-phone":  {
+                              "title":  "Código QR para Número de Teléfono",
+                              "subtitle":  "Llamada con Un Toque",
+                              "description":  "Crea un código QR que abre el marcador telefónico al escanearlo. Facilita que los clientes te llamen al instante.",
+                              "metaDescription":  "Crea un código QR que abre el marcador telefónico al escanearlo. Facilita que los clientes te llamen al instante.",
+                              "keywords":  [
+                                               "codigo qr para telefono",
+                                               "codigo qr numero telefonico",
+                                               "codigo qr llamada",
+                                               "codigo qr tocar para llamar"
+                                           ],
+                              "features":  [
+                                               "Llamada Instantánea",
+                                               "Sin Marcación Manual",
+                                               "Funciona Globalmente",
+                                               "Esencial para Negocios",
+                                               "Programación de Llamadas",
+                                               "Acceso al Buzón de Voz"
+                                           ],
+                              "howItWorks":  [
+                                                 {
+                                                     "desc":  "Proporciona tu número telefónico con código de país",
+                                                     "step":  "Ingresa el Número Telefónico"
+                                                 },
+                                                 {
+                                                     "desc":  "Crea un código que abre el marcador",
+                                                     "step":  "Genera el Código QR"
+                                                 },
+                                                 {
+                                                     "desc":  "Agrégalo a letreros, anuncios o materiales de negocio",
+                                                     "step":  "Comparte en Todas Partes"
+                                                 }
+                                             ],
+                              "useCases":  [
+                                               "Contacto de negocios",
+                                               "Servicios de emergencia",
+                                               "Servicios de entrega",
+                                               "Listados de bienes raíces",
+                                               "Proveedores de servicios",
+                                               "Llamadas para citas en consultorios médicos"
+                                           ]
+                          },
+    "qr-code-for-fundraiser":  {
+                                   "title":  "Código QR para Recaudación de Fondos",
+                                   "subtitle":  "Maximiza las Donaciones",
+                                   "description":  "Crea códigos QR para páginas de donación de recaudación de fondos y eventos benéficos. Haz que los seguidores donen sin esfuerzo con un rápido escaneo.",
+                                   "metaDescription":  "Crea códigos QR para páginas de donación de recaudación de fondos y eventos benéficos. Maximiza las donaciones con códigos QR fáciles de escanear de RELURL.",
+                                   "keywords":  [
+                                                    "codigo qr para recaudacion de fondos",
+                                                    "codigo qr donacion",
+                                                    "codigo qr beneficencia",
+                                                    "codigo qr pagina de donacion"
+                                                ],
+                                   "features":  [
+                                                    "Enlaces a Páginas de Donación",
+                                                    "Registro de Eventos",
+                                                    "Seguimiento de Patrocinadores",
+                                                    "Compartir en Redes Sociales",
+                                                    "Donación Recurrente",
+                                                    "Indicador de Progreso"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Pega el enlace de tu página de donación o evento de recaudación.",
+                                                          "step":  "Ingresa la URL de Donación"
+                                                      },
+                                                      {
+                                                          "desc":  "Crea un código que enlace directamente a tu formulario de donación.",
+                                                          "step":  "Genera el Código QR"
+                                                      },
+                                                      {
+                                                          "desc":  "Colócalo en la entrada, mesas y exhibidores promocionales.",
+                                                          "step":  "Preséntalo en el Evento"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Donaciones en galas benéficas",
+                                                    "Campañas de recaudación escolar",
+                                                    "Donaciones en eventos comunitarios",
+                                                    "Promoción de recaudación en línea",
+                                                    "Exhibidores de reconocimiento a patrocinadores",
+                                                    "Promoción de campañas de crowdfunding"
+                                                ]
+                               },
+    "qr-code-for-restaurant":  {
+                                   "title":  "Código QR para Restaurante",
+                                   "subtitle":  "Digitaliza tu Menú",
+                                   "description":  "Crea códigos QR para menús de restaurante, pedidos en mesa y reservaciones. Permite que los clientes escaneen para ver tu menú y hacer pedidos al instante.",
+                                   "metaDescription":  "Crea códigos QR para menús de restaurante, pedidos en mesa y reservaciones. Aumenta los pedidos para comer aquí y para llevar con el generador de códigos QR de RELURL.",
+                                   "keywords":  [
+                                                    "codigo qr para restaurante",
+                                                    "codigo qr menu restaurante",
+                                                    "codigo qr mesa",
+                                                    "codigo qr restaurante"
+                                                ],
+                                   "features":  [
+                                                    "Visualización de Menú",
+                                                    "Códigos Específicos por Mesa",
+                                                    "Integración de Pedidos",
+                                                    "Soporte Multilenguaje",
+                                                    "Sistema de Reservaciones",
+                                                    "Acceso a Información de Alérgenos"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Pega tu menú digital o enlace de pedidos en línea.",
+                                                          "step":  "Ingresa la URL del Menú"
+                                                      },
+                                                      {
+                                                          "desc":  "Crea un código QR escaneable para tu restaurante.",
+                                                          "step":  "Genera el Código QR"
+                                                      },
+                                                      {
+                                                          "desc":  "Imprime y muestra los códigos QR en cada mesa o en la entrada.",
+                                                          "step":  "Colócalo en las Mesas"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Exploración de menú para comer en el local",
+                                                    "Pedidos desde la mesa",
+                                                    "Enlaces para llevar y entrega a domicilio",
+                                                    "Promociones de hora feliz",
+                                                    "Menús para eventos y catering",
+                                                    "Pago sin contacto en las mesas"
+                                                ]
+                               },
+    "qr-code-for-salon":  {
+                              "title":  "Código QR para Salón de Belleza",
+                              "subtitle":  "Llena Más Citas",
+                              "description":  "Crea códigos QR para servicios de salón, páginas de reserva y galerías de estilos. Permite que los clientes escaneen para reservar citas y ver tu portafolio.",
+                              "metaDescription":  "Crea códigos QR para servicios de salón, páginas de reserva y galerías de estilos. Llena más citas con el generador de códigos QR para salones de RELURL.",
+                              "keywords":  [
+                                               "codigo qr para salon de belleza",
+                                               "codigo qr salón de belleza",
+                                               "codigo qr reserva salon",
+                                               "codigo qr reserva salon online"
+                                           ],
+                              "features":  [
+                                               "Reserva de Citas",
+                                               "Menú de Servicios",
+                                               "Galería de Estilos",
+                                               "Programa de Lealtad",
+                                               "Enlaces para Compra de Productos",
+                                               "Portafolio del Personal"
+                                           ],
+                              "howItWorks":  [
+                                                 {
+                                                     "desc":  "Pega el enlace de tu reserva en línea o menú de servicios.",
+                                                     "step":  "Ingresa la URL de Reserva"
+                                                 },
+                                                 {
+                                                     "desc":  "Crea un código QR que enlace a tu página de reservas.",
+                                                     "step":  "Genera el Código QR"
+                                                 },
+                                                 {
+                                                     "desc":  "Colócalo en recepción, espejos y exhibidores promocionales.",
+                                                     "step":  "Preséntalo en el Salón"
+                                                 }
+                                             ],
+                              "useCases":  [
+                                               "Reserva de citas en recepción",
+                                               "Exploración del menú de servicios",
+                                               "Galerías de antes y después",
+                                               "Registro al programa de lealtad",
+                                               "Enlaces para recomendar productos",
+                                               "Compra y canje de tarjetas de regalo"
+                                           ]
+                          },
+    "qr-code-for-portfolio":  {
+                                  "title":  "Código QR para Portafolio",
+                                  "subtitle":  "Muestra tu Trabajo",
+                                  "description":  "Crea códigos QR para tu sitio web de portafolio creativo. Permite que clientes y empleadores escaneen y vean tus mejores trabajos y proyectos al instante.",
+                                  "metaDescription":  "Crea códigos QR para tu sitio web de portafolio creativo. Permite que clientes y empleadores escaneen y vean tu mejor trabajo con el generador de códigos QR de RELURL.",
+                                  "keywords":  [
+                                                   "codigo qr para portafolio",
+                                                   "codigo qr portafolio creativo",
+                                                   "codigo qr diseñador",
+                                                   "codigo qr portafolio diseño"
+                                               ],
+                                  "features":  [
+                                                   "Galerías de Proyectos",
+                                                   "Enlaces a Casos de Estudio",
+                                                   "Páginas de Testimonios",
+                                                   "Formularios de Contacto",
+                                                   "Enlace a Video Currículum",
+                                                   "Testimonios de Clientes"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Pega el enlace de tu sitio web de portafolio o muestra de proyectos.",
+                                                         "step":  "Ingresa la URL del Portafolio"
+                                                     },
+                                                     {
+                                                         "desc":  "Crea un código QR visualmente atractivo para tu marca.",
+                                                         "step":  "Genera el Código QR"
+                                                     },
+                                                     {
+                                                         "desc":  "Agrégalo a tarjetas de presentación, currículums y materiales promocionales.",
+                                                         "step":  "Comparte en Todas Partes"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Enlaces a portafolio en tarjetas de presentación",
+                                                   "Exhibiciones en exposiciones y galerías",
+                                                   "Folletos para conferencias",
+                                                   "Propuestas para clientes freelance",
+                                                   "Solicitudes a escuelas de arte y diseño",
+                                                   "Muestras de proyectos de arquitectura"
+                                               ]
+                              },
+    "qr-code-for-email":  {
+                              "title":  "Código QR para Correo Electrónico",
+                              "subtitle":  "Correo Electrónico Simplificado",
+                              "description":  "Genera un código QR que abre una ventana de redacción de correo electrónico con asunto y cuerpo prellenados. Perfecto para recopilar comentarios.",
+                              "metaDescription":  "Genera un código QR que abre una ventana de redacción de correo electrónico con asunto y cuerpo prellenados. Perfecto para recopilar comentarios.",
+                              "keywords":  [
+                                               "codigo qr para correo",
+                                               "codigo qr email",
+                                               "codigo qr mailto",
+                                               "codigo qr email marketing"
+                                           ],
+                              "features":  [
+                                               "Asunto Prellenado",
+                                               "Redacción con Un Escaneo",
+                                               "Sin Necesidad de Escribir",
+                                               "Ideal para Comentarios",
+                                               "Suscripción a Boletines",
+                                               "Configuración de Auto-Respuesta"
+                                           ],
+                              "howItWorks":  [
+                                                 {
+                                                     "desc":  "Proporciona la dirección de correo y el asunto/cuerpo opcional",
+                                                     "step":  "Ingresa los Detalles del Correo"
+                                                 },
+                                                 {
+                                                     "desc":  "Crea un código que abre la redacción del correo",
+                                                     "step":  "Genera el Código QR"
+                                                 },
+                                                 {
+                                                     "desc":  "Preséntalo para recibir comentarios o consultas instantáneas",
+                                                     "step":  "Recopila Respuestas"
+                                                 }
+                                             ],
+                              "useCases":  [
+                                               "Comentarios de clientes",
+                                               "Consultas de soporte",
+                                               "Formularios de contacto",
+                                               "Respuestas a encuestas",
+                                               "Solicitudes de empleo",
+                                               "Suscripción a boletines informativos"
+                                           ]
+                          },
+    "qr-code-for-store":  {
+                              "title":  "Código QR para Tienda",
+                              "subtitle":  "Aumenta las Ventas Minoristas",
+                              "description":  "Crea códigos QR para páginas de productos, promociones y pago en tiendas. Permite que los clientes escaneen para ver productos y completar compras.",
+                              "metaDescription":  "Crea códigos QR para páginas de productos, promociones y pago en tiendas. Aumenta las ventas minoristas con códigos QR escaneables de RELURL.",
+                              "keywords":  [
+                                               "codigo qr para tienda",
+                                               "codigo qr venta minorista",
+                                               "codigo qr producto",
+                                               "codigo qr tienda minorista"
+                                           ],
+                              "features":  [
+                                               "Enlaces a Páginas de Producto",
+                                               "Códigos Promocionales",
+                                               "Integración de Pago",
+                                               "Consulta de Inventario",
+                                               "Registro de Regalos",
+                                               "Localizador de Tiendas"
+                                           ],
+                              "howItWorks":  [
+                                                 {
+                                                     "desc":  "Pega el enlace de tu producto, promoción o tienda.",
+                                                     "step":  "Ingresa la URL del Producto"
+                                                 },
+                                                 {
+                                                     "desc":  "Crea un código escaneable para tu entorno minorista.",
+                                                     "step":  "Genera el Código QR"
+                                                 },
+                                                 {
+                                                     "desc":  "Colócalo en estantes, etiquetas, ventanas y materiales de marketing.",
+                                                     "step":  "Preséntalo en la Tienda"
+                                                 }
+                                             ],
+                              "useCases":  [
+                                               "Pantallas de información de productos",
+                                               "Campañas promocionales en tienda",
+                                               "Enlaces de autopago",
+                                               "Herramientas de comparación de precios",
+                                               "Registro al programa de lealtad",
+                                               "Pedidos clic y recoge"
+                                           ]
+                          },
+    "pinterest-link-generator":  {
+                                     "title":  "Generador de Enlaces para Pinterest",
+                                     "subtitle":  "Aumenta la Interacción en Pinterest",
+                                     "description":  "Crea enlaces cortos para pins y tableros de Pinterest para impulsar el tráfico visual. Optimiza tu marketing de pins y atrae más visitantes a tu sitio.",
+                                     "metaDescription":  "Crea enlaces cortos para pins y tableros de Pinterest para impulsar el tráfico visual. Optimiza tu estrategia de marketing en Pinterest con las analíticas de clics de RELURL.",
+                                     "keywords":  [
+                                                      "generador de enlaces pinterest",
+                                                      "enlaces para pins de pinterest",
+                                                      "marketing en pinterest"
+                                                  ],
+                                     "features":  [
+                                                      "Seguimiento de Clics en Pins",
+                                                      "Analíticas de Enlaces de Tableros",
+                                                      "Optimización de Pins Enriquecidos",
+                                                      "Alias Personalizados",
+                                                      "Soporte para Campañas Estacionales",
+                                                      "Atribución de Contenido Visual"
+                                                  ],
+                                     "howItWorks":  [
+                                                        {
+                                                            "desc":  "Ingresa la página a la que quieres enlazar desde Pinterest.",
+                                                            "step":  "Pega tu URL"
+                                                        },
+                                                        {
+                                                            "desc":  "Elige un alias descriptivo que complemente tu pin.",
+                                                            "step":  "Personaliza el Slug"
+                                                        },
+                                                        {
+                                                            "desc":  "Usa tu enlace corto en pins y descripciones de tableros.",
+                                                            "step":  "Agrégalo al Pin"
+                                                        }
+                                                    ],
+                                     "useCases":  [
+                                                      "Enlaces a pins de productos",
+                                                      "Promoción de artículos de blog en Pinterest",
+                                                      "Tráfico a tutoriales de bricolaje",
+                                                      "Enlaces a recetas y blogs de comida",
+                                                      "Pins de moda y estilo de vida",
+                                                      "Promoción de campañas estacionales"
+                                                  ]
+                                 },
+    "podcast-link-shortener":  {
+                                   "title":  "Acortador de Enlaces para Podcast",
+                                   "subtitle":  "Haz Crecer tu Audiencia",
+                                   "description":  "Crea enlaces cortos y compartibles para episodios, notas del programa y páginas de suscripción. Rastrea la interacción de los oyentes en todas las plataformas.",
+                                   "metaDescription":  "Crea enlaces cortos y compartibles para episodios de podcast, notas del programa y páginas de suscripción. Rastrea la interacción de los oyentes con RELURL.",
+                                   "keywords":  [
+                                                    "acortador de enlaces para podcast",
+                                                    "generador de enlaces de episodios",
+                                                    "marketing de podcast"
+                                                ],
+                                   "features":  [
+                                                    "Seguimiento por Episodio",
+                                                    "Enlaces Multiplataforma",
+                                                    "Acortamiento de Notas del Programa",
+                                                    "Analíticas de Oyentes",
+                                                    "Enlaces a Apple y Spotify",
+                                                    "Alias por Número de Episodio"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Ingresa el enlace de tu episodio de podcast o notas del programa.",
+                                                          "step":  "Pega la URL del Episodio"
+                                                      },
+                                                      {
+                                                          "desc":  "Genera una URL limpia y con marca para compartir fácilmente.",
+                                                          "step":  "Crea un Enlace Corto"
+                                                      },
+                                                      {
+                                                          "desc":  "Publícalo en redes sociales, inclúyelo en descripciones y rastrea reproducciones.",
+                                                          "step":  "Comparte con los Oyentes"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Promoción de episodios en redes sociales",
+                                                    "Compartir enlaces de notas del programa",
+                                                    "Enlaces para colaboraciones con invitados",
+                                                    "Páginas de destino para patrocinadores",
+                                                    "Resúmenes de episodios en boletines",
+                                                    "Distribución multiplataforma"
+                                                ]
+                               },
+    "qr-code-for-sms":  {
+                            "title":  "Código QR para SMS",
+                            "subtitle":  "Código QR para Mensajes de Texto",
+                            "description":  "Genera un código QR que abre un mensaje SMS prellenado. Perfecto para suscripciones, comentarios y respuestas rápidas.",
+                            "metaDescription":  "Genera un código QR que abre un mensaje SMS prellenado. Perfecto para suscripciones, comentarios y respuestas rápidas.",
+                            "keywords":  [
+                                             "codigo qr para sms",
+                                             "codigo qr sms",
+                                             "codigo qr mensaje de texto",
+                                             "codigo qr mensaje texto rsvp"
+                                         ],
+                            "features":  [
+                                             "Mensaje Prellenado",
+                                             "Texto con Un Escaneo",
+                                             "Sin Necesidad de Escribir",
+                                             "Listo para Marketing",
+                                             "Configuración de Auto-Respuesta",
+                                             "Suscripción por Palabra Clave"
+                                         ],
+                            "howItWorks":  [
+                                               {
+                                                   "desc":  "Proporciona el número y el texto del mensaje predeterminado",
+                                                   "step":  "Ingresa el Teléfono y Mensaje"
+                                               },
+                                               {
+                                                   "desc":  "Crea un código que abre la app de SMS",
+                                                   "step":  "Genera el Código QR"
+                                               },
+                                               {
+                                                   "desc":  "Preséntalo para suscripciones o comentarios rápidos",
+                                                   "step":  "Recopila Respuestas"
+                                               }
+                                           ],
+                            "useCases":  [
+                                             "Suscripción a marketing por SMS",
+                                             "Confirmación de asistencia a eventos",
+                                             "Encuestas rápidas",
+                                             "Comentarios sobre productos",
+                                             "Solicitudes de soporte",
+                                             "Entrega de cupones y descuentos"
+                                         ]
+                        },
+    "qr-code-for-facebook":  {
+                                 "title":  "Código QR para Facebook",
+                                 "subtitle":  "Conéctate en Facebook",
+                                 "description":  "Genera un código QR para tu página o grupo de Facebook. Ayuda a las personas a encontrar y seguir tu negocio en Facebook.",
+                                 "metaDescription":  "Genera un código QR para tu página o grupo de Facebook. Ayuda a las personas a encontrar y seguir tu negocio en Facebook.",
+                                 "keywords":  [
+                                                  "codigo qr para facebook",
+                                                  "codigo qr facebook",
+                                                  "codigo qr pagina facebook",
+                                                  "codigo qr pagina de facebook"
+                                              ],
+                                 "features":  [
+                                                  "Aumenta los Me Gusta",
+                                                  "Promoción de Eventos",
+                                                  "Creación de Comunidad",
+                                                  "Fácil de Compartir",
+                                                  "Enlaces a Grupos de Facebook",
+                                                  "Confirmación de Asistencia a Eventos"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Pega el enlace de tu página o grupo de Facebook",
+                                                        "step":  "Ingresa la URL de la Página"
+                                                    },
+                                                    {
+                                                        "desc":  "Crea un código escaneable",
+                                                        "step":  "Genera el Código QR"
+                                                    },
+                                                    {
+                                                        "desc":  "Agrégalo a anuncios impresos, exhibidores o empaques",
+                                                        "step":  "Promociona en Todas Partes"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Crecimiento de páginas de negocio",
+                                                  "Promoción de eventos",
+                                                  "Creación de comunidad",
+                                                  "Lanzamientos de productos",
+                                                  "Exhibidores en tiendas",
+                                                  "Promoción de recaudación en Facebook"
+                                              ]
+                             },
+    "qr-code-for-google-maps":  {
+                                    "title":  "Código QR para Google Maps",
+                                    "subtitle":  "Navega hacia Ti",
+                                    "description":  "Crea un código QR para tu ubicación en Google Maps. Los clientes escanean y obtienen direcciones instantáneas hacia tu negocio.",
+                                    "metaDescription":  "Crea un código QR para tu ubicación en Google Maps. Los clientes escanean y obtienen direcciones instantáneas hacia tu negocio.",
+                                    "keywords":  [
+                                                     "codigo qr para google maps",
+                                                     "codigo qr google maps",
+                                                     "codigo qr ubicacion",
+                                                     "codigo qr direcciones"
+                                                 ],
+                                    "features":  [
+                                                     "Navegación Instantánea",
+                                                     "Sin Escribir Dirección",
+                                                     "Funciona en Todo el Mundo",
+                                                     "Esencial para Negocios",
+                                                     "Enlaces a Street View",
+                                                     "Soporte para Múltiples Ubicaciones"
+                                                 ],
+                                    "howItWorks":  [
+                                                       {
+                                                           "desc":  "Pega tu enlace compartido de Google Maps",
+                                                           "step":  "Ingresa la Ubicación"
+                                                       },
+                                                       {
+                                                           "desc":  "Crea un código para tu ubicación",
+                                                           "step":  "Genera el Código QR"
+                                                       },
+                                                       {
+                                                           "desc":  "Preséntalo en eventos, en tarjetas o en tu sitio web",
+                                                           "step":  "Guía a tus Clientes"
+                                                       }
+                                                   ],
+                                    "useCases":  [
+                                                     "Tiendas minoristas",
+                                                     "Restaurantes",
+                                                     "Lugares de eventos",
+                                                     "Bienes raíces",
+                                                     "Atracciones turísticas",
+                                                     "Direcciones de casas abiertas de bienes raíces"
+                                                 ]
+                                },
+    "password-protected-links":  {
+                                     "title":  "Enlaces Protegidos con Contraseña",
+                                     "subtitle":  "Asegura tus Enlaces Cortos",
+                                     "description":  "Agrega protección con contraseña a tus URLs acortadas para una capa adicional de seguridad. Comparte contenido sensible con confianza al requerir una contraseña antes del acceso.",
+                                     "metaDescription":  "Crea enlaces cortos protegidos con contraseña con RELURL. Agrega una capa adicional de seguridad a tus URLs con contraseñas personalizables y controles de acceso.",
+                                     "keywords":  [
+                                                      "enlaces protegidos con contraseña",
+                                                      "acortador de urls seguro",
+                                                      "enlaces cortos protegidos",
+                                                      "proteccion de enlaces con contraseña"
+                                                  ],
+                                     "features":  [
+                                                      "Protección con Contraseña",
+                                                      "Control de Acceso Personalizado",
+                                                      "Configuración Sencilla de Contraseña",
+                                                      "Redirección Segura",
+                                                      "Vencimiento de Enlaces",
+                                                      "Analíticas de Acceso"
+                                                  ],
+                                     "howItWorks":  [
+                                                        {
+                                                            "desc":  "Pega el enlace que deseas proteger con contraseña.",
+                                                            "step":  "Ingresa tu URL"
+                                                        },
+                                                        {
+                                                            "desc":  "Elige una contraseña que los destinatarios deben ingresar para acceder al enlace.",
+                                                            "step":  "Establece una Contraseña"
+                                                        },
+                                                        {
+                                                            "desc":  "Comparte el enlace corto y la contraseña por separado con tu audiencia.",
+                                                            "step":  "Comparte de Forma Segura"
+                                                        }
+                                                    ],
+                                     "useCases":  [
+                                                      "Compartir documentos confidenciales con clientes",
+                                                      "Proteger contenido premium detrás de una contraseña",
+                                                      "Asegurar enlaces internos de la empresa",
+                                                      "Controlar el acceso a recursos privados",
+                                                      "Compartir información sensible de forma segura",
+                                                      "Crear contenido restringido para audiencias específicas"
+                                                  ],
+                                     "faqs":  [
+                                                  {
+                                                      "a":  "Cuando alguien hace clic en tu enlace corto protegido con contraseña, se le solicita ingresar la contraseña antes de ser redirigido a la URL de destino. La contraseña la estableces tú y puede cambiarse en cualquier momento.",
+                                                      "q":  "¿Cómo funciona la protección con contraseña?"
+                                                  },
+                                                  {
+                                                      "a":  "Sí, puedes actualizar o eliminar la protección con contraseña de cualquiera de tus enlaces cortos desde tu panel de RELURL en cualquier momento.",
+                                                      "q":  "¿Puedo cambiar la contraseña después de crear el enlace?"
+                                                  },
+                                                  {
+                                                      "a":  "Los enlaces protegidos con contraseña agregan una capa básica de seguridad adecuada para controlar el acceso al contenido. Para datos altamente sensibles, recomendamos usar métodos de cifrado y uso compartido seguro dedicados junto con la protección con contraseña.",
+                                                      "q":  "¿Qué tan segura es la protección con contraseña?"
+                                                  }
+                                              ]
+                                 },
+    "qr-code-for-vcard":  {
+                              "title":  "Código QR para vCard",
+                              "subtitle":  "Tarjeta de Contacto Digital",
+                              "description":  "Genera un código QR con todos tus datos de contacto. Quienes lo escanean guardan tu información directamente en sus contactos telefónicos.",
+                              "metaDescription":  "Genera un código QR con todos tus datos de contacto. Quienes lo escanean guardan tu información directamente en sus contactos telefónicos.",
+                              "keywords":  [
+                                               "codigo qr para vcard",
+                                               "codigo qr vcard",
+                                               "codigo qr contacto",
+                                               "codigo qr contacto virtual"
+                                           ],
+                              "features":  [
+                                               "Guardar Contacto Automático",
+                                               "Información de Contacto Completa",
+                                               "Sin Ingreso Manual",
+                                               "Profesional",
+                                               "Enlaces a Redes Sociales",
+                                               "Integración de Información de Empresa"
+                                           ],
+                              "howItWorks":  [
+                                                 {
+                                                     "desc":  "Proporciona nombre, teléfono, correo electrónico y otros datos",
+                                                     "step":  "Ingresa los Datos de Contacto"
+                                                 },
+                                                 {
+                                                     "desc":  "Crea un código que codifica tu vCard",
+                                                     "step":  "Genera el Código QR"
+                                                 },
+                                                 {
+                                                     "desc":  "Agrégalo a tarjetas de presentación o firma de correo",
+                                                     "step":  "Comparte en Todas Partes"
+                                                 }
+                                             ],
+                              "useCases":  [
+                                               "Networking de negocios",
+                                               "Agentes de bienes raíces",
+                                               "Equipos de ventas",
+                                               "Consultores",
+                                               "Ponentes en conferencias",
+                                               "Contactos para casas abiertas de bienes raíces"
+                                           ]
+                          },
+    "mastodon-link-generator":  {
+                                    "title":  "Generador de Enlaces para Mastodon",
+                                    "subtitle":  "Interactúa en el Fediverso",
+                                    "description":  "Genera enlaces cortos para publicaciones y perfiles de Mastodon. Rastrea la interacción en todo el fediverso y haz crecer tu audiencia descentralizada.",
+                                    "metaDescription":  "Genera enlaces cortos para publicaciones y perfiles de Mastodon. Rastrea la interacción en el fediverso con el acortador de enlaces de RELURL.",
+                                    "keywords":  [
+                                                     "generador de enlaces mastodon",
+                                                     "enlaces fediverso",
+                                                     "marketing en mastodon"
+                                                 ],
+                                    "features":  [
+                                                     "Seguimiento de Clics en Publicaciones",
+                                                     "Analíticas de Enlaces de Perfil",
+                                                     "Soporte Multi-Instancia",
+                                                     "Datos de Interacción Federada",
+                                                     "Enlaces con Advertencia de Contenido",
+                                                     "Atribución de Impulsos"
+                                                 ],
+                                    "howItWorks":  [
+                                                       {
+                                                           "desc":  "Ingresa la página que deseas compartir en Mastodon.",
+                                                           "step":  "Pega tu URL"
+                                                       },
+                                                       {
+                                                           "desc":  "Crea una URL limpia para tu publicación en el fediverso.",
+                                                           "step":  "Genera un Enlace Corto"
+                                                       },
+                                                       {
+                                                           "desc":  "Publica en Mastodon y rastrea la interacción entre instancias.",
+                                                           "step":  "Publica y Rastrea"
+                                                       }
+                                                   ],
+                                    "useCases":  [
+                                                     "Promoción de publicaciones en Mastodon",
+                                                     "Optimización de biografías de perfil",
+                                                     "Compartir proyectos de código abierto",
+                                                     "Seguimiento de interacción comunitaria",
+                                                     "Compartir contenido entre instancias",
+                                                     "Campañas de marketing en el fediverso"
+                                                 ]
+                                },
+    "qr-code-for-birthday":  {
+                                 "title":  "Código QR para Cumpleaños",
+                                 "subtitle":  "Celebra con Escaneos",
+                                 "description":  "Crea códigos QR para detalles de fiestas de cumpleaños, listas de regalos y fotos compartidas. Haz que tu celebración sea fácil de navegar para todos los invitados.",
+                                 "metaDescription":  "Crea códigos QR para detalles de fiestas de cumpleaños, listas de regalos y fotos compartidas. Haz que las celebraciones sean memorables con códigos QR de RELURL.",
+                                 "keywords":  [
+                                                  "codigo qr para cumpleaños",
+                                                  "codigo qr fiesta de cumpleaños",
+                                                  "codigo qr regalo cumpleaños",
+                                                  "codigo qr invitacion cumpleaños"
+                                              ],
+                                 "features":  [
+                                                  "Detalles de la Fiesta",
+                                                  "Lista de Regalos",
+                                                  "Álbum de Fotos",
+                                                  "Seguimiento de Confirmación de Asistencia",
+                                                  "Lista de Reproducción",
+                                                  "Mensajes de Agradecimiento"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Pega el enlace de tu página de fiesta de cumpleaños, lista de regalos o fotos.",
+                                                        "step":  "Ingresa la URL de la Fiesta"
+                                                    },
+                                                    {
+                                                        "desc":  "Crea un código QR festivo para tu celebración.",
+                                                        "step":  "Genera el Código QR"
+                                                    },
+                                                    {
+                                                        "desc":  "Inclúyelo en invitaciones, tarjetas y decoración de la fiesta.",
+                                                        "step":  "Comparte con los Invitados"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Invitaciones a fiestas de cumpleaños",
+                                                  "Compartir lista de regalos",
+                                                  "Acceso a cabina de fotos y álbum",
+                                                  "Celebraciones de cumpleaños importantes",
+                                                  "Actividades para fiestas infantiles",
+                                                  "Celebraciones de cumpleaños virtuales"
+                                              ]
+                             },
+    "qr-code-for-instagram":  {
+                                  "title":  "Código QR para Instagram",
+                                  "subtitle":  "Haz Crecer tu Seguidores",
+                                  "description":  "Crea un código QR para tu perfil o publicaciones de Instagram. Ayuda a los seguidores a encontrarte al instante y haz crecer tu audiencia.",
+                                  "metaDescription":  "Crea un código QR para tu perfil o publicaciones de Instagram. Ayuda a los seguidores a encontrarte al instante y haz crecer tu audiencia.",
+                                  "keywords":  [
+                                                   "codigo qr para instagram",
+                                                   "codigo qr instagram",
+                                                   "codigo qr perfil instagram",
+                                                   "codigo qr perfil de instagram"
+                                               ],
+                                  "features":  [
+                                                   "Aumenta Seguidores",
+                                                   "Comparte Publicaciones Fácilmente",
+                                                   "Funciona en Todos los Dispositivos",
+                                                   "Listo para Imprimir",
+                                                   "Alternativa al Link en Biografía",
+                                                   "Contador de Visitas a Historias"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Pega el enlace de tu perfil o publicación de Instagram",
+                                                         "step":  "Ingresa la URL del Perfil"
+                                                     },
+                                                     {
+                                                         "desc":  "Crea un código escaneable",
+                                                         "step":  "Genera el Código QR"
+                                                     },
+                                                     {
+                                                         "desc":  "Agrégalo a materiales impresos, empaques o exhibidores",
+                                                         "step":  "Comparte en Todas Partes"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Influencers y creadores de contenido",
+                                                   "Perfiles de negocio",
+                                                   "Promoción de eventos",
+                                                   "Empaques de productos",
+                                                   "Exhibidores en tiendas",
+                                                   "Participación en concursos y sorteos"
+                                               ]
+                              },
+    "news-link-shortener":  {
+                                "title":  "Acortador de Enlaces para Noticias",
+                                "subtitle":  "Simplifica Compartir Noticias",
+                                "description":  "Acorta artículos de noticias e historias para compartir fácilmente en redes sociales. Rastrea la lectura, optimiza titulares y aumenta la interacción de la audiencia.",
+                                "metaDescription":  "Acorta artículos de noticias e historias para compartir fácilmente en redes sociales. Rastrea la lectura, optimiza titulares y aumenta la interacción con RELURL.",
+                                "keywords":  [
+                                                 "acortador de enlaces para noticias",
+                                                 "generador de enlaces de articulos",
+                                                 "enlaces de periodismo"
+                                             ],
+                                "features":  [
+                                                 "Enlaces Optimizados para Titulares",
+                                                 "Seguimiento de Interacción de Lectores",
+                                                 "Integración con Redes Sociales",
+                                                 "Velocidad para Noticias de Última Hora",
+                                                 "URLs Amigables para Archivo",
+                                                 "Uso Compartido en Múltiples Formatos"
+                                             ],
+                                "howItWorks":  [
+                                                   {
+                                                       "desc":  "Ingresa el enlace de tu artículo de noticias o historia.",
+                                                       "step":  "Pega la URL del Artículo"
+                                                   },
+                                                   {
+                                                       "desc":  "Crea una URL limpia y compartible para tu audiencia.",
+                                                       "step":  "Genera un Enlace Corto"
+                                                   },
+                                                   {
+                                                       "desc":  "Comparte en todas las plataformas y monitorea la interacción.",
+                                                       "step":  "Publica y Rastrea"
+                                                   }
+                                               ],
+                                "useCases":  [
+                                                 "Compartir noticias de última hora en redes sociales",
+                                                 "Resúmenes de artículos en boletines",
+                                                 "Enlaces a fuentes para periodistas",
+                                                 "Envíos a agregadores de noticias",
+                                                 "Notas de programas de podcast",
+                                                 "Distribución de comunicados de prensa"
+                                             ]
+                            },
+    "photography-link-shortener":  {
+                                       "title":  "Acortador de Enlaces para Fotografía",
+                                       "subtitle":  "Muestra tu Trabajo",
+                                       "description":  "Acorta enlaces de portafolio, galerías y reservas. Muestra tu trabajo fotográfico y rastrea el interés de los clientes desde todos los canales.",
+                                       "metaDescription":  "Acorta enlaces de portafolio, galerías y reservas para fotógrafos. Muestra tu trabajo y rastrea el interés de los clientes con RELURL.",
+                                       "keywords":  [
+                                                        "acortador de enlaces para fotografia",
+                                                        "generador de enlaces de portafolio",
+                                                        "marketing para fotografos"
+                                                    ],
+                                       "features":  [
+                                                        "Seguimiento de Enlaces de Portafolio",
+                                                        "Acortamiento de Galerías",
+                                                        "Analíticas de Páginas de Reserva",
+                                                        "Enlaces para Pruebas de Clientes",
+                                                        "Enlaces por Tipo de Sesión",
+                                                        "Integración con Tienda de Impresiones"
+                                                    ],
+                                       "howItWorks":  [
+                                                          {
+                                                              "desc":  "Ingresa el enlace de tu galería, portafolio o página de reservas.",
+                                                              "step":  "Pega la URL del Portafolio"
+                                                          },
+                                                          {
+                                                              "desc":  "Genera una URL limpia y profesional para tu marca.",
+                                                              "step":  "Crea un Enlace Corto"
+                                                          },
+                                                          {
+                                                              "desc":  "Compártelo en redes sociales y tarjetas de presentación, y rastrea consultas.",
+                                                              "step":  "Comparte y Reserva Más"
+                                                          }
+                                                      ],
+                                       "useCases":  [
+                                                        "Compartir portafolio de bodas",
+                                                        "Galerías de prueba para clientes",
+                                                        "Promoción de página de reservas",
+                                                        "Enlaces a tienda de impresiones",
+                                                        "Inscripción a talleres",
+                                                        "Publicaciones de portafolio en redes sociales"
+                                                    ]
+                                   },
+    "music-link-shortener":  {
+                                 "title":  "Acortador de Enlaces para Música",
+                                 "subtitle":  "Comparte tu Sonido",
+                                 "description":  "Crea enlaces cortos para canciones, álbumes y listas de reproducción. Comparte música en todas las plataformas y descubre qué canales generan más reproducciones.",
+                                 "metaDescription":  "Crea enlaces cortos para canciones, álbumes y listas de reproducción. Comparte música en todas las plataformas y rastrea la interacción de los oyentes con RELURL.",
+                                 "keywords":  [
+                                                  "acortador de enlaces para musica",
+                                                  "generador de enlaces de canciones",
+                                                  "acortador de enlaces de albumes"
+                                              ],
+                                 "features":  [
+                                                  "Enlaces Multiplataforma",
+                                                  "Seguimiento de Fuente de Oyentes",
+                                                  "Acortamiento de Listas de Reproducción",
+                                                  "Analíticas de Campañas de Lanzamiento",
+                                                  "Soporte para Enlaces de Pre-Guardado",
+                                                  "Integración con Tienda de Merch"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Ingresa tu enlace de Spotify, Apple Music o SoundCloud.",
+                                                        "step":  "Pega la URL de Música"
+                                                    },
+                                                    {
+                                                        "desc":  "Crea una URL limpia para que los fans encuentren tu música.",
+                                                        "step":  "Genera un Enlace Corto"
+                                                    },
+                                                    {
+                                                        "desc":  "Distribuye en redes sociales y monitorea las fuentes de oyentes.",
+                                                        "step":  "Comparte y Rastrea Reproducciones"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Promociones de nuevos lanzamientos",
+                                                  "Compartir listas de reproducción",
+                                                  "Venta de boletos para conciertos",
+                                                  "Enlaces a tienda de merchandising",
+                                                  "Anuncios de colaboraciones",
+                                                  "Campañas de interacción con fans"
+                                              ]
+                             },
+    "qr-code-for-gym":  {
+                            "title":  "Código QR para Gimnasio",
+                            "subtitle":  "Optimiza el Acceso al Fitness",
+                            "description":  "Crea códigos QR para horarios de gimnasio, reservas de clases e información de membresías. Permite que los miembros escaneen para reservar clases y acceder a recursos al instante.",
+                            "metaDescription":  "Crea códigos QR para horarios de gimnasio, reservas de clases e información de membresías. Optimiza las operaciones del centro de fitness con códigos QR de RELURL.",
+                            "keywords":  [
+                                             "codigo qr para gimnasio",
+                                             "codigo qr fitness",
+                                             "codigo qr clases gimnasio",
+                                             "codigo qr centro fitness"
+                                         ],
+                            "features":  [
+                                             "Enlaces para Reserva de Clases",
+                                             "Información de Membresía",
+                                             "Biblioteca de Ejercicios",
+                                             "Perfiles de Entrenadores",
+                                             "Tutoriales de Equipos",
+                                             "Registro a Eventos"
+                                         ],
+                            "howItWorks":  [
+                                               {
+                                                   "desc":  "Pega el enlace de tu horario de clases, reserva o membresía.",
+                                                   "step":  "Ingresa la URL del Gimnasio"
+                                               },
+                                               {
+                                                   "desc":  "Crea un código QR para los recursos digitales de tu gimnasio.",
+                                                   "step":  "Genera el Código QR"
+                                               },
+                                               {
+                                                   "desc":  "Colócalo en la entrada, estudios y en todas las instalaciones.",
+                                                   "step":  "Preséntalo en el Gimnasio"
+                                               }
+                                           ],
+                            "useCases":  [
+                                             "Pantallas de horarios de clases",
+                                             "Reservas de entrenamiento personal",
+                                             "Enlaces para renovación de membresía",
+                                             "Acceso a videos de ejercicios",
+                                             "Descarga de planes de nutrición",
+                                             "Compra de paquetes de entrenamiento personal"
+                                         ]
+                        },
+    "qr-code-for-pdf":  {
+                            "title":  "Código QR para PDF",
+                            "subtitle":  "Comparte Documentos Digitalmente",
+                            "description":  "Crea un código QR para tus documentos PDF. Permite que los usuarios escaneen y accedan instantáneamente a tus archivos PDF en cualquier dispositivo.",
+                            "metaDescription":  "Genera un código QR que enlace directamente a tu documento PDF. Comparte PDFs fácilmente con códigos QR escaneables que se abren en cualquier teléfono inteligente.",
+                            "keywords":  [
+                                             "codigo qr para pdf",
+                                             "codigo qr pdf",
+                                             "enlazar pdf a codigo qr",
+                                             "codigo qr documento"
+                                         ],
+                            "features":  [
+                                             "Acceso Instantáneo a PDF",
+                                             "Funciona en Todos los Dispositivos",
+                                             "Sin App Necesaria",
+                                             "Rastrea Descargas",
+                                             "Protección con Contraseña",
+                                             "Modo de Vista Previa de PDF"
+                                         ],
+                            "howItWorks":  [
+                                               {
+                                                   "desc":  "Ingresa la URL donde está alojado tu PDF",
+                                                   "step":  "Sube o Enlaza tu PDF"
+                                               },
+                                               {
+                                                   "desc":  "Crea un código escaneable para tu documento",
+                                                   "step":  "Genera el Código QR"
+                                               },
+                                               {
+                                                   "desc":  "Imprime o comparte el código QR en cualquier medio",
+                                                   "step":  "Comparte en Cualquier Lugar"
+                                               }
+                                           ],
+                            "useCases":  [
+                                             "Manuales y guías de productos",
+                                             "Menús de restaurante en PDF",
+                                             "Programas de eventos y horarios",
+                                             "Documentos legales y contratos",
+                                             "Materiales educativos",
+                                             "Distribución de folletos y catálogos"
+                                         ]
+                        },
+    "qr-code-for-wedding":  {
+                                "title":  "Código QR para Bodas",
+                                "subtitle":  "Simplifica la Planificación de la Boda",
+                                "description":  "Crea códigos QR para listas de regalos de boda, detalles del evento y páginas de confirmación de asistencia. Ayuda a los invitados a acceder a toda la información de la boda con un rápido escaneo.",
+                                "metaDescription":  "Crea códigos QR para listas de regalos de boda, detalles del evento y páginas de confirmación de asistencia. Facilita la planificación de tu boda con el generador de códigos QR de RELURL.",
+                                "keywords":  [
+                                                 "codigo qr para boda",
+                                                 "codigo qr lista de regalos boda",
+                                                 "codigo qr evento boda",
+                                                 "codigo qr sitio web boda"
+                                             ],
+                                "features":  [
+                                                 "Enlaces a Lista de Regalos",
+                                                 "Integración de Confirmación de Asistencia",
+                                                 "Compartir Fotos",
+                                                 "Direcciones del Recinto",
+                                                 "Información de Bloques de Hotel",
+                                                 "Hashtag de la Boda"
+                                             ],
+                                "howItWorks":  [
+                                                   {
+                                                       "desc":  "Pega el enlace de tu sitio web de boda, lista de regalos o página de confirmación de asistencia.",
+                                                       "step":  "Ingresa la URL de la Boda"
+                                                   },
+                                                   {
+                                                       "desc":  "Crea un código QR elegante que combine con la temática de tu boda.",
+                                                       "step":  "Genera el Código QR"
+                                                   },
+                                                   {
+                                                       "desc":  "Imprímelo en invitaciones, tarjetas de mesa y letreros de bienvenida.",
+                                                       "step":  "Comparte con los Invitados"
+                                                   }
+                                               ],
+                                "useCases":  [
+                                                 "Insertos en invitaciones de boda",
+                                                 "Exhibidores en centros de mesa",
+                                                 "Compartir lista de regalos",
+                                                 "Acceso a cabina de fotos",
+                                                 "Libro de visitas y buenos deseos",
+                                                 "Transmisión en vivo de boda virtual"
+                                             ]
+                            },
+    "qr-code-for-linkedin":  {
+                                 "title":  "Código QR para LinkedIn",
+                                 "subtitle":  "Networking Profesional",
+                                 "description":  "Crea un código QR para tu perfil de LinkedIn o página de empresa. Haz conexiones profesionales más rápido en eventos.",
+                                 "metaDescription":  "Crea un código QR para tu perfil de LinkedIn o página de empresa. Haz conexiones profesionales más rápido en eventos.",
+                                 "keywords":  [
+                                                  "codigo qr para linkedin",
+                                                  "codigo qr linkedin",
+                                                  "codigo qr perfil linkedin",
+                                                  "codigo qr perfil de linkedin"
+                                              ],
+                                 "features":  [
+                                                  "Networking Profesional",
+                                                  "Listo para Eventos",
+                                                  "Conexión Instantánea",
+                                                  "Impulso Profesional",
+                                                  "Solicitudes de Recomendación",
+                                                  "Enlaces a Página de Empresa"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Pega el enlace de tu perfil o página de empresa",
+                                                        "step":  "Ingresa la URL de LinkedIn"
+                                                    },
+                                                    {
+                                                        "desc":  "Crea un código QR profesional",
+                                                        "step":  "Genera el Código QR"
+                                                    },
+                                                    {
+                                                        "desc":  "Agrégalo a tarjetas de presentación o úsalo en eventos",
+                                                        "step":  "Haz Networking Inteligente"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Networking en conferencias",
+                                                  "Ferias de empleo",
+                                                  "Reuniones de negocios",
+                                                  "Eventos de reclutamiento",
+                                                  "Servicios profesionales",
+                                                  "Búsqueda de cofundadores y socios"
+                                              ]
+                             }
+}

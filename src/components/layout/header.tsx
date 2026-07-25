@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { useTheme } from "@/components/theme-provider"
 import { LocaleSwitcher } from "@/components/layout/locale-switcher"
+import { FirstVisitLogo } from "@/components/ui/first-visit-logo"
 
 const navLinks = [
   { label: "layout.nav.features", href: "/features" },
@@ -18,22 +19,22 @@ const navLinks = [
 
 const platformItems = [
   {
-    group: "Products",
+    group: "layout.header.productsGroup",
     items: [
-      { icon: Link2, label: "URL Shortener", desc: "Customize, share and track links", href: "/custom-url-shortener" },
-      { icon: QrCode, label: "QR Code Generator", desc: "Dynamic solutions for every need", href: "/qr-code-generator" },
-      { icon: BarChart3, label: "Analytics", desc: "Track and analyze performance", href: "/features" },
-      { icon: Globe, label: "Branded Links", desc: "Custom links with your domain", href: "/branded-link-shortener" },
+      { icon: Link2, label: "layout.header.urlShortener", desc: "layout.header.urlShortenerDesc", href: "/custom-url-shortener" },
+      { icon: QrCode, label: "layout.header.qrCodeGenerator", desc: "layout.header.qrCodeGeneratorDesc", href: "/qr-code-generator" },
+      { icon: BarChart3, label: "layout.header.analytics", desc: "layout.header.analyticsDesc", href: "/features" },
+      { icon: Globe, label: "layout.header.brandedLinks", desc: "layout.header.brandedLinksDesc", href: "/branded-link-shortener" },
     ],
   },
   {
-    group: "Features",
+    group: "layout.header.featuresGroup",
     items: [
-      { icon: Zap, label: "Link-in-bio", desc: "Curate links for social profiles", href: "/instagram-link-generator" },
-      { icon: Shield, label: "Link Health", desc: "Monitor your link performance", href: "/features" },
-      { icon: Sliders, label: "UTM Builder", desc: "Track with UTM parameters", href: "/features" },
-      { icon: Users, label: "Team Collaboration", desc: "Work together seamlessly", href: "/features" },
-      { icon: Zap, label: "Browser Extension", desc: "Shorten links with one click", href: "/browser-extension" },
+      { icon: Zap, label: "layout.header.linkInBio", desc: "layout.header.linkInBioDesc", href: "/instagram-link-generator" },
+      { icon: Shield, label: "layout.header.linkHealth", desc: "layout.header.linkHealthDesc", href: "/features" },
+      { icon: Sliders, label: "layout.header.utmBuilder", desc: "layout.header.utmBuilderDesc", href: "/features" },
+      { icon: Users, label: "layout.header.teamCollaboration", desc: "layout.header.teamCollaborationDesc", href: "/features" },
+      { icon: Zap, label: "layout.header.browserExtension", desc: "layout.header.browserExtensionDesc", href: "/browser-extension" },
     ],
   },
 ]
@@ -41,6 +42,7 @@ const platformItems = [
 function ThemeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme()
   const [open, setOpen] = useState(false)
+  const t = useTranslations()
 
   return (
     <div className="relative">
@@ -48,7 +50,7 @@ function ThemeToggle() {
         type="button"
         onClick={() => setOpen(!open)}
         className="rounded-lg p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-        aria-label="Toggle theme"
+        aria-label={t("layout.header.toggleTheme")}
       >
         {resolvedTheme === "dark" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
       </button>
@@ -64,7 +66,7 @@ function ThemeToggle() {
                 resolvedTheme === "light" ? "text-primary font-medium" : "text-muted-foreground"
               )}
             >
-              <Sun className="h-4 w-4" /> Light
+              <Sun className="h-4 w-4" /> {t("layout.header.themeLight")}
             </button>
             <button
               type="button"
@@ -74,7 +76,7 @@ function ThemeToggle() {
                 resolvedTheme === "dark" ? "text-primary font-medium" : "text-muted-foreground"
               )}
             >
-              <Moon className="h-4 w-4" /> Dark
+              <Moon className="h-4 w-4" /> {t("layout.header.themeDark")}
             </button>
           </div>
         </>
@@ -86,6 +88,7 @@ function ThemeToggle() {
 function MegaMenu() {
   const [open, setOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
+  const t = useTranslations()
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -107,7 +110,7 @@ function MegaMenu() {
           open ? "text-primary" : "text-muted-foreground hover:text-foreground"
         )}
       >
-        Platform <ChevronDown className={cn("w-3.5 h-3.5 transition-transform", open && "rotate-180")} />
+        {t("layout.header.platform")} <ChevronDown className={cn("w-3.5 h-3.5 transition-transform", open && "rotate-180")} />
       </button>
       {open && (
         <>
@@ -116,7 +119,7 @@ function MegaMenu() {
             <div className="grid grid-cols-2 gap-4">
               {platformItems.map((section) => (
                 <div key={section.group}>
-                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3 px-3">{section.group}</p>
+                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3 px-3">{t(section.group)}</p>
                   <div className="space-y-1">
                     {section.items.map((item) => (
                       <Link
@@ -129,8 +132,8 @@ function MegaMenu() {
                           <item.icon className="w-4.5 h-4.5 text-primary" />
                         </div>
                         <div>
-                          <p className="text-sm font-medium text-foreground">{item.label}</p>
-                          <p className="text-xs text-muted-foreground mt-0.5">{item.desc}</p>
+                          <p className="text-sm font-medium text-foreground">{t(item.label)}</p>
+                          <p className="text-xs text-muted-foreground mt-0.5">{t(item.desc)}</p>
                         </div>
                       </Link>
                     ))}
@@ -144,7 +147,7 @@ function MegaMenu() {
                 onClick={() => setOpen(false)}
                 className="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors"
               >
-                View all features <span aria-hidden="true">→</span>
+                {t("layout.header.viewAllFeatures")} <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>
@@ -178,13 +181,7 @@ function Header() {
       )}
     >
       <div className="container flex h-16 items-center justify-between">
-        <Link
-          href="/"
-          className="flex items-center gap-1.5 text-xl font-bold tracking-tight"
-        >
-          <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">REL</span>
-          <span className="text-foreground">URL</span>
-        </Link>
+        <FirstVisitLogo />
 
         <nav className="hidden items-center gap-8 md:flex">
           <MegaMenu />
@@ -218,7 +215,7 @@ function Header() {
             type="button"
             className="mobile-touch-target rounded-lg hover:bg-muted transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-label={mobileOpen ? t("layout.header.closeMenu") : t("layout.header.openMenu")}
           >
             {mobileOpen ? (
               <X className="h-6 w-6 text-foreground" />
@@ -237,7 +234,7 @@ function Header() {
       >
         <nav className="flex flex-col gap-1 rounded-2xl glass p-4 mx-0">
           <div className="flex flex-col gap-0.5 pt-2">
-            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 mb-1 mt-2">Platform</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 mb-1 mt-2">{t("layout.header.platform")}</p>
             {platformItems.flatMap(s => s.items).map((item) => (
               <Link
                 key={item.label}
@@ -246,7 +243,7 @@ function Header() {
                 className="flex items-center gap-3 rounded-xl px-4 py-3 min-h-[44px] text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
               >
                 <item.icon className="w-5 h-5 text-primary" />
-                {item.label}
+                {t(item.label)}
               </Link>
             ))}
           </div>

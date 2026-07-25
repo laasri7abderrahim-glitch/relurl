@@ -1,0 +1,1716 @@
+{
+    "how-to-use-utm-parameters":  {
+                                      "title":  "Comment utiliser les paramètres UTM",
+                                      "subtitle":  "Maîtrisez le suivi de campagnes",
+                                      "description":  "Apprenez à utiliser les paramètres UTM pour suivre vos campagnes marketing dans Google Analytics. Guide complet pour créer, organiser et analyser des URLs balisées UTM.",
+                                      "metaDescription":  "Apprenez à utiliser les paramètres UTM pour suivre vos campagnes marketing. Guide complet pour ajouter des balises UTM aux URLs et analyser les performances des campagnes.",
+                                      "keywords":  [
+                                                       "comment utiliser les paramètres utm",
+                                                       "guide des balises utm",
+                                                       "tutoriel paramètres utm",
+                                                       "suivi de campagne utm"
+                                                   ],
+                                      "features":  [
+                                                       "Configuration des paramètres UTM",
+                                                       "Suivi des sources de campagne",
+                                                       "Attribution du support",
+                                                       "Organisation des noms de campagne",
+                                                       "Test de variations de contenu",
+                                                       "Intégration Google Analytics"
+                                                   ],
+                                      "howItWorks":  [
+                                                         {
+                                                             "desc":  "Déterminez la campagne, la source et le support que vous souhaitez suivre dans vos analytics.",
+                                                             "step":  "Identifiez votre campagne"
+                                                         },
+                                                         {
+                                                             "desc":  "Ajoutez utm_source, utm_medium, utm_campaign et utm_content facultatif à votre URL.",
+                                                             "step":  "Ajoutez les paramètres UTM"
+                                                         },
+                                                         {
+                                                             "desc":  "Raccourcissez votre URL balisée UTM avec RELURL et partagez-la sur vos canaux marketing.",
+                                                             "step":  "Raccourcissez et partagez"
+                                                         }
+                                                     ],
+                                      "useCases":  [
+                                                       "Suivi des taux de clics des newsletters par email",
+                                                       "Mesure des performances des campagnes sur les réseaux sociaux",
+                                                       "Comparaison de l'efficacité des canaux publicitaires",
+                                                       "Analyse des sources de trafic du marketing de contenu",
+                                                       "Test de différentes variantes d'appels à l'action",
+                                                       "Rapports d'attribution de campagnes multicanal"
+                                                   ],
+                                      "faqs":  [
+                                                   {
+                                                       "a":  "Les cinq paramètres UTM standard sont : utm_source (source de trafic comme newsletter ou twitter), utm_medium (support marketing comme email ou social), utm_campaign (nom de campagne), utm_term (mots-clés payants) et utm_content (variation de contenu pour les tests A/B).",
+                                                       "q":  "Quels sont les principaux paramètres UTM ?"
+                                                   },
+                                                   {
+                                                       "a":  "Non, les paramètres UTM n'affectent pas le SEO. Les moteurs de recherche ignorent les paramètres UTM lors de l'indexation des pages. Ils n'affectent que le suivi analytique lorsque les utilisateurs cliquent sur le lien.",
+                                                       "q":  "Les paramètres UTM affectent-ils le SEO ?"
+                                                   },
+                                                   {
+                                                       "a":  "Oui, il est recommandé de raccourcir les URLs balisées UTM. Les longues URLs avec plusieurs paramètres UTM semblent encombrées et peu professionnelles. Le raccourcissement crée un lien propre tout en préservant toutes les données de suivi.",
+                                                       "q":  "Dois-je raccourcir les URLs UTM avant de les partager ?"
+                                                   }
+                                               ]
+                                  },
+    "ecommerce-url-shortener":  {
+                                    "title":  "Raccourcisseur d'URL e-commerce",
+                                    "subtitle":  "Boostez vos ventes en ligne",
+                                    "description":  "Raccourcissez les URLs de produits et catégories pour améliorer les conversions. Suivez les clics, optimisez les campagnes et générez plus de ventes grâce à des analytics puissants.",
+                                    "metaDescription":  "Raccourcissez les liens produits pour booster les conversions. Suivez les clics, optimisez les campagnes et générez plus de ventes avec le raccourcisseur de liens e-commerce RELURL.",
+                                    "keywords":  [
+                                                     "raccourcisseur d url ecommerce",
+                                                     "raccourcisseur de lien produit",
+                                                     "raccourcisseur de lien shopify"
+                                                 ],
+                                    "features":  [
+                                                     "Suivi des liens produits",
+                                                     "Analytics de conversion",
+                                                     "Racourcissement en masse",
+                                                     "Support des paramètres UTM",
+                                                     "Slugs personnalisés de marque",
+                                                     "Prêt pour les tests A/B"
+                                                 ],
+                                    "howItWorks":  [
+                                                       {
+                                                           "desc":  "Saisissez l'URL de votre produit ou catégorie.",
+                                                           "step":  "Collez l'URL produit"
+                                                       },
+                                                       {
+                                                           "desc":  "Ajoutez un slug personnalisé et des paramètres UTM pour le suivi.",
+                                                           "step":  "Personnalisez et raccourcissez"
+                                                       },
+                                                       {
+                                                           "desc":  "Utilisez le lien court dans vos annonces et emails, puis suivez les conversions.",
+                                                           "step":  "Partagez et suivez"
+                                                       }
+                                                   ],
+                                    "useCases":  [
+                                                     "Partage de liens de pages produits",
+                                                     "Campagnes email marketing",
+                                                     "Publications de produits sur les réseaux sociaux",
+                                                     "Liens de programmes d'affiliation",
+                                                     "Campagnes publicitaires de reciblage",
+                                                     "Codes QR pour catalogues imprimés"
+                                                 ]
+                                },
+    "how-to-create-qr-codes-for-business":  {
+                                                "title":  "Comment créer des codes QR pour votre entreprise",
+                                                "subtitle":  "Guide professionnel",
+                                                "description":  "Apprenez à créer des codes QR professionnels pour votre entreprise avec RELURL. Générez des codes QR dynamiques qui suivent les scans, mettent à jour les destinations et génèrent des résultats marketing mesurables.",
+                                                "metaDescription":  "Apprenez à créer des codes QR professionnels pour votre entreprise avec RELURL. Générez des codes QR dynamiques qui suivent les scans, mettent à jour les destinations et génèrent des résultats marketing mesurables.",
+                                                "keywords":  [
+                                                                 "codes qr pour entreprise",
+                                                                 "générateur de code qr professionnel",
+                                                                 "créer codes qr entreprise",
+                                                                 "codes qr professionnels"
+                                                             ],
+                                                "features":  [
+                                                                 "Génération de codes QR",
+                                                                 "Analytics de clics",
+                                                                 "Slugs personnalisés de marque",
+                                                                 "Compression d'URL",
+                                                                 "Mises à jour dynamiques des QR",
+                                                                 "Suivi en temps réel"
+                                                             ],
+                                                "howItWorks":  [
+                                                                   {
+                                                                       "desc":  "Choisissez entre des codes QR statiques pour des liens permanents ou des codes QR dynamiques pouvant être mis à jour à tout moment.",
+                                                                       "step":  "Choisissez votre type de QR"
+                                                                   },
+                                                                   {
+                                                                       "desc":  "Ajoutez les couleurs et le logo de votre marque au code QR, puis téléchargez-le en PNG, SVG ou PDF haute résolution.",
+                                                                       "step":  "Personnalisez votre design"
+                                                                   },
+                                                                   {
+                                                                       "desc":  "Surveillez les analytics des scans, y compris la localisation, le type d'appareil et l'heure du scan pour mesurer l'efficacité de la campagne.",
+                                                                       "step":  "Suivez les performances des scans"
+                                                                   }
+                                                               ],
+                                                "useCases":  [
+                                                                 "Ajoutez des codes QR aux menus de restaurant pour la commande sans contact",
+                                                                 "Générez des codes QR pour les cartes de visite et les supports de réseautage",
+                                                                 "Créez des codes QR pour les emballages et étiquettes de produits",
+                                                                 "Suivez les analytics de scan pour mesurer l'efficacité des campagnes marketing",
+                                                                 "Mettez à jour dynamiquement les destinations des codes QR sans réimpression"
+                                                             ],
+                                                "faqs":  [
+                                                             {
+                                                                 "a":  "Les codes QR dynamiques vous permettent de changer l'URL de destination à tout moment sans réimprimer. Les codes QR statiques sont permanents. RELURL génère des codes QR dynamiques que vous pouvez mettre à jour selon vos besoins.",
+                                                                 "q":  "Qu'est-ce qui rend un code QR dynamique par rapport à statique ?"
+                                                             },
+                                                             {
+                                                                 "a":  "Oui, RELURL fournit des analytics détaillés des scans, y compris le nombre de scans, la localisation, le type d'appareil et l'heure du scan.",
+                                                                 "q":  "Puis-je savoir combien de personnes scannent mon code QR ?"
+                                                             },
+                                                             {
+                                                                 "a":  "Vous pouvez télécharger vos codes QR aux formats PNG, SVG ou PDF haute résolution, adaptés à une utilisation aussi bien imprimée que numérique.",
+                                                                 "q":  "Dans quels formats puis-je télécharger mon code QR ?"
+                                                             }
+                                                         ]
+                                            },
+    "bitly-alternative":  {
+                              "title":  "Alternative à Bitly",
+                              "subtitle":  "Plus de fonctionnalités, un meilleur tarif",
+                              "description":  "Vous cherchez une meilleure alternative à Bitly ? RELURL offre un raccourcissement de liens illimité et gratuit, des slugs personnalisés, des analytics de clics et des codes QR, sans les limites restrictives ni les tarifs élevés de Bitly.",
+                              "metaDescription":  "Vous cherchez une alternative à Bitly ? RELURL offre des liens illimités gratuits, des slugs personnalisés, des analytics et des codes QR sans les limites de liens ni les tarifs de Bitly.",
+                              "keywords":  [
+                                               "alternative à bitly",
+                                               "concurrent bitly",
+                                               "alternative gratuite à bitly",
+                                               "mieux que bitly"
+                                           ],
+                              "features":  [
+                                               "Liens gratuits illimités",
+                                               "Slugs personnalisés même gratuit",
+                                               "Analytics de clics intégrés",
+                                               "Génération gratuite de codes QR",
+                                               "Aucune expiration des liens",
+                                               "Meilleur tarif que Bitly"
+                                           ],
+                              "howItWorks":  [
+                                                 {
+                                                     "desc":  "Inscrivez-vous à RELURL en quelques secondes, sans carte de crédit requise. Accédez immédiatement à toutes les fonctionnalités principales.",
+                                                     "step":  "Créez votre compte gratuit"
+                                                 },
+                                                 {
+                                                     "desc":  "Créez des liens courts illimités avec des slugs personnalisés, même sur le plan gratuit.",
+                                                     "step":  "Commencez à raccourcir des liens"
+                                                 },
+                                                 {
+                                                     "desc":  "Surveillez les analytics de clics et gérez tous vos liens depuis un seul tableau de bord.",
+                                                     "step":  "Suivez et optimisez"
+                                                 }
+                                             ],
+                              "useCases":  [
+                                               "Remplacez Bitly pour le raccourcissement de liens personnels",
+                                               "Migrez les liens professionnels de Bitly vers une solution plus abordable",
+                                               "Obtenez des alias personnalisés sans l'abonnement payant de Bitly",
+                                               "Accédez aux analytics de clics sans passer à une offre payante",
+                                               "Générez des codes QR sans frais supplémentaires",
+                                               "Passez à l'échelle votre gestion de liens sans augmentation des coûts"
+                                           ],
+                              "faqs":  [
+                                           {
+                                               "a":  "Le plan gratuit de Bitly vous limite à un nombre fixe de liens par mois et expire les liens inactifs après un an. RELURL offre des liens permanents illimités avec des slugs personnalisés et des analytics sur le plan gratuit.",
+                                               "q":  "Comment RELURL se compare-t-il au plan gratuit de Bitly ?"
+                                           },
+                                           {
+                                               "a":  "Oui, vous pouvez recréer manuellement vos liens Bitly importants dans RELURL. Nous vous recommandons de commencer par vos liens les plus actifs et de les recréer avec vos slugs personnalisés préférés.",
+                                               "q":  "Puis-je migrer mes liens de Bitly vers RELURL ?"
+                                           },
+                                           {
+                                               "a":  "Oui, RELURL prend en charge les domaines personnalisés de marque sur nos offres intermédiaires, similaire à la fonctionnalité de domaines de marque de Bitly, mais à un prix plus accessible.",
+                                               "q":  "RELURL propose-t-il des domaines de marque comme Bitly ?"
+                                           }
+                                       ]
+                          },
+    "crypto-link-shortener":  {
+                                  "title":  "Raccourcisseur de liens crypto",
+                                  "subtitle":  "Simplifiez le partage crypto",
+                                  "description":  "Raccourcissez les adresses de portefeuille, les liens DeFi et les URLs de projets crypto. Suivez l'intérêt des investisseurs et partagez du contenu blockchain en toute sécurité.",
+                                  "metaDescription":  "Raccourcissez les liens de portefeuille, DeFi et projets crypto. Suivez l'intérêt des investisseurs et partagez du contenu blockchain avec le raccourcisseur de liens crypto RELURL.",
+                                  "keywords":  [
+                                                   "raccourcisseur de liens crypto",
+                                                   "générateur de liens blockchain",
+                                                   "raccourcisseur de liens defi"
+                                               ],
+                                  "features":  [
+                                                   "Racourcissement d'adresses de portefeuille",
+                                                   "Liens de protocoles DeFi",
+                                                   "URLs de collections NFT",
+                                                   "Liens de réclamations d'airdrop",
+                                                   "Liens ICO et IDO",
+                                                   "Tableau de bord analytics"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Saisissez le lien de votre portefeuille, projet DeFi ou page de projet.",
+                                                         "step":  "Collez l'URL crypto"
+                                                     },
+                                                     {
+                                                         "desc":  "Créez une URL propre et facile à partager pour votre communauté.",
+                                                         "step":  "Générez un lien court"
+                                                     },
+                                                     {
+                                                         "desc":  "Publiez sur Twitter, Telegram et Discord pour développer l'adoption.",
+                                                         "step":  "Partagez et suivez"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Promotions de lancement de tokens",
+                                                   "Partage de pages de mint NFT",
+                                                   "Intégration de protocoles DeFi",
+                                                   "Liens de campagnes d'airdrop",
+                                                   "Campagnes de croissance communautaire",
+                                                   "Marketing d'événements crypto"
+                                               ]
+                              },
+    "how-to-create-branded-links":  {
+                                        "title":  "Comment créer des liens de marque",
+                                        "subtitle":  "Construisez votre marque dans chaque lien",
+                                        "description":  "Apprenez à créer des URLs courtes de marque qui renforcent la notoriété et la confiance de votre audience. Guide complet pour configurer des domaines personnalisés et des liens de marque.",
+                                        "metaDescription":  "Apprenez à créer des liens de marque qui renforcent la confiance et augmentent les taux de clics. Guide étape par étape pour configurer des domaines personnalisés et des URLs courtes de marque.",
+                                        "keywords":  [
+                                                         "comment créer des liens de marque",
+                                                         "raccourcisseur d url de marque",
+                                                         "liens de domaine personnalisé",
+                                                         "guide des liens courts de marque"
+                                                     ],
+                                        "features":  [
+                                                         "Configuration de domaine personnalisé",
+                                                         "Intégration de l'identité de marque",
+                                                         "Optimisation du taux de clics",
+                                                         "Guide de configuration DNS",
+                                                         "Tableau de bord analytics",
+                                                         "Support multi-domaines"
+                                                     ],
+                                        "howItWorks":  [
+                                                           {
+                                                               "desc":  "Sélectionnez un domaine court et mémorisable comme go.votremarque.com pour vos liens de marque.",
+                                                               "step":  "Choisissez votre domaine de marque"
+                                                           },
+                                                           {
+                                                               "desc":  "Ajoutez les enregistrements CNAME ou A requis pour pointer votre domaine vers la plateforme RELURL.",
+                                                               "step":  "Configurez les enregistrements DNS"
+                                                           },
+                                                           {
+                                                               "desc":  "Une fois vérifié, chaque lien que vous créez peut utiliser automatiquement votre domaine de marque.",
+                                                               "step":  "Commencez à créer des liens de marque"
+                                                           }
+                                                       ],
+                                        "useCases":  [
+                                                         "Renforcez la reconnaissance de marque à chaque lien partagé",
+                                                         "Augmentez les taux de clics avec des domaines de confiance",
+                                                         "Créez des liens professionnels pour les communications d'entreprise",
+                                                         "Améliorez l'email marketing avec des URLs de marque",
+                                                         "Maintenez la cohérence de marque à travers les campagnes",
+                                                         "Établissez votre autorité dans votre secteur"
+                                                     ],
+                                        "faqs":  [
+                                                     {
+                                                         "a":  "Choisissez un domaine court et mémorisable qui reflète votre marque. Les formats courants sont go.votremarque.com, lien.votremarque.com ou votremarque.link. Les domaines courts sont plus faciles à communiquer oralement.",
+                                                         "q":  "Quel domaine dois-je utiliser pour les liens de marque ?"
+                                                     },
+                                                     {
+                                                         "a":  "Vous devrez ajouter un enregistrement CNAME pointant vers le serveur de vérification de RELURL. Des instructions détaillées étape par étape sont fournies dans votre tableau de bord lorsque vous ajoutez un nouveau domaine.",
+                                                         "q":  "Comment configurer le DNS pour mon domaine de marque ?"
+                                                     },
+                                                     {
+                                                         "a":  "Oui, les domaines de marque augmentent considérablement les taux de clics. Des études montrent que les liens sur des domaines reconnaissables reçoivent 30 à 40 pour cent de clics en plus que les liens sur des domaines génériques de raccourcisseurs.",
+                                                         "q":  "Les liens de marque augmentent-ils vraiment les taux de clics ?"
+                                                     }
+                                                 ]
+                                    },
+    "instagram-link-generator":  {
+                                     "title":  "Générateur de liens Instagram",
+                                     "subtitle":  "Développez votre audience Instagram",
+                                     "description":  "Créez des liens Instagram de marque pour votre bio, vos stories et vos publications. Suivez les clics et maximisez l'engagement sur chaque campagne Instagram.",
+                                     "metaDescription":  "Générez des liens Instagram courts et traçables pour votre bio, vos stories et vos publications. Créez des URLs personnalisées et suivez les clics pour optimiser votre stratégie Instagram.",
+                                     "keywords":  [
+                                                      "générateur de liens instagram",
+                                                      "lien bio instagram",
+                                                      "lien profil instagram"
+                                                  ],
+                                     "features":  [
+                                                      "Optimisation du lien de bio",
+                                                      "Suivi des liens dans les stories",
+                                                      "Analytics de clics",
+                                                      "Alias personnalisés",
+                                                      "Optimisé pour mobile",
+                                                      "Génération de codes QR"
+                                                  ],
+                                     "howItWorks":  [
+                                                        {
+                                                            "desc":  "Saisissez la page vers laquelle vous souhaitez créer un lien depuis Instagram.",
+                                                            "step":  "Collez votre URL"
+                                                        },
+                                                        {
+                                                            "desc":  "Choisissez un alias mémorisable pour votre lien Instagram.",
+                                                            "step":  "Personnalisez le slug"
+                                                        },
+                                                        {
+                                                            "desc":  "Collez votre lien court dans votre bio ou vos stories Instagram.",
+                                                            "step":  "Ajoutez à la bio"
+                                                        }
+                                                    ],
+                                     "useCases":  [
+                                                      "Optimisation du lien de bio Instagram",
+                                                      "Liens swipe-up dans les stories",
+                                                      "Liens de pages produits",
+                                                      "Promotion d'articles de blog",
+                                                      "Liens d'inscription à des événements",
+                                                      "Liens d'inscription à la newsletter"
+                                                  ]
+                                 },
+    "facebook-url-generator":  {
+                                   "title":  "Générateur d'URL Facebook",
+                                   "subtitle":  "Optimisez votre présence Facebook",
+                                   "description":  "Générez des URLs Facebook personnalisées pour les pages, publications, événements et groupes. Partagez sur votre présence Facebook et mesurez l'engagement de l'audience.",
+                                   "metaDescription":  "Générez des liens Facebook courts pour les pages, publications, événements et groupes. Créez des URLs personnalisées avec analytics pour optimiser votre marketing Facebook.",
+                                   "keywords":  [
+                                                    "générateur d url facebook",
+                                                    "raccourcisseur de lien facebook",
+                                                    "lien de page facebook"
+                                                ],
+                                   "features":  [
+                                                    "Racourcissement de liens de pages",
+                                                    "Liens de partage de publications",
+                                                    "Liens d'invitation à des événements",
+                                                    "Liens d'invitation de groupe",
+                                                    "Analytics de clics",
+                                                    "Alias personnalisés"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Saisissez l'URL de votre page, publication, événement ou groupe.",
+                                                          "step":  "Collez l'URL Facebook"
+                                                      },
+                                                      {
+                                                          "desc":  "Choisissez un slug de marque pour votre lien court.",
+                                                          "step":  "Personnalisez le lien"
+                                                      },
+                                                      {
+                                                          "desc":  "Distribuez votre lien et surveillez l'engagement.",
+                                                          "step":  "Partagez et suivez"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Promotion de pages Facebook",
+                                                    "Partage d'invitations à des événements",
+                                                    "Campagnes d'adhésion à des groupes",
+                                                    "Campagnes d'engagement de publications",
+                                                    "Suivi de campagnes publicitaires",
+                                                    "Marketing cross-plateforme"
+                                                ]
+                               },
+    "how-to-track-link-clicks":  {
+                                     "title":  "Comment suivre les clics sur les liens",
+                                     "subtitle":  "Maîtrisez l'analytique des liens",
+                                     "description":  "Apprenez à suivre les clics sur les liens et à mesurer la performance de votre contenu partagé. Comprenez votre audience grâce aux analytics de clics et optimisez votre stratégie marketing.",
+                                     "metaDescription":  "Apprenez à suivre les clics sur les liens et à mesurer l'engagement. Guide complet pour utiliser les analytics de clics afin de comprendre votre audience et optimiser votre contenu.",
+                                     "keywords":  [
+                                                      "comment suivre les clics sur les liens",
+                                                      "suivi des clics sur les liens",
+                                                      "suivre les clics url",
+                                                      "guide analytique des liens"
+                                                  ],
+                                     "features":  [
+                                                      "Configuration du suivi des clics",
+                                                      "Analytics en temps réel",
+                                                      "Données géographiques",
+                                                      "Informations sur l'appareil",
+                                                      "Suivi des référents",
+                                                      "Rapports de performance"
+                                                  ],
+                                     "howItWorks":  [
+                                                        {
+                                                            "desc":  "Raccourcissez votre URL avec RELURL pour la rendre traçable. Chaque lien raccourci collecte automatiquement les données de clics.",
+                                                            "step":  "Créez un lien court"
+                                                        },
+                                                        {
+                                                            "desc":  "Distribuez votre lien court par email, réseaux sociaux, messagerie ou autres canaux.",
+                                                            "step":  "Partagez votre lien"
+                                                        },
+                                                        {
+                                                            "desc":  "Connectez-vous à votre tableau de bord pour voir les clics, localisations, appareils et référents pour chaque lien.",
+                                                            "step":  "Consultez les analytics"
+                                                        }
+                                                    ],
+                                     "useCases":  [
+                                                      "Mesure des taux de clics des campagnes email",
+                                                      "Suivi de l'engagement des publications sur les réseaux sociaux",
+                                                      "Comparaison des performances sur tous les canaux marketing",
+                                                      "Compréhension des données démographiques de votre audience",
+                                                      "Identification du contenu le plus performant",
+                                                      "Optimisation du timing des campagnes selon les habitudes de clics"
+                                                  ],
+                                     "faqs":  [
+                                                  {
+                                                      "a":  "Votre tableau de bord affiche le total des clics, les clics uniques, les localisations géographiques, les types d'appareils, les systèmes d'exploitation, les navigateurs, les référents et les données temporelles des clics pour chaque lien.",
+                                                      "q":  "Quelles données puis-je voir dans les analytics de liens ?"
+                                                  },
+                                                  {
+                                                      "a":  "Les données de clics se mettent à jour en quasi-temps réel. Vous pouvez voir les clics en quelques minutes, ce qui vous permet de surveiller les performances des campagnes au fur et à mesure.",
+                                                      "q":  "Les compteurs de clics sur les liens sont-ils en temps réel ?"
+                                                  },
+                                                  {
+                                                      "a":  "Les liens raccourcis sans compte ne sont pas suivis. Pour accéder aux analytics, créez un compte gratuit avant de raccourcir des URLs, et tous vos liens incluront le suivi des clics.",
+                                                      "q":  "Puis-je suivre les liens partagés sans compte ?"
+                                                  }
+                                              ]
+                                 },
+    "link-in-bio":  {
+                        "title":  "Lien dans la bio",
+                        "subtitle":  "Un seul lien pour tous les dominer",
+                        "description":  "Créez un seul lien court qui dirige vos abonnés vers plusieurs destinations. Parfait pour Instagram, TikTok et autres plateformes qui vous limitent à un seul lien dans la bio.",
+                        "metaDescription":  "Créez un lien de bio professionnel pour Instagram, TikTok et autres plateformes sociales. Gérez plusieurs destinations depuis un seul lien court.",
+                        "keywords":  [
+                                         "lien dans la bio",
+                                         "raccourcisseur de lien bio",
+                                         "lien bio réseaux sociaux",
+                                         "outil lien dans la bio"
+                                     ],
+                        "features":  [
+                                         "Solution de lien bio unique",
+                                         "Destinations multiples",
+                                         "Mises à jour faciles des liens",
+                                         "Analytics de clics",
+                                         "URLs de marque personnalisées",
+                                         "Prêt pour les plateformes sociales"
+                                     ],
+                        "howItWorks":  [
+                                           {
+                                               "desc":  "Raccourcissez votre URL principale ou créez un lien qui redirige vers plusieurs destinations.",
+                                               "step":  "Créez votre lien bio"
+                                           },
+                                           {
+                                               "desc":  "Changez la destination de votre lien bio sans modifier votre profil sur les réseaux sociaux.",
+                                               "step":  "Mettez à jour les destinations à tout moment"
+                                           },
+                                           {
+                                               "desc":  "Surveillez le nombre de visiteurs de profil qui cliquent vers vos destinations.",
+                                               "step":  "Suivez les performances du lien bio"
+                                           }
+                                       ],
+                        "useCases":  [
+                                         "Optimisez votre lien bio Instagram unique",
+                                         "Gérez les destinations du lien bio TikTok",
+                                         "Alternez les liens bio pour différentes campagnes",
+                                         "Suivez l'engagement depuis les profils sociaux",
+                                         "Créez des liens bio de marque pour les influenceurs",
+                                         "Créez un lien vers plusieurs ressources depuis une seule URL"
+                                     ],
+                        "faqs":  [
+                                     {
+                                         "a":  "Un lien dans la bio est conçu spécifiquement pour les profils de réseaux sociaux où vous ne pouvez ajouter qu'un seul lien. Vous pouvez mettre à jour la destination à tout moment sans modifier votre profil.",
+                                         "q":  "En quoi est-ce différent d'un lien court classique ?"
+                                     },
+                                     {
+                                         "a":  "Oui, chaque lien court inclut des analytics de clics. Voyez exactement combien de visiteurs de profil cliquent vers votre contenu depuis Instagram, TikTok ou toute autre plateforme.",
+                                         "q":  "Puis-je savoir combien de personnes cliquent sur mon lien bio ?"
+                                     },
+                                     {
+                                         "a":  "Vous pouvez créer plusieurs liens courts pour différentes campagnes et échanger votre lien bio à chaque changement de priorité, le tout sans modifier votre profil sur les réseaux sociaux.",
+                                         "q":  "Ai-je besoin d'un lien séparé pour chaque campagne ?"
+                                     }
+                                 ]
+                    },
+    "custom-domain-links":  {
+                                "title":  "Liens avec domaine personnalisé",
+                                "subtitle":  "Votre marque dans chaque lien",
+                                "description":  "Utilisez votre propre domaine pour les liens courts afin de renforcer la reconnaissance et la confiance en votre marque. Chaque URL raccourcie devient un actif de marque qui renforce votre identité.",
+                                "metaDescription":  "Utilisez votre propre domaine pour les liens courts avec RELURL. Créez des URLs courtes de marque qui mettent en valeur votre marque et gagnent la confiance de l'audience à chaque clic.",
+                                "keywords":  [
+                                                 "liens domaine personnalisé",
+                                                 "domaine court de marque",
+                                                 "domaine de raccourcisseur d url personnalisé",
+                                                 "liens courts avec son propre domaine"
+                                             ],
+                                "features":  [
+                                                 "Support de domaine personnalisé",
+                                                 "Reconnaissance de marque",
+                                                 "Confiance accrue",
+                                                 "Apparence professionnelle",
+                                                 "Analytics unifiés",
+                                                 "Configuration DNS facile"
+                                             ],
+                                "howItWorks":  [
+                                                   {
+                                                       "desc":  "Saisissez votre domaine personnalisé dans le tableau de bord RELURL et configurez les paramètres DNS.",
+                                                       "step":  "Ajoutez votre domaine"
+                                                   },
+                                                   {
+                                                       "desc":  "Effectuez la vérification DNS pour prouver que vous possédez le domaine.",
+                                                       "step":  "Vérifiez la propriété"
+                                                   },
+                                                   {
+                                                       "desc":  "Tous vos liens courts peuvent désormais utiliser automatiquement votre domaine de marque.",
+                                                       "step":  "Commencez à créer des liens de marque"
+                                                   }
+                                               ],
+                                "useCases":  [
+                                                 "Renforcez la reconnaissance de marque à chaque lien partagé",
+                                                 "Augmentez les taux de clics avec des domaines de confiance",
+                                                 "Maintenez une image de marque cohérente à travers les campagnes",
+                                                 "Créez des liens professionnels pour les communications d'entreprise",
+                                                 "Améliorez l'email marketing avec des URLs de marque",
+                                                 "Établissez votre autorité dans votre secteur"
+                                             ],
+                                "faqs":  [
+                                             {
+                                                 "a":  "Vous devez ajouter un enregistrement CNAME pointant vers le serveur de vérification de RELURL. Des instructions de configuration détaillées sont fournies dans votre tableau de bord lorsque vous ajoutez un nouveau domaine.",
+                                                 "q":  "Quels enregistrements DNS dois-je configurer ?"
+                                             },
+                                             {
+                                                 "a":  "Oui, selon votre offre, vous pouvez ajouter plusieurs domaines personnalisés. Ceci est utile pour les agences gérant des liens pour plusieurs marques ou départements.",
+                                                 "q":  "Puis-je utiliser plusieurs domaines personnalisés ?"
+                                             },
+                                             {
+                                                 "a":  "Oui, les domaines de marque augmentent considérablement les taux de clics. Les utilisateurs sont plus susceptibles de cliquer sur un lien d'un domaine qu'ils reconnaissent, et les domaines personnalisés réduisent la suspicion par rapport aux domaines génériques de raccourcisseurs.",
+                                                 "q":  "Les domaines personnalisés améliorent-ils les taux de clics ?"
+                                             }
+                                         ]
+                            },
+    "how-to-shorten-a-url":  {
+                                 "title":  "Comment raccourcir une URL",
+                                 "subtitle":  "Guide complet étape par étape",
+                                 "description":  "Apprenez à raccourcir une URL rapidement et facilement. Ce guide couvre le raccourcissement simple ainsi que les outils avancés comme les slugs personnalisés, les analytics et les codes QR.",
+                                 "metaDescription":  "Apprenez à raccourcir une URL en quelques secondes. Suivez notre guide étape par étape pour créer des liens compacts et partageables pour les réseaux sociaux, les emails et les campagnes.",
+                                 "keywords":  [
+                                                  "comment raccourcir une url",
+                                                  "guide raccourcir url",
+                                                  "créer un lien court",
+                                                  "tutoriel raccourcissement d url"
+                                              ],
+                                 "features":  [
+                                                  "Racourcissement rapide d'URL",
+                                                  "Création d'alias personnalisés",
+                                                  "Configuration des analytics de clics",
+                                                  "Génération de codes QR",
+                                                  "Options de liens de marque",
+                                                  "Outils de raccourcissement en masse"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Copiez la longue URL que vous souhaitez raccourcir depuis la barre d'adresse de votre navigateur ou la boîte de partage.",
+                                                        "step":  "Copiez votre URL"
+                                                    },
+                                                    {
+                                                        "desc":  "Collez l'URL dans l'outil ci-dessus et cliquez sur le bouton de raccourcissement. Votre lien court apparaîtra instantanément.",
+                                                        "step":  "Collez et raccourcissez"
+                                                    },
+                                                    {
+                                                        "desc":  "Copiez votre nouveau lien court et partagez-le partout. Utilisez des slugs personnalisés et suivez les clics pour de meilleurs résultats.",
+                                                        "step":  "Partagez votre lien court"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Racourcissez des liens pour les publications sur les réseaux sociaux",
+                                                  "Créez des URLs propres pour les campagnes email",
+                                                  "Créez des liens mémorisables pour les supports imprimés",
+                                                  "Suivez l'engagement sur le contenu partagé",
+                                                  "Générez des liens courts pour les applications de messagerie",
+                                                  "Créez des liens de marque pour le marketing"
+                                              ],
+                                 "faqs":  [
+                                              {
+                                                  "a":  "Raccourcir une URL avec RELURL prend moins d'une seconde. Collez votre lien et cliquez sur le bouton pour obtenir une URL courte instantanée.",
+                                                  "q":  "Combien de temps faut-il pour raccourcir une URL ?"
+                                              },
+                                              {
+                                                  "a":  "Vous pouvez raccourcir des URLs instantanément sans compte. Créer un compte gratuit vous permet de sauvegarder vos liens, d'ajouter des slugs personnalisés et d'accéder aux analytics.",
+                                                  "q":  "Ai-je besoin d'un compte pour raccourcir des URLs ?"
+                                              },
+                                              {
+                                                  "a":  "Oui, vous pouvez ajouter des slugs personnalisés à vos URLs raccourcies pour les rendre plus mémorisables et plus faciles à marquer. Les slugs personnalisés sont disponibles sur tous les plans, y compris le plan gratuit.",
+                                                  "q":  "Puis-je personnaliser mon URL raccourcie ?"
+                                              }
+                                          ]
+                             },
+    "campaign-link-generator":  {
+                                    "title":  "Générateur de liens de campagne",
+                                    "subtitle":  "Construisez, raccourcissez, suivez",
+                                    "description":  "Générez des URLs de campagne complètes avec des paramètres UTM, raccourcissez-les et suivez les performances sur tous vos canaux marketing depuis un seul tableau de bord.",
+                                    "metaDescription":  "Générez des URLs de campagne traçables avec des paramètres UTM intégrés. Créez, raccourcissez et surveillez tous vos liens de campagnes marketing depuis un seul endroit.",
+                                    "keywords":  [
+                                                     "générateur de liens de campagne",
+                                                     "générateur de lien utm",
+                                                     "constructeur d url de campagne"
+                                                 ],
+                                    "features":  [
+                                                     "Constructeur UTM",
+                                                     "Noms de campagne personnalisés",
+                                                     "Balises de source et support",
+                                                     "Racourcissement automatique",
+                                                     "Tableau de bord des campagnes",
+                                                     "Rapports de performance"
+                                                 ],
+                                    "howItWorks":  [
+                                                       {
+                                                           "desc":  "Collez l'URL de votre page de destination cible.",
+                                                           "step":  "Saisissez l'URL de destination"
+                                                       },
+                                                       {
+                                                           "desc":  "Remplissez la source, le support, le nom de campagne, etc.",
+                                                           "step":  "Ajoutez les détails de la campagne"
+                                                       },
+                                                       {
+                                                           "desc":  "Recevez une URL de campagne raccourcie et traçable.",
+                                                           "step":  "Obtenez le lien court de campagne"
+                                                       }
+                                                   ],
+                                    "useCases":  [
+                                                     "Campagnes Google Ads",
+                                                     "Annonces Facebook et Instagram",
+                                                     "Campagnes de newsletters email",
+                                                     "Partenariats avec des influenceurs",
+                                                     "Promotions saisonnières",
+                                                     "Suivi de lancement de produits"
+                                                 ]
+                                },
+    "gaming-link-shortener":  {
+                                  "title":  "Raccourcisseur de liens gaming",
+                                  "subtitle":  "Améliorez vos liens",
+                                  "description":  "Raccourcissez les liens Twitch, Steam et de téléchargement de jeux. Suivez l'engagement des joueurs et partagez du contenu gaming avec des URLs propres et mémorisables.",
+                                  "metaDescription":  "Raccourcissez les liens Twitch, Steam et de téléchargement de jeux. Suivez l'engagement des joueurs et partagez du contenu gaming avec des URLs propres via RELURL.",
+                                  "keywords":  [
+                                                   "raccourcisseur de liens gaming",
+                                                   "générateur de liens stream",
+                                                   "raccourcisseur de lien twitch"
+                                               ],
+                                  "features":  [
+                                                   "Suivi des liens de stream",
+                                                   "Liens de téléchargement de jeux",
+                                                   "Inscription aux tournois",
+                                                   "Invitations de clans et d'équipes",
+                                                   "Partage de mods et skins",
+                                                   "Analytics cross-plateforme"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Saisissez le lien de votre stream, jeu ou page communautaire.",
+                                                         "step":  "Collez l'URL gaming"
+                                                     },
+                                                     {
+                                                         "desc":  "Créez une URL propre pour votre audience gaming.",
+                                                         "step":  "Générez un lien court"
+                                                     },
+                                                     {
+                                                         "desc":  "Publiez sur Discord, Reddit et les réseaux sociaux pour développer votre communauté.",
+                                                         "step":  "Partagez et suivez les joueurs"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Annonces de streams Twitch",
+                                                   "Promotions de sorties de jeux",
+                                                   "Inscription aux tournois",
+                                                   "Recrutement de clans",
+                                                   "Partage de mods et skins",
+                                                   "Marketing d'événements esports"
+                                               ]
+                              },
+    "custom-alias-generator":  {
+                                   "title":  "Générateur d'alias personnalisés",
+                                   "subtitle":  "Créez des alias de liens significatifs",
+                                   "description":  "Transformez des chaînes aléatoires en alias mémorisables. Générez des slugs personnalisés faciles à retenir, à taper et à partager sur n'importe quelle plateforme.",
+                                   "metaDescription":  "Générez des alias personnalisés pour vos URLs courtes. Créez des alias de liens mémorisables, de marque et significatifs, faciles à retenir et à partager partout.",
+                                   "keywords":  [
+                                                    "générateur d alias personnalisés",
+                                                    "alias de lien court",
+                                                    "générateur de slug url"
+                                                ],
+                                   "features":  [
+                                                    "Saisie de slug personnalisé",
+                                                    "Vérificateur de disponibilité",
+                                                    "Support des noms de marque",
+                                                    "Intégration de mots-clés",
+                                                    "Génération d'alias en masse",
+                                                    "Suggestions d'alias"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Collez la longue URL pour laquelle vous souhaitez créer un alias.",
+                                                          "step":  "Saisissez l'URL"
+                                                      },
+                                                      {
+                                                          "desc":  "Tapez le slug personnalisé souhaité ou laissez-nous vous en suggérer un.",
+                                                          "step":  "Choisissez votre alias"
+                                                      },
+                                                      {
+                                                          "desc":  "Votre lien court avec l'alias personnalisé est prêt à être partagé.",
+                                                          "step":  "Utilisez votre alias"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Liens de profils sur les réseaux sociaux",
+                                                    "Campagnes publicitaires imprimées",
+                                                    "URLs pour cartes de visite",
+                                                    "Raccourcis de pages produits",
+                                                    "Liens d'épisodes de podcast",
+                                                    "Destinations de codes QR"
+                                                ]
+                               },
+    "course-link-shortener":  {
+                                  "title":  "Raccourcisseur de liens de cours",
+                                  "subtitle":  "Inscrivez plus d'étudiants",
+                                  "description":  "Raccourcissez les pages de destination des cours et les liens d'inscription. Suivez les inscriptions, optimisez les promotions et développez votre activité d'enseignement en ligne.",
+                                  "metaDescription":  "Raccourcissez les pages de destination des cours et les liens d'inscription. Suivez les inscriptions et optimisez votre marketing de cours avec le raccourcisseur de liens RELURL.",
+                                  "keywords":  [
+                                                   "raccourcisseur de liens de cours",
+                                                   "liens de cours en ligne",
+                                                   "liens de promotion de cours"
+                                               ],
+                                  "features":  [
+                                                   "Suivi des inscriptions",
+                                                   "Analytics des pages de cours",
+                                                   "Liens multi-plateforme",
+                                                   "Intégration de codes promo",
+                                                   "Image de marque du formateur",
+                                                   "Liens de parrainage étudiants"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Saisissez votre page de destination de cours ou votre lien d'inscription.",
+                                                         "step":  "Collez l'URL du cours"
+                                                     },
+                                                     {
+                                                         "desc":  "Créez une URL propre que les étudiants retiendront facilement.",
+                                                         "step":  "Générez un lien court"
+                                                     },
+                                                     {
+                                                         "desc":  "Partagez sur tous les canaux et suivez les inscriptions des étudiants.",
+                                                         "step":  "Promouvez et inscrivez"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Campagnes de lancement de cours",
+                                                   "Promotions de leçons gratuites",
+                                                   "Liens d'affiliation pour formateurs",
+                                                   "Inscriptions à la formation en entreprise",
+                                                   "Entonnoirs webinaire-vers-cours",
+                                                   "Programmes de parrainage étudiants"
+                                               ]
+                              },
+    "linkedin-url-generator":  {
+                                   "title":  "Générateur d'URL LinkedIn",
+                                   "subtitle":  "Gestion professionnelle des liens",
+                                   "description":  "Créez des liens courts et professionnels pour votre profil LinkedIn, votre page d'entreprise, vos publications et vos offres d'emploi. Mesurez les clics et améliorez votre portée marketing B2B.",
+                                   "metaDescription":  "Générez des liens LinkedIn courts pour les profils, pages d'entreprise, publications et offres d'emploi. Suivez les clics et affinez votre stratégie marketing B2B.",
+                                   "keywords":  [
+                                                    "générateur d url linkedin",
+                                                    "raccourcisseur de lien linkedin",
+                                                    "lien profil linkedin"
+                                                ],
+                                   "features":  [
+                                                    "Racourcissement de lien de profil",
+                                                    "Liens de page d'entreprise",
+                                                    "Liens de partage de publications",
+                                                    "Liens d'offres d'emploi",
+                                                    "Analytics B2B",
+                                                    "Alias personnalisés"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Saisissez l'URL de votre profil, entreprise ou publication.",
+                                                          "step":  "Collez l'URL LinkedIn"
+                                                      },
+                                                      {
+                                                          "desc":  "Choisissez un alias professionnel et de marque.",
+                                                          "step":  "Personnalisez le slug"
+                                                      },
+                                                      {
+                                                          "desc":  "Distribuez votre lien et mesurez l'engagement.",
+                                                          "step":  "Partagez et suivez"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Promotion de profil LinkedIn",
+                                                    "Distribution d'offres d'emploi",
+                                                    "Marketing de page d'entreprise",
+                                                    "Campagnes de partage de contenu",
+                                                    "Génération de leads B2B",
+                                                    "Réseautage professionnel"
+                                                ]
+                               },
+    "agency-link-shortener":  {
+                                  "title":  "Raccourcisseur de liens pour agences",
+                                  "subtitle":  "Apportez plus de valeur",
+                                  "description":  "Raccourcissez les liens des campagnes clients avec une image de marque white-label. Suivez les performances cross-canal et fournissez des rapports clients actionnables.",
+                                  "metaDescription":  "Raccourcissez les liens des campagnes clients avec une image de marque white-label. Suivez les performances cross-canal et fournissez des rapports prêts pour les clients avec RELURL.",
+                                  "keywords":  [
+                                                   "raccourcisseur de liens pour agences",
+                                                   "liens pour agence marketing",
+                                                   "raccourcisseur de liens white label"
+                                               ],
+                                  "features":  [
+                                                   "Image de marque White-Label",
+                                                   "Gestion multi-clients",
+                                                   "Rapports de performance de campagnes",
+                                                   "Constructeur de paramètres UTM",
+                                                   "Support de tests A/B",
+                                                   "Accès API"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Saisissez la page de destination ou le lien de campagne de votre client.",
+                                                         "step":  "Collez l'URL de la campagne"
+                                                     },
+                                                     {
+                                                         "desc":  "Ajoutez l'image de marque du client et les paramètres UTM pour le suivi.",
+                                                         "step":  "Marquez et balisez"
+                                                     },
+                                                     {
+                                                         "desc":  "Partagez les résultats avec les clients et optimisez les campagnes.",
+                                                         "step":  "Rapportez et optimisez"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Liens de campagnes PPC clients",
+                                                   "Gestion des réseaux sociaux",
+                                                   "Email marketing pour clients",
+                                                   "Suivi de campagnes d'influenceurs",
+                                                   "Attribution multi-canal",
+                                                   "Gestion de liens white-label"
+                                               ]
+                              },
+    "discord-link-generator":  {
+                                   "title":  "Générateur de liens Discord",
+                                   "subtitle":  "Développez votre serveur",
+                                   "description":  "Générez des liens courts pour les serveurs, canaux et événements Discord. Développez votre communauté et attribuez la croissance des membres à chaque canal de promotion.",
+                                   "metaDescription":  "Générez des liens courts pour les serveurs, canaux et événements Discord. Développez votre communauté et suivez l'engagement des membres avec RELURL.",
+                                   "keywords":  [
+                                                    "générateur de liens discord",
+                                                    "liens de serveur discord",
+                                                    "liens de communauté discord"
+                                                ],
+                                   "features":  [
+                                                    "Suivi des invitations au serveur",
+                                                    "Analytics des liens de canaux",
+                                                    "Liens de promotion d'événements",
+                                                    "Liens de tableau de bord de bots",
+                                                    "Invitations de marque personnalisées",
+                                                    "Attribution de la source des membres"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Saisissez votre lien d'invitation au serveur, de canal ou d'événement.",
+                                                          "step":  "Collez l'URL Discord"
+                                                      },
+                                                      {
+                                                          "desc":  "Générez une URL mémorisable pour votre communauté.",
+                                                          "step":  "Créez un lien court"
+                                                      },
+                                                      {
+                                                          "desc":  "Publiez sur toutes les plateformes et suivez la provenance des membres.",
+                                                          "step":  "Partagez et développez"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Partage d'invitations au serveur",
+                                                    "Campagnes de promotion d'événements",
+                                                    "Développement de communauté de créateurs de contenu",
+                                                    "Recrutement de clans de gaming",
+                                                    "Liens de partenariats communautaires",
+                                                    "Croissance cross-plateforme"
+                                                ]
+                               },
+    "free-url-shortener":  {
+                               "title":  "Raccourcisseur d'URL gratuit",
+                               "subtitle":  "100 % gratuit, sans aucune condition",
+                               "description":  "Raccourcissez des URLs illimitées gratuitement. Aucun compte requis. Obtenez des liens courts propres avec des analytics de base — complètement gratuits pour toujours.",
+                               "metaDescription":  "Raccourcissez des URLs gratuitement avec RELURL. Obtenez des slugs personnalisés, des analytics de clics de base et des liens illimités sur notre plan gratuit, sans inscription requise.",
+                               "keywords":  [
+                                                "raccourcisseur d url gratuit",
+                                                "liens courts gratuits",
+                                                "raccourcir url gratuitement"
+                                            ],
+                               "features":  [
+                                                "Liens gratuits illimités",
+                                                "Aucun compte requis",
+                                                "Analytics de clics de base",
+                                                "Alias personnalisés",
+                                                "Liens permanents",
+                                                "Aucune expiration"
+                                            ],
+                               "howItWorks":  [
+                                                  {
+                                                      "desc":  "Saisissez n'importe quelle longue URL — aucune inscription nécessaire.",
+                                                      "step":  "Collez l'URL"
+                                                  },
+                                                  {
+                                                      "desc":  "Recevez votre URL courte instantanément.",
+                                                      "step":  "Obtenez le lien court"
+                                                  },
+                                                  {
+                                                      "desc":  "Partagez votre lien et surveillez les clics en temps réel.",
+                                                      "step":  "Partagez et suivez"
+                                                  }
+                                              ],
+                               "useCases":  [
+                                                "Partage de liens personnels",
+                                                "Projets étudiants",
+                                                "Sites web de petites entreprises",
+                                                "Optimisation de liens d'articles de blog",
+                                                "Partage sur les réseaux sociaux",
+                                                "Racourcissement rapide de liens"
+                                            ],
+                               "faqs":  [
+                                            {
+                                                "a":  "Contrairement à la plupart des raccourcisseurs d'URL gratuits, nous n'expirons jamais vos liens, fournissons des analytics de clics de base même sur le plan gratuit et vous permettons de créer des alias personnalisés sans passer à une offre payante. Aucune limite cachée ni bombe à retardement.",
+                                                "q":  "En quoi est-ce différent des autres raccourcisseurs d'URL ?"
+                                            },
+                                            {
+                                                "a":  "Oui ! Vous pouvez générer des liens courts instantanément sans aucun compte. Cependant, créer un compte gratuit vous permet de suivre les clics, de gérer vos liens et d'utiliser des slugs personnalisés.",
+                                                "q":  "Puis-je raccourcir des URLs sans m'inscrire ?"
+                                            },
+                                            {
+                                                "a":  "Les liens raccourcis sur notre plateforme gèrent automatiquement un trafic élevé. Les liens du plan gratuit n'expirent jamais et ne se cassent jamais, même si votre contenu devient viral. Notre infrastructure s'adapte à la demande.",
+                                                "q":  "Que se passe-t-il si mon lien devient viral ?"
+                                            }
+                                        ]
+                           },
+    "custom-url-shortener":  {
+                                 "title":  "Raccourcisseur d'URL personnalisé",
+                                 "subtitle":  "Personnalisez vos liens",
+                                 "description":  "Créez des liens courts mémorisables et de marque avec des slugs personnalisés. Remplacez les caractères aléatoires par des mots significatifs qui reflètent votre marque.",
+                                 "metaDescription":  "Créez des URLs raccourcies personnalisées avec des slugs personnalisés. Rendez vos liens mémorisables et faciles à marquer avec le raccourcisseur d'URL personnalisé RELURL.",
+                                 "keywords":  [
+                                                  "raccourcisseur d url personnalisé",
+                                                  "liens courts personnalisés",
+                                                  "slug personnalisé"
+                                              ],
+                                 "features":  [
+                                                  "Sélection de slug personnalisé",
+                                                  "Noms de liens adaptés à la marque",
+                                                  "Alias descriptifs",
+                                                  "Options sensibles à la casse",
+                                                  "Support des emojis",
+                                                  "Racourcissement personnalisé en masse"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Saisissez la longue URL que vous souhaitez raccourcir.",
+                                                        "step":  "Collez votre URL"
+                                                    },
+                                                    {
+                                                        "desc":  "Choisissez un mot ou une phrase mémorisable pour votre lien court.",
+                                                        "step":  "Choisissez un slug personnalisé"
+                                                    },
+                                                    {
+                                                        "desc":  "Utilisez votre lien personnalisé dans les emails, les réseaux sociaux et le marketing.",
+                                                        "step":  "Partagez partout"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Promotion de marque avec des liens mémorisables",
+                                                  "Pages de destination de lancement de produit",
+                                                  "Liens bio pour réseaux sociaux",
+                                                  "Campagnes d'email marketing",
+                                                  "Supports imprimés et cartes de visite",
+                                                  "Invitations à des événements"
+                                              ],
+                                 "faqs":  [
+                                              {
+                                                  "a":  "Vous pouvez utiliser des lettres (a-z, A-Z), des chiffres (0-9), des tirets (-) et des underscores (_). Les slugs sont sensibles à la casse, donc MonLien et monlien peuvent être des liens différents.",
+                                                  "q":  "Quels caractères puis-je utiliser dans un slug personnalisé ?"
+                                              },
+                                              {
+                                                  "a":  "Oui, vous pouvez modifier le slug de n'importe quel lien que vous possédez depuis votre tableau de bord. L'ancienne URL redirigera vers la nouvelle, vous ne perdrez donc aucun trafic.",
+                                                  "q":  "Puis-je modifier un slug après l'avoir créé ?"
+                                              },
+                                              {
+                                                  "a":  "Les slugs personnalisés avec des mots-clés pertinents peuvent améliorer les taux de clics et sont plus dignes de confiance pour les utilisateurs. La redirection de l'URL raccourcie transmet l'équité des liens à votre page cible.",
+                                                  "q":  "Les slugs personnalisés affectent-ils le SEO ?"
+                                              }
+                                          ]
+                             },
+    "how-to-make-money-with-url-shortener":  {
+                                                 "title":  "Comment gagner de l'argent avec un raccourcisseur d'URL",
+                                                 "subtitle":  "Guide de monétisation",
+                                                 "description":  "Apprenez à gagner de l'argent avec des stratégies de raccourcisseur d'URL. Découvrez le marketing d'affiliation, les services de gestion de liens et la monétisation de contenu avec les outils gratuits RELURL.",
+                                                 "metaDescription":  "Apprenez à gagner de l'argent avec des stratégies de raccourcisseur d'URL. Découvrez le marketing d'affiliation, les services de gestion de liens et la monétisation de contenu avec les outils gratuits RELURL.",
+                                                 "keywords":  [
+                                                                  "gagner de l argent avec un raccourcisseur d url",
+                                                                  "monétisation raccourcisseur d url",
+                                                                  "gagner avec des liens courts",
+                                                                  "monétiser les liens"
+                                                              ],
+                                                 "features":  [
+                                                                  "Compression d'URL",
+                                                                  "Suivi de campagnes",
+                                                                  "Analytics de clics",
+                                                                  "Alias personnalisés",
+                                                                  "Racourcissement en masse",
+                                                                  "Domaines personnalisés"
+                                                              ],
+                                                 "howItWorks":  [
+                                                                    {
+                                                                        "desc":  "Raccourcissez les liens de produits d'affiliation d'Amazon, des boutiques Shopify et des programmes partenaires en utilisant des liens RELURL propres.",
+                                                                        "step":  "Créez des liens d'affiliation"
+                                                                    },
+                                                                    {
+                                                                        "desc":  "Partagez vos liens d'affiliation courts sur les réseaux sociaux, blogs, newsletters email et plateformes de contenu.",
+                                                                        "step":  "Promouvez sur tous les canaux"
+                                                                    },
+                                                                    {
+                                                                        "desc":  "Utilisez les analytics RELURL pour voir quels liens performent le mieux et optimisez votre stratégie pour des commissions maximales.",
+                                                                        "step":  "Suivez et optimisez les revenus"
+                                                                    }
+                                                                ],
+                                                 "useCases":  [
+                                                                  "Gagnez des commissions en partageant des liens de produits d'affiliation raccourcis",
+                                                                  "Proposez des services de gestion de liens aux entreprises locales",
+                                                                  "Générez des revenus grâce au contenu sponsorisé avec des liens traçables",
+                                                                  "Créez des sites de niche avec des URLs d'affiliation courtes optimisées",
+                                                                  "Menez des campagnes sur les réseaux sociaux avec des liens de commission traçables"
+                                                              ],
+                                                 "faqs":  [
+                                                              {
+                                                                  "a":  "Absolument. RELURL préserve les paramètres de suivi d'affiliation et fournit des analytics de clics pour optimiser vos campagnes.",
+                                                                  "q":  "Puis-je utiliser RELURL pour le marketing d'affiliation ?"
+                                                              },
+                                                              {
+                                                                  "a":  "Non, RELURL offre des limites généreuses sur tous les plans pour que vous puissiez développer vos efforts de marketing d'affiliation.",
+                                                                  "q":  "Y a-t-il une limite au nombre de liens que je peux créer pour la monétisation ?"
+                                                              },
+                                                              {
+                                                                  "a":  "Oui, tous les paramètres de suivi d'affiliation sont préservés. Vos commissions ne sont pas affectées par le raccourcissement des liens.",
+                                                                  "q":  "Les liens d'affiliation raccourcis génèrent-ils toujours des commissions ?"
+                                                              }
+                                                          ]
+                                             },
+    "how-to-create-short-links":  {
+                                      "title":  "Comment créer des liens courts",
+                                      "subtitle":  "Guide professionnel de création de liens",
+                                      "description":  "Apprenez à créer des liens courts professionnels avec des slugs personnalisés, un suivi des clics et des domaines de marque. Maîtrisez tout, de la création rapide d'URL à la gestion avancée des liens.",
+                                      "metaDescription":  "Apprenez à créer des liens courts avec des slugs personnalisés, des analytics et une image de marque. Guide étape par étape pour créer des URLs courtes professionnelles pour tout usage.",
+                                      "keywords":  [
+                                                       "comment créer des liens courts",
+                                                       "créer une url courte",
+                                                       "fabriquer un lien court",
+                                                       "guide de création de lien court"
+                                                   ],
+                                      "features":  [
+                                                       "Création de slug personnalisé",
+                                                       "Liens courts de marque",
+                                                       "Configuration du suivi des clics",
+                                                       "Génération de liens en masse",
+                                                       "Intégration de codes QR",
+                                                       "Conseils de gestion de liens"
+                                                   ],
+                                      "howItWorks":  [
+                                                         {
+                                                             "desc":  "Sélectionnez la longue URL que vous souhaitez transformer en un lien court et professionnel.",
+                                                             "step":  "Choisissez votre URL"
+                                                         },
+                                                         {
+                                                             "desc":  "Ajoutez un slug personnalisé qui reflète votre marque ou le sujet du contenu pour une meilleure reconnaissance.",
+                                                             "step":  "Personnalisez votre lien"
+                                                         },
+                                                         {
+                                                             "desc":  "Déployez votre lien court sur tous les canaux et suivez ses performances depuis votre tableau de bord.",
+                                                             "step":  "Partagez et surveillez"
+                                                         }
+                                                     ],
+                                      "useCases":  [
+                                                       "Créez des liens de marque pour votre entreprise",
+                                                       "Créez des URLs courtes personnalisées pour les campagnes",
+                                                       "Générez des liens traçables pour le marketing",
+                                                       "Créez des URLs mémorables pour des événements",
+                                                       "Créez des liens propres pour les profils sociaux",
+                                                       "Créez des bibliothèques de liens organisées pour les équipes"
+                                                   ],
+                                      "faqs":  [
+                                                   {
+                                                       "a":  "Un bon lien court est mémorisable, pertinent par rapport au contenu et facile à taper. L'utilisation de slugs personnalisés avec des mots-clés liés à votre contenu crée les liens courts les plus efficaces.",
+                                                       "q":  "Qu'est-ce qui fait un bon lien court ?"
+                                                   },
+                                                   {
+                                                       "a":  "Oui, RELURL prend en charge le raccourcissement d'URL en masse. Vous pouvez télécharger plusieurs URLs à la fois et générer des liens courts pour toutes, ce qui vous fait gagner du temps sur les grands projets.",
+                                                       "q":  "Puis-je créer des liens courts en masse ?"
+                                                   },
+                                                   {
+                                                       "a":  "Pour créer des liens courts de marque, ajoutez votre domaine personnalisé à RELURL et configurez les paramètres DNS. Une fois vérifié, tous vos liens courts peuvent utiliser votre domaine de marque.",
+                                                       "q":  "Comment créer des liens courts de marque ?"
+                                                   }
+                                               ]
+                                  },
+    "free-qr-code-generator":  {
+                                   "title":  "Générateur de codes QR gratuit",
+                                   "subtitle":  "Sans frais, sans limites",
+                                   "description":  "Générez des codes QR illimités gratuitement. Sans inscription, sans filigrane, sans restriction. Téléchargez des codes QR de haute qualité instantanément.",
+                                   "metaDescription":  "Générez des codes QR gratuitement sans vous inscrire. Créez des codes QR de haute qualité pour n'importe quel usage en quelques secondes. Aucun compte requis, entièrement gratuit.",
+                                   "keywords":  [
+                                                    "générateur de code qr gratuit",
+                                                    "code qr sans inscription",
+                                                    "code qr instantané",
+                                                    "créateur de code qr gratuit"
+                                                ],
+                                   "features":  [
+                                                    "100 % gratuit",
+                                                    "Aucun filigrane",
+                                                    "Génération illimitée",
+                                                    "Sortie haute qualité",
+                                                    "Téléchargement instantané",
+                                                    "Compatible multi-plateforme"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Saisissez n'importe quelle URL, texte ou données",
+                                                          "step":  "Collez le contenu"
+                                                      },
+                                                      {
+                                                          "desc":  "Votre code QR est créé instantanément",
+                                                          "step":  "Cliquez sur Générer"
+                                                      },
+                                                      {
+                                                          "desc":  "Téléchargez sans aucun frais ni inscription",
+                                                          "step":  "Téléchargez gratuitement"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Étudiants et enseignants",
+                                                    "Propriétaires de petites entreprises",
+                                                    "Organisateurs d'événements",
+                                                    "Usage personnel",
+                                                    "Organisations à but non lucratif",
+                                                    "Projets personnels et loisirs"
+                                                ]
+                               },
+    "affiliate-link-shortener":  {
+                                     "title":  "Raccourcisseur de liens d'affiliation",
+                                     "subtitle":  "Maximisez vos revenus d'affiliation",
+                                     "description":  "Raccourcissez, masquez et suivez vos liens d'affiliation. Obtenez des URLs propres et professionnelles ainsi que des analytics de clics détaillés pour optimiser vos campagnes d'affiliation.",
+                                     "metaDescription":  "Raccourcissez et masquez vos liens d'affiliation pour un aspect plus propre. Suivez les clics, les conversions et optimisez vos campagnes de marketing d'affiliation avec des analytics.",
+                                     "keywords":  [
+                                                      "raccourcisseur de liens d affiliation",
+                                                      "masqueur de liens d affiliation",
+                                                      "suivi d affiliation"
+                                                  ],
+                                     "features":  [
+                                                      "Masquage de liens",
+                                                      "Suivi des clics",
+                                                      "Analytics de conversion",
+                                                      "Support des tests A/B",
+                                                      "Ciblage géographique",
+                                                      "Ciblage par appareil"
+                                                  ],
+                                     "howItWorks":  [
+                                                        {
+                                                            "desc":  "Saisissez votre long lien d'affiliation avec tous les paramètres de suivi.",
+                                                            "step":  "Collez l'URL d'affiliation"
+                                                        },
+                                                        {
+                                                            "desc":  "Choisissez un alias propre et mémorisable pour votre lien d'affiliation.",
+                                                            "step":  "Personnalisez le slug"
+                                                        },
+                                                        {
+                                                            "desc":  "Utilisez votre lien court et suivez chaque clic et conversion.",
+                                                            "step":  "Partagez et gagnez"
+                                                        }
+                                                    ],
+                                     "useCases":  [
+                                                      "Marketing d'affiliation Amazon",
+                                                      "Recommandations de cours et produits",
+                                                      "Monétisation de blog",
+                                                      "Liens dans les descriptions YouTube",
+                                                      "Offres d'affiliation dans les newsletters email",
+                                                      "Promotions d'affiliation sur les réseaux sociaux"
+                                                  ],
+                                     "faqs":  [
+                                                  {
+                                                      "a":  "Oui, notre masquage de liens cache vos identifiants d'affiliation aux visiteurs tout en conservant le suivi intact. Cela protège vos commissions du détournement et crée des URLs plus propres à partager.",
+                                                      "q":  "Puis-je masquer mes liens d'affiliation ?"
+                                                  },
+                                                  {
+                                                      "a":  "Nous travaillons avec tous les principaux réseaux d'affiliation, notamment Amazon Associates, ShareASale, Commission Junction, ClickBank et Rakuten. Le lien raccourci préserve tous les paramètres de suivi.",
+                                                      "q":  "Prenez-vous en charge le suivi des réseaux d'affiliation ?"
+                                                  },
+                                                  {
+                                                      "a":  "Pas du tout. Les liens raccourcis transmettent tous les paramètres UTM et de suivi à votre destination. Certains affiliés rapportent des conversions plus élevées car les liens propres renforcent la confiance de leur audience.",
+                                                      "q":  "Les liens d'affiliation raccourcis vont-ils réduire mes commissions ?"
+                                                  }
+                                              ]
+                                 },
+    "bulk-url-shortener":  {
+                               "title":  "Raccourcisseur d'URL en masse",
+                               "subtitle":  "Raccourcissez des centaines de liens à la fois",
+                               "description":  "Gagnez du temps en raccourcissant plusieurs URLs simultanément. Téléchargez un CSV ou collez plusieurs liens et faites-les tous raccourcir en quelques secondes.",
+                               "metaDescription":  "Raccourcissez des centaines d'URLs à la fois avec notre raccourcisseur d'URL en masse. Téléchargez un CSV, personnalisez les slugs et gérez tous vos liens depuis un seul tableau de bord puissant.",
+                               "keywords":  [
+                                                "raccourcisseur d url en masse",
+                                                "raccourcir plusieurs urls",
+                                                "raccourcissement par lots d urls"
+                                            ],
+                               "features":  [
+                                                "Traitement par lots (50 à la fois)",
+                                                "Import/Export CSV",
+                                                "Alias personnalisés par lien",
+                                                "Étiquettes et organisation",
+                                                "Tableau de bord analytics",
+                                                "API pour l'automatisation"
+                                            ],
+                               "howItWorks":  [
+                                                  {
+                                                      "desc":  "Collez les URLs une par ligne ou téléchargez un fichier CSV.",
+                                                      "step":  "Téléchargez ou collez"
+                                                  },
+                                                  {
+                                                      "desc":  "Définissez des alias personnalisés, des étiquettes et une expiration pour chaque lien.",
+                                                      "step":  "Configurez les options"
+                                                  },
+                                                  {
+                                                      "desc":  "Exportez vos liens raccourcis en CSV ou copiez-les individuellement.",
+                                                      "step":  "Téléchargez et partagez"
+                                                  }
+                                              ],
+                               "useCases":  [
+                                                "Création de liens pour catalogue de produits e-commerce",
+                                                "Équipes de marketing de contenu",
+                                                "Agences SEO gérant des liens clients",
+                                                "Gestionnaires de réseaux sociaux",
+                                                "Organisateurs d'événements avec plusieurs liens",
+                                                "Projets de recherche et académiques"
+                                            ],
+                               "faqs":  [
+                                            {
+                                                "a":  "Notre raccourcisseur d'URL en masse prend en charge jusqu'à 100 URLs par lot. Pour des volumes plus importants, contactez notre équipe commerciale pour des solutions d'entreprise personnalisées.",
+                                                "q":  "Combien d'URLs puis-je raccourcir à la fois ?"
+                                            },
+                                            {
+                                                "a":  "Saisissez une URL par ligne dans la zone de texte, ou téléchargez un fichier CSV avec une colonne URL. Nous acceptons les URLs simples avec ou sans préfixe http://.",
+                                                "q":  "Quel format doivent avoir mes URLs ?"
+                                            },
+                                            {
+                                                "a":  "Oui, chaque lien généré par le raccourcissement en masse inclut des analytics de clics individuels. Vous pouvez suivre les performances par lien depuis votre tableau de bord après le traitement.",
+                                                "q":  "Les liens raccourcis en masse incluent-ils des analytics ?"
+                                            }
+                                        ]
+                           },
+    "ebook-link-shortener":  {
+                                 "title":  "Raccourcisseur de liens pour ebooks",
+                                 "subtitle":  "Développez votre lectorat",
+                                 "description":  "Raccourcissez les liens de téléchargement d'ebooks et de pages de destination. Suivez les téléchargements, affinez vos efforts promotionnels et développez efficacement votre base de lecteurs.",
+                                 "metaDescription":  "Raccourcissez les liens de téléchargement d'ebooks et de pages de destination. Suivez les téléchargements, optimisez les promotions et développez votre base de lecteurs avec RELURL.",
+                                 "keywords":  [
+                                                  "raccourcisseur de liens pour ebooks",
+                                                  "liens de téléchargement de livres",
+                                                  "liens marketing pour ebooks"
+                                              ],
+                                 "features":  [
+                                                  "Suivi des téléchargements",
+                                                  "Analytics des pages de destination",
+                                                  "Distribution multi-plateforme",
+                                                  "Intégration de capture d'emails",
+                                                  "Image de marque de l'auteur",
+                                                  "Attribution de l'entonnoir de vente"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Saisissez votre page de destination d'ebook ou votre lien de téléchargement.",
+                                                        "step":  "Collez l'URL de l'ebook"
+                                                    },
+                                                    {
+                                                        "desc":  "Générez une URL propre que les lecteurs pourront facilement partager.",
+                                                        "step":  "Créez un lien court"
+                                                    },
+                                                    {
+                                                        "desc":  "Partagez sur toutes les plateformes et suivez les conversions de téléchargement.",
+                                                        "step":  "Promouvez et suivez"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Promotion d'ebooks gratuits",
+                                                  "Liens de pages Amazon Kindle",
+                                                  "Campagnes de constitution de listes email",
+                                                  "Liens de ressources dans les articles invités",
+                                                  "Lancements de livres sur les réseaux sociaux",
+                                                  "Liens de partenariats avec des librairies"
+                                              ]
+                             },
+    "link-expiration":  {
+                            "title":  "Expiration des liens",
+                            "subtitle":  "Définissez des limites de temps sur les liens",
+                            "description":  "Créez des liens courts qui expirent automatiquement à une date spécifique ou après un nombre défini de clics. Parfait pour les campagnes limitées dans le temps, les promotions d'événements et les offres à durée limitée.",
+                            "metaDescription":  "Créez des liens courts avec des dates d'expiration automatiques. Définissez des limites de temps sur vos URLs pour les campagnes, événements et contenus limités dans le temps.",
+                            "keywords":  [
+                                             "expiration des liens",
+                                             "raccourcisseur d url temporaire",
+                                             "liens à expiration",
+                                             "liens à durée limitée"
+                                         ],
+                            "features":  [
+                                             "Expiration automatique des liens",
+                                             "Expiration basée sur une date",
+                                             "Expiration basée sur le nombre de clics",
+                                             "Redirection des liens expirés",
+                                             "Gestion des campagnes",
+                                             "Notifications d'expiration"
+                                         ],
+                            "howItWorks":  [
+                                               {
+                                                   "desc":  "Collez le lien pour lequel vous souhaitez définir une expiration.",
+                                                   "step":  "Saisissez votre URL"
+                                               },
+                                               {
+                                                   "desc":  "Choisissez une date d'expiration ou un nombre maximum de clics.",
+                                                   "step":  "Définissez les règles d'expiration"
+                                               },
+                                               {
+                                                   "desc":  "Partagez votre lien en sachant qu'il se désactivera automatiquement lorsque les conditions seront remplies.",
+                                                   "step":  "Partagez en toute confiance"
+                                               }
+                                           ],
+                            "useCases":  [
+                                             "Campagnes promotionnelles limitées dans le temps",
+                                             "Liens d'inscription à des événements qui se ferment après l'événement",
+                                             "URLs pour ventes flash et offres à durée limitée",
+                                             "Partage temporaire de documents pour projets",
+                                             "Liens d'accès bêta avec dates d'expiration",
+                                             "Liens de campagnes marketing saisonnières"
+                                         ],
+                            "faqs":  [
+                                         {
+                                             "a":  "Lorsqu'un lien expire, les visiteurs voient une notification indiquant que le lien n'est plus actif. Vous pouvez configurer une URL de redirection personnalisée pour les liens expirés si vous le souhaitez.",
+                                             "q":  "Que se passe-t-il lorsqu'un lien expire ?"
+                                         },
+                                         {
+                                             "a":  "Oui, vous pouvez combiner les conditions d'expiration. Par exemple, un lien peut expirer après 30 jours OU après 1000 clics, selon la première échéance.",
+                                             "q":  "Puis-je définir à la fois une expiration basée sur la date et sur les clics ?"
+                                         },
+                                         {
+                                             "a":  "Oui, vous pouvez modifier les paramètres d'expiration de n'importe quel lien depuis votre tableau de bord à tout moment, y compris réactiver des liens expirés avec de nouvelles règles d'expiration.",
+                                             "q":  "Puis-je réactiver un lien expiré ?"
+                                         }
+                                     ]
+                        },
+    "education-link-shortener":  {
+                                     "title":  "Raccourcisseur de liens pour l'éducation",
+                                     "subtitle":  "Simplifiez les liens d'apprentissage",
+                                     "description":  "Créez des liens courts pour les cours, les programmes et les ressources éducatives. Suivez l'engagement des étudiants et simplifiez le partage d'URL pour les enseignants.",
+                                     "metaDescription":  "Créez des liens courts pour les cours, les programmes et les ressources d'apprentissage. Suivez l'engagement des étudiants et simplifiez le partage d'URL pour les enseignants.",
+                                     "keywords":  [
+                                                      "raccourcisseur de liens pour l éducation",
+                                                      "générateur de liens de cours",
+                                                      "liens de ressources d apprentissage"
+                                                  ],
+                                     "features":  [
+                                                      "Suivi des clics des étudiants",
+                                                      "Liens spécifiques aux cours",
+                                                      "Intégration LMS",
+                                                      "Code QR pour les salles de classe",
+                                                      "Gestion des liens de devoirs",
+                                                      "Liens pour portail parents"
+                                                  ],
+                                     "howItWorks":  [
+                                                        {
+                                                            "desc":  "Saisissez votre lien de cours, devoir ou ressource.",
+                                                            "step":  "Collez l'URL de la ressource"
+                                                        },
+                                                        {
+                                                            "desc":  "Générez une URL propre que les étudiants pourront facilement taper.",
+                                                            "step":  "Créez un lien court"
+                                                        },
+                                                        {
+                                                            "desc":  "Publiez dans votre LMS, programme ou tableau de classe.",
+                                                            "step":  "Partagez avec les étudiants"
+                                                        }
+                                                    ],
+                                     "useCases":  [
+                                                      "Partage de matériel de cours en ligne",
+                                                      "Liens de soumission de devoirs",
+                                                      "Communication avec les parents",
+                                                      "Liens de ressources de bibliothèque",
+                                                      "Inscription aux événements scolaires",
+                                                      "Liens pour le réseau d'anciens élèves"
+                                                  ]
+                                 },
+    "event-link-shortener":  {
+                                 "title":  "Raccourcisseur de liens pour événements",
+                                 "subtitle":  "Maximisez la portée de l'événement",
+                                 "description":  "Raccourcissez les URLs d'événements pour promouvoir des conférences, rencontres et événements virtuels. Suivez les sources d'inscription et mesurez la portée de vos campagnes.",
+                                 "metaDescription":  "Raccourcissez les URLs d'événements pour promouvoir des conférences, rencontres et événements virtuels. Suivez les sources d'inscription et mesurez la portée des campagnes avec RELURL.",
+                                 "keywords":  [
+                                                  "raccourcisseur de liens pour événements",
+                                                  "générateur de liens de conférence",
+                                                  "marketing d événements"
+                                              ],
+                                 "features":  [
+                                                  "Suivi des inscriptions",
+                                                  "Analytics multi-canal",
+                                                  "Intégration de compte à rebours",
+                                                  "Liens d'événements de marque",
+                                                  "URLs pour intervenants et sponsors",
+                                                  "Analytics post-événement"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Saisissez votre page d'inscription ou le lien de votre site d'événement.",
+                                                        "step":  "Collez l'URL de l'événement"
+                                                    },
+                                                    {
+                                                        "desc":  "Créez une URL mémorisable pour votre campagne d'événement.",
+                                                        "step":  "Générez un lien court"
+                                                    },
+                                                    {
+                                                        "desc":  "Partagez sur tous les canaux et surveillez les sources d'inscription.",
+                                                        "step":  "Promouvez et suivez"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Campagnes d'inscription à des conférences",
+                                                  "Promotion de rencontres",
+                                                  "Invitations à des événements virtuels",
+                                                  "Liens d'inscription à des ateliers",
+                                                  "Marketing d'expositions et salons professionnels",
+                                                  "Annonces d'intervenants"
+                                              ]
+                             },
+    "best-url-shortener":  {
+                               "title":  "Meilleur raccourcisseur d'URL",
+                               "subtitle":  "Trouvez l'outil de lien parfait",
+                               "description":  "Vous cherchez le meilleur raccourcisseur d'URL ? Comparez les fonctionnalités principales, notamment les liens illimités, les slugs personnalisés, les analytics de clics, les codes QR, les domaines de marque et les tarifs pour trouver l'outil adapté à vos besoins.",
+                               "metaDescription":  "Trouvez le meilleur raccourcisseur d'URL pour vos besoins. Comparez les fonctionnalités, les tarifs et les capacités. RELURL offre des liens illimités, des analytics, des codes QR et des domaines de marque.",
+                               "keywords":  [
+                                                "meilleur raccourcisseur d url",
+                                                "meilleur raccourcisseur de liens",
+                                                "meilleur raccourcisseur de lien",
+                                                "comparaison raccourcisseurs d url"
+                                            ],
+                               "features":  [
+                                                "Liens gratuits illimités",
+                                                "Slugs et alias personnalisés",
+                                                "Tableau de bord analytics de clics",
+                                                "Générateur de codes QR",
+                                                "Support de domaine de marque",
+                                                "Contrôles d'expiration des liens"
+                                            ],
+                               "howItWorks":  [
+                                                  {
+                                                      "desc":  "Examinez ce qui compte le plus : limites de liens, analytics, domaines personnalisés et tarifs.",
+                                                      "step":  "Comparez les fonctionnalités"
+                                                  },
+                                                  {
+                                                      "desc":  "Testez RELURL avec des liens gratuits illimités, des slugs personnalisés et des analytics.",
+                                                      "step":  "Essayez le meilleur outil"
+                                                  },
+                                                  {
+                                                      "desc":  "Migrez vos liens vers la plateforme qui correspond le mieux à vos besoins et à votre budget.",
+                                                      "step":  "Effectuez le changement"
+                                                  }
+                                              ],
+                               "useCases":  [
+                                                "Trouvez un raccourcisseur d'URL gratuit sans limite de liens",
+                                                "Choisissez un outil avec analytics intégrés",
+                                                "Sélectionnez une plateforme avec support de domaine personnalisé",
+                                                "Choisissez un raccourcisseur avec fonctionnalités de codes QR",
+                                                "Comparez les tarifs des meilleurs raccourcisseurs d'URL",
+                                                "Trouvez la meilleure solution pour la gestion de liens professionnels"
+                                            ],
+                               "faqs":  [
+                                            {
+                                                "a":  "Les fonctionnalités clés incluent la création illimitée de liens, les slugs personnalisés, les analytics de clics, la génération de codes QR, le support de domaine de marque, l'expiration des liens et l'accès API. Les tarifs et les limites de liens sont également des considérations importantes.",
+                                                "q":  "Que dois-je rechercher dans un raccourcisseur d'URL ?"
+                                            },
+                                            {
+                                                "a":  "RELURL offre l'un des plans gratuits les plus généreux avec des liens permanents illimités, des slugs personnalisés et des analytics de base. De nombreux concurrents limitent les plans gratuits à un nombre fixe de liens ou réservent certaines fonctionnalités aux niveaux payants.",
+                                                "q":  "RELURL est-il le meilleur raccourcisseur d'URL gratuit ?"
+                                            },
+                                            {
+                                                "a":  "Les plans gratuits varient considérablement. Certains offrent un nombre limité de liens par mois, d'autres expirent les liens inactifs. Les plans payants vont des abonnements mensuels abordables aux tarifs d'entreprise. Comparez les fonctionnalités par euro pour trouver le meilleur rapport qualité-prix.",
+                                                "q":  "Comment les raccourcisseurs d'URL se comparent-ils en termes de tarifs ?"
+                                            }
+                                        ]
+                           },
+    "healthcare-link-shortener":  {
+                                      "title":  "Raccourcisseur de liens pour la santé",
+                                      "subtitle":  "Simplifiez l'accès des patients",
+                                      "description":  "Raccourcissez les liens des portails patients, les URLs de prise de rendez-vous et les ressources de santé. Facilitez l'accès des patients à vos services.",
+                                      "metaDescription":  "Raccourcissez les liens des portails patients, les URLs de prise de rendez-vous et les ressources de santé. Gestion de liens sécurisée et adaptée à la confidentialité des données de santé avec RELURL.",
+                                      "keywords":  [
+                                                       "raccourcisseur de liens pour la santé",
+                                                       "générateur de liens médicaux",
+                                                       "liens portail patient"
+                                                   ],
+                                      "features":  [
+                                                       "Racourcissement de portail patient",
+                                                       "Suivi des liens de rendez-vous",
+                                                       "Partage de ressources santé",
+                                                       "Liens de localisation de cabinet",
+                                                       "Liens de vérification d'assurance",
+                                                       "Liens d'accès à la télésanté"
+                                                   ],
+                                      "howItWorks":  [
+                                                         {
+                                                             "desc":  "Saisissez votre lien de portail patient, de réservation ou de ressource.",
+                                                             "step":  "Collez l'URL de santé"
+                                                         },
+                                                         {
+                                                             "desc":  "Créez une URL simple et mémorisable pour les patients.",
+                                                             "step":  "Générez un lien court"
+                                                         },
+                                                         {
+                                                             "desc":  "Incluez-le dans les emails, SMS et documents imprimés.",
+                                                             "step":  "Partagez avec les patients"
+                                                         }
+                                                     ],
+                                      "useCases":  [
+                                                       "Accès au portail patient",
+                                                       "Liens de prise de rendez-vous",
+                                                       "Liens de sessions de télésanté",
+                                                       "Pages de renouvellement d'ordonnance",
+                                                       "Ressources d'éducation sanitaire",
+                                                       "Itinéraires vers le cabinet médical"
+                                                   ]
+                                  },
+    "branded-link-shortener":  {
+                                   "title":  "Raccourcisseur de liens de marque",
+                                   "subtitle":  "Mettez votre marque sur chaque lien",
+                                   "description":  "Raccourcissez des URLs avec votre domaine de marque personnalisé. Chaque lien devient un signal de confiance qui renforce la reconnaissance de votre marque à chaque clic.",
+                                   "metaDescription":  "Raccourcissez des URLs avec votre propre nom de marque. Créez des liens courts de marque qui renforcent la confiance, la reconnaissance et les taux de clics à chaque lien partagé.",
+                                   "keywords":  [
+                                                    "raccourcisseur de liens de marque",
+                                                    "urls courtes de marque",
+                                                    "liens de marque"
+                                                ],
+                                   "features":  [
+                                                    "Domaines de marque personnalisés",
+                                                    "Image de marque cohérente",
+                                                    "Liens renforçant la confiance",
+                                                    "Noms personnalisés en fin d'URL",
+                                                    "Tableau de bord de gestion des liens",
+                                                    "Analytics de clics par marque"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Ajoutez votre domaine de marque comme go.votremarque.com.",
+                                                          "step":  "Connectez votre domaine"
+                                                      },
+                                                      {
+                                                          "desc":  "Utilisez votre nom de marque dans le slug de l'URL courte.",
+                                                          "step":  "Créez des liens de marque"
+                                                      },
+                                                      {
+                                                          "desc":  "Surveillez les performances de clics sur tous les liens de marque.",
+                                                          "step":  "Suivez et optimisez"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Standardisation des liens à l'échelle de l'entreprise",
+                                                    "Campagnes marketing produits",
+                                                    "Liens de profils sur les réseaux sociaux",
+                                                    "Communiqués de presse et mentions médiatiques",
+                                                    "Documentation du support client",
+                                                    "Programmes partenaires et d'affiliation"
+                                                ],
+                                   "faqs":  [
+                                                {
+                                                    "a":  "Un domaine court de marque est un domaine personnalisé (comme go.votreentreprise.com) que vous utilisez pour vos liens raccourcis au lieu d'un domaine générique. Il maintient votre marque au premier plan dans chaque lien que vous partagez.",
+                                                    "q":  "Qu'est-ce qu'un domaine court de marque ?"
+                                                },
+                                                {
+                                                    "a":  "Depuis votre tableau de bord, allez dans Domaines et ajoutez votre domaine personnalisé. Vous devrez configurer un enregistrement CNAME avec votre fournisseur DNS. Une fois vérifié, tous les liens peuvent utiliser votre domaine de marque.",
+                                                    "q":  "Comment connecter mon propre domaine ?"
+                                                },
+                                                {
+                                                    "a":  "Oui. Les liens sur des domaines de marque bénéficient de taux de clics 30 à 40 % plus élevés car les utilisateurs font confiance aux domaines reconnaissables. Les liens de marque ont également un aspect professionnel dans les supports marketing et les réseaux sociaux.",
+                                                    "q":  "Le raccourcissement de liens de marque améliore-t-il la confiance ?"
+                                                }
+                                            ]
+                               },
+    "dynamic-qr-code-generator":  {
+                                      "title":  "Générateur de codes QR dynamiques",
+                                      "subtitle":  "Codes QR modifiables",
+                                      "description":  "Créez des codes QR dynamiques qui peuvent être mis à jour à tout moment sans réimpression. Suivez les scans et changez les destinations à la volée.",
+                                      "metaDescription":  "Créez des codes QR dynamiques qui peuvent être modifiés après impression. Suivez les scans et mettez à jour les destinations sans changer le code.",
+                                      "keywords":  [
+                                                       "code qr dynamique",
+                                                       "code qr modifiable",
+                                                       "code qr traçable",
+                                                       "générateur de code qr dynamique"
+                                                   ],
+                                      "features":  [
+                                                       "Modifiez la destination à tout moment",
+                                                       "Analytics de scans",
+                                                       "Aucune réimpression nécessaire",
+                                                       "Suivi des performances",
+                                                       "Gestion des campagnes",
+                                                       "Ciblage géographique"
+                                                   ],
+                                      "howItWorks":  [
+                                                         {
+                                                             "desc":  "Définissez votre URL de destination initiale",
+                                                             "step":  "Saisissez l'URL"
+                                                         },
+                                                         {
+                                                             "desc":  "Créez votre code QR dynamique et sauvegardez-le",
+                                                             "step":  "Générez et sauvegardez"
+                                                         },
+                                                         {
+                                                             "desc":  "Changez l'URL de destination quand vous le souhaitez",
+                                                             "step":  "Modifiez à tout moment"
+                                                         }
+                                                     ],
+                                      "useCases":  [
+                                                       "Campagnes marketing qui évoluent dans le temps",
+                                                       "Emballages produits avec informations actualisables",
+                                                       "Matériel d'événement avec mises à jour en temps réel",
+                                                       "Tests A/B de différentes pages de destination",
+                                                       "Annonces de reciblage",
+                                                       "Promotions saisonnières"
+                                                   ],
+                                      "faqs":  [
+                                                   {
+                                                       "a":  "Les codes QR statiques encodent la destination directement dans le code et ne peuvent pas être modifiés. Les codes QR dynamiques contiennent une URL courte qui redirige vers votre destination, vous pouvez donc mettre à jour la destination à tout moment sans changer l'image du QR.",
+                                                       "q":  "Quelle est la différence entre les codes QR statiques et dynamiques ?"
+                                                   },
+                                                   {
+                                                       "a":  "Oui, les codes QR dynamiques incluent des analytics de scans. Votre tableau de bord affiche le total des scans, les scans dans le temps, les types d'appareils, les systèmes d'exploitation et les localisations géographiques des scanneurs.",
+                                                       "q":  "Puis-je voir combien de fois mon code QR a été scanné ?"
+                                                   },
+                                                   {
+                                                       "a":  "Non, vous pouvez modifier les codes QR dynamiques autant de fois que vous le souhaitez. Le lien se met à jour immédiatement, et les codes QR existants imprimés sur vos matériaux fonctionneront toujours — ils redirigeront désormais vers la nouvelle destination.",
+                                                       "q":  "Y a-t-il une limite au nombre de fois que je peux modifier un code QR dynamique ?"
+                                                   }
+                                               ]
+                                  },
+    "how-to-create-qr-codes":  {
+                                   "title":  "Comment créer des codes QR",
+                                   "subtitle":  "Guide complet des codes QR",
+                                   "description":  "Apprenez à créer des codes QR pour tout usage. Des URLs aux identifiants WiFi, ce guide couvre tout ce que vous devez savoir sur la génération et l'utilisation des codes QR.",
+                                   "metaDescription":  "Apprenez à créer des codes QR pour URLs, WiFi, vCards et plus encore. Guide complet pour générer et utiliser des codes QR pour vos besoins professionnels et personnels.",
+                                   "keywords":  [
+                                                    "comment créer des codes qr",
+                                                    "guide générateur de code qr",
+                                                    "fabriquer un code qr",
+                                                    "tutoriel création de code qr"
+                                                ],
+                                   "features":  [
+                                                    "Génération de codes QR",
+                                                    "Types de données multiples",
+                                                    "Sortie haute résolution",
+                                                    "Codes QR dynamiques",
+                                                    "Analytics de scans",
+                                                    "Téléchargements prêts à imprimer"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Sélectionnez ce que votre code QR doit contenir : URL, texte, WiFi, vCard, email ou autres options.",
+                                                          "step":  "Choisissez votre type de données"
+                                                      },
+                                                      {
+                                                          "desc":  "Remplissez les détails en fonction du type de données choisi, comme l'URL ou les identifiants WiFi.",
+                                                          "step":  "Saisissez vos informations"
+                                                      },
+                                                      {
+                                                          "desc":  "Téléchargez votre code QR haute résolution et utilisez-le dans des supports imprimés, numériques ou signalétiques.",
+                                                          "step":  "Téléchargez et utilisez"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Créez des codes QR pour les menus de restaurant",
+                                                    "Générez des codes QR pour les cartes de visite",
+                                                    "Créez des codes QR pour l'accès WiFi",
+                                                    "Créez des codes QR pour l'inscription à des événements",
+                                                    "Générez des codes QR pour les emballages de produits",
+                                                    "Créez des codes QR dynamiques pour les campagnes marketing"
+                                                ],
+                                   "faqs":  [
+                                                {
+                                                    "a":  "Non, vous pouvez créer des codes QR directement dans votre navigateur en utilisant le générateur de codes QR de RELURL. Aucune installation de logiciel ni compétence technique requise.",
+                                                    "q":  "Ai-je besoin d'un logiciel spécial pour créer des codes QR ?"
+                                                },
+                                                {
+                                                    "a":  "Vous pouvez créer des codes QR pour URLs, texte brut, identifiants WiFi, contacts vCard, adresses email, numéros de téléphone, messages SMS et événements de calendrier.",
+                                                    "q":  "Quels types de codes QR puis-je créer ?"
+                                                },
+                                                {
+                                                    "a":  "Les codes QR statiques ont une destination fixe qui ne peut pas être modifiée. Les codes QR dynamiques redirigent via une URL courte, vous permettant de mettre à jour la destination, de suivre les scans et de modifier la cible sans réimpression.",
+                                                    "q":  "Quelle est la différence entre les codes QR statiques et dynamiques ?"
+                                                }
+                                            ]
+                               }
+}

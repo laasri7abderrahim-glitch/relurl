@@ -63,7 +63,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             name: "RELURL",
             url: "https://relurl.com",
             logo: "https://relurl.com/favicon.svg",
-            description: "RELURL is a free URL shortener service with analytics, QR codes, and branded short links.",
+            description: (messages as any).seo?.orgDescription || "RELURL is a free URL shortener service with analytics, QR codes, and branded short links.",
           }),
         }}
       />
@@ -76,7 +76,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             "@id": "https://relurl.com/#website",
             name: "RELURL",
             url: "https://relurl.com",
-            description: "Free URL shortener with analytics, QR codes, and branded links",
+            description: (messages as any).seo?.siteDescription || "Free URL shortener with analytics, QR codes, and branded links",
             potentialAction: {
               "@type": "SearchAction",
               target: "https://relurl.com/search?q={search_term_string}",

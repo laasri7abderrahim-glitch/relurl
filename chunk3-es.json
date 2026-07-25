@@ -1,0 +1,1600 @@
+{
+    "startup-link-shortener":  {
+                                   "title":  "Acortador de Enlaces para Startups",
+                                   "subtitle":  "Acelera el Crecimiento",
+                                   "description":  "Acorta páginas de aterrizaje, enlaces de Product Hunt y URLs de pitch decks. Rastrea el interés de inversores y usuarios desde cada canal.",
+                                   "metaDescription":  "Acorta páginas de aterrizaje, enlaces de Product Hunt y URLs de pitch decks. Rastrea el interés de inversores y usuarios desde cada canal con RELURL.",
+                                   "keywords":  [
+                                                    "acortador de enlaces para startups",
+                                                    "enlaces para lanzamiento de productos",
+                                                    "acortador de enlaces para pitch decks"
+                                                ],
+                                   "features":  [
+                                                    "Seguimiento de Páginas de Aterrizaje",
+                                                    "Analítica de Enlaces para Inversores",
+                                                    "Optimización para Product Hunt",
+                                                    "Atribución de Registros Beta",
+                                                    "Compartir Pitch Decks",
+                                                    "Panel de Métricas de Crecimiento"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Ingresa tu página de aterrizaje, enlace de Product Hunt o pitch.",
+                                                          "step":  "Pega tu URL de Startup"
+                                                      },
+                                                      {
+                                                          "desc":  "Crea una URL memorable para tu campaña de startup.",
+                                                          "step":  "Genera Enlace Corto"
+                                                      },
+                                                      {
+                                                          "desc":  "Comparte con inversores y usuarios, luego rastrea la tracción.",
+                                                          "step":  "Lanza y Mide"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Campañas de lanzamiento en Product Hunt",
+                                                    "Promoción de registros beta",
+                                                    "Compartir pitches con inversores",
+                                                    "Enlaces para días de demostración",
+                                                    "Distribución de comunicados de prensa",
+                                                    "Publicaciones de fundadores en redes sociales"
+                                                ]
+                               },
+    "url-shortener-no-ads":  {
+                                 "title":  "Acortador de URLs Sin Anuncios",
+                                 "subtitle":  "Enlaces Limpios y Sin Publicidad",
+                                 "description":  "Acortador de URLs sin anuncios con enlaces limpios y sin distracciones. Sin anuncios intersticiales, sin ventanas emergentes, sin spam. Solo redirección pura y rápida en el plan gratuito para siempre.",
+                                 "metaDescription":  "Acortador de URLs sin publicidad con enlaces limpios y sin distracciones. Sin anuncios intersticiales, sin ventanas emergentes, sin spam. Solo redirección rápida y pura en el plan gratuito para siempre.",
+                                 "keywords":  [
+                                                  "acortador de urls sin anuncios",
+                                                  "acortador de urls sin publicidad",
+                                                  "acortador de enlaces sin anuncios",
+                                                  "acortador de urls limpio"
+                                              ],
+                                 "features":  [
+                                                  "Compresión de URLs",
+                                                  "Gratis para Siempre",
+                                                  "Sin Caducidad",
+                                                  "Analítica de Clics",
+                                                  "Alias Personalizados",
+                                                  "Generación de Códigos QR"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Ingresa cualquier URL larga que quieras acortar en el campo de arriba.",
+                                                        "step":  "Pega tu URL"
+                                                    },
+                                                    {
+                                                        "desc":  "Haz clic para generar un enlace corto y limpio sin anuncios, ventanas emergentes ni distracciones.",
+                                                        "step":  "Obtén tu Enlace Sin Anuncios"
+                                                    },
+                                                    {
+                                                        "desc":  "Comparte tu enlace sin publicidad sabiendo que tu audiencia irá directo a tu destino.",
+                                                        "step":  "Comparte con Confianza"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Comparte enlaces en plataformas profesionales sin interrupciones publicitarias",
+                                                  "Envía enlaces limpios en correos y propuestas de negocio",
+                                                  "Crea enlaces cortos sin anuncios para presentaciones con clientes",
+                                                  "Comparte enlaces en contextos académicos y de investigación",
+                                                  "Genera confianza con tu audiencia usando redirecciones sin publicidad"
+                                              ],
+                                 "faqs":  [
+                                              {
+                                                  "a":  "No, RELURL nunca muestra anuncios intersticiales ni ventanas emergentes. Los usuarios van directamente a tu URL de destino.",
+                                                  "q":  "¿RELURL muestra anuncios antes de redirigir a mi enlace?"
+                                              },
+                                              {
+                                                  "a":  "Sí, el plan gratuito para siempre incluye acortamiento de enlaces completamente libre de anuncios, sin compromisos.",
+                                                  "q":  "¿La experiencia sin anuncios está disponible en el plan gratuito?"
+                                              },
+                                              {
+                                                  "a":  "RELURL ofrece planes premium con funciones avanzadas para empresas, mientras mantiene el servicio básico gratuito y sin anuncios.",
+                                                  "q":  "¿Cómo gana dinero RELURL si no muestra anuncios?"
+                                              }
+                                          ]
+                             },
+    "youtube-link-generator":  {
+                                   "title":  "Generador de Enlaces de YouTube",
+                                   "subtitle":  "Comparte Videos de Forma más Inteligente",
+                                   "description":  "Crea enlaces cortos y rastreables para YouTube. Comparte videos con marcas de tiempo personalizadas, enlaces de canales y URLs de listas de reproducción desde un solo panel.",
+                                   "metaDescription":  "Genera enlaces cortos de YouTube con marcas de tiempo personalizadas. Crea URLs de videos rastreables para campañas de marketing, correos electrónicos y redes sociales.",
+                                   "keywords":  [
+                                                    "generador de enlaces de youtube",
+                                                    "enlace corto de youtube",
+                                                    "enlace de video de youtube"
+                                                ],
+                                   "features":  [
+                                                    "Enlaces con Marca de Tiempo",
+                                                    "URLs de Canales",
+                                                    "Enlaces de Listas de Reproducción",
+                                                    "Alias Personalizados",
+                                                    "Analítica de Clics",
+                                                    "Código QR para Videos"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Ingresa la URL de tu video, canal o lista de reproducción.",
+                                                          "step":  "Pega la URL de YouTube"
+                                                      },
+                                                      {
+                                                          "desc":  "Opcionalmente, establece un tiempo de inicio para el video.",
+                                                          "step":  "Añade Marcas de Tiempo"
+                                                      },
+                                                      {
+                                                          "desc":  "Obtén una URL corta, limpia y rastreable.",
+                                                          "step":  "Comparte Enlace Corto"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Campañas de marketing de video",
+                                                    "Enlaces de video en boletines por correo",
+                                                    "Compartir videos en redes sociales",
+                                                    "Enlaces para incrustar en blogs",
+                                                    "Enlaces para contenido de cursos",
+                                                    "Videos de demostración de productos"
+                                                ]
+                               },
+    "url-shortener-in-uk":  {
+                                "title":  "Acortador de URLs en Reino Unido",
+                                "subtitle":  "El Mejor para Usuarios del Reino Unido",
+                                "description":  "El mejor acortador de URLs en el Reino Unido para empresas y profesionales del marketing. Acortamiento rápido de enlaces, compatible con GDPR, con plan gratuito para siempre y analíticas avanzadas para usuarios del Reino Unido.",
+                                "metaDescription":  "El mejor acortador de URLs en el Reino Unido para empresas y profesionales del marketing. Acortamiento rápido de enlaces, compatible con GDPR, con plan gratuito para siempre y analíticas avanzadas para usuarios del Reino Unido.",
+                                "keywords":  [
+                                                 "acortador de urls reino unido",
+                                                 "mejor acortador de urls en reino unido",
+                                                 "acortador de enlaces uk",
+                                                 "acortador de urls británico"
+                                             ],
+                                "features":  [
+                                                 "Compresión de URLs",
+                                                 "Analítica de Clics",
+                                                 "Cumplimiento GDPR",
+                                                 "Slugs de Marca Personalizados",
+                                                 "Seguimiento de Campañas",
+                                                 "Sin Caducidad"
+                                             ],
+                                "howItWorks":  [
+                                                   {
+                                                       "desc":  "Pega cualquier URL de tu sitio web empresarial británico, tienda en línea o campaña de marketing.",
+                                                       "step":  "Ingresa tu Enlace"
+                                                   },
+                                                   {
+                                                       "desc":  "Genera un enlace corto y aplícale un slug personalizado que refleje tu identidad de marca británica.",
+                                                       "step":  "Acorta y Personaliza"
+                                                   },
+                                                   {
+                                                       "desc":  "Monitorea los clics y la interacción de tu audiencia británica con analíticas regionales detalladas.",
+                                                       "step":  "Rastrea Campañas"
+                                                   }
+                                               ],
+                                "useCases":  [
+                                                 "Mide con precisión el rendimiento de campañas de marketing en el Reino Unido",
+                                                 "Crea enlaces cortos con marca para empresas con sede en Londres",
+                                                 "Comparte enlaces de productos en redes sociales del Reino Unido",
+                                                 "Gestiona el seguimiento de enlaces compatible con GDPR para clientes británicos",
+                                                 "Genera códigos QR para negocios minoristas y hoteleros en el Reino Unido"
+                                             ],
+                                "faqs":  [
+                                             {
+                                                 "a":  "Sí, RELURL sigue las directrices de GDPR para la protección de datos y privacidad, lo que lo hace adecuado para empresas británicas.",
+                                                 "q":  "¿RELURL cumple con el GDPR para usuarios del Reino Unido?"
+                                             },
+                                             {
+                                                 "a":  "Sí, RELURL proporciona analíticas geográficas para que puedas ver exactamente cuántos clics provienen del Reino Unido.",
+                                                 "q":  "¿Puedo rastrear clics específicamente desde el Reino Unido?"
+                                             },
+                                             {
+                                                 "a":  "Sí, RELURL ofrece un generoso plan gratuito para siempre que es perfecto para startups y pequeñas empresas británicas.",
+                                                 "q":  "¿RELURL es gratuito para empresas del Reino Unido?"
+                                             }
+                                         ]
+                            },
+    "snapchat-link-generator":  {
+                                    "title":  "Generador de Enlaces para Snapchat",
+                                    "subtitle":  "Impulsa la Interacción en Snap",
+                                    "description":  "Genera enlaces cortos para historias, snaps y spotlights de Snapchat. Rastrea los swipe-ups y mejora tu rendimiento de marketing en Snapchat.",
+                                    "metaDescription":  "Genera enlaces cortos para historias, snaps y spotlights de Snapchat. Rastrea los swipe-ups y aumenta la interacción con RELURL.",
+                                    "keywords":  [
+                                                     "generador de enlaces para snapchat",
+                                                     "enlaces para historias de snapchat",
+                                                     "marketing en snapchat"
+                                                 ],
+                                    "features":  [
+                                                     "Seguimiento de Swipe-Ups",
+                                                     "Analítica de Enlaces de Historias",
+                                                     "Optimización de Spotlights",
+                                                     "Enlaces Personalizados con Marca",
+                                                     "Integración con Lentes AR",
+                                                     "Atribución de Anuncios en Snap"
+                                                 ],
+                                    "howItWorks":  [
+                                                       {
+                                                           "desc":  "Ingresa la página a la que quieres enlazar desde Snapchat.",
+                                                           "step":  "Pega tu URL"
+                                                       },
+                                                       {
+                                                           "desc":  "Genera una URL limpia para tu snap o historia.",
+                                                           "step":  "Crea Enlace Corto"
+                                                       },
+                                                       {
+                                                           "desc":  "Usa tu enlace corto en snaps, historias y spotlights.",
+                                                           "step":  "Añade a Snap"
+                                                       }
+                                                   ],
+                                    "useCases":  [
+                                                     "Promociones en historias de Snapchat",
+                                                     "Enlaces para colaboraciones con influencers",
+                                                     "Snaps de lanzamiento de productos",
+                                                     "Promoción de eventos a través de Snapchat",
+                                                     "Enlaces para campañas con lentes AR",
+                                                     "Páginas de aterrizaje para anuncios en Snap"
+                                                 ]
+                                },
+    "signal-link-generator":  {
+                                  "title":  "Generador de Enlaces para Signal",
+                                  "subtitle":  "Enlaces de Mensajería Hechos Fáciles",
+                                  "description":  "Genera enlaces de mensajería de Signal limpios y rastreables con RELURL. Crea URLs cortas para invitaciones a grupos de Signal, enlaces de perfil y conversaciones.",
+                                  "metaDescription":  "Genera enlaces de mensajería de Signal limpios y rastreables con RELURL. Crea URLs cortas para invitaciones a grupos de Signal, enlaces de perfil y conversaciones.",
+                                  "keywords":  [
+                                                   "generador de enlaces para signal",
+                                                   "acortador de urls para signal",
+                                                   "enlace de mensaje de signal",
+                                                   "enlace de invitación a grupo de signal"
+                                               ],
+                                  "features":  [
+                                                   "Compresión de URLs",
+                                                   "Alias Personalizados",
+                                                   "Analítica de Clics",
+                                                   "Generación de Códigos QR",
+                                                   "Botones para Compartir en Redes Sociales",
+                                                   "Gratis para Siempre"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Copia la invitación al grupo de Signal o el enlace de perfil que quieras compartir.",
+                                                         "step":  "Copia tu Enlace de Signal"
+                                                     },
+                                                     {
+                                                         "desc":  "Pégalo arriba y obtén instantáneamente una URL corta, limpia y compacta lista para compartir.",
+                                                         "step":  "Genera Enlace Corto"
+                                                     },
+                                                     {
+                                                         "desc":  "Publica tu enlace corto de Signal en redes sociales, correos electrónicos o en tu sitio web para facilitar el acceso.",
+                                                         "step":  "Comparte en Cualquier Lugar"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Crea enlaces cortos de invitación a grupos de Signal para promocionar tu comunidad",
+                                                   "Comparte enlaces de perfil de Signal en biografías de redes sociales",
+                                                   "Rastrea cuántas personas se unen a tu grupo de Signal a través de enlaces compartidos",
+                                                   "Genera códigos QR para invitaciones a grupos de Signal en eventos",
+                                                   "Incluye enlaces limpios de Signal en boletines y firmas de correo"
+                                               ],
+                                  "faqs":  [
+                                               {
+                                                   "a":  "Sí, puedes crear alias personalizados como relurl.co/signal-group para facilitar su recordatorio y uso compartido.",
+                                                   "q":  "¿Puedo personalizar el alias de mi enlace corto de Signal?"
+                                               },
+                                               {
+                                                   "a":  "Sí, los enlaces de Signal funcionan perfectamente tanto en dispositivos móviles como de escritorio con la redirección adecuada a la aplicación.",
+                                                   "q":  "¿El enlace de Signal funciona en dispositivos móviles?"
+                                               },
+                                               {
+                                                   "a":  "Por supuesto. RELURL proporciona analíticas de clics para que puedas ver la interacción con tus invitaciones de Signal.",
+                                                   "q":  "¿Puedo rastrear cuántas personas hacen clic en mi enlace de Signal?"
+                                               }
+                                           ]
+                              },
+    "url-shortener-api":  {
+                              "title":  "API de Acortador de URLs",
+                              "subtitle":  "Integra Enlaces Cortos en Todas Partes",
+                              "description":  "Integra las capacidades de acortamiento de URLs de RELURL en tus aplicaciones, flujos de trabajo y plataformas usando nuestra potente API para desarrolladores. Crea y gestiona enlaces cortos mediante programación.",
+                              "metaDescription":  "Integra el acortamiento de URLs de RELURL en tus aplicaciones con nuestra API para desarrolladores. Crea, gestiona y rastrea enlaces cortos mediante programación.",
+                              "keywords":  [
+                                               "api de acortador de urls",
+                                               "api de acortador de enlaces",
+                                               "api para acortar urls",
+                                               "api acortador de urls"
+                                           ],
+                              "features":  [
+                                               "Endpoints RESTful",
+                                               "Creación Programática de Enlaces",
+                                               "Acortamiento Masivo de URLs",
+                                               "Integración de Analíticas",
+                                               "Soporte para Slugs Personalizados",
+                                               "Respuestas en JSON"
+                                           ],
+                              "howItWorks":  [
+                                                 {
+                                                     "desc":  "Regístrate para obtener una cuenta gratuita de RELURL y genera tu clave de API desde el panel de control.",
+                                                     "step":  "Obtén tu Clave de API"
+                                                 },
+                                                 {
+                                                     "desc":  "Usa nuestros endpoints RESTful para crear, gestionar y rastrear enlaces cortos en tus aplicaciones.",
+                                                     "step":  "Hace Llamadas a la API"
+                                                 },
+                                                 {
+                                                     "desc":  "Integra el acortamiento de enlaces en tus flujos de trabajo, desde plugins de CMS hasta automatización de marketing.",
+                                                     "step":  "Escala Automáticamente"
+                                                 }
+                                             ],
+                              "useCases":  [
+                                               "Automatiza la creación de enlaces en tu aplicación",
+                                               "Integra con tu CMS para acortar enlaces automáticamente",
+                                               "Construye flujos de trabajo personalizados para gestionar URLs",
+                                               "Crea enlaces cortos en lote desde tu base de datos",
+                                               "Obtén datos de analíticas mediante programación",
+                                               "Conéctate con herramientas de automatización de marketing"
+                                           ],
+                              "faqs":  [
+                                           {
+                                               "a":  "Sí, la API de acortador de URLs está disponible en todos los planes, incluido el nivel gratuito. Los niveles superiores incluyen límites de velocidad más altos y funciones adicionales.",
+                                               "q":  "¿La API es gratuita?"
+                                           },
+                                           {
+                                               "a":  "La API utiliza autenticación mediante clave de API. Puedes generar y gestionar tus claves de API desde la configuración de tu panel de RELURL.",
+                                               "q":  "¿Qué tipo de autenticación usa la API?"
+                                           },
+                                           {
+                                               "a":  "Los límites de velocidad varían según el plan. Los usuarios del nivel gratuito obtienen límites diarios generosos, mientras que los planes de pago incluyen límites más altos para aplicaciones en producción.",
+                                               "q":  "¿Qué límites de velocidad aplican a la API?"
+                                           }
+                                       ]
+                          },
+    "travel-link-shortener":  {
+                                  "title":  "Acortador de Enlaces para Viajes",
+                                  "subtitle":  "Simplifica tus Enlaces de Viaje",
+                                  "description":  "Acorta enlaces de reservas, páginas de itinerarios y guías de destino. Rastrea los clics de viajeros y optimiza tus campañas de marketing de viajes.",
+                                  "metaDescription":  "Acorta enlaces de reservas de viajes, páginas de itinerarios y guías de destino. Rastrea los clics de viajeros y optimiza tu marketing de viajes.",
+                                  "keywords":  [
+                                                   "acortador de enlaces para viajes",
+                                                   "generador de enlaces de reservas",
+                                                   "enlaces de marketing de viajes"
+                                               ],
+                                  "features":  [
+                                                   "Seguimiento de Enlaces de Reservas",
+                                                   "Acortamiento de Guías de Destino",
+                                                   "Enlaces para Compartir Itinerarios",
+                                                   "Analítica Multicanal",
+                                                   "Soporte para Campañas Estacionales",
+                                                   "Gestión de Enlaces de Afiliados"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Ingresa el enlace de tu reserva, itinerario o guía de destino.",
+                                                         "step":  "Pega la URL de Viaje"
+                                                     },
+                                                     {
+                                                         "desc":  "Crea una URL limpia y memorable para los viajeros.",
+                                                         "step":  "Genera Enlace Corto"
+                                                     },
+                                                     {
+                                                         "desc":  "Publícalo en redes sociales, correos y anuncios para impulsar reservas.",
+                                                         "step":  "Comparte y Convierte"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Promociones de reservas hoteleras",
+                                                   "Enlaces de paquetes turísticos",
+                                                   "Enlaces de afiliados para blogs de viajes",
+                                                   "Compartir itinerarios con grupos",
+                                                   "Anuncios de ofertas aéreas",
+                                                   "Distribución de guías de destino"
+                                               ]
+                              },
+    "shorten-video-url":  {
+                              "title":  "Acortar URL de Video",
+                              "subtitle":  "Mejor forma de Compartir Videos",
+                              "description":  "Acorta URLs de archivos de video para compartirlos sin problemas en redes sociales, correo electrónico y aplicaciones de mensajería. Los enlaces limpios hacen que tu contenido de video sea más accesible y rastreable.",
+                              "metaDescription":  "Acorta URLs de video para compartirlos sin complicaciones en redes sociales, mensajería y correo electrónico. Haz que tus enlaces de video sean elegantes, rastreables y profesionales.",
+                              "keywords":  [
+                                               "acortar url de video",
+                                               "acortador de urls de video",
+                                               "enlace corto de video",
+                                               "acortador de enlaces de video"
+                                           ],
+                              "features":  [
+                                               "Compresión de URLs de Video",
+                                               "Soporte para Todos los Formatos",
+                                               "Slugs Personalizados con Marca",
+                                               "Analítica de Clics",
+                                               "Listo para Reproducción Directa",
+                                               "Generación de Códigos QR"
+                                           ],
+                              "howItWorks":  [
+                                                 {
+                                                     "desc":  "Copia la URL directa del archivo de video que quieres compartir.",
+                                                     "step":  "Pega la URL del Video"
+                                                 },
+                                                 {
+                                                     "desc":  "Genera un enlace corto y limpio para tu contenido de video.",
+                                                     "step":  "Acorta al Instante"
+                                                 },
+                                                 {
+                                                     "desc":  "Distribuye el enlace corto por correo electrónico, redes sociales o mensajería.",
+                                                     "step":  "Comparte tu Video"
+                                                 }
+                                             ],
+                              "useCases":  [
+                                               "Comparte videos promocionales en campañas de correo",
+                                               "Envía archivos de video a través de aplicaciones de mensajería",
+                                               "Incluye enlaces de video en publicaciones de redes sociales",
+                                               "Distribuye videos de capacitación a equipos",
+                                               "Rastrea vistas en contenido de video compartido",
+                                               "Crea códigos QR para acceso a videos"
+                                           ],
+                              "faqs":  [
+                                           {
+                                               "a":  "Sí, cualquier URL directa de archivo de video se puede acortar, incluyendo MP4, WebM, MOV, AVI y otros formatos comunes. El enlace corto redirige al archivo de video original.",
+                                               "q":  "¿Puedo acortar cualquier URL de video?"
+                                           },
+                                           {
+                                               "a":  "El enlace corto redirige a tu URL de video original. Para archivos de video directos, el navegador o dispositivo gestionará la reproducción normalmente después de la redirección.",
+                                               "q":  "¿El enlace corto funcionará para transmitir video en streaming?"
+                                           },
+                                           {
+                                               "a":  "Sí, las analíticas de clics muestran cuántas veces se accedió a tu enlace de video acortado. Esto te ayuda a medir la interacción con tu contenido de video en diferentes canales de distribución.",
+                                               "q":  "¿Puedo rastrear cuántas veces se vio mi video?"
+                                           }
+                                       ]
+                          },
+    "url-shortener-for-social-media":  {
+                                           "title":  "Acortador de URLs para Redes Sociales",
+                                           "subtitle":  "Comparte de Forma más Inteligente",
+                                           "description":  "El acortador de URLs perfecto para redes sociales. Acorta enlaces para Twitter, Instagram, LinkedIn, TikTok y Facebook. Ahorra caracteres y rastrea la interacción en todas las plataformas.",
+                                           "metaDescription":  "El acortador de URLs perfecto para redes sociales. Acorta enlaces para Twitter, Instagram, LinkedIn, TikTok y Facebook. Ahorra caracteres y rastrea la interacción en todas las plataformas.",
+                                           "keywords":  [
+                                                            "acortador de urls para redes sociales",
+                                                            "acortador de enlaces para redes sociales",
+                                                            "acortar enlaces para twitter",
+                                                            "acortar enlaces para instagram"
+                                                        ],
+                                           "features":  [
+                                                            "Compresión de URLs",
+                                                            "Analítica de Clics",
+                                                            "Botones para Compartir en Redes Sociales",
+                                                            "Seguimiento de Campañas",
+                                                            "Generación de Códigos QR",
+                                                            "Alias Personalizados"
+                                                        ],
+                                           "howItWorks":  [
+                                                              {
+                                                                  "desc":  "Toma la URL que quieres compartir en redes sociales y pégala en el campo de arriba.",
+                                                                  "step":  "Copia tu Enlace"
+                                                              },
+                                                              {
+                                                                  "desc":  "Obtén un enlace corto y compacto que ahorra caracteres en Twitter, biografías de Instagram y TikTok.",
+                                                                  "step":  "Acorta y Personaliza"
+                                                              },
+                                                              {
+                                                                  "desc":  "Comparte tu enlace corto en todas las plataformas y monitorea qué canal social genera más tráfico.",
+                                                                  "step":  "Publica y Rastrea"
+                                                              }
+                                                          ],
+                                           "useCases":  [
+                                                            "Ahorra valiosos caracteres en publicaciones de Twitter/X con enlaces cortos",
+                                                            "Crea enlaces de biografía limpios para perfiles de Instagram y TikTok",
+                                                            "Rastrea qué plataforma social genera más tráfico de referencia",
+                                                            "Comparte enlaces rastreables en publicaciones y artículos de LinkedIn",
+                                                            "Crea enlaces cortos personalizados para campañas de anuncios en Facebook"
+                                                        ],
+                                           "faqs":  [
+                                                        {
+                                                            "a":  "Sí, RELURL conserva los metadatos de Open Graph y Twitter Card para que las vistas previas de tus enlaces se muestren correctamente en todas las plataformas.",
+                                                            "q":  "¿La vista previa de mi enlace se mostrará en redes sociales?"
+                                                        },
+                                                        {
+                                                            "a":  "Por supuesto. Las analíticas de RELURL desglosan los clics por referente para que sepas exactamente qué plataforma tiene el mejor rendimiento.",
+                                                            "q":  "¿Puedo rastrear clics desde diferentes plataformas sociales?"
+                                                        },
+                                                        {
+                                                            "a":  "Sí, los dominios personalizados ayudan a construir reconocimiento de marca incluso en enlaces cortos de biografía en Instagram y TikTok.",
+                                                            "q":  "¿Puedo usar dominios personalizados para enlaces de redes sociales?"
+                                                        }
+                                                    ]
+                                       },
+    "slack-link-generator":  {
+                                 "title":  "Generador de Enlaces para Slack",
+                                 "subtitle":  "Enlaces para Comunicación en Equipo",
+                                 "description":  "Genera enlaces de Slack limpios y rastreables con RELURL. Crea URLs cortas para invitaciones a Slack, canales, mensajes y espacios de trabajo para compartir más fácilmente en equipo.",
+                                 "metaDescription":  "Genera enlaces de Slack limpios y rastreables con RELURL. Crea URLs cortas para invitaciones a Slack, canales, mensajes y espacios de trabajo para compartir más fácilmente en equipo.",
+                                 "keywords":  [
+                                                  "generador de enlaces para slack",
+                                                  "acortador de urls para slack",
+                                                  "enlace de invitación a slack",
+                                                  "acortador de enlaces para canales de slack"
+                                              ],
+                                 "features":  [
+                                                  "Compresión de URLs",
+                                                  "Alias Personalizados",
+                                                  "Analítica de Clics",
+                                                  "Colaboración en Equipo",
+                                                  "Protección con Contraseña",
+                                                  "Control de Caducidad de Enlaces"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Copia el enlace del canal, mensaje, invitación al espacio de trabajo o hilo de Slack que quieras acortar.",
+                                                        "step":  "Copia tu URL de Slack"
+                                                    },
+                                                    {
+                                                        "desc":  "Pégalo arriba y obtén un enlace corto y compacto, fácil de compartir con tu equipo.",
+                                                        "step":  "Genera Enlace Corto"
+                                                    },
+                                                    {
+                                                        "desc":  "Distribuye tu enlace corto de Slack en correos, documentos y canales de comunicación para acceso rápido.",
+                                                        "step":  "Comparte entre Equipos"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Crea enlaces cortos de invitación a Slack para incorporar miembros a tu comunidad",
+                                                  "Comparte enlaces de canales de Slack en documentación y wikis",
+                                                  "Rastrea cuántos miembros del equipo acceden a recursos compartidos de Slack",
+                                                  "Protege con contraseña los enlaces de invitación a espacios de trabajo de Slack",
+                                                  "Establece fechas de caducidad en enlaces de acceso temporal a canales de Slack"
+                                              ],
+                                 "faqs":  [
+                                              {
+                                                  "a":  "Sí, RELURL ofrece protección con contraseña para que solo personas autorizadas puedan acceder a tus invitaciones de Slack.",
+                                                  "q":  "¿Puedo proteger con contraseña mi enlace de invitación a Slack?"
+                                              },
+                                              {
+                                                  "a":  "Por supuesto. El control de caducidad de enlaces te permite desactivar automáticamente los enlaces de invitación a Slack después de un tiempo determinado.",
+                                                  "q":  "¿Puedo establecer una fecha de caducidad para mi enlace corto de Slack?"
+                                              },
+                                              {
+                                                  "a":  "Sí, el enlace corto redirige correctamente tanto si se abre en la aplicación de Slack como en un navegador web.",
+                                                  "q":  "¿El enlace corto funcionará en la aplicación de Slack?"
+                                              }
+                                          ]
+                             },
+    "url-tracking-tool":  {
+                              "title":  "Herramienta de Seguimiento de URLs",
+                              "subtitle":  "Conoce Cada Clic",
+                              "description":  "Rastrea cada clic en tus enlaces con analíticas detalladas. Descubre dónde está tu audiencia, qué dispositivos usan y cómo encuentran tu contenido.",
+                              "metaDescription":  "Rastrea cada clic en tus URLs acortadas. Obtén analíticas en tiempo real sobre ubicación, dispositivos, referentes y más con RELURL.",
+                              "keywords":  [
+                                               "herramienta de seguimiento de urls",
+                                               "seguimiento de enlaces",
+                                               "rastreo de clics"
+                                           ],
+                              "features":  [
+                                               "Datos de Clics en Tiempo Real",
+                                               "Analítica Geográfica",
+                                               "Detección de Dispositivos y Navegadores",
+                                               "Seguimiento de Referentes",
+                                               "Soporte para Parámetros UTM",
+                                               "Seguimiento de Eventos Personalizados"
+                                           ],
+                              "howItWorks":  [
+                                                 {
+                                                     "desc":  "Acorta tu URL para habilitar el seguimiento de clics.",
+                                                     "step":  "Crea un Enlace Rastreable"
+                                                 },
+                                                 {
+                                                     "desc":  "Distribuye tu enlace rastreable a través de todos tus canales.",
+                                                     "step":  "Comparte tu Enlace"
+                                                 },
+                                                 {
+                                                     "desc":  "Monitorea clics, ubicaciones e interacción en tiempo real.",
+                                                     "step":  "Ve las Analíticas"
+                                                 }
+                                             ],
+                              "useCases":  [
+                                               "Medición de campañas de marketing",
+                                               "Seguimiento de rendimiento de contenido",
+                                               "Analíticas de redes sociales",
+                                               "Seguimiento de clics en correos electrónicos",
+                                               "Comparación de enlaces en pruebas A/B",
+                                               "Monitoreo de campañas con influencers"
+                                           ]
+                          },
+    "twitch-link-generator":  {
+                                  "title":  "Generador de Enlaces para Twitch",
+                                  "subtitle":  "Haz Crecer tu Canal",
+                                  "description":  "Genera enlaces cortos para transmisiones, canales y clips de Twitch. Rastrea la interacción de los espectadores y haz crecer tu audiencia de Twitch desde todas las plataformas.",
+                                  "metaDescription":  "Genera enlaces cortos para transmisiones, canales y clips de Twitch. Rastrea la interacción de los espectadores y haz crecer tu audiencia de Twitch con RELURL.",
+                                  "keywords":  [
+                                                   "generador de enlaces para twitch",
+                                                   "enlaces de transmisión de twitch",
+                                                   "marketing en twitch"
+                                               ],
+                                  "features":  [
+                                                   "Seguimiento de Enlaces de Transmisión",
+                                                   "Analítica de Compartición de Clips",
+                                                   "Optimización de Página de Canal",
+                                                   "Soporte para Enlaces de Raid",
+                                                   "Integración con Tienda de Merch",
+                                                   "Atribución de Fuente de Seguidores"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Ingresa el enlace de tu canal, transmisión o clip.",
+                                                         "step":  "Pega la URL de Twitch"
+                                                     },
+                                                     {
+                                                         "desc":  "Crea una URL limpia para tu contenido de Twitch.",
+                                                         "step":  "Genera Enlace Corto"
+                                                     },
+                                                     {
+                                                         "desc":  "Publícalo en redes sociales y rastrea las fuentes de espectadores.",
+                                                         "step":  "Comparte y Rastrea"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Promoción de transmisiones en redes sociales",
+                                                   "Compartir clips entre plataformas",
+                                                   "Enlaces para raids de canales",
+                                                   "Promoción de tienda de merchandising",
+                                                   "Páginas de aterrizaje para patrocinadores",
+                                                   "Enlaces para eventos comunitarios"
+                                               ]
+                              },
+    "url-shortener-for-business":  {
+                                       "title":  "Acortador de URLs para Empresas",
+                                       "subtitle":  "Enlaces de Nivel Empresarial",
+                                       "description":  "Acortador de URLs de nivel empresarial para negocios. Enlaces con marca, colaboración en equipo, analíticas detalladas y dominios personalizados para gestionar la infraestructura de enlaces de tu empresa de manera efectiva.",
+                                       "metaDescription":  "Acortador de URLs de nivel empresarial para negocios. Enlaces con marca, colaboración en equipo, analíticas detalladas y dominios personalizados para gestionar la infraestructura de enlaces de tu empresa de manera efectiva.",
+                                       "keywords":  [
+                                                        "acortador de urls para empresas",
+                                                        "acortador de urls empresarial",
+                                                        "acortador de enlaces corporativo",
+                                                        "acortador de urls corporativo"
+                                                    ],
+                                       "features":  [
+                                                        "Dominios Personalizados",
+                                                        "Colaboración en Equipo",
+                                                        "Analíticas Avanzadas",
+                                                        "Slugs Personalizados con Marca",
+                                                        "Acortamiento Masivo",
+                                                        "Acceso a la API"
+                                                    ],
+                                       "howItWorks":  [
+                                                          {
+                                                              "desc":  "Regístrate para obtener una cuenta empresarial gratuita y configura el perfil de tu empresa y la estructura de equipo.",
+                                                              "step":  "Crea tu Cuenta Empresarial"
+                                                          },
+                                                          {
+                                                              "desc":  "Configura dominios personalizados y slugs con marca para que cada enlace corto refleje la identidad de tu empresa.",
+                                                              "step":  "Personaliza tus Enlaces"
+                                                          },
+                                                          {
+                                                              "desc":  "Rastrea todos los enlaces del equipo, genera informes y optimiza tus campañas de marketing con analíticas detalladas.",
+                                                              "step":  "Analiza el Rendimiento"
+                                                          }
+                                                      ],
+                                       "useCases":  [
+                                                        "Personaliza todos los enlaces cortos de la empresa con dominios propios",
+                                                        "Colabora con equipos de marketing en enlaces de campaña",
+                                                        "Mide el ROI de las campañas con analíticas de nivel empresarial",
+                                                        "Gestiona enlaces mediante programación a través de la API REST",
+                                                        "Genera enlaces de productos en lote para catálogos de comercio electrónico"
+                                                    ],
+                                       "faqs":  [
+                                                    {
+                                                        "a":  "Sí, RELURL ofrece funciones de colaboración en equipo para que todo tu equipo de marketing pueda crear y gestionar enlaces juntos.",
+                                                        "q":  "¿Todo mi equipo puede usar RELURL bajo una misma cuenta?"
+                                                    },
+                                                    {
+                                                        "a":  "Por supuesto. Los dominios personalizados te permiten crear enlaces cortos con marca como go.tuempresa.com/producto que generan confianza.",
+                                                        "q":  "¿Puedo usar mi propio dominio para enlaces cortos empresariales?"
+                                                    },
+                                                    {
+                                                        "a":  "Sí, RELURL proporciona una API REST completa para la creación, gestión y exportación de analíticas de enlaces mediante programación.",
+                                                        "q":  "¿Hay una API para integrar RELURL con nuestras herramientas?"
+                                                    }
+                                                ]
+                                   },
+    "wechat-link-generator":  {
+                                  "title":  "Generador de Enlaces para WeChat",
+                                  "subtitle":  "Enlaces Listos para WeChat",
+                                  "description":  "Genera enlaces de WeChat limpios y rastreables con RELURL. Crea URLs cortas para invitaciones a grupos de WeChat, cuentas oficiales y mini-programas para compartir en todos los canales.",
+                                  "metaDescription":  "Genera enlaces de WeChat limpios y rastreables con RELURL. Crea URLs cortas para invitaciones a grupos de WeChat, cuentas oficiales y mini-programas para compartir en todos los canales.",
+                                  "keywords":  [
+                                                   "generador de enlaces para wechat",
+                                                   "acortador de urls para wechat",
+                                                   "enlace de grupo de wechat",
+                                                   "enlace para compartir en wechat"
+                                               ],
+                                  "features":  [
+                                                   "Compresión de URLs",
+                                                   "Alias Personalizados",
+                                                   "Analítica de Clics",
+                                                   "Generación de Códigos QR",
+                                                   "Seguimiento de Campañas",
+                                                   "Sin Caducidad"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Copia la invitación al grupo de WeChat, cuenta oficial o enlace de mini-programa que quieras compartir.",
+                                                         "step":  "Copia tu URL de WeChat"
+                                                     },
+                                                     {
+                                                         "desc":  "Pega el enlace arriba y genera una URL corta y limpia con un alias personalizado opcional.",
+                                                         "step":  "Acorta y Personaliza"
+                                                     },
+                                                     {
+                                                         "desc":  "Comparte tu enlace corto de WeChat en sitios web, redes sociales y materiales de marketing.",
+                                                         "step":  "Promociona tu Canal"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Crea enlaces cortos de invitación a grupos de WeChat para hacer crecer tu comunidad",
+                                                   "Comparte enlaces de cuentas oficiales de WeChat en sitios web y blogs",
+                                                   "Rastrea cuántos usuarios hacen clic en tus enlaces de promoción de WeChat",
+                                                   "Genera códigos QR para grupos de WeChat en eventos presenciales",
+                                                   "Incluye enlaces limpios de WeChat en campañas sociales multiplataforma"
+                                               ],
+                                  "faqs":  [
+                                               {
+                                                   "a":  "Sí, RELURL proporciona analíticas detalladas de clics, incluyendo datos geográficos y fuentes de referencia.",
+                                                   "q":  "¿Puedo rastrear clics en mis enlaces cortos de WeChat?"
+                                               },
+                                               {
+                                                   "a":  "Sí, los enlaces cortos de WeChat funcionan a nivel global y redirigen correctamente a la aplicación de WeChat en cualquier dispositivo.",
+                                                   "q":  "¿Los enlaces de WeChat funcionarán internacionalmente con URLs cortas?"
+                                               },
+                                               {
+                                                   "a":  "Por supuesto. Cada enlace acortado en RELURL viene con un código QR descargable gratuito.",
+                                                   "q":  "¿Puedo generar códigos QR para enlaces de WeChat?"
+                                               }
+                                           ]
+                              },
+    "twitter-link-generator":  {
+                                   "title":  "Generador de Enlaces para Twitter/X",
+                                   "subtitle":  "Optimiza tus Tweets",
+                                   "description":  "Acorta URLs para tweets, hilos y perfiles de X para ahorrar espacio de caracteres. Optimiza tu contenido en Twitter/X y rastrea la interacción de tu audiencia.",
+                                   "metaDescription":  "Acorta URLs para tweets, hilos y perfiles de X para ahorrar espacio de caracteres. Optimiza tu presencia en Twitter/X y aumenta la interacción con tus seguidores usando RELURL.",
+                                   "keywords":  [
+                                                    "generador de enlaces para twitter",
+                                                    "generador de enlaces para x",
+                                                    "acortador de enlaces para tweets"
+                                                ],
+                                   "features":  [
+                                                    "Seguimiento de Clics en Tweets",
+                                                    "Analítica de Enlaces en Hilos",
+                                                    "Optimización de Biografía de Perfil",
+                                                    "Enlaces que Ahorran Caracteres",
+                                                    "Soporte para Twitter Cards",
+                                                    "Atribución de Interacción"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Ingresa la página que quieres compartir en Twitter/X.",
+                                                          "step":  "Pega tu URL"
+                                                      },
+                                                      {
+                                                          "desc":  "Crea una URL eficiente en caracteres para tu tweet.",
+                                                          "step":  "Genera Enlace Corto"
+                                                      },
+                                                      {
+                                                          "desc":  "Publícalo en tweets e hilos, luego monitorea la interacción.",
+                                                          "step":  "Tweetea y Rastrea"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Promoción de publicaciones de blog en Twitter",
+                                                    "Tweets de lanzamiento de productos",
+                                                    "Seguimiento de interacción en hilos",
+                                                    "Optimización de enlaces en biografía de perfil",
+                                                    "Páginas de aterrizaje para anuncios en Twitter",
+                                                    "Enlaces para interacción comunitaria"
+                                                ]
+                               },
+    "tinyurl-alternative":  {
+                                "title":  "Alternativa a TinyURL",
+                                "subtitle":  "Funciones Modernas, Sin Límites",
+                                "description":  "¿Buscas una alternativa más potente a TinyURL? RELURL incluye alias personalizados, analíticas detalladas de clics, generación de códigos QR y dominios con marca que TinyURL no tiene.",
+                                "metaDescription":  "¿Buscas una alternativa a TinyURL? RELURL ofrece slugs personalizados, analíticas de clics, códigos QR y enlaces con marca que TinyURL no proporciona.",
+                                "keywords":  [
+                                                 "alternativa a tinyurl",
+                                                 "competidor de tinyurl",
+                                                 "alternativa gratuita a tinyurl",
+                                                 "mejor que tinyurl"
+                                             ],
+                                "features":  [
+                                                 "Alias Personalizados Incluidos",
+                                                 "Analíticas Detalladas de Clics",
+                                                 "Generador de Códigos QR Gratuito",
+                                                 "Soporte para Dominios con Marca",
+                                                 "Creación Ilimitada de Enlaces",
+                                                 "Panel de Control Moderno"
+                                             ],
+                                "howItWorks":  [
+                                                   {
+                                                       "desc":  "Crea tu cuenta de RELURL en segundos. No necesitas tarjeta de crédito.",
+                                                       "step":  "Regístrate Gratis"
+                                                   },
+                                                   {
+                                                       "desc":  "Crea enlaces cortos con marca usando alias personalizados significativos.",
+                                                       "step":  "Acorta con Slugs Personalizados"
+                                                   },
+                                                   {
+                                                       "desc":  "Monitorea clics, ubicaciones y dispositivos desde tu panel de control.",
+                                                       "step":  "Rastrea el Rendimiento"
+                                                   }
+                                               ],
+                                "useCases":  [
+                                                 "Reemplaza TinyURL con una herramienta más completa",
+                                                 "Añade analíticas de clics a tus enlaces acortados",
+                                                 "Crea enlaces cortos con marca usando slugs personalizados",
+                                                 "Genera códigos QR junto a tus enlaces cortos",
+                                                 "Gestiona todos tus enlaces desde un panel moderno",
+                                                 "Escala la gestión de enlaces para uso empresarial"
+                                             ],
+                                "faqs":  [
+                                             {
+                                                 "a":  "RELURL ofrece analíticas de clics, slugs personalizados, generación de códigos QR, dominios con marca y un panel completo para gestionar enlaces. TinyURL proporciona acortamiento básico sin analíticas ni personalización.",
+                                                 "q":  "¿Qué funciones tiene RELURL que TinyURL no tiene?"
+                                             },
+                                             {
+                                                 "a":  "Sí, RELURL es igual de sencillo para acortamiento básico. Solo pega una URL y haz clic en acortar. Para funciones avanzadas como analíticas y slugs personalizados, las herramientas son intuitivas y accesibles.",
+                                                 "q":  "¿RELURL es tan fácil de usar como TinyURL?"
+                                             },
+                                             {
+                                                 "a":  "Sí, los slugs personalizados están disponibles en el plan gratuito de RELURL. TinyURL no ofrece alias personalizados en ningún plan.",
+                                                 "q":  "¿Puedo crear alias personalizados en RELURL de forma gratuita?"
+                                             }
+                                         ]
+                            },
+    "url-shortener-with-qr-codes":  {
+                                        "title":  "Acortador de URLs con Códigos QR",
+                                        "subtitle":  "Enlaces + QR en Uno",
+                                        "description":  "Combina el acortamiento de URLs con la generación de códigos QR. Cada enlace acortado en RELURL viene con un código QR gratuito y personalizable para marketing online y offline.",
+                                        "metaDescription":  "Combina el acortamiento de URLs con la generación de códigos QR. Cada enlace acortado en RELURL viene con un código QR gratuito y personalizable para marketing online y offline.",
+                                        "keywords":  [
+                                                         "acortador de urls con codigos qr",
+                                                         "acortador de urls con qr",
+                                                         "generador de codigos qr para enlaces cortos",
+                                                         "acortador de enlaces con qr"
+                                                     ],
+                                        "features":  [
+                                                         "Generación de Códigos QR",
+                                                         "Compresión de URLs",
+                                                         "Analítica de Clics",
+                                                         "Slugs Personalizados con Marca",
+                                                         "Actualizaciones QR Dinámicas",
+                                                         "Seguimiento en Tiempo Real"
+                                                     ],
+                                        "howItWorks":  [
+                                                           {
+                                                               "desc":  "Ingresa el enlace que quieres acortar y convertir en un código QR.",
+                                                               "step":  "Pega tu URL"
+                                                           },
+                                                           {
+                                                               "desc":  "Crearemos un enlace corto y generaremos automáticamente un código QR de alta resolución.",
+                                                               "step":  "Acorta y Genera QR"
+                                                           },
+                                                           {
+                                                               "desc":  "Descarga tu código QR en PNG, SVG o PDF para uso impreso o digital. Comparte tu enlace corto en cualquier lugar.",
+                                                               "step":  "Descarga y Despliega"
+                                                           }
+                                                       ],
+                                        "useCases":  [
+                                                         "Genera códigos QR para empaques de productos con enlaces cortos",
+                                                         "Crea códigos QR para menús de restaurantes con URLs rastreables",
+                                                         "Añade códigos QR a tarjetas de presentación que enlacen a tu portafolio",
+                                                         "Imprime códigos QR en volantes y carteles para promoción de eventos",
+                                                         "Despliega códigos QR en tiendas minoristas para interacciones sin contacto"
+                                                     ],
+                                        "faqs":  [
+                                                     {
+                                                         "a":  "Sí, RELURL te permite descargar códigos QR en archivos PNG, SVG y PDF de alta resolución.",
+                                                         "q":  "¿Puedo descargar el código QR en diferentes formatos?"
+                                                     },
+                                                     {
+                                                         "a":  "Sí, con los códigos QR dinámicos puedes cambiar la URL de destino en cualquier momento sin necesidad de reimprimir.",
+                                                         "q":  "¿Puedo actualizar el destino de mi código QR más tarde?"
+                                                     },
+                                                     {
+                                                         "a":  "Por supuesto. Cada enlace acortado en RELURL incluye un código QR gratuito, incluso en el plan gratuito para siempre.",
+                                                         "q":  "¿La generación de códigos QR está incluida en el plan gratuito?"
+                                                     }
+                                                 ]
+                                    },
+    "whatsapp-link-generator":  {
+                                    "title":  "Generador de Enlaces para WhatsApp",
+                                    "subtitle":  "Inicia Conversaciones en WhatsApp al Instante",
+                                    "description":  "Crea enlaces cortos y escaneables que abren el chat de WhatsApp con tu número de teléfono y un mensaje predefinido. Perfecto para atención al cliente y marketing.",
+                                    "metaDescription":  "Genera enlaces de WhatsApp de clic-para-chatear. Crea URLs cortas que abren conversaciones de WhatsApp con tu número de teléfono y mensajes predefinidos.",
+                                    "keywords":  [
+                                                     "generador de enlaces para whatsapp",
+                                                     "whatsapp clic para chatear",
+                                                     "enlace wa.me"
+                                                 ],
+                                    "features":  [
+                                                     "Enlaces de Clic-para-Chatear",
+                                                     "Mensajes Predefinidos",
+                                                     "Soporte para Números de Teléfono",
+                                                     "Mensajes Personalizados",
+                                                     "Listo para Código QR",
+                                                     "Seguimiento de Analíticas"
+                                                 ],
+                                    "howItWorks":  [
+                                                       {
+                                                           "desc":  "Pega la URL que quieres compartir a través de WhatsApp.",
+                                                           "step":  "Ingresa la URL"
+                                                       },
+                                                       {
+                                                           "desc":  "Crea un enlace corto que redirige a WhatsApp.",
+                                                           "step":  "Genera Enlace"
+                                                       },
+                                                       {
+                                                           "desc":  "Usa tu enlace en correos electrónicos, redes sociales o material impreso.",
+                                                           "step":  "Comparte en Cualquier Lugar"
+                                                       }
+                                                   ],
+                                    "useCases":  [
+                                                     "Enlaces de chat para atención al cliente",
+                                                     "Canales de consultas de ventas",
+                                                     "Enlaces de confirmación de pedidos",
+                                                     "Confirmación de asistencia a eventos vía WhatsApp",
+                                                     "Llamadas a la acción en campañas de marketing",
+                                                     "Botones de contacto en sitios web"
+                                                 ]
+                                },
+    "url-shortener-for-marketers":  {
+                                        "title":  "Acortador de URLs para Especialistas en Marketing",
+                                        "subtitle":  "Enlaces Listos para Campañas",
+                                        "description":  "Acortador de URLs listo para campañas de marketing. Rastrea el rendimiento de campañas, crea parámetros UTM, gestiona enlaces multicanal y optimiza tu ROI de marketing con RELURL.",
+                                        "metaDescription":  "Acortador de URLs listo para campañas de marketing. Rastrea el rendimiento de campañas, crea parámetros UTM, gestiona enlaces multicanal y optimiza tu ROI de marketing con RELURL.",
+                                        "keywords":  [
+                                                         "acortador de urls para especialistas en marketing",
+                                                         "acortador de urls para marketing",
+                                                         "acortador de enlaces para campañas",
+                                                         "gestion de enlaces de marketing"
+                                                     ],
+                                        "features":  [
+                                                         "Seguimiento de Campañas",
+                                                         "Constructor de UTM",
+                                                         "Analítica de Clics",
+                                                         "Slugs Personalizados con Marca",
+                                                         "Acortamiento Masivo",
+                                                         "Geolocalización"
+                                                     ],
+                                        "howItWorks":  [
+                                                           {
+                                                               "desc":  "Pega tu URL de destino y añade parámetros UTM para la atribución de campaña.",
+                                                               "step":  "Crea tu Enlace de Campaña"
+                                                           },
+                                                           {
+                                                               "desc":  "Establece slugs personalizados y elige opciones de seguimiento para tu campaña de marketing.",
+                                                               "step":  "Personaliza y Añade Marca"
+                                                           },
+                                                           {
+                                                               "desc":  "Monitorea clics, conversiones e interacción en todos tus canales de marketing en tiempo real.",
+                                                               "step":  "Rastrea el Rendimiento Multicanal"
+                                                           }
+                                                       ],
+                                        "useCases":  [
+                                                         "Rastrea las tasas de clics en boletines por correo electrónico con precisión",
+                                                         "Gestiona enlaces de campañas multicanal desde un solo panel",
+                                                         "Crea y guarda enlaces con parámetros UTM sin esfuerzo",
+                                                         "Prueba A/B diferentes destinos de enlaces para optimizar campañas",
+                                                         "Crea enlaces cortos con marca para campañas de anuncios pagados"
+                                                     ],
+                                        "faqs":  [
+                                                     {
+                                                         "a":  "Sí, RELURL tiene un constructor de UTM integrado que facilita añadir parámetros de seguimiento de forma rápida y sin errores.",
+                                                         "q":  "¿Puedo añadir parámetros UTM a mis enlaces acortados?"
+                                                     },
+                                                     {
+                                                         "a":  "Por supuesto. Las analíticas de RELURL desglosan los clics por referente, dispositivo, ubicación y etiqueta de campaña.",
+                                                         "q":  "¿Puedo ver qué canal de marketing genera más clics?"
+                                                     },
+                                                     {
+                                                         "a":  "Sí, RELURL admite la creación masiva de enlaces y exportación a CSV para una gestión sencilla de campañas.",
+                                                         "q":  "¿Puedo crear enlaces en lote para múltiples campañas?"
+                                                     }
+                                                 ]
+                                    },
+    "url-shortener-in-canada":  {
+                                    "title":  "Acortador de URLs en Canadá",
+                                    "subtitle":  "El Mejor para Usuarios Canadienses",
+                                    "description":  "El mejor acortador de URLs en Canadá para empresas, profesionales del marketing y creadores de contenido. Acortamiento rápido de enlaces, compatible con privacidad, con plan gratuito adaptado para usuarios canadienses.",
+                                    "metaDescription":  "El mejor acortador de URLs en Canadá para empresas, profesionales del marketing y creadores de contenido. Acortamiento rápido de enlaces, compatible con privacidad, con plan gratuito adaptado para usuarios canadienses.",
+                                    "keywords":  [
+                                                     "acortador de urls canada",
+                                                     "mejor acortador de urls en canada",
+                                                     "acortador de urls canadiense",
+                                                     "acortador de enlaces canada"
+                                                 ],
+                                    "features":  [
+                                                     "Compresión de URLs",
+                                                     "Analítica de Clics",
+                                                     "Alias Personalizados",
+                                                     "Seguimiento de Campañas",
+                                                     "Generación de Códigos QR",
+                                                     "Gratis para Siempre"
+                                                 ],
+                                    "howItWorks":  [
+                                                       {
+                                                           "desc":  "Copia cualquier enlace de tu negocio canadiense, blog o tienda en línea.",
+                                                           "step":  "Pega tu URL"
+                                                       },
+                                                       {
+                                                           "desc":  "Genera un enlace corto y limpio y personalízalo con un alias para tu marca.",
+                                                           "step":  "Acorta y Personaliza"
+                                                       },
+                                                       {
+                                                           "desc":  "Despliega tu enlace corto en redes sociales, correo electrónico y canales de marketing dirigidos a audiencias canadienses.",
+                                                           "step":  "Comparte en Todo Canadá"
+                                                       }
+                                                   ],
+                                    "useCases":  [
+                                                     "Rastrea campañas de marketing dirigidas a ciudades y provincias canadienses",
+                                                     "Crea enlaces cortos con marca para negocios en Toronto y Vancouver",
+                                                     "Comparte enlaces de productos en plataformas de redes sociales canadienses",
+                                                     "Genera códigos QR para tiendas minoristas y restaurantes canadienses",
+                                                     "Gestiona el seguimiento de enlaces con cumplimiento de privacidad para clientes canadienses"
+                                                 ],
+                                    "faqs":  [
+                                                 {
+                                                     "a":  "Sí, RELURL sigue prácticas estrictas de privacidad que se alinean con los estándares canadienses de protección de datos, incluyendo PIPEDA.",
+                                                     "q":  "¿RELURL cumple con las leyes de privacidad canadienses?"
+                                                 },
+                                                 {
+                                                     "a":  "Sí, RELURL proporciona analíticas geográficas a nivel de ciudad para todos tus enlaces acortados.",
+                                                     "q":  "¿Puedo ver de qué provincia canadiense provienen mis clics?"
+                                                 },
+                                                 {
+                                                     "a":  "Por supuesto. El plan gratuito para siempre de RELURL ofrece a los usuarios canadienses acortamiento de enlaces ilimitado sin costo.",
+                                                     "q":  "¿Hay un plan gratuito para usuarios canadienses?"
+                                                 }
+                                             ]
+                                },
+    "shorten-youtube-url":  {
+                                "title":  "Acortar URL de YouTube",
+                                "subtitle":  "Optimiza tus Enlaces de Video",
+                                "description":  "Acorta las URLs de videos de YouTube para hacerlas limpias y fáciles de compartir. Perfecto para publicaciones en redes sociales, descripciones de videos, comentarios y aplicaciones de mensajería donde las URLs largas de YouTube se ven desordenadas.",
+                                "metaDescription":  "Acorta las URLs de videos de YouTube para compartir en redes sociales, comentarios y mensajes. Haz que tus enlaces de YouTube sean limpios, rastreables y fáciles de compartir con RELURL.",
+                                "keywords":  [
+                                                 "acortar url de youtube",
+                                                 "acortador de enlaces de youtube",
+                                                 "acortador de urls de youtube",
+                                                 "enlace corto de youtube"
+                                             ],
+                                "features":  [
+                                                 "Compresión de URLs de YouTube",
+                                                 "Soporte para Slugs Personalizados",
+                                                 "Analítica de Clics",
+                                                 "Compartir en Descripciones",
+                                                 "Listo para Redes Sociales",
+                                                 "Generación de Códigos QR"
+                                             ],
+                                "howItWorks":  [
+                                                   {
+                                                       "desc":  "Copia y pega la URL del video de YouTube que quieres acortar.",
+                                                       "step":  "Pega el Enlace de YouTube"
+                                                   },
+                                                   {
+                                                       "desc":  "Opcionalmente, añade un slug personalizado para hacer tu enlace memorable.",
+                                                       "step":  "Personaliza tu Slug"
+                                                   },
+                                                   {
+                                                       "desc":  "Copia la URL acortada y compártela en cualquier lugar donde promociones tu video.",
+                                                       "step":  "Comparte tu Enlace Corto"
+                                                   }
+                                               ],
+                                "useCases":  [
+                                                 "Comparte videos de YouTube en publicaciones de Twitter/X con límite de caracteres",
+                                                 "Añade enlaces limpios en las descripciones de tus videos de YouTube",
+                                                 "Rastrea clics en enlaces de YouTube compartidos en boletines por correo",
+                                                 "Crea códigos QR para promociones de videos de YouTube",
+                                                 "Comparte videos en WhatsApp y aplicaciones de mensajería",
+                                                 "Incluye enlaces cortos en Historias de Instagram y biografía"
+                                             ],
+                                "faqs":  [
+                                             {
+                                                 "a":  "Las URLs de YouTube son largas y contienen parámetros de seguimiento que las hacen antiestéticas para compartir. Los enlaces acortados de YouTube son más limpios, ahorran espacio de caracteres y se pueden rastrear para ver cuántas personas hacen clic desde diferentes plataformas.",
+                                                 "q":  "¿Por qué debería acortar las URLs de YouTube?"
+                                             },
+                                             {
+                                                 "a":  "Sí, las URLs acortadas de YouTube redirigen al video original en cualquier dispositivo. Funcionan en computadoras de escritorio, dispositivos móviles, tabletas y smart TVs sin ningún problema.",
+                                                 "q":  "¿El enlace corto funcionará en todos los dispositivos?"
+                                             },
+                                             {
+                                                 "a":  "Por supuesto. Cada URL acortada en RELURL viene con analíticas de clics que muestran clics totales, datos geográficos, referentes y tipos de dispositivo. Esto te ayuda a entender qué plataformas generan más tráfico hacia tus videos.",
+                                                 "q":  "¿Puedo rastrear clics en mis enlaces acortados de YouTube?"
+                                             }
+                                         ]
+                            },
+    "threads-link-generator":  {
+                                   "title":  "Generador de Enlaces para Threads",
+                                   "subtitle":  "Prospera en Threads",
+                                   "description":  "Crea enlaces concisos para conversaciones y perfiles de Threads. Aumenta tu presencia en Threads y rastrea la interacción generada por las conversaciones.",
+                                   "metaDescription":  "Crea enlaces concisos para conversaciones y perfiles de Threads. Aumenta la interacción social en Threads y rastrea el crecimiento de tu audiencia con RELURL.",
+                                   "keywords":  [
+                                                    "generador de enlaces para threads",
+                                                    "enlaces de publicaciones en threads",
+                                                    "marketing en threads"
+                                                ],
+                                   "features":  [
+                                                    "Seguimiento de Enlaces de Publicaciones",
+                                                    "Enlaces para Biografía de Perfil",
+                                                    "Analíticas de Interacción",
+                                                    "URLs Optimizadas en Caracteres",
+                                                    "Integración Multiplataforma",
+                                                    "Información sobre Fuente de Audiencia"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Ingresa la página que quieres compartir en Threads.",
+                                                          "step":  "Pega tu URL"
+                                                      },
+                                                      {
+                                                          "desc":  "Genera una URL limpia optimizada para publicaciones de Threads.",
+                                                          "step":  "Crea Enlace Corto"
+                                                      },
+                                                      {
+                                                          "desc":  "Comparte en hilos y monitorea la interacción de la audiencia.",
+                                                          "step":  "Publica y Rastrea"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Promociones en publicaciones de Threads",
+                                                    "Optimización de enlaces en biografía de perfil",
+                                                    "Compartir contenido de marca",
+                                                    "Seguimiento de interacción comunitaria",
+                                                    "Publicación cruzada desde Instagram",
+                                                    "Enlaces para colaboraciones con influencers"
+                                                ]
+                               },
+    "url-shortener-no-signup":  {
+                                    "title":  "Acortador de URLs Sin Registro",
+                                    "subtitle":  "Acorta al Instante",
+                                    "description":  "Acorta URLs al instante sin necesidad de registrarte. Usa el acortador de URLs gratuito de RELURL sin crear una cuenta. Rápido, privado y sin necesidad de registro.",
+                                    "metaDescription":  "Acorta URLs al instante sin necesidad de registrarte. Usa el acortador de URLs gratuito de RELURL sin crear una cuenta. Rápido, privado y sin necesidad de registro.",
+                                    "keywords":  [
+                                                     "acortador de urls sin registro",
+                                                     "acortar url sin registrarse",
+                                                     "acortador de urls sin necesidad de registro",
+                                                     "acortador de urls instantaneo"
+                                                 ],
+                                    "features":  [
+                                                     "Compresión de URLs",
+                                                     "Sin Caducidad",
+                                                     "Gratis para Siempre",
+                                                     "Analítica de Clics",
+                                                     "Generación de Códigos QR",
+                                                     "Alias Personalizados"
+                                                 ],
+                                    "howItWorks":  [
+                                                       {
+                                                           "desc":  "Copia cualquier URL larga y pégala en el campo de arriba. No necesitas cuenta.",
+                                                           "step":  "Pega tu URL Larga"
+                                                       },
+                                                       {
+                                                           "desc":  "Haz clic en el botón y obtén una URL corta y compacta al instante, sin fricción de registro.",
+                                                           "step":  "Acorta al Instante"
+                                                       },
+                                                       {
+                                                           "desc":  "Copia tu nuevo enlace corto y compártelo en cualquier lugar. Así de simple.",
+                                                           "step":  "Comparte tu Enlace"
+                                                       }
+                                                   ],
+                                    "useCases":  [
+                                                     "Acorta un enlace rápidamente sin crear una cuenta",
+                                                     "Comparte URLs de forma privada sin guardar historial",
+                                                     "Obtén un enlace corto para un uso único",
+                                                     "Prueba el acortamiento de URLs antes de comprometerte con una plataforma",
+                                                     "Crea enlaces cortos desechables para campañas temporales"
+                                                 ],
+                                    "faqs":  [
+                                                 {
+                                                     "a":  "Correcto. Puedes acortar URLs al instante sin cuenta, sin correo electrónico y sin necesidad de registro.",
+                                                     "q":  "¿De verdad no necesito registrarme?"
+                                                 },
+                                                 {
+                                                     "a":  "No, los enlaces de RELURL nunca caducan, incluso sin una cuenta. Tu enlace corto funcionará para siempre.",
+                                                     "q":  "¿Mi enlace acortado caducará?"
+                                                 },
+                                                 {
+                                                     "a":  "El seguimiento básico de clics está disponible. Para analíticas detalladas, puedes crear una cuenta gratuita para acceder a informes completos.",
+                                                     "q":  "¿Puedo seguir rastreando clics sin registrarme?"
+                                                 }
+                                             ]
+                                },
+    "telegram-link-generator":  {
+                                    "title":  "Generador de Enlaces para Telegram",
+                                    "subtitle":  "Haz Crecer tu Comunidad en Telegram",
+                                    "description":  "Crea enlaces cortos y memorables para tus canales, grupos y bots de Telegram. Rastrea clics y haz crecer tu audiencia en Telegram.",
+                                    "metaDescription":  "Genera enlaces cortos de Telegram para canales, grupos y bots. Crea URLs personalizadas de t.me con analíticas para hacer crecer tu comunidad en Telegram.",
+                                    "keywords":  [
+                                                     "generador de enlaces para telegram",
+                                                     "enlace t.me",
+                                                     "enlace de grupo de telegram"
+                                                 ],
+                                    "features":  [
+                                                     "Enlaces de Invitación a Canales",
+                                                     "Enlaces para Unirse a Grupos",
+                                                     "Enlaces de Inicio de Bots",
+                                                     "Alias Personalizados",
+                                                     "Analítica de Clics",
+                                                     "Soporte para Códigos QR"
+                                                 ],
+                                    "howItWorks":  [
+                                                       {
+                                                           "desc":  "Pega tu enlace t.me o la URL de tu contenido.",
+                                                           "step":  "Ingresa la URL de Telegram"
+                                                       },
+                                                       {
+                                                           "desc":  "Elige un alias corto y memorable.",
+                                                           "step":  "Personaliza el Slug"
+                                                       },
+                                                       {
+                                                           "desc":  "Distribuye tu enlace y monitorea la interacción.",
+                                                           "step":  "Comparte y Rastrea"
+                                                       }
+                                                   ],
+                                    "useCases":  [
+                                                     "Promoción de canales de Telegram",
+                                                     "Campañas para membresías de grupos",
+                                                     "Adquisición de usuarios para bots",
+                                                     "Compartir contenido",
+                                                     "Creación de comunidad",
+                                                     "Campañas de marketing"
+                                                 ]
+                                },
+    "url-shortener-without-signup":  {
+                                         "title":  "Acortador de URLs Sin Registro",
+                                         "subtitle":  "Acorta al Instante",
+                                         "description":  "Acorta cualquier URL sin registro usando RELURL. Acortamiento de enlaces rápido y privado sin necesidad de cuenta. Crea enlaces cortos en segundos.",
+                                         "metaDescription":  "Acorta cualquier URL sin registro usando RELURL. Acortamiento de enlaces rápido y privado sin necesidad de cuenta. Crea enlaces cortos en segundos.",
+                                         "keywords":  [
+                                                          "acortador de urls sin registro",
+                                                          "acortar enlace sin cuenta",
+                                                          "acortador de urls sin necesidad de registro",
+                                                          "acortador de urls anonimo"
+                                                      ],
+                                         "features":  [
+                                                          "Compresión de URLs",
+                                                          "Gratis para Siempre",
+                                                          "Sin Caducidad",
+                                                          "Analítica de Clics",
+                                                          "Generación de Códigos QR",
+                                                          "Protección con Contraseña"
+                                                      ],
+                                         "howItWorks":  [
+                                                            {
+                                                                "desc":  "Escribe o pega cualquier URL larga en el cuadro de entrada. No se necesita correo ni contraseña.",
+                                                                "step":  "Ingresa tu URL"
+                                                            },
+                                                            {
+                                                                "desc":  "Presiona el botón y comprimiremos tu URL al instante en un enlace corto y limpio.",
+                                                                "step":  "Haz Clic en Acortar"
+                                                            },
+                                                            {
+                                                                "desc":  "Copia tu nuevo enlace corto y compártelo en redes sociales, mensajes o en tu sitio web.",
+                                                                "step":  "Úsalo en Cualquier Lugar"
+                                                            }
+                                                        ],
+                                         "useCases":  [
+                                                          "Crea enlaces cortos instantáneos para compartir en redes sociales",
+                                                          "Acorta URLs de forma anónima sin dejar rastro",
+                                                          "Genera enlaces rápidamente para aplicaciones de chat y mensajería",
+                                                          "Prueba diferentes acortadores de URLs sin compromiso",
+                                                          "Crea enlaces temporales para colaboración en proyectos ágiles"
+                                                      ],
+                                         "faqs":  [
+                                                      {
+                                                          "a":  "No hay truco. Obtienes toda la funcionalidad de acortamiento de URLs sin ningún registro. Actualiza solo si necesitas analíticas avanzadas.",
+                                                          "q":  "¿Hay algún truco al usar RELURL sin registrarme?"
+                                                      },
+                                                      {
+                                                          "a":  "Sí, puedes acortar tantas URLs como quieras sin registrarte. Sin límites en el nivel gratuito.",
+                                                          "q":  "¿Puedo crear múltiples enlaces cortos sin una cuenta?"
+                                                      },
+                                                      {
+                                                          "a":  "Registrarse desbloquea alias personalizados, analíticas detalladas, panel de gestión de enlaces y descargas de códigos QR.",
+                                                          "q":  "¿Qué funciones obtengo si me registro más tarde?"
+                                                      }
+                                                  ]
+                                     },
+    "shorten-whatsapp-link":  {
+                                  "title":  "Acortar Enlace de WhatsApp",
+                                  "subtitle":  "Enlaces Compactos para Mensajería",
+                                  "description":  "Acorta URLs antes de compartirlas en WhatsApp para mantener tus mensajes limpios y profesionales. Los enlaces cortos tienen menos probabilidades de romper el formato y parecen más confiables en los chats.",
+                                  "metaDescription":  "Acorta URLs para compartir en WhatsApp de forma limpia y segura. Haz que tus enlaces sean compactos, rastreables y confiables para chats y grupos de WhatsApp.",
+                                  "keywords":  [
+                                                   "acortar enlace de whatsapp",
+                                                   "acortador de enlaces para whatsapp",
+                                                   "acortador de urls para whatsapp",
+                                                   "enlace corto de whatsapp"
+                                               ],
+                                  "features":  [
+                                                   "Enlaces Optimizados para WhatsApp",
+                                                   "Formato Limpio de Mensajes",
+                                                   "Seguimiento de Clics",
+                                                   "Slugs Personalizados con Marca",
+                                                   "Seguro contra Filtros de Spam",
+                                                   "Compartir al Instante"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Ingresa la URL larga que quieres compartir en WhatsApp.",
+                                                         "step":  "Pega tu URL"
+                                                     },
+                                                     {
+                                                         "desc":  "Haz clic para generar un enlace corto compacto y limpio.",
+                                                         "step":  "Acorta al Instante"
+                                                     },
+                                                     {
+                                                         "desc":  "Copia el enlace corto y pégalo en tu chat o grupo de WhatsApp.",
+                                                         "step":  "Comparte en WhatsApp"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Comparte enlaces de productos en transmisiones de WhatsApp Business",
+                                                   "Envía enlaces limpios de artículos en chats grupales",
+                                                   "Promociona ofertas y descuentos a través de WhatsApp",
+                                                   "Comparte enlaces de registro a eventos con clientes",
+                                                   "Envía enlaces de documentos y archivos de forma profesional",
+                                                   "Rastrea la interacción de campañas de marketing en WhatsApp"
+                                               ],
+                                  "faqs":  [
+                                               {
+                                                   "a":  "Las URLs largas pueden romper el formato de los mensajes, parecer sospechosas y consumir espacio de caracteres en los mensajes de WhatsApp. Los enlaces acortados se mantienen compactos, se ven profesionales y reducen el riesgo de ser marcados como spam.",
+                                                   "q":  "¿Por qué acortar enlaces antes de compartirlos en WhatsApp?"
+                                               },
+                                               {
+                                                   "a":  "Sí, las URLs acortadas funcionan perfectamente en WhatsApp Web, WhatsApp Desktop y la aplicación móvil. La redirección es perfecta independientemente de cómo los destinatarios accedan a WhatsApp.",
+                                                   "q":  "¿Los enlaces cortos funcionan en WhatsApp Web?"
+                                               },
+                                               {
+                                                   "a":  "Sí, puedes añadir slugs personalizados a tus enlaces acortados de WhatsApp. Los slugs descriptivos o con marca como relurl.com/ventas-verano generan confianza y fomentan más clics de tu audiencia.",
+                                                   "q":  "¿Puedo personalizar los enlaces cortos de WhatsApp?"
+                                               }
+                                           ]
+                              },
+    "tiktok-bio-link-generator":  {
+                                      "title":  "Generador de Enlaces para Biografía de TikTok",
+                                      "subtitle":  "Maximiza tu Tráfico en TikTok",
+                                      "description":  "TikTok solo permite un enlace en tu biografía. Haz que cuente con una URL corta y con marca que dirija tráfico a todo tu contenido y plataformas.",
+                                      "metaDescription":  "Crea el enlace perfecto para la biografía de TikTok. Genera una URL corta y con marca para tu perfil de TikTok que dirija tráfico a todas tus plataformas de contenido.",
+                                      "keywords":  [
+                                                       "enlace para biografia de tiktok",
+                                                       "generador de enlaces para tiktok",
+                                                       "enlace en biografia de tiktok"
+                                                   ],
+                                      "features":  [
+                                                       "Optimización de un Solo Enlace",
+                                                       "Diseño Mobile-First",
+                                                       "Seguimiento de Clics",
+                                                       "Alias Personalizados",
+                                                       "Múltiples Destinos",
+                                                       "Código QR para Videos"
+                                                   ],
+                                      "howItWorks":  [
+                                                         {
+                                                             "desc":  "Pega la URL de tu enlace-en-biografía o página de aterrizaje.",
+                                                             "step":  "Ingresa tu URL"
+                                                         },
+                                                         {
+                                                             "desc":  "Genera una URL corta, limpia y memorable.",
+                                                             "step":  "Crea Enlace Corto"
+                                                         },
+                                                         {
+                                                             "desc":  "Pega tu enlace corto en tu perfil de TikTok.",
+                                                             "step":  "Añade a la Biografía de TikTok"
+                                                         }
+                                                     ],
+                                      "useCases":  [
+                                                       "Optimización del enlace en biografía de TikTok",
+                                                       "Compartir enlaces de productos",
+                                                       "Promoción de canal de YouTube",
+                                                       "Enlaces a tienda de merchandising",
+                                                       "Registro a eventos",
+                                                       "Promoción multiplataforma"
+                                                   ]
+                                  },
+    "shorten-x-url":  {
+                          "title":  "Acortar URL de X",
+                          "subtitle":  "Optimiza tus Tweets",
+                          "description":  "Acorta URLs para X (Twitter) y ahorra valiosos caracteres mientras rastreas la interacción con los enlaces. Los enlaces cortos y limpios hacen que tus tweets sean más efectivos y medibles.",
+                          "metaDescription":  "Acorta URLs para X (antes Twitter) para ahorrar caracteres y rastrear la interacción. Haz que tus tweets sean más limpios y efectivos con enlaces cortos.",
+                          "keywords":  [
+                                           "acortar url de x",
+                                           "acortar url de twitter",
+                                           "acortador de enlaces para x",
+                                           "acortador de urls para twitter"
+                                       ],
+                          "features":  [
+                                           "Ahorro de Caracteres",
+                                           "Optimizado para Twitter/X",
+                                           "Analíticas de Interacción",
+                                           "Enlaces Personalizados con Marca",
+                                           "Seguimiento de Campañas",
+                                           "Listo para Código QR"
+                                       ],
+                          "howItWorks":  [
+                                             {
+                                                 "desc":  "Copia la URL larga que quieres compartir en tu tweet.",
+                                                 "step":  "Pega tu URL"
+                                             },
+                                             {
+                                                 "desc":  "Genera un enlace corto y compacto que ahorra espacio de caracteres.",
+                                                 "step":  "Acorta al Instante"
+                                             },
+                                             {
+                                                 "desc":  "Pega el enlace corto en tu tweet y monitorea los clics desde tu panel de control.",
+                                                 "step":  "Tweetea y Rastrea"
+                                             }
+                                         ],
+                          "useCases":  [
+                                           "Ahorra caracteres en tweets con enlaces",
+                                           "Rastrea tasas de clics en artículos compartidos",
+                                           "Crea enlaces con marca para la biografía de perfil de X",
+                                           "Mide la interacción en tweets promocionales",
+                                           "Acorta enlaces antes de compartirlos en mensajes directos de X",
+                                           "Compara el rendimiento de diferentes campañas de tweets"
+                                       ],
+                          "faqs":  [
+                                       {
+                                           "a":  "X limita las publicaciones a 280 caracteres. Las URLs largas consumen una gran parte de este límite. Las URLs acortadas liberan más caracteres para tu mensaje y hacen que los tweets se vean más limpios y profesionales.",
+                                           "q":  "¿Por qué acortar URLs en X/Twitter?"
+                                       },
+                                       {
+                                           "a":  "Sí, X genera tarjetas de vista previa para URLs acortadas igual que para URLs completas. La imagen de vista previa, el título y la descripción se mostrarán normalmente cuando el enlace se incluya en un tweet.",
+                                           "q":  "¿Los enlaces cortos muestran vistas previas en X?"
+                                       },
+                                       {
+                                           "a":  "X proporciona analíticas básicas de enlaces para anuncios, pero no para tweets orgánicos. RELURL llena este vacío mostrando datos de clics para cada enlace acortado, revelando qué tweets generan más tráfico.",
+                                           "q":  "¿Puedo rastrear cuántos clics obtienen mis enlaces en tweets?"
+                                       }
+                                   ]
+                      },
+    "url-shortener-with-analytics":  {
+                                         "title":  "Acortador de URLs con Analíticas",
+                                         "subtitle":  "Rastrea Cada Clic",
+                                         "description":  "Acorta URLs y rastrea cada clic con analíticas detalladas. RELURL proporciona datos de clics en tiempo real, información geográfica, seguimiento de dispositivos y fuentes de referencia para todos los enlaces.",
+                                         "metaDescription":  "Acorta URLs y rastrea cada clic con analíticas detalladas. RELURL proporciona datos de clics en tiempo real, información geográfica, seguimiento de dispositivos y fuentes de referencia para todos los enlaces.",
+                                         "keywords":  [
+                                                          "acortador de urls con analiticas",
+                                                          "acortador de urls rastreable",
+                                                          "analiticas de clics en enlaces",
+                                                          "analiticas de enlaces cortos"
+                                                      ],
+                                         "features":  [
+                                                          "Analítica de Clics",
+                                                          "Seguimiento en Tiempo Real",
+                                                          "Geolocalización de Clics",
+                                                          "Segmentación por Dispositivo",
+                                                          "Exportación a CSV",
+                                                          "Seguimiento de Campañas"
+                                                      ],
+                                         "howItWorks":  [
+                                                            {
+                                                                "desc":  "Pega cualquier URL y acórtala con RELURL para empezar a rastrear al instante.",
+                                                                "step":  "Acorta tu URL"
+                                                            },
+                                                            {
+                                                                "desc":  "Accede a datos en tiempo real de clics, ubicaciones, dispositivos y fuentes de referencia desde tu panel de control.",
+                                                                "step":  "Ve el Panel de Analíticas"
+                                                            },
+                                                            {
+                                                                "desc":  "Usa los datos de clics para refinar tus campañas de marketing y mejorar la interacción en todos los canales.",
+                                                                "step":  "Optimiza tu Estrategia"
+                                                            }
+                                                        ],
+                                         "useCases":  [
+                                                          "Rastrea tasas de clics en campañas de marketing por correo",
+                                                          "Monitorea la distribución geográfica de tu audiencia",
+                                                          "Mide el desglose por dispositivo en las interacciones con enlaces",
+                                                          "Identifica las principales fuentes de referencia que generan tráfico",
+                                                          "Exporta datos de analíticas a CSV para informes personalizados"
+                                                      ],
+                                         "faqs":  [
+                                                      {
+                                                          "a":  "RELURL muestra clics totales, clics únicos, ubicación geográfica, tipo de dispositivo, navegador, sistema operativo y fuente de referencia.",
+                                                          "q":  "¿Qué datos de analíticas proporciona RELURL?"
+                                                      },
+                                                      {
+                                                          "a":  "Sí, todas las analíticas se actualizan en tiempo real para que puedas monitorear el rendimiento de los enlaces a medida que ocurre.",
+                                                          "q":  "¿Los datos de analíticas están disponibles en tiempo real?"
+                                                      },
+                                                      {
+                                                          "a":  "Por supuesto. Puedes exportar tus analíticas de enlaces como un archivo CSV para análisis adicionales en tus herramientas preferidas.",
+                                                          "q":  "¿Puedo exportar mis datos de analíticas?"
+                                                      }
+                                                  ]
+                                     },
+    "webinar-link-shortener":  {
+                                   "title":  "Acortador de Enlaces para Webinars",
+                                   "subtitle":  "Llena Cada Webinar",
+                                   "description":  "Acorta enlaces de registro y repetición de webinars. Rastrea la asistencia, mejora tus campañas promocionales y llena cada sesión de tu webinar.",
+                                   "metaDescription":  "Acorta enlaces de registro y repetición de webinars. Rastrea la asistencia, optimiza las promociones y llena tus webinars con RELURL.",
+                                   "keywords":  [
+                                                    "acortador de enlaces para webinars",
+                                                    "enlaces de registro a webinars",
+                                                    "marketing de webinars"
+                                                ],
+                                   "features":  [
+                                                    "Seguimiento de Registros",
+                                                    "Analítica de Enlaces de Repetición",
+                                                    "Integración de Recordatorios",
+                                                    "Canales Multipromoción",
+                                                    "Enlaces de Perfiles de Ponentes",
+                                                    "Seguimiento Post-Webinar"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Ingresa el enlace de tu página de registro o repetición.",
+                                                          "step":  "Pega la URL del Webinar"
+                                                      },
+                                                      {
+                                                          "desc":  "Genera una URL memorable para tu campaña de webinar.",
+                                                          "step":  "Crea Enlace Corto"
+                                                      },
+                                                      {
+                                                          "desc":  "Comparte en todos los canales y monitorea las conversiones de registro.",
+                                                          "step":  "Promociona y Rastrea"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Campañas de registro a webinars",
+                                                    "Distribución de enlaces de repetición",
+                                                    "Enlaces de promoción para socios",
+                                                    "Enlaces para secuencias de correo",
+                                                    "Publicaciones de eventos en redes sociales",
+                                                    "Embudos de ventas post-webinar"
+                                                ]
+                               },
+    "url-shortener-in-india":  {
+                                   "title":  "Acortador de URLs en India",
+                                   "subtitle":  "El Mejor para Usuarios en India",
+                                   "description":  "El mejor acortador de URLs en India para empresas, profesionales del marketing y creadores de contenido. Acortamiento de enlaces rápido y confiable con plan gratuito para siempre, sin cargos ocultos y funciones adaptadas localmente.",
+                                   "metaDescription":  "El mejor acortador de URLs en India para empresas, profesionales del marketing y creadores de contenido. Acortamiento de enlaces rápido y confiable con plan gratuito para siempre, sin cargos ocultos y funciones adaptadas localmente.",
+                                   "keywords":  [
+                                                    "acortador de urls india",
+                                                    "mejor acortador de urls en india",
+                                                    "acortador de urls indio",
+                                                    "acortador de enlaces india"
+                                                ],
+                                   "features":  [
+                                                    "Compresión de URLs",
+                                                    "Gratis para Siempre",
+                                                    "Sin Caducidad",
+                                                    "Analítica de Clics",
+                                                    "Alias Personalizados",
+                                                    "Generación de Códigos QR"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Copia cualquier URL larga de tu sitio web, página de producto o publicación en redes sociales.",
+                                                          "step":  "Pega tu URL"
+                                                      },
+                                                      {
+                                                          "desc":  "Haz clic para generar un enlace corto y, opcionalmente, crea un alias personalizado para tu marca.",
+                                                          "step":  "Acorta y Personaliza"
+                                                      },
+                                                      {
+                                                          "desc":  "Comparte tu enlace corto en WhatsApp, Instagram y otras plataformas populares en India.",
+                                                          "step":  "Comparte y Rastrea"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Comparte enlaces de productos en WhatsApp Business con URLs cortas y limpias",
+                                                    "Acorta enlaces para influencers de Instagram y YouTube en India",
+                                                    "Rastrea el rendimiento de clics en campañas de redes sociales dirigidas a India",
+                                                    "Crea enlaces cortos con marca para tiendas de comercio electrónico indias",
+                                                    "Genera códigos QR para marketing offline en mercados locales"
+                                                ],
+                                   "faqs":  [
+                                                {
+                                                    "a":  "Sí, RELURL ofrece un plan completamente gratuito para siempre sin cargos ocultos, perfecto para usuarios y empresas en India.",
+                                                    "q":  "¿RELURL es gratuito para usuarios en India?"
+                                                },
+                                                {
+                                                    "a":  "Por supuesto. RELURL es excelente para negocios de comercio electrónico indios que necesitan enlaces de productos limpios y rastreables.",
+                                                    "q":  "¿Puedo usar RELURL para mi tienda de comercio electrónico en India?"
+                                                },
+                                                {
+                                                    "a":  "Sí, RELURL está optimizado para carga rápida en todas las redes y dispositivos comúnmente utilizados en India.",
+                                                    "q":  "¿RELURL funciona bien en redes móviles en India?"
+                                                }
+                                            ]
+                               }
+}

@@ -51,6 +51,35 @@
       "en": "English",
       "es": "Español",
       "fr": "Français"
+    },
+    "header": {
+      "platform": "Platform",
+      "productsGroup": "Products",
+      "featuresGroup": "Features",
+      "urlShortener": "URL Shortener",
+      "urlShortenerDesc": "Customize, share and track links",
+      "qrCodeGenerator": "QR Code Generator",
+      "qrCodeGeneratorDesc": "Dynamic solutions for every need",
+      "analytics": "Analytics",
+      "analyticsDesc": "Track and analyze performance",
+      "brandedLinks": "Branded Links",
+      "brandedLinksDesc": "Custom links with your domain",
+      "linkInBio": "Link-in-bio",
+      "linkInBioDesc": "Curate links for social profiles",
+      "linkHealth": "Link Health",
+      "linkHealthDesc": "Monitor your link performance",
+      "utmBuilder": "UTM Builder",
+      "utmBuilderDesc": "Track with UTM parameters",
+      "teamCollaboration": "Team Collaboration",
+      "teamCollaborationDesc": "Work together seamlessly",
+      "browserExtension": "Browser Extension",
+      "browserExtensionDesc": "Shorten links with one click",
+      "viewAllFeatures": "View all features",
+      "toggleTheme": "Toggle theme",
+      "themeLight": "Light",
+      "themeDark": "Dark",
+      "openMenu": "Open navigation menu",
+      "closeMenu": "Close navigation menu"
     }
   },
   "homepage": {
@@ -13659,5 +13688,14 @@
     "tourismeCount": "3,200+ listings",
     "educationCount": "2,600+ listings",
     "santeCount": "1,400+ listings"
+  },
+  "footer": {
+    "newsletter": {
+      "title": "Get the latest updates",
+      "description": "Subscribe to our newsletter for new features and tips.",
+      "placeholder": "Enter your email",
+      "subscribe": "Subscribe",
+      "subscribed": "Subscribed!"
+    }
   }
 }

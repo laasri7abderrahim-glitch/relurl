@@ -1,0 +1,1716 @@
+{
+    "how-to-use-utm-parameters":  {
+                                      "title":  "How to Use UTM Parameters",
+                                      "subtitle":  "Master Campaign Tracking",
+                                      "description":  "Learn how to use UTM parameters to track your marketing campaigns in Google Analytics. Complete guide to creating, organizing, and analyzing UTM-tagged URLs.",
+                                      "metaDescription":  "Learn how to use UTM parameters to track your marketing campaigns. Complete guide to adding UTM tags to URLs and analyzing campaign performance.",
+                                      "keywords":  [
+                                                       "how to use utm parameters",
+                                                       "utm tags guide",
+                                                       "utm parameter tutorial",
+                                                       "campaign tracking utm"
+                                                   ],
+                                      "features":  [
+                                                       "UTM Parameter Setup",
+                                                       "Campaign Source Tracking",
+                                                       "Medium Attribution",
+                                                       "Campaign Name Organization",
+                                                       "Content Variation Testing",
+                                                       "Google Analytics Integration"
+                                                   ],
+                                      "howItWorks":  [
+                                                         {
+                                                             "desc":  "Determine the campaign, source, and medium you want to track in your analytics.",
+                                                             "step":  "Identify Your Campaign"
+                                                         },
+                                                         {
+                                                             "desc":  "Append utm_source, utm_medium, utm_campaign, and optional utm_content to your URL.",
+                                                             "step":  "Add UTM Parameters"
+                                                         },
+                                                         {
+                                                             "desc":  "Shorten your UTM-tagged URL with RELURL and share it across your marketing channels.",
+                                                             "step":  "Shorten and Share"
+                                                         }
+                                                     ],
+                                      "useCases":  [
+                                                       "Track email newsletter click-through rates",
+                                                       "Measure social media campaign performance",
+                                                       "Compare advertising channel effectiveness",
+                                                       "Analyze content marketing traffic sources",
+                                                       "Test different call-to-action variations",
+                                                       "Report on multi-channel campaign attribution"
+                                                   ],
+                                      "faqs":  [
+                                                   {
+                                                       "a":  "The five standard UTM parameters are: utm_source (traffic source like newsletter or twitter), utm_medium (marketing medium like email or social), utm_campaign (campaign name), utm_term (paid keywords), and utm_content (content variation for A/B testing).",
+                                                       "q":  "What are the main UTM parameters?"
+                                                   },
+                                                   {
+                                                       "a":  "No, UTM parameters do not affect SEO. Search engines ignore UTM parameters when indexing pages. They only affect analytics tracking when users click the link.",
+                                                       "q":  "Do UTM parameters affect SEO?"
+                                                   },
+                                                   {
+                                                       "a":  "Yes, shortening UTM-tagged URLs is recommended. Long URLs with multiple UTM parameters look cluttered and unprofessional. Shortening creates a clean link while preserving all tracking data.",
+                                                       "q":  "Should I shorten UTM URLs before sharing?"
+                                                   }
+                                               ]
+                                  },
+    "ecommerce-url-shortener":  {
+                                    "title":  "E-commerce URL Shortener",
+                                    "subtitle":  "Boost Online Sales",
+                                    "description":  "Shorten product and category URLs to boost conversions. Track clicks, optimize campaigns, and drive more sales with powerful analytics.",
+                                    "metaDescription":  "Shorten product links to boost conversions. Track clicks, optimize campaigns, and drive more sales with RELURL\u0027s e-commerce link shortener.",
+                                    "keywords":  [
+                                                     "ecommerce url shortener",
+                                                     "product link shortener",
+                                                     "shopify link shortener"
+                                                 ],
+                                    "features":  [
+                                                     "Product Link Tracking",
+                                                     "Conversion Analytics",
+                                                     "Bulk Shortening",
+                                                     "UTM Parameter Support",
+                                                     "Custom Brand Slugs",
+                                                     "A/B Testing Ready"
+                                                 ],
+                                    "howItWorks":  [
+                                                       {
+                                                           "desc":  "Enter your product or category page URL.",
+                                                           "step":  "Paste Product URL"
+                                                       },
+                                                       {
+                                                           "desc":  "Add a branded slug and UTM parameters for tracking.",
+                                                           "step":  "Customize \u0026 Shorten"
+                                                       },
+                                                       {
+                                                           "desc":  "Use the short link in ads and emails, then monitor conversions.",
+                                                           "step":  "Share \u0026 Track"
+                                                       }
+                                                   ],
+                                    "useCases":  [
+                                                     "Product page link sharing",
+                                                     "Email marketing campaigns",
+                                                     "Social media product posts",
+                                                     "Affiliate program links",
+                                                     "Retargeting ad campaigns",
+                                                     "Print catalog QR codes"
+                                                 ]
+                                },
+    "how-to-create-qr-codes-for-business":  {
+                                                "title":  "How to Create QR Codes for Business",
+                                                "subtitle":  "Professional Guide",
+                                                "description":  "Learn how to create professional QR codes for your business with RELURL. Generate dynamic QR codes that track scans, update destinations, and drive measurable marketing results.",
+                                                "metaDescription":  "Learn how to create professional QR codes for your business with RELURL. Generate dynamic QR codes that track scans, update destinations, and drive measurable marketing results.",
+                                                "keywords":  [
+                                                                 "qr codes for business",
+                                                                 "business qr code generator",
+                                                                 "create qr codes business",
+                                                                 "professional qr codes"
+                                                             ],
+                                                "features":  [
+                                                                 "QR Code Generation",
+                                                                 "Click Analytics",
+                                                                 "Custom Branded Slugs",
+                                                                 "URL Compression",
+                                                                 "Dynamic QR Updates",
+                                                                 "Real-time Tracking"
+                                                             ],
+                                                "howItWorks":  [
+                                                                   {
+                                                                       "desc":  "Select between static QR codes for permanent links or dynamic QR codes that can be updated anytime.",
+                                                                       "step":  "Choose Your QR Type"
+                                                                   },
+                                                                   {
+                                                                       "desc":  "Add your brand colors and logo to the QR code, then download in high-resolution PNG, SVG, or PDF.",
+                                                                       "step":  "Customize Your Design"
+                                                                   },
+                                                                   {
+                                                                       "desc":  "Monitor scan analytics including location, device type, and scan time to measure campaign effectiveness.",
+                                                                       "step":  "Track Scan Performance"
+                                                                   }
+                                                               ],
+                                                "useCases":  [
+                                                                 "Add QR codes to restaurant menus for contactless ordering",
+                                                                 "Generate QR codes for business cards and networking materials",
+                                                                 "Create QR codes for product packaging and labels",
+                                                                 "Track scan analytics to measure marketing campaign effectiveness",
+                                                                 "Update QR code destinations dynamically without reprinting"
+                                                             ],
+                                                "faqs":  [
+                                                             {
+                                                                 "a":  "Dynamic QR codes let you change the destination URL anytime without reprinting. Static QR codes are permanent. RELURL generates dynamic QR codes that you can update as needed.",
+                                                                 "q":  "What makes a QR code dynamic vs static?"
+                                                             },
+                                                             {
+                                                                 "a":  "Yes, RELURL provides detailed scan analytics including scan count, location, device type, and time of scan.",
+                                                                 "q":  "Can I track how many people scan my QR code?"
+                                                             },
+                                                             {
+                                                                 "a":  "You can download your QR codes as high-resolution PNG, SVG, or PDF files suitable for both print and digital use.",
+                                                                 "q":  "What file formats can I download my QR code in?"
+                                                             }
+                                                         ]
+                                            },
+    "bitly-alternative":  {
+                              "title":  "Bitly Alternative",
+                              "subtitle":  "More Features, Better Pricing",
+                              "description":  "Looking for a better alternative to Bitly? RELURL provides free unlimited link shortening, custom slugs, click analytics, and QR codes without the restrictive limits and high pricing of Bitly.",
+                              "metaDescription":  "Looking for a Bitly alternative? RELURL offers free unlimited links, custom slugs, analytics, and QR codes without Bitly\u0027s link limits and pricing.",
+                              "keywords":  [
+                                               "bitly alternative",
+                                               "bitly competitor",
+                                               "free bitly alternative",
+                                               "better than bitly"
+                                           ],
+                              "features":  [
+                                               "Unlimited Free Links",
+                                               "Custom Slugs on Free Plan",
+                                               "Built-in Click Analytics",
+                                               "Free QR Code Generation",
+                                               "No Link Expiration",
+                                               "Better Pricing Than Bitly"
+                                           ],
+                              "howItWorks":  [
+                                                 {
+                                                     "desc":  "Sign up for RELURL in seconds with no credit card required. Get access to all core features immediately.",
+                                                     "step":  "Create Your Free Account"
+                                                 },
+                                                 {
+                                                     "desc":  "Create unlimited short links with custom slugs, even on the free plan.",
+                                                     "step":  "Start Shortening Links"
+                                                 },
+                                                 {
+                                                     "desc":  "Monitor click analytics and manage all your links from one dashboard.",
+                                                     "step":  "Track and Optimize"
+                                                 }
+                                             ],
+                              "useCases":  [
+                                               "Replace Bitly for personal link shortening",
+                                               "Migrate business links from Bitly to a more affordable solution",
+                                               "Get custom aliases without Bitlys paid plan requirement",
+                                               "Access click analytics without upgrading",
+                                               "Generate QR codes without additional fees",
+                                               "Scale your link management without cost increases"
+                                           ],
+                              "faqs":  [
+                                           {
+                                               "a":  "Bitly\u0027s free plan limits you to a fixed number of links per month and expires inactive links after one year. RELURL offers unlimited permanent links with custom slugs and analytics on the free plan.",
+                                               "q":  "How does RELURL compare to Bitly\u0027s free plan?"
+                                           },
+                                           {
+                                               "a":  "Yes, you can manually recreate your important Bitly links in RELURL. We recommend starting with your most active links and recreating them with your preferred custom slugs.",
+                                               "q":  "Can I migrate my links from Bitly to RELURL?"
+                                           },
+                                           {
+                                               "a":  "Yes, RELURL supports custom branded domains on our mid-tier plans, similar to Bitly\u0027s branded domains feature but at a more accessible price point.",
+                                               "q":  "Does RELURL offer branded domains like Bitly?"
+                                           }
+                                       ]
+                          },
+    "crypto-link-shortener":  {
+                                  "title":  "Crypto Link Shortener",
+                                  "subtitle":  "Simplify Crypto Sharing",
+                                  "description":  "Shorten wallet addresses, DeFi links, and crypto project URLs. Track investor interest and share blockchain content securely.",
+                                  "metaDescription":  "Shorten wallet, DeFi, and crypto project links. Track investor interest and share blockchain content with RELURL\u0027s crypto link shortener.",
+                                  "keywords":  [
+                                                   "crypto link shortener",
+                                                   "blockchain link generator",
+                                                   "defi link shortener"
+                                               ],
+                                  "features":  [
+                                                   "Wallet Address Shortening",
+                                                   "DeFi Protocol Links",
+                                                   "NFT Collection URLs",
+                                                   "Airdrop Claim Links",
+                                                   "ICO \u0026 IDO Links",
+                                                   "Analytics Dashboard"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Enter your wallet, DeFi, or project page link.",
+                                                         "step":  "Paste Crypto URL"
+                                                     },
+                                                     {
+                                                         "desc":  "Create a clean URL easy for your community to share.",
+                                                         "step":  "Generate Short Link"
+                                                     },
+                                                     {
+                                                         "desc":  "Post on Twitter, Telegram, and Discord to grow adoption.",
+                                                         "step":  "Share \u0026 Track"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Token launch promotions",
+                                                   "NFT mint page sharing",
+                                                   "DeFi protocol onboarding",
+                                                   "Airdrop campaign links",
+                                                   "Community growth campaigns",
+                                                   "Crypto event marketing"
+                                               ]
+                              },
+    "how-to-create-branded-links":  {
+                                        "title":  "How to Create Branded Links",
+                                        "subtitle":  "Build Your Brand in Every Link",
+                                        "description":  "Learn how to create branded short URLs that boost brand recall and audience trust. Complete guide to setting up custom domains and branded links.",
+                                        "metaDescription":  "Learn how to create branded links that build trust and increase click-through rates. Step-by-step guide to setting up custom domains and branded short URLs.",
+                                        "keywords":  [
+                                                         "how to create branded links",
+                                                         "branded url shortener",
+                                                         "custom domain links",
+                                                         "branded short links guide"
+                                                     ],
+                                        "features":  [
+                                                         "Custom Domain Setup",
+                                                         "Brand Identity Integration",
+                                                         "Click-Through Optimization",
+                                                         "DNS Configuration Guide",
+                                                         "Analytics Dashboard",
+                                                         "Multi-Domain Support"
+                                                     ],
+                                        "howItWorks":  [
+                                                           {
+                                                               "desc":  "Select a short, memorable domain like go.yourbrand.com for your branded links.",
+                                                               "step":  "Choose Your Brand Domain"
+                                                           },
+                                                           {
+                                                               "desc":  "Add the required CNAME or A records to point your domain to RELURL\u0027s platform.",
+                                                               "step":  "Configure DNS Records"
+                                                           },
+                                                           {
+                                                               "desc":  "Once verified, every link you create can use your branded domain automatically.",
+                                                               "step":  "Start Creating Branded Links"
+                                                           }
+                                                       ],
+                                        "useCases":  [
+                                                         "Build brand recognition with every link shared",
+                                                         "Increase click-through rates with trusted domains",
+                                                         "Create professional links for corporate communications",
+                                                         "Enhance email marketing with branded URLs",
+                                                         "Maintain brand consistency across campaigns",
+                                                         "Establish authority in your industry"
+                                                     ],
+                                        "faqs":  [
+                                                     {
+                                                         "a":  "Choose a short, memorable domain that reflects your brand. Common formats are go.yourbrand.com, link.yourbrand.com, or yourbrand.link. Short domains are easier to communicate verbally.",
+                                                         "q":  "What domain should I use for branded links?"
+                                                     },
+                                                     {
+                                                         "a":  "You will need to add a CNAME record pointing to RELURL\u0027s verification server. Detailed step-by-step instructions are provided in your dashboard when you add a new domain.",
+                                                         "q":  "How do I set up DNS for my branded domain?"
+                                                     },
+                                                     {
+                                                         "a":  "Yes, branded domains significantly increase click-through rates. Studies show that links on recognizable domains receive 30-40 percent more clicks than links on generic shortener domains.",
+                                                         "q":  "Do branded links really increase click-through rates?"
+                                                     }
+                                                 ]
+                                    },
+    "instagram-link-generator":  {
+                                     "title":  "Instagram Link Generator",
+                                     "subtitle":  "Grow Your Instagram Audience",
+                                     "description":  "Build branded Instagram links for your bio, stories, and posts. Track click-throughs and maximize engagement on every Instagram campaign.",
+                                     "metaDescription":  "Generate short, trackable Instagram links for your bio, stories, and posts. Create custom URLs and track clicks to optimize your Instagram strategy.",
+                                     "keywords":  [
+                                                      "instagram link generator",
+                                                      "instagram bio link",
+                                                      "instagram profile link"
+                                                  ],
+                                     "features":  [
+                                                      "Bio Link Optimization",
+                                                      "Story Link Tracking",
+                                                      "Click Analytics",
+                                                      "Custom Aliases",
+                                                      "Mobile-Optimized",
+                                                      "QR Code Generation"
+                                                  ],
+                                     "howItWorks":  [
+                                                        {
+                                                            "desc":  "Enter the page you want to link from your Instagram.",
+                                                            "step":  "Paste Your URL"
+                                                        },
+                                                        {
+                                                            "desc":  "Choose a memorable alias for your Instagram link.",
+                                                            "step":  "Customize Slug"
+                                                        },
+                                                        {
+                                                            "desc":  "Paste your short link into your Instagram bio or stories.",
+                                                            "step":  "Add to Bio"
+                                                        }
+                                                    ],
+                                     "useCases":  [
+                                                      "Instagram bio link optimization",
+                                                      "Story swipe-up links",
+                                                      "Product page links",
+                                                      "Blog post promotion",
+                                                      "Event registration links",
+                                                      "Newsletter signup links"
+                                                  ]
+                                 },
+    "facebook-url-generator":  {
+                                   "title":  "Facebook URL Generator",
+                                   "subtitle":  "Optimize Your Facebook Presence",
+                                   "description":  "Generate custom Facebook URLs for pages, posts, events, and groups. Share across your Facebook presence and measure audience engagement.",
+                                   "metaDescription":  "Generate short Facebook links for pages, posts, events, and groups. Create custom URLs with analytics to optimize your Facebook marketing.",
+                                   "keywords":  [
+                                                    "facebook url generator",
+                                                    "facebook link shortener",
+                                                    "facebook page link"
+                                                ],
+                                   "features":  [
+                                                    "Page Link Shortening",
+                                                    "Post Share Links",
+                                                    "Event Invitation Links",
+                                                    "Group Invite Links",
+                                                    "Click Analytics",
+                                                    "Custom Aliases"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Enter your page, post, event, or group URL.",
+                                                          "step":  "Paste Facebook URL"
+                                                      },
+                                                      {
+                                                          "desc":  "Choose a branded slug for your short link.",
+                                                          "step":  "Customize Link"
+                                                      },
+                                                      {
+                                                          "desc":  "Distribute your link and monitor engagement.",
+                                                          "step":  "Share \u0026 Track"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Facebook page promotion",
+                                                    "Event invitation sharing",
+                                                    "Group membership drives",
+                                                    "Post engagement campaigns",
+                                                    "Ad campaign tracking",
+                                                    "Cross-platform marketing"
+                                                ]
+                               },
+    "how-to-track-link-clicks":  {
+                                     "title":  "How to Track Link Clicks",
+                                     "subtitle":  "Master Link Analytics",
+                                     "description":  "Learn how to track link clicks and measure the performance of your shared content. Understand your audience with click analytics and optimize your marketing strategy.",
+                                     "metaDescription":  "Learn how to track link clicks and measure engagement. Complete guide to using click analytics to understand your audience and optimize your content.",
+                                     "keywords":  [
+                                                      "how to track link clicks",
+                                                      "link click tracking",
+                                                      "track url clicks",
+                                                      "link analytics guide"
+                                                  ],
+                                     "features":  [
+                                                      "Click Tracking Setup",
+                                                      "Real-Time Analytics",
+                                                      "Geographic Data",
+                                                      "Device Information",
+                                                      "Referrer Tracking",
+                                                      "Performance Reports"
+                                                  ],
+                                     "howItWorks":  [
+                                                        {
+                                                            "desc":  "Shorten your URL with RELURL to make it trackable. Every shortened link automatically collects click data.",
+                                                            "step":  "Create a Short Link"
+                                                        },
+                                                        {
+                                                            "desc":  "Distribute your short link across email, social media, messaging, or other channels.",
+                                                            "step":  "Share Your Link"
+                                                        },
+                                                        {
+                                                            "desc":  "Log into your dashboard to see clicks, locations, devices, and referrers for each link.",
+                                                            "step":  "Review Analytics"
+                                                        }
+                                                    ],
+                                     "useCases":  [
+                                                      "Measure email campaign click-through rates",
+                                                      "Track social media post engagement",
+                                                      "Compare performance across marketing channels",
+                                                      "Understand your audience demographics",
+                                                      "Identify top-performing content",
+                                                      "Optimize campaign timing based on click patterns"
+                                                  ],
+                                     "faqs":  [
+                                                  {
+                                                      "a":  "Your dashboard shows total clicks, unique clicks, geographic locations, device types, operating systems, browsers, referrers, and click timing data for each link.",
+                                                      "q":  "What data can I see in link analytics?"
+                                                  },
+                                                  {
+                                                      "a":  "Click data updates in near real-time. You can see clicks within minutes of them happening, allowing you to monitor campaign performance as it unfolds.",
+                                                      "q":  "Are link click counts real-time?"
+                                                  },
+                                                  {
+                                                      "a":  "Links shortened without an account are not tracked. To access analytics, create a free account before shortening URLs, and all your links will include click tracking.",
+                                                      "q":  "Can I track links shared without an account?"
+                                                  }
+                                              ]
+                                 },
+    "link-in-bio":  {
+                        "title":  "Link in Bio",
+                        "subtitle":  "One Link to Rule Them All",
+                        "description":  "Create a single short link that directs followers to multiple destinations. Perfect for Instagram, TikTok, and other platforms that limit you to one bio link.",
+                        "metaDescription":  "Create a professional link in bio for Instagram, TikTok, and other social platforms. Manage multiple destinations from a single short link.",
+                        "keywords":  [
+                                         "link in bio",
+                                         "bio link shortener",
+                                         "social media bio link",
+                                         "link in bio tool"
+                                     ],
+                        "features":  [
+                                         "Single Bio Link Solution",
+                                         "Multiple Destinations",
+                                         "Easy Link Updates",
+                                         "Click Analytics",
+                                         "Custom Branded URLs",
+                                         "Social Platform Ready"
+                                     ],
+                        "howItWorks":  [
+                                           {
+                                               "desc":  "Shorten your primary URL or create a link that redirects to multiple destinations.",
+                                               "step":  "Create Your Bio Link"
+                                           },
+                                           {
+                                               "desc":  "Change where your bio link points without editing your social media profile.",
+                                               "step":  "Update Destinations Anytime"
+                                           },
+                                           {
+                                               "desc":  "Monitor how many profile visitors click through to your destinations.",
+                                               "step":  "Track Bio Link Performance"
+                                           }
+                                       ],
+                        "useCases":  [
+                                         "Optimize your single Instagram bio link",
+                                         "Manage TikTok bio link destinations",
+                                         "Rotate bio links for different campaigns",
+                                         "Track engagement from social profiles",
+                                         "Create branded bio links for influencers",
+                                         "Link to multiple resources from one URL"
+                                     ],
+                        "faqs":  [
+                                     {
+                                         "a":  "A link-in-bio is designed specifically for social media profiles where you can only add one link. You can update the destination anytime without editing your profile.",
+                                         "q":  "How is this different from a regular short link?"
+                                     },
+                                     {
+                                         "a":  "Yes, every short link includes click analytics. See exactly how many profile visitors click through to your content from Instagram, TikTok, or any other platform.",
+                                         "q":  "Can I track how many people click my bio link?"
+                                     },
+                                     {
+                                         "a":  "You can create multiple short links for different campaigns and swap your bio link whenever your focus changes, all without editing your social media profile.",
+                                         "q":  "Do I need a separate link for each campaign?"
+                                     }
+                                 ]
+                    },
+    "custom-domain-links":  {
+                                "title":  "Custom Domain Links",
+                                "subtitle":  "Your Brand in Every Link",
+                                "description":  "Use your own domain for short links to build brand recognition and trust. Every shortened URL becomes a branded asset that reinforces your identity.",
+                                "metaDescription":  "Use your own domain for short links with RELURL. Create branded short URLs that showcase your brand and earn audience trust with every click.",
+                                "keywords":  [
+                                                 "custom domain links",
+                                                 "branded short domain",
+                                                 "custom url shortener domain",
+                                                 "own domain short links"
+                                             ],
+                                "features":  [
+                                                 "Custom Domain Support",
+                                                 "Brand Recognition",
+                                                 "Increased Trust",
+                                                 "Professional Appearance",
+                                                 "Unified Analytics",
+                                                 "Easy DNS Setup"
+                                             ],
+                                "howItWorks":  [
+                                                   {
+                                                       "desc":  "Enter your custom domain in the RELURL dashboard and configure the DNS settings.",
+                                                       "step":  "Add Your Domain"
+                                                   },
+                                                   {
+                                                       "desc":  "Complete the DNS verification to prove you own the domain.",
+                                                       "step":  "Verify Ownership"
+                                                   },
+                                                   {
+                                                       "desc":  "All your short links can now use your branded domain automatically.",
+                                                       "step":  "Start Creating Branded Links"
+                                                   }
+                                               ],
+                                "useCases":  [
+                                                 "Build brand recognition with every shared link",
+                                                 "Increase click-through rates with trusted domains",
+                                                 "Maintain consistent branding across campaigns",
+                                                 "Create professional links for corporate communications",
+                                                 "Enhance email marketing with branded URLs",
+                                                 "Establish authority in your industry"
+                                             ],
+                                "faqs":  [
+                                             {
+                                                 "a":  "You need to add a CNAME record pointing to RELURL\u0027s verification server. Detailed setup instructions are provided in your dashboard when you add a new domain.",
+                                                 "q":  "What DNS records do I need to set up?"
+                                             },
+                                             {
+                                                 "a":  "Yes, depending on your plan, you can add multiple custom domains. This is useful for agencies managing links for multiple brands or departments.",
+                                                 "q":  "Can I use multiple custom domains?"
+                                             },
+                                             {
+                                                 "a":  "Yes, branded domains significantly increase click-through rates. Users are more likely to click a link on a domain they recognize, and custom domains reduce suspicion compared to generic shortener domains.",
+                                                 "q":  "Do custom domains improve click-through rates?"
+                                             }
+                                         ]
+                            },
+    "how-to-shorten-a-url":  {
+                                 "title":  "How to Shorten a URL",
+                                 "subtitle":  "Complete Step-by-Step Guide",
+                                 "description":  "Learn how to shorten a URL quickly and easily. This guide covers simple link shortening alongside advanced tools like custom slugs, analytics, and QR codes.",
+                                 "metaDescription":  "Learn how to shorten a URL in seconds. Follow our step-by-step guide to create compact, shareable links for social media, email, and campaigns.",
+                                 "keywords":  [
+                                                  "how to shorten a url",
+                                                  "shorten url guide",
+                                                  "create short link",
+                                                  "url shortening tutorial"
+                                              ],
+                                 "features":  [
+                                                  "Quick URL Shortening",
+                                                  "Custom Alias Creation",
+                                                  "Click Analytics Setup",
+                                                  "QR Code Generation",
+                                                  "Branded Link Options",
+                                                  "Bulk Shortening Tools"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Copy the long URL you want to shorten from your browser\u0027s address bar or分享 dialog.",
+                                                        "step":  "Copy Your URL"
+                                                    },
+                                                    {
+                                                        "desc":  "Paste the URL into the tool above and click the shorten button. Your short link will appear instantly.",
+                                                        "step":  "Paste and Shorten"
+                                                    },
+                                                    {
+                                                        "desc":  "Copy your new short link and share it anywhere. Use custom slugs and track clicks for better results.",
+                                                        "step":  "Share Your Short Link"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Shorten links for social media posts",
+                                                  "Create clean URLs for email campaigns",
+                                                  "Make memorable links for print materials",
+                                                  "Track engagement on shared content",
+                                                  "Generate short links for messaging apps",
+                                                  "Create branded links for marketing"
+                                              ],
+                                 "faqs":  [
+                                              {
+                                                  "a":  "Shortening a URL with RELURL takes less than a second. Paste your link and click the button to get an instant short URL.",
+                                                  "q":  "How long does it take to shorten a URL?"
+                                              },
+                                              {
+                                                  "a":  "You can shorten URLs instantly without an account. Creating a free account lets you save your links, add custom slugs, and access analytics.",
+                                                  "q":  "Do I need an account to shorten URLs?"
+                                              },
+                                              {
+                                                  "a":  "Yes, you can add custom slugs to your shortened URLs to make them more memorable and brandable. Custom slugs are available on all plans including free.",
+                                                  "q":  "Can I customize my shortened URL?"
+                                              }
+                                          ]
+                             },
+    "campaign-link-generator":  {
+                                    "title":  "Campaign Link Generator",
+                                    "subtitle":  "Build, Shorten, Track",
+                                    "description":  "Generate complete campaign URLs with UTM parameters, shorten them, and track performance across all your marketing channels from one dashboard.",
+                                    "metaDescription":  "Generate trackable campaign URLs with UTM parameters built in. Create, shorten, and monitor all your marketing campaign links from one place.",
+                                    "keywords":  [
+                                                     "campaign link generator",
+                                                     "utm link generator",
+                                                     "campaign url builder"
+                                                 ],
+                                    "features":  [
+                                                     "UTM Builder",
+                                                     "Custom Campaign Names",
+                                                     "Source \u0026 Medium Tags",
+                                                     "Auto-Shortening",
+                                                     "Campaign Dashboard",
+                                                     "Performance Reports"
+                                                 ],
+                                    "howItWorks":  [
+                                                       {
+                                                           "desc":  "Paste your target landing page URL.",
+                                                           "step":  "Enter Landing URL"
+                                                       },
+                                                       {
+                                                           "desc":  "Fill in source, medium, campaign name, and more.",
+                                                           "step":  "Add Campaign Details"
+                                                       },
+                                                       {
+                                                           "desc":  "Receive a shortened, trackable campaign URL.",
+                                                           "step":  "Get Short Campaign Link"
+                                                       }
+                                                   ],
+                                    "useCases":  [
+                                                     "Google Ads campaigns",
+                                                     "Facebook \u0026 Instagram ads",
+                                                     "Email newsletter campaigns",
+                                                     "Influencer partnerships",
+                                                     "Seasonal promotions",
+                                                     "Product launch tracking"
+                                                 ]
+                                },
+    "gaming-link-shortener":  {
+                                  "title":  "Gaming Link Shortener",
+                                  "subtitle":  "Level Up Your Links",
+                                  "description":  "Shorten Twitch, Steam, and game download links. Track player engagement and share gaming content with clean, memorable URLs.",
+                                  "metaDescription":  "Shorten Twitch, Steam, and game download links. Track player engagement and share gaming content with clean URLs via RELURL.",
+                                  "keywords":  [
+                                                   "gaming link shortener",
+                                                   "stream link generator",
+                                                   "twitch link shortener"
+                                               ],
+                                  "features":  [
+                                                   "Stream Link Tracking",
+                                                   "Game Download Links",
+                                                   "Tournament Registration",
+                                                   "Clan \u0026 Team Invites",
+                                                   "Mod \u0026 Skin Sharing",
+                                                   "Cross-Platform Analytics"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Enter your stream, game, or community page link.",
+                                                         "step":  "Paste Gaming URL"
+                                                     },
+                                                     {
+                                                         "desc":  "Create a clean URL for your gaming audience.",
+                                                         "step":  "Generate Short Link"
+                                                     },
+                                                     {
+                                                         "desc":  "Post on Discord, Reddit, and social media to grow your community.",
+                                                         "step":  "Share \u0026 Track Players"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Twitch stream announcements",
+                                                   "Game release promotions",
+                                                   "Tournament registration",
+                                                   "Clan recruitment",
+                                                   "Mod and skin sharing",
+                                                   "Esports event marketing"
+                                               ]
+                              },
+    "custom-alias-generator":  {
+                                   "title":  "Custom Alias Generator",
+                                   "subtitle":  "Create Meaningful Link Aliases",
+                                   "description":  "Turn random strings into memorable aliases. Generate custom slugs that are easy to remember, type, and share across any platform.",
+                                   "metaDescription":  "Generate custom aliases for your short URLs. Create memorable, branded, and meaningful link aliases that are easy to remember and share anywhere.",
+                                   "keywords":  [
+                                                    "custom alias generator",
+                                                    "short link alias",
+                                                    "url slug generator"
+                                                ],
+                                   "features":  [
+                                                    "Custom Slug Input",
+                                                    "Availability Checker",
+                                                    "Brand Name Support",
+                                                    "Keyword Integration",
+                                                    "Bulk Alias Generation",
+                                                    "Alias Suggestions"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Paste the long URL you want to create an alias for.",
+                                                          "step":  "Enter URL"
+                                                      },
+                                                      {
+                                                          "desc":  "Type your desired custom slug or let us suggest one.",
+                                                          "step":  "Choose Your Alias"
+                                                      },
+                                                      {
+                                                          "desc":  "Your short link with the custom alias is ready to share.",
+                                                          "step":  "Use Your Alias"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Social media profile links",
+                                                    "Print advertising campaigns",
+                                                    "Business card URLs",
+                                                    "Product page shortcuts",
+                                                    "Podcast episode links",
+                                                    "QR code destinations"
+                                                ]
+                               },
+    "course-link-shortener":  {
+                                  "title":  "Course Link Shortener",
+                                  "subtitle":  "Enroll More Students",
+                                  "description":  "Shorten course landing pages and enrollment links. Track signups, optimize promotions, and grow your online teaching business.",
+                                  "metaDescription":  "Shorten course landing pages and enrollment links. Track signups and optimize your course marketing with RELURL\u0027s link shortener.",
+                                  "keywords":  [
+                                                   "course link shortener",
+                                                   "online course links",
+                                                   "course promotion links"
+                                               ],
+                                  "features":  [
+                                                   "Enrollment Tracking",
+                                                   "Course Page Analytics",
+                                                   "Multi-Platform Links",
+                                                   "Coupon Code Integration",
+                                                   "Instructor Branding",
+                                                   "Student Referral Links"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Enter your course landing page or enrollment link.",
+                                                         "step":  "Paste Course URL"
+                                                     },
+                                                     {
+                                                         "desc":  "Create a clean URL easy for students to remember.",
+                                                         "step":  "Generate Short Link"
+                                                     },
+                                                     {
+                                                         "desc":  "Share across channels and track student signups.",
+                                                         "step":  "Promote \u0026 Enroll"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Course launch campaigns",
+                                                   "Free lesson promotions",
+                                                   "Instructor affiliate links",
+                                                   "Corporate training signups",
+                                                   "Webinar-to-course funnels",
+                                                   "Student referral programs"
+                                               ]
+                              },
+    "linkedin-url-generator":  {
+                                   "title":  "LinkedIn URL Generator",
+                                   "subtitle":  "Professional Link Management",
+                                   "description":  "Create short, professional links for your LinkedIn profile, company page, posts, and job listings. Measure clicks and improve your B2B marketing reach.",
+                                   "metaDescription":  "Generate short LinkedIn links for profiles, company pages, posts, and job listings. Monitor clicks and refine your B2B marketing strategy.",
+                                   "keywords":  [
+                                                    "linkedin url generator",
+                                                    "linkedin link shortener",
+                                                    "linkedin profile link"
+                                                ],
+                                   "features":  [
+                                                    "Profile Link Shortening",
+                                                    "Company Page Links",
+                                                    "Post Share Links",
+                                                    "Job Listing Links",
+                                                    "B2B Analytics",
+                                                    "Custom Aliases"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Enter your profile, company, or post URL.",
+                                                          "step":  "Paste LinkedIn URL"
+                                                      },
+                                                      {
+                                                          "desc":  "Choose a professional, branded alias.",
+                                                          "step":  "Customize Slug"
+                                                      },
+                                                      {
+                                                          "desc":  "Distribute your link and measure engagement.",
+                                                          "step":  "Share \u0026 Track"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "LinkedIn profile promotion",
+                                                    "Job posting distribution",
+                                                    "Company page marketing",
+                                                    "Content sharing campaigns",
+                                                    "B2B lead generation",
+                                                    "Professional networking"
+                                                ]
+                               },
+    "agency-link-shortener":  {
+                                  "title":  "Agency Link Shortener",
+                                  "subtitle":  "Deliver More Value",
+                                  "description":  "Shorten client campaign links with white-label branding. Monitor cross-channel performance and deliver actionable client reports.",
+                                  "metaDescription":  "Shorten client campaign links with white-label branding. Monitor cross-channel performance and deliver client-ready reports with RELURL.",
+                                  "keywords":  [
+                                                   "agency link shortener",
+                                                   "marketing agency links",
+                                                   "white label link shortener"
+                                               ],
+                                  "features":  [
+                                                   "White-Label Branding",
+                                                   "Multi-Client Management",
+                                                   "Campaign Performance Reports",
+                                                   "UTM Parameter Builder",
+                                                   "A/B Test Support",
+                                                   "API Access"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Enter your client\u0027s landing page or campaign link.",
+                                                         "step":  "Paste Campaign URL"
+                                                     },
+                                                     {
+                                                         "desc":  "Add client branding and UTM parameters for tracking.",
+                                                         "step":  "Brand \u0026 Tag"
+                                                     },
+                                                     {
+                                                         "desc":  "Share results with clients and optimize campaigns.",
+                                                         "step":  "Report \u0026 Optimize"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Client PPC campaign links",
+                                                   "Social media management",
+                                                   "Email marketing for clients",
+                                                   "Influencer campaign tracking",
+                                                   "Multi-channel attribution",
+                                                   "White-label link management"
+                                               ]
+                              },
+    "discord-link-generator":  {
+                                   "title":  "Discord Link Generator",
+                                   "subtitle":  "Grow Your Server",
+                                   "description":  "Generate short links for Discord servers, channels, and events. Grow your community and attribute member growth to each promotion channel.",
+                                   "metaDescription":  "Generate short links for Discord servers, channels, and events. Grow your community and track member engagement with RELURL.",
+                                   "keywords":  [
+                                                    "discord link generator",
+                                                    "discord server links",
+                                                    "discord community links"
+                                                ],
+                                   "features":  [
+                                                    "Server Invite Tracking",
+                                                    "Channel Link Analytics",
+                                                    "Event Promotion Links",
+                                                    "Bot Dashboard Links",
+                                                    "Custom Branded Invites",
+                                                    "Member Source Attribution"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Enter your server invite, channel, or event link.",
+                                                          "step":  "Paste Discord URL"
+                                                      },
+                                                      {
+                                                          "desc":  "Generate a memorable URL for your community.",
+                                                          "step":  "Create Short Link"
+                                                      },
+                                                      {
+                                                          "desc":  "Post across platforms and track where members come from.",
+                                                          "step":  "Share \u0026 Grow"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Server invite sharing",
+                                                    "Event promotion campaigns",
+                                                    "Content creator community building",
+                                                    "Gaming clan recruitment",
+                                                    "Community partner links",
+                                                    "Cross-platform growth"
+                                                ]
+                               },
+    "free-url-shortener":  {
+                               "title":  "Free URL Shortener",
+                               "subtitle":  "100% Free, No Strings Attached",
+                               "description":  "Shorten unlimited URLs for free. No account required. Get clean short links with basic analytics — completely free forever.",
+                               "metaDescription":  "Shorten URLs for free with RELURL. Get custom slugs, basic click analytics, and unlimited links on our free plan with no signup required.",
+                               "keywords":  [
+                                                "free url shortener",
+                                                "free short links",
+                                                "shorten url free"
+                                            ],
+                               "features":  [
+                                                "Unlimited Free Links",
+                                                "No Account Required",
+                                                "Basic Click Analytics",
+                                                "Custom Aliases",
+                                                "Permanent Links",
+                                                "No Expiration"
+                                            ],
+                               "howItWorks":  [
+                                                  {
+                                                      "desc":  "Enter any long URL — no signup needed.",
+                                                      "step":  "Paste URL"
+                                                  },
+                                                  {
+                                                      "desc":  "Receive your short URL instantly.",
+                                                      "step":  "Get Short Link"
+                                                  },
+                                                  {
+                                                      "desc":  "Share your link and monitor clicks in real time.",
+                                                      "step":  "Share \u0026 Track"
+                                                  }
+                                              ],
+                               "useCases":  [
+                                                "Personal link sharing",
+                                                "Student projects",
+                                                "Small business websites",
+                                                "Blog post link optimization",
+                                                "Social media sharing",
+                                                "Quick link shortening"
+                                            ],
+                               "faqs":  [
+                                            {
+                                                "a":  "Unlike most free URL shorteners, we never expire your links, provide basic click analytics even on the free plan, and let you create custom aliases without upgrading. No hidden limits or time bombs.",
+                                                "q":  "How is this different from other URL shorteners?"
+                                            },
+                                            {
+                                                "a":  "Yes! You can generate short links instantly without any account. However, creating a free account lets you track clicks, manage your links, and use custom slugs.",
+                                                "q":  "Can I shorten URLs without signing up?"
+                                            },
+                                            {
+                                                "a":  "Shortened links on our platform handle high traffic automatically. Free plan links never expire or break, even if your content goes viral. Our infrastructure scales to meet demand.",
+                                                "q":  "What happens if my link goes viral?"
+                                            }
+                                        ]
+                           },
+    "custom-url-shortener":  {
+                                 "title":  "Custom URL Shortener",
+                                 "subtitle":  "Personalize Your Links",
+                                 "description":  "Create memorable, branded short links with custom slugs. Replace random characters with meaningful words that reflect your brand.",
+                                 "metaDescription":  "Create custom shortened URLs with personalized slugs. Make your links memorable and brandable with RELURL\u0027s custom URL shortener.",
+                                 "keywords":  [
+                                                  "custom url shortener",
+                                                  "personalized short links",
+                                                  "custom slug"
+                                              ],
+                                 "features":  [
+                                                  "Custom Slug Selection",
+                                                  "Brandable Link Names",
+                                                  "Descriptive Aliases",
+                                                  "Case-Sensitive Options",
+                                                  "Emoji Support",
+                                                  "Bulk Custom Shortening"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Enter the long URL you want to shorten.",
+                                                        "step":  "Paste Your URL"
+                                                    },
+                                                    {
+                                                        "desc":  "Pick a memorable word or phrase for your short link.",
+                                                        "step":  "Choose Custom Slug"
+                                                    },
+                                                    {
+                                                        "desc":  "Use your custom link in emails, social media, and marketing.",
+                                                        "step":  "Share Everywhere"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Brand promotion with memorable links",
+                                                  "Product launch landing pages",
+                                                  "Social media bio links",
+                                                  "Email marketing campaigns",
+                                                  "Print materials and business cards",
+                                                  "Event invitations"
+                                              ],
+                                 "faqs":  [
+                                              {
+                                                  "a":  "You can use letters (a-z, A-Z), numbers (0-9), hyphens (-), and underscores (_). Slugs are case-sensitive, so MyLink and mylink can be different links.",
+                                                  "q":  "What characters can I use in a custom slug?"
+                                              },
+                                              {
+                                                  "a":  "Yes, you can edit the slug of any link you own from your dashboard. The old URL will redirect to the new one, so you won\u0027t lose any traffic.",
+                                                  "q":  "Can I change a slug after creating it?"
+                                              },
+                                              {
+                                                  "a":  "Custom slugs with relevant keywords can improve click-through rates and are more trustworthy to users. The shortened URL\u0027s redirect passes link equity to your target page.",
+                                                  "q":  "Do custom slugs affect SEO?"
+                                              }
+                                          ]
+                             },
+    "how-to-make-money-with-url-shortener":  {
+                                                 "title":  "How to Make Money with URL Shortener",
+                                                 "subtitle":  "Monetization Guide",
+                                                 "description":  "Learn how to make money with URL shortener strategies. Discover affiliate marketing, link management services, and content monetization with RELURL\u0027s free tools.",
+                                                 "metaDescription":  "Learn how to make money with URL shortener strategies. Discover affiliate marketing, link management services, and content monetization with RELURL\u0027s free tools.",
+                                                 "keywords":  [
+                                                                  "make money with url shortener",
+                                                                  "url shortener monetization",
+                                                                  "earn with short links",
+                                                                  "monetize links"
+                                                              ],
+                                                 "features":  [
+                                                                  "URL Compression",
+                                                                  "Campaign Tracking",
+                                                                  "Click Analytics",
+                                                                  "Custom Aliases",
+                                                                  "Bulk Shortening",
+                                                                  "Custom Domains"
+                                                              ],
+                                                 "howItWorks":  [
+                                                                    {
+                                                                        "desc":  "Shorten affiliate product links from Amazon, Shopify stores, and partner programs using clean RELURL links.",
+                                                                        "step":  "Create Affiliate Links"
+                                                                    },
+                                                                    {
+                                                                        "desc":  "Share your short affiliate links on social media, blogs, email newsletters, and content platforms.",
+                                                                        "step":  "Promote Across Channels"
+                                                                    },
+                                                                    {
+                                                                        "desc":  "Use RELURL analytics to see which links perform best and optimize your strategy for maximum commissions.",
+                                                                        "step":  "Track \u0026 Optimize Earnings"
+                                                                    }
+                                                                ],
+                                                 "useCases":  [
+                                                                  "Earn commissions by sharing shortened affiliate product links",
+                                                                  "Offer link management services to local businesses",
+                                                                  "Create revenue from sponsored content with trackable links",
+                                                                  "Build niche sites with optimized short affiliate URLs",
+                                                                  "Run social media campaigns with trackable commission links"
+                                                              ],
+                                                 "faqs":  [
+                                                              {
+                                                                  "a":  "Absolutely. RELURL preserves affiliate tracking parameters and provides click analytics to optimize your campaigns.",
+                                                                  "q":  "Can I use RELURL for affiliate marketing?"
+                                                              },
+                                                              {
+                                                                  "a":  "No, RELURL offers generous limits on all plans so you can scale your affiliate marketing efforts.",
+                                                                  "q":  "Is there a limit on how many links I can create for monetization?"
+                                                              },
+                                                              {
+                                                                  "a":  "Yes, all affiliate tracking parameters are preserved. Your commissions are unaffected by link shortening.",
+                                                                  "q":  "Will shortened affiliate links still earn commissions?"
+                                                              }
+                                                          ]
+                                             },
+    "how-to-create-short-links":  {
+                                      "title":  "How to Create Short Links",
+                                      "subtitle":  "Professional Link Creation Guide",
+                                      "description":  "Learn how to create professional short links with custom slugs, click tracking, and branded domains. Master everything from quick URL creation to advanced link management.",
+                                      "metaDescription":  "Learn how to create short links with custom slugs, analytics, and branding. Step-by-step guide to creating professional short URLs for any purpose.",
+                                      "keywords":  [
+                                                       "how to create short links",
+                                                       "create short url",
+                                                       "make short link",
+                                                       "short link creation guide"
+                                                   ],
+                                      "features":  [
+                                                       "Custom Slug Creation",
+                                                       "Branded Short Links",
+                                                       "Click Tracking Setup",
+                                                       "Bulk Link Generation",
+                                                       "QR Code Integration",
+                                                       "Link Management Tips"
+                                                   ],
+                                      "howItWorks":  [
+                                                         {
+                                                             "desc":  "Select the long URL you want to transform into a short, professional link.",
+                                                             "step":  "Choose Your URL"
+                                                         },
+                                                         {
+                                                             "desc":  "Add a custom slug that reflects your brand or content topic for better recognition.",
+                                                             "step":  "Customize Your Link"
+                                                         },
+                                                         {
+                                                             "desc":  "Deploy your short link across channels and track its performance from your dashboard.",
+                                                             "step":  "Share and Monitor"
+                                                         }
+                                                     ],
+                                      "useCases":  [
+                                                       "Create branded links for your business",
+                                                       "Build custom short URLs for campaigns",
+                                                       "Generate trackable links for marketing",
+                                                       "Create memorable URLs for events",
+                                                       "Make clean links for social profiles",
+                                                       "Build organized link libraries for teams"
+                                                   ],
+                                      "faqs":  [
+                                                   {
+                                                       "a":  "A good short link is memorable, relevant to the content, and easy to type. Using custom slugs with keywords related to your content creates the most effective short links.",
+                                                       "q":  "What makes a good short link?"
+                                                   },
+                                                   {
+                                                       "a":  "Yes, RELURL supports bulk URL shortening. You can upload multiple URLs at once and generate short links for all of them, saving time on large projects.",
+                                                       "q":  "Can I create short links in bulk?"
+                                                   },
+                                                   {
+                                                       "a":  "To create branded short links, add your custom domain to RELURL and configure the DNS settings. Once verified, all your short links can use your branded domain.",
+                                                       "q":  "How do I create branded short links?"
+                                                   }
+                                               ]
+                                  },
+    "free-qr-code-generator":  {
+                                   "title":  "Free QR Code Generator",
+                                   "subtitle":  "No Cost, No Limits",
+                                   "description":  "Generate unlimited QR codes for free. No signup, no watermarks, no restrictions. Download high-quality QR codes instantly.",
+                                   "metaDescription":  "Generate QR codes for free without signing up. Create high-quality QR codes for any purpose in seconds. No account required, completely free.",
+                                   "keywords":  [
+                                                    "free qr code generator",
+                                                    "no sign up qr code",
+                                                    "instant qr code",
+                                                    "free qr code maker"
+                                                ],
+                                   "features":  [
+                                                    "100% Free",
+                                                    "No Watermarks",
+                                                    "Unlimited Generation",
+                                                    "High Quality Output",
+                                                    "Instant Download",
+                                                    "Cross-Platform Compatible"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Enter any URL, text, or data",
+                                                          "step":  "Paste Content"
+                                                      },
+                                                      {
+                                                          "desc":  "Your QR code is created instantly",
+                                                          "step":  "Click Generate"
+                                                      },
+                                                      {
+                                                          "desc":  "Download without any cost or signup",
+                                                          "step":  "Download Free"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Students and educators",
+                                                    "Small business owners",
+                                                    "Event organizers",
+                                                    "Personal use",
+                                                    "Nonprofit organizations",
+                                                    "Personal projects and hobbies"
+                                                ]
+                               },
+    "affiliate-link-shortener":  {
+                                     "title":  "Affiliate Link Shortener",
+                                     "subtitle":  "Maximize Affiliate Revenue",
+                                     "description":  "Shorten, cloak, and track your affiliate links. Get clean, professional URLs and detailed click analytics to optimize your affiliate campaigns.",
+                                     "metaDescription":  "Shorten and cloak your affiliate links for a cleaner look. Track clicks, conversions, and optimize your affiliate marketing campaigns with analytics.",
+                                     "keywords":  [
+                                                      "affiliate link shortener",
+                                                      "affiliate link cloaker",
+                                                      "affiliate tracking"
+                                                  ],
+                                     "features":  [
+                                                      "Link Cloaking",
+                                                      "Click Tracking",
+                                                      "Conversion Analytics",
+                                                      "A/B Testing Support",
+                                                      "Geo-Targeting",
+                                                      "Device Targeting"
+                                                  ],
+                                     "howItWorks":  [
+                                                        {
+                                                            "desc":  "Enter your long affiliate link with all tracking parameters.",
+                                                            "step":  "Paste Affiliate URL"
+                                                        },
+                                                        {
+                                                            "desc":  "Choose a clean, memorable alias for your affiliate link.",
+                                                            "step":  "Customize Slug"
+                                                        },
+                                                        {
+                                                            "desc":  "Use your short link and track every click and conversion.",
+                                                            "step":  "Share \u0026 Earn"
+                                                        }
+                                                    ],
+                                     "useCases":  [
+                                                      "Amazon affiliate marketing",
+                                                      "Course and product recommendations",
+                                                      "Blog monetization",
+                                                      "YouTube description links",
+                                                      "Email newsletter affiliate offers",
+                                                      "Social media affiliate promotions"
+                                                  ],
+                                     "faqs":  [
+                                                  {
+                                                      "a":  "Yes, our link masking hides your affiliate IDs from visitors while keeping the tracking intact. This protects your commissions from hijacking and creates cleaner URLs to share.",
+                                                      "q":  "Can I cloak my affiliate links?"
+                                                  },
+                                                  {
+                                                      "a":  "We work with all major affiliate networks including Amazon Associates, ShareASale, Commission Junction, ClickBank, and Rakuten. The shortened link preserves all tracking parameters.",
+                                                      "q":  "Do you support affiliate network tracking?"
+                                                  },
+                                                  {
+                                                      "a":  "Not at all. Shortened links pass all UTM and tracking parameters through to your destination. Some affiliates report higher conversions because clean links build trust with their audience.",
+                                                      "q":  "Will shortened affiliate links hurt my commissions?"
+                                                  }
+                                              ]
+                                 },
+    "bulk-url-shortener":  {
+                               "title":  "Bulk URL Shortener",
+                               "subtitle":  "Shorten Hundreds of Links at Once",
+                               "description":  "Save time by shortening multiple URLs simultaneously. Upload a CSV or paste multiple links and get them all shortened in seconds.",
+                               "metaDescription":  "Shorten hundreds of URLs at once with our bulk URL shortener. Upload a CSV, customize slugs, and manage all your links from one powerful dashboard.",
+                               "keywords":  [
+                                                "bulk url shortener",
+                                                "shorten multiple urls",
+                                                "batch url shortening"
+                                            ],
+                               "features":  [
+                                                "Batch Processing (50 at once)",
+                                                "CSV Import/Export",
+                                                "Custom Aliases per Link",
+                                                "Tags \u0026 Organization",
+                                                "Analytics Dashboard",
+                                                "API for Automation"
+                                            ],
+                               "howItWorks":  [
+                                                  {
+                                                      "desc":  "Paste URLs one per line or upload a CSV file.",
+                                                      "step":  "Upload or Paste"
+                                                  },
+                                                  {
+                                                      "desc":  "Set custom aliases, tags, and expiration for each link.",
+                                                      "step":  "Configure Options"
+                                                  },
+                                                  {
+                                                      "desc":  "Export your shortened links as CSV or copy them individually.",
+                                                      "step":  "Download \u0026 Share"
+                                                  }
+                                              ],
+                               "useCases":  [
+                                                "E-commerce product catalog linking",
+                                                "Content marketing teams",
+                                                "SEO agencies managing client links",
+                                                "Social media managers",
+                                                "Event organizers with multiple links",
+                                                "Research and academic projects"
+                                            ],
+                               "faqs":  [
+                                            {
+                                                "a":  "Our bulk URL shortener supports up to 100 URLs per batch. For larger volumes, contact our sales team for custom enterprise solutions.",
+                                                "q":  "How many URLs can I shorten at once?"
+                                            },
+                                            {
+                                                "a":  "Enter one URL per line in the text area, or upload a CSV file with a URL column. We accept plain URLs with or without http:// prefixes.",
+                                                "q":  "What format should my URLs be in?"
+                                            },
+                                            {
+                                                "a":  "Yes, every link generated through bulk shortening includes individual click analytics. You can track performance per link from your dashboard after processing.",
+                                                "q":  "Do bulk-shortened links include analytics?"
+                                            }
+                                        ]
+                           },
+    "ebook-link-shortener":  {
+                                 "title":  "Ebook Link Shortener",
+                                 "subtitle":  "Grow Your Readership",
+                                 "description":  "Shorten ebook download and landing page links. Track downloads, refine your promotional efforts, and grow your reader base effectively.",
+                                 "metaDescription":  "Shorten ebook download and landing page links. Track downloads, optimize promotions, and grow your reader base with RELURL.",
+                                 "keywords":  [
+                                                  "ebook link shortener",
+                                                  "book download links",
+                                                  "ebook marketing links"
+                                              ],
+                                 "features":  [
+                                                  "Download Tracking",
+                                                  "Landing Page Analytics",
+                                                  "Multi-Platform Distribution",
+                                                  "Email Capture Integration",
+                                                  "Author Branding",
+                                                  "Sales Funnel Attribution"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Enter your ebook landing page or download link.",
+                                                        "step":  "Paste Ebook URL"
+                                                    },
+                                                    {
+                                                        "desc":  "Generate a clean URL easy for readers to share.",
+                                                        "step":  "Create Short Link"
+                                                    },
+                                                    {
+                                                        "desc":  "Share across platforms and monitor download conversions.",
+                                                        "step":  "Promote \u0026 Track"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Free ebook promotion",
+                                                  "Amazon Kindle page links",
+                                                  "Email list building campaigns",
+                                                  "Guest blog resource links",
+                                                  "Social media book launches",
+                                                  "Bookstore partnership links"
+                                              ]
+                             },
+    "link-expiration":  {
+                            "title":  "Link Expiration",
+                            "subtitle":  "Set Time Limits on Links",
+                            "description":  "Create short links that automatically expire on a specific date or after a set number of clicks. Perfect for time-sensitive campaigns, event promotions, and limited-time offers.",
+                            "metaDescription":  "Create short links with automatic expiration dates. Set time limits on your URLs for campaigns, events, and time-sensitive content.",
+                            "keywords":  [
+                                             "link expiration",
+                                             "temporary url shortener",
+                                             "expiring links",
+                                             "time limited links"
+                                         ],
+                            "features":  [
+                                             "Automatic Link Expiry",
+                                             "Date-Based Expiration",
+                                             "Click-Based Expiration",
+                                             "Expired Link Redirect",
+                                             "Campaign Management",
+                                             "Expiration Notifications"
+                                         ],
+                            "howItWorks":  [
+                                               {
+                                                   "desc":  "Paste the link you want to set an expiration for.",
+                                                   "step":  "Enter Your URL"
+                                               },
+                                               {
+                                                   "desc":  "Choose an expiration date or maximum click count.",
+                                                   "step":  "Set Expiration Rules"
+                                               },
+                                               {
+                                                   "desc":  "Share your link knowing it will automatically deactivate when conditions are met.",
+                                                   "step":  "Share with Confidence"
+                                               }
+                                           ],
+                            "useCases":  [
+                                             "Time-limited promotional campaigns",
+                                             "Event registration links that close after the event",
+                                             "Flash sale and limited-time offer URLs",
+                                             "Temporary document sharing for projects",
+                                             "Beta access links with expiration dates",
+                                             "Seasonal marketing campaign links"
+                                         ],
+                            "faqs":  [
+                                         {
+                                             "a":  "When a link expires, visitors see a notification that the link is no longer active. You can configure a custom redirect URL for expired links if desired.",
+                                             "q":  "What happens when a link expires?"
+                                         },
+                                         {
+                                             "a":  "Yes, you can combine expiration conditions. For example, a link can expire after 30 days OR after 1000 clicks, whichever comes first.",
+                                             "q":  "Can I set both date and click-based expiration?"
+                                         },
+                                         {
+                                             "a":  "Yes, you can modify the expiration settings of any link from your dashboard at any time, including reactivating expired links with new expiration rules.",
+                                             "q":  "Can I reactivate an expired link?"
+                                         }
+                                     ]
+                        },
+    "education-link-shortener":  {
+                                     "title":  "Education Link Shortener",
+                                     "subtitle":  "Simplify Learning Links",
+                                     "description":  "Create short links for courses, syllabi, and educational resources. Track student engagement and simplify URL sharing for educators.",
+                                     "metaDescription":  "Create short links for courses, syllabi, and learning resources. Track student engagement and simplify URL sharing for educators.",
+                                     "keywords":  [
+                                                      "education link shortener",
+                                                      "course link generator",
+                                                      "learning resource links"
+                                                  ],
+                                     "features":  [
+                                                      "Student Click Tracking",
+                                                      "Course-Specific Links",
+                                                      "LMS Integration",
+                                                      "QR Code for Classrooms",
+                                                      "Assignment Link Management",
+                                                      "Parent Portal Links"
+                                                  ],
+                                     "howItWorks":  [
+                                                        {
+                                                            "desc":  "Enter your course, assignment, or resource link.",
+                                                            "step":  "Paste Resource URL"
+                                                        },
+                                                        {
+                                                            "desc":  "Generate a clean URL easy for students to type.",
+                                                            "step":  "Create Short Link"
+                                                        },
+                                                        {
+                                                            "desc":  "Post in your LMS, syllabus, or classroom board.",
+                                                            "step":  "Share with Students"
+                                                        }
+                                                    ],
+                                     "useCases":  [
+                                                      "Online course material sharing",
+                                                      "Assignment submission links",
+                                                      "Parent communication",
+                                                      "Library resource links",
+                                                      "Event registration for school functions",
+                                                      "Alumni network links"
+                                                  ]
+                                 },
+    "event-link-shortener":  {
+                                 "title":  "Event Link Shortener",
+                                 "subtitle":  "Maximize Event Reach",
+                                 "description":  "Shorten event URLs to promote conferences, meetups, and virtual events. Track registration sources and measure your campaign reach.",
+                                 "metaDescription":  "Shorten event URLs to promote conferences, meetups, and virtual events. Track registration sources and measure campaign reach with RELURL.",
+                                 "keywords":  [
+                                                  "event link shortener",
+                                                  "conference link generator",
+                                                  "event marketing"
+                                              ],
+                                 "features":  [
+                                                  "Registration Tracking",
+                                                  "Multi-Channel Analytics",
+                                                  "Countdown Integration",
+                                                  "Branded Event Links",
+                                                  "Speaker \u0026 Sponsor URLs",
+                                                  "Post-Event Analytics"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Enter your registration page or event website link.",
+                                                        "step":  "Paste Event URL"
+                                                    },
+                                                    {
+                                                        "desc":  "Create a memorable URL for your event campaign.",
+                                                        "step":  "Generate Short Link"
+                                                    },
+                                                    {
+                                                        "desc":  "Share across channels and monitor registration sources.",
+                                                        "step":  "Promote \u0026 Track"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Conference registration campaigns",
+                                                  "Meetup promotion",
+                                                  "Virtual event invitations",
+                                                  "Workshop signup links",
+                                                  "Expo and trade show marketing",
+                                                  "Speaker announcement posts"
+                                              ]
+                             },
+    "best-url-shortener":  {
+                               "title":  "Best URL Shortener",
+                               "subtitle":  "Find Your Perfect Link Tool",
+                               "description":  "Looking for the best URL shortener? Compare top features including unlimited links, custom slugs, click analytics, QR codes, branded domains, and pricing to find the right tool for your needs.",
+                               "metaDescription":  "Find the best URL shortener for your needs. Compare features, pricing, and capabilities. RELURL offers unlimited links, analytics, QR codes, and branded domains.",
+                               "keywords":  [
+                                                "best url shortener",
+                                                "top url shortener",
+                                                "best link shortener",
+                                                "url shortener comparison"
+                                            ],
+                               "features":  [
+                                                "Unlimited Free Links",
+                                                "Custom Slugs \u0026 Aliases",
+                                                "Click Analytics Dashboard",
+                                                "QR Code Generator",
+                                                "Branded Domain Support",
+                                                "Link Expiration Controls"
+                                            ],
+                               "howItWorks":  [
+                                                  {
+                                                      "desc":  "Review what matters most: link limits, analytics, custom domains, and pricing.",
+                                                      "step":  "Compare Features"
+                                                  },
+                                                  {
+                                                      "desc":  "Test RELURL with unlimited free links, custom slugs, and analytics.",
+                                                      "step":  "Try the Best Tool"
+                                                  },
+                                                  {
+                                                      "desc":  "Migrate your links to the platform that best fits your needs and budget.",
+                                                      "step":  "Make the Switch"
+                                                  }
+                                              ],
+                               "useCases":  [
+                                                "Find a free URL shortener without link limits",
+                                                "Choose a tool with built-in analytics",
+                                                "Select a platform with custom domain support",
+                                                "Pick a shortener with QR code features",
+                                                "Compare pricing across top URL shorteners",
+                                                "Find the best fit for business link management"
+                                            ],
+                               "faqs":  [
+                                            {
+                                                "a":  "Key features include unlimited link creation, custom slugs, click analytics, QR code generation, branded domain support, link expiration, and API access. Pricing and link limits are also important considerations.",
+                                                "q":  "What should I look for in a URL shortener?"
+                                            },
+                                            {
+                                                "a":  "RELURL offers one of the most generous free plans with unlimited permanent links, custom slugs, and basic analytics. Many competitors limit free plans to a fixed number of links or reserve features for paid tiers.",
+                                                "q":  "Is RELURL the best free URL shortener?"
+                                            },
+                                            {
+                                                "a":  "Free plans vary widely. Some offer limited monthly links, others expire inactive links. Paid plans range from affordable monthly subscriptions to enterprise pricing. Compare features per dollar to find the best value.",
+                                                "q":  "How do URL shorteners compare on pricing?"
+                                            }
+                                        ]
+                           },
+    "healthcare-link-shortener":  {
+                                      "title":  "Healthcare Link Shortener",
+                                      "subtitle":  "Simplify Patient Access",
+                                      "description":  "Shorten patient portal links, appointment booking URLs, and health resources. Make it easy for patients to find and access your services.",
+                                      "metaDescription":  "Shorten patient portal links, appointment booking URLs, and health resources. Secure, HIPAA-conscious link management with RELURL.",
+                                      "keywords":  [
+                                                       "healthcare link shortener",
+                                                       "medical link generator",
+                                                       "patient portal links"
+                                                   ],
+                                      "features":  [
+                                                       "Patient Portal Shortening",
+                                                       "Appointment Link Tracking",
+                                                       "Health Resource Sharing",
+                                                       "Clinic Location Links",
+                                                       "Insurance Verification Links",
+                                                       "Telehealth Access Links"
+                                                   ],
+                                      "howItWorks":  [
+                                                         {
+                                                             "desc":  "Enter your patient portal, booking, or resource link.",
+                                                             "step":  "Paste Healthcare URL"
+                                                         },
+                                                         {
+                                                             "desc":  "Create a simple, memorable URL for patients.",
+                                                             "step":  "Generate Short Link"
+                                                         },
+                                                         {
+                                                             "desc":  "Include in emails, texts, and printed materials.",
+                                                             "step":  "Share with Patients"
+                                                         }
+                                                     ],
+                                      "useCases":  [
+                                                       "Patient portal access",
+                                                       "Appointment booking links",
+                                                       "Telehealth session links",
+                                                       "Prescription refill pages",
+                                                       "Health education resources",
+                                                       "Clinic location directions"
+                                                   ]
+                                  },
+    "branded-link-shortener":  {
+                                   "title":  "Branded Link Shortener",
+                                   "subtitle":  "Put Your Brand on Every Link",
+                                   "description":  "Shorten URLs with your custom branded domain. Every link becomes a trust signal that strengthens your brand recognition with every click.",
+                                   "metaDescription":  "Shorten URLs with your own brand name. Create branded short links that build trust, recognition, and click-through rates with every shared link.",
+                                   "keywords":  [
+                                                    "branded link shortener",
+                                                    "branded short urls",
+                                                    "brand links"
+                                                ],
+                                   "features":  [
+                                                    "Custom Branded Domains",
+                                                    "Consistent Brand Voice",
+                                                    "Trust-Building Links",
+                                                    "Custom Back-Half Names",
+                                                    "Link Management Dashboard",
+                                                    "Click Analytics by Brand"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Add your branded domain like go.yourbrand.com.",
+                                                          "step":  "Connect Your Domain"
+                                                      },
+                                                      {
+                                                          "desc":  "Use your brand name in the short URL slug.",
+                                                          "step":  "Create Branded Links"
+                                                      },
+                                                      {
+                                                          "desc":  "Monitor click performance across all branded links.",
+                                                          "step":  "Track \u0026 Optimize"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Company-wide link standardization",
+                                                    "Product marketing campaigns",
+                                                    "Social media profile links",
+                                                    "Press releases and media mentions",
+                                                    "Customer support documentation",
+                                                    "Partner and affiliate programs"
+                                                ],
+                                   "faqs":  [
+                                                {
+                                                    "a":  "A branded short domain is a custom domain (like go.yourcompany.com) that you use for your shortened links instead of a generic domain. It keeps your brand front and center in every link you share.",
+                                                    "q":  "What is a branded short domain?"
+                                                },
+                                                {
+                                                    "a":  "From your dashboard, go to Domains and add your custom domain. You\u0027ll need to configure a CNAME record with your DNS provider. Once verified, all links can use your branded domain.",
+                                                    "q":  "How do I connect my own domain?"
+                                                },
+                                                {
+                                                    "a":  "Yes. Links on branded domains get 30-40% higher click-through rates because users trust recognizable domains. Branded links also look professional in marketing materials and social media.",
+                                                    "q":  "Does branded link shortening improve trust?"
+                                                }
+                                            ]
+                               },
+    "dynamic-qr-code-generator":  {
+                                      "title":  "Dynamic QR Code Generator",
+                                      "subtitle":  "Editable QR Codes",
+                                      "description":  "Create dynamic QR codes that can be updated anytime without reprinting. Track scans and change destinations on the fly.",
+                                      "metaDescription":  "Create dynamic QR codes that can be edited after printing. Track scans and update destinations without changing the code.",
+                                      "keywords":  [
+                                                       "dynamic qr code",
+                                                       "editable qr code",
+                                                       "trackable qr code",
+                                                       "dynamic qr code generator"
+                                                   ],
+                                      "features":  [
+                                                       "Edit Destination Anytime",
+                                                       "Scan Analytics",
+                                                       "No Reprinting Needed",
+                                                       "Track Performance",
+                                                       "Campaign Management",
+                                                       "Geo-Targeting"
+                                                   ],
+                                      "howItWorks":  [
+                                                         {
+                                                             "desc":  "Set your initial destination URL",
+                                                             "step":  "Enter URL"
+                                                         },
+                                                         {
+                                                             "desc":  "Create your dynamic QR code and save it",
+                                                             "step":  "Generate \u0026 Save"
+                                                         },
+                                                         {
+                                                             "desc":  "Change the destination URL whenever you want",
+                                                             "step":  "Edit Anytime"
+                                                         }
+                                                     ],
+                                      "useCases":  [
+                                                       "Marketing campaigns that change over time",
+                                                       "Product packaging with updatable info",
+                                                       "Event materials with real-time updates",
+                                                       "A/B testing different landing pages",
+                                                       "Retargeting ads",
+                                                       "Seasonal promotions"
+                                                   ],
+                                      "faqs":  [
+                                                   {
+                                                       "a":  "Static QR codes encode the destination directly into the code and cannot be changed. Dynamic QR codes contain a short URL that redirects to your destination, so you can update the destination anytime without changing the QR image.",
+                                                       "q":  "What is the difference between static and dynamic QR codes?"
+                                                   },
+                                                   {
+                                                       "a":  "Yes, dynamic QR codes include scan analytics. Your dashboard shows total scans, scans over time, device types, operating systems, and geographic locations of scanners.",
+                                                       "q":  "Can I see how many times my QR code was scanned?"
+                                                   },
+                                                   {
+                                                       "a":  "No, you can edit dynamic QR codes as many times as you like. The link updates immediately, and the existing QR codes printed on your materials will still work — they\u0027ll now redirect to the new destination.",
+                                                       "q":  "Is there a limit to how many times I can edit a dynamic QR code?"
+                                                   }
+                                               ]
+                                  },
+    "how-to-create-qr-codes":  {
+                                   "title":  "How to Create QR Codes",
+                                   "subtitle":  "Complete QR Code Guide",
+                                   "description":  "Learn how to create QR codes for any purpose. From URLs to WiFi credentials, this guide covers everything you need to know about generating and using QR codes.",
+                                   "metaDescription":  "Learn how to create QR codes for URLs, WiFi, vCards, and more. Complete guide to generating and using QR codes for your business and personal needs.",
+                                   "keywords":  [
+                                                    "how to create qr codes",
+                                                    "qr code generator guide",
+                                                    "make qr code",
+                                                    "qr code creation tutorial"
+                                                ],
+                                   "features":  [
+                                                    "QR Code Generation",
+                                                    "Multiple Data Types",
+                                                    "High-Resolution Output",
+                                                    "Dynamic QR Codes",
+                                                    "Scan Analytics",
+                                                    "Print-Ready Downloads"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Select what your QR code should contain: URL, text, WiFi, vCard, email, or other options.",
+                                                          "step":  "Choose Your Data Type"
+                                                      },
+                                                      {
+                                                          "desc":  "Fill in the details based on your chosen data type, such as the URL or WiFi credentials.",
+                                                          "step":  "Enter Your Information"
+                                                      },
+                                                      {
+                                                          "desc":  "Download your high-resolution QR code and use it in print, digital, or signage materials.",
+                                                          "step":  "Download and Use"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Create QR codes for restaurant menus",
+                                                    "Generate QR codes for business cards",
+                                                    "Make QR codes for WiFi access",
+                                                    "Create QR codes for event registration",
+                                                    "Generate QR codes for product packaging",
+                                                    "Make dynamic QR codes for marketing campaigns"
+                                                ],
+                                   "faqs":  [
+                                                {
+                                                    "a":  "No, you can create QR codes directly in your browser using RELURL\u0027s QR code generator. No software installation or technical skills required.",
+                                                    "q":  "Do I need special software to create QR codes?"
+                                                },
+                                                {
+                                                    "a":  "You can create QR codes for URLs, plain text, WiFi credentials, vCard contacts, email addresses, phone numbers, SMS messages, and calendar events.",
+                                                    "q":  "What types of QR codes can I create?"
+                                                },
+                                                {
+                                                    "a":  "Static QR codes have a fixed destination that cannot be changed. Dynamic QR codes redirect through a short URL, allowing you to update the destination, track scans, and modify the target without reprinting.",
+                                                    "q":  "What is the difference between static and dynamic QR codes?"
+                                                }
+                                            ]
+                               }
+}

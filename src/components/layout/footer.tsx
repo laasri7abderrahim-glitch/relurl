@@ -78,16 +78,16 @@ function Footer() {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
               <h3 className="text-lg font-semibold text-foreground">
-                Get the latest updates
+                {t("footer.newsletter.title")}
               </h3>
               <p className="text-sm text-muted-foreground mt-1">
-                Subscribe to our newsletter for new features and tips.
+                {t("footer.newsletter.description")}
               </p>
             </div>
             <form onSubmit={handleSubscribe} className="flex w-full md:w-auto gap-3">
               <Input
                 type="email"
-                placeholder="Enter your email"
+                placeholder={t("footer.newsletter.placeholder")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full md:w-64"
@@ -95,9 +95,9 @@ function Footer() {
               />
               <Button type="submit" disabled={subscribed}>
                 {subscribed ? (
-                  <><Check className="w-4 h-4 mr-1" /> Subscribed!</>
+                  <><Check className="w-4 h-4 mr-1" /> {t("footer.newsletter.subscribed")}</>
                 ) : (
-                  <><ArrowRight className="w-4 h-4 mr-1" /> Subscribe</>
+                  <><ArrowRight className="w-4 h-4 mr-1" /> {t("footer.newsletter.subscribe")}</>
                 )}
               </Button>
             </form>

@@ -4,11 +4,11 @@ const siteName = "RELURL"
 const baseUrl = "https://relurl.com"
 const defaultImage = `${baseUrl}/api/og`
 
-// Paths that have genuine per-locale translations (not just EN fallback)
-const translatedPaths = ["/pricing", "/features", "/contact", "/blog", "/browser-extension"]
+// Paths that are EN-only (no translations available)
+const enOnlyPaths = ["/privacy", "/terms", "/cookies", "/gdpr", "/dmca", "/wordpress", "/integrations", "/changelog", "/api-reference"]
 
-function hasRealTranslations(path: string): boolean {
-  return translatedPaths.some((tp) => path.startsWith(tp))
+function hasTranslations(path: string): boolean {
+  return !enOnlyPaths.some((ep) => path === ep || path.startsWith(ep + "/"))
 }
 
 interface SEOProps {
@@ -37,7 +37,7 @@ export function generateSEOMetadata({
   image,
 }: SEOProps): Metadata {
   // Untranslated pages canonical to EN to avoid duplicate-content issues
-  const canonicalLocale = locale !== "en" && !hasRealTranslations(path) ? "en" : locale
+  const canonicalLocale = locale !== "en" && !hasTranslations(path) ? "en" : locale
   const url = `${baseUrl}/${canonicalLocale}${path}`
   const ogUrl = image || ogImageUrl(title, description)
 
@@ -46,7 +46,7 @@ export function generateSEOMetadata({
     "x-default": `${baseUrl}/en${path}`,
     en: `${baseUrl}/en${path}`,
   }
-  if (hasRealTranslations(path) || locale === "en") {
+  if (hasTranslations(path) || locale === "en") {
     languages.fr = `${baseUrl}/fr${path}`
     languages.es = `${baseUrl}/es${path}`
   }

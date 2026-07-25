@@ -1,0 +1,1847 @@
+{
+    "qr-code-generator":  {
+                               "title":  "Generador de Códigos QR",
+                               "subtitle":  "Herramienta Gratuita en Línea",
+                               "description":  "Crea códigos QR de alta calidad al instante. Genera códigos QR personalizados para URLs, texto y más — 100% gratis, sin necesidad de registro.",
+                               "metaDescription":  "Genera códigos QR gratis. Crea códigos QR para URLs, texto, redes WiFi, contactos vCard y más con nuestro fácil generador de códigos QR gratuito.",
+                               "keywords":  [
+                                                "generador de codigos qr",
+                                                "qr code gratis",
+                                                "creador de qr",
+                                                "crear codigo qr",
+                                                "qr online"
+                                            ],
+                               "features":  [
+                                                "Generación Instantánea",
+                                                "Alta Resolución",
+                                                "Sin Registro",
+                                                "Funciona en Todas Partes",
+                                                "Diseño Personalizable",
+                                                "Múltiples Formatos"
+                                            ],
+                               "howItWorks":  [
+                                                  {
+                                                      "desc":  "Escribe o pega cualquier URL, texto o dato",
+                                                      "step":  "Ingresa Datos"
+                                                  },
+                                                  {
+                                                      "desc":  "Haz clic en generar para crear tu código QR al instante",
+                                                      "step":  "Generar"
+                                                  },
+                                                  {
+                                                      "desc":  "Descarga como PNG o copia al portapapeles",
+                                                      "step":  "Descargar"
+                                                  }
+                                              ],
+                               "useCases":  [
+                                                "Compartir enlaces de sitios web en materiales impresos",
+                                                "Agregar a tarjetas de presentación y volantes",
+                                                "Usar en presentaciones y documentos",
+                                                "Incrustar en correos electrónicos y boletines",
+                                                "Materiales para campañas de marketing",
+                                                "Empaques y etiquetas de productos"
+                                            ],
+                               "faqs":  [
+                                            {
+                                                "a":  "Puedes crear códigos QR para URLs, texto plano, credenciales de redes WiFi, contactos vCard, direcciones de correo electrónico, números de teléfono, mensajes SMS y entradas de calendario.",
+                                                "q":  "¿Qué tipos de códigos QR puedo crear?"
+                                            },
+                                            {
+                                                "a":  "Los códigos QR generados se pueden descargar como imágenes PNG de alta resolución (hasta 1024×1024px). Perfectos para materiales impresos, uso digital e incrustación.",
+                                                "q":  "¿Qué formatos de archivo están disponibles para descargar?"
+                                            },
+                                            {
+                                                "a":  "No se necesita cuenta para la generación básica de códigos QR. Sin embargo, una cuenta gratuita desbloquea funciones adicionales como personalización de diseño, análisis de escaneos y gestión de códigos QR dinámicos.",
+                                                "q":  "¿Necesito una cuenta para generar códigos QR?"
+                                            }
+                                        ]
+                           },
+     "real-estate-link-shortener":  {
+                                        "title":  "Acortador de Enlaces para Bienes Raíces",
+                                        "subtitle":  "Optimiza Enlaces de Propiedades",
+                                        "description":  "Crea enlaces cortos y memorables para listados de propiedades, casas abiertas y recorridos virtuales. Rastrea el interés de compradores y genera más prospectos.",
+                                        "metaDescription":  "Crea enlaces cortos y memorables para listados de propiedades, casas abiertas y recorridos virtuales. Rastrea el interés y genera prospectos con RELURL.",
+                                        "keywords":  [
+                                                         "acortador de enlaces para bienes raices",
+                                                         "enlaces para listados de propiedades",
+                                                         "marketing inmobiliario"
+                                                     ],
+                                        "features":  [
+                                                         "Seguimiento por Propiedad",
+                                                         "Analíticas de Generación de Prospectos",
+                                                         "Integración de Códigos QR",
+                                                         "Slugs Personalizados por Vecindario",
+                                                         "Enlaces Optimizados para Móviles",
+                                                         "Campañas de Casas Abiertas"
+                                                     ],
+                                        "howItWorks":  [
+                                                           {
+                                                               "desc":  "Ingresa tu listado MLS o la URL de la página de la propiedad.",
+                                                               "step":  "Pega la URL del Listado"
+                                                           },
+                                                           {
+                                                               "desc":  "Genera una URL corta, limpia y memorable para el listado.",
+                                                               "step":  "Crea Enlace Corto"
+                                                           },
+                                                           {
+                                                               "desc":  "Publica en redes sociales, imprime volantes y rastrea el interés de los compradores.",
+                                                               "step":  "Comparte y Genera Prospectos"
+                                                           }
+                                                       ],
+                                        "useCases":  [
+                                                         "Promoción de listados de propiedades",
+                                                         "Invitaciones a casas abiertas",
+                                                         "Compartir recorridos virtuales",
+                                                         "Marketing inmobiliario en redes sociales",
+                                                         "Enlaces en folletos impresos",
+                                                         "Campañas de correo electrónico automatizadas"
+                                                     ]
+                                    },
+     "shorten-spotify-link":  {
+                                  "title":  "Acortar Enlace de Spotify",
+                                  "subtitle":  "Optimiza Tus Enlaces Musicales",
+                                  "description":  "Acorta enlaces de canciones, álbumes, artistas y listas de reproducción de Spotify al instante con RELURL. Crea enlaces cortos y rastreables para tu contenido de Spotify y compártelos en redes sociales, mensajes o en tu sitio web.",
+                                  "metaDescription":  "Acorta enlaces de canciones, álbumes, artistas y listas de reproducción de Spotify al instante con RELURL. Crea enlaces cortos y rastreables para tu contenido de Spotify y compártelos en redes sociales, mensajes o en tu sitio web.",
+                                  "keywords":  [
+                                                   "acortar enlace de spotify",
+                                                   "acortador url spotify",
+                                                   "enlace corto spotify"
+                                               ],
+                                  "features":  [
+                                                   "Compresión de URL",
+                                                   "Slugs Personalizados",
+                                                   "Analíticas de Clics",
+                                                   "Generación de Códigos QR",
+                                                   "Control de Caducidad de Enlaces",
+                                                   "Gratis para Siempre"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Copia cualquier enlace de canción, álbum, artista o lista de reproducción de Spotify y péguelo en el campo de entrada.",
+                                                         "step":  "Pega tu URL de Spotify"
+                                                     },
+                                                     {
+                                                         "desc":  "Haz clic en acortar y crearemos al instante una URL corta, compacta y rastreable para tu contenido de Spotify.",
+                                                         "step":  "Genera tu Enlace Corto"
+                                                     },
+                                                     {
+                                                         "desc":  "Comparte tu nuevo enlace corto en cualquier lugar y monitorea clics, geolocalización y dispositivos en tiempo real.",
+                                                         "step":  "Comparte y Rastrea Interacción"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Compartir listas de reproducción de Spotify en redes sociales con enlaces limpios",
+                                                   "Promocionar episodios de podcasts en Spotify con URLs rastreables",
+                                                   "Rastrear clics en enlaces de perfiles de artistas en campañas",
+                                                   "Compartir lanzamientos de álbumes con fans por correo electrónico y mensajería",
+                                                   "Incluir enlaces de Spotify en boletines sin desorden"
+                                               ],
+                                  "faqs":  [
+                                               {
+                                                   "a":  "Sí, RELURL te permite crear alias personalizados para tus enlaces de Spotify para que sean memorables y estén alineados con tu marca.",
+                                                   "q":  "¿Puedo personalizar mi enlace acortado de Spotify?"
+                                               },
+                                               {
+                                                   "a":  "No, los enlaces de RELURL nunca caducan. Tu enlace corto de Spotify funcionará para siempre, incluso en el plan gratuito.",
+                                                   "q":  "¿Mi enlace acortado de Spotify dejará de funcionar?"
+                                               },
+                                               {
+                                                   "a":  "Por supuesto. RELURL proporciona analíticas detalladas que incluyen número de clics, datos geográficos, tipos de dispositivo e información de referencia para cada enlace acortado.",
+                                                   "q":  "¿Puedo rastrear clics en mis enlaces de Spotify?"
+                                               }
+                                           ]
+                              },
+     "restaurant-link-shortener":  {
+                                       "title":  "Acortador de Enlaces para Restaurantes",
+                                       "subtitle":  "Llena Más Mesas",
+                                       "description":  "Acorta enlaces de menús, reservaciones y entregas a domicilio. Genera más pedidos y reservaciones con URLs limpias y rastreables que los clientes recuerdan.",
+                                       "metaDescription":  "Acorta enlaces de menús, reservaciones y entregas para tu restaurante. Genera más pedidos y reservaciones con URLs limpias y rastreables.",
+                                       "keywords":  [
+                                                        "acortador de enlaces para restaurantes",
+                                                        "generador de enlaces de menu",
+                                                        "marketing para restaurantes"
+                                                    ],
+                                       "features":  [
+                                                        "Seguimiento de Enlaces de Menú",
+                                                        "Analíticas de Reservaciones",
+                                                        "Enlaces a Plataformas de Entrega",
+                                                        "Código QR para Mesas",
+                                                        "Actualizaciones de Menú de Temporada",
+                                                        "Amigable con SEO Local"
+                                                    ],
+                                       "howItWorks":  [
+                                                          {
+                                                              "desc":  "Ingresa el enlace de tu menú, reservación o página de entrega.",
+                                                              "step":  "Pega la URL del Restaurante"
+                                                          },
+                                                          {
+                                                              "desc":  "Genera una URL limpia y fácil de escribir para los clientes.",
+                                                              "step":  "Crea Enlace Corto"
+                                                          },
+                                                          {
+                                                              "desc":  "Comparte en redes sociales, imprime en menús y rastrea pedidos.",
+                                                              "step":  "Promociona y Llena Mesas"
+                                                          }
+                                                      ],
+                                       "useCases":  [
+                                                        "Compartir menú en línea",
+                                                        "Enlaces a páginas de reservación",
+                                                        "Promoción de plataformas de entrega",
+                                                        "Anuncios de eventos especiales",
+                                                        "Registros en programas de fidelidad",
+                                                        "Enlaces para consultas de catering"
+                                                    ]
+                                   },
+     "shorten-calendly-link":  {
+                                   "title":  "Acortar Enlace de Calendly",
+                                   "subtitle":  "URLs de Reservación Limpias",
+                                   "description":  "Acorta enlaces de reservación de Calendly al instante con RELURL. Crea URLs cortas y profesionales para tus páginas de programación y compártelas con clientes y prospectos.",
+                                   "metaDescription":  "Acorta enlaces de reservación de Calendly al instante con RELURL. Crea URLs cortas y profesionales para tus páginas de programación y compártelas con clientes y prospectos.",
+                                   "keywords":  [
+                                                    "acortar enlace de calendly",
+                                                    "acortador url calendly",
+                                                    "acortador de enlaces calendly",
+                                                    "enlace corto de programacion"
+                                                ],
+                                   "features":  [
+                                                    "Compresión de URL",
+                                                    "Slugs Personalizados",
+                                                    "Analíticas de Clics",
+                                                    "Seguimiento de Campañas",
+                                                    "Dominios Personalizados",
+                                                    "Gratis para Siempre"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Copia el enlace de tu página de reservación de Calendly desde tu panel o navegador.",
+                                                          "step":  "Copia tu URL de Calendly"
+                                                      },
+                                                      {
+                                                          "desc":  "Pega el enlace arriba y obtén al instante una URL corta de programación limpia y personalizada.",
+                                                          "step":  "Pega y Acorta"
+                                                      },
+                                                      {
+                                                          "desc":  "Usa tu enlace corto en firmas de correo, biografías sociales, tarjetas de presentación y materiales de marketing.",
+                                                          "step":  "Agrega a Todos los Canales"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Agregar enlaces de programación limpios a firmas de correo para facilitar las reservaciones",
+                                                    "Compartir enlaces de Calendly en redes sociales sin desorden",
+                                                    "Rastrear cuántos prospectos hacen clic en tu enlace de reservación",
+                                                    "Crear enlaces cortos personalizados para campañas de ventas",
+                                                    "Incluir enlaces cortos de Calendly en portafolios PDF y propuestas"
+                                                ],
+                                   "faqs":  [
+                                                {
+                                                    "a":  "Sí, el enlace corto redirige a tu página de Calendly preservando toda la funcionalidad, incluyendo la programación integrada.",
+                                                    "q":  "¿Mi integración de Calendly seguirá funcionando con un enlace corto?"
+                                                },
+                                                {
+                                                    "a":  "Por supuesto. Los dominios personalizados te permiten crear enlaces como book.tuempresa.com para un toque profesional.",
+                                                    "q":  "¿Puedo usar mi propio dominio para enlaces cortos de Calendly?"
+                                                },
+                                                {
+                                                    "a":  "Sí, RELURL proporciona analíticas detalladas de clics que muestran cuántas personas acceden a tu página de programación.",
+                                                    "q":  "¿Puedo rastrear cuántas personas ven mi página de Calendly?"
+                                                }
+                                            ]
+                               },
+     "relurl-vs-tinyurl":  {
+                               "title":  "RELURL vs TinyURL (2026)",
+                               "subtitle":  "La Comparación Honesta",
+                               "description":  "TinyURL es excelente para acortamientos esporádicos: es rápido y existe desde 2002. Pero si necesitas analíticas, herramientas de equipo, dominios personalizados o funciones de marketing, RELURL gana en todos los frentes. Aquí tienes el desglose.",
+                               "metaDescription":  "Compara RELURL vs TinyURL: analíticas en plan gratuito vs cero, 5,000 enlaces activos vs 500, colaboración en equipo vs ninguna, geodireccionamiento, códigos QR y más. Descubre por qué miles se cambian.",
+                               "keywords":  [
+                                                "relurl vs tinyurl",
+                                                "alternativa a tinyurl",
+                                                "relurl o tinyurl",
+                                                "comparar acortadores de url",
+                                                "tinyurl plan gratuito sin analiticas"
+                                            ],
+                               "features":  [
+                                                "El plan gratis incluye analíticas completas de clics (TinyURL Gratis = cero analíticas)",
+                                                "5",
+                                                "000 enlaces activos en Pro — TinyURL te limita a 500",
+                                                "Colaboración en equipo con acceso basado en roles — TinyURL no tiene ninguna",
+                                                "Segmentación geográfica y por dispositivo para campañas internacionales",
+                                                "Páginas link-in-bio para perfiles de redes sociales",
+                                                "Notificaciones webhook en cada clic"
+                                            ],
+                               "howItWorks":  [
+                                                  {
+                                                      "desc":  "RELURL Gratis incluye seguimiento de clics, datos geográficos, dispositivos y referidos. TinyURL Gratis no te da nada — ni siquiera conteos básicos de clics.",
+                                                      "step":  "Analíticas en Plan Gratuito"
+                                                  },
+                                                  {
+                                                      "desc":  "RELURL Pro ofrece 5,000 enlaces activos y 50,000 clics rastreados por mes. TinyURL Pro te limita a 500 enlaces sin un límite de clics explícito.",
+                                                      "step":  "Escala Sin Límites"
+                                                  },
+                                                  {
+                                                      "desc":  "RELURL incluye espacios de trabajo en equipo, generador UTM, monitoreo de salud de enlaces y páginas bio. TinyURL no ofrece nada de esto.",
+                                                      "step":  "Herramientas de Equipo y Marketing"
+                                                  }
+                                              ],
+                               "useCases":  [
+                                                "Obtén analíticas reales en tu plan gratuito — TinyURL Gratis tiene cero seguimiento",
+                                                "Escala más allá de 500 enlaces sin toparte con un límite",
+                                                "Colabora con tu equipo en campañas de enlaces",
+                                                "Dirige usuarios por país o tipo de dispositivo",
+                                                "Crea páginas link-in-bio para Instagram",
+                                                "TikTok",
+                                                "YouTube",
+                                                "Monitorea la salud de los enlaces y recibe alertas de enlaces rotos"
+                                            ],
+                               "faqs":  [
+                                            {
+                                                "a":  "Sí. A diferencia del plan gratuito de TinyURL que ofrece cero seguimiento de clics, RELURL Gratis incluye analíticas completas: clics totales, visitantes únicos, datos geográficos, desglose por dispositivo, información del navegador y seguimiento de referidos — todo sin costo.",
+                                                "q":  "¿El plan gratuito de RELURL realmente tiene analíticas?"
+                                            },
+                                            {
+                                                "a":  "RELURL Gratis: enlaces ilimitados. RELURL Pro: 5,000 enlaces activos. TinyURL Gratis: ilimitados (pero sin edición ni analíticas). TinyURL Pro: solo 500 URLs activas — 10 veces menos que RELURL Pro por un precio comparable.",
+                                                "q":  "¿Cuántos enlaces puedo crear en cada plataforma?"
+                                            },
+                                            {
+                                                "a":  "No. TinyURL no tiene ninguna función de equipo. RELURL ofrece espacios de trabajo multiusuario con acceso basado en roles (Propietario, Administrador, Miembro), bibliotecas de enlaces compartidas, analíticas de equipo y facturación centralizada.",
+                                                "q":  "¿Tiene TinyURL colaboración en equipo?"
+                                            },
+                                            {
+                                                "a":  "RELURL. Puedes dirigir usuarios a diferentes destinos según su país o tipo de dispositivo. TinyURL no tiene capacidades de geodireccionamiento ni segmentación por dispositivo.",
+                                                "q":  "¿Cuál es mejor para campañas internacionales?"
+                                            },
+                                            {
+                                                "a":  "Ambos admiten dominios personalizados. Pero RELURL Pro incluye hasta 3 dominios personalizados, y Business incluye hasta 10. TinyURL Pro solo permite 1 dominio personalizado.",
+                                                "q":  "¿Puedo usar mi propio dominio personalizado?"
+                                            },
+                                            {
+                                                "a":  "Los enlaces de RELURL nunca caducan en ningún plan. Los enlaces de TinyURL Gratis y Pro son permanentes, pero su plan Bulk ($99+/mes) tiene una caducidad de 90 días — los enlaces dejan de funcionar después de 90 días a menos que los administres activamente.",
+                                                "q":  "¿Caducan los enlaces en alguna de las plataformas?"
+                                            }
+                                        ]
+                           },
+     "qr-code-for-wifi":  {
+                              "title":  "Código QR para WiFi",
+                              "subtitle":  "Comparte WiFi al Instante",
+                              "description":  "Genera un código QR para tu red WiFi. Los invitados escanean una vez y se conectan automáticamente — sin necesidad de escribir la contraseña.",
+                              "metaDescription":  "Crea un código QR para tu red WiFi. Los invitados escanean una vez y se conectan automáticamente sin escribir la contraseña. Funciona con todos los routers.",
+                              "keywords":  [
+                                               "codigo qr para wifi",
+                                               "qr wifi",
+                                               "codigo qr inicio sesion wifi",
+                                               "codigo qr contraseña wifi"
+                                           ],
+                              "features":  [
+                                               "Conexión Automática al Escanear",
+                                               "Compatible con WPA/WEP",
+                                               "Funciona con Cualquier Router",
+                                               "Amigable para Invitados",
+                                               "Soporte Multi-Red",
+                                               "Imprimibles con Código QR"
+                                           ],
+                              "howItWorks":  [
+                                                 {
+                                                     "desc":  "Ingresa el nombre de tu WiFi (SSID) y contraseña",
+                                                     "step":  "Ingresa Información de la Red"
+                                                 },
+                                                 {
+                                                     "desc":  "Crea un código QR que codifica tus credenciales WiFi",
+                                                     "step":  "Generar Código"
+                                                 },
+                                                 {
+                                                     "desc":  "Muestra el código QR para acceso WiFi instantáneo",
+                                                     "step":  "Comparte con Invitados"
+                                                 }
+                                             ],
+                              "useCases":  [
+                                               "Hoteles y restaurantes",
+                                               "Áreas de recepción de oficinas",
+                                               "Lugares de eventos",
+                                               "Invitados en casa",
+                                               "Airbnbs y propiedades de alquiler",
+                                               "Acceso de invitados en espacios de coworking"
+                                           ]
+                          },
+     "shorten-tiktok-url":  {
+                                "title":  "Acortar URL de TikTok",
+                                "subtitle":  "Potencia Tus Enlaces de TikTok",
+                                "description":  "Acorta URLs de videos y perfiles de TikTok para compartir en otras plataformas. Los enlaces cortos y rastreables te ayudan a medir cómo tu contenido de TikTok genera tráfico.",
+                                "metaDescription":  "Acorta URLs de videos y perfiles de TikTok para compartir en todas las plataformas. Haz que tus enlaces de TikTok sean limpios y rastreables para una mejor promoción entre plataformas.",
+                                "keywords":  [
+                                                 "acortar url de tiktok",
+                                                 "acortador de enlaces tiktok",
+                                                 "acortador url tiktok",
+                                                 "enlace corto tiktok"
+                                             ],
+                                "features":  [
+                                                 "Compresión de URL de TikTok",
+                                                 "Listo para Bio",
+                                                 "Seguimiento Multiplataforma",
+                                                 "Slugs Personalizados",
+                                                 "Analíticas de Enlaces de Video",
+                                                 "Generación de Códigos QR"
+                                             ],
+                                "howItWorks":  [
+                                                   {
+                                                       "desc":  "Copia la URL del video o perfil de TikTok que deseas acortar.",
+                                                       "step":  "Pega la URL de TikTok"
+                                                   },
+                                                   {
+                                                       "desc":  "Genera un enlace corto limpio y compacto para tu contenido de TikTok.",
+                                                       "step":  "Acorta al Instante"
+                                                   },
+                                                   {
+                                                       "desc":  "Usa el enlace corto en tu bio, otras plataformas sociales o materiales de marketing.",
+                                                       "step":  "Comparte en Todas Partes"
+                                                   }
+                                               ],
+                                "useCases":  [
+                                                 "Compartir videos de TikTok en Instagram y Twitter",
+                                                 "Crear enlaces rastreables para la bio de TikTok",
+                                                 "Promocionar contenido de TikTok en boletines de correo electrónico",
+                                                 "Agregar enlaces de videos de TikTok a publicaciones de blog",
+                                                 "Rastrear tráfico multiplataforma desde TikTok",
+                                                 "Generar códigos QR para promoción de perfiles de TikTok"
+                                             ],
+                                "faqs":  [
+                                             {
+                                                 "a":  "Sí, copia cualquier URL de video de TikTok y acórtala con RELURL. El enlace corto redirige a los visitantes directamente a tu video de TikTok en cualquier dispositivo.",
+                                                 "q":  "¿Puedo acortar URLs de videos de TikTok?"
+                                             },
+                                             {
+                                                 "a":  "Sí, las URLs acortadas funcionan perfectamente en las bios de TikTok. Ahorran valioso espacio de caracteres y se ven más limpias que las URLs largas de TikTok con parámetros de seguimiento.",
+                                                 "q":  "¿Funcionarán los enlaces cortos en la bio de TikTok?"
+                                             },
+                                             {
+                                                 "a":  "Por supuesto. Crea un enlace corto a tu sitio web, compártelo en tu bio o videos de TikTok, y rastrea exactamente cuántos clics provienen de tu audiencia de TikTok.",
+                                                 "q":  "¿Puedo rastrear clics desde TikTok a mi sitio web?"
+                                             }
+                                         ]
+                            },
+     "shorten-substack-link":  {
+                                   "title":  "Acortar Enlace de Substack",
+                                   "subtitle":  "Comparte Tu Boletín",
+                                   "description":  "Acorta enlaces de boletines y artículos de Substack al instante con RELURL. Crea URLs cortas y rastreables para tu publicación de Substack y haz crecer tu base de suscriptores.",
+                                   "metaDescription":  "Acorta enlaces de boletines y artículos de Substack al instante con RELURL. Crea URLs cortas y rastreables para tu publicación de Substack y haz crecer tu base de suscriptores.",
+                                   "keywords":  [
+                                                    "acortar enlace de substack",
+                                                    "acortador url substack",
+                                                    "acortador de enlaces substack",
+                                                    "promocionar substack"
+                                                ],
+                                   "features":  [
+                                                    "Compresión de URL",
+                                                    "Alias Personalizados",
+                                                    "Analíticas de Clics",
+                                                    "Seguimiento de Campañas",
+                                                    "Botones para Compartir en Redes Sociales",
+                                                    "Gratis para Siempre"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Copia el enlace de tu boletín o artículo de Substack desde el panel de tu publicación.",
+                                                          "step":  "Copia la URL de tu Artículo de Substack"
+                                                      },
+                                                      {
+                                                          "desc":  "Pega el enlace arriba y crearemos una URL corta y compacta lista para compartir.",
+                                                          "step":  "Pega y Acorta"
+                                                      },
+                                                      {
+                                                          "desc":  "Comparte tu enlace corto en Twitter, LinkedIn y otras plataformas para atraer más suscriptores.",
+                                                          "step":  "Haz Crecer Tu Audiencia"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Compartir artículos de Substack en Twitter/X con enlaces que ahorran caracteres",
+                                                    "Rastrear tasas de clics en promoción de boletines entre plataformas",
+                                                    "Agregar enlaces cortos de Substack a tu bio en múltiples redes sociales",
+                                                    "Crear enlaces rastreables para campañas de referidos de suscriptores",
+                                                    "Organizar múltiples enlaces de artículos para kits de prensa y medios"
+                                                ],
+                                   "faqs":  [
+                                                {
+                                                    "a":  "Sí, RELURL preserva los metadatos de vista previa social para que la tarjeta de vista previa de tu artículo se muestre correctamente en todas las plataformas.",
+                                                    "q":  "¿Aparecerá la tarjeta de vista previa de mi artículo de Substack con un enlace corto?"
+                                                },
+                                                {
+                                                    "a":  "Por supuesto. Las analíticas de RELURL muestran información del referido para que puedas optimizar tu estrategia de promoción.",
+                                                    "q":  "¿Puedo ver qué plataforma envía más lectores?"
+                                                },
+                                                {
+                                                    "a":  "Sí, puedes personalizar el slug de cada enlace corto para que coincida con tu marca o el tema del artículo.",
+                                                    "q":  "¿Puedo crear alias personalizados para mis enlaces cortos de Substack?"
+                                                }
+                                            ]
+                               },
+     "qr-code-for-youtube":  {
+                                 "title":  "Código QR para YouTube",
+                                 "subtitle":  "Comparte Videos Fácilmente",
+                                 "description":  "Crea un código QR para tus videos o canal de YouTube. Los espectadores escanean y ven al instante — perfecto para promoción.",
+                                 "metaDescription":  "Crea un código QR para tus videos o canal de YouTube. Los espectadores escanean y ven al instante — perfecto para promoción.",
+                                 "keywords":  [
+                                                  "codigo qr para youtube",
+                                                  "qr youtube",
+                                                  "qr canal youtube",
+                                                  "codigo qr video youtube"
+                                              ],
+                                 "features":  [
+                                                  "Acceso Instantáneo a Videos",
+                                                  "Aumenta Suscriptores",
+                                                  "Funciona en Todos los Dispositivos",
+                                                  "Listo para Imprimir",
+                                                  "Compartir Listas de Reproducción",
+                                                  "Enlace al Tráiler del Canal"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Pega el enlace de tu video o canal de YouTube",
+                                                        "step":  "Ingresa la URL del Video"
+                                                    },
+                                                    {
+                                                        "desc":  "Crea un código escaneable",
+                                                        "step":  "Generar Código QR"
+                                                    },
+                                                    {
+                                                        "desc":  "Agrega a pósters, empaques o tarjetas de presentación",
+                                                        "step":  "Comparte en Todas Partes"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Promoción de videos",
+                                                  "Demostraciones de productos",
+                                                  "Entretenimiento en eventos",
+                                                  "Contenido educativo",
+                                                  "Lanzamientos musicales",
+                                                  "Compartir tutoriales y videos instructivos"
+                                              ]
+                             },
+     "saas-link-shortener":  {
+                                 "title":  "Acortador de Enlaces para SaaS",
+                                 "subtitle":  "Acelera el Crecimiento de tu SaaS",
+                                 "description":  "Acorta enlaces de demostraciones, pruebas y páginas de funciones. Rastrea registros a través de tu embudo, optimiza campañas y acelera el crecimiento.",
+                                 "metaDescription":  "Acorta enlaces de demostraciones, pruebas y páginas de funciones para tu SaaS. Rastrea registros, optimiza embudos y aumenta conversiones con RELURL.",
+                                 "keywords":  [
+                                                  "acortador de enlaces saas",
+                                                  "enlaces de marketing de software",
+                                                  "enlaces de demostracion saas"
+                                              ],
+                                 "features":  [
+                                                  "Seguimiento por Etapa del Embudo",
+                                                  "Atribución de Registros",
+                                                  "Soporte para Pruebas A/B",
+                                                  "Gestión de Enlaces de Referidos",
+                                                  "Enlaces de Demostración Personalizados",
+                                                  "Analíticas de Campañas"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Ingresa el enlace de tu página de precios, demostración o funciones.",
+                                                        "step":  "Pega la URL del SaaS"
+                                                    },
+                                                    {
+                                                        "desc":  "Etiqueta el enlace con parámetros UTM para seguimiento del embudo.",
+                                                        "step":  "Agrega Etiquetas de Campaña"
+                                                    },
+                                                    {
+                                                        "desc":  "Úsalo en anuncios y correos, luego optimiza según los datos de registro.",
+                                                        "step":  "Comparte y Optimiza"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Promoción de pruebas gratuitas",
+                                                  "Campañas de reservación de demostraciones",
+                                                  "Correos de anuncio de funciones",
+                                                  "Enlaces para socios afiliados",
+                                                  "Embudos de registro para seminarios web",
+                                                  "Campañas de anuncios de reorientación"
+                                              ]
+                             },
+     "shorten-amazon-link":  {
+                                 "title":  "Acortar Enlace de Amazon",
+                                 "subtitle":  "Limpia Tus Enlaces de Productos",
+                                 "description":  "Acorta enlaces de productos y afiliados de Amazon al instante con RELURL. Crea URLs cortas y rastreables para tus listados de Amazon, tiendas y enlaces de referidos para maximizar tus ganancias.",
+                                 "metaDescription":  "Acorta enlaces de productos y afiliados de Amazon al instante con RELURL. Crea URLs cortas y rastreables para tus listados de Amazon, tiendas y enlaces de referidos para maximizar tus ganancias.",
+                                 "keywords":  [
+                                                  "acortar enlace de amazon",
+                                                  "acortador url amazon",
+                                                  "acortador de enlaces de afiliados amazon"
+                                              ],
+                                 "features":  [
+                                                  "Compresión de URL",
+                                                  "Alias Personalizados",
+                                                  "Analíticas de Clics",
+                                                  "Seguimiento de Campañas",
+                                                  "Acortamiento Masivo",
+                                                  "Sin Caducidad"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Copia cualquier enlace de producto, tienda o afiliado de Amazon que desees compartir.",
+                                                        "step":  "Copia tu URL de Amazon"
+                                                    },
+                                                    {
+                                                        "desc":  "Pégala en el campo de entrada arriba y haz clic para generar un enlace corto limpio y compacto.",
+                                                        "step":  "Pega y Acorta"
+                                                    },
+                                                    {
+                                                        "desc":  "Comparte tu enlace acortado en cualquier lugar y rastrea clics, conversiones y rendimiento de referidos.",
+                                                        "step":  "Comparte y Monitorea"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Compartir enlaces de productos de Amazon en redes sociales sin desorden",
+                                                  "Promocionar enlaces de afiliados con URLs limpias y confiables",
+                                                  "Rastrear el rendimiento de clics en campañas de referidos de Amazon",
+                                                  "Organizar múltiples enlaces de productos para boletines de correo electrónico",
+                                                  "Crear enlaces cortos personalizados para tiendas de Amazon"
+                                              ],
+                                 "faqs":  [
+                                              {
+                                                  "a":  "No, RELURL preserva todos los parámetros de seguimiento de afiliados. Tus comisiones permanecen intactas mientras los enlaces se vuelven más limpios.",
+                                                  "q":  "¿Acortar mis enlaces de afiliados de Amazon afectará las comisiones?"
+                                              },
+                                              {
+                                                  "a":  "Sí, puedes personalizar el slug de cualquier enlace acortado de Amazon para hacerlo memorable y amigable con la marca.",
+                                                  "q":  "¿Puedo crear alias personalizados para mis enlaces de Amazon?"
+                                              },
+                                              {
+                                                  "a":  "Sí, RELURL admite acortamiento masivo de URLs, perfecto para vendedores que gestionan grandes catálogos de productos.",
+                                                  "q":  "¿Ofrecen acortamiento masivo para catálogos de productos de Amazon?"
+                                              }
+                                          ]
+                             },
+     "shorten-google-docs-link":  {
+                                      "title":  "Acortar Enlace de Google Docs",
+                                      "subtitle":  "Comparte Documentos de Forma Profesional",
+                                      "description":  "Acorta enlaces de Google Docs, Sheets, Slides y Forms para compartir de manera más limpia. Los enlaces cortos profesionales hacen que tus documentos luzcan organizados y sean más fáciles de distribuir.",
+                                      "metaDescription":  "Acorta enlaces de Google Docs, Sheets y Slides para compartir de forma profesional. Haz que tus enlaces de documentos sean limpios, rastreables y fáciles de distribuir.",
+                                      "keywords":  [
+                                                       "acortar enlace de google docs",
+                                                       "acortador url google docs",
+                                                       "enlace corto google docs",
+                                                       "acortador de enlaces docs"
+                                                   ],
+                                      "features":  [
+                                                       "Compatibilidad con Docs/Sheets/Slides",
+                                                       "Listo para Enlaces de Forms",
+                                                       "Slugs Personalizados",
+                                                       "Analíticas de Clics",
+                                                       "Compatible con Permisos",
+                                                       "Generación de Códigos QR"
+                                                   ],
+                                      "howItWorks":  [
+                                                         {
+                                                             "desc":  "Copia tu URL de Google Docs, Sheets, Slides o Forms.",
+                                                             "step":  "Pega el Enlace de Docs"
+                                                         },
+                                                         {
+                                                             "desc":  "Genera un enlace corto y compacto para tu documento.",
+                                                             "step":  "Acorta al Instante"
+                                                         },
+                                                         {
+                                                             "desc":  "Distribuye tu enlace corto y limpio por correo electrónico o mensajería.",
+                                                             "step":  "Comparte de Forma Profesional"
+                                                         }
+                                                     ],
+                                      "useCases":  [
+                                                       "Compartir enlaces de Google Docs en correos electrónicos profesionales",
+                                                       "Distribuir enlaces de Sheets a miembros del equipo",
+                                                       "Compartir enlaces de presentaciones de Google Slides",
+                                                       "Incluir enlaces de Docs en documentación de proyectos",
+                                                       "Rastrear clics en enlaces de documentos compartidos",
+                                                       "Crear códigos QR para Forms y Encuestas"
+                                                   ],
+                                      "faqs":  [
+                                                   {
+                                                       "a":  "Sí, puedes acortar URLs de Google Docs, Google Sheets, Google Slides y Google Forms. Todos los tipos de documentos de Google Workspace son compatibles.",
+                                                       "q":  "¿Puedo acortar cualquier URL de Google Docs?"
+                                                   },
+                                                   {
+                                                       "a":  "El enlace corto redirige a tu documento original. Los destinatarios aún necesitan los permisos de acceso apropiados. Comparte enlaces con acceso de visualización o edición según sea necesario.",
+                                                       "q":  "¿Funcionan los enlaces cortos con documentos restringidos?"
+                                                   },
+                                                   {
+                                                       "a":  "Sí, cada enlace acortado incluye analíticas de clics que muestran clics totales, datos geográficos e información del referido. Esto te ayuda a rastrear cómo se accede a tus documentos compartidos.",
+                                                       "q":  "¿Puedo ver cuántas personas hicieron clic en mi enlace de documento?"
+                                                   }
+                                               ]
+                                  },
+     "shorten-github-url":  {
+                                "title":  "Acortar URL de GitHub",
+                                "subtitle":  "Simplifica Tus Enlaces de Desarrollo",
+                                "description":  "Acorta URLs de repositorios de GitHub, enlaces de issues, URLs de perfil y enlaces de gists para compartir de forma más limpia en redes sociales, documentación y comunidades de desarrolladores.",
+                                "metaDescription":  "Acorta URLs de repositorios, issues y perfiles de GitHub para compartir de forma más limpia. Haz que tus enlaces de GitHub sean compactos y fáciles de compartir en comunidades de desarrolladores.",
+                                "keywords":  [
+                                                 "acortar url de github",
+                                                 "acortador de enlaces github",
+                                                 "acortador url github",
+                                                 "enlace corto github"
+                                             ],
+                                "features":  [
+                                                 "Compresión de URL de GitHub",
+                                                 "Acortamiento de Enlaces de Repos",
+                                                 "Listo para Enlaces de Issues/PR",
+                                                 "Slugs Personalizados",
+                                                 "Analíticas de Clics",
+                                                 "Generación de Códigos QR"
+                                             ],
+                                "howItWorks":  [
+                                                   {
+                                                       "desc":  "Copia la URL del repositorio, issue o perfil de GitHub.",
+                                                       "step":  "Pega la URL de GitHub"
+                                                   },
+                                                   {
+                                                       "desc":  "Genera un enlace corto limpio y compacto para tu contenido de GitHub.",
+                                                       "step":  "Acorta al Instante"
+                                                   },
+                                                   {
+                                                       "desc":  "Comparte tu enlace en Twitter, Slack, Discord o en documentación.",
+                                                       "step":  "Comparte con Desarrolladores"
+                                                   }
+                                               ],
+                                "useCases":  [
+                                                 "Compartir enlaces de repositorios de GitHub en tweets y publicaciones",
+                                                 "Agregar enlaces cortos de repos a la documentación del proyecto",
+                                                 "Compartir enlaces de issues y PRs en chats de equipo",
+                                                 "Incluir enlaces de perfil de GitHub en currículums",
+                                                 "Promocionar proyectos de código abierto en redes sociales",
+                                                 "Crear enlaces rastreables para GitHub Pages"
+                                             ],
+                                "faqs":  [
+                                             {
+                                                 "a":  "Sí, cualquier URL de GitHub se puede acortar, incluyendo repositorios, issues, pull requests, perfiles, organizaciones, gists y URLs de GitHub Pages.",
+                                                 "q":  "¿Puedo acortar URLs de repositorios de GitHub?"
+                                             },
+                                             {
+                                                 "a":  "El enlace corto redirige a la URL de GitHub que proporcionaste. Si el repositorio se renombra, el enlace corto seguirá redirigiendo, pero GitHub redirigirá la URL anterior a la nueva.",
+                                                 "q":  "¿Se romperá el enlace corto si se renombra el repositorio?"
+                                             },
+                                             {
+                                                 "a":  "Sí, cada enlace acortado incluye analíticas de clics. Rastrea cuántas personas hacen clic en tu enlace de repositorio desde diferentes plataformas para entender qué canales generan más tráfico a tu proyecto.",
+                                                 "q":  "¿Puedo rastrear clics en mis enlaces de proyectos de GitHub?"
+                                             }
+                                         ]
+                            },
+     "shorten-dropbox-link":  {
+                                  "title":  "Acortar Enlace de Dropbox",
+                                  "subtitle":  "Simplifica la Distribución de Archivos",
+                                  "description":  "Acorta enlaces de archivos y carpetas compartidos de Dropbox para una distribución más limpia. Los enlaces cortos profesionales hacen que tus archivos de Dropbox sean más fáciles de acceder y rastrear.",
+                                  "metaDescription":  "Acorta enlaces de archivos y carpetas de Dropbox para compartir de forma más limpia. Haz que tus enlaces de Dropbox sean compactos, rastreables y más fáciles de distribuir por correo electrónico y chat.",
+                                  "keywords":  [
+                                                   "acortar enlace de dropbox",
+                                                   "acortador url dropbox",
+                                                   "enlace corto dropbox",
+                                                   "acortador de enlaces dropbox"
+                                               ],
+                                  "features":  [
+                                                   "Compresión de URL de Dropbox",
+                                                   "Compatibilidad con Archivos y Carpetas",
+                                                   "Alias Personalizados",
+                                                   "Analíticas de Clics",
+                                                   "Compatible con Permisos",
+                                                   "Listo para Códigos QR"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Copia el enlace compartido del archivo o carpeta de Dropbox.",
+                                                         "step":  "Pega el Enlace de Dropbox"
+                                                     },
+                                                     {
+                                                         "desc":  "Genera un enlace corto y limpio para tu contenido de Dropbox.",
+                                                         "step":  "Acorta al Instante"
+                                                     },
+                                                     {
+                                                         "desc":  "Distribuye tu enlace corto por correo electrónico, chat o en cualquier lugar.",
+                                                         "step":  "Comparte con Cualquiera"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Compartir archivos de Dropbox en correos electrónicos profesionales",
+                                                   "Enviar enlaces de archivos grandes a través de aplicaciones de mensajería",
+                                                   "Incluir enlaces de carpetas en documentación de proyectos",
+                                                   "Distribuir activos a clientes y socios",
+                                                   "Rastrear clics en recursos compartidos de Dropbox",
+                                                   "Crear códigos QR para acceso rápido a archivos"
+                                               ],
+                                  "faqs":  [
+                                               {
+                                                   "a":  "Sí, tanto los enlaces de archivos como de carpetas compartidas de Dropbox se pueden acortar. El enlace corto redirige a los destinatarios a tu URL original de Dropbox.",
+                                                   "q":  "¿Puedo acortar enlaces de carpetas de Dropbox?"
+                                               },
+                                               {
+                                                   "a":  "El enlace corto redirige a tu URL original de Dropbox. Si tu enlace de Dropbox tiene protección con contraseña o configuración de caducidad, estas seguirán aplicándose después de la redirección.",
+                                                   "q":  "¿Funcionan los enlaces cortos con la protección por contraseña de Dropbox?"
+                                               },
+                                               {
+                                                   "a":  "Sí, cada enlace acortado incluye analíticas de clics. Ve exactamente cuántas personas hicieron clic en tu enlace de Dropbox y desde dónde accedieron.",
+                                                   "q":  "¿Puedo rastrear cuántas veces se accedió a mi enlace de Dropbox?"
+                                               }
+                                           ]
+                              },
+     "shorten-patreon-link":  {
+                                  "title":  "Acortar Enlace de Patreon",
+                                  "subtitle":  "Promociona Tu Membresía",
+                                  "description":  "Acorta enlaces de creadores y membresías de Patreon al instante con RELURL. Crea URLs cortas y rastreables para tu página de Patreon y haz crecer tu base de suscriptores.",
+                                  "metaDescription":  "Acorta enlaces de creadores y membresías de Patreon al instante con RELURL. Crea URLs cortas y rastreables para tu página de Patreon y haz crecer tu base de suscriptores.",
+                                  "keywords":  [
+                                                   "acortar enlace de patreon",
+                                                   "acortador url patreon",
+                                                   "acortador de enlaces patreon",
+                                                   "promocionar patreon"
+                                               ],
+                                  "features":  [
+                                                   "Compresión de URL",
+                                                   "Alias Personalizados",
+                                                   "Analíticas de Clics",
+                                                   "Botones para Compartir en Redes Sociales",
+                                                   "Seguimiento de Campañas",
+                                                   "Generación de Códigos QR"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Copia la URL de tu página de creador o nivel de membresía de Patreon desde tu navegador.",
+                                                         "step":  "Copia tu URL de Patreon"
+                                                     },
+                                                     {
+                                                         "desc":  "Pega el enlace arriba y opcionalmente crea un alias personalizado para tu URL corta de Patreon.",
+                                                         "step":  "Acorta y Personaliza"
+                                                     },
+                                                     {
+                                                         "desc":  "Comparte tu enlace limpio de Patreon en YouTube, Twitter, Instagram y todos tus canales de contenido.",
+                                                         "step":  "Promociona en Todos Lados"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Agregar un enlace limpio de Patreon a las descripciones de tus videos de YouTube",
+                                                   "Compartir tu página de membresía en redes sociales sin URLs largas",
+                                                   "Rastrear qué plataformas generan más registros en Patreon",
+                                                   "Crear códigos QR para enlaces de Patreon en mercancía y pósters",
+                                                   "Incluir un enlace corto de Patreon en campañas de boletines de correo electrónico"
+                                               ],
+                                  "faqs":  [
+                                               {
+                                                   "a":  "Sí, todos los metadatos y la marca de Patreon se preservan al usar enlaces cortos de RELURL.",
+                                                   "q":  "¿Mi marca de Patreon seguirá apareciendo con un enlace corto?"
+                                               },
+                                               {
+                                                   "a":  "Por supuesto. Las analíticas de RELURL muestran datos del referido para que puedas optimizar tu estrategia de promoción.",
+                                                   "q":  "¿Puedo ver qué plataforma social envía más tráfico a Patreon?"
+                                               },
+                                               {
+                                                   "a":  "Sí, cada enlace acortado viene automáticamente con un código QR descargable para promoción fuera de línea.",
+                                                   "q":  "¿Puedo generar un código QR para mi enlace corto de Patreon?"
+                                               }
+                                           ]
+                              },
+     "relurl-vs-bitly":  {
+                             "title":  "RELURL vs Bitly",
+                             "subtitle":  "La Mejor Opción",
+                             "description":  "Compara RELURL vs Bitly para encontrar el mejor acortador de URLs de nivel empresarial. RELURL ofrece analíticas comparables, dominios personalizados y funciones de equipo a una fracción del costo de Bitly.",
+                             "metaDescription":  "Compara RELURL vs Bitly para encontrar el mejor acortador de URLs de nivel empresarial. Descubre cómo los precios, analíticas y funciones de RELURL se comparan con los planes pagos de Bitly.",
+                             "keywords":  [
+                                              "relurl vs bitly",
+                                              "alternativa a bitly",
+                                              "relurl o bitly",
+                                              "comparar relurl bitly"
+                                          ],
+                             "features":  [
+                                              "Analíticas Avanzadas",
+                                              "Dominios Personalizados",
+                                              "Colaboración en Equipo",
+                                              "Acortamiento Masivo",
+                                              "Acceso a API",
+                                              "Gratis para Siempre"
+                                          ],
+                             "howItWorks":  [
+                                                {
+                                                    "desc":  "Compara el conjunto de funciones de RELURL con los niveles pagos de Bitly para ver dónde obtienes más valor.",
+                                                    "step":  "Revisa la Comparación de Funciones"
+                                                },
+                                                {
+                                                    "desc":  "RELURL ofrece un plan gratuito para siempre con funciones por las que Bitly cobra una prima.",
+                                                    "step":  "Verifica las Diferencias de Precio"
+                                                },
+                                                {
+                                                    "desc":  "Haz el cambio y disfruta de una gestión de enlaces de nivel empresarial sin el precio empresarial.",
+                                                    "step":  "Cambia a RELURL"
+                                                }
+                                            ],
+                             "useCases":  [
+                                              "Reemplazar costosas suscripciones de Bitly con el plan gratuito de RELURL",
+                                              "Obtener analíticas de nivel Bitly sin pagar por enlace",
+                                              "Usar dominios personalizados sin ventas adicionales premium",
+                                              "Colaborar con equipos sin tarifas de licencia por usuario",
+                                              "Acceder a funciones de API que Bitly bloquea detrás de niveles pagos"
+                                          ],
+                             "faqs":  [
+                                          {
+                                              "a":  "El plan gratuito de RELURL incluye funciones por las que Bitly cobra: alias personalizados, códigos QR, analíticas de clics y enlaces ilimitados.",
+                                              "q":  "¿Cómo se compara el plan gratuito de RELURL con el de Bitly?"
+                                          },
+                                          {
+                                              "a":  "Sí, RELURL proporciona analíticas de clics en tiempo real con datos geográficos, seguimiento de dispositivos e información de referidos comparable a los planes pagos de Bitly.",
+                                              "q":  "¿Ofrece RELURL la misma calidad de analíticas que Bitly?"
+                                          },
+                                          {
+                                              "a":  "Por supuesto, los dominios personalizados están disponibles en los planes de RELURL a un precio mucho más accesible que Bitly.",
+                                              "q":  "¿Puedo usar dominios personalizados con RELURL como en Bitly?"
+                                          }
+                                      ]
+                         },
+     "shorten-image-url":  {
+                               "title":  "Acortar URL de Imagen",
+                               "subtitle":  "Optimiza el Intercambio de Imágenes",
+                               "description":  "Acorta URLs de imágenes para compartir fotos, gráficos y capturas de pantalla de forma ordenada en redes sociales, foros y plataformas de mensajería. Enlaces ordenados para todas tus imágenes.",
+                               "metaDescription":  "Acorta URLs de imágenes para compartir de forma más fluida en redes sociales, foros y aplicaciones de mensajería. Haz que tus enlaces de imágenes sean ordenados y rastreables con RELURL.",
+                               "keywords":  [
+                                                "acortar url de imagen",
+                                                "acortador url de imagen",
+                                                "enlace corto de imagen",
+                                                "acortador de enlaces de imagen"
+                                            ],
+                               "features":  [
+                                                "Compresión de URL de Imagen",
+                                                "Compatibilidad con Todos los Formatos",
+                                                "Slugs Personalizados",
+                                                "Analíticas de Clics",
+                                                "Listo para Redes Sociales",
+                                                "Generación de Códigos QR"
+                                            ],
+                               "howItWorks":  [
+                                                  {
+                                                      "desc":  "Copia la URL directa de la imagen que deseas compartir.",
+                                                      "step":  "Pega la URL de la Imagen"
+                                                  },
+                                                  {
+                                                      "desc":  "Genera un enlace corto y limpio para tu imagen.",
+                                                      "step":  "Acorta al Instante"
+                                                  },
+                                                  {
+                                                      "desc":  "Usa el enlace corto en mensajes, publicaciones o correos electrónicos.",
+                                                      "step":  "Comparte Tu Imagen"
+                                                  }
+                                              ],
+                               "useCases":  [
+                                                "Compartir fotos en redes sociales con enlaces limpios",
+                                                "Enviar capturas de pantalla a través de aplicaciones de mensajería",
+                                                "Incluir enlaces de imágenes en portafolios de diseño",
+                                                "Compartir gráficos y memes en foros",
+                                                "Rastrear clics en imágenes compartidas",
+                                                "Crear códigos QR vinculados a imágenes"
+                                            ],
+                               "faqs":  [
+                                            {
+                                                "a":  "Sí, cualquier URL de imagen directa se puede acortar, incluyendo JPG, PNG, GIF, WebP, SVG y otros formatos comunes. El enlace corto redirige al archivo de imagen original.",
+                                                "q":  "¿Puedo acortar cualquier URL de imagen?"
+                                            },
+                                            {
+                                                "a":  "El enlace corto proporciona una redirección a la imagen original. Para incrustar imágenes directamente en páginas web, debes usar la URL de imagen original en lugar del enlace corto.",
+                                                "q":  "¿El enlace corto preserva la incrustación de imágenes?"
+                                            },
+                                            {
+                                                "a":  "Sí, las analíticas de clics muestran cuántas veces se accedió a tu enlace de imagen acortado. Esto te ayuda a entender la interacción con tu contenido visual.",
+                                                "q":  "¿Puedo ver cuántas personas vieron mi imagen?"
+                                            }
+                                        ]
+                           },
+     "short-url-analytics":  {
+                                 "title":  "Analíticas de URLs Cortas",
+                                 "subtitle":  "Gestión de Enlaces Basada en Datos",
+                                 "description":  "Desbloquea potentes analíticas para cada URL acortada. Ve exactamente quién hace clic en tus enlaces, de dónde vienen y qué dispositivos usan.",
+                                 "metaDescription":  "Obtén analíticas detalladas para cada URL corta. Rastrea clics, datos geográficos, dispositivos, navegadores y referidos en tiempo real.",
+                                 "keywords":  [
+                                                  "analiticas de urls cortas",
+                                                  "analiticas de enlaces",
+                                                  "analiticas de clics"
+                                              ],
+                                 "features":  [
+                                                  "Panel en Tiempo Real",
+                                                  "Seguimiento por País y Ciudad",
+                                                  "Desglose por Navegador y Sistema Operativo",
+                                                  "Analíticas por Tipo de Dispositivo",
+                                                  "Datos de Fuente de Referidos",
+                                                  "Gráficos de Tendencias de Clics"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Acorta cualquier URL para comenzar a recopilar analíticas.",
+                                                        "step":  "Crea URL Corta"
+                                                    },
+                                                    {
+                                                        "desc":  "Distribuye tu enlace y deja que los clics lleguen.",
+                                                        "step":  "Comparte y Recopila Datos"
+                                                    },
+                                                    {
+                                                        "desc":  "Ve analíticas detalladas y optimiza tu estrategia.",
+                                                        "step":  "Analiza el Rendimiento"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Medición del ROI de marketing",
+                                                  "Análisis de rendimiento de contenido",
+                                                  "Seguimiento de interacción en redes sociales",
+                                                  "Optimización de campañas de correo electrónico",
+                                                  "Análisis de fuentes de tráfico web",
+                                                  "Investigación de datos demográficos de audiencia"
+                                              ]
+                             },
+     "shorten-airbnb-link":  {
+                                 "title":  "Acortar Enlace de Airbnb",
+                                 "subtitle":  "Comparte Listados Limpiamente",
+                                 "description":  "Acorta enlaces de listados y listas de deseos de Airbnb al instante con RELURL. Crea URLs cortas y compartibles para tus listados de propiedades y atrae más huéspedes.",
+                                 "metaDescription":  "Acorta enlaces de listados y listas de deseos de Airbnb al instante con RELURL. Crea URLs cortas y compartibles para tus listados de propiedades y atrae más huéspedes.",
+                                 "keywords":  [
+                                                  "acortar enlace de airbnb",
+                                                  "acortador url airbnb",
+                                                  "acortador de enlaces de listados airbnb",
+                                                  "compartir listado airbnb"
+                                              ],
+                                 "features":  [
+                                                  "Compresión de URL",
+                                                  "Alias Personalizados",
+                                                  "Analíticas de Clics",
+                                                  "Botones para Compartir en Redes Sociales",
+                                                  "Seguimiento de Campañas",
+                                                  "Sin Caducidad"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Copia el enlace de cualquier listado de propiedad o lista de deseos de Airbnb desde tu navegador.",
+                                                        "step":  "Copia tu URL de Listado de Airbnb"
+                                                    },
+                                                    {
+                                                        "desc":  "Pega la URL arriba y obtén al instante un enlace corto limpio y compacto.",
+                                                        "step":  "Acórtalo"
+                                                    },
+                                                    {
+                                                        "desc":  "Publica tu enlace corto en redes sociales, mensajes o foros de viajes para atraer reservaciones.",
+                                                        "step":  "Comparte con Huéspedes"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Compartir listados de Airbnb en Instagram Stories con enlaces limpios",
+                                                  "Rastrear clics en enlaces de propiedades compartidos en foros de viajes",
+                                                  "Crear enlaces cortos para listas de deseos de Airbnb para compartir con amigos",
+                                                  "Incluir URLs de listados limpias en marketing por correo electrónico para administradores de propiedades",
+                                                  "Organizar múltiples enlaces de propiedades con alias personalizados por listado"
+                                              ],
+                                 "faqs":  [
+                                              {
+                                                  "a":  "Sí, el enlace corto redirige sin problemas a tu listado de Airbnb y la experiencia completa de reservación se preserva.",
+                                                  "q":  "¿El flujo de reservación de Airbnb funcionará normalmente con un enlace corto?"
+                                              },
+                                              {
+                                                  "a":  "Por supuesto. Crea alias como relurl.co/casa-playa o relurl.co/loft-centro para cada listado.",
+                                                  "q":  "¿Puedo personalizar el alias para cada propiedad de Airbnb?"
+                                              },
+                                              {
+                                                  "a":  "Sí, RELURL proporciona analíticas de clics para que puedas medir el interés en cada propiedad.",
+                                                  "q":  "¿Puedo rastrear cuántas personas ven mi enlace de listado de Airbnb?"
+                                              }
+                                          ]
+                             },
+     "shorten-instagram-url":  {
+                                   "title":  "Acortar URL de Instagram",
+                                   "subtitle":  "Optimiza Tus Enlaces de Instagram",
+                                   "description":  "Acorta URLs de perfiles de Instagram, enlaces de publicaciones y URLs de Reels para compartir más fácilmente. Los enlaces cortos y rastreables hacen que tu presencia en Instagram sea más profesional en todas las plataformas.",
+                                   "metaDescription":  "Acorta URLs de perfiles y contenido de Instagram para compartir en todas las plataformas. Haz que tus enlaces de Instagram sean limpios, rastreables y optimizados para tu bio.",
+                                   "keywords":  [
+                                                    "acortar url de instagram",
+                                                    "acortador de enlaces instagram",
+                                                    "acortador url instagram",
+                                                    "enlace corto instagram"
+                                                ],
+                                   "features":  [
+                                                    "Compresión de Enlaces de Instagram",
+                                                    "Optimización para Bio",
+                                                    "Seguimiento de Clics",
+                                                    "Alias Personalizados",
+                                                    "Uso Multiplataforma",
+                                                    "Listo para Códigos QR"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Copia la URL de la publicación, Reel o perfil de Instagram que deseas acortar.",
+                                                          "step":  "Pega la URL de Instagram"
+                                                      },
+                                                      {
+                                                          "desc":  "Agrega un slug personalizado que coincida con tu marca o nombre de campaña.",
+                                                          "step":  "Personaliza Tu Enlace"
+                                                      },
+                                                      {
+                                                          "desc":  "Usa tu enlace corto en tu bio, historias o promociones entre plataformas.",
+                                                          "step":  "Comparte y Rastrea"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Compartir Reels de Instagram en otras plataformas sociales",
+                                                    "Crear enlaces rastreables para campañas publicitarias de Instagram",
+                                                    "Agregar enlaces limpios de Instagram a firmas de correo electrónico",
+                                                    "Promocionar perfiles de Instagram en tarjetas de presentación",
+                                                    "Rastrear clics desde Instagram Stories a sitios externos",
+                                                    "Compartir publicaciones de Instagram en aplicaciones de mensajería"
+                                                ],
+                                   "faqs":  [
+                                                {
+                                                    "a":  "Sí, puedes acortar cualquier URL de Instagram, incluyendo perfiles, publicaciones, Reels e Historias. Solo pega la URL y obtén un enlace corto y limpio de inmediato.",
+                                                    "q":  "¿Puedo acortar URLs de perfiles de Instagram?"
+                                                },
+                                                {
+                                                    "a":  "Sí, los enlaces acortados funcionan en Instagram Stories como las URLs normales. También son más limpios y es menos probable que se trunquen en el área de enlace deslizable.",
+                                                    "q":  "¿Funcionan los enlaces acortados de Instagram en Stories?"
+                                                },
+                                                {
+                                                    "a":  "Puedes ver clics totales, ubicaciones geográficas, tipos de dispositivo y datos de referidos en tu panel de RELURL. Esto te ayuda a medir la interacción desde Instagram hacia tus destinos.",
+                                                    "q":  "¿Puedo rastrear quién hace clic en mis enlaces cortos de Instagram?"
+                                                }
+                                            ]
+                               },
+     "shorten-medium-link":  {
+                                 "title":  "Acortar Enlace de Medium",
+                                 "subtitle":  "Comparte Tus Historias Mejor",
+                                 "description":  "Acorta enlaces de artículos de Medium al instante con RELURL. Crea URLs cortas y rastreables para tus historias y publicaciones para compartir en redes sociales, boletines y promoción entre plataformas.",
+                                 "metaDescription":  "Acorta enlaces de artículos de Medium al instante con RELURL. Crea URLs cortas y rastreables para tus historias y publicaciones para compartir en redes sociales, boletines y más.",
+                                 "keywords":  [
+                                                  "acortar enlace de medium",
+                                                  "acortador url medium",
+                                                  "acortador de enlaces de articulos medium"
+                                              ],
+                                 "features":  [
+                                                  "Compresión de URL",
+                                                  "Alias Personalizados",
+                                                  "Analíticas de Clics",
+                                                  "Botones para Compartir en Redes Sociales",
+                                                  "Seguimiento de Campañas",
+                                                  "Gratis para Siempre"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Abre tu historia de Medium y copia el enlace completo del artículo desde la barra de direcciones del navegador.",
+                                                        "step":  "Copia la URL de tu Artículo de Medium"
+                                                    },
+                                                    {
+                                                        "desc":  "Pega el enlace arriba y lo comprimiremos en una URL corta y limpia lista para compartir.",
+                                                        "step":  "Acórtalo"
+                                                    },
+                                                    {
+                                                        "desc":  "Usa tu nuevo enlace corto en Twitter, LinkedIn, boletines de correo electrónico y en cualquier otro lugar donde compartas tu contenido.",
+                                                        "step":  "Promociona en Todos los Canales"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Compartir artículos de Medium en Twitter/X con enlaces que ahorran caracteres",
+                                                  "Incluir URLs limpias en tu boletín de correo electrónico para mejor interacción",
+                                                  "Rastrear cuántos lectores hacen clic desde diferentes plataformas",
+                                                  "Promocionar tu publicación de Medium con enlaces cortos personalizados",
+                                                  "Agregar enlaces rastreables a tu bio de Medium y perfiles sociales"
+                                              ],
+                                 "faqs":  [
+                                              {
+                                                  "a":  "Sí, RELURL preserva los metadatos de vista previa social para que la tarjeta de vista previa de tu artículo aparezca en Twitter, LinkedIn y otras plataformas.",
+                                                  "q":  "¿La tarjeta de vista previa de mi artículo de Medium seguirá apareciendo con un enlace corto?"
+                                              },
+                                              {
+                                                  "a":  "Por supuesto. RELURL muestra conteos de clics en tiempo real, datos geográficos y fuentes de referencia para cada enlace.",
+                                                  "q":  "¿Puedo ver cuántas personas hicieron clic en mi enlace corto de Medium?"
+                                              },
+                                              {
+                                                  "a":  "No, los enlaces de RELURL nunca caducan. Tus enlaces cortos de Medium funcionarán para siempre.",
+                                                  "q":  "¿Caducan los enlaces acortados de Medium?"
+                                              }
+                                          ]
+                             },
+     "shorten-discord-invite-link":  {
+                                         "title":  "Acortar Enlace de Invitación de Discord",
+                                         "subtitle":  "Mejores Invitaciones a Servidores",
+                                         "description":  "Acorta enlaces de invitación de Discord para compartirlos limpiamente en redes sociales, sitios web y comunidades. Haz que tus invitaciones a servidores se vean profesionales y rastrea la interacción.",
+                                         "metaDescription":  "Acorta enlaces de invitación de Discord para compartir de forma más limpia en redes sociales, sitios web y comunidades. Haz que tus invitaciones a servidores de Discord se vean profesionales y sean rastreables.",
+                                         "keywords":  [
+                                                          "acortar enlace de invitacion de discord",
+                                                          "acortador de enlaces discord",
+                                                          "acortador de invitaciones discord",
+                                                          "enlace corto discord"
+                                                      ],
+                                         "features":  [
+                                                          "Compresión de Invitaciones de Discord",
+                                                          "Slugs Personalizados",
+                                                          "Seguimiento de Clics",
+                                                          "Uso Multiplataforma",
+                                                          "Redirección Permanente",
+                                                          "Generación de Códigos QR"
+                                                      ],
+                                         "howItWorks":  [
+                                                            {
+                                                                "desc":  "Copia el enlace de invitación de tu servidor de Discord desde la configuración de invitaciones.",
+                                                                "step":  "Pega la Invitación de Discord"
+                                                            },
+                                                            {
+                                                                "desc":  "Genera un enlace corto y agrega un slug personalizado como relurl.com/unirse-servidor.",
+                                                                "step":  "Acorta y Personaliza"
+                                                            },
+                                                            {
+                                                                "desc":  "Publica el enlace corto y limpio en redes sociales, sitios web y plataformas comunitarias.",
+                                                                "step":  "Comparte Tu Invitación"
+                                                            }
+                                                        ],
+                                         "useCases":  [
+                                                          "Compartir invitaciones de servidores de Discord en Twitter e Instagram",
+                                                          "Agregar enlaces de invitación de Discord en encabezados de sitios web",
+                                                          "Promocionar comunidades de Discord en descripciones de YouTube",
+                                                          "Rastrear cuántas personas hacen clic en tus invitaciones a servidores",
+                                                          "Crear enlaces de invitación personalizados para campañas de marketing",
+                                                          "Generar códigos QR para promoción de servidores de Discord"
+                                                      ],
+                                         "faqs":  [
+                                                      {
+                                                          "a":  "Sí, pega cualquier enlace de invitación de Discord (discord.gg/xxx o discord.com/invite/xxx) y crearemos un enlace corto de redirección que apunta a tu invitación original.",
+                                                          "q":  "¿Puedo acortar enlaces de invitación de Discord existentes?"
+                                                      },
+                                                      {
+                                                          "a":  "El enlace corto redirige a tu invitación original. Si tu invitación de Discord caduca, el enlace corto seguirá redirigiendo pero los usuarios verán una página de invitación caducada. Puedes actualizar la URL de destino en cualquier momento sin cambiar el enlace corto.",
+                                                          "q":  "¿El enlace corto caducará con mi invitación?"
+                                                      },
+                                                      {
+                                                          "a":  "Sí, cada enlace acortado incluye analíticas de clics. Ve exactamente cuántas personas hicieron clic en tu enlace de invitación, de dónde son y qué dispositivos usan.",
+                                                          "q":  "¿Puedo rastrear cuántas personas hacen clic en mi invitación de Discord?"
+                                                      }
+                                                  ]
+                                     },
+     "shorten-facebook-url":  {
+                                  "title":  "Acortar URL de Facebook",
+                                  "subtitle":  "Simplifica Tus Enlaces de Facebook",
+                                  "description":  "Acorta URLs de publicaciones, páginas y eventos de Facebook para compartir de forma más limpia en todas las plataformas. Haz que tu contenido de Facebook sea más accesible y rastreable.",
+                                  "metaDescription":  "Acorta URLs de publicaciones, páginas y eventos de Facebook para compartir de forma más limpia. Crea enlaces cortos rastreables para tu contenido de Facebook con RELURL.",
+                                  "keywords":  [
+                                                   "acortar url de facebook",
+                                                   "acortador de enlaces facebook",
+                                                   "acortador url facebook",
+                                                   "enlace corto facebook"
+                                               ],
+                                  "features":  [
+                                                   "Compresión de Enlaces de Facebook",
+                                                   "Compatibilidad con Slugs Personalizados",
+                                                   "Analíticas de Clics",
+                                                   "Uso Multiplataforma",
+                                                   "Seguimiento de Campañas Publicitarias",
+                                                   "Generación de Códigos QR"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Copia la URL de la publicación, página o evento de Facebook que deseas acortar.",
+                                                         "step":  "Pega la URL de Facebook"
+                                                     },
+                                                     {
+                                                         "desc":  "Opcionalmente, elige un slug descriptivo para un mejor reconocimiento de marca.",
+                                                         "step":  "Crea un Slug Personalizado"
+                                                     },
+                                                     {
+                                                         "desc":  "Usa tu enlace corto en anuncios, campañas de correo electrónico u otras plataformas sociales.",
+                                                         "step":  "Comparte en Cualquier Lugar"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Acortar enlaces de eventos de Facebook para invitaciones por correo electrónico",
+                                                   "Crear enlaces rastreables para campañas publicitarias de Facebook",
+                                                   "Compartir URLs de páginas de Facebook en materiales impresos",
+                                                   "Promocionar publicaciones de Facebook en Twitter y LinkedIn",
+                                                   "Rastrear clics desde Facebook a tu sitio web",
+                                                   "Agregar enlaces limpios de Facebook a boletines"
+                                               ],
+                                  "faqs":  [
+                                               {
+                                                   "a":  "Sí, RELURL utiliza redirecciones HTTPS y nunca muestra anuncios ni páginas intermedias. Los enlaces acortados de Facebook redirigen directamente a la URL original de forma segura e instantánea.",
+                                                   "q":  "¿Es seguro hacer clic en URLs acortadas de Facebook?"
+                                               },
+                                               {
+                                                   "a":  "Sí, crea enlaces cortos únicos para cada variante de anuncio de Facebook. Tu panel muestra datos de clics por enlace, ayudándote a comparar el rendimiento de los anuncios y optimizar tus campañas.",
+                                                   "q":  "¿Puedo rastrear clics de enlaces de anuncios de Facebook?"
+                                               },
+                                               {
+                                                   "a":  "Por supuesto. Los enlaces acortados funcionan perfectamente en Facebook Messenger y muestran vistas previas de enlaces automáticamente, lo que los hace ideales para compartir contenido en conversaciones.",
+                                                   "q":  "¿Funcionarán los enlaces acortados de Facebook en Messenger?"
+                                               }
+                                           ]
+                              },
+     "shorten-etsy-link":  {
+                               "title":  "Acortar Enlace de Etsy",
+                               "subtitle":  "Impulsa Tus Listados de la Tienda",
+                               "description":  "Acorta enlaces de tiendas y listados de productos de Etsy al instante con RELURL. Crea URLs cortas y rastreables para tu tienda de Etsy y aumenta las ventas y el rendimiento de marketing.",
+                               "metaDescription":  "Acorta enlaces de tiendas y listados de productos de Etsy al instante con RELURL. Crea URLs cortas y rastreables para tu tienda de Etsy y aumenta las ventas y el rendimiento de marketing.",
+                               "keywords":  [
+                                                "acortar enlace de etsy",
+                                                "acortador url etsy",
+                                                "acortador de enlaces etsy",
+                                                "acortador de enlaces de productos etsy"
+                                            ],
+                               "features":  [
+                                                "Compresión de URL",
+                                                "Slugs Personalizados",
+                                                "Analíticas de Clics",
+                                                "Acortamiento Masivo",
+                                                "Seguimiento de Campañas",
+                                                "Generación de Códigos QR"
+                                            ],
+                               "howItWorks":  [
+                                                  {
+                                                      "desc":  "Copia el enlace de cualquier producto de Etsy o de la página principal de tu tienda.",
+                                                      "step":  "Copia la URL de tu Listado de Etsy"
+                                                  },
+                                                  {
+                                                      "desc":  "Pégalo arriba y obtén al instante una URL corta y profesional para tu listado.",
+                                                      "step":  "Genera un Enlace Limpio"
+                                                  },
+                                                  {
+                                                      "desc":  "Usa tu nuevo enlace corto en Pinterest, Instagram, TikTok y en anuncios para generar tráfico.",
+                                                      "step":  "Comparte en Todos los Canales"
+                                                  }
+                                              ],
+                               "useCases":  [
+                                                "Compartir enlaces de productos de Etsy en Pinterest con URLs limpias",
+                                                "Rastrear clics en promociones de redes sociales para tu tienda de Etsy",
+                                                "Crear enlaces cortos personalizados para colecciones de la tienda de Etsy",
+                                                "Incluir enlaces de productos ordenados en campañas de marketing por correo electrónico",
+                                                "Generar códigos QR para listados de Etsy en ferias artesanales y mercados"
+                                            ],
+                               "faqs":  [
+                                            {
+                                                "a":  "Sí, RELURL preserva todos los parámetros de URL incluyendo las etiquetas de afiliados para que tus comisiones se rastreen correctamente.",
+                                                "q":  "¿Mis enlaces de afiliados de Etsy seguirán funcionando al acortarlos?"
+                                            },
+                                            {
+                                                "a":  "Por supuesto. Cada enlace acortado de Etsy tiene su propio panel de analíticas que muestra conteos de clics y fuentes.",
+                                                "q":  "¿Puedo rastrear qué productos reciben más clics?"
+                                            },
+                                            {
+                                                "a":  "Sí, RELURL admite acortamiento masivo de URLs, perfecto para vendedores de Etsy con grandes catálogos de productos.",
+                                                "q":  "¿Puedo acortar masivamente todos mis enlaces de productos de Etsy?"
+                                            }
+                                        ]
+                           },
+     "shorten-notion-link":  {
+                                 "title":  "Acortar Enlace de Notion",
+                                 "subtitle":  "Simplifica Tus Enlaces del Espacio de Trabajo",
+                                 "description":  "Acorta enlaces de páginas y bases de datos de Notion al instante con RELURL. Crea URLs cortas y compartibles para las páginas de tu espacio de trabajo de Notion, documentos y rastreadores de proyectos.",
+                                 "metaDescription":  "Acorta enlaces de páginas y bases de datos de Notion al instante con RELURL. Crea URLs cortas y compartibles para las páginas de tu espacio de trabajo de Notion, documentos y rastreadores de proyectos.",
+                                 "keywords":  [
+                                                  "acortar enlace de notion",
+                                                  "acortador url notion",
+                                                  "acortador de enlaces notion",
+                                                  "compartir pagina de notion"
+                                              ],
+                                 "features":  [
+                                                  "Compresión de URL",
+                                                  "Alias Personalizados",
+                                                  "Sin Caducidad",
+                                                  "Protección por Contraseña",
+                                                  "Colaboración en Equipo",
+                                                  "Analíticas de Clics"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Abre la página, base de datos o documento de Notion que deseas compartir y copia su enlace de uso compartido.",
+                                                        "step":  "Copia la URL de tu Página de Notion"
+                                                    },
+                                                    {
+                                                        "desc":  "Pega la URL de Notion arriba y haz clic para crear un enlace corto y limpio.",
+                                                        "step":  "Pega y Genera"
+                                                    },
+                                                    {
+                                                        "desc":  "Distribuye el enlace corto a colegas, clientes o lectores para facilitar el acceso a tu contenido de Notion.",
+                                                        "step":  "Comparte con Tu Equipo"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Compartir documentos de Notion con clientes usando enlaces profesionales y limpios",
+                                                  "Simplificar URLs largas de bases de datos de Notion para colaboración en equipo",
+                                                  "Crear enlaces rastreables para rastreadores de proyectos y hojas de ruta de Notion",
+                                                  "Compartir portafolios y currículums de Notion con URLs cortas y memorables",
+                                                  "Incrustar enlaces limpios de Notion en documentación y wikis"
+                                              ],
+                                 "faqs":  [
+                                              {
+                                                  "a":  "Sí, RELURL ofrece protección por contraseña para que solo personas autorizadas puedan acceder a tus páginas de Notion.",
+                                                  "q":  "¿Puedo proteger con contraseña mi enlace acortado de Notion?"
+                                              },
+                                              {
+                                                  "a":  "Sí, una vez que el enlace de uso compartido de Notion es válido, la versión acortada siempre redirigirá a él independientemente de los cambios de permisos.",
+                                                  "q":  "¿El enlace corto funcionará si actualizo los permisos de mi página de Notion?"
+                                              },
+                                              {
+                                                  "a":  "Sí, las analíticas de RELURL muestran datos de clics incluyendo tipos de dispositivo, ubicaciones y hora de acceso.",
+                                                  "q":  "¿Puedo rastrear quién hace clic en mi enlace de Notion?"
+                                              }
+                                          ]
+                             },
+     "shorten-linkedin-url":  {
+                                  "title":  "Acortar URL de LinkedIn",
+                                  "subtitle":  "Gestión Profesional de Enlaces",
+                                  "description":  "Acorta URLs de perfiles de LinkedIn, enlaces de publicaciones y URLs de páginas de empresa para compartir en tu red profesional. Los enlaces limpios se ven más profesionales en mensajes y publicaciones.",
+                                  "metaDescription":  "Acorta URLs de perfiles, publicaciones y páginas de empresa de LinkedIn para compartir de forma profesional. Crea enlaces limpios y rastreables para tu contenido de LinkedIn.",
+                                  "keywords":  [
+                                                   "acortar url de linkedin",
+                                                   "acortador de enlaces linkedin",
+                                                   "acortador url linkedin",
+                                                   "enlace corto linkedin"
+                                               ],
+                                  "features":  [
+                                                   "Compresión de URLs de LinkedIn",
+                                                   "Acortamiento de Enlaces de Perfil",
+                                                   "Seguimiento de Enlaces de Publicaciones",
+                                                   "Alias Personalizados",
+                                                   "Apariencia Profesional",
+                                                   "Listo para Códigos QR"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Copia la URL del perfil, publicación o página de empresa de LinkedIn.",
+                                                         "step":  "Pega la URL de LinkedIn"
+                                                     },
+                                                     {
+                                                         "desc":  "Genera un enlace corto y opcionalmente agrega un slug personalizado.",
+                                                         "step":  "Acorta y Personaliza"
+                                                     },
+                                                     {
+                                                         "desc":  "Usa tu enlace corto y limpio en correos electrónicos, currículums y presentaciones.",
+                                                         "step":  "Comparte de Forma Profesional"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Agregar enlaces limpios de perfil de LinkedIn a firmas de correo electrónico",
+                                                   "Compartir artículos de LinkedIn en Twitter y otras plataformas",
+                                                   "Rastrear clics en publicaciones de LinkedIn compartidas externamente",
+                                                   "Incluir enlaces de páginas de empresa de LinkedIn en boletines",
+                                                   "Compartir URLs de ofertas de trabajo en campañas de reclutamiento",
+                                                   "Promocionar contenido de LinkedIn en presentaciones profesionales"
+                                               ],
+                                  "faqs":  [
+                                               {
+                                                   "a":  "Sí, puedes acortar cualquier URL de LinkedIn incluyendo perfiles personales, páginas de empresa, publicaciones, artículos y ofertas de trabajo. El enlace corto redirige a la página original de LinkedIn.",
+                                                   "q":  "¿Puedo acortar URLs de perfiles de LinkedIn?"
+                                               },
+                                               {
+                                                   "a":  "Las URLs acortadas con slugs personalizados se ven limpias y profesionales. En lugar de una URL larga de LinkedIn con parámetros, puedes compartir relurl.com/tu-perfil para una apariencia más pulida.",
+                                                   "q":  "¿Los enlaces cortos se ven profesionales en LinkedIn?"
+                                               },
+                                               {
+                                                   "a":  "Sí, cada enlace acortado incluye analíticas de clics. Rastrea cuántas personas hacen clic en tu enlace de perfil de LinkedIn desde tu firma de correo o cuántas visitas genera tu artículo compartido de LinkedIn.",
+                                                   "q":  "¿Puedo rastrear clics en enlaces compartidos de LinkedIn?"
+                                               }
+                                           ]
+                              },
+     "qr-code-for-whatsapp":  {
+                                  "title":  "Código QR para WhatsApp",
+                                  "subtitle":  "Mensajería Instantánea",
+                                  "description":  "Genera un código QR que abre un chat de WhatsApp. Los clientes escanean y te escriben al instante — perfecto para soporte y ventas.",
+                                  "metaDescription":  "Genera un código QR que abre un chat de WhatsApp. Los clientes escanean y te escriben al instante — perfecto para soporte y ventas.",
+                                  "keywords":  [
+                                                   "codigo qr para whatsapp",
+                                                   "qr whatsapp",
+                                                   "qr chat whatsapp",
+                                                   "codigo qr chat whatsapp"
+                                               ],
+                                  "features":  [
+                                                   "Chat Instantáneo",
+                                                   "Sin Necesidad de Guardar Contacto",
+                                                   "Alcance Global",
+                                                   "Amigable para Negocios",
+                                                   "Registro a Listas de Difusión",
+                                                   "Plantillas de Respuesta Rápida"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Usa el formato wa.me/tu-número",
+                                                         "step":  "Ingresa el Enlace de WhatsApp"
+                                                     },
+                                                     {
+                                                         "desc":  "Crea un código que abre un chat de WhatsApp",
+                                                         "step":  "Generar Código QR"
+                                                     },
+                                                     {
+                                                         "desc":  "Muestra en el sitio web, impresos o tienda",
+                                                         "step":  "Comparte con Clientes"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Atención al cliente",
+                                                   "Consultas de ventas",
+                                                   "Pedidos en restaurantes",
+                                                   "Reservas de servicios",
+                                                   "Coordinación de eventos",
+                                                   "Actualizaciones de pedidos en tiempo real"
+                                               ]
+                              },
+     "shorten-pdf-link":  {
+                              "title":  "Acortar Enlace de PDF",
+                              "subtitle":  "Mejor Intercambio de Documentos",
+                              "description":  "Acorta URLs de archivos PDF para compartir de forma optimizada por correo electrónico, redes sociales y mensajería. Los enlaces ordenados hacen que tus documentos PDF sean más accesibles y profesionales.",
+                              "metaDescription":  "Acorta enlaces de archivos PDF para compartir más fácilmente por correo electrónico, redes sociales y mensajería. Haz que tus enlaces PDF sean ordenados, rastreables y de aspecto profesional.",
+                              "keywords":  [
+                                               "acortar enlace de pdf",
+                                               "acortador url pdf",
+                                               "enlace corto pdf",
+                                               "acortador de enlaces pdf"
+                                           ],
+                              "features":  [
+                                               "Compresión de URL de PDF",
+                                               "Listo para Descarga Directa",
+                                               "Slugs Personalizados",
+                                               "Analíticas de Clics",
+                                               "Uso Multiplataforma",
+                                               "Generación de Códigos QR"
+                                           ],
+                              "howItWorks":  [
+                                                 {
+                                                     "desc":  "Copia la URL directa del archivo PDF que deseas compartir.",
+                                                     "step":  "Pega la URL del PDF"
+                                                 },
+                                                 {
+                                                     "desc":  "Genera un enlace corto y limpio para tu documento PDF.",
+                                                     "step":  "Acorta al Instante"
+                                                 },
+                                                 {
+                                                     "desc":  "Distribuye el enlace corto por correo electrónico, redes sociales o mensajería.",
+                                                     "step":  "Comparte Tu PDF"
+                                                 }
+                                             ],
+                              "useCases":  [
+                                               "Compartir informes PDF y documentos técnicos en correos electrónicos",
+                                               "Distribuir libros electrónicos y guías en redes sociales",
+                                               "Enviar documentos PDF a través de aplicaciones de mensajería",
+                                               "Incluir enlaces de PDF en publicaciones de blog y artículos",
+                                               "Rastrear descargas de archivos PDF compartidos",
+                                               "Crear códigos QR para acceso a documentos PDF"
+                                           ],
+                              "faqs":  [
+                                           {
+                                               "a":  "Sí, cualquier URL de archivo PDF directo se puede acortar. El enlace corto redirigirá a los usuarios al PDF original, que se abrirá o descargará según la configuración de su navegador.",
+                                               "q":  "¿Puedo acortar cualquier URL de PDF?"
+                                           },
+                                           {
+                                               "a":  "Sí, el enlace corto simplemente redirige a tu URL de PDF original, por lo que el tamaño del archivo no afecta la redirección. Los PDF grandes alojados en tu servidor seguirán funcionando normalmente.",
+                                               "q":  "¿Funcionará el enlace corto para archivos PDF grandes?"
+                                           },
+                                           {
+                                               "a":  "Si bien rastreamos clics en el enlace corto, el seguimiento real de descargas depende de tu configuración de alojamiento. Las analíticas de clics muestran cuántas personas accedieron al enlace, lo que se correlaciona con el acceso al PDF.",
+                                               "q":  "¿Puedo rastrear quién descarga mi PDF?"
+                                           }
+                                       ]
+                          },
+     "short-io-alternative":  {
+                                  "title":  "Alternativa a Short.io",
+                                  "subtitle":  "Mismo Poder, Mejor Precio",
+                                  "description":  "¿Buscas una alternativa a Short.io? RELURL ofrece dominios personalizados, analíticas de enlaces, códigos QR y funciones de equipo a precios más accesibles con un generoso plan gratuito.",
+                                  "metaDescription":  "¿Buscas una alternativa a Short.io? RELURL ofrece funciones similares con precios más asequibles, enlaces ilimitados y un generoso plan gratuito.",
+                                  "keywords":  [
+                                                   "alternativa a short.io",
+                                                   "competidor de short.io",
+                                                   "alternativa gratuita a short.io",
+                                                   "alternativa shortio"
+                                               ],
+                                  "features":  [
+                                                   "Compatibilidad con Dominios Personalizados",
+                                                   "Panel de Analíticas de Enlaces",
+                                                   "Generación de Códigos QR",
+                                                   "Colaboración en Equipo",
+                                                   "Enlaces Cortos Ilimitados",
+                                                   "Precios Competitivos"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Regístrate en RELURL y comienza a usar todas las funciones de inmediato.",
+                                                         "step":  "Crea una Cuenta Gratuita"
+                                                     },
+                                                     {
+                                                         "desc":  "Agrega dominios personalizados, configura miembros del equipo y personaliza tus enlaces.",
+                                                         "step":  "Configura Tu Entorno"
+                                                     },
+                                                     {
+                                                         "desc":  "Crea enlaces cortos y rastrea su rendimiento desde tu panel.",
+                                                         "step":  "Lanza y Monitorea"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Reemplazar Short.io con una gestión de enlaces más asequible",
+                                                   "Acceder a funciones premium con un presupuesto más reducido",
+                                                   "Obtener funciones de equipo sin precios empresariales",
+                                                   "Usar códigos QR integrados sin costos adicionales",
+                                                   "Escalar tu infraestructura de enlaces de forma asequible",
+                                                   "Gestionar enlaces con un nivel gratuito generoso"
+                                               ],
+                                  "faqs":  [
+                                               {
+                                                   "a":  "RELURL ofrece funciones comparables incluyendo dominios personalizados, analíticas, códigos QR y colaboración en equipo, pero a precios más accesibles con un plan gratuito más sólido.",
+                                                   "q":  "¿Cómo se compara RELURL con el conjunto de funciones de Short.io?"
+                                               },
+                                               {
+                                                   "a":  "Sí, RELURL proporciona una API RESTful para la creación y gestión programática de enlaces, adecuada para desarrolladores y flujos de trabajo automatizados.",
+                                                   "q":  "¿Admite RELURL integración con API como Short.io?"
+                                               },
+                                               {
+                                                   "a":  "Sí, puedes recrear tus enlaces importantes en RELURL. Comienza con tus enlaces más activos y configura slugs personalizados para que coincidan con tu marca existente.",
+                                                   "q":  "¿Puedo migrar de Short.io a RELURL?"
+                                               }
+                                           ]
+                              },
+     "shorten-figma-link":  {
+                                "title":  "Acortar Enlace de Figma",
+                                "subtitle":  "Comparte Diseños al Instante",
+                                "description":  "Acorta enlaces de archivos de diseño y prototipos de Figma al instante con RELURL. Crea URLs cortas y compartibles para tus proyectos de diseño y compártelas con clientes y partes interesadas.",
+                                "metaDescription":  "Acorta enlaces de archivos de diseño y prototipos de Figma al instante con RELURL. Crea URLs cortas y compartibles para tus proyectos de diseño y compártelas con clientes y partes interesadas.",
+                                "keywords":  [
+                                                 "acortar enlace de figma",
+                                                 "acortador url figma",
+                                                 "acortador de enlaces figma",
+                                                 "compartir prototipo figma"
+                                             ],
+                                "features":  [
+                                                 "Compresión de URL",
+                                                 "Alias Personalizados",
+                                                 "Analíticas de Clics",
+                                                 "Protección por Contraseña",
+                                                 "Control de Caducidad de Enlaces",
+                                                 "Sin Caducidad"
+                                             ],
+                                "howItWorks":  [
+                                                   {
+                                                       "desc":  "Abre tu archivo o prototipo de Figma y copia el enlace de uso compartido desde el navegador.",
+                                                       "step":  "Copia la URL de tu Diseño de Figma"
+                                                   },
+                                                   {
+                                                       "desc":  "Pega la URL de Figma arriba y genera un enlace corto compacto y profesional.",
+                                                       "step":  "Acorta el Enlace"
+                                                   },
+                                                   {
+                                                       "desc":  "Comparte el enlace corto con clientes, desarrolladores o partes interesadas para un acceso limpio y fácil.",
+                                                       "step":  "Envía a las Partes Interesadas"
+                                                   }
+                                               ],
+                                "useCases":  [
+                                                 "Compartir prototipos de Figma con clientes usando enlaces limpios",
+                                                 "Organizar múltiples archivos de diseño con URLs cortas y memorables",
+                                                 "Rastrear cuántas veces los interesados ven los enlaces de diseño",
+                                                 "Proteger con contraseña vistas previas de diseño confidenciales",
+                                                 "Incluir enlaces de Figma en documentación de entrega de diseño"
+                                             ],
+                                "faqs":  [
+                                             {
+                                                 "a":  "Sí, RELURL ofrece control de caducidad de enlaces para que puedas deshabilitar automáticamente los enlaces de diseño una vez que las revisiones estén completas.",
+                                                 "q":  "¿Puedo establecer fechas de caducidad en mis enlaces cortos de Figma?"
+                                             },
+                                             {
+                                                 "a":  "Sí, el enlace corto redirige a tu URL original de Figma, por lo que todos los ajustes de permisos existentes siguen vigentes.",
+                                                 "q":  "¿Los permisos de mi prototipo de Figma seguirán aplicándose?"
+                                             },
+                                             {
+                                                 "a":  "Por supuesto. Puedes crear alias personalizados como relurl.co/figma-v3 para recordarlos fácilmente.",
+                                                 "q":  "¿Puedo personalizar el slug de mi enlace corto de Figma?"
+                                             }
+                                         ]
+                            },
+     "reddit-link-generator":  {
+                                   "title":  "Generador de Enlaces para Reddit",
+                                   "subtitle":  "Triunfa en Reddit",
+                                   "description":  "Crea enlaces compactos de Reddit para publicaciones y comentarios. Genera tráfico desde las comunidades de Reddit y rastrea la interacción de la comunidad.",
+                                   "metaDescription":  "Crea enlaces compactos de Reddit para publicaciones y comentarios y potencia el intercambio comunitario. Genera tráfico orgánico y rastrea la interacción impulsada por votos con RELURL.",
+                                   "keywords":  [
+                                                    "generador de enlaces reddit",
+                                                    "enlaces de publicaciones reddit",
+                                                    "marketing en reddit"
+                                                ],
+                                   "features":  [
+                                                    "Seguimiento de Enlaces de Publicaciones",
+                                                    "Analíticas de Clics en Comentarios",
+                                                    "Atribución por Subreddit",
+                                                    "Acortamiento No Spam",
+                                                    "Compatibilidad con Enlaces AMA",
+                                                    "Información de Tráfico Orgánico"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Ingresa el contenido que deseas compartir en Reddit.",
+                                                          "step":  "Pega Tu URL"
+                                                      },
+                                                      {
+                                                          "desc":  "Crea una URL limpia y no spam para tu publicación.",
+                                                          "step":  "Genera Enlace Corto"
+                                                      },
+                                                      {
+                                                          "desc":  "Publica en subreddits relevantes y rastrea la interacción de la comunidad.",
+                                                          "step":  "Comparte en Reddit"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Marketing de contenido en Reddit",
+                                                    "Enlaces para sesiones AMA",
+                                                    "Campañas de retroalimentación de productos",
+                                                    "Seguimiento de interacción comunitaria",
+                                                    "Promoción de publicaciones de blog",
+                                                    "Intercambio de recursos en subreddits"
+                                                ]
+                               },
+     "shorten-shopify-link":  {
+                                  "title":  "Acortar Enlace de Shopify",
+                                  "subtitle":  "Optimiza las URLs de Tu Tienda",
+                                  "description":  "Acorta enlaces de tiendas, productos y colecciones de Shopify con RELURL. Crea URLs cortas y personalizadas para tu tienda de comercio electrónico y aumenta las tasas de clics y el rendimiento.",
+                                  "metaDescription":  "Acorta enlaces de tiendas, productos y colecciones de Shopify con RELURL. Crea URLs cortas y personalizadas para tu tienda de comercio electrónico y aumenta las tasas de clics y el rendimiento.",
+                                  "keywords":  [
+                                                   "acortar enlace de shopify",
+                                                   "acortador url shopify",
+                                                   "acortador de enlaces shopify",
+                                                   "acortador de enlaces de productos shopify"
+                                               ],
+                                  "features":  [
+                                                   "Compresión de URL",
+                                                   "Slugs Personalizados",
+                                                   "Analíticas de Clics",
+                                                   "Generación de Códigos QR",
+                                                   "Acortamiento Masivo",
+                                                   "Seguimiento de Campañas"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Copia cualquier enlace de producto, colección o página de tienda desde tu administrador de Shopify.",
+                                                         "step":  "Copia tu URL de Shopify"
+                                                     },
+                                                     {
+                                                         "desc":  "Pégalo arriba y obtén al instante una URL corta y rastreable para tu tienda.",
+                                                         "step":  "Genera Enlace Corto"
+                                                     },
+                                                     {
+                                                         "desc":  "Despliega tu enlace corto en todos los canales de marketing y monitorea clics y conversiones.",
+                                                         "step":  "Comparte y Analiza Ventas"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Compartir enlaces de productos en Instagram y TikTok con URLs limpias",
+                                                   "Rastrear tasas de clics en campañas de marketing por correo electrónico",
+                                                   "Crear enlaces cortos personalizados para colecciones de tiendas Shopify",
+                                                   "Ejecutar campañas de anuncios en Facebook con enlaces de productos rastreables",
+                                                   "Incluir URLs de productos limpias en publicaciones de colaboración con influencers"
+                                               ],
+                                  "faqs":  [
+                                               {
+                                                   "a":  "Sí, RELURL admite dominios personalizados para que puedas crear enlaces cortos personalizados como shop.tumarca.com/producto.",
+                                                   "q":  "¿Funcionarán los enlaces cortos con mi dominio personalizado de Shopify?"
+                                               },
+                                               {
+                                                   "a":  "Por supuesto. RELURL proporciona analíticas por enlace para que puedas ver exactamente qué productos generan más tráfico.",
+                                                   "q":  "¿Puedo rastrear qué productos reciben más clics?"
+                                               },
+                                               {
+                                                   "a":  "No, nuestro plan gratuito ofrece límites generosos y los planes pagos permiten acortamiento ilimitado de enlaces para tu tienda.",
+                                                   "q":  "¿Hay un límite en cuántos enlaces de Shopify puedo acortar?"
+                                               }
+                                           ]
+                              },
+     "rebrandly-alternative":  {
+                                   "title":  "Alternativa a Rebrandly",
+                                   "subtitle":  "Enlaces Personalizados, Mejor Valor",
+                                   "description":  "¿Buscas una alternativa a Rebrandly con mejores precios y más funciones? RELURL ofrece enlaces personalizados, dominios propios, analíticas de clics y colaboración en equipo sin los altos costos de Rebrandly.",
+                                   "metaDescription":  "¿Buscas una alternativa a Rebrandly? RELURL ofrece enlaces personalizados, dominios propios y funciones de equipo a precios más asequibles con un generoso plan gratuito.",
+                                   "keywords":  [
+                                                    "alternativa a rebrandly",
+                                                    "competidor de rebrandly",
+                                                    "alternativa gratuita a rebrandly",
+                                                    "mejor que rebrandly"
+                                                ],
+                                   "features":  [
+                                                    "Compatibilidad con Enlaces Personalizados",
+                                                    "Integración de Dominios Personalizados",
+                                                    "Colaboración en Equipo",
+                                                    "Analíticas Detalladas",
+                                                    "Generador de Códigos QR",
+                                                    "Planes Más Asequibles"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Crea tu cuenta de RELURL y explora las funciones de enlaces personalizados de inmediato.",
+                                                          "step":  "Regístrate Gratis"
+                                                      },
+                                                      {
+                                                          "desc":  "Agrega tu dominio personalizado y configura DNS para empezar a crear enlaces personalizados.",
+                                                          "step":  "Conecta Tu Dominio"
+                                                      },
+                                                      {
+                                                          "desc":  "Genera enlaces cortos personalizados y monitorea su rendimiento desde tu panel.",
+                                                          "step":  "Crea y Rastrea"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Reemplazar Rebrandly para la gestión de enlaces personalizados",
+                                                    "Ahorrar en funciones de dominio personalizado con mejores precios",
+                                                    "Acceder a colaboración en equipo sin planes empresariales",
+                                                    "Obtener códigos QR integrados junto con enlaces personalizados",
+                                                    "Gestionar múltiples marcas desde una sola cuenta",
+                                                    "Escalar campañas de enlaces personalizados de forma asequible"
+                                                ],
+                                   "faqs":  [
+                                                {
+                                                    "a":  "RELURL ofrece dominios personalizados y funciones de equipo a precios significativamente más bajos. Nuestro plan gratuito incluye funciones que Rebrandly reserva para niveles pagos.",
+                                                    "q":  "¿Cómo se compara RELURL con los precios de Rebrandly?"
+                                                },
+                                                {
+                                                    "a":  "Sí, RELURL admite múltiples dominios personalizados por cuenta según tu plan. Esto es ideal para agencias que gestionan enlaces para diferentes marcas.",
+                                                    "q":  "¿Puedo conectar múltiples dominios personalizados?"
+                                                },
+                                                {
+                                                    "a":  "Sí, RELURL proporciona una API para desarrolladores para la creación y gestión programática de enlaces, similar a la API de Rebrandly pero con límites de tasa más accesibles.",
+                                                    "q":  "¿Ofrece RELURL las funciones de API de Rebrandly?"
+                                                }
+                                            ]
+                               },
+     "shorten-google-drive-link":  {
+                                       "title":  "Acortar Enlace de Google Drive",
+                                       "subtitle":  "Optimiza el Intercambio de Archivos",
+                                       "description":  "Acorta URLs de archivos y carpetas de Google Drive para compartir de forma más limpia por correo electrónico, aplicaciones de mensajería y redes sociales. Haz que tus enlaces de Drive sean organizados y rastreables.",
+                                       "metaDescription":  "Acorta enlaces de archivos y carpetas de Google Drive para compartir de forma más limpia. Haz que tus enlaces de Drive sean compactos, rastreables y fáciles de compartir por correo electrónico y mensajería.",
+                                       "keywords":  [
+                                                        "acortar enlace de google drive",
+                                                        "acortador url google drive",
+                                                        "enlace corto google drive",
+                                                        "acortador de enlaces drive"
+                                                    ],
+                                       "features":  [
+                                                        "Compresión de Enlaces de Drive",
+                                                        "Compatibilidad con Archivos y Carpetas",
+                                                        "Alias Personalizados",
+                                                        "Analíticas de Clics",
+                                                        "Accesible desde Cualquier Lugar",
+                                                        "Listo para Códigos QR"
+                                                    ],
+                                       "howItWorks":  [
+                                                          {
+                                                              "desc":  "Copia el enlace de uso compartido del archivo o carpeta de Google Drive.",
+                                                              "step":  "Pega el Enlace de Drive"
+                                                          },
+                                                          {
+                                                              "desc":  "Genera un enlace corto y limpio para tu contenido de Drive.",
+                                                              "step":  "Acorta al Instante"
+                                                          },
+                                                          {
+                                                              "desc":  "Envía el enlace corto por correo electrónico, chat o redes sociales.",
+                                                              "step":  "Comparte con Cualquiera"
+                                                          }
+                                                      ],
+                                       "useCases":  [
+                                                        "Compartir archivos de Google Drive en correos electrónicos profesionales",
+                                                        "Enviar enlaces de documentos a través de WhatsApp y aplicaciones de mensajería",
+                                                        "Incluir enlaces de carpetas de Drive en documentación de proyectos",
+                                                        "Compartir archivos grandes sin URLs largas y antiestéticas",
+                                                        "Rastrear clics en recursos compartidos de Drive",
+                                                        "Crear códigos QR para acceso a archivos de Drive"
+                                                    ],
+                                       "faqs":  [
+                                                    {
+                                                        "a":  "Sí, tanto los enlaces de archivos individuales como los de carpetas de Google Drive se pueden acortar. El enlace corto redirige a la URL de Drive que proporciones.",
+                                                        "q":  "¿Puedo acortar enlaces de carpetas de Google Drive?"
+                                                    },
+                                                    {
+                                                        "a":  "El enlace corto redirige a tu URL original de Drive. Los destinatarios aún necesitan los permisos de uso compartido apropiados (ver, comentar o editar) para acceder al archivo.",
+                                                        "q":  "¿Funcionará el enlace corto con los permisos de uso compartido de Drive?"
+                                                    },
+                                                    {
+                                                        "a":  "Sí, con RELURL puedes cambiar la URL de destino de cualquier enlace corto en cualquier momento. Si necesitas apuntar a un archivo actualizado, simplemente edita la URL de destino en tu panel.",
+                                                        "q":  "¿Puedo actualizar el destino del archivo de Drive más tarde?"
+                                                    }
+                                                ]
+                                   }
+}

@@ -1,0 +1,1600 @@
+{
+    "startup-link-shortener":  {
+                                   "title":  "Startup Link Shortener",
+                                   "subtitle":  "Accelerate Growth",
+                                   "description":  "Shorten landing pages, Product Hunt links, and pitch deck URLs. Track investor and user interest from every channel.",
+                                   "metaDescription":  "Shorten landing pages, product hunt links, and pitch deck URLs. Track investor and user interest from every channel with RELURL.",
+                                   "keywords":  [
+                                                    "startup link shortener",
+                                                    "product launch links",
+                                                    "pitch deck link shortener"
+                                                ],
+                                   "features":  [
+                                                    "Landing Page Tracking",
+                                                    "Investor Link Analytics",
+                                                    "Product Hunt Optimization",
+                                                    "Beta Signup Attribution",
+                                                    "Pitch Deck Sharing",
+                                                    "Growth Metric Dashboard"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Enter your landing page, Product Hunt, or pitch link.",
+                                                          "step":  "Paste Startup URL"
+                                                      },
+                                                      {
+                                                          "desc":  "Create a memorable URL for your startup campaign.",
+                                                          "step":  "Generate Short Link"
+                                                      },
+                                                      {
+                                                          "desc":  "Share with investors and users, then track traction.",
+                                                          "step":  "Launch \u0026 Measure"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Product Hunt launch campaigns",
+                                                    "Beta signup promotion",
+                                                    "Investor pitch sharing",
+                                                    "Demo day links",
+                                                    "Press release distribution",
+                                                    "Founder social media posts"
+                                                ]
+                               },
+    "url-shortener-no-ads":  {
+                                 "title":  "URL Shortener No Ads",
+                                 "subtitle":  "Clean, Ad-Free Links",
+                                 "description":  "Ad-free URL shortener with clean, distraction-free links. No interstitial ads, no pop-ups, no spam. Just pure, fast link redirection on the free forever plan.",
+                                 "metaDescription":  "Ad-free URL shortener with clean, distraction-free links. No interstitial ads, no pop-ups, no spam. Just pure, fast link redirection on the free forever plan.",
+                                 "keywords":  [
+                                                  "url shortener no ads",
+                                                  "ad free url shortener",
+                                                  "no ads link shortener",
+                                                  "clean url shortener"
+                                              ],
+                                 "features":  [
+                                                  "URL Compression",
+                                                  "Free Forever",
+                                                  "No Expiration",
+                                                  "Click Analytics",
+                                                  "Custom Aliases",
+                                                  "QR Code Generation"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Enter any long URL you want to shorten into the input field above.",
+                                                        "step":  "Paste Your URL"
+                                                    },
+                                                    {
+                                                        "desc":  "Click to generate a clean short link with zero ads, pop-ups, or distractions.",
+                                                        "step":  "Get Your Ad-Free Link"
+                                                    },
+                                                    {
+                                                        "desc":  "Share your ad-free link knowing your audience will go straight to your destination.",
+                                                        "step":  "Share with Confidence"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Share links on professional platforms without ad interruptions",
+                                                  "Send clean links in business emails and proposals",
+                                                  "Create ad-free short links for client presentations",
+                                                  "Share links in academic and research contexts",
+                                                  "Build trust with audiences using advertisement-free redirects"
+                                              ],
+                                 "faqs":  [
+                                              {
+                                                  "a":  "No, RELURL never shows interstitial ads or pop-ups. Users go directly to your destination URL.",
+                                                  "q":  "Does RELURL show ads before redirecting to my link?"
+                                              },
+                                              {
+                                                  "a":  "Yes, the free forever plan includes completely ad-free link shortening with no compromises.",
+                                                  "q":  "Is the ad-free experience available on the free plan?"
+                                              },
+                                              {
+                                                  "a":  "RELURL offers premium plans with advanced features for businesses while keeping the core service free and ad-free.",
+                                                  "q":  "How does RELURL make money without ads?"
+                                              }
+                                          ]
+                             },
+    "youtube-link-generator":  {
+                                   "title":  "YouTube Link Generator",
+                                   "subtitle":  "Share Videos Smarter",
+                                   "description":  "Create short, trackable YouTube links. Share videos with custom timestamps, channel links, and playlist URLs all from one dashboard.",
+                                   "metaDescription":  "Generate short YouTube links with custom timestamps. Create trackable video URLs for marketing campaigns, emails, and social media sharing.",
+                                   "keywords":  [
+                                                    "youtube link generator",
+                                                    "youtube short link",
+                                                    "youtube video link"
+                                                ],
+                                   "features":  [
+                                                    "Timestamp Links",
+                                                    "Channel URLs",
+                                                    "Playlist Links",
+                                                    "Custom Aliases",
+                                                    "Click Analytics",
+                                                    "QR Code for Videos"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Enter your video, channel, or playlist URL.",
+                                                          "step":  "Paste YouTube URL"
+                                                      },
+                                                      {
+                                                          "desc":  "Optionally set a start time for the video.",
+                                                          "step":  "Add Timestamps"
+                                                      },
+                                                      {
+                                                          "desc":  "Get a clean, trackable short URL.",
+                                                          "step":  "Share Short Link"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Video marketing campaigns",
+                                                    "Email newsletter video links",
+                                                    "Social media video sharing",
+                                                    "Blog embed links",
+                                                    "Course content links",
+                                                    "Product demo videos"
+                                                ]
+                               },
+    "url-shortener-in-uk":  {
+                                "title":  "URL Shortener in UK",
+                                "subtitle":  "Best for UK Users",
+                                "description":  "Best URL shortener in the UK for businesses and marketers. Fast, GDPR-compliant link shortening with free forever plan and advanced analytics for UK-based users.",
+                                "metaDescription":  "Best URL shortener in the UK for businesses and marketers. Fast, GDPR-compliant link shortening with free forever plan and advanced analytics for UK-based users.",
+                                "keywords":  [
+                                                 "url shortener uk",
+                                                 "best url shortener in uk",
+                                                 "uk link shortener",
+                                                 "british url shortener"
+                                             ],
+                                "features":  [
+                                                 "URL Compression",
+                                                 "Click Analytics",
+                                                 "GDPR Compliant",
+                                                 "Custom Branded Slugs",
+                                                 "Campaign Tracking",
+                                                 "No Expiration"
+                                             ],
+                                "howItWorks":  [
+                                                   {
+                                                       "desc":  "Paste any URL from your UK business website, online store, or marketing campaign.",
+                                                       "step":  "Enter Your Link"
+                                                   },
+                                                   {
+                                                       "desc":  "Generate a short link and apply a custom slug that reflects your British brand identity.",
+                                                       "step":  "Shorten \u0026 Brand"
+                                                   },
+                                                   {
+                                                       "desc":  "Monitor clicks and engagement from your UK audience with detailed regional analytics.",
+                                                       "step":  "Track Campaigns"
+                                                   }
+                                               ],
+                                "useCases":  [
+                                                 "Track UK marketing campaign performance with precision",
+                                                 "Create branded short links for London-based businesses",
+                                                 "Share product links across UK social media channels",
+                                                 "Manage GDPR-compliant link tracking for UK customers",
+                                                 "Generate QR codes for UK retail and hospitality businesses"
+                                             ],
+                                "faqs":  [
+                                             {
+                                                 "a":  "Yes, RELURL follows GDPR guidelines for data protection and privacy, making it suitable for UK businesses.",
+                                                 "q":  "Is RELURL GDPR compliant for UK users?"
+                                             },
+                                             {
+                                                 "a":  "Yes, RELURL provides geographic analytics so you can see exactly how many clicks come from UK locations.",
+                                                 "q":  "Can I track clicks specifically from the UK?"
+                                             },
+                                             {
+                                                 "a":  "Yes, RELURL offers a generous free forever plan that\u0027s perfect for UK startups and small businesses.",
+                                                 "q":  "Is RELURL free for UK businesses?"
+                                             }
+                                         ]
+                            },
+    "snapchat-link-generator":  {
+                                    "title":  "Snapchat Link Generator",
+                                    "subtitle":  "Drive Snap Engagement",
+                                    "description":  "Generate short links for Snapchat stories, snaps, and spotlights. Track swipe-ups and boost your Snapchat marketing performance.",
+                                    "metaDescription":  "Generate short links for Snapchat stories, snaps, and spotlights. Track swipe-ups and boost engagement with RELURL.",
+                                    "keywords":  [
+                                                     "snapchat link generator",
+                                                     "snapchat story links",
+                                                     "snapchat marketing"
+                                                 ],
+                                    "features":  [
+                                                     "Swipe-Up Tracking",
+                                                     "Story Link Analytics",
+                                                     "Spotlight Optimization",
+                                                     "Custom Branded Links",
+                                                     "AR Lens Integration",
+                                                     "Snap Ad Attribution"
+                                                 ],
+                                    "howItWorks":  [
+                                                       {
+                                                           "desc":  "Enter the page you want to link from Snapchat.",
+                                                           "step":  "Paste Your URL"
+                                                       },
+                                                       {
+                                                           "desc":  "Generate a clean URL for your snap or story.",
+                                                           "step":  "Create Short Link"
+                                                       },
+                                                       {
+                                                           "desc":  "Use your short link in snaps, stories, and spotlights.",
+                                                           "step":  "Add to Snap"
+                                                       }
+                                                   ],
+                                    "useCases":  [
+                                                     "Snapchat story promotions",
+                                                     "Influencer collaboration links",
+                                                     "Product launch snaps",
+                                                     "Event promotion via Snapchat",
+                                                     "AR lens campaign links",
+                                                     "Snap Ad landing pages"
+                                                 ]
+                                },
+    "signal-link-generator":  {
+                                  "title":  "Signal Link Generator",
+                                  "subtitle":  "Messaging Links Made Easy",
+                                  "description":  "Generate clean, trackable Signal messaging links with RELURL. Create short URLs for Signal group invites, profile links, and message threads.",
+                                  "metaDescription":  "Generate clean, trackable Signal messaging links with RELURL. Create short URLs for Signal group invites, profile links, and message threads.",
+                                  "keywords":  [
+                                                   "signal link generator",
+                                                   "signal url shortener",
+                                                   "signal message link",
+                                                   "signal group invite link"
+                                               ],
+                                  "features":  [
+                                                   "URL Compression",
+                                                   "Custom Aliases",
+                                                   "Click Analytics",
+                                                   "QR Code Generation",
+                                                   "Social Share Buttons",
+                                                   "Free Forever"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Copy the Signal group invite or profile link you want to share.",
+                                                         "step":  "Copy Your Signal Link"
+                                                     },
+                                                     {
+                                                         "desc":  "Paste it above and instantly get a clean, compact short URL ready for sharing.",
+                                                         "step":  "Generate Short Link"
+                                                     },
+                                                     {
+                                                         "desc":  "Post your short Signal link on social media, in emails, or on your website for easy access.",
+                                                         "step":  "Share Anywhere"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Create short Signal group invite links for community promotion",
+                                                   "Share Signal profile links on social media bios",
+                                                   "Track how many people join your Signal group via shared links",
+                                                   "Generate QR codes for Signal group invites at events",
+                                                   "Include clean Signal links in newsletters and email signatures"
+                                               ],
+                                  "faqs":  [
+                                               {
+                                                   "a":  "Yes, you can create custom aliases like relurl.co/signal-group for easy recall and sharing.",
+                                                   "q":  "Can I customize my Signal short link alias?"
+                                               },
+                                               {
+                                                   "a":  "Yes, Signal links work seamlessly on both mobile and desktop devices with proper app redirection.",
+                                                   "q":  "Will the Signal link work on mobile devices?"
+                                               },
+                                               {
+                                                   "a":  "Absolutely. RELURL provides click analytics so you can see engagement on your Signal invites.",
+                                                   "q":  "Can I track how many people click my Signal link?"
+                                               }
+                                           ]
+                              },
+    "url-shortener-api":  {
+                              "title":  "URL Shortener API",
+                              "subtitle":  "Integrate Short Links Everywhere",
+                              "description":  "Integrate RELURL\u0027s URL shortening capabilities into your applications, workflows, and platforms using our powerful developer API. Create and manage short links programmatically.",
+                              "metaDescription":  "Integrate RELURL\u0027s URL shortening into your applications with our developer API. Create, manage, and track short links programmatically.",
+                              "keywords":  [
+                                               "url shortener api",
+                                               "link shortener api",
+                                               "shorten url api",
+                                               "api url shortener"
+                                           ],
+                              "features":  [
+                                               "RESTful API Endpoints",
+                                               "Programmatic Link Creation",
+                                               "Bulk URL Shortening",
+                                               "Analytics Integration",
+                                               "Custom Slug Support",
+                                               "JSON Responses"
+                                           ],
+                              "howItWorks":  [
+                                                 {
+                                                     "desc":  "Sign up for a free RELURL account and generate your API key from the dashboard.",
+                                                     "step":  "Get Your API Key"
+                                                 },
+                                                 {
+                                                     "desc":  "Use our RESTful endpoints to create, manage, and track short links in your applications.",
+                                                     "step":  "Make API Calls"
+                                                 },
+                                                 {
+                                                     "desc":  "Integrate link shortening into your workflows, from CMS plugins to marketing automation.",
+                                                     "step":  "Scale Automatically"
+                                                 }
+                                             ],
+                              "useCases":  [
+                                               "Automate link creation in your application",
+                                               "Integrate with your CMS for automatic link shortening",
+                                               "Build custom URL management workflows",
+                                               "Create short links in bulk from your database",
+                                               "Fetch analytics data programmatically",
+                                               "Connect with marketing automation tools"
+                                           ],
+                              "faqs":  [
+                                           {
+                                               "a":  "Yes, the URL shortener API is available on all plans including the free tier. Higher tiers include higher rate limits and additional features.",
+                                               "q":  "Is the API free to use?"
+                                           },
+                                           {
+                                               "a":  "The API uses API key authentication. You can generate and manage your API keys from your RELURL dashboard settings.",
+                                               "q":  "What authentication does the API use?"
+                                           },
+                                           {
+                                               "a":  "Rate limits vary by plan. Free tier users get generous daily limits, while paid plans include higher limits for production applications.",
+                                               "q":  "What rate limits apply to the API?"
+                                           }
+                                       ]
+                          },
+    "travel-link-shortener":  {
+                                  "title":  "Travel Link Shortener",
+                                  "subtitle":  "Simplify Travel Links",
+                                  "description":  "Shorten booking links, itinerary pages, and destination guides. Track traveler clicks and optimize your travel marketing campaigns.",
+                                  "metaDescription":  "Shorten travel booking links, itinerary pages, and destination guides. Track traveler clicks and optimize your travel marketing.",
+                                  "keywords":  [
+                                                   "travel link shortener",
+                                                   "booking link generator",
+                                                   "travel marketing links"
+                                               ],
+                                  "features":  [
+                                                   "Booking Link Tracking",
+                                                   "Destination Guide Shortening",
+                                                   "Itinerary Share Links",
+                                                   "Multi-Channel Analytics",
+                                                   "Seasonal Campaign Support",
+                                                   "Affiliate Link Management"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Enter your booking, itinerary, or guide page link.",
+                                                         "step":  "Paste Travel URL"
+                                                     },
+                                                     {
+                                                         "desc":  "Create a clean, memorable URL for travelers.",
+                                                         "step":  "Generate Short Link"
+                                                     },
+                                                     {
+                                                         "desc":  "Post on social media, emails, and ads to drive bookings.",
+                                                         "step":  "Share \u0026 Convert"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Hotel booking promotions",
+                                                   "Tour package links",
+                                                   "Travel blog affiliate links",
+                                                   "Itinerary sharing with groups",
+                                                   "Airline deal announcements",
+                                                   "Destination guide distribution"
+                                               ]
+                              },
+    "shorten-video-url":  {
+                              "title":  "Shorten Video URL",
+                              "subtitle":  "Better Video Sharing",
+                              "description":  "Shorten video file URLs for smoother sharing across social media, email, and messaging apps. Clean links make your video content more accessible and trackable.",
+                              "metaDescription":  "Shorten video URLs for fuss-free sharing across social media, messaging, and email. Make your video links sleek, trackable, and professional.",
+                              "keywords":  [
+                                               "shorten video url",
+                                               "video url shortener",
+                                               "short video link",
+                                               "video link shortener"
+                                           ],
+                              "features":  [
+                                               "Video URL Compression",
+                                               "All Format Support",
+                                               "Custom Branded Slugs",
+                                               "Click Analytics",
+                                               "Direct Playback Ready",
+                                               "QR Code Generation"
+                                           ],
+                              "howItWorks":  [
+                                                 {
+                                                     "desc":  "Copy the direct URL of the video file you want to share.",
+                                                     "step":  "Paste Video URL"
+                                                 },
+                                                 {
+                                                     "desc":  "Generate a clean short link for your video content.",
+                                                     "step":  "Shorten Instantly"
+                                                 },
+                                                 {
+                                                     "desc":  "Distribute the short link via email, social media, or messaging.",
+                                                     "step":  "Share Your Video"
+                                                 }
+                                             ],
+                              "useCases":  [
+                                               "Share promotional videos in email campaigns",
+                                               "Send video files via messaging apps",
+                                               "Include video links in social media posts",
+                                               "Distribute training videos to teams",
+                                               "Track views on shared video content",
+                                               "Create QR codes for video access"
+                                           ],
+                              "faqs":  [
+                                           {
+                                               "a":  "Yes, any direct video file URL can be shortened including MP4, WebM, MOV, AVI, and other common formats. The short link redirects to the original video file.",
+                                               "q":  "Can I shorten any video URL?"
+                                           },
+                                           {
+                                               "a":  "The short link redirects to your original video URL. For direct video files, the browser or device will handle playback normally after the redirect.",
+                                               "q":  "Will the short link work for streaming video?"
+                                           },
+                                           {
+                                               "a":  "Yes, click analytics show how many times your shortened video link was accessed. This helps you measure engagement with your video content across different distribution channels.",
+                                               "q":  "Can I track how many times my video was accessed?"
+                                           }
+                                       ]
+                          },
+    "url-shortener-for-social-media":  {
+                                           "title":  "URL Shortener for Social Media",
+                                           "subtitle":  "Share Smarter",
+                                           "description":  "Perfect URL shortener for social media. Shorten links for Twitter, Instagram, LinkedIn, TikTok, and Facebook. Save characters and track engagement across platforms.",
+                                           "metaDescription":  "Perfect URL shortener for social media. Shorten links for Twitter, Instagram, LinkedIn, TikTok, and Facebook. Save characters and track engagement across platforms.",
+                                           "keywords":  [
+                                                            "url shortener for social media",
+                                                            "social media link shortener",
+                                                            "shorten links for twitter",
+                                                            "shorten links for instagram"
+                                                        ],
+                                           "features":  [
+                                                            "URL Compression",
+                                                            "Click Analytics",
+                                                            "Social Share Buttons",
+                                                            "Campaign Tracking",
+                                                            "QR Code Generation",
+                                                            "Custom Aliases"
+                                                        ],
+                                           "howItWorks":  [
+                                                              {
+                                                                  "desc":  "Take the URL you want to share on social media and paste it into the input above.",
+                                                                  "step":  "Copy Your Link"
+                                                              },
+                                                              {
+                                                                  "desc":  "Get a compact short link that saves characters on Twitter, Instagram bios, and TikTok.",
+                                                                  "step":  "Shorten \u0026 Customize"
+                                                              },
+                                                              {
+                                                                  "desc":  "Share your short link across platforms and monitor which social channel drives the most traffic.",
+                                                                  "step":  "Post \u0026 Track"
+                                                              }
+                                                          ],
+                                           "useCases":  [
+                                                            "Save precious characters in Twitter/X posts with short links",
+                                                            "Create clean bio links for Instagram and TikTok profiles",
+                                                            "Track which social platform drives the most referral traffic",
+                                                            "Share trackable links in LinkedIn posts and articles",
+                                                            "Build custom short links for Facebook ad campaigns"
+                                                        ],
+                                           "faqs":  [
+                                                        {
+                                                            "a":  "Yes, RELURL preserves Open Graph and Twitter Card metadata so your link previews appear correctly on all platforms.",
+                                                            "q":  "Will my link preview show up on social media?"
+                                                        },
+                                                        {
+                                                            "a":  "Absolutely. RELURL analytics break down clicks by referrer so you know exactly which platform performs best.",
+                                                            "q":  "Can I track clicks from different social platforms?"
+                                                        },
+                                                        {
+                                                            "a":  "Yes, custom domains help build brand recognition even in short bio links on Instagram and TikTok.",
+                                                            "q":  "Can I use custom domains for social media links?"
+                                                        }
+                                                    ]
+                                       },
+    "slack-link-generator":  {
+                                 "title":  "Slack Link Generator",
+                                 "subtitle":  "Team Communication Links",
+                                 "description":  "Generate clean, trackable Slack links with RELURL. Create short URLs for Slack invite links, channels, messages, and workspaces for easier team sharing.",
+                                 "metaDescription":  "Generate clean, trackable Slack links with RELURL. Create short URLs for Slack invite links, channels, messages, and workspaces for easier team sharing.",
+                                 "keywords":  [
+                                                  "slack link generator",
+                                                  "slack url shortener",
+                                                  "slack invite link",
+                                                  "slack channel link shortener"
+                                              ],
+                                 "features":  [
+                                                  "URL Compression",
+                                                  "Custom Aliases",
+                                                  "Click Analytics",
+                                                  "Team Collaboration",
+                                                  "Password Protection",
+                                                  "Link Expiration Control"
+                                              ],
+                                 "howItWorks":  [
+                                                    {
+                                                        "desc":  "Copy the Slack channel, message, workspace invite, or thread link you want to shorten.",
+                                                        "step":  "Copy Your Slack URL"
+                                                    },
+                                                    {
+                                                        "desc":  "Paste it above and get a compact short link that\u0027s easy to share with your team.",
+                                                        "step":  "Generate Short Link"
+                                                    },
+                                                    {
+                                                        "desc":  "Distribute your Slack short link in emails, docs, and communication channels for quick access.",
+                                                        "step":  "Share Across Teams"
+                                                    }
+                                                ],
+                                 "useCases":  [
+                                                  "Create short Slack invite links for community onboarding",
+                                                  "Share Slack channel links in documentation and wikis",
+                                                  "Track how many team members access shared Slack resources",
+                                                  "Password-protect sensitive Slack workspace invite links",
+                                                  "Set expiration dates on temporary Slack channel access links"
+                                              ],
+                                 "faqs":  [
+                                              {
+                                                  "a":  "Yes, RELURL offers password protection so only authorized people can access your Slack workspace invites.",
+                                                  "q":  "Can I password-protect my Slack invite link?"
+                                              },
+                                              {
+                                                  "a":  "Absolutely. Link expiration control lets you auto-disable Slack invite links after a set time.",
+                                                  "q":  "Can I set an expiration on my Slack short link?"
+                                              },
+                                              {
+                                                  "a":  "Yes, the short link redirects correctly whether opened in the Slack app or a web browser.",
+                                                  "q":  "Will the short link work in the Slack app?"
+                                              }
+                                          ]
+                             },
+    "url-tracking-tool":  {
+                              "title":  "URL Tracking Tool",
+                              "subtitle":  "Know Every Click",
+                              "description":  "Track every click on your links with detailed analytics. See where your audience is, what devices they use, and how they find your content.",
+                              "metaDescription":  "Track every click on your shortened URLs. Get real-time analytics on location, devices, referrers, and more with RELURL.",
+                              "keywords":  [
+                                               "url tracking tool",
+                                               "link tracking",
+                                               "click tracking"
+                                           ],
+                              "features":  [
+                                               "Real-Time Click Data",
+                                               "Geographic Analytics",
+                                               "Device \u0026 Browser Detection",
+                                               "Referrer Tracking",
+                                               "UTM Parameter Support",
+                                               "Custom Event Tracking"
+                                           ],
+                              "howItWorks":  [
+                                                 {
+                                                     "desc":  "Shorten your URL to enable click tracking.",
+                                                     "step":  "Create Tracked Link"
+                                                 },
+                                                 {
+                                                     "desc":  "Distribute your tracked link across channels.",
+                                                     "step":  "Share Your Link"
+                                                 },
+                                                 {
+                                                     "desc":  "Monitor clicks, locations, and engagement in real time.",
+                                                     "step":  "View Analytics"
+                                                 }
+                                             ],
+                              "useCases":  [
+                                               "Marketing campaign measurement",
+                                               "Content performance tracking",
+                                               "Social media analytics",
+                                               "Email click tracking",
+                                               "A/B test link comparison",
+                                               "Influencer campaign monitoring"
+                                           ]
+                          },
+    "twitch-link-generator":  {
+                                  "title":  "Twitch Link Generator",
+                                  "subtitle":  "Grow Your Channel",
+                                  "description":  "Generate short links for Twitch streams, channels, and clips. Track viewer engagement and grow your Twitch audience from every platform.",
+                                  "metaDescription":  "Generate short links for Twitch streams, channels, and clips. Track viewer engagement and grow your Twitch audience with RELURL.",
+                                  "keywords":  [
+                                                   "twitch link generator",
+                                                   "twitch stream links",
+                                                   "twitch marketing"
+                                               ],
+                                  "features":  [
+                                                   "Stream Link Tracking",
+                                                   "Clip Share Analytics",
+                                                   "Channel Page Optimization",
+                                                   "Raid Link Support",
+                                                   "Merch Store Integration",
+                                                   "Follower Source Attribution"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Enter your channel, stream, or clip link.",
+                                                         "step":  "Paste Twitch URL"
+                                                     },
+                                                     {
+                                                         "desc":  "Create a clean URL for your Twitch content.",
+                                                         "step":  "Generate Short Link"
+                                                     },
+                                                     {
+                                                         "desc":  "Post on social media and track viewer sources.",
+                                                         "step":  "Share \u0026 Track"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Stream promotion on social media",
+                                                   "Clip sharing across platforms",
+                                                   "Channel raid links",
+                                                   "Merch store promotion",
+                                                   "Sponsor landing pages",
+                                                   "Community event links"
+                                               ]
+                              },
+    "url-shortener-for-business":  {
+                                       "title":  "URL Shortener for Business",
+                                       "subtitle":  "Enterprise-Grade Links",
+                                       "description":  "Enterprise-grade URL shortener for businesses. Branded links, team collaboration, detailed analytics, and custom domains to manage your company\u0027s link infrastructure effectively.",
+                                       "metaDescription":  "Enterprise-grade URL shortener for businesses. Branded links, team collaboration, detailed analytics, and custom domains to manage your company\u0027s link infrastructure effectively.",
+                                       "keywords":  [
+                                                        "url shortener for business",
+                                                        "business url shortener",
+                                                        "enterprise link shortener",
+                                                        "corporate url shortener"
+                                                    ],
+                                       "features":  [
+                                                        "Custom Domains",
+                                                        "Team Collaboration",
+                                                        "Advanced Analytics",
+                                                        "Custom Branded Slugs",
+                                                        "Bulk Shortening",
+                                                        "API Access"
+                                                    ],
+                                       "howItWorks":  [
+                                                          {
+                                                              "desc":  "Sign up for a free business account and set up your company profile and team structure.",
+                                                              "step":  "Create Your Business Account"
+                                                          },
+                                                          {
+                                                              "desc":  "Configure custom domains and branded slugs so every short link reflects your company identity.",
+                                                              "step":  "Brand Your Links"
+                                                          },
+                                                          {
+                                                              "desc":  "Track all team links, generate reports, and optimize your marketing campaigns with detailed analytics.",
+                                                              "step":  "Analyze Performance"
+                                                          }
+                                                      ],
+                                       "useCases":  [
+                                                        "Brand all company short links with custom domains",
+                                                        "Collaborate with marketing teams on campaign links",
+                                                        "Track campaign ROI with enterprise-level analytics",
+                                                        "Manage links programmatically via REST API",
+                                                        "Generate bulk product links for e-commerce catalogs"
+                                                    ],
+                                       "faqs":  [
+                                                    {
+                                                        "a":  "Yes, RELURL offers team collaboration features so your entire marketing team can create and manage links together.",
+                                                        "q":  "Can my whole team use RELURL under one account?"
+                                                    },
+                                                    {
+                                                        "a":  "Absolutely. Custom domains let you create branded short links like go.yourcompany.com/product that build trust.",
+                                                        "q":  "Can I use my own domain for business short links?"
+                                                    },
+                                                    {
+                                                        "a":  "Yes, RELURL provides a full REST API for programmatic link creation, management, and analytics export.",
+                                                        "q":  "Is there an API for integrating RELURL with our tools?"
+                                                    }
+                                                ]
+                                   },
+    "wechat-link-generator":  {
+                                  "title":  "WeChat Link Generator",
+                                  "subtitle":  "WeChat-Ready Links",
+                                  "description":  "Generate clean, trackable WeChat links with RELURL. Create short URLs for WeChat group invites, official accounts, and mini-programs to share across channels.",
+                                  "metaDescription":  "Generate clean, trackable WeChat links with RELURL. Create short URLs for WeChat group invites, official accounts, and mini-programs to share across channels.",
+                                  "keywords":  [
+                                                   "wechat link generator",
+                                                   "wechat url shortener",
+                                                   "wechat group link",
+                                                   "wechat share link"
+                                               ],
+                                  "features":  [
+                                                   "URL Compression",
+                                                   "Custom Aliases",
+                                                   "Click Analytics",
+                                                   "QR Code Generation",
+                                                   "Campaign Tracking",
+                                                   "No Expiration"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Copy the WeChat group invite, official account, or mini-program link you want to share.",
+                                                         "step":  "Copy Your WeChat URL"
+                                                     },
+                                                     {
+                                                         "desc":  "Paste the link above and generate a short, clean URL with optional custom alias.",
+                                                         "step":  "Shorten \u0026 Customize"
+                                                     },
+                                                     {
+                                                         "desc":  "Share your WeChat short link on websites, social media, and marketing materials.",
+                                                         "step":  "Promote Your Channel"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Create short WeChat group invite links for community growth",
+                                                   "Share WeChat official account links on websites and blogs",
+                                                   "Track how many users click your WeChat promotion links",
+                                                   "Generate QR codes for WeChat groups at in-person events",
+                                                   "Include clean WeChat links in cross-platform social campaigns"
+                                               ],
+                                  "faqs":  [
+                                               {
+                                                   "a":  "Yes, RELURL provides detailed click analytics including geographic data and referral sources.",
+                                                   "q":  "Can I track clicks on my WeChat short links?"
+                                               },
+                                               {
+                                                   "a":  "Yes, short WeChat links work globally and redirect correctly to the WeChat app on any device.",
+                                                   "q":  "Will WeChat links work internationally with short URLs?"
+                                               },
+                                               {
+                                                   "a":  "Absolutely. Every shortened link on RELURL comes with a free downloadable QR code.",
+                                                   "q":  "Can I generate QR codes for WeChat links?"
+                                               }
+                                           ]
+                              },
+    "twitter-link-generator":  {
+                                   "title":  "Twitter/X Link Generator",
+                                   "subtitle":  "Optimize Your Tweets",
+                                   "description":  "Shorten URLs for tweets, threads, and X profiles to save character space. Optimize your Twitter/X content and track audience interaction.",
+                                   "metaDescription":  "Shorten URLs for tweets, threads, and X profiles to save character space. Optimize your Twitter/X presence and grow follower engagement with RELURL.",
+                                   "keywords":  [
+                                                    "twitter link generator",
+                                                    "x link generator",
+                                                    "tweet link shortener"
+                                                ],
+                                   "features":  [
+                                                    "Tweet Click Tracking",
+                                                    "Thread Link Analytics",
+                                                    "Profile Bio Optimization",
+                                                    "Character-Saving Links",
+                                                    "Twitter Card Support",
+                                                    "Engagement Attribution"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Enter the page you want to share on Twitter/X.",
+                                                          "step":  "Paste Your URL"
+                                                      },
+                                                      {
+                                                          "desc":  "Create a character-efficient URL for your tweet.",
+                                                          "step":  "Generate Short Link"
+                                                      },
+                                                      {
+                                                          "desc":  "Post in tweets and threads, then monitor engagement.",
+                                                          "step":  "Tweet \u0026 Track"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Blog post promotion on Twitter",
+                                                    "Product launch tweets",
+                                                    "Thread engagement tracking",
+                                                    "Profile bio link optimization",
+                                                    "Twitter Ad landing pages",
+                                                    "Community engagement links"
+                                                ]
+                               },
+    "tinyurl-alternative":  {
+                                "title":  "TinyURL Alternative",
+                                "subtitle":  "Modern Features, No Limits",
+                                "description":  "Looking for a more capable TinyURL alternative? RELURL includes custom aliases, detailed click analytics, QR code generation, and branded domains that TinyURL lacks.",
+                                "metaDescription":  "Looking for a TinyURL alternative? RELURL offers custom slugs, click analytics, QR codes, and branded links that TinyURL does not provide.",
+                                "keywords":  [
+                                                 "tinyurl alternative",
+                                                 "tinyurl competitor",
+                                                 "free tinyurl alternative",
+                                                 "better than tinyurl"
+                                             ],
+                                "features":  [
+                                                 "Custom Aliases Included",
+                                                 "Detailed Click Analytics",
+                                                 "Free QR Code Generator",
+                                                 "Branded Domain Support",
+                                                 "Unlimited Link Creation",
+                                                 "Modern Dashboard"
+                                             ],
+                                "howItWorks":  [
+                                                   {
+                                                       "desc":  "Create your RELURL account in seconds. No credit card needed.",
+                                                       "step":  "Sign Up Free"
+                                                   },
+                                                   {
+                                                       "desc":  "Create branded short links with meaningful custom aliases.",
+                                                       "step":  "Shorten with Custom Slugs"
+                                                   },
+                                                   {
+                                                       "desc":  "Monitor clicks, locations, and devices from your dashboard.",
+                                                       "step":  "Track Performance"
+                                                   }
+                                               ],
+                                "useCases":  [
+                                                 "Replace TinyURL with a more feature-rich tool",
+                                                 "Add click analytics to your shortened links",
+                                                 "Create branded short links with custom slugs",
+                                                 "Generate QR codes alongside your short links",
+                                                 "Manage all your links from a modern dashboard",
+                                                 "Scale link management for business use"
+                                             ],
+                                "faqs":  [
+                                             {
+                                                 "a":  "RELURL offers click analytics, custom slugs, QR code generation, branded domains, and a full dashboard for managing links. TinyURL provides basic shortening without analytics or customization.",
+                                                 "q":  "What features does RELURL have that TinyURL does not?"
+                                             },
+                                             {
+                                                 "a":  "Yes, RELURL is equally easy for basic shortening. Just paste a URL and click shorten. For advanced features like analytics and custom slugs, the tools are intuitive and accessible.",
+                                                 "q":  "Is RELURL as simple to use as TinyURL?"
+                                             },
+                                             {
+                                                 "a":  "Yes, custom slugs are available on RELURL\u0027s free plan. TinyURL does not offer custom aliases on any plan.",
+                                                 "q":  "Can I create custom aliases on RELURL for free?"
+                                             }
+                                         ]
+                            },
+    "url-shortener-with-qr-codes":  {
+                                        "title":  "URL Shortener with QR Codes",
+                                        "subtitle":  "Links + QR in One",
+                                        "description":  "Combine URL shortening with QR code generation. Every shortened link on RELURL comes with a free, customizable QR code for online and offline marketing.",
+                                        "metaDescription":  "Combine URL shortening with QR code generation. Every shortened link on RELURL comes with a free, customizable QR code for online and offline marketing.",
+                                        "keywords":  [
+                                                         "url shortener with qr codes",
+                                                         "qr code url shortener",
+                                                         "short link qr code generator",
+                                                         "qr link shortener"
+                                                     ],
+                                        "features":  [
+                                                         "QR Code Generation",
+                                                         "URL Compression",
+                                                         "Click Analytics",
+                                                         "Custom Branded Slugs",
+                                                         "Dynamic QR Updates",
+                                                         "Real-time Tracking"
+                                                     ],
+                                        "howItWorks":  [
+                                                           {
+                                                               "desc":  "Enter the link you want to shorten and turn into a QR code.",
+                                                               "step":  "Paste Your URL"
+                                                           },
+                                                           {
+                                                               "desc":  "We\u0027ll create a short link and automatically generate a high-resolution QR code.",
+                                                               "step":  "Shorten \u0026 Generate QR"
+                                                           },
+                                                           {
+                                                               "desc":  "Download your QR code in PNG, SVG, or PDF for print or digital use. Share your short link anywhere.",
+                                                               "step":  "Download \u0026 Deploy"
+                                                           }
+                                                       ],
+                                        "useCases":  [
+                                                         "Generate QR codes for product packaging with short links",
+                                                         "Create QR codes for restaurant menus with trackable URLs",
+                                                         "Add QR codes to business cards linking to your portfolio",
+                                                         "Print QR codes on flyers and posters for event promotion",
+                                                         "Deploy QR codes in retail stores for contactless interactions"
+                                                     ],
+                                        "faqs":  [
+                                                     {
+                                                         "a":  "Yes, RELURL lets you download QR codes as high-resolution PNG, SVG, and PDF files.",
+                                                         "q":  "Can I download the QR code in different formats?"
+                                                     },
+                                                     {
+                                                         "a":  "Yes, with dynamic QR codes you can change the destination URL anytime without reprinting.",
+                                                         "q":  "Can I update the destination of my QR code later?"
+                                                     },
+                                                     {
+                                                         "a":  "Absolutely. Every shortened link on RELURL includes a free QR code, even on the free forever plan.",
+                                                         "q":  "Is QR code generation included in the free plan?"
+                                                     }
+                                                 ]
+                                    },
+    "whatsapp-link-generator":  {
+                                    "title":  "WhatsApp Link Generator",
+                                    "subtitle":  "Start WhatsApp Conversations Instantly",
+                                    "description":  "Create short, scannable links that open WhatsApp chat with your phone number and a pre-filled message. Perfect for customer support and marketing.",
+                                    "metaDescription":  "Generate WhatsApp click-to-chat links. Create short URLs that open WhatsApp conversations with your phone number and pre-filled messages.",
+                                    "keywords":  [
+                                                     "whatsapp link generator",
+                                                     "whatsapp click to chat",
+                                                     "wa.me link"
+                                                 ],
+                                    "features":  [
+                                                     "Click-to-Chat Links",
+                                                     "Pre-filled Messages",
+                                                     "Phone Number Support",
+                                                     "Custom Messages",
+                                                     "QR Code Ready",
+                                                     "Analytics Tracking"
+                                                 ],
+                                    "howItWorks":  [
+                                                       {
+                                                           "desc":  "Paste the URL you want to share via WhatsApp.",
+                                                           "step":  "Enter URL"
+                                                       },
+                                                       {
+                                                           "desc":  "Create a short link that redirects to WhatsApp.",
+                                                           "step":  "Generate Link"
+                                                       },
+                                                       {
+                                                           "desc":  "Use your link in emails, social media, or print.",
+                                                           "step":  "Share Anywhere"
+                                                       }
+                                                   ],
+                                    "useCases":  [
+                                                     "Customer support chat links",
+                                                     "Sales inquiry channels",
+                                                     "Order confirmation links",
+                                                     "Event RSVP via WhatsApp",
+                                                     "Marketing campaign CTAs",
+                                                     "Website contact buttons"
+                                                 ]
+                                },
+    "url-shortener-for-marketers":  {
+                                        "title":  "URL Shortener for Marketers",
+                                        "subtitle":  "Campaign-Ready Links",
+                                        "description":  "Campaign-ready URL shortener for marketers. Track campaign performance, build UTM parameters, manage multi-channel links, and optimize your marketing ROI with RELURL.",
+                                        "metaDescription":  "Campaign-ready URL shortener for marketers. Track campaign performance, build UTM parameters, manage multi-channel links, and optimize your marketing ROI with RELURL.",
+                                        "keywords":  [
+                                                         "url shortener for marketers",
+                                                         "marketing url shortener",
+                                                         "campaign link shortener",
+                                                         "marketing link management"
+                                                     ],
+                                        "features":  [
+                                                         "Campaign Tracking",
+                                                         "UTM Builder",
+                                                         "Click Analytics",
+                                                         "Custom Branded Slugs",
+                                                         "Bulk Shortening",
+                                                         "Geo-Targeting"
+                                                     ],
+                                        "howItWorks":  [
+                                                           {
+                                                               "desc":  "Paste your destination URL and add UTM parameters for campaign attribution.",
+                                                               "step":  "Create Your Campaign Link"
+                                                           },
+                                                           {
+                                                               "desc":  "Set custom slugs and choose tracking options to match your marketing campaign.",
+                                                               "step":  "Customize \u0026 Brand"
+                                                           },
+                                                           {
+                                                               "desc":  "Monitor clicks, conversions, and engagement across all your marketing channels in real time.",
+                                                               "step":  "Track Multi-Channel Performance"
+                                                           }
+                                                       ],
+                                        "useCases":  [
+                                                         "Track email newsletter click-through rates with precision",
+                                                         "Manage multi-channel campaign links from one dashboard",
+                                                         "Build and save UTM-parameterized links effortlessly",
+                                                         "A/B test different link destinations for campaign optimization",
+                                                         "Create branded short links for paid ad campaigns"
+                                                     ],
+                                        "faqs":  [
+                                                     {
+                                                         "a":  "Yes, RELURL has a built-in UTM builder that makes adding tracking parameters quick and error-free.",
+                                                         "q":  "Can I add UTM parameters to my shortened links?"
+                                                     },
+                                                     {
+                                                         "a":  "Absolutely. RELURL analytics break down clicks by referrer, device, location, and campaign tag.",
+                                                         "q":  "Can I see which marketing channel drives the most clicks?"
+                                                     },
+                                                     {
+                                                         "a":  "Yes, RELURL supports bulk link creation and CSV export for easy campaign management.",
+                                                         "q":  "Can I bulk create links for multiple campaigns?"
+                                                     }
+                                                 ]
+                                    },
+    "url-shortener-in-canada":  {
+                                    "title":  "URL Shortener in Canada",
+                                    "subtitle":  "Best for Canadian Users",
+                                    "description":  "Best URL shortener in Canada for businesses, marketers, and content creators. Fast, privacy-compliant link shortening with free plan tailored for Canadian users.",
+                                    "metaDescription":  "Best URL shortener in Canada for businesses, marketers, and content creators. Fast, privacy-compliant link shortening with free plan tailored for Canadian users.",
+                                    "keywords":  [
+                                                     "url shortener canada",
+                                                     "best url shortener in canada",
+                                                     "canadian url shortener",
+                                                     "link shortener canada"
+                                                 ],
+                                    "features":  [
+                                                     "URL Compression",
+                                                     "Click Analytics",
+                                                     "Custom Aliases",
+                                                     "Campaign Tracking",
+                                                     "QR Code Generation",
+                                                     "Free Forever"
+                                                 ],
+                                    "howItWorks":  [
+                                                       {
+                                                           "desc":  "Copy any link from your Canadian business, blog, or online store.",
+                                                           "step":  "Paste Your URL"
+                                                       },
+                                                       {
+                                                           "desc":  "Generate a clean short link and personalize it with a custom alias for your brand.",
+                                                           "step":  "Shorten \u0026 Customize"
+                                                       },
+                                                       {
+                                                           "desc":  "Deploy your short link on social media, email, and marketing channels targeting Canadian audiences.",
+                                                           "step":  "Share Across Canada"
+                                                       }
+                                                   ],
+                                    "useCases":  [
+                                                     "Track marketing campaigns targeting Canadian cities and provinces",
+                                                     "Create branded short links for Toronto and Vancouver businesses",
+                                                     "Share product links on Canadian social media platforms",
+                                                     "Generate QR codes for Canadian retail and restaurant locations",
+                                                     "Manage privacy-compliant link tracking for Canadian customers"
+                                                 ],
+                                    "faqs":  [
+                                                 {
+                                                     "a":  "Yes, RELURL follows strict privacy practices that align with Canadian data protection standards including PIPEDA.",
+                                                     "q":  "Is RELURL compliant with Canadian privacy laws?"
+                                                 },
+                                                 {
+                                                     "a":  "Yes, RELURL provides geographic analytics down to the city level for all your shortened links.",
+                                                     "q":  "Can I see which Canadian province my clicks come from?"
+                                                 },
+                                                 {
+                                                     "a":  "Absolutely. RELURL\u0027s free forever plan gives Canadian users unlimited link shortening at no cost.",
+                                                     "q":  "Is there a free plan for Canadian users?"
+                                                 }
+                                             ]
+                                },
+    "shorten-youtube-url":  {
+                                "title":  "Shorten YouTube URL",
+                                "subtitle":  "Optimize Your Video Links",
+                                "description":  "Shorten YouTube video URLs to make them clean and shareable. Perfect for social media posts, video descriptions, comments, and messaging apps where long YouTube URLs look cluttered.",
+                                "metaDescription":  "Shorten YouTube video URLs to share on social media, comments, and messages. Make your YouTube links clean, trackable, and easy to share with RELURL.",
+                                "keywords":  [
+                                                 "shorten youtube url",
+                                                 "youtube link shortener",
+                                                 "youtube url shortener",
+                                                 "short youtube link"
+                                             ],
+                                "features":  [
+                                                 "YouTube URL Compression",
+                                                 "Custom Slug Support",
+                                                 "Click Analytics",
+                                                 "Share in Descriptions",
+                                                 "Social Media Ready",
+                                                 "QR Code Generation"
+                                             ],
+                                "howItWorks":  [
+                                                   {
+                                                       "desc":  "Copy and paste the YouTube video URL you want to shorten.",
+                                                       "step":  "Paste YouTube Link"
+                                                   },
+                                                   {
+                                                       "desc":  "Optionally add a custom slug to make your link memorable.",
+                                                       "step":  "Customize Your Slug"
+                                                   },
+                                                   {
+                                                       "desc":  "Copy the shortened URL and share it anywhere you promote your video.",
+                                                       "step":  "Share Your Short Link"
+                                                   }
+                                               ],
+                                "useCases":  [
+                                                 "Share YouTube videos in Twitter/X posts with character limits",
+                                                 "Add clean links to YouTube video descriptions",
+                                                 "Track clicks on YouTube links shared in email newsletters",
+                                                 "Create QR codes for YouTube video promotions",
+                                                 "Share videos in WhatsApp and messaging apps",
+                                                 "Include short links in Instagram Stories and bio"
+                                             ],
+                                "faqs":  [
+                                             {
+                                                 "a":  "YouTube URLs are long and contain tracking parameters that make them ugly to share. Shortened YouTube links are cleaner, save character space, and can be tracked to see how many people click them from different platforms.",
+                                                 "q":  "Why should I shorten YouTube URLs?"
+                                             },
+                                             {
+                                                 "a":  "Yes, shortened YouTube URLs redirect to the original video on any device. They work on desktop, mobile, tablets, and smart TVs without any issues.",
+                                                 "q":  "Will the short link work on all devices?"
+                                             },
+                                             {
+                                                 "a":  "Absolutely. Every shortened URL on RELURL comes with click analytics showing total clicks, geographic data, referrers, and device types. This helps you understand which platforms drive the most traffic to your videos.",
+                                                 "q":  "Can I track clicks on my shortened YouTube links?"
+                                             }
+                                         ]
+                            },
+    "threads-link-generator":  {
+                                   "title":  "Threads Link Generator",
+                                   "subtitle":  "Thrive on Threads",
+                                   "description":  "Create concise links for Threads conversations and profiles. Boost your Threads presence and track conversation-driven engagement.",
+                                   "metaDescription":  "Create concise links for Threads conversations and profiles. Boost social engagement on Threads and track audience growth with RELURL.",
+                                   "keywords":  [
+                                                    "threads link generator",
+                                                    "threads post links",
+                                                    "threads marketing"
+                                                ],
+                                   "features":  [
+                                                    "Post Link Tracking",
+                                                    "Profile Bio Links",
+                                                    "Engagement Analytics",
+                                                    "Character-Optimized URLs",
+                                                    "Cross-Platform Integration",
+                                                    "Audience Source Insights"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Enter the page you want to share on Threads.",
+                                                          "step":  "Paste Your URL"
+                                                      },
+                                                      {
+                                                          "desc":  "Generate a clean URL optimized for Threads posts.",
+                                                          "step":  "Create Short Link"
+                                                      },
+                                                      {
+                                                          "desc":  "Share in threads and monitor audience engagement.",
+                                                          "step":  "Post \u0026 Track"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Threads post promotions",
+                                                    "Profile bio link optimization",
+                                                    "Brand content sharing",
+                                                    "Community engagement tracking",
+                                                    "Cross-posting from Instagram",
+                                                    "Influencer collaboration links"
+                                                ]
+                               },
+    "url-shortener-no-signup":  {
+                                    "title":  "URL Shortener No Signup",
+                                    "subtitle":  "Shorten Instantly",
+                                    "description":  "Shorten URLs instantly with no signup required. Use RELURL\u0027s free URL shortener without creating an account. Fast, private, and no registration needed.",
+                                    "metaDescription":  "Shorten URLs instantly with no signup required. Use RELURL\u0027s free URL shortener without creating an account. Fast, private, and no registration needed.",
+                                    "keywords":  [
+                                                     "url shortener no signup",
+                                                     "shorten url without signup",
+                                                     "no registration url shortener",
+                                                     "instant url shortener"
+                                                 ],
+                                    "features":  [
+                                                     "URL Compression",
+                                                     "No Expiration",
+                                                     "Free Forever",
+                                                     "Click Analytics",
+                                                     "QR Code Generation",
+                                                     "Custom Aliases"
+                                                 ],
+                                    "howItWorks":  [
+                                                       {
+                                                           "desc":  "Copy any long URL and paste it into the input field above. No account needed.",
+                                                           "step":  "Paste Your Long URL"
+                                                       },
+                                                       {
+                                                           "desc":  "Click the button and get a compact short URL immediately with zero registration friction.",
+                                                           "step":  "Shorten Instantly"
+                                                       },
+                                                       {
+                                                           "desc":  "Copy your new short link and share it anywhere. Simple as that.",
+                                                           "step":  "Share Your Link"
+                                                       }
+                                                   ],
+                                    "useCases":  [
+                                                     "Shorten a link quickly without creating an account",
+                                                     "Share URLs privately without saving history",
+                                                     "Get a short link for a one-time use case",
+                                                     "Test URL shortening before committing to a platform",
+                                                     "Create disposable short links for temporary campaigns"
+                                                 ],
+                                    "faqs":  [
+                                                 {
+                                                     "a":  "Correct. You can shorten URLs instantly with no account, no email, and no registration required.",
+                                                     "q":  "Do I really not need to sign up?"
+                                                 },
+                                                 {
+                                                     "a":  "No, RELURL links never expire even without an account. Your short link will work forever.",
+                                                     "q":  "Will my shortened link expire?"
+                                                 },
+                                                 {
+                                                     "a":  "Basic click tracking is available. For detailed analytics, you can create a free account to access full reporting.",
+                                                     "q":  "Can I still track clicks without signing up?"
+                                                 }
+                                             ]
+                                },
+    "telegram-link-generator":  {
+                                    "title":  "Telegram Link Generator",
+                                    "subtitle":  "Grow Your Telegram Community",
+                                    "description":  "Create short, memorable links for your Telegram channels, groups, and bots. Track clicks and grow your Telegram audience.",
+                                    "metaDescription":  "Generate short Telegram links for channels, groups, and bots. Create custom t.me URLs with analytics to grow your Telegram community.",
+                                    "keywords":  [
+                                                     "telegram link generator",
+                                                     "t.me link",
+                                                     "telegram group link"
+                                                 ],
+                                    "features":  [
+                                                     "Channel Invite Links",
+                                                     "Group Join Links",
+                                                     "Bot Start Links",
+                                                     "Custom Aliases",
+                                                     "Click Analytics",
+                                                     "QR Code Support"
+                                                 ],
+                                    "howItWorks":  [
+                                                       {
+                                                           "desc":  "Paste your t.me link or content URL.",
+                                                           "step":  "Enter Telegram URL"
+                                                       },
+                                                       {
+                                                           "desc":  "Choose a short, memorable alias.",
+                                                           "step":  "Customize Slug"
+                                                       },
+                                                       {
+                                                           "desc":  "Distribute your link and monitor engagement.",
+                                                           "step":  "Share \u0026 Track"
+                                                       }
+                                                   ],
+                                    "useCases":  [
+                                                     "Telegram channel promotion",
+                                                     "Group membership drives",
+                                                     "Bot user acquisition",
+                                                     "Content sharing",
+                                                     "Community building",
+                                                     "Marketing campaigns"
+                                                 ]
+                                },
+    "url-shortener-without-signup":  {
+                                         "title":  "URL Shortener Without Signup",
+                                         "subtitle":  "Shorten Instantly",
+                                         "description":  "Shorten any URL without signup or registration using RELURL. Fast, private link shortening with no account required. Create short links in seconds.",
+                                         "metaDescription":  "Shorten any URL without signup or registration using RELURL. Fast, private link shortening with no account required. Create short links in seconds.",
+                                         "keywords":  [
+                                                          "url shortener without signup",
+                                                          "shorten link without account",
+                                                          "no registration url shortener",
+                                                          "anonymous url shortener"
+                                                      ],
+                                         "features":  [
+                                                          "URL Compression",
+                                                          "Free Forever",
+                                                          "No Expiration",
+                                                          "Click Analytics",
+                                                          "QR Code Generation",
+                                                          "Password Protection"
+                                                      ],
+                                         "howItWorks":  [
+                                                            {
+                                                                "desc":  "Type or paste any long URL into the input box. No email or password needed.",
+                                                                "step":  "Enter Your URL"
+                                                            },
+                                                            {
+                                                                "desc":  "Hit the button and we\u0027ll instantly compress your URL into a clean short link.",
+                                                                "step":  "Click Shorten"
+                                                            },
+                                                            {
+                                                                "desc":  "Copy your new short link and share it on social media, in messages, or on your website.",
+                                                                "step":  "Use It Anywhere"
+                                                            }
+                                                        ],
+                                         "useCases":  [
+                                                          "Create instant short links for social media sharing",
+                                                          "Shorten URLs anonymously without leaving a trace",
+                                                          "Generate links quickly for chat and messaging apps",
+                                                          "Test different URL shorteners without commitment",
+                                                          "Create temporary links for fast-paced project collaboration"
+                                                      ],
+                                         "faqs":  [
+                                                      {
+                                                          "a":  "No catch. You get full URL shortening functionality without any registration. Upgrade only if you need advanced analytics.",
+                                                          "q":  "Is there any catch to using RELURL without signing up?"
+                                                      },
+                                                      {
+                                                          "a":  "Yes, you can shorten as many URLs as you want without signing up. No limits on the free tier.",
+                                                          "q":  "Can I create multiple short links without an account?"
+                                                      },
+                                                      {
+                                                          "a":  "Signing up unlocks custom aliases, detailed analytics, link management dashboard, and QR code downloads.",
+                                                          "q":  "What features do I get if I sign up later?"
+                                                      }
+                                                  ]
+                                     },
+    "shorten-whatsapp-link":  {
+                                  "title":  "Shorten WhatsApp Link",
+                                  "subtitle":  "Compact Links for Messaging",
+                                  "description":  "Shorten URLs before sharing on WhatsApp to keep your messages clean and professional. Short links are less likely to break formatting and appear more trustworthy in chats.",
+                                  "metaDescription":  "Shorten URLs to share on WhatsApp cleanly and safely. Make your links compact, trackable, and trustable for WhatsApp chats and groups.",
+                                  "keywords":  [
+                                                   "shorten whatsapp link",
+                                                   "whatsapp link shortener",
+                                                   "whatsapp url shortener",
+                                                   "short whatsapp link"
+                                               ],
+                                  "features":  [
+                                                   "WhatsApp Optimized Links",
+                                                   "Clean Message Formatting",
+                                                   "Click Tracking",
+                                                   "Custom Branded Slugs",
+                                                   "Spam Filter Safe",
+                                                   "Instant Sharing"
+                                               ],
+                                  "howItWorks":  [
+                                                     {
+                                                         "desc":  "Enter the long URL you want to share on WhatsApp.",
+                                                         "step":  "Paste Your URL"
+                                                     },
+                                                     {
+                                                         "desc":  "Click to generate a compact, clean short link.",
+                                                         "step":  "Shorten Instantly"
+                                                     },
+                                                     {
+                                                         "desc":  "Copy the short link and paste it into your WhatsApp chat or group.",
+                                                         "step":  "Share on WhatsApp"
+                                                     }
+                                                 ],
+                                  "useCases":  [
+                                                   "Share product links in WhatsApp Business broadcasts",
+                                                   "Send clean article links in group chats",
+                                                   "Promote offers and discounts via WhatsApp",
+                                                   "Share event registration links with customers",
+                                                   "Send document and file links professionally",
+                                                   "Track engagement from WhatsApp marketing campaigns"
+                                               ],
+                                  "faqs":  [
+                                               {
+                                                   "a":  "Long URLs can break message formatting, appear suspicious, and consume character space in WhatsApp messages. Shortened links stay compact, look professional, and reduce the risk of being flagged as spam.",
+                                                   "q":  "Why shorten links before sharing on WhatsApp?"
+                                               },
+                                               {
+                                                   "a":  "Yes, shortened URLs work perfectly on WhatsApp Web, WhatsApp Desktop, and the mobile app. The redirect is seamless regardless of how recipients access WhatsApp.",
+                                                   "q":  "Do short links work on WhatsApp Web?"
+                                               },
+                                               {
+                                                   "a":  "Yes, you can add custom slugs to your shortened WhatsApp links. Branded or descriptive slugs like relurl.com/summer-sale build trust and encourage more clicks from your audience.",
+                                                   "q":  "Can I customize WhatsApp short links?"
+                                               }
+                                           ]
+                              },
+    "tiktok-bio-link-generator":  {
+                                      "title":  "TikTok Bio Link Generator",
+                                      "subtitle":  "Maximize Your TikTok Traffic",
+                                      "description":  "TikTok only allows one link in your bio. Make it count with a short, branded URL that drives traffic to all your content and platforms.",
+                                      "metaDescription":  "Create the perfect TikTok bio link. Generate a short, branded URL for your TikTok profile that drives traffic to all your content platforms.",
+                                      "keywords":  [
+                                                       "tiktok bio link",
+                                                       "tiktok link generator",
+                                                       "link in bio tiktok"
+                                                   ],
+                                      "features":  [
+                                                       "One-Link Optimization",
+                                                       "Mobile-First Design",
+                                                       "Click Tracking",
+                                                       "Custom Aliases",
+                                                       "Multiple Destinations",
+                                                       "QR Code for Videos"
+                                                   ],
+                                      "howItWorks":  [
+                                                         {
+                                                             "desc":  "Paste your link-in-bio or landing page URL.",
+                                                             "step":  "Enter Your URL"
+                                                         },
+                                                         {
+                                                             "desc":  "Generate a clean, memorable short URL.",
+                                                             "step":  "Create Short Link"
+                                                         },
+                                                         {
+                                                             "desc":  "Paste your short link in your TikTok profile.",
+                                                             "step":  "Add to TikTok Bio"
+                                                         }
+                                                     ],
+                                      "useCases":  [
+                                                       "TikTok bio link optimization",
+                                                       "Product link sharing",
+                                                       "YouTube channel promotion",
+                                                       "Merchandise store links",
+                                                       "Event registration",
+                                                       "Cross-platform promotion"
+                                                   ]
+                                  },
+    "shorten-x-url":  {
+                          "title":  "Shorten X URL",
+                          "subtitle":  "Optimize Your Tweets",
+                          "description":  "Shorten URLs for X (Twitter) to save precious character count and track link engagement. Clean short links make your tweets more effective and measurable.",
+                          "metaDescription":  "Shorten URLs for X (formerly Twitter) to save character count and track engagement. Make your tweets cleaner and more effective with short links.",
+                          "keywords":  [
+                                           "shorten x url",
+                                           "shorten twitter url",
+                                           "x link shortener",
+                                           "twitter url shortener"
+                                       ],
+                          "features":  [
+                                           "Character Count Savings",
+                                           "Twitter/X Optimized",
+                                           "Engagement Analytics",
+                                           "Custom Branded Links",
+                                           "Campaign Tracking",
+                                           "QR Code Ready"
+                                       ],
+                          "howItWorks":  [
+                                             {
+                                                 "desc":  "Copy the long URL you want to share in your tweet.",
+                                                 "step":  "Paste Your URL"
+                                             },
+                                             {
+                                                 "desc":  "Generate a compact short link that saves character space.",
+                                                 "step":  "Shorten Instantly"
+                                             },
+                                             {
+                                                 "desc":  "Paste the short link into your tweet and monitor clicks from your dashboard.",
+                                                 "step":  "Tweet and Track"
+                                             }
+                                         ],
+                          "useCases":  [
+                                           "Save character count in tweets with links",
+                                           "Track click-through rates on shared articles",
+                                           "Create branded links for X profile bio",
+                                           "Measure engagement on promotional tweets",
+                                           "Shorten links before sharing in X DMs",
+                                           "Compare performance of different tweet campaigns"
+                                       ],
+                          "faqs":  [
+                                       {
+                                           "a":  "X limits posts to 280 characters. Long URLs consume a huge portion of this limit. Shortened URLs free up more characters for your message while making tweets look cleaner and more professional.",
+                                           "q":  "Why shorten URLs on X/Twitter?"
+                                       },
+                                       {
+                                           "a":  "Yes, X generates link preview cards for shortened URLs just like full URLs. Your preview image, title, and description will display normally when the link is included in a tweet.",
+                                           "q":  "Do short links show link previews on X?"
+                                       },
+                                       {
+                                           "a":  "X provides basic link analytics for ads, but not for organic tweets. RELURL fills this gap by showing click data for every shortened link, revealing which tweets drive the most traffic.",
+                                           "q":  "Can I track how many clicks my tweet links get?"
+                                       }
+                                   ]
+                      },
+    "url-shortener-with-analytics":  {
+                                         "title":  "URL Shortener with Analytics",
+                                         "subtitle":  "Track Every Click",
+                                         "description":  "Shorten URLs and track every click with detailed analytics. RELURL provides real-time click data, geographic insights, device tracking, and referral sources for all links.",
+                                         "metaDescription":  "Shorten URLs and track every click with detailed analytics. RELURL provides real-time click data, geographic insights, device tracking, and referral sources for all links.",
+                                         "keywords":  [
+                                                          "url shortener with analytics",
+                                                          "trackable url shortener",
+                                                          "link click analytics",
+                                                          "short link analytics"
+                                                      ],
+                                         "features":  [
+                                                          "Click Analytics",
+                                                          "Real-time Tracking",
+                                                          "Click Geo-Location",
+                                                          "Device Targeting",
+                                                          "CSV Export",
+                                                          "Campaign Tracking"
+                                                      ],
+                                         "howItWorks":  [
+                                                            {
+                                                                "desc":  "Paste any URL and shorten it with RELURL to start tracking immediately.",
+                                                                "step":  "Shorten Your URL"
+                                                            },
+                                                            {
+                                                                "desc":  "Access real-time data on clicks, locations, devices, and referral sources from your dashboard.",
+                                                                "step":  "View Analytics Dashboard"
+                                                            },
+                                                            {
+                                                                "desc":  "Use click data to refine your marketing campaigns and improve engagement across channels.",
+                                                                "step":  "Optimize Your Strategy"
+                                                            }
+                                                        ],
+                                         "useCases":  [
+                                                          "Track click-through rates on email marketing campaigns",
+                                                          "Monitor geographic distribution of your audience",
+                                                          "Measure device breakdown for link interactions",
+                                                          "Identify top referral sources driving traffic",
+                                                          "Export analytics data to CSV for custom reporting"
+                                                      ],
+                                         "faqs":  [
+                                                      {
+                                                          "a":  "RELURL shows total clicks, unique clicks, geographic location, device type, browser, operating system, and referrer source.",
+                                                          "q":  "What analytics data does RELURL provide?"
+                                                      },
+                                                      {
+                                                          "a":  "Yes, all analytics are updated in real time so you can monitor link performance as it happens.",
+                                                          "q":  "Is analytics data available in real time?"
+                                                      },
+                                                      {
+                                                          "a":  "Absolutely. You can export your link analytics as a CSV file for further analysis in your preferred tools.",
+                                                          "q":  "Can I export my analytics data?"
+                                                      }
+                                                  ]
+                                     },
+    "webinar-link-shortener":  {
+                                   "title":  "Webinar Link Shortener",
+                                   "subtitle":  "Fill Every Webinar",
+                                   "description":  "Shorten webinar registration and replay links. Track attendance, improve your promotional campaigns, and fill every webinar session.",
+                                   "metaDescription":  "Shorten webinar registration and replay links. Track attendance, optimize promotions, and fill your webinars with RELURL.",
+                                   "keywords":  [
+                                                    "webinar link shortener",
+                                                    "webinar registration links",
+                                                    "webinar marketing"
+                                                ],
+                                   "features":  [
+                                                    "Registration Tracking",
+                                                    "Replay Link Analytics",
+                                                    "Reminder Integration",
+                                                    "Multi-Promotion Channels",
+                                                    "Speaker Profile Links",
+                                                    "Post-Webinar Follow-Up"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Enter your registration or replay page link.",
+                                                          "step":  "Paste Webinar URL"
+                                                      },
+                                                      {
+                                                          "desc":  "Generate a memorable URL for your webinar campaign.",
+                                                          "step":  "Create Short Link"
+                                                      },
+                                                      {
+                                                          "desc":  "Share across channels and monitor registration conversions.",
+                                                          "step":  "Promote \u0026 Track"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Webinar registration campaigns",
+                                                    "Replay link distribution",
+                                                    "Partner promotion links",
+                                                    "Email sequence links",
+                                                    "Social media event posts",
+                                                    "Post-webinar sales funnels"
+                                                ]
+                               },
+    "url-shortener-in-india":  {
+                                   "title":  "URL Shortener in India",
+                                   "subtitle":  "Best for Indian Users",
+                                   "description":  "Best URL shortener in India for businesses, marketers, and content creators. Fast, reliable link shortening with free forever plan, no hidden charges, and local-friendly features.",
+                                   "metaDescription":  "Best URL shortener in India for businesses, marketers, and content creators. Fast, reliable link shortening with free forever plan, no hidden charges, and local-friendly features.",
+                                   "keywords":  [
+                                                    "url shortener india",
+                                                    "best url shortener in india",
+                                                    "indian url shortener",
+                                                    "link shortener india"
+                                                ],
+                                   "features":  [
+                                                    "URL Compression",
+                                                    "Free Forever",
+                                                    "No Expiration",
+                                                    "Click Analytics",
+                                                    "Custom Aliases",
+                                                    "QR Code Generation"
+                                                ],
+                                   "howItWorks":  [
+                                                      {
+                                                          "desc":  "Copy any long URL from your website, product page, or social media post.",
+                                                          "step":  "Paste Your URL"
+                                                      },
+                                                      {
+                                                          "desc":  "Click to generate a short link and optionally create a custom alias for your brand.",
+                                                          "step":  "Shorten \u0026 Customize"
+                                                      },
+                                                      {
+                                                          "desc":  "Share your short link across WhatsApp, Instagram, and other platforms popular in India.",
+                                                          "step":  "Share \u0026 Track"
+                                                      }
+                                                  ],
+                                   "useCases":  [
+                                                    "Share product links on WhatsApp Business with clean short URLs",
+                                                    "Shorten links for Instagram and YouTube influencers in India",
+                                                    "Track click performance on social media campaigns targeting India",
+                                                    "Create branded short links for Indian e-commerce stores",
+                                                    "Generate QR codes for offline marketing in local markets"
+                                                ],
+                                   "faqs":  [
+                                                {
+                                                    "a":  "Yes, RELURL offers a completely free forever plan with no hidden charges, perfect for Indian users and businesses.",
+                                                    "q":  "Is RELURL free for users in India?"
+                                                },
+                                                {
+                                                    "a":  "Absolutely. RELURL is great for Indian e-commerce businesses needing clean, trackable product links.",
+                                                    "q":  "Can I use RELURL for my e-commerce store in India?"
+                                                },
+                                                {
+                                                    "a":  "Yes, RELURL is optimized for fast loading on all networks and devices commonly used across India.",
+                                                    "q":  "Does RELURL work well on mobile networks in India?"
+                                                }
+                                            ]
+                               }
+}

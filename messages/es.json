@@ -51,6 +51,35 @@
       "en": "English",
       "es": "Español",
       "fr": "Français"
+    },
+    "header": {
+      "platform": "Plataforma",
+      "productsGroup": "Productos",
+      "featuresGroup": "Funciones",
+      "urlShortener": "Acortador de URL",
+      "urlShortenerDesc": "Personaliza, comparte y rastrea enlaces",
+      "qrCodeGenerator": "Generador de códigos QR",
+      "qrCodeGeneratorDesc": "Soluciones dinámicas para cada necesidad",
+      "analytics": "Estadísticas",
+      "analyticsDesc": "Rastrea y analiza el rendimiento",
+      "brandedLinks": "Enlaces de marca",
+      "brandedLinksDesc": "Enlaces personalizados con tu dominio",
+      "linkInBio": "Link-in-bio",
+      "linkInBioDesc": "Selecciona enlaces para perfiles sociales",
+      "linkHealth": "Estado de enlaces",
+      "linkHealthDesc": "Supervisa el rendimiento de tus enlaces",
+      "utmBuilder": "Constructor UTM",
+      "utmBuilderDesc": "Rastrea con parámetros UTM",
+      "teamCollaboration": "Colaboración en equipo",
+      "teamCollaborationDesc": "Trabaja juntos sin problemas",
+      "browserExtension": "Extensión del Navegador",
+      "browserExtensionDesc": "Acorta enlaces con un clic",
+      "viewAllFeatures": "Ver todas las funciones",
+      "toggleTheme": "Cambiar tema",
+      "themeLight": "Claro",
+      "themeDark": "Oscuro",
+      "openMenu": "Abrir menú de navegación",
+      "closeMenu": "Cerrar menú de navegación"
     }
   },
   "homepage": {
@@ -13657,5 +13686,14 @@
     "tourismeCount": "3,200+ anuncios",
     "educationCount": "2,600+ anuncios",
     "santeCount": "1,400+ anuncios"
+  },
+  "footer": {
+    "newsletter": {
+      "title": "Recibe las últimas novedades",
+      "description": "Suscríbete a nuestro boletín para recibir nuevas funciones y consejos.",
+      "placeholder": "Introduce tu correo electrónico",
+      "subscribe": "Suscribirse",
+      "subscribed": "¡Suscrito!"
+    }
   }
 }
