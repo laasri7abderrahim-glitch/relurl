@@ -19,6 +19,7 @@
       "integrations": "Integrations",
       "api": "API",
       "changelog": "Changelog",
+      "blog": "Blog",
       "browserExtension": "Browser Extension",
       "urlShortener": "URL Shortener",
       "customURL": "Custom URL Shortener",
