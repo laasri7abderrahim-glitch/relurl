@@ -11,7 +11,6 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { articleFor } from "@/lib/seo"
 import { BlogPost } from "@/lib/blog/types"
-import { getLandingContent, RichContent } from "@/lib/landing-content"
 import { Copy, Check, Link2, ArrowRight, Zap, BarChart3, Globe, Shield, ChevronRight, QrCode, BookOpen, TrendingUp, Target, CheckCircle2, Star, Lightbulb, Activity, Hash, Users, MousePointerClick } from "lucide-react"
 import { DecorativePattern } from "@/components/ui/decorative-pattern"
 import Image from "next/image"
@@ -63,10 +62,8 @@ export default function URLLandingPage({
   const t = useTranslations()
   const article = articleFor(title)
   const pathname = usePathname()
-  const rc = useMemo(() => {
-    const socialPaths = ["instagram", "whatsapp", "tiktok", "youtube", "facebook", "linkedin", "pinterest", "snapchat", "reddit", "discord", "twitch", "twitter", "threads", "mastodon", "telegram"]
-    const category = socialPaths.some(p => pathname.includes(p)) ? "social" : "url"
-    return getLandingContent(pathname, category)
+  const slug = useMemo(() => {
+    return pathname.replace(/^\/(en|fr|es)\//, "").replace(/\/$/, "") || "free-url-shortener"
   }, [pathname])
 
   const defaultFaqs: FAQItem[] = faqs ?? [
@@ -185,7 +182,7 @@ export default function URLLandingPage({
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="reveal">
                 <Badge className="mb-5 px-4 py-1.5 text-sm bg-primary/10 text-foreground border-primary/20 rounded-full font-medium">
-                  {t("landing.url.freeTool") || "Free URL Shortener"}
+                  {t("landing.url.freeTool")}
                 </Badge>
                 <p className="text-primary font-medium mb-2">{subtitle}</p>
                 <h1 className="mb-5 text-balance">
@@ -214,12 +211,12 @@ export default function URLLandingPage({
         </section>
 
         {/* Long Description */}
-        {rc && (
+        {t.raw(`pages.${slug}.longDescription`) && (
           <section className="px-4 py-12 bg-gradient-to-b from-background to-muted/20">
             <div className="max-w-4xl mx-auto">
               <div className="flex gap-4 items-start p-6 rounded-xl bg-background border border-border/50">
                 <BookOpen className="w-6 h-6 text-primary shrink-0 mt-1 hidden sm:block" />
-                <p className="text-base text-muted-foreground leading-relaxed">{rc.longDescription}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{t(`pages.${slug}.longDescription`)}</p>
               </div>
             </div>
           </section>
@@ -304,12 +301,12 @@ export default function URLLandingPage({
         </section>
 
         {/* Detailed Benefits */}
-        {rc && rc.benefits.length > 0 && (
+        {t.raw(`pages.${slug}.benefits`)?.length > 0 && (
           <section className="section-padding bg-muted/30">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12 text-gradient">Why Use Our {title}</h2>
+              <h2 className="text-3xl font-bold text-center mb-12 text-gradient">{t("landing.url.benefitsTitle", { title })}</h2>
               <div className="grid md:grid-cols-2 gap-6">
-                {rc.benefits.map((benefit, i) => (
+                {(t.raw(`pages.${slug}.benefits`) as { title: string; text: string }[]).map((benefit, i) => (
                   <div key={i} className="glass-card p-6 flex gap-4 group hover:-translate-y-0.5 transition-all duration-300">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center shrink-0 mt-0.5">
                       <Star className="w-5 h-5 text-primary" />
@@ -326,24 +323,24 @@ export default function URLLandingPage({
         )}
 
         {/* Why Choose */}
-        {rc && (
+        {t.raw(`pages.${slug}.whyChoose`) && (
           <section className="section-padding">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-8 text-gradient">What Makes RELURL Different</h2>
+              <h2 className="text-3xl font-bold text-center mb-8 text-gradient">{t("landing.url.whyChooseTitle")}</h2>
               <div className="glass-card p-8">
-                <p className="text-base text-muted-foreground leading-relaxed">{rc.whyChoose}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{t(`pages.${slug}.whyChoose`)}</p>
               </div>
             </div>
           </section>
         )}
 
         {/* Comparison */}
-        {rc && rc.comparisonPoints.length > 0 && (
+        {t.raw(`pages.${slug}.comparisonPoints`)?.length > 0 && (
           <section className="section-padding bg-muted/30">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-8 text-gradient">How We Compare to Alternatives</h2>
+              <h2 className="text-3xl font-bold text-center mb-8 text-gradient">{t("landing.url.comparisonTitle")}</h2>
               <div className="space-y-4">
-                {rc.comparisonPoints.map((point, i) => (
+                {(t.raw(`pages.${slug}.comparisonPoints`) as string[]).map((point, i) => (
                   <div key={i} className="glass-card p-5 flex items-start gap-3 hover:-translate-y-0.5 transition-all duration-300">
                     <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                     <p className="text-sm text-muted-foreground leading-relaxed">{point}</p>
@@ -423,12 +420,12 @@ export default function URLLandingPage({
         )}
 
         {/* Tips */}
-        {rc && rc.tips.length > 0 && (
+        {t.raw(`pages.${slug}.tips`)?.length > 0 && (
           <section className="section-padding">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-8 text-gradient">Tips and Best Practices</h2>
+              <h2 className="text-3xl font-bold text-center mb-8 text-gradient">{t("landing.url.tipsTitle")}</h2>
               <div className="grid md:grid-cols-3 gap-6">
-                {rc.tips.map((tip, i) => (
+                {(t.raw(`pages.${slug}.tips`) as { title: string; text: string }[]).map((tip, i) => (
                   <div key={i} className="glass-card p-6 group hover:-translate-y-1 transition-all duration-300">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                       <Lightbulb className="w-5 h-5 text-primary" />
