@@ -1,9 +1,8 @@
 "use client"
 
 import { useState, useMemo } from "react"
-import { usePathname } from "next/navigation"
 import { useTranslations } from "next-intl"
-import { Link } from "@/i18n/navigation"
+import { Link, usePathname } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { CardContent } from "@/components/ui/card"
