@@ -12,7 +12,7 @@ const footerSections = [
     { label: "layout.footer.features", href: "/features" },
     { label: "layout.footer.pricing", href: "/pricing" },
     { label: "layout.footer.integrations", href: "/integrations" },
-    { label: "layout.footer.api", href: "/api" },
+    { label: "layout.footer.api", href: "/api-reference" },
     { label: "layout.footer.changelog", href: "/changelog" },
     { label: "layout.footer.blog", href: "/blog" },
     { label: "layout.footer.browserExtension", href: "/browser-extension" },

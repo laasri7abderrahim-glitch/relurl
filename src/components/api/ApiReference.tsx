@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useLocale } from "next-intl"
 
 type Lang = "curl" | "javascript" | "python"
 
@@ -111,6 +112,7 @@ function Section({ title, id, children }: { title: string; id: string; children:
 }
 
 export default function ApiReference() {
+  const locale = useLocale()
   return (
     <div className="min-h-screen">
       <div className="relative overflow-hidden bg-noise">
@@ -136,12 +138,11 @@ export default function ApiReference() {
               <code className="text-sm bg-black/20 px-3 py-1.5 rounded font-mono">Authorization: Bearer YOUR_API_KEY</code>
               <p className="text-xs text-muted-foreground mt-3">
                 Get your API key from the{" "}
-                <a href="/en/dashboard/api-keys" className="text-primary hover:underline">dashboard</a>.
-                All requests must be made over HTTPS.
-              </p>
-            </div>
+                 <a href={`/${locale}/dashboard/api-keys`} className="text-primary hover:underline">dashboard</a>.
+               </p>
+             </div>
 
-            <nav className="glass-card p-4 mb-12 flex flex-wrap gap-2">
+             <nav className="glass-card p-4 mb-12 flex flex-wrap gap-2">
               {["links", "analytics", "qrcodes", "domains", "campaigns", "tags", "webhooks", "teams"].map((s) => (
                 <a
                   key={s}
@@ -578,7 +579,7 @@ export default function ApiReference() {
                 Get your API key and start integrating in minutes.
               </p>
               <a
-                href="/en/dashboard/api-keys"
+                href={`/${locale}/dashboard/api-keys`}
                 className="inline-block px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
               >
                 Get Your API Key

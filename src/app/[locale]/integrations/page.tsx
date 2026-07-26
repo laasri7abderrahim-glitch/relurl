@@ -165,7 +165,7 @@ export default function IntegrationsPage() {
               Use our REST API or webhooks to build exactly what you need.
             </p>
             <Link
-              href="/api"
+              href="/api-reference"
               className="inline-block px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent/90 transition-colors font-medium"
             >
               View API Docs
