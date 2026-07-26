@@ -7,8 +7,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, MapPin, Phone, Clock, Loader2, Check } from "lucide-react";
+import dynamic from "next/dynamic";
 import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
+
+const Footer = dynamic(() => import("@/components/layout/footer").then(m => m.Footer), { ssr: false })
 
 const sidebarItems = [
   { icon: Mail, labelKey: "sidebarEmail", valueKey: "sidebarEmailValue" },

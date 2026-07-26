@@ -5,8 +5,10 @@ import { Link } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import dynamic from "next/dynamic"
 import { Header } from "@/components/layout/header"
-import { Footer } from "@/components/layout/footer"
+
+const Footer = dynamic(() => import("@/components/layout/footer").then(m => m.Footer), { ssr: false })
 import { DecorativePattern } from "@/components/ui/decorative-pattern"
 import {
   Chrome,

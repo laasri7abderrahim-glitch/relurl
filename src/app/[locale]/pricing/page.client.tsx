@@ -10,8 +10,10 @@ import { Badge } from "@/components/ui/badge";
 import { Check, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
+import dynamic from "next/dynamic";
 import Image from "next/image";
+
+const Footer = dynamic(() => import("@/components/layout/footer").then(m => m.Footer), { ssr: false })
 
 type Plan = "PRO" | "BUSINESS" | "ENTERPRISE"
 
@@ -140,6 +142,7 @@ export default function PricingPageClient() {
             alt="Analytics and growth metrics dashboard"
             width={1200}
             height={400}
+            sizes="(max-width: 768px) 100vw, 1200px"
             className="w-full h-auto object-cover"
             priority
           />

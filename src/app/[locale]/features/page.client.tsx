@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { BarChart3, Globe, Link2, QrCode, Shield, Users, Zap, Sliders, ArrowRight } from "lucide-react";
 import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
+import dynamic from "next/dynamic";
 import Image from "next/image";
+
+const Footer = dynamic(() => import("@/components/layout/footer").then(m => m.Footer), { ssr: false })
 
 const featureConfig = [
   { icon: Link2, key: "linkShortening", img: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80", alt: "Link shortening interface preview" },
@@ -62,6 +64,7 @@ export default function FeaturesPageClient() {
                   alt="URL shortener analytics dashboard overview"
                   width={1200}
                   height={500}
+                  sizes="(max-width: 768px) 100vw, 1200px"
                   className="w-full h-auto object-cover"
                   priority
                 />
@@ -97,6 +100,7 @@ export default function FeaturesPageClient() {
                             src={feature.img}
                             alt={feature.alt}
                             fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
                             className="object-cover"
                             loading="lazy"
                           />

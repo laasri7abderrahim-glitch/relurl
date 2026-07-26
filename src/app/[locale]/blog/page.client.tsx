@@ -8,8 +8,10 @@ import { getPaginatedPostMetas, getTotalPages } from "@/lib/blog/post-metas"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Calendar, Clock, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
+import dynamic from "next/dynamic"
 import { Header } from "@/components/layout/header"
-import { Footer } from "@/components/layout/footer"
+
+const Footer = dynamic(() => import("@/components/layout/footer").then(m => m.Footer), { ssr: false })
 
 export default function BlogPageClient() {
   const locale = useLocale()

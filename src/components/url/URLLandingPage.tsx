@@ -8,8 +8,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { CardContent } from "@/components/ui/card"
 import { Header } from "@/components/layout/header"
-import { Footer } from "@/components/layout/footer"
+import dynamic from "next/dynamic"
 import { articleFor } from "@/lib/seo"
+
+const Footer = dynamic(() => import("@/components/layout/footer").then(m => m.Footer), { ssr: false })
 import { BlogPost } from "@/lib/blog/types"
 import { Copy, Check, Link2, ArrowRight, Zap, BarChart3, Globe, Shield, ChevronRight, QrCode, BookOpen, TrendingUp, Target, CheckCircle2, Star, Lightbulb, Activity, Hash, Users, MousePointerClick } from "lucide-react"
 import { DecorativePattern } from "@/components/ui/decorative-pattern"
@@ -199,6 +201,7 @@ export default function URLLandingPage({
                       alt="Team collaborating on link management and analytics"
                       width={600}
                       height={450}
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="w-full h-auto object-cover"
                       priority
                     />

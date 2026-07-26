@@ -9,8 +9,10 @@ import { Input } from "@/components/ui/input"
 import { CardContent } from "@/components/ui/card"
 import { QRCode } from "@/components/ui/qr-code"
 import { Header } from "@/components/layout/header"
-import { Footer } from "@/components/layout/footer"
+import dynamic from "next/dynamic"
 import { articleFor } from "@/lib/seo"
+
+const Footer = dynamic(() => import("@/components/layout/footer").then(m => m.Footer), { ssr: false })
 import { BlogPost } from "@/lib/blog/types"
 import { Copy, Check, Download, ArrowRight, QrCode, ChevronRight, Zap, Shield, Smartphone, Globe, BookOpen, Star, CheckCircle2, Lightbulb, Scan, Share2, Settings } from "lucide-react"
 import { DecorativePattern } from "@/components/ui/decorative-pattern"

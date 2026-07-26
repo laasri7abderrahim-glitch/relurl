@@ -6,6 +6,7 @@ import { getPostBySlug, getRelatedPosts, getAllSlugs } from "@/lib/blog/posts"
 import { ArticleRenderer } from "@/components/blog/ArticleRenderer"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
+import Image from "next/image"
 import { Calendar, Clock, ArrowLeft, Tag } from "lucide-react"
 
 export function generateStaticParams() {
@@ -86,11 +87,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <p className="text-lg text-muted-foreground mb-8">{post.metaDescription}</p>
               {post.image && (
                 <div className="aspect-video relative overflow-hidden rounded-xl bg-muted mb-8">
-                  <img
+                  <Image
                     src={post.image}
                     alt={post.imageAlt || post.title}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 768px"
+                    className="object-cover"
+                    priority
                   />
                 </div>
               )}

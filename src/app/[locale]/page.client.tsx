@@ -7,13 +7,15 @@ import { useLocale } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DecorativePattern } from "@/components/ui/decorative-pattern"
+import dynamic from "next/dynamic"
 import Image from "next/image"
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { QRCode } from "@/components/ui/qr-code";
 import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
+
+const Footer = dynamic(() => import("@/components/layout/footer").then(m => m.Footer), { ssr: false })
 import {
   ArrowRight,
   BarChart3,
@@ -621,6 +623,7 @@ export default function HomePage() {
                     alt="Real-time analytics dashboard with charts and metrics"
                     width={600}
                     height={500}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="w-full h-auto object-cover"
                     loading="lazy"
                   />

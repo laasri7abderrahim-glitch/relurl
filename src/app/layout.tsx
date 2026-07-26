@@ -75,8 +75,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="apple-touch-icon" href="/ios-icon.svg" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className={`${inter.variable} ${inter.className}`} suppressHydrationWarning>
         <ThemeProvider>
