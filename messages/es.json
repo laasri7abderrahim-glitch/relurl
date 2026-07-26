@@ -507,7 +507,8 @@
           "title": "Supervise los datos de clics para refinar el contenido",
           "text": "Incluso los análisis de clics básicos revelan qué contenido resuena con su audiencia. Revise periódicamente sus enlaces de mejor rendimiento para comprender qué temas o formatos generan la mayor participación y luego cree más de lo que funciona."
         }
-      ]
+      ],
+      "slug": "acortador-de-urls-gratuito"
     },
     "affiliate-link-shortener": {
       "title": "Acortador de Enlaces de Afiliado",
@@ -601,7 +602,8 @@
           "title": "Combine con parámetros UTM para un análisis más profundo",
           "text": "Agregue parámetros UTM a las URL de sus afiliados antes de acortarlas para realizar un seguimiento del tráfico de afiliados en Google Analytics junto con sus otros canales de marketing."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-de-afiliado"
     },
     "agency-link-shortener": {
       "title": "Acortador de Enlaces para Agencias",
@@ -682,7 +684,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Agency Link Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-agencias"
     },
     "best-url-shortener": {
       "title": "Mejor Acortador de URLs",
@@ -777,7 +780,8 @@
           "title": "Considere los costos a largo plazo",
           "text": "Una plataforma que inicialmente parece barata puede volverse costosa a medida que crecen sus necesidades. Revise los precios de niveles superiores, dominios de marca y puestos de equipo para comprender el costo total de propiedad a lo largo del tiempo."
         }
-      ]
+      ],
+      "slug": "mejor-acortador-de-urls"
     },
     "bitly-alternative": {
       "title": "Alternativa a Bitly",
@@ -872,7 +876,8 @@
           "title": "Configure dominios personalizados en un plan de menor costo",
           "text": "Si los dominios de marca son esenciales para su negocio, compare el precio del plan de dominio personalizado de RELURL con el nivel equivalente de Bitly. Probablemente encontrará ahorros significativos con una funcionalidad comparable."
         }
-      ]
+      ],
+      "slug": "alternativa-a-bitly"
     },
     "branded-link-shortener": {
       "title": "Acortador de Enlaces de Marca",
@@ -966,7 +971,8 @@
           "title": "Supervisar el rendimiento del dominio de marca por separado",
           "text": "Realice un seguimiento de los datos de clics específicamente para el dominio de su marca para medir el impacto de la marca de enlace en la participación. Compare las tasas de clics de enlaces de marca con enlaces cortos genéricos para cuantificar el beneficio de la marca."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-de-marca"
     },
     "bulk-url-shortener": {
       "title": "Acortador de URLs Masivo",
@@ -1060,7 +1066,8 @@
           "title": "Revisar el análisis masivo después del lanzamiento de las campañas",
           "text": "Después de que sus enlaces creados en masa comiencen a generar tráfico, revise los análisis agregados para medir el rendimiento de toda la campaña e identificar los destinos con mejor rendimiento."
         }
-      ]
+      ],
+      "slug": "acortador-de-urls-masivo"
     },
     "campaign-link-generator": {
       "title": "Generador de Enlaces de Campaña",
@@ -1140,7 +1147,8 @@
           "title": "Establecer fechas de finalización de la campaña con vencimiento del enlace",
           "text": "Si su campaña tiene una fecha de finalización definida, utilice la caducidad del enlace de RELURL para desactivar automáticamente los enlaces de la campaña, evitando que el tráfico posterior a la campaña sesgue sus análisis."
         }
-      ]
+      ],
+      "slug": "generador-de-enlaces-de-campana"
     },
     "course-link-shortener": {
       "title": "Acortador de Enlaces para Cursos",
@@ -1221,7 +1229,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Course Link Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-cursos"
     },
     "crypto-link-shortener": {
       "title": "Acortador de Enlaces Crypto",
@@ -1302,7 +1311,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Crypto Link Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-crypto"
     },
     "custom-alias-generator": {
       "title": "Generador de Alias Personalizados",
@@ -1382,7 +1392,8 @@
           "title": "Pruebe su alias antes de compartir",
           "text": "Verifique que el alias elegido redireccione al destino correcto antes de incluirlo en materiales de marketing, publicaciones en redes sociales o material impreso."
         }
-      ]
+      ],
+      "slug": "generador-de-alias-personalizados"
     },
     "custom-domain-links": {
       "title": "Enlaces con Dominio Personalizado",
@@ -1477,7 +1488,8 @@
           "title": "Utilice su dominio personalizado de forma constante",
           "text": "Una vez configurado, utilice su dominio personalizado para todos los enlaces cortos para maximizar el reconocimiento de la marca. El uso constante genera familiaridad y confianza con su audiencia con el tiempo."
         }
-      ]
+      ],
+      "slug": "enlaces-con-dominio-personalizado"
     },
     "custom-url-shortener": {
       "title": "Acortador de URLs Personalizado",
@@ -1571,7 +1583,8 @@
           "title": "Crear convenciones de nomenclatura para campañas",
           "text": "Establezca un patrón consistente para sus slugs personalizados, como tipo de contenido de campaña (por ejemplo, correo electrónico de venta de primavera). Este sistema organizativo facilita la búsqueda, la gestión y la generación de informes sobre enlaces relacionados."
         }
-      ]
+      ],
+      "slug": "acortador-de-urls-personalizado"
     },
     "discord-link-generator": {
       "title": "Generador de Enlaces para Discord",
@@ -1651,7 +1664,8 @@
           "title": "Supervise las tasas de conversión de clic para unirse",
           "text": "Compare los datos de clics de RELURL con el recuento de uniones de Discord para calcular su tasa de conversión. Una conversión baja puede indicar que la vista previa del servidor o la incorporación necesitan mejoras."
         }
-      ]
+      ],
+      "slug": "generador-de-enlaces-para-discord"
     },
     "ebook-link-shortener": {
       "title": "Acortador de Enlaces para Ebooks",
@@ -1732,7 +1746,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Ebook Link Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-ebooks"
     },
     "ecommerce-url-shortener": {
       "title": "Acortador de URLs para E-commerce",
@@ -1812,7 +1827,8 @@
           "title": "Configure redirecciones agotadas con anticipación",
           "text": "Para productos populares que probablemente se agoten rápidamente, prepare destinos de respaldo con anticipación. Cuando se agote el inventario, actualice el redireccionamiento del enlace al instante para mantener a los clientes interesados."
         }
-      ]
+      ],
+      "slug": "acortador-de-urls-para-e-commerce"
     },
     "education-link-shortener": {
       "title": "Acortador de Enlaces para Educación",
@@ -1893,7 +1909,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Education Link Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-educacion"
     },
     "event-link-shortener": {
       "title": "Acortador de Enlaces para Eventos",
@@ -1973,7 +1990,8 @@
           "title": "Planifique las redirecciones de enlaces posteriores al evento con anticipación",
           "text": "Configure redirecciones posteriores al evento para sus enlaces de promoción antes de que comience el evento. Después del evento, actualice los enlaces para que apunten a grabaciones o aspectos destacados, ampliando el valor de marketing."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-eventos"
     },
     "facebook-url-generator": {
       "title": "Generador de URLs para Facebook",
@@ -2053,7 +2071,8 @@
           "title": "Seguimiento del rendimiento de los enlaces en Facebook e Instagram",
           "text": "Utilice su panel de RELURL para comparar los datos de clics de los enlaces de Facebook con los de Instagram. La comparación entre plataformas revela qué audiencia responde mejor a su contenido y ayuda a asignar el esfuerzo de las redes sociales de manera efectiva."
         }
-      ]
+      ],
+      "slug": "generador-de-urls-para-facebook"
     },
     "gaming-link-shortener": {
       "title": "Acortador de Enlaces para Gaming",
@@ -2134,7 +2153,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Gaming Link Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-gaming"
     },
     "healthcare-link-shortener": {
       "title": "Acortador de Enlaces para Salud",
@@ -2215,7 +2235,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Healthcare Link Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-salud"
     },
     "how-to-create-branded-links": {
       "title": "Cómo Crear Enlaces de Marca",
@@ -2310,7 +2331,8 @@
           "title": "Seguimiento del rendimiento de los enlaces de marca y sin marca",
           "text": "Compare las tasas de clics entre los enlaces de su marca y los enlaces cortos genéricos para cuantificar el beneficio de la marca. Es probable que los datos justifiquen la expansión del uso de enlaces de marca en más campañas."
         }
-      ]
+      ],
+      "slug": "como-crear-enlaces-de-marca"
     },
     "how-to-create-qr-codes": {
       "title": "Cómo Crear Códigos QR",
@@ -2405,7 +2427,8 @@
           "title": "Utilice códigos dinámicos para cualquier campaña que pueda cambiar",
           "text": "Si existe alguna posibilidad de que el destino cambie, utilice un código QR dinámico. Puede actualizar la URL de destino en cualquier momento sin reimprimir materiales."
         }
-      ]
+      ],
+      "slug": "como-crear-codigos-qr"
     },
     "how-to-create-qr-codes-for-business": {
       "title": "Cómo Crear Códigos QR para Negocios",
@@ -2500,7 +2523,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Cómo crear códigos QR para empresas viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "como-crear-codigos-qr-para-negocios"
     },
     "how-to-create-short-links": {
       "title": "Cómo Crear Enlaces Cortos",
@@ -2595,7 +2619,8 @@
           "title": "Pruebe siempre su enlace corto antes de compartirlo",
           "text": "Haga clic en el enlace corto recién creado para verificar que redireccione al destino correcto antes de compartirlo con su audiencia. Esta sencilla comprobación evita errores embarazosos."
         }
-      ]
+      ],
+      "slug": "como-crear-enlaces-cortos"
     },
     "how-to-make-money-with-url-shortener": {
       "title": "Cómo Ganar Dinero con un Acortador de URLs",
@@ -2690,7 +2715,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Cómo ganar dinero con URL Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "como-ganar-dinero-con-un-acortador-de-urls"
     },
     "how-to-shorten-a-url": {
       "title": "Cómo Acortar una URL",
@@ -2785,7 +2811,8 @@
           "title": "Cree una cuenta para realizar un seguimiento del rendimiento",
           "text": "Si bien puedes acortar las URL sin una cuenta, crear una cuenta gratuita te permite ver análisis de clics y administrar todos tus enlaces desde un solo panel. Esto convierte el acortamiento de enlaces de una utilidad a una herramienta de medición."
         }
-      ]
+      ],
+      "slug": "como-acortar-una-url"
     },
     "how-to-track-link-clicks": {
       "title": "Cómo Rastrear Clics en Enlaces",
@@ -2880,7 +2907,8 @@
           "title": "Combine con parámetros UTM para obtener información más profunda",
           "text": "Agregue parámetros UTM a su URL original antes de acortarla para realizar un seguimiento de los clics en Google Analytics junto con sus otras fuentes de tráfico. Esto le brinda una imagen completa de su embudo de marketing."
         }
-      ]
+      ],
+      "slug": "como-rastrear-clics-en-enlaces"
     },
     "how-to-use-utm-parameters": {
       "title": "Cómo Usar Parámetros UTM",
@@ -2975,7 +3003,8 @@
           "title": "Acorte las URL UTM para mantenerlas limpias",
           "text": "Acorte siempre sus URL etiquetadas con UTM antes de compartirlas. Las URL largas con múltiples parámetros parecen sospechosas y son más difíciles de compartir en espacios con caracteres limitados, como tweets y mensajes de texto."
         }
-      ]
+      ],
+      "slug": "como-usar-parametros-utm"
     },
     "instagram-link-generator": {
       "title": "Generador de Enlaces para Instagram",
@@ -3055,7 +3084,8 @@
           "title": "Acorte los enlaces de las historias antes de compartirlas",
           "text": "Las URL largas en las Historias de Instagram se ven desordenadas y es posible que no se muestren completamente. Acorte siempre los enlaces antes de agregarlos a las historias para crear una apariencia más limpia y garantizar que se pueda hacer clic en el enlace completo."
         }
-      ]
+      ],
+      "slug": "generador-de-enlaces-para-instagram"
     },
     "link-expiration": {
       "title": "Caducidad de Enlaces",
@@ -3150,7 +3180,8 @@
           "title": "Revisar los enlaces que caducan semanalmente",
           "text": "Consulte su panel de control con regularidad para ver si hay enlaces a punto de caducar. Amplíe los enlaces de campaña de alto rendimiento si la promoción sigue siendo relevante para su audiencia."
         }
-      ]
+      ],
+      "slug": "caducidad-de-enlaces"
     },
     "link-in-bio": {
       "title": "Link en Biografía",
@@ -3245,7 +3276,8 @@
           "title": "Cree una página de destino con enlace en la biografía para múltiples destinos",
           "text": "Si desea compartir varios enlaces de su biografía, cree una página de inicio simple que enumere todos sus enlaces importantes y use el enlace de su biografía para apuntar allí."
         }
-      ]
+      ],
+      "slug": "link-en-biografia"
     },
     "linkedin-url-generator": {
       "title": "Generador de URLs para LinkedIn",
@@ -3325,7 +3357,8 @@
           "title": "Actualice su enlace si la URL de su perfil cambia",
           "text": "Si personaliza la URL de su perfil público de LinkedIn, actualice el destino de su enlace corto RELURL para que coincida, manteniendo sus enlaces compartidos funcionando correctamente."
         }
-      ]
+      ],
+      "slug": "generador-de-urls-para-linkedin"
     },
     "marketing-url-shortener": {
       "title": "Acortador de Enlaces para Marketing",
@@ -3405,7 +3438,8 @@
           "title": "Revise el análisis de enlaces de marketing semanalmente",
           "text": "Establezca una revisión semanal de los datos de rendimiento de sus enlaces para identificar tendencias, comparar la efectividad del canal y optimizar las estrategias de campaña basadas en métricas de participación reales."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-marketing"
     },
     "mastodon-link-generator": {
       "title": "Generador de Enlaces para Mastodon",
@@ -3485,7 +3519,8 @@
           "title": "Realice un seguimiento de qué plataformas generan el mayor crecimiento",
           "text": "Utilice enlaces cortos únicos para cada canal de promoción para identificar qué plataformas externas son más efectivas para atraer nuevos seguidores a su cuenta de Mastodon."
         }
-      ]
+      ],
+      "slug": "generador-de-enlaces-para-mastodon"
     },
     "music-link-shortener": {
       "title": "Acortador de Enlaces para Música",
@@ -3566,7 +3601,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Music Link Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-musica"
     },
     "news-link-shortener": {
       "title": "Acortador de Enlaces para Noticias",
@@ -3647,7 +3683,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con News Link Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-noticias"
     },
     "nonprofit-link-shortener": {
       "title": "Acortador de Enlaces para ONG",
@@ -3728,7 +3765,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Nonprofit Link Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-ong"
     },
     "password-protected-links": {
       "title": "Enlaces Protegidos con Contraseña",
@@ -3823,7 +3861,8 @@
           "title": "Cambie las contraseñas periódicamente para una seguridad continua",
           "text": "Para enlaces que permanecen activos a largo plazo, actualice la contraseña periódicamente para mantener la seguridad. Los controles del panel hacen que los cambios de contraseña sean rápidos y sencillos."
         }
-      ]
+      ],
+      "slug": "enlaces-protegidos-con-contrasena"
     },
     "photography-link-shortener": {
       "title": "Acortador de Enlaces para Fotografía",
@@ -3904,7 +3943,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Photography Link Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-fotografia"
     },
     "pinterest-link-generator": {
       "title": "Generador de Enlaces para Pinterest",
@@ -3984,7 +4024,8 @@
           "title": "Supervisar el rendimiento del enlace Pin a lo largo del tiempo",
           "text": "El contenido de Pinterest tiene una larga vida útil. Revise los análisis de sus enlaces pin durante semanas y meses para comprender los patrones de tráfico sostenido de su contenido visual."
         }
-      ]
+      ],
+      "slug": "generador-de-enlaces-para-pinterest"
     },
     "podcast-link-shortener": {
       "title": "Acortador de Enlaces para Podcast",
@@ -4065,7 +4106,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Podcast Link Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-podcast"
     },
     "real-estate-link-shortener": {
       "title": "Acortador de Enlaces para Bienes Raíces",
@@ -4146,7 +4188,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Real Estate Link Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-bienes-raices"
     },
     "rebrandly-alternative": {
       "title": "Alternativa a Rebrandly",
@@ -4241,7 +4284,8 @@
           "title": "Aproveche el análisis unificado",
           "text": "Utilice el panel de RELURL para realizar un seguimiento del rendimiento de los enlaces en todos los dominios de su marca desde un solo lugar. Los análisis consolidados facilitan la comparación del rendimiento de la campaña y optimizan su estrategia de enlaces."
         }
-      ]
+      ],
+      "slug": "alternativa-a-rebrandly"
     },
     "reddit-link-generator": {
       "title": "Generador de Enlaces para Reddit",
@@ -4321,7 +4365,8 @@
           "title": "Supervise el momento de los clics para encontrar tiempos de publicación óptimos",
           "text": "Revise cuándo se producen los clics en sus enlaces de Reddit para identificar los mejores días y horas para publicar en subreddits específicos para obtener la máxima visibilidad."
         }
-      ]
+      ],
+      "slug": "generador-de-enlaces-para-reddit"
     },
     "relurl-vs-bitly": {
       "title": "RELURL vs Bitly",
@@ -4416,7 +4461,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con RELURL vs Bitly viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "relurl-vs-bitly"
     },
     "relurl-vs-tinyurl": {
       "title": "RELURL vs TinyURL (2026)",
@@ -4528,7 +4574,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con RELURL vs TinyURL (2026) viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "relurl-vs-tinyurl-2026"
     },
     "restaurant-link-shortener": {
       "title": "Acortador de Enlaces para Restaurantes",
@@ -4609,7 +4656,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Restaurant Link Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-restaurantes"
     },
     "saas-link-shortener": {
       "title": "Acortador de Enlaces para SaaS",
@@ -4690,7 +4738,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con SaaS Link Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-saas"
     },
     "short-io-alternative": {
       "title": "Alternativa a Short.io",
@@ -4785,7 +4834,8 @@
           "title": "Aproveche la documentación API",
           "text": "Si utiliza la API de Short.io, revise la documentación de la API de RELURL para garantizar la compatibilidad con sus flujos de trabajo. La API RESTful admite la creación, gestión y recuperación de análisis de enlaces programáticos."
         }
-      ]
+      ],
+      "slug": "alternativa-a-short-io"
     },
     "short-url-analytics": {
       "title": "Analíticas de URLs Cortas",
@@ -4865,7 +4915,8 @@
           "title": "Utilice datos geográficos para informar la localización",
           "text": "Si sus análisis revelan un tráfico significativo de países específicos, considere crear contenido localizado o campañas dirigidas a esos mercados de alto interés."
         }
-      ]
+      ],
+      "slug": "analiticas-de-urls-cortas"
     },
     "shorten-airbnb-link": {
       "title": "Acortar Enlace de Airbnb",
@@ -4960,7 +5011,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten Airbnb Link viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-enlace-de-airbnb"
     },
     "shorten-amazon-link": {
       "title": "Acortar Enlace de Amazon",
@@ -5054,7 +5106,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten Amazon Link viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-enlace-de-amazon"
     },
     "shorten-calendly-link": {
       "title": "Acortar Enlace de Calendly",
@@ -5149,7 +5202,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten Calendly Link viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-enlace-de-calendly"
     },
     "shorten-discord-invite-link": {
       "title": "Acortar Enlace de Invitación de Discord",
@@ -5244,7 +5298,8 @@
           "title": "Analice las tasas de conversión de clic para unirse",
           "text": "Compare los datos de clics de RELURL con el recuento de uniones de Discord. Una conversión baja puede indicar que la vista previa del servidor, la incorporación o la página de invitación necesitan mejoras."
         }
-      ]
+      ],
+      "slug": "acortar-enlace-de-invitacion-de-discord"
     },
     "shorten-dropbox-link": {
       "title": "Acortar Enlace de Dropbox",
@@ -5340,7 +5395,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten Dropbox Link viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-enlace-de-dropbox"
     },
     "shorten-etsy-link": {
       "title": "Acortar Enlace de Etsy",
@@ -5435,7 +5491,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten Etsy Link viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-enlace-de-etsy"
     },
     "shorten-facebook-url": {
       "title": "Acortar URL de Facebook",
@@ -5530,7 +5587,8 @@
           "title": "Compare el rendimiento en Facebook e Instagram",
           "text": "Utilice su panel de RELURL para comparar los datos de clics de los enlaces de Facebook con los de Instagram para comprender qué plataforma genera una mejor participación."
         }
-      ]
+      ],
+      "slug": "acortar-url-de-facebook"
     },
     "shorten-figma-link": {
       "title": "Acortar Enlace de Figma",
@@ -5625,7 +5683,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten Figma Link viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-enlace-de-figma"
     },
     "shorten-github-url": {
       "title": "Acortar URL de GitHub",
@@ -5721,7 +5780,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten GitHub URL viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-url-de-github"
     },
     "shorten-google-docs-link": {
       "title": "Acortar Enlace de Google Docs",
@@ -5817,7 +5877,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten Google Docs Link viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-enlace-de-google-docs"
     },
     "shorten-google-drive-link": {
       "title": "Acortar Enlace de Google Drive",
@@ -5913,7 +5974,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten Google Drive Link viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-enlace-de-google-drive"
     },
     "shorten-image-url": {
       "title": "Acortar URL de Imagen",
@@ -6009,7 +6071,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten Image URL viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-url-de-imagen"
     },
     "shorten-instagram-url": {
       "title": "Acortar URL de Instagram",
@@ -6104,7 +6167,8 @@
           "title": "Utilice babosas de marca para generar confianza",
           "text": "Los usuarios de Instagram tienen cuidado al hacer clic en enlaces desconocidos. Los slugs de marca personalizados que describen claramente el destino generan confianza y aumentan las tasas de clics."
         }
-      ]
+      ],
+      "slug": "acortar-url-de-instagram"
     },
     "shorten-linkedin-url": {
       "title": "Acortar URL de LinkedIn",
@@ -6199,7 +6263,8 @@
           "title": "Mantenga actualizado su enlace corto",
           "text": "Si personaliza la URL de su perfil público de LinkedIn, recuerde actualizar el destino de su enlace corto RELURL para que siga apuntando al perfil correcto."
         }
-      ]
+      ],
+      "slug": "acortar-url-de-linkedin"
     },
     "shorten-medium-link": {
       "title": "Acortar Enlace de Medium",
@@ -6293,7 +6358,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten Medium Link viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-enlace-de-medium"
     },
     "shorten-notion-link": {
       "title": "Acortar Enlace de Notion",
@@ -6388,7 +6454,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten Notion Link viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-enlace-de-notion"
     },
     "shorten-patreon-link": {
       "title": "Acortar Enlace de Patreon",
@@ -6483,7 +6550,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten Patreon Link viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-enlace-de-patreon"
     },
     "shorten-pdf-link": {
       "title": "Acortar Enlace de PDF",
@@ -6579,7 +6647,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten PDF Link viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-enlace-de-pdf"
     },
     "shorten-shopify-link": {
       "title": "Acortar Enlace de Shopify",
@@ -6674,7 +6743,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten Shopify Link viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-enlace-de-shopify"
     },
     "shorten-spotify-link": {
       "title": "Acortar Enlace de Spotify",
@@ -6768,7 +6838,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten Spotify Link viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-enlace-de-spotify"
     },
     "shorten-substack-link": {
       "title": "Acortar Enlace de Substack",
@@ -6863,7 +6934,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten Substack Link viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-enlace-de-substack"
     },
     "shorten-tiktok-url": {
       "title": "Acortar URL de TikTok",
@@ -6958,7 +7030,8 @@
           "title": "Acorte los enlaces antes de agregarlos a las descripciones de los videos",
           "text": "Las descripciones de los vídeos de TikTok tienen límites de caracteres. Los enlaces cortos guardan caracteres valiosos y crean una apariencia más limpia en las descripciones."
         }
-      ]
+      ],
+      "slug": "acortar-url-de-tiktok"
     },
     "shorten-video-url": {
       "title": "Acortar URL de Video",
@@ -7054,7 +7127,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten Video URL viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-url-de-video"
     },
     "shorten-whatsapp-link": {
       "title": "Acortar Enlace de WhatsApp",
@@ -7149,7 +7223,8 @@
           "title": "Vista previa de enlaces antes de compartirlos",
           "text": "WhatsApp genera vistas previas de enlaces automáticamente. Asegúrese de que su página de destino tenga metaetiquetas Open Graph adecuadas para obtener imágenes y descripciones de vista previa precisas."
         }
-      ]
+      ],
+      "slug": "acortar-enlace-de-whatsapp"
     },
     "shorten-x-url": {
       "title": "Acortar URL de X",
@@ -7245,7 +7320,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Shorten X URL viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortar-url-de-x"
     },
     "shorten-youtube-url": {
       "title": "Acortar URL de YouTube",
@@ -7340,7 +7416,8 @@
           "title": "Coloque enlaces cortos al principio de las descripciones",
           "text": "YouTube trunca las descripciones largas y muestra solo las primeras líneas. Coloque sus enlaces cortos más importantes cerca de la parte superior de la descripción de cada video para obtener la máxima visibilidad."
         }
-      ]
+      ],
+      "slug": "acortar-url-de-youtube"
     },
     "signal-link-generator": {
       "title": "Generador de Enlaces para Signal",
@@ -7435,7 +7512,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Signal Link Generator viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "generador-de-enlaces-para-signal"
     },
     "slack-link-generator": {
       "title": "Generador de Enlaces para Slack",
@@ -7530,7 +7608,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Slack Link Generator viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "generador-de-enlaces-para-slack"
     },
     "snapchat-link-generator": {
       "title": "Generador de Enlaces para Snapchat",
@@ -7610,7 +7689,8 @@
           "title": "Cree enlaces de Snapchat específicos de la campaña",
           "text": "Utilice enlaces cortos únicos para diferentes campañas de Snapchat o series de contenido para realizar un seguimiento de qué iniciativas generan la mayor cantidad de tráfico externo a su perfil."
         }
-      ]
+      ],
+      "slug": "generador-de-enlaces-para-snapchat"
     },
     "startup-link-shortener": {
       "title": "Acortador de Enlaces para Startups",
@@ -7691,7 +7771,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Startup Link Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-startups"
     },
     "telegram-link-generator": {
       "title": "Generador de Enlaces para Telegram",
@@ -7771,7 +7852,8 @@
           "title": "Seguimiento de la conversión de clic para suscribirse",
           "text": "Compare los datos de clics de RELURL con el crecimiento de miembros de su canal de Telegram para comprender con qué eficacia su promoción convierte los clics en suscriptores."
         }
-      ]
+      ],
+      "slug": "generador-de-enlaces-para-telegram"
     },
     "threads-link-generator": {
       "title": "Generador de Enlaces para Threads",
@@ -7851,7 +7933,8 @@
           "title": "Establezca vínculos rastreables con antelación",
           "text": "Empieza a utilizar enlaces cortos rastreables para tu promoción de Threads desde el primer día. Los primeros datos le ayudan a comprender qué estrategias de promoción funcionan mejor a medida que crece la plataforma."
         }
-      ]
+      ],
+      "slug": "generador-de-enlaces-para-threads"
     },
     "tiktok-bio-link-generator": {
       "title": "Generador de Enlaces para Biografía de TikTok",
@@ -7931,7 +8014,8 @@
           "title": "Acorte los enlaces antes de agregarlos a las descripciones de los videos",
           "text": "Las descripciones de los vídeos de TikTok tienen límites de caracteres. Los enlaces cortos guardan caracteres valiosos y crean una apariencia más limpia, lo que hace que sus descripciones sean más legibles y alienta a los espectadores a actuar."
         }
-      ]
+      ],
+      "slug": "generador-de-enlaces-para-biografia-de-tiktok"
     },
     "tinyurl-alternative": {
       "title": "Alternativa a TinyURL",
@@ -8026,7 +8110,8 @@
           "title": "Explore funciones adicionales gradualmente",
           "text": "Comience con acortamientos básicos para igualar la simplicidad de TinyURL, luego explore gradualmente slugs, análisis y códigos QR personalizados a medida que crezcan sus necesidades. Todas las funciones están disponibles sin actualizar su plan."
         }
-      ]
+      ],
+      "slug": "alternativa-a-tinyurl"
     },
     "travel-link-shortener": {
       "title": "Acortador de Enlaces para Viajes",
@@ -8107,7 +8192,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Travel Link Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-viajes"
     },
     "twitch-link-generator": {
       "title": "Generador de Enlaces para Twitch",
@@ -8187,7 +8273,8 @@
           "title": "Cree enlaces dedicados para eventos especiales",
           "text": "Genere enlaces cortos separados para subatones, transmisiones benéficas y lanzamientos de juegos para medir la efectividad de sus esfuerzos de promoción de eventos de forma independiente."
         }
-      ]
+      ],
+      "slug": "generador-de-enlaces-para-twitch"
     },
     "twitter-link-generator": {
       "title": "Generador de Enlaces para Twitter/X",
@@ -8267,7 +8354,8 @@
           "title": "Acortar los enlaces de tweets para compartirlos externamente",
           "text": "Cuando comparta tweets específicos en otras plataformas, acorte la URL del tweet para crear un enlace limpio y realizar un seguimiento de cuántas personas hacen clic desde cada plataforma."
         }
-      ]
+      ],
+      "slug": "generador-de-enlaces-para-twitter-x"
     },
     "url-shortener-api": {
       "title": "API de Acortador de URLs",
@@ -8362,7 +8450,8 @@
           "title": "Almacenar en caché los datos a los que se accede con frecuencia cuando sea apropiado",
           "text": "Para datos a los que se accede periódicamente, como resúmenes de análisis, implemente el almacenamiento en caché del lado del cliente para reducir las llamadas a la API y mejorar el rendimiento de la aplicación."
         }
-      ]
+      ],
+      "slug": "api-de-acortador-de-urls"
     },
     "url-shortener-for-business": {
       "title": "Acortador de URLs para Empresas",
@@ -8457,7 +8546,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con URL Shortener for Business viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-urls-para-empresas"
     },
     "url-shortener-for-marketers": {
       "title": "Acortador de URLs para Especialistas en Marketing",
@@ -8552,7 +8642,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con URL Shortener for Marketers viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-urls-para-especialistas-en-marketing"
     },
     "url-shortener-for-social-media": {
       "title": "Acortador de URLs para Redes Sociales",
@@ -8647,7 +8738,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con URL Shortener for Social Media viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-urls-para-redes-sociales"
     },
     "url-shortener-in-canada": {
       "title": "Acortador de URLs en Canadá",
@@ -8742,7 +8834,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con URL Shortener en Canadá viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-urls-en-canada"
     },
     "url-shortener-in-india": {
       "title": "Acortador de URLs en India",
@@ -8837,7 +8930,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con URL Shortener en India viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-urls-en-india"
     },
     "url-shortener-in-uk": {
       "title": "Acortador de URLs en Reino Unido",
@@ -8932,7 +9026,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con URL Shortener en el Reino Unido viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-urls-en-reino-unido"
     },
     "url-shortener-no-ads": {
       "title": "Acortador de URLs Sin Anuncios",
@@ -9027,7 +9122,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con URL Shortener No Ads viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-urls-sin-anuncios"
     },
     "url-shortener-no-signup": {
       "title": "Acortador de URLs Sin Registro",
@@ -9122,7 +9218,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con URL Shortener No Signup viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-urls-sin-registro"
     },
     "url-shortener-with-analytics": {
       "title": "Acortador de URLs con Analíticas",
@@ -9217,7 +9314,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con URL Shortener with Analytics viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-urls-con-analiticas"
     },
     "url-shortener-without-signup": {
       "title": "Acortador de URLs Sin Registro",
@@ -9312,7 +9410,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con URL Shortener Without Signup viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-urls-sin-registro"
     },
     "url-shortener-with-qr-codes": {
       "title": "Acortador de URLs con Códigos QR",
@@ -9407,7 +9506,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con URL Shortener with QR Codes viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-urls-con-codigos-qr"
     },
     "url-tracking-tool": {
       "title": "Herramienta de Seguimiento de URLs",
@@ -9487,7 +9587,8 @@
           "title": "Exportar datos para un análisis completo",
           "text": "Utilice la función de exportación CSV para descargar datos de clics para realizar un análisis más profundo en sus herramientas de informes preferidas, combinándolos con otras métricas de marketing para obtener información completa."
         }
-      ]
+      ],
+      "slug": "herramienta-de-seguimiento-de-urls"
     },
     "webinar-link-shortener": {
       "title": "Acortador de Enlaces para Webinars",
@@ -9568,7 +9669,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Webinar Link Shortener viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "acortador-de-enlaces-para-webinars"
     },
     "wechat-link-generator": {
       "title": "Generador de Enlaces para WeChat",
@@ -9663,7 +9765,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con WeChat Link Generator viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "generador-de-enlaces-para-wechat"
     },
     "whatsapp-link-generator": {
       "title": "Generador de Enlaces para WhatsApp",
@@ -9743,7 +9846,8 @@
           "title": "Vista previa de enlaces antes de compartirlos",
           "text": "WhatsApp genera vistas previas de enlaces automáticamente. Asegúrese de que su página de destino tenga metaetiquetas Open Graph adecuadas para que la imagen de vista previa y la descripción representen con precisión su contenido y fomenten los clics."
         }
-      ]
+      ],
+      "slug": "generador-de-enlaces-para-whatsapp"
     },
     "youtube-link-generator": {
       "title": "Generador de Enlaces de YouTube",
@@ -9823,7 +9927,8 @@
           "title": "Seguimiento del rendimiento de la tarjeta y de la pantalla final por separado",
           "text": "Utilice diferentes enlaces cortos para descripciones versus tarjetas y pantallas finales. Esto le permite comparar qué ubicación genera más clics y optimizar su estrategia de diseño de video en función de datos reales."
         }
-      ]
+      ],
+      "slug": "generador-de-enlaces-de-youtube"
     },
     "free-qr-code-generator": {
       "title": "Generador de Códigos QR Gratuito",
@@ -9904,7 +10009,8 @@
           "title": "Considere pasar a la dinámica cuando necesite análisis",
           "text": "Si se pregunta cuántas personas escanean sus códigos QR, considere actualizar a un código QR dinámico. Los códigos dinámicos proporcionan análisis de escaneo detallados mientras mantienen el mismo código visual en sus materiales."
         }
-      ]
+      ],
+      "slug": "generador-de-codigos-qr-gratuito"
     },
     "dynamic-qr-code-generator": {
       "title": "Generador de Códigos QR Dinámicos",
@@ -9999,7 +10105,8 @@
           "title": "Mantenga configurado un destino de copia de seguridad",
           "text": "Tenga siempre un destino alternativo listo para sus códigos QR dinámicos. Si su destino principal se desconecta temporalmente, cambie a la copia de seguridad para mantener a su audiencia dirigida al contenido relevante."
         }
-      ]
+      ],
+      "slug": "generador-de-codigos-qr-dinamicos"
     },
     "qr-code-generator": {
       "title": "Generador de Códigos QR",
@@ -10095,7 +10202,8 @@
           "title": "Considere el tamaño y la ubicación",
           "text": "Los códigos QR impresos deben tener al menos 2 por 2 centímetros para un escaneo confiable. La distancia de escaneo debe ser aproximadamente 10 veces el ancho del código. Los códigos más grandes se pueden escanear desde más lejos."
         }
-      ]
+      ],
+      "slug": "generador-de-codigos-qr"
     },
     "qr-code-for-app-download": {
       "title": "Código QR para Descargar App",
@@ -10177,7 +10285,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con código QR para descarga de aplicaciones viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-descargar-app"
     },
     "qr-code-for-birthday": {
       "title": "Código QR para Cumpleaños",
@@ -10259,7 +10368,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para Cumpleaños viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-cumpleanos"
     },
     "qr-code-for-business-card": {
       "title": "Código QR para Tarjeta de Presentación",
@@ -10341,7 +10451,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para Tarjeta de Visita viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-tarjeta-de-presentacion"
     },
     "qr-code-for-class": {
       "title": "Código QR para el Salón de Clases",
@@ -10423,7 +10534,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para Classroom viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-el-salon-de-clases"
     },
     "qr-code-for-concert": {
       "title": "Código QR para Concierto",
@@ -10505,7 +10617,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para Concierto viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-concierto"
     },
     "qr-code-for-email": {
       "title": "Código QR para Correo Electrónico",
@@ -10587,7 +10700,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para correo electrónico viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-correo-electronico"
     },
     "qr-code-for-event": {
       "title": "Código QR para Registro de Eventos",
@@ -10669,7 +10783,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con código QR para registro de eventos viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-registro-de-eventos"
     },
     "qr-code-for-facebook": {
       "title": "Código QR para Facebook",
@@ -10751,7 +10866,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para Facebook viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-facebook"
     },
     "qr-code-for-fundraiser": {
       "title": "Código QR para Recaudación de Fondos",
@@ -10833,7 +10949,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con el código QR para recaudación de fondos viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-recaudacion-de-fondos"
     },
     "qr-code-for-google-maps": {
       "title": "Código QR para Google Maps",
@@ -10915,7 +11032,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para Google Maps viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-google-maps"
     },
     "qr-code-for-google-reviews": {
       "title": "Código QR para Reseñas de Google",
@@ -10997,7 +11115,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con código QR para Reseñas de Google viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-resenas-de-google"
     },
     "qr-code-for-gym": {
       "title": "Código QR para Gimnasio",
@@ -11079,7 +11198,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para Gimnasio viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-gimnasio"
     },
     "qr-code-for-hotel": {
       "title": "Código QR para Hotel",
@@ -11161,7 +11281,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para Hotel viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-hotel"
     },
     "qr-code-for-instagram": {
       "title": "Código QR para Instagram",
@@ -11243,7 +11364,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para Instagram viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-instagram"
     },
     "qr-code-for-linkedin": {
       "title": "Código QR para LinkedIn",
@@ -11325,7 +11447,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para LinkedIn viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-linkedin"
     },
     "qr-code-for-pdf": {
       "title": "Código QR para PDF",
@@ -11407,7 +11530,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para PDF viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-pdf"
     },
     "qr-code-for-phone": {
       "title": "Código QR para Número de Teléfono",
@@ -11489,7 +11613,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con código QR para número de teléfono viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-numero-de-telefono"
     },
     "qr-code-for-portfolio": {
       "title": "Código QR para Portafolio",
@@ -11571,7 +11696,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con el Código QR para Portfolio viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-portafolio"
     },
     "qr-code-for-restaurant": {
       "title": "Código QR para Restaurante",
@@ -11653,7 +11779,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para Restaurante viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-restaurante"
     },
     "qr-code-for-restaurant-menu": {
       "title": "Código QR para Menú de Restaurante",
@@ -11735,7 +11862,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para Menú de Restaurante viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-menu-de-restaurante"
     },
     "qr-code-for-resume": {
       "title": "Código QR para Currículum",
@@ -11817,7 +11945,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para Currículum viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-curriculum"
     },
     "qr-code-for-salon": {
       "title": "Código QR para Salón de Belleza",
@@ -11899,7 +12028,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para Salón viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-salon-de-belleza"
     },
     "qr-code-for-sms": {
       "title": "Código QR para SMS",
@@ -11981,7 +12111,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para SMS viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-sms"
     },
     "qr-code-for-store": {
       "title": "Código QR para Tienda",
@@ -12063,7 +12194,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con el Código QR para la Tienda viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-tienda"
     },
     "qr-code-for-vcard": {
       "title": "Código QR para vCard",
@@ -12145,7 +12277,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con código QR para vCard viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-vcard"
     },
     "qr-code-for-wedding": {
       "title": "Código QR para Bodas",
@@ -12227,7 +12360,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para Boda viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-bodas"
     },
     "qr-code-for-whatsapp": {
       "title": "Código QR para WhatsApp",
@@ -12309,7 +12443,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para WhatsApp viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-whatsapp"
     },
     "qr-code-for-wifi": {
       "title": "Código QR para WiFi",
@@ -12391,7 +12526,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para WiFi viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-wifi"
     },
     "qr-code-for-youtube": {
       "title": "Código QR para YouTube",
@@ -12473,7 +12609,8 @@
           "title": "Combinar con códigos QR",
           "description": "Cada enlace corto creado con Código QR para YouTube viene con un código QR gratuito. Imprímalos en tarjetas de presentación, folletos, empaques de productos o exhibidores en la tienda para unir sus esfuerzos de marketing en línea y fuera de línea."
         }
-      ]
+      ],
+      "slug": "codigo-qr-para-youtube"
     }
   },
   "features": {

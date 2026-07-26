@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import { pathnames } from "@/i18n/pathnames"
 
 const siteName = "RELURL"
 const baseUrl = "https://relurl.com"
@@ -9,6 +10,17 @@ const enOnlyPaths = ["/privacy", "/terms", "/cookies", "/gdpr", "/dmca", "/wordp
 
 function hasTranslations(path: string): boolean {
   return !enOnlyPaths.some((ep) => path === ep || path.startsWith(ep + "/"))
+}
+
+/** Look up the translated path for a given locale from the pathnames config */
+function localizePath(path: string, locale: string): string {
+  // For homepage or paths without a mapping, return as-is
+  if (!path || path === "/") return path
+  const mapping = (pathnames as Record<string, Record<string, string>>)[path]
+  if (mapping && mapping[locale]) {
+    return mapping[locale]
+  }
+  return path
 }
 
 interface SEOProps {
@@ -38,17 +50,21 @@ export function generateSEOMetadata({
 }: SEOProps): Metadata {
   // Untranslated pages canonical to EN to avoid duplicate-content issues
   const canonicalLocale = locale !== "en" && !hasTranslations(path) ? "en" : locale
-  const url = `${baseUrl}/${canonicalLocale}${path}`
+  const localePath = localizePath(path, canonicalLocale)
+  const url = `${baseUrl}/${canonicalLocale}${localePath}`
   const ogUrl = image || ogImageUrl(title, description)
 
   // Only include hreflang for actually translated locales to avoid confusing crawlers
+  const enPath = localizePath(path, "en")
+  const frPath = hasTranslations(path) ? localizePath(path, "fr") : enPath
+  const esPath = hasTranslations(path) ? localizePath(path, "es") : enPath
   const languages: Record<string, string> = {
-    "x-default": `${baseUrl}/en${path}`,
-    en: `${baseUrl}/en${path}`,
+    "x-default": `${baseUrl}/en${enPath}`,
+    en: `${baseUrl}/en${enPath}`,
   }
   if (hasTranslations(path) || locale === "en") {
-    languages.fr = `${baseUrl}/fr${path}`
-    languages.es = `${baseUrl}/es${path}`
+    languages.fr = `${baseUrl}/fr${frPath}`
+    languages.es = `${baseUrl}/es${esPath}`
   }
 
   return {
