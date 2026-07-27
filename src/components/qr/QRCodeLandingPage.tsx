@@ -1,8 +1,8 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState } from "react"
 import { useTranslations } from "next-intl"
-import { Link, usePathname } from "@/i18n/navigation"
+import { Link } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { CardContent } from "@/components/ui/card"
@@ -39,6 +39,7 @@ interface QRPageProps {
   faqs?: FAQItem[]
   children?: React.ReactNode
   relatedArticles?: BlogPost[]
+  pageKey: string
 }
 
 export default function QRCodeLandingPage({
@@ -57,13 +58,11 @@ export default function QRCodeLandingPage({
   allQRCodes,
   children,
   relatedArticles = [],
+  pageKey,
 }: QRPageProps) {
   const t = useTranslations()
   const article = articleFor(title)
-  const pathname = usePathname()
-  const slug = useMemo(() => {
-    return pathname.replace(/^\/(en|fr|es)\//, "").replace(/\/$/, "") || "qr-code-generator"
-  }, [pathname])
+  const slug = pageKey
 
   const safeRaw = (key: string) => {
     try { return t.raw(key) } catch { return undefined }

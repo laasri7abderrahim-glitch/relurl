@@ -38,6 +38,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       allPages={[...allLandingPages, ...qrPages]}
       faqs={content.faqs}
       relatedArticles={relatedArticles}
+      pageKey={pageKey}
     />
   )
 }

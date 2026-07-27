@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState } from "react"
 import { useTranslations } from "next-intl"
 import { Link, usePathname } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
@@ -37,6 +37,7 @@ interface URLLandingPageProps {
   faqs?: FAQItem[]
   children?: React.ReactNode
   relatedArticles?: BlogPost[]
+  pageKey: string
 }
 
 export default function URLLandingPage({
@@ -54,6 +55,7 @@ export default function URLLandingPage({
   faqs,
   children,
   relatedArticles = [],
+  pageKey,
 }: URLLandingPageProps) {
   const [url, setUrl] = useState("")
   const [shortUrl, setShortUrl] = useState("")
@@ -63,9 +65,7 @@ export default function URLLandingPage({
   const t = useTranslations()
   const article = articleFor(title)
   const pathname = usePathname()
-  const slug = useMemo(() => {
-    return pathname.replace(/^\/(en|fr|es)\//, "").replace(/\/$/, "") || "free-url-shortener"
-  }, [pathname])
+  const slug = pageKey
 
   const safeRaw = (key: string) => {
     try { return t.raw(key) } catch { return undefined }
