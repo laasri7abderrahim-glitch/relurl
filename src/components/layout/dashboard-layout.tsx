@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback, useRef } from "react"
+import { useState, useEffect, useCallback, useRef, useMemo } from "react"
 import { Link } from "@/i18n/navigation"
 import { usePathname, useRouter } from "next/navigation"
 import { signOut } from "next-auth/react"
@@ -30,10 +30,10 @@ import {
   Command,
   Keyboard,
   Plus,
-  ExternalLink,
   MousePointerClick,
   Layers,
 } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { cn } from "@/lib/utils"
 import { Avatar } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
@@ -41,34 +41,70 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { useTheme } from "@/components/theme-provider"
 
 interface SidebarItem {
-  label: string
+  labelKey: string
   icon: React.ReactNode
   href?: string
-  sub?: { label: string; href: string }[]
+  sub?: { labelKey: string; href: string }[]
 }
 
-const sidebarItems: SidebarItem[] = [
-  { label: "Overview", icon: <LayoutDashboard className="h-5 w-5" />, href: "/dashboard" },
+const sidebarConfig: SidebarItem[] = [
+  { labelKey: "overview", icon: <LayoutDashboard className="h-5 w-5" />, href: "/dashboard" },
   {
-    label: "Links",
+    labelKey: "links",
     icon: <Link2 className="h-5 w-5" />,
     sub: [
-      { label: "All Links", href: "/dashboard/links" },
-      { label: "New Link", href: "/dashboard/links/new" },
-      { label: "Campaigns", href: "/dashboard/campaigns" },
+      { labelKey: "allLinks", href: "/dashboard/links" },
+      { labelKey: "newLink", href: "/dashboard/links/new" },
+      { labelKey: "campaigns", href: "/dashboard/campaigns" },
     ],
   },
-  { label: "Analytics", icon: <BarChart3 className="h-5 w-5" />, href: "/dashboard/analytics" },
-  { label: "QR Codes", icon: <QrCode className="h-5 w-5" />, href: "/dashboard/qrcodes" },
-  { label: "UTM Builder", icon: <Wand2 className="h-5 w-5" />, href: "/dashboard/utm-builder" },
-  { label: "Batch Shortener", icon: <Layers className="h-5 w-5" />, href: "/dashboard/tools/batch-shortener" },
-  { label: "API Keys", icon: <Key className="h-5 w-5" />, href: "/dashboard/api-keys" },
-  { label: "Domains", icon: <Globe className="h-5 w-5" />, href: "/dashboard/domains" },
-  { label: "Bio Pages", icon: <UserCircle className="h-5 w-5" />, href: "/dashboard/bio-pages" },
-  { label: "Team", icon: <Users className="h-5 w-5" />, href: "/dashboard/team" },
-  { label: "Notifications", icon: <Bell className="h-5 w-5" />, href: "/dashboard/notifications" },
-  { label: "Billing", icon: <CreditCard className="h-5 w-5" />, href: "/dashboard/billing" },
-  { label: "Settings", icon: <Settings className="h-5 w-5" />, href: "/dashboard/settings" },
+  { labelKey: "analytics", icon: <BarChart3 className="h-5 w-5" />, href: "/dashboard/analytics" },
+  { labelKey: "qrCodes", icon: <QrCode className="h-5 w-5" />, href: "/dashboard/qrcodes" },
+  { labelKey: "utmBuilder", icon: <Wand2 className="h-5 w-5" />, href: "/dashboard/utm-builder" },
+  { labelKey: "batchShortener", icon: <Layers className="h-5 w-5" />, href: "/dashboard/tools/batch-shortener" },
+  { labelKey: "apiKeys", icon: <Key className="h-5 w-5" />, href: "/dashboard/api-keys" },
+  { labelKey: "domains", icon: <Globe className="h-5 w-5" />, href: "/dashboard/domains" },
+  { labelKey: "bioPages", icon: <UserCircle className="h-5 w-5" />, href: "/dashboard/bio-pages" },
+  { labelKey: "team", icon: <Users className="h-5 w-5" />, href: "/dashboard/team" },
+  { labelKey: "notifications", icon: <Bell className="h-5 w-5" />, href: "/dashboard/notifications" },
+  { labelKey: "billing", icon: <CreditCard className="h-5 w-5" />, href: "/dashboard/billing" },
+  { labelKey: "settings", icon: <Settings className="h-5 w-5" />, href: "/dashboard/settings" },
+]
+
+interface CommandItem {
+  labelKey: string
+  icon: React.ReactNode
+  href: string
+  shortcut?: string
+}
+
+const commandConfig: CommandItem[] = [
+  { labelKey: "createLink", icon: <Plus className="h-4 w-4" />, href: "/dashboard/links/new", shortcut: "C" },
+  { labelKey: "viewAnalytics", icon: <BarChart3 className="h-4 w-4" />, href: "/dashboard/analytics", shortcut: "A" },
+  { labelKey: "viewAllLinks", icon: <Link2 className="h-4 w-4" />, href: "/dashboard/links", shortcut: "L" },
+  { labelKey: "qrCodeGenerator", icon: <QrCode className="h-4 w-4" />, href: "/dashboard/qrcodes", shortcut: "Q" },
+  { labelKey: "utmBuilder", icon: <Wand2 className="h-4 w-4" />, href: "/dashboard/utm-builder", shortcut: "U" },
+  { labelKey: "campaigns", icon: <FolderKanban className="h-4 w-4" />, href: "/dashboard/campaigns", shortcut: "M" },
+  { labelKey: "settings", icon: <Settings className="h-4 w-4" />, href: "/dashboard/settings", shortcut: "S" },
+  { labelKey: "billing", icon: <CreditCard className="h-4 w-4" />, href: "/dashboard/billing", shortcut: "B" },
+  { labelKey: "apiKeys", icon: <Key className="h-4 w-4" />, href: "/dashboard/api-keys" },
+  { labelKey: "customDomains", icon: <Globe className="h-4 w-4" />, href: "/dashboard/domains" },
+  { labelKey: "team", icon: <Users className="h-4 w-4" />, href: "/dashboard/team" },
+  { labelKey: "bioPages", icon: <UserCircle className="h-4 w-4" />, href: "/dashboard/bio-pages" },
+]
+
+const quickCreateConfig: { labelKey: string; icon: React.ReactNode; href: string }[] = [
+  { labelKey: "newShortLink", icon: <Plus className="h-4 w-4" />, href: "/dashboard/links/new" },
+  { labelKey: "newQrCode", icon: <QrCode className="h-4 w-4" />, href: "/dashboard/qrcodes" },
+  { labelKey: "newCampaign", icon: <FolderKanban className="h-4 w-4" />, href: "/dashboard/campaigns" },
+  { labelKey: "newBioPage", icon: <UserCircle className="h-4 w-4" />, href: "/dashboard/bio-pages/new" },
+]
+
+const shortcutConfig: { keysKey: string; actionKey: string }[] = [
+  { keysKey: "cmdK", actionKey: "commandPalette" },
+  { keysKey: "questionMark", actionKey: "showThisMenu" },
+  { keysKey: "escape", actionKey: "closeModals" },
+  { keysKey: "slash", actionKey: "focusSearch" },
 ]
 
 interface DashboardLayoutProps {
@@ -84,12 +120,13 @@ function DashboardLayout({
   userEmail = "user@example.com",
   userAvatar,
 }: DashboardLayoutProps) {
+  const t = useTranslations("dashboard")
   const pathname = usePathname()
   const router = useRouter()
   const { resolvedTheme, setTheme } = useTheme()
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
-  const [expandedSection, setExpandedSection] = useState<string | null>("Links")
+  const [expandedSection, setExpandedSection] = useState<string | null>("links")
   const [unreadCount, setUnreadCount] = useState(0)
   const [showShortcuts, setShowShortcuts] = useState(false)
   const [showCommandPalette, setShowCommandPalette] = useState(false)
@@ -97,6 +134,43 @@ function DashboardLayout({
   const [showQuickCreate, setShowQuickCreate] = useState(false)
   const quickCreateRef = useRef<HTMLDivElement>(null)
   const commandRef = useRef<HTMLInputElement>(null)
+
+  const sidebarItems = useMemo(
+    () =>
+      sidebarConfig.map((item) => ({
+        ...item,
+        label: t(`layout.sidebar.${item.labelKey}`),
+        sub: item.sub?.map((sub) => ({ ...sub, label: t(`layout.sidebar.${sub.labelKey}`) })),
+      })),
+    [t]
+  )
+
+  const commandItems = useMemo(
+    () =>
+      commandConfig.map((item) => ({
+        ...item,
+        label: t(`layout.commandPalette.${item.labelKey}`),
+      })),
+    [t]
+  )
+
+  const quickCreateItems = useMemo(
+    () =>
+      quickCreateConfig.map((item) => ({
+        ...item,
+        label: t(`layout.quickCreate.${item.labelKey}`),
+      })),
+    [t]
+  )
+
+  const shortcutItems = useMemo(
+    () =>
+      shortcutConfig.map((s) => ({
+        keys: t(`layout.shortcuts.${s.keysKey}`),
+        action: t(`layout.shortcuts.${s.actionKey}`),
+      })),
+    [t]
+  )
 
   const fetchUnreadCount = useCallback(async () => {
     try {
@@ -151,21 +225,6 @@ function DashboardLayout({
     return () => document.removeEventListener("mousedown", handleClick)
   }, [showQuickCreate])
 
-  const commandItems = [
-    { label: "Create Link", icon: <Plus className="h-4 w-4" />, href: "/dashboard/links/new", shortcut: "C" },
-    { label: "View Analytics", icon: <BarChart3 className="h-4 w-4" />, href: "/dashboard/analytics", shortcut: "A" },
-    { label: "View All Links", icon: <Link2 className="h-4 w-4" />, href: "/dashboard/links", shortcut: "L" },
-    { label: "QR Code Generator", icon: <QrCode className="h-4 w-4" />, href: "/dashboard/qrcodes", shortcut: "Q" },
-    { label: "UTM Builder", icon: <Wand2 className="h-4 w-4" />, href: "/dashboard/utm-builder", shortcut: "U" },
-    { label: "Campaigns", icon: <FolderKanban className="h-4 w-4" />, href: "/dashboard/campaigns", shortcut: "M" },
-    { label: "Settings", icon: <Settings className="h-4 w-4" />, href: "/dashboard/settings", shortcut: "S" },
-    { label: "Billing", icon: <CreditCard className="h-4 w-4" />, href: "/dashboard/billing", shortcut: "B" },
-    { label: "API Keys", icon: <Key className="h-4 w-4" />, href: "/dashboard/api-keys" },
-    { label: "Custom Domains", icon: <Globe className="h-4 w-4" />, href: "/dashboard/domains" },
-    { label: "Team", icon: <Users className="h-4 w-4" />, href: "/dashboard/team" },
-    { label: "Bio Pages", icon: <UserCircle className="h-4 w-4" />, href: "/dashboard/bio-pages" },
-  ]
-
   const filteredCommands = commandQuery
     ? commandItems.filter((item) => item.label.toLowerCase().includes(commandQuery.toLowerCase()))
     : commandItems
@@ -176,8 +235,8 @@ function DashboardLayout({
     return pathname.startsWith(href)
   }
 
-  const toggleSubmenu = (label: string) => {
-    setExpandedSection(expandedSection === label ? null : label)
+  const toggleSubmenu = (labelKey: string) => {
+    setExpandedSection(expandedSection === labelKey ? null : labelKey)
   }
 
   const initials = userName
@@ -230,7 +289,7 @@ function DashboardLayout({
                 type="button"
                 onClick={() => setSidebarOpen(false)}
                 className="hidden md:flex text-dark-200 hover:text-dark-50 transition-colors"
-                aria-label="Collapse sidebar"
+                aria-label={t("layout.aria.collapseSidebar")}
               >
                 <X className="h-4 w-4" />
               </button>
@@ -240,7 +299,7 @@ function DashboardLayout({
               type="button"
               onClick={() => setSidebarOpen(true)}
               className="text-dark-200 hover:text-dark-50 transition-colors"
-              aria-label="Expand sidebar"
+              aria-label={t("layout.aria.expandSidebar")}
             >
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent shadow-lg shadow-primary/20">
                 <svg width="18" height="18" viewBox="0 0 100 100" fill="white">
@@ -259,7 +318,7 @@ function DashboardLayout({
           type="button"
           onClick={() => setMobileSidebarOpen(false)}
           className="absolute right-2 top-4 text-dark-100 hover:text-dark-50 md:hidden"
-          aria-label="Close mobile sidebar"
+          aria-label={t("layout.aria.closeMobileSidebar")}
         >
           <X className="h-5 w-5" />
         </button>
@@ -268,15 +327,15 @@ function DashboardLayout({
         <nav className="flex-1 overflow-y-auto p-3 space-y-1">
           {sidebarItems.map((item) => {
             const active = isActive(item.href) || (item.sub && item.sub.some((s) => pathname === s.href))
-            const expanded = expandedSection === item.label
+            const expanded = expandedSection === item.labelKey
 
             return (
-              <div key={item.label}>
+              <div key={item.labelKey}>
                 {item.sub ? (
                   <>
                     <button
                       type="button"
-                      onClick={() => toggleSubmenu(item.label)}
+                      onClick={() => toggleSubmenu(item.labelKey)}
                       className={cn(
                         "group flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200",
                         active
@@ -365,7 +424,7 @@ function DashboardLayout({
                 type="button"
                 onClick={() => signOut({ callbackUrl: "/login" })}
                 className="rounded-lg p-1.5 text-dark-200 hover:text-red-400 hover:bg-red-400/10 transition-colors"
-                title="Logout"
+                title={t("layout.logout")}
               >
                 <LogOut className="h-4 w-4" />
               </button>
@@ -382,7 +441,7 @@ function DashboardLayout({
             type="button"
             onClick={() => setMobileSidebarOpen(true)}
             className="text-dark-200 hover:text-dark-50 transition-colors"
-            aria-label="Open mobile menu"
+            aria-label={t("layout.aria.openMobileMenu")}
           >
             <Menu className="h-6 w-6" />
           </button>
@@ -414,7 +473,7 @@ function DashboardLayout({
             className="flex items-center gap-2 rounded-lg border border-dark-100/30 bg-dark-700/50 px-3 py-1.5 text-sm text-dark-200 hover:text-dark-50 hover:border-dark-100/60 transition-all mr-auto max-w-xs"
           >
             <Search className="h-4 w-4" />
-            <span className="hidden lg:inline">Quick navigation...</span>
+            <span className="hidden lg:inline">{t("layout.quickNav")}</span>
             <span className="hidden xl:inline ml-4 text-[10px] border border-dark-100/30 rounded px-1 py-0.5 text-dark-200">⌘K</span>
           </button>
           {/* Quick create dropdown */}
@@ -425,16 +484,11 @@ function DashboardLayout({
               className="flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-primary to-accent px-3 py-1.5 text-sm font-medium text-white hover:from-primary/90 hover:to-accent/90 shadow-lg shadow-primary/20 transition-all"
             >
               <PlusCircle className="h-4 w-4" />
-              <span className="hidden lg:inline">Quick Create</span>
+              <span className="hidden lg:inline">{t("layout.quickCreate.title")}</span>
             </button>
               {showQuickCreate && (
             <div className="absolute right-0 top-full mt-1 z-50 min-w-[220px] rounded-xl border border-dark-100/30 bg-dark-600 p-1.5 shadow-xl shadow-black/20 animate-fade-in-down">
-              {[
-                { label: "New Short Link", icon: <Plus className="h-4 w-4" />, href: "/dashboard/links/new" },
-                { label: "New QR Code", icon: <QrCode className="h-4 w-4" />, href: "/dashboard/qrcodes" },
-                { label: "New Campaign", icon: <FolderKanban className="h-4 w-4" />, href: "/dashboard/campaigns" },
-                { label: "New Bio Page", icon: <UserCircle className="h-4 w-4" />, href: "/dashboard/bio-pages/new" },
-              ].map((item) => (
+              {quickCreateItems.map((item) => (
                 <button
                   key={item.href}
                   type="button"
@@ -453,7 +507,7 @@ function DashboardLayout({
             type="button"
             onClick={() => setShowShortcuts(true)}
             className="rounded-lg p-2 text-dark-200 hover:text-dark-50 hover:bg-dark-400/50 transition-colors"
-            title="Keyboard shortcuts (?)"
+            title={t("layout.shortcuts.title")}
           >
             <Keyboard className="h-5 w-5" />
           </button>
@@ -461,8 +515,8 @@ function DashboardLayout({
             type="button"
             onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
             className="rounded-lg p-2 text-dark-200 hover:text-dark-50 hover:bg-dark-400/50 transition-colors"
-            title="Toggle theme"
-            aria-label="Toggle theme"
+            title={t("layout.aria.toggleTheme")}
+            aria-label={t("layout.aria.toggleTheme")}
           >
             {resolvedTheme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </button>
@@ -490,17 +544,12 @@ function DashboardLayout({
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <Keyboard className="h-5 w-5 text-accent" />
-              Keyboard Shortcuts
+              {t("layout.shortcuts.title")}
             </DialogTitle>
-            <DialogDescription>Use these shortcuts to navigate faster</DialogDescription>
+            <DialogDescription>{t("layout.shortcuts.description")}</DialogDescription>
           </DialogHeader>
           <div className="grid grid-cols-2 gap-3 pt-2">
-            {[
-              { keys: "⌘K / Ctrl+K", action: "Command palette" },
-              { keys: "?", action: "Show this menu" },
-              { keys: "Esc", action: "Close modals / menus" },
-              { keys: "/", action: "Focus search on links page" },
-            ].map((s) => (
+            {shortcutItems.map((s) => (
               <div key={s.keys} className="flex items-center justify-between rounded-lg bg-dark-700/50 px-3 py-2.5 border border-dark-100">
                 <span className="text-sm text-dark-50">{s.action}</span>
                 <kbd className="rounded border border-dark-100 bg-dark-500 px-2 py-0.5 text-[11px] font-mono text-dark-100">
@@ -518,9 +567,9 @@ function DashboardLayout({
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <Command className="h-5 w-5 text-accent" />
-              Command Palette
+              {t("layout.commandPalette.title")}
             </DialogTitle>
-            <DialogDescription>Type to search pages and actions</DialogDescription>
+            <DialogDescription>{t("layout.commandPalette.description")}</DialogDescription>
           </DialogHeader>
           <div className="pt-2">
             <div className="relative">
@@ -530,13 +579,13 @@ function DashboardLayout({
                 type="text"
                 value={commandQuery}
                 onChange={(e) => setCommandQuery(e.target.value)}
-                placeholder="Search pages..."
+                placeholder={t("layout.commandPalette.placeholder")}
                 className="w-full rounded-lg border border-dark-100 bg-dark-700 py-2.5 pl-10 pr-4 text-sm text-dark-50 placeholder:text-dark-100 focus:border-accent focus:outline-none"
               />
             </div>
             <div className="mt-3 max-h-64 overflow-y-auto space-y-0.5">
               {filteredCommands.length === 0 ? (
-                <p className="py-4 text-center text-sm text-dark-100">No results found</p>
+                <p className="py-4 text-center text-sm text-dark-100">{t("layout.commandPalette.noResults")}</p>
               ) : (
                 filteredCommands.map((item) => (
                   <button
