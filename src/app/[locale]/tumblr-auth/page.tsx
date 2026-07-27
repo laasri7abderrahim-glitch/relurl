@@ -1,17 +1,32 @@
 "use client"
 
-import { useSearchParams } from "next/navigation"
-import { Suspense } from "react"
+import { useSearchParams, usePathname } from "next/navigation"
+import { Suspense, useEffect, useState } from "react"
 
 function AuthContent() {
+  const pathname = usePathname()
   const params = useSearchParams()
+  const [fullUrl, setFullUrl] = useState("")
+
+  useEffect(() => {
+    setFullUrl(window.location.href)
+  }, [])
+
   const oauthToken = params.get("oauth_token")
   const oauthVerifier = params.get("oauth_verifier")
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-50 p-8">
-      <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
+      <div className="w-full max-w-2xl rounded-2xl bg-white p-8 shadow-lg">
         <h1 className="mb-4 text-2xl font-bold text-gray-900">Tumblr Authorization</h1>
+
+        <div className="mb-4 rounded-lg bg-blue-50 p-4 text-sm text-blue-800 break-all">
+          <strong>Full URL:</strong> {fullUrl}
+        </div>
+        <div className="mb-4 rounded-lg bg-gray-50 p-4 text-sm text-gray-600 break-all">
+          <strong>Path:</strong> {pathname}<br/>
+          <strong>Params:</strong> {Array.from(params.entries()).map(([k,v]) => `${k}=${v}`).join(", ") || "(none)"}
+        </div>
 
         {oauthVerifier ? (
           <div className="space-y-4">
