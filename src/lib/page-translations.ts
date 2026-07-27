@@ -33,15 +33,24 @@ export async function getPageContent(
   } catch {
     faqs = undefined
   }
+  let keywords: string[] = []
+  let features: string[] = []
+  let howItWorks: { step: string; desc: string }[] = []
+  let useCases: string[] = []
+  try { keywords = t.raw("keywords") as string[] } catch {}
+  try { features = t.raw("features") as string[] } catch {}
+  try { howItWorks = t.raw("howItWorks") as { step: string; desc: string }[] } catch {}
+  try { useCases = t.raw("useCases") as string[] } catch {}
+
   return {
     title: t("title"),
     subtitle: t("subtitle"),
     description: t("description"),
     metaDescription: t("metaDescription"),
-    keywords: t.raw("keywords") as string[],
-    features: t.raw("features") as string[],
-    howItWorks: t.raw("howItWorks") as { step: string; desc: string }[],
-    useCases: t.raw("useCases") as string[],
+    keywords,
+    features,
+    howItWorks,
+    useCases,
     faqs,
   }
 }

@@ -65,6 +65,14 @@ export default function QRCodeLandingPage({
     return pathname.replace(/^\/(en|fr|es)\//, "").replace(/\/$/, "") || "qr-code-generator"
   }, [pathname])
 
+  const safeRaw = (key: string) => {
+    try { return t.raw(key) } catch { return undefined }
+  }
+
+  const benefits = (safeRaw(`pages.${slug}.benefits`) as { title: string; text: string }[] | undefined) ?? []
+  const comparisonPoints = (safeRaw(`pages.${slug}.comparisonPoints`) as string[] | undefined) ?? []
+  const tips = (safeRaw(`pages.${slug}.tips`) as { title: string; text: string }[] | undefined) ?? []
+
   const defaultFaqs: FAQItem[] = faqs ?? [
     {
       q: t("landing.qr.faq1Q", { article, title }),
@@ -245,7 +253,7 @@ export default function QRCodeLandingPage({
         </section>
 
         {/* Long Description */}
-        {t.raw(`pages.${slug}.longDescription`) && (
+        {safeRaw(`pages.${slug}.longDescription`) && (
           <section className="section-padding pb-0">
             <div className="max-w-4xl mx-auto">
               <p className="text-base text-muted-foreground leading-relaxed">{t(`pages.${slug}.longDescription`)}</p>
@@ -326,12 +334,12 @@ export default function QRCodeLandingPage({
         </section>
 
         {/* Detailed Benefits */}
-        {t.raw(`pages.${slug}.benefits`)?.length > 0 && (
+        {benefits.length > 0 && (
           <section className="section-padding">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12 text-gradient">{t("landing.qr.benefitsTitle", { title })}</h2>
               <div className="grid md:grid-cols-2 gap-6">
-                {(t.raw(`pages.${slug}.benefits`) as { title: string; text: string }[]).map((benefit, i) => (
+                {benefits.map((benefit, i) => (
                   <div key={i} className="glass-card p-6 flex gap-4 group hover:-translate-y-0.5 transition-all duration-300">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center shrink-0 mt-0.5">
                       <Star className="w-5 h-5 text-primary" />
@@ -348,7 +356,7 @@ export default function QRCodeLandingPage({
         )}
 
         {/* Why Choose */}
-        {t.raw(`pages.${slug}.whyChoose`) && (
+        {safeRaw(`pages.${slug}.whyChoose`) && (
           <section className="section-padding">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-8 text-gradient">{t("landing.qr.whyChooseTitle")}</h2>
@@ -360,12 +368,12 @@ export default function QRCodeLandingPage({
         )}
 
         {/* Comparison */}
-        {t.raw(`pages.${slug}.comparisonPoints`)?.length > 0 && (
+        {comparisonPoints.length > 0 && (
           <section className="section-padding bg-muted/30">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-8 text-gradient">{t("landing.qr.comparisonTitle")}</h2>
               <div className="space-y-4">
-                {(t.raw(`pages.${slug}.comparisonPoints`) as string[]).map((point, i) => (
+                {comparisonPoints.map((point, i) => (
                   <div key={i} className="glass-card p-5 flex items-start gap-3 hover:-translate-y-0.5 transition-all duration-300">
                     <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                     <p className="text-sm text-muted-foreground leading-relaxed">{point}</p>
@@ -465,12 +473,12 @@ export default function QRCodeLandingPage({
         )}
 
         {/* Tips */}
-        {t.raw(`pages.${slug}.tips`)?.length > 0 && (
+        {tips.length > 0 && (
           <section className="section-padding">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-8 text-gradient">{t("landing.qr.tipsTitle")}</h2>
               <div className="grid md:grid-cols-3 gap-6">
-                {(t.raw(`pages.${slug}.tips`) as { title: string; text: string }[]).map((tip, i) => (
+                {tips.map((tip, i) => (
                   <div key={i} className="glass-card p-6 group hover:-translate-y-1 transition-all duration-300">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                       <Lightbulb className="w-5 h-5 text-primary" />
