@@ -128,6 +128,34 @@ export default function PricingPageClient() {
           ],
         })}}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "@id": `https://relurl.com/${locale}/pricing#product`,
+          name: t("title"),
+          description: t("subtitle"),
+          brand: { "@type": "Brand", name: "RELURL" },
+          offers: {
+            "@type": "AggregateOffer",
+            lowPrice: "0",
+            highPrice: "99",
+            priceCurrency: "USD",
+            offerCount: String(planConfig.filter((p) => p.price.monthly !== null).length),
+            offers: planConfig
+              .filter((p) => p.price.monthly !== null)
+              .map((p) => ({
+                "@type": "Offer",
+                name: t(`${p.key}.name`),
+                price: String(p.price.monthly),
+                priceCurrency: "USD",
+                availability: "https://schema.org/InStock",
+                url: `https://relurl.com/${locale}/pricing`,
+              })),
+          },
+        })}}
+      />
       <Header />
       <main className="flex-1">
       <div className="py-24 px-4">

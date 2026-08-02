@@ -1,6 +1,8 @@
 import { generateSEOMetadata } from "@/lib/seo"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
+import { JsonLdWebPage } from "@/components/seo/JsonLdWebPage"
+import { getLocale } from "next-intl/server"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -55,9 +57,15 @@ const updates = [
   },
 ]
 
-export default function ChangelogPage() {
+export default async function ChangelogPage() {
+  const locale = await getLocale()
   return (
     <>
+      <JsonLdWebPage
+        title="Changelog - Product Updates & Releases"
+        description="Stay up to date with the latest RELURL product updates, new features, and improvements."
+        path={`/${locale}/changelog`}
+      />
       <Header />
       <main className="min-h-screen bg-dark-700">
         <section className="container py-20 text-center">

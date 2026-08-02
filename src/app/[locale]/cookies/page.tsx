@@ -1,6 +1,8 @@
 import { generateSEOMetadata } from "@/lib/seo"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
+import { JsonLdWebPage } from "@/components/seo/JsonLdWebPage"
+import { getLocale } from "next-intl/server"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -19,9 +21,15 @@ const cookies = [
   { name: "_vercel_insights", purpose: "Analytics to improve performance", type: "Analytics", duration: "1 year" },
 ]
 
-export default function CookiesPage() {
+export default async function CookiesPage() {
+  const locale = await getLocale()
   return (
     <>
+      <JsonLdWebPage
+        title="Cookie Policy - How RELURL Uses Cookies"
+        description="Learn about how RELURL uses cookies and similar technologies to improve your browsing experience."
+        path={`/${locale}/cookies`}
+      />
       <Header />
       <main className="min-h-screen bg-dark-700">
         <section className="container py-20 max-w-3xl">

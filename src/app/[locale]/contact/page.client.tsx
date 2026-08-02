@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { usePathname } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -21,6 +22,8 @@ const sidebarItems = [
 
 export default function ContactPageClient() {
   const t = useTranslations("contact")
+  const pathname = usePathname()
+  const pageUrl = `https://relurl.com${pathname}`
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
@@ -48,6 +51,39 @@ export default function ContactPageClient() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "@id": `${pageUrl}#contact`,
+          url: pageUrl,
+          name: t("title"),
+          description: t("subtitle"),
+          isPartOf: { "@id": "https://relurl.com/#website" },
+          mainEntity: {
+            "@type": "Organization",
+            "@id": "https://relurl.com/#organization",
+            name: "RELURL",
+            contactPoint: {
+              "@type": "ContactPoint",
+              email: "support@relurl.com",
+              contactType: "customer support",
+            },
+          },
+        })}}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://relurl.com" },
+            { "@type": "ListItem", position: 2, name: t("title"), item: pageUrl },
+          ],
+        })}}
+      />
       <Header />
       <main className="flex-1">
         <div className="py-24 px-4">

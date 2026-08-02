@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
+import { JsonLdWebPage } from "@/components/seo/JsonLdWebPage"
+import { getLocale } from "next-intl/server"
 import { Check, ArrowRight, Zap, BarChart3, Shield, Globe } from "lucide-react"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -30,9 +32,15 @@ const steps = [
   { step: "3", title: "Start Shortening", desc: "Use the admin bar, shortcodes, or the meta box to create short links." },
 ]
 
-export default function WordPressPage() {
+export default async function WordPressPage() {
+  const locale = await getLocale()
   return (
     <div className="min-h-screen flex flex-col">
+      <JsonLdWebPage
+        title="WordPress URL Shortener Plugin"
+        description="Shorten links, track clicks, and manage UTM campaigns directly from WordPress. Free plugin with one-click install and bulk shortening."
+        path={`/${locale}/wordpress`}
+      />
       <Header />
       <main className="flex-1">
         {/* Hero */}

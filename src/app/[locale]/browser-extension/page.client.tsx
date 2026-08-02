@@ -1,7 +1,7 @@
 "use client"
 
 import { useTranslations } from "next-intl"
-import { Link } from "@/i18n/navigation"
+import { usePathname } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -72,9 +72,37 @@ const reasons = [
 
 export default function BrowserExtensionPage() {
   const t = useTranslations()
+  const pathname = usePathname()
+  const pageUrl = `https://relurl.com${pathname}`
 
   return (
     <div className="min-h-screen flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "@id": `${pageUrl}#extension`,
+          name: t("extension.title"),
+          applicationCategory: "BrowserApplication",
+          operatingSystem: "Chrome, Firefox, Edge",
+          url: pageUrl,
+          description: t("extension.subtitle"),
+          offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+          mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
+        })}}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://relurl.com" },
+            { "@type": "ListItem", position: 2, name: t("extension.title"), item: pageUrl },
+          ],
+        })}}
+      />
       <Header />
       <main className="flex-1">
 

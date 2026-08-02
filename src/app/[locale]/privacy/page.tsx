@@ -2,6 +2,8 @@ import { generateSEOMetadata } from "@/lib/seo"
 import { Link } from "@/i18n/navigation"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
+import { JsonLdWebPage } from "@/components/seo/JsonLdWebPage"
+import { getLocale } from "next-intl/server"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -13,9 +15,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   })
 }
 
-export default function PrivacyPage() {
+export default async function PrivacyPage() {
+  const locale = await getLocale()
   return (
     <>
+      <JsonLdWebPage
+        title="Privacy Policy - How We Handle Your Data"
+        description="Read the RELURL privacy policy to understand how we collect, use, and protect your personal information."
+        path={`/${locale}/privacy`}
+      />
       <Header />
       <main className="min-h-screen bg-dark-700">
         <section className="container py-20 max-w-3xl">

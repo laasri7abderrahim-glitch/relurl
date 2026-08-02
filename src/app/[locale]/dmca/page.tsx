@@ -1,6 +1,8 @@
 import { generateSEOMetadata } from "@/lib/seo"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
+import { JsonLdWebPage } from "@/components/seo/JsonLdWebPage"
+import { getLocale } from "next-intl/server"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -12,9 +14,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   })
 }
 
-export default function DmcaPage() {
+export default async function DmcaPage() {
+  const locale = await getLocale()
   return (
     <>
+      <JsonLdWebPage
+        title="DMCA Policy - Copyright Complaints"
+        description="Learn how to submit a DMCA copyright complaint regarding content on the RELURL platform."
+        path={`/${locale}/dmca`}
+      />
       <Header />
       <main className="min-h-screen bg-dark-700">
         <section className="container py-20 max-w-3xl">

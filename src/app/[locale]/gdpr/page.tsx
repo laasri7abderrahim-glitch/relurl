@@ -2,6 +2,8 @@ import { generateSEOMetadata } from "@/lib/seo"
 import { Link } from "@/i18n/navigation"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
+import { JsonLdWebPage } from "@/components/seo/JsonLdWebPage"
+import { getLocale } from "next-intl/server"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -13,9 +15,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   })
 }
 
-export default function GdprPage() {
+export default async function GdprPage() {
+  const locale = await getLocale()
   return (
     <>
+      <JsonLdWebPage
+        title="GDPR Compliance - Data Protection"
+        description="Learn about RELURL's commitment to GDPR compliance and data protection practices."
+        path={`/${locale}/gdpr`}
+      />
       <Header />
       <main className="min-h-screen bg-dark-700">
         <section className="container py-20 max-w-3xl">

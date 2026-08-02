@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useTranslations } from "next-intl"
-import { Link } from "@/i18n/navigation"
+import { Link, usePathname } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { CardContent } from "@/components/ui/card"
@@ -63,6 +63,7 @@ export default function QRCodeLandingPage({
   const t = useTranslations()
   const article = articleFor(title)
   const slug = pageKey
+  const pathname = usePathname()
 
   const safeRaw = (key: string) => {
     try { return t.raw(key) } catch { return undefined }
@@ -127,13 +128,27 @@ export default function QRCodeLandingPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
+          "@type": "WebApplication",
+          "@id": `https://relurl.com${pathname}#software`,
           name: title,
           applicationCategory: "WebApplication",
           operatingSystem: "Web",
-          url: "https://relurl.com",
+          url: `https://relurl.com${pathname}`,
           description,
           offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+          mainEntityOfPage: { "@type": "WebPage", "@id": `https://relurl.com${pathname}` },
+        })}}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "@id": `https://relurl.com${pathname}`,
+          url: `https://relurl.com${pathname}`,
+          name: title,
+          description,
+          isPartOf: { "@id": "https://relurl.com/#website" },
         })}}
       />
       <script
@@ -165,7 +180,7 @@ export default function QRCodeLandingPage({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://relurl.com" },
-            { "@type": "ListItem", position: 2, name: title, item: "https://relurl.com" },
+            { "@type": "ListItem", position: 2, name: title, item: `https://relurl.com${pathname}` },
           ],
         })}}
       />

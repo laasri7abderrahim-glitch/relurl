@@ -2,6 +2,8 @@ import { generateSEOMetadata } from "@/lib/seo"
 import { Link } from "@/i18n/navigation"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
+import { JsonLdWebPage } from "@/components/seo/JsonLdWebPage"
+import { getLocale } from "next-intl/server"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -91,9 +93,15 @@ const moreIntegrations = [
   { name: "Webhooks", description: "Real-time event notifications", icon: "🔌", category: "Developer" },
 ]
 
-export default function IntegrationsPage() {
+export default async function IntegrationsPage() {
+  const locale = await getLocale()
   return (
     <>
+      <JsonLdWebPage
+        title="Integrations - Connect RELURL with Your Tools"
+        description="Connect RELURL with Zapier, Make, and other tools to automate your link management workflow."
+        path={`/${locale}/integrations`}
+      />
       <Header />
       <main className="min-h-screen bg-dark-700">
         <section className="container py-20 text-center">

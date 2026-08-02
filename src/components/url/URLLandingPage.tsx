@@ -131,15 +131,27 @@ export default function URLLandingPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
-          "@id": "https://relurl.com/#software",
+          "@type": "WebApplication",
+          "@id": `https://relurl.com${pathname}#software`,
           name: title,
           applicationCategory: "WebApplication",
           operatingSystem: "Web",
-          url: "https://relurl.com",
+          url: `https://relurl.com${pathname}`,
           description,
           offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
           mainEntityOfPage: { "@type": "WebPage", "@id": `https://relurl.com${pathname}` },
+        })}}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "@id": `https://relurl.com${pathname}`,
+          url: `https://relurl.com${pathname}`,
+          name: title,
+          description,
+          isPartOf: { "@id": "https://relurl.com/#website" },
         })}}
       />
       <script

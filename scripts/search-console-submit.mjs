@@ -34,23 +34,31 @@ async function run() {
       console.log(`  ${site.siteUrl} (${site.permissionLevel})`)
     }
 
-    // Submit sitemap
+    // Submit sitemaps
     const siteUrl = siteList[0].siteUrl
-    try {
-      await client.request({
-        url: `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(siteUrl)}/sitemaps/${encodeURIComponent("https://relurl.com/sitemap.xml")}`,
-        method: "PUT",
-      })
-      console.log("\nSitemap submitted to Google Search Console!")
-    } catch (e2) {
-      console.log("\nNote: Could not submit sitemap via API:", e2.response?.data?.error?.message || e2.message)
+    const sitemaps = [
+      "https://relurl.com/sitemap/translated.xml",
+      "https://relurl.com/sitemap/landing.xml",
+      "https://relurl.com/sitemap/tools.xml",
+      "https://relurl.com/sitemap/static.xml",
+    ]
+    for (const sm of sitemaps) {
+      try {
+        await client.request({
+          url: `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(siteUrl)}/sitemaps/${encodeURIComponent(sm)}`,
+          method: "PUT",
+        })
+        console.log(`Sitemap submitted: ${sm}`)
+      } catch (e2) {
+        console.log(`Note: Could not submit sitemap ${sm}:`, e2.response?.data?.error?.message || e2.message)
+      }
     }
   } catch (e) {
     console.error("API Error:", e.response?.data?.error?.message || e.message)
     console.log("\n--- MANUAL STEPS ---")
     console.log("1. Go to https://search.google.com/search-console")
     console.log('2. Add property: Domain → "relurl.com"')
-    console.log("3. Submit sitemap: https://relurl.com/sitemap.xml")
+    console.log("3. Submit sitemap: https://relurl.com/sitemap/translated.xml")
   }
 }
 run()

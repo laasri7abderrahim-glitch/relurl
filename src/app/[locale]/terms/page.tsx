@@ -1,6 +1,8 @@
 import { generateSEOMetadata } from "@/lib/seo"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
+import { JsonLdWebPage } from "@/components/seo/JsonLdWebPage"
+import { getLocale } from "next-intl/server"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -12,9 +14,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   })
 }
 
-export default function TermsPage() {
+export default async function TermsPage() {
+  const locale = await getLocale()
   return (
     <>
+      <JsonLdWebPage
+        title="Terms of Service - RELURL"
+        description="Read the RELURL terms of service governing the use of our URL shortening and QR code platform."
+        path={`/${locale}/terms`}
+      />
       <Header />
       <main className="min-h-screen bg-dark-700">
         <section className="container py-20 max-w-3xl">
