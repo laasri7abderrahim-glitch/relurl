@@ -12,6 +12,7 @@ import { articleFor } from "@/lib/seo"
 
 const Footer = dynamic(() => import("@/components/layout/footer").then(m => m.Footer), { ssr: false })
 import { BlogPost } from "@/lib/blog/types"
+import { PageMoreContent } from "@/lib/page-translations"
 import { Copy, Check, Link2, ArrowRight, Zap, BarChart3, Globe, Shield, ChevronRight, QrCode, BookOpen, TrendingUp, Target, CheckCircle2, Star, Lightbulb, Activity, Hash, Users, MousePointerClick } from "lucide-react"
 import { DecorativePattern } from "@/components/ui/decorative-pattern"
 import Image from "next/image"
@@ -38,6 +39,7 @@ interface URLLandingPageProps {
   children?: React.ReactNode
   relatedArticles?: BlogPost[]
   pageKey: string
+  moreContent?: PageMoreContent
 }
 
 export default function URLLandingPage({
@@ -56,6 +58,7 @@ export default function URLLandingPage({
   children,
   relatedArticles = [],
   pageKey,
+  moreContent,
 }: URLLandingPageProps) {
   const [url, setUrl] = useState("")
   const [shortUrl, setShortUrl] = useState("")
@@ -67,13 +70,10 @@ export default function URLLandingPage({
   const pathname = usePathname()
   const slug = pageKey
 
-  const safeRaw = (key: string) => {
-    try { return t.raw(key) } catch { return undefined }
-  }
-
-  const benefits = (safeRaw(`pages.${slug}.benefits`) as { title: string; text: string }[] | undefined) ?? []
-  const comparisonPoints = (safeRaw(`pages.${slug}.comparisonPoints`) as string[] | undefined) ?? []
-  const tips = (safeRaw(`pages.${slug}.tips`) as { title: string; text: string }[] | undefined) ?? []
+  const safety = moreContent ?? {}
+  const benefits = safety.benefits ?? []
+  const comparisonPoints = safety.comparisonPoints ?? []
+  const tips = safety.tips ?? []
 
   const defaultFaqs: FAQItem[] = faqs ?? [
     {
@@ -233,12 +233,12 @@ export default function URLLandingPage({
         </section>
 
         {/* Long Description */}
-        {safeRaw(`pages.${slug}.longDescription`) && (
+        {moreContent?.longDescription && (
           <section className="px-4 py-12 bg-gradient-to-b from-background to-muted/20">
             <div className="max-w-4xl mx-auto">
               <div className="flex gap-4 items-start p-6 rounded-xl bg-background border border-border/50">
                 <BookOpen className="w-6 h-6 text-primary shrink-0 mt-1 hidden sm:block" />
-                <p className="text-base text-muted-foreground leading-relaxed">{t(`pages.${slug}.longDescription`)}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{moreContent.longDescription}</p>
               </div>
             </div>
           </section>
@@ -345,12 +345,12 @@ export default function URLLandingPage({
         )}
 
         {/* Why Choose */}
-        {safeRaw(`pages.${slug}.whyChoose`) && (
+        {moreContent?.whyChoose && (
           <section className="section-padding">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-8 text-gradient">{t("landing.url.whyChooseTitle")}</h2>
               <div className="glass-card p-8">
-                <p className="text-base text-muted-foreground leading-relaxed">{t(`pages.${slug}.whyChoose`)}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{moreContent.whyChoose}</p>
               </div>
             </div>
           </section>

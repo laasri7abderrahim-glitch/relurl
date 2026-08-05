@@ -10,6 +10,15 @@ export interface PageContent {
   howItWorks: { step: string; desc: string }[]
   useCases: string[]
   faqs?: { q: string; a: string }[]
+  moreContent?: PageMoreContent
+}
+
+export interface PageMoreContent {
+  longDescription?: string
+  whyChoose?: string
+  comparisonPoints?: string[]
+  benefits?: { title: string; text: string }[]
+  tips?: { title: string; text: string }[]
 }
 
 export interface PageOverrides {
@@ -52,5 +61,26 @@ export async function getPageContent(
     howItWorks,
     useCases,
     faqs,
+    moreContent: readMoreContent(t),
   }
+}
+
+type Translations = Awaited<ReturnType<typeof getTranslations>>
+
+function readMoreContent(t: Translations): PageMoreContent {
+  const out: PageMoreContent = {}
+  const tryKey = (key: string): unknown => {
+    try { return t.raw(key) } catch { return undefined }
+  }
+  const v = tryKey("longDescription")
+  if (typeof v === "string") out.longDescription = v
+  const w = tryKey("whyChoose")
+  if (typeof w === "string") out.whyChoose = w
+  const cp = tryKey("comparisonPoints")
+  if (Array.isArray(cp)) out.comparisonPoints = cp as string[]
+  const b = tryKey("benefits")
+  if (Array.isArray(b)) out.benefits = b as { title: string; text: string }[]
+  const ti = tryKey("tips")
+  if (Array.isArray(ti)) out.tips = ti as { title: string; text: string }[]
+  return out
 }

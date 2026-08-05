@@ -51,8 +51,16 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   const messages = await getMessages()
 
+  // Strip the large `pages.*` namespace (page body copy) from the client
+  // bundle. Page content is loaded server-side via getPageContent; sending
+  // ~660KB of per-page copy to every client would bloat the RSC payload and
+  // wreck Core Web Vitals. The client components receive any extra fields
+  // they need (benefits, tips, etc.) as explicit props.
+  const clientMessages: Record<string, unknown> = { ...messages }
+  delete clientMessages.pages
+
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
+    <NextIntlClientProvider locale={locale} messages={clientMessages}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

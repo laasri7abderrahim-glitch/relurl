@@ -10,6 +10,7 @@ import { QRCode } from "@/components/ui/qr-code"
 import { Header } from "@/components/layout/header"
 import dynamic from "next/dynamic"
 import { articleFor } from "@/lib/seo"
+import { PageMoreContent } from "@/lib/page-translations"
 
 const Footer = dynamic(() => import("@/components/layout/footer").then(m => m.Footer), { ssr: false })
 import { BlogPost } from "@/lib/blog/types"
@@ -40,6 +41,7 @@ interface QRPageProps {
   children?: React.ReactNode
   relatedArticles?: BlogPost[]
   pageKey: string
+  moreContent?: PageMoreContent
 }
 
 export default function QRCodeLandingPage({
@@ -59,19 +61,17 @@ export default function QRCodeLandingPage({
   children,
   relatedArticles = [],
   pageKey,
+  moreContent,
 }: QRPageProps) {
   const t = useTranslations()
   const article = articleFor(title)
   const slug = pageKey
   const pathname = usePathname()
 
-  const safeRaw = (key: string) => {
-    try { return t.raw(key) } catch { return undefined }
-  }
-
-  const benefits = (safeRaw(`pages.${slug}.benefits`) as { title: string; text: string }[] | undefined) ?? []
-  const comparisonPoints = (safeRaw(`pages.${slug}.comparisonPoints`) as string[] | undefined) ?? []
-  const tips = (safeRaw(`pages.${slug}.tips`) as { title: string; text: string }[] | undefined) ?? []
+  const safety = moreContent ?? {}
+  const benefits = safety.benefits ?? []
+  const comparisonPoints = safety.comparisonPoints ?? []
+  const tips = safety.tips ?? []
 
   const defaultFaqs: FAQItem[] = faqs ?? [
     {
@@ -267,10 +267,10 @@ export default function QRCodeLandingPage({
         </section>
 
         {/* Long Description */}
-        {safeRaw(`pages.${slug}.longDescription`) && (
+        {moreContent?.longDescription && (
           <section className="section-padding pb-0">
             <div className="max-w-4xl mx-auto">
-              <p className="text-base text-muted-foreground leading-relaxed">{t(`pages.${slug}.longDescription`)}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{moreContent.longDescription}</p>
             </div>
           </section>
         )}
@@ -370,12 +370,12 @@ export default function QRCodeLandingPage({
         )}
 
         {/* Why Choose */}
-        {safeRaw(`pages.${slug}.whyChoose`) && (
+        {moreContent?.whyChoose && (
           <section className="section-padding">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-8 text-gradient">{t("landing.qr.whyChooseTitle")}</h2>
               <div className="glass-card p-8">
-                <p className="text-base text-muted-foreground leading-relaxed">{t(`pages.${slug}.whyChoose`)}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{moreContent.whyChoose}</p>
               </div>
             </div>
           </section>
