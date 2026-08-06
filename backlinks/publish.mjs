@@ -421,28 +421,6 @@ async function publishWriteas(title, body, tags, canonicalUrl) {
   return { platform: "Write.as", status: "success", url: data.data.url }
 }
 
-async function publishGhost(title, body, tags, canonicalUrl) {
-  if (!CONFIG.GHOST_URL || !CONFIG.GHOST_ADMIN_KEY) return { platform: "Ghost", status: "skipped", reason: "No config" }
-  const [id, secret] = CONFIG.GHOST_ADMIN_KEY.split(":")
-  if (!id || !secret) return { platform: "Ghost", status: "error", error: "Invalid key format" }
-  const iat = Math.floor(Date.now() / 1000)
-  const jwt = require("jsonwebtoken")?.sign({}, Buffer.from(secret, "hex"), { keyid: id, algorithm: "HS256", expiresIn: "5m", audience: "/admin/" })
-  if (!jwt) return { platform: "Ghost", status: "skipped", reason: "Need 'jsonwebtoken' package" }
-  const htmlBody = body
-    .replace(/^### (.+)$/gm, "<h3>$1</h3>")
-    .replace(/^## (.+)$/gm, "<h2>$1</h2>")
-    .replace(/^# (.+)$/gm, "<h1>$1</h1>")
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
-  const res = await fetch(`${CONFIG.GHOST_URL}/ghost/api/admin/posts`, {
-    method: "POST",
-    headers: { Authorization: `Ghost ${jwt}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ posts: [{ title, html: htmlBody, status: "published", tags: tags.map(t => ({ name: t })) }] }),
-  })
-  if (!res.ok) return { platform: "Ghost", status: "error", error: await res.text() }
-  const data = await res.json()
-  return { platform: "Ghost", status: "success", url: data.posts?.[0]?.url || "published" }
-}
-
 async function publishJustPasteIt(title, body, tags, canonicalUrl) {
   // JustPaste.it — DA ~89, dofollow, no auth needed for anonymous pastes
   const html = body
@@ -608,30 +586,6 @@ async function publishGitBook(title, body, tags, canonicalUrl) {
     return { platform: "GitBook", status: "success", url: `https://app.gitbook.com/s/${CONFIG.GITBOOK_SPACE}` }
   }
   return { platform: "GitBook", status: "error", error: await res.text() }
-}
-
-async function publishJustPasteIt(title, body, tags, canonicalUrl) {
-  // JustPaste.it — DA ~89, dofollow, no auth needed for anonymous pastes
-  const html = body
-    .replace(/^### (.+)$/gm, "<h3>$1</h3>")
-    .replace(/^## (.+)$/gm, "<h2>$1</h2>")
-    .replace(/^# (.+)$/gm, "<h1>$1</h1>")
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
-    .replace(/\n\n/g, "</p><p>")
-    .replace(/\n/g, "<br>")
-  const payload = `<html><head><title>${title}</title></head><body><p>${html}</p></body></html>`
-  try {
-    const res = await fetch("https://just-paste.it/documents", {
-      method: "POST",
-      headers: { "Content-Type": "text/plain" },
-      body: payload,
-    })
-    if (!res.ok) return { platform: "JustPaste.it", status: "error", error: await res.text() }
-    const data = await res.json()
-    return { platform: "JustPaste.it", status: "success", url: `https://just-paste.it/${data.key}/` }
-  } catch (e) {
-    return { platform: "JustPaste.it", status: "error", error: e.message }
-  }
 }
 
 async function publishRentry(title, body, tags, canonicalUrl) {
