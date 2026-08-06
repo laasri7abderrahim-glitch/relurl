@@ -39,6 +39,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       allQRCodes={allQRCodes}
       faqs={content.faqs}
       relatedArticles={relatedArticles}
+      moreContent={content.moreContent}
       pageKey={pageKey}
     />
   )
