@@ -3,6 +3,7 @@ import { getMessages, getTranslations } from "next-intl/server"
 import { routing } from "@/i18n/routing"
 import { notFound } from "next/navigation"
 import { RevealAnimations } from "@/components/ui/reveal-animations"
+import { FirstVisitSplash } from "@/components/ui/first-visit-splash"
 
 type Props = {
   children: React.ReactNode
@@ -97,6 +98,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <RevealAnimations>
         {children}
       </RevealAnimations>
+      <FirstVisitSplash />
     </NextIntlClientProvider>
   )
 }

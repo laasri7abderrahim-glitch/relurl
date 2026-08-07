@@ -381,4 +381,48 @@
   .dark .text-glow {
     text-shadow: 0 0 20px hsl(var(--primary) / 0.6);
   }
+
+  @keyframes splashMark {
+    0% { transform: translateY(0) scale(0.85); }
+    30% { transform: translateY(-14px) scale(1); }
+    55% { transform: translateY(0) scale(1); }
+    75% { transform: translateY(-6px) scale(1.03); }
+    100% { transform: translateY(0) scale(1); }
+  }
+  .splash-mark {
+    animation: splashMark 1.15s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  @keyframes splashLetter {
+    from { opacity: 0; transform: translateY(34px) scale(0.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .splash-letter {
+    display: inline-block;
+    opacity: 0;
+    animation: splashLetter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  @keyframes splashBar {
+    from { width: 0%; }
+    to { width: 100%; }
+  }
+  .splash-bar {
+    animation: splashBar 1.5s ease-in-out forwards;
+  }
+
+  @keyframes splashFadeOut {
+    to { opacity: 0; visibility: hidden; }
+  }
+  .splash-fade-out {
+    animation: splashFadeOut 0.5s ease forwards;
+  }
+
+  @keyframes splashRing {
+    0% { transform: scale(0.8); opacity: 0.6; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+  .splash-ring {
+    animation: splashRing 1.8s ease-out infinite;
+  }
 }
